@@ -1,16 +1,33 @@
-/*
-  gulpfile.js
-  ===========
-  Rather than manage one giant configuration file responsible
-  for creating multiple tasks, each task has been broken out into
-  its own file in gulp/tasks. Any files in that directory get
-  automatically required below.
-  To add a new task, simply add a new task file that directory.
-  gulp/tasks/default.js specifies the default set of tasks to run
-  when you run `gulp`.
-*/
+'use strict';
 
-var requireDir = require('require-dir');
+let gulp = require('gulp');
+let util = require('gulp-util');
+let plugins = require('gulp-load-plugins')();
+let runSequence = require('run-sequence');
 
-// Require all tasks in gulp/tasks, including subfolders
-requireDir('./tasks', { recurse: true });
+plugins.poststylus = require('poststylus');
+
+// Set config options needed
+let options = {
+  dest: "./public/"
+};
+
+// Create object of needed paths
+options.paths = {
+  ie: options.dest + 'ie',
+  image: options.dest + 'image',
+  script: options.dest + 'script',
+  styles: options.dest + 'css'
+}
+
+// This will get the task to allow us to use the configs above
+function getTask(task) {
+  return require('./gulp-tasks/' + task)(gulp, plugins, options.paths, util);
+}
+
+// Tasks!
+// -----------------------
+
+// Style tasks
+gulp.task('stylus', getTask('stylus'));
+gulp.task('watch:stylus', getTask('stylus_watch'));
