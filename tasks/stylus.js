@@ -9,7 +9,7 @@ gulp.task('stylus', function () {
         poststylus(['autoprefixer', 'rucksack-css'])
       ]
     }))
-    .pipe(gulp.dest('./public'))
+    .pipe(gulp.dest('./public/css'))
 });
 
 gulp.task('default', ['stylus']);
