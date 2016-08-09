@@ -1,0 +1,34 @@
+/*
+
+   DISPLAY
+
+   Base:
+    d
+
+   Modifier:
+    b = block
+    f = flex
+    ib = inline-block
+    i = inline
+
+ */
+
+.d
+  &--b
+    display: block
+  &--f
+    display: flex
+  &--ib
+    display: inline-block
+  &--i
+    display: inline
+
+  @media (max-width: 750px)
+    &--b--md
+      display: block
+    &--f--md
+      display: flex
+    &--ib--md
+      display: inline-block
+    &--i--md
+      display: inline
