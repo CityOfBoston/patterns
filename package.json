@@ -4,7 +4,7 @@
   "dependencies": {
     "@frctl/fractal": "^1.0.0"
   },
-  "devDependencies": {
+  "dependencies": {
     "autoprefixer": "^6.3.6",
     "gulp": "^3.9.1",
     "gulp-load-plugins": "^1.2.4",
@@ -13,5 +13,8 @@
     "require-dir": "^0.3.0",
     "rucksack-css": "^0.8.6",
     "run-sequence": "^1.2.2"
+  },
+  "scripts": {
+    "postinstall" : "gulp stylus"
   }
 }
