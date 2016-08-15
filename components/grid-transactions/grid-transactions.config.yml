@@ -1,0 +1,20 @@
+title: Common Transactions
+handle: grid_transactions
+status: wip
+context:
+  header:
+    title: Getting Started
+    contact: false
+  transactions:
+    - name: Pay your real estate tax bill
+      link: https://www.boston.gov/departments/parking-clerk/how-pay-parking-ticket
+      image: https://spyglass.dd:8443/sites/default/files/transactions-icon-08-2016/experiential_icons_real_estate_taxes.svg
+    - name: Get a resident parking permit
+      link: http://www.cityofboston.gov/311/
+      image: https://spyglass.dd:8443/sites/default/files/icon-parking-permit_49.png
+    - name: Report an issue on 311
+      link: https://www.boston.gov/departments/parking-clerk/how-get-resident-parking-permit
+      image: https://spyglass.dd:8443/sites/default/files/transactions-icon-07-2016/experiential_icons_2_311.svg
+    - name: Pay a parking ticket
+      link: https://www.boston.gov/departments/tax-collection/how-pay-your-real-estate-taxes
+      image: https://spyglass.dd:8443/sites/default/files/icon-appeal-parking-ticket_49.png

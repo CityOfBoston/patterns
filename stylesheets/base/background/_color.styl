@@ -6,6 +6,7 @@
     bg-c = background-color
 
    Modifiers:
+    g   = grayscale
     crb = charles-blue
     ftr = freedom-red
     ob  = optimistic-blue
@@ -13,6 +14,10 @@
  */
 
 .bg-c
+  &--g
+    &--1
+      background-color: #f3f3f3
+
   &--crb
     background-color: $charles-blue
 
@@ -21,3 +26,6 @@
 
   &--ob
     background-color: $optimistic-blue
+
+  &--w
+    background-color: $white

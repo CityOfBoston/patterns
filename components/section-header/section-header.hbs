@@ -1,4 +1,6 @@
 <div class="d--f d--b--md fr ai--b b--crb b--solid bw3 bt-0 br-0 bl-0 p-b--1">
-  <h2 class="f--5 f--ss lh--0 m-t--0 m-b--0 tt--u">{{ title }}</h2>
-  <div class="fa--r">Contact: <a href="{{ contact.link }}" title="{{ contact.title }}">{{ contact.title }}</a></div>
+  <h2 class="f--5 f--ss lh--0 m-t--0 m-b--0 tt--u">{{ header.title }}</h2>
+  {{#if header.contact}}
+    <div class="f--i fa--r">Contact: <a href="{{ header.contact.link }}" title="{{ header.contact.title }}">{{ header.contact.title }}</a></div>
+  {{/if}}
 </div>

@@ -1,6 +1,8 @@
-title: Example component
+title: Section Header
+handle: section_header
 status: wip
 context:
+  header:
     title: Getting Started
     contact:
       title: Public Works
