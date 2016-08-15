@@ -1,0 +1,34 @@
+/*
+
+   SECTION HEADERS
+
+   Base:
+    sh
+
+   Modifier:
+    w = white
+    y = yellow
+
+ */
+
+.sh
+  border-bottom: $border-400 solid $charles-blue
+  padding-bottom: $sizing-200
+
+  &-title
+    margin: 0
+    font-family: $sans
+    font-size: $font500
+    line-height: $line-height-100
+    color: $charles-blue
+    text-transform: uppercase
+
+  &-contact
+    font-style: italic
+
+  @media $media-medium
+    display: flex
+    align-items: baseline
+
+    &-contact
+      margin-left: auto
