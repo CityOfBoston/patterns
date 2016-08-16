@@ -1,0 +1,33 @@
+/*
+
+   BLOCKS
+
+   Base:
+    b
+
+   Modifier:
+    g = grey
+    b = blue
+
+ */
+
+.b
+  // Block content
+  &-c
+    max-width: 66.67rem
+    margin: 0 auto
+    padding-top: $sizing-600
+    padding-bottom: $sizing-600
+    padding-left: $sizing-300
+    padding-right: $sizing-300
+
+  // Block with grey background
+  &--g
+    background-color: $grey-000
+
+  @media $media-large
+    &-c
+      padding-top: $sizing-700
+      padding-bottom: $sizing-700
+      padding-left: $sizing-000
+      padding-right: $sizing-000
