@@ -5,7 +5,7 @@ module.exports = function (gulp, plugins, options) {
     var stream = gulp.src('./stylesheets/main.styl')
       .pipe(plugins.stylus({
         use: [
-          plugins.poststylus(['autoprefixer', 'rucksack-css'])
+          plugins.poststylus(['lost', 'autoprefixer', 'rucksack-css'])
         ]
       }))
       .pipe(gulp.dest('./public/css'))

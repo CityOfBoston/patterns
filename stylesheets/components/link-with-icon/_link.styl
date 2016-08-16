@@ -1,0 +1,46 @@
+/*
+
+   LINK WITH ICON
+
+   Base:
+    lwi
+
+   Modifier:
+    None Yet
+
+ */
+
+.lwi
+  margin-bottom: $sizing-200
+
+  // Containing link
+  &-l
+    background-color: $white
+    display: flex
+    align-items: center
+    padding: $sizing-300
+
+  // Image container
+  &-ic
+    width: 20%
+    padding-top: $sizing-300
+    padding-bottom: $sizing-300
+    text-align: center
+
+  // Icon
+  &-i
+    max-width: 75%
+    max-height: 100%
+
+  @media $media-medium
+
+    margin-bottom: $sizing-000
+
+    // Containing link, image container, text
+    &-l, &-ic, &-t
+      display: block
+      text-align: center
+      width: 100%
+
+    &-i
+      margin: 0 auto
