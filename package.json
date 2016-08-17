@@ -14,6 +14,9 @@
     "run-sequence": "^1.2.2"
   },
   "scripts": {
-    "postinstall": "gulp stylus"
+    "postinstall": "gulp stylus; gulp scripts"
+  },
+  "devDependencies": {
+    "postcss-flexibility": "^1.1.0"
   }
 }
