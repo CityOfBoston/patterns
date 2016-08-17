@@ -11,14 +11,19 @@
  */
 
 .lwi
-  margin-bottom: $sizing-200
 
   // Containing link
   &-l
-    background-color: $white
     display: flex
     align-items: center
-    padding: $sizing-300
+    padding: $sizing-600
+    background-color: $white
+    height: 100%
+    text-decoration: none
+
+    &:hover
+      color: $white
+      background-color: $optimistic-blue
 
   // Image container
   &-ic
@@ -32,9 +37,15 @@
     max-width: 75%
     max-height: 100%
 
-  @media $media-medium
+  &-t
+    font-style: italic
+    font-size: $font400
 
-    margin-bottom: $sizing-000
+  &:hover
+    background-color: $optimistic-blue
+    color: $white
+
+  @media $media-medium
 
     // Containing link, image container, text
     &-l, &-ic, &-t

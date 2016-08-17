@@ -3,7 +3,7 @@ handle: grid_transactions
 status: wip
 context:
   header:
-    title: Getting Started
+    title: Starting Transactions
     contact: false
   links:
     - name: Pay a parking ticket for Boston
