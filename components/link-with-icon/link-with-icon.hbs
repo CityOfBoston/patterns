@@ -1,8 +1,6 @@
 {{#each links as |link|}}
-  <div class="lwi g--4">
-    <a href="{{ link.href }}" title="{{ link.name }}" class="lwi-l">
-      <span class="lwi-ic"><img src="{{ link.image }}" alt="{{ link.name }}" class="lwi-i" /></span>
-      <span class="lwi-t">{{ link.name }}</span>
-    </a>
-  </div>
+  <a href="{{ link.href }}" title="{{ link.name }}" class="lwi g--4">
+    <span class="lwi-ic"><img src="{{ link.image }}" alt="{{ link.name }}" class="lwi-i" /></span>
+    <span class="lwi-t">{{ link.name }}</span>
+  </a>
 {{/each}}
