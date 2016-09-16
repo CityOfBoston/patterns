@@ -1,0 +1,10 @@
+<footer class="foot">
+  <ul class="foot-ll foot-ll--r">
+    <li class="foot-ll-i"><a href="http://www.cityofboston.gov/311/" class="foot-ll-a lnk--yellow"><span class="foot-ll-311">BOS:311 - </span>Report an issue</a></li>
+  </ul>
+  <ul class="foot-ll">
+    {{#each links as |link|}}
+      <li class="foot-ll-i"><a href="{{ link.href }}" class="foot-ll-a">{{ link.name }}</a></li>
+    {{/each}}
+  </ul>
+</footer>

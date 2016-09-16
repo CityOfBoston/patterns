@@ -1,0 +1,11 @@
+title: Footer
+handle: footer
+status: wip
+context:
+  links:
+    - name: Mayor Martin J Walsh
+      href: https://www.boston.gov/departments/mayors-office/martin-j-walsh
+    - name: Privacy Policy
+      href: https://www.boston.gov/copyright/privacyandsecurity.asp
+    - name: Careers
+      href: https://www.boston.gov/departments/human-resources/career-center
