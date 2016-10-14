@@ -13,7 +13,7 @@
 .lwi
   display: flex
   align-items: center
-  padding: $sizing-500
+  padding: $sizing-300
   background-color: $white
   text-decoration: none
 
@@ -29,15 +29,16 @@
 
   // Icon
   &-i
+    display: block
     max-width: 85%
     max-height: 100%
-    display: block
 
   &-t
-    margin-left: 5%
-    width: 70%
     font-style: italic
     font-size: $font500
+    line-height: $line-height-200
+    margin-left: 5%
+    width: 70%
 
   &:hover
     background-color: $optimistic-blue
@@ -59,6 +60,7 @@
 
     &-i
       margin: 0 auto
+      max-height: 110px
 
     &-t
       font-style: italic

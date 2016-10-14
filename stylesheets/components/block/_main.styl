@@ -6,6 +6,7 @@
     b
 
    Modifier:
+    fw = full-width
     g = grey
     b = blue
 
@@ -18,10 +19,20 @@
     margin: 0 auto
     padding: $sizing-700
 
+  &--fw
+    left: 50%;
+    position: relative;
+    transform: translate(-50%,0);
+    width: 100vw;
+
   // Block with grey background
   &--g
     background-color: $grey-000
 
   @media $media-large
     &-c
-      padding: $sizing-800
+      padding: $sizing-800 10%
+
+  @media $media-xlarge
+    &-c
+      padding: $sizing-800 0
