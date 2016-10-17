@@ -1,0 +1,18 @@
+@lost flexbox no-flex
+@lost gutter 1.5rem
+
+.g
+  lost-utility: clearfix
+
+  &--4
+    lost-column: 1/1;
+    margin-top: $sizing-200
+
+  @media $media-medium
+    &--4
+      lost-column: 1/2;
+      margin-top: $sizing-500
+
+  @media $media-large
+    &--4
+      lost-column: 1/4;
