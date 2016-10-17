@@ -17,7 +17,7 @@
   &-c
     max-width: 66.67rem
     margin: 0 auto
-    padding: $sizing-700 $sizing-300
+    padding: $sizing-700 10%
 
   &--fw
     left: 50%;
@@ -28,6 +28,10 @@
   // Block with grey background
   &--g
     background-color: $grey-000
+
+  @media $media-medium
+    &-c
+      padding: $sizing-700
 
   @media $media-large
     &-c
