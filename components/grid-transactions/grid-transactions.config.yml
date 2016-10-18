@@ -1,6 +1,10 @@
 title: Common Transactions
 handle: grid_transactions
 status: wip
+variants:
+  - name: 'hub'
+    status: 'ready'
+    preview: '@hub'
 context:
   header:
     title: Starting Transactions
