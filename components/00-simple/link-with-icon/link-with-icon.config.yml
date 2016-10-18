@@ -1,6 +1,6 @@
 title: Link with icon
 handle: link_with_icon
-status: wip
+status: ready
 context:
   links:
     - name: Pay a parking ticket

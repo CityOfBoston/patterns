@@ -8,7 +8,7 @@
 /*
  * Give your project a title.
  */
-fractal.set('project.title', 'CoB Patterns');
+fractal.set('project.title', 'City of Boston');
 
 /*
  * Tell Fractal where to look for components.
