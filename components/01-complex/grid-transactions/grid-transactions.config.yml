@@ -1,8 +1,8 @@
 title: Common Transactions
 handle: grid_transactions
-status: wip
+status: ready
 variants:
-  - name: 'hub'
+  - name: hub
     status: 'ready'
     preview: '@hub'
 context:
