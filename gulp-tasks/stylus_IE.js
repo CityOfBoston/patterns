@@ -2,7 +2,7 @@
 
 module.exports = function (gulp, plugins, options) {
   return function () {
-    var stream = gulp.src('./stylesheets/main.styl')
+    var stream = gulp.src('./stylesheets/shame.styl')
       .pipe(plugins.stylus({
         use: [
           plugins.poststylus([
