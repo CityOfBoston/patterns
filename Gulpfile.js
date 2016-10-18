@@ -33,6 +33,6 @@ function getTask(task) {
 // Style tasks
 gulp.task('scripts', getTask('scripts'));
 gulp.task('stylus', getTask('stylus'));
-gulp.task('stylus:ie', getTask('stylus_ie'));
+gulp.task('stylus:ie', getTask('stylus_IE'));
 gulp.task('watch:stylus', getTask('stylus_watch'));
 gulp.task('default', ['scripts', 'stylus', 'stylus:ie', 'watch:stylus']);
