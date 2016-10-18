@@ -5,7 +5,9 @@ let util = require('gulp-util');
 let plugins = require('gulp-load-plugins')();
 let runSequence = require('run-sequence');
 
+// Set some plugins that aren't magically included
 plugins.poststylus = require('poststylus');
+plugins.autoprefixer = require('autoprefixer');
 
 // Set config options needed
 let options = {
