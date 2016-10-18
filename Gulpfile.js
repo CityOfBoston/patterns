@@ -35,4 +35,5 @@ gulp.task('scripts', getTask('scripts'));
 gulp.task('stylus', getTask('stylus'));
 gulp.task('stylus:ie', getTask('stylus_IE'));
 gulp.task('watch:stylus', getTask('stylus_watch'));
+gulp.task('build', getTask(['stylus', 'scripts', 'stylus_IE']));
 gulp.task('default', ['scripts', 'stylus', 'stylus:ie', 'watch:stylus']);
