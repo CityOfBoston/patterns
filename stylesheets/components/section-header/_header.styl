@@ -18,7 +18,8 @@
   &-title
     margin: 0
     font-family: $sans
-    font-size: $font600
+    font-size: responsive 20px 45px
+    font-size: $font700
     font-weight: 700
     padding-right: $sizing-300
     line-height: 1
@@ -26,14 +27,33 @@
     text-transform: uppercase
 
   &-contact
+    font-size: $font300
     font-style: italic
+    line-height: $line-height-100
 
-  @media $media-medium
+    a, a:link, a:visited
+      color: $freedom-red
+
+      &:hover
+        color: $optimistic-blue
+
+  &--light
+    border-color: #ffffff
+
+  &--y
+    border-color: $yellow
+
+    .sh
+      &-title
+        color: $yellow
+
+  &--b0
+    border: none
+
+  @media $media-xlarge
     display: flex
-    align-items: baseline
+    align-items: flex-end
 
     &-contact
       margin-left: auto
-
-    &-title
-      font-size: $font800
+      text-align: right
