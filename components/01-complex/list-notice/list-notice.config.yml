@@ -1,0 +1,15 @@
+title: List Notice
+handle: list_notice
+status: wip
+variants:
+  - name: hub
+    status: 'wip'
+    preview: '@hub'
+context:
+  notice:
+    title: "Board Meeting: Boston Redevelopment Authority"
+    public_testimony: true
+    public_testimony_time: 5:30pm
+    date: April 15, 2015 4:00PM - 6:00PM
+    posted: 4/13/2015 - 12:15PM
+    icon: https://www.boston.gov/sites/default/files/department_icons/icons_neighborhood_development.svg

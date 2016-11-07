@@ -1,0 +1,34 @@
+/*
+
+   Notice List Items
+
+   Base:
+    n
+
+   Elements:
+    li
+
+   Modifier:
+    None Yet
+
+ */
+
+.n
+  &-li
+    background: #ffffff
+    margin-bottom: $sizing-400
+
+    &:hover
+      background: $optimistic-blue
+      color: #ffffff
+
+    // Blocks inside the notice list item
+    &-b
+      padding: $sizing-500
+
+      &--br
+        border-right: 1px dotted $grey-000
+
+    // Notice list title
+    &-t
+      font-style: italic
