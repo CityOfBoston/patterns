@@ -1,8 +1,12 @@
 <ul class="dl">
-{{#each details as |detail|}}
+  {{#each details as |detail|}}
+    <li class="dl-i">
+      <span class="dl-t">{{ detail.name }}</span>
+      <span class="dl-d">{{ detail.description }}</span>
+    </li>
+  {{/each}}
   <li class="dl-i">
-    <span class="dl-t">{{ detail.name }}</span>
-    <span class="dl-d">{{ detail.description }}</span>
+    <span class="dl-t">Where</span>
+    <span class="dl-d">{{ render '@address' }}</span>
   </li>
-{{/each}}
 </ul>

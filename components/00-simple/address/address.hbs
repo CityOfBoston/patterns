@@ -1,5 +1,5 @@
-<div class="a" itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
-  <div itemprop="streetAddress" class="a-a">
+<div class="addr" itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
+  <div itemprop="streetAddress" class="addr-a">
     {{address.thoroughfare}}
     {{#if address.thoroughfare2}}
       <br />
@@ -10,7 +10,7 @@
       {{address.premise}}
     {{/if}}
   </div>
-  <div class="a-l">
+  <div class="addr-l">
     <span itemprop="addressLocality">{{address.locality}}</span>, <span itemprop="addressRegion">{{address.state}}</span> <span itemprop="postalCode">{{address.postal_code}}</span>
   </div>
 </div>

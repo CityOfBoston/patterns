@@ -1,6 +1,6 @@
 title: Address
 handle: address
-status: wip
+status: ready
 context:
   address:
     thoroughfare: 'Boston City Hall, Room #241'

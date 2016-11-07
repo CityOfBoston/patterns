@@ -7,8 +7,6 @@ context:
       name: When
       description: April 15, 2015 4:00PM - 6:00PM
     - icon: false
-      name: Where
-    - icon: false
       name: Posted
       description: 11/27/2016 - 10:45AM
     - icon: false
