@@ -1,0 +1,50 @@
+/*
+
+   Detail List
+
+   Base:
+    dl
+
+   Elements:
+    i = item
+    t = title
+    d = description
+
+   Modifier:
+    None Yet
+
+ */
+
+.dl
+  list-style: none
+  margin: 0
+  padding: 0
+
+  &-i
+    clear: fix
+    margin: 0
+    padding: 0
+
+    &:not(:last-child)
+      border-bottom: 1px dashed $grey-100
+
+  &-t
+    clear: both
+    color: $grey-300
+    float: left
+    font-family: $serif
+    font-size: responsive $font200 $font400
+    font-style: italic
+    padding-top: $sizing-300
+    padding-bottom: $sizing-300
+    width: 30%
+
+  &-d
+    float: left
+    font-family: $sans
+    font-size: responsive $font100 $font300
+    line-height: $line-height-200
+    padding-top: $sizing-300
+    padding-bottom: $sizing-300
+    text-transform: uppercase
+    width: 70%

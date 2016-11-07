@@ -1,0 +1,16 @@
+<div class="a" itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
+  <div itemprop="streetAddress" class="a-a">
+    {{address.thoroughfare}}
+    {{#if address.thoroughfare2}}
+      <br />
+      {{address.thoroughfare2}}
+    {{/if}}
+    {{#if address.premise}}
+      <br />
+      {{address.premise}}
+    {{/if}}
+  </div>
+  <div class="a-l">
+    <span itemprop="addressLocality">{{address.locality}}</span>, <span itemprop="addressRegion">{{address.state}}</span> <span itemprop="postalCode">{{address.postal_code}}</span>
+  </div>
+</div>
