@@ -17,18 +17,49 @@
   &-li
     background: #ffffff
     margin-bottom: $sizing-400
+    text-decoration: none
 
     &:hover
       background: $optimistic-blue
-      color: #ffffff
+
+      .dl-t,
+      .dl-d,
+      .n-li-a,
+      .n-li-t
+        color: #ffffff
 
     // Blocks inside the notice list item
     &-b
       padding: $sizing-500
+      display: flex
+      flex-direction: column
 
       &--br
         border-right: 1px dotted $grey-000
 
     // Notice list title
     &-t
+      font-family: $serif
       font-style: italic
+      font-size: responsive 18px 25px
+      font-range: 480px 1440px
+      line-height: $line-height-200
+
+    // Notice list icon container
+    &-ic
+      text-align: right
+
+    // Notice list icon container
+    &-i
+      width: 100%
+      max-width: 75px
+
+    // Notice list alert
+    &-a
+      margin-top: auto
+      color: $freedom-red
+      float: left
+      font-family: $sans
+      font-size: responsive $font100 $font300
+      font-range: 480px 1440px
+      text-transform: uppercase

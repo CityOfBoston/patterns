@@ -1,14 +1,20 @@
-<a href="{{ notice.link }}" class="g n-li">
+<a href="{{ notice.link }}" class="g g--m0 n-li">
   <div class="g--2 n-li-b n-li-b--br">
-    <div class="h2 n-li-t">{{ notice.title }}</div>
+    <div class="n-li-t">{{ notice.title }}</div>
     {{#if notice.public_testimony}}
-      <div class="h4">Public testimony beings at {{ notice.public_testimony_time }}</div>
+      <div class="n-li-a">Public testimony beings at {{ notice.public_testimony_time }}</div>
     {{/if}}
   </div>
   <div class="g--2 n-li-b">
-    <div class="h2">{{ notice.title }}</div>
-    {{#if notice.public_testimony}}
-      <div class="h4">Public testimony beings at {{ notice.public_testimony_time }}</div>
-    {{/if}}
+    <div class="g g--m0">
+      <div class="g--23">
+        {{ render '@detail_list' }}
+      </div>
+      <div class="g--13">
+        <div class="n-li-ic">
+          <img src="{{ notice.icon }}" alt="Department Name" class="n-li-i" />
+        </div>
+      </div>
+    </div>
   </div>
 </a>
