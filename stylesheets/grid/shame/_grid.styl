@@ -2,35 +2,67 @@
 @lost gutter 1.5rem
 
 .g
-  lost-flex-container: row
-  margin-top: $sizing-200
-
   &--m0
     margin-top: 0
 
-  &--13,
+  &--1,
   &--2,
-  &--23,
+  &--3,
   &--4,
-    lost-column: 1/1
+  &--5,
+  &--6,
+  &--7,
+  &--8,
+  &--9,
+  &--10,
+  &--11,
+  &--12,
+    lost-column: 12/12
 
   &--4
     margin-top: $sizing-200
 
   @media $media-large
-    &--2,
+    &--1
+      lost-column: 1/12
+
+    &--2
+      lost-column: 2/12
+
+    &--3,
     &--4
-      lost-column: 1/2
+      lost-column: 6/12
 
-    &--13
-      lost-column: 1/3
+    &--44
+      lost-column: 4/12
 
-    &--23
-      lost-column: 2/3
+    &--5
+      lost-column: 5/12
+
+    &--6
+      lost-column: 6/12
+
+    &--7
+      lost-column: 7/12
+
+    &--8
+      lost-column: 8/12
+
+    &--9
+      lost-column: 9/12
+
+    &--10
+      lost-column: 10/12
+
+    &--11
+      lost-column: 11/12
+
+    &--12
+      lost-column: 12/12
 
     &--4
       margin-top: $sizing-400
 
   @media $media-xlarge
     &--4
-      lost-column: 1/4
+      lost-column: 3/12
