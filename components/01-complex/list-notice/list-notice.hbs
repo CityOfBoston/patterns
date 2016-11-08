@@ -1,6 +1,6 @@
-<a href="{{ notice.link }}" class="g g--m0 n-li">
+<div class="g g--m0 n-li">
   <div class="g--6 n-li-b n-li-b--br">
-    <div class="n-li-t">{{ notice.title }}</div>
+    <div class="n-li-t"><a  href="{{ notice.link }}">{{ notice.title }}</a></div>
     {{#if notice.public_testimony}}
       <div class="n-li-a">Public testimony beings at {{ notice.public_testimony_time }}</div>
     {{/if}}
@@ -15,4 +15,4 @@
       </div>
     </div>
   </div>
-</a>
+</div>
