@@ -1,6 +1,6 @@
 title: List Notice
 handle: list_notice
-status: wip
+status: ready
 variants:
   - name: hub
     status: 'wip'

@@ -1,6 +1,6 @@
 title: Department Icon
 handle: department_icon
-status: wip
+status: ready
 context:
   department:
     name: Innovation and Technology
