@@ -1,0 +1,11 @@
+title: Hero
+handle: hero
+status: wip
+context:
+  intro: welcome to the new
+  title: Boston.gov
+  subheader: Mayor Martin J. Walsh
+  wide1x: https://www.boston.gov/sites/default/files/styles/rep_wide_2000x700custom_boston_wide_1x/public/hero-image-07-2016/25832647073_167d235f54_o.jpg?itok=nWpQdSFD&amp;timestamp=1469541909
+  desktop1x: https://www.boston.gov/sites/default/files/styles/rep_wide_2000x700custom_boston_desktop_1x/public/hero-image-07-2016/25832647073_167d235f54_o.jpg?itok=GJmuhNoE&amp;timestamp=1469541909
+  tablet1x: https://www.boston.gov/sites/default/files/styles/rep_wide_2000x700custom_boston_tablet_1x/public/hero-image-07-2016/25832647073_167d235f54_o.jpg?itok=g19HCDkD&amp;timestamp=1469541909
+  mobile1x: https://www.boston.gov/sites/default/files/styles/rep_wide_2000x700custom_boston_mobile_1x/public/hero-image-07-2016/25832647073_167d235f54_o.jpg?itok=XzPWArjL&amp;timestamp=1469541909
