@@ -10,9 +10,7 @@
       "quantity": 1
     }
   },
-  "addons": [
-    "fastly"
-  ],
+  "addons": [],
   "buildpacks": [
     {
       "url": "heroku/nodejs"
