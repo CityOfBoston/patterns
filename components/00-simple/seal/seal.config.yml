@@ -1,0 +1,11 @@
+title: Seal
+handle: seal
+status: wip
+variants:
+  - name: hub
+    status: 'wip'
+    preview: '@hub'
+    context:
+      image: /images/hub/seal.svg
+context:
+  image: /images/public/seal.svg
