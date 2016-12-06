@@ -29,8 +29,6 @@ function getTask(task) {
 
 // Tasks!
 // -----------------------
-
-// Style tasks
 gulp.task('images', getTask('images'));
 gulp.task('scripts', getTask('scripts'));
 gulp.task('watch:scripts', getTask('scripts_watch'));
