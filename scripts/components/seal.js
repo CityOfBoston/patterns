@@ -38,16 +38,28 @@ var BostonSeal = (function () {
       theSeal[0].classList.add(className)
 
       if (isTopic) {
+        // Create the event.
+        var event = document.createEvent('Event');
+
+        // Define that the event name is 'build'.
+        event.initEvent('seal:hidden', true, true);
+
         // Fire an event to tell the world about the seal
-        document.body.dispatchEvent('seal:hidden')
+        document.body.dispatchEvent(event)
       }
     } else {
       // Add the class
       theSeal[0].classList.remove(className)
 
       if (isTopic) {
+        // Create the event.
+        var event = document.createEvent('Event');
+
+        // Define that the event name is 'build'.
+        event.initEvent('seal:down', true, true);
+
         // Fire an event to tell the world about the seal
-        document.body.dispatchEvent('seal:down')
+        document.body.dispatchEvent(event)
       }
     }
   }
@@ -55,7 +67,11 @@ var BostonSeal = (function () {
   function start() {
     // Make sure the seal exists, or punt
     if (theSeal.length > 0 && theSeal[0]) {
+      // If we scroll the page, trigger event
       window.addEventListener('scroll', scrolling);
+
+      // Trigger it here, just once
+      scrolling();
     }
   }
 
