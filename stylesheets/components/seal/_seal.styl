@@ -24,13 +24,15 @@
   left: 50%
   transform: translateX(-50%) translateY(40%)
   transition-property: all
-  transition-duration: 0.25s
-  transition-timing-function: ease-in
+  transition-duration: 0.15s
+  transition-timing-function: linear
 
   &--u
-    position: relative
-    top: 0
     transform: translateX(-50%) translateY(-50%)
+    box-shadow: none
+
+  &--h
+    transform: translateX(-50%) translateY(-105%)
     box-shadow: none
 
   &-i
