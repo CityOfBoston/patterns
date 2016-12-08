@@ -29,11 +29,11 @@ function getTask(task) {
 
 // Tasks!
 // -----------------------
-
-// Style tasks
+gulp.task('images', getTask('images'));
 gulp.task('scripts', getTask('scripts'));
+gulp.task('watch:scripts', getTask('scripts_watch'));
 gulp.task('stylus', getTask('stylus'));
 gulp.task('stylus:ie', getTask('stylus_IE'));
 gulp.task('watch:stylus', getTask('stylus_watch'));
-gulp.task('build', ['stylus', 'scripts', 'stylus:ie']);
-gulp.task('default', ['scripts', 'stylus', 'stylus:ie', 'watch:stylus']);
+gulp.task('build', ['images', 'stylus', 'scripts', 'stylus:ie']);
+gulp.task('default', ['images', 'scripts', 'watch:scripts', 'stylus', 'stylus:ie', 'watch:stylus']);
