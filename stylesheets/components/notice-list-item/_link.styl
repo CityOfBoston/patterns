@@ -1,6 +1,6 @@
 /*
 
-   Notice List Items
+   Normal List Items
 
    Base:
     n
@@ -21,17 +21,29 @@
     &:not(:last-child)
       margin-bottom: $sizing-400
 
-    // Blocks inside the notice list item
+    // Some list items need to inverse on hover
+    &--in
+      &:hover
+        background-color: $optimistic-blue
+
+        .n-li
+          &-t
+            color: $white
+
+    // Blocks inside the list item
     &-b
       padding: $sizing-400
       display: flex
       flex-direction: column
 
+      &--fw
+        width: 100%
+
       @media $media-large
         &--br
           border-right: 1px dotted $grey-000
 
-    // Notice list title
+    // List item title
     &-t
       font-family: $serif
       font-style: italic
@@ -39,7 +51,7 @@
       font-range: 480px 1440px
       line-height: $line-height-200
 
-    // Notice list icon container
+    // List item icon container
     &-ic
       display: none
 
@@ -48,7 +60,7 @@
         justify-content: center
         align-items: center
 
-    // Notice list alert
+    // List item alert
     &-a
       color: $freedom-red
       font-family: $sans
