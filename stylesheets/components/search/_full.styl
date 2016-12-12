@@ -1,0 +1,68 @@
+/*
+
+   SEARCH (Full Screen)
+
+   Base:
+    sf
+
+ */
+
+.sf
+  padding: 0
+  margin: 0
+  display: block
+
+  &-l
+    color: $charles-blue
+    font-family: $sans
+    font-size: responsive 25px 75px
+    font-range: 480px 1440px
+    font-weight: 700
+    line-height: 1
+    margin: 0
+    padding: 0
+    text-transform: uppercase
+
+  &-i
+    position: relative
+
+    &-f
+      border: none
+      border-bottom: $border-400 solid $charles-blue
+      color: $freedom-red
+      font-family: $sans
+      font-size: responsive 25px 75px
+      font-range: 480px 1440px
+      font-weight: 700
+      height: auto
+      line-height: 1
+      margin: 0
+      padding: 0 50px $sizing-100 0
+      text-transform: uppercase
+      width: 100%
+
+      &:focus
+        outline: none
+
+    &-b
+      background: $icon_search no-repeat center
+      background-size: contain
+      border: none
+      cursor: pointer
+      height: 25px
+      width: 25px
+      margin-top: -3px
+      position: absolute
+      right: 0
+      text-indent: -999em
+      top: 50%
+      transform: translateY(-50%)
+
+      @media $media-medium
+        height: 35px
+        width: 35px
+
+      @media $media-xlarge
+        height: 55px
+        width: 55px
+        margin-top: 0
