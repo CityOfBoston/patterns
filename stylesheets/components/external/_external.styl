@@ -1,0 +1,73 @@
+/*
+
+   Department Icon
+
+   Base:
+    di
+
+   Elements:
+    i = icon
+    ic = icon container
+    tt = tooltip
+
+   Modifier:
+    None Yet
+
+ */
+
+.di
+  display: none
+
+  @media $media-xlarge
+    display: block
+
+  &-i
+  img
+    width: 100%
+    max-width: 50px
+    max-height: 50px
+
+  &-tt
+    display: block
+    position: relative
+
+    &:hover:before
+    &:hover:after
+      visibility: visible;
+      opacity: 1;
+
+    &:before
+    &:after
+      visibility: hidden
+      opacity: 0
+      pointer-events: none
+
+    &:after
+      position: absolute
+      bottom: 120%
+      left: 50%
+      transform: translateX(-50%)
+      margin-bottom: -5px
+      width: 0
+      border-top: 5px solid $charles-blue
+      border-right: 5px solid transparent
+      border-left: 5px solid transparent
+      content: " "
+      font-size: 0
+      line-height: 0
+
+    &:before
+      background-color: $charles-blue
+      font-family: $sans
+      line-height: $line-height-200
+      text-transform: uppercase
+      padding: $sizing-200
+      position: absolute
+      bottom: 120%
+      left: 50%
+      transform: translateX(-50%)
+      width: 160px
+      color: #fff
+      content: attr(title)
+      text-align: center
+      font-size: $font100
