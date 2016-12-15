@@ -1,0 +1,11 @@
+title: 'Form: Radio'
+handle: form_radio
+status: ready
+context:
+  radios:
+    - label: Public Notices
+      index: 0
+    - label: Intergovernmental Relations
+      index: 1
+    - label: Here is a really long label that will wrap at some point.
+      index: 2

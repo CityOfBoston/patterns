@@ -1,0 +1,6 @@
+{{#each radios as |radio|}}
+  <label class="ra" for="radio[{{index}}]">
+    <input id="radio[{{index}}]" type="radio" name="filters" value="{{label}}" class="ra-f">
+    <span class="ra-l">{{label}}</span>
+  </label>
+{{/each}}
