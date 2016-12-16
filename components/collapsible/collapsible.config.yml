@@ -1,0 +1,8 @@
+title: Collapsible
+handle: collapsible
+status: ready
+context:
+  department:
+    name: Innovation and Technology
+    icon: https://www.boston.gov/sites/default/files/department_icons/icons_doit.svg
+    url: /departments/innovation-and-technology

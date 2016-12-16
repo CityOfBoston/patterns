@@ -1,0 +1,59 @@
+/*
+
+   Collapsible
+
+   Base:
+    co
+
+   Elements:
+    t = title
+    b = body
+
+   Modifier:
+    None Yet
+
+ */
+
+.co
+  &-f:checked
+    ~.co
+      &-b
+        display: block
+        background: #ffffff
+
+      &-t
+        &:after
+          transform: translateY(-50%) rotate(90deg)
+
+  &-t
+    cursor: pointer
+    display: block
+    background-color: $optimistic-blue
+    color: #ffffff
+    font-family: $sans
+    font-size: responsive 14px 16px
+    font-range: 480px 1440px
+    padding: $sizing-400
+    position: relative
+    text-transform: uppercase
+    user-select: none
+
+    &:after
+      content: ''
+      background: url(/images/global/icons/chevron.svg) no-repeat right center
+      height: 20px
+      width: 16px
+      position: absolute
+      right: $sizing-400
+      top: 50%
+      transform: translateY(-50%)
+      transition: 0.125s all
+
+    @media $media-medium
+      display: none
+
+  &-b
+    display: none
+
+    @media $media-medium
+      display: block
