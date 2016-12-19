@@ -6,7 +6,13 @@
   margin-top: $sizing-200
 
   &--m0
+    margin: 0
+
+  &--mt0
     margin-top: 0
+
+  &--p0
+    padding: 0
 
   &--1
     lost-column: 12/12
@@ -14,7 +20,8 @@
   &--2
     lost-column: 12/12
 
-  &--3
+  &--3,
+  &--33
     lost-column: 12/12
 
   &--4
@@ -57,11 +64,8 @@
     &--3
       lost-column: 6/12
 
-    &--33
-      lost-column: 3/12
-
     &--4
-      lost-column: 6/12
+      lost-column: 1/2
 
     &--44
       lost-column: 4/12
@@ -94,5 +98,8 @@
       margin-top: $sizing-400
 
   @media $media-xlarge
-    &--4
+    &--33
       lost-column: 3/12
+      
+    &--4
+      lost-column: 1/4

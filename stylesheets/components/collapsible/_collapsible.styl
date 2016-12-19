@@ -15,6 +15,8 @@
  */
 
 .co
+  margin-bottom: $sizing-300
+
   &-f:checked
     ~.co
       &-b
@@ -33,7 +35,8 @@
     font-family: $sans
     font-size: responsive 14px 16px
     font-range: 480px 1440px
-    padding: $sizing-400
+    margin: 0
+    padding: $sizing-500 $sizing-400
     position: relative
     text-transform: uppercase
     user-select: none
@@ -54,6 +57,8 @@
 
   &-b
     display: none
+    padding: $sizing-400
 
     @media $media-medium
       display: block
+      padding: 0
