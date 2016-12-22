@@ -18,17 +18,17 @@
   align-items: center
   display: flex
   margin: 0
+  position: relative
 
   &:not(:last-child)
     margin: 0 0 $sizing-200
 
   &-f
-    flex: 0.2
     height: 35px
     margin: 0
     padding: 0
     width: 35px
-    position: relative
+    align-self: flex-start
 
     @media $media-medium
       height: 42px
@@ -63,7 +63,6 @@
 
   &-l
     color: $charles-blue
-    flex: 0.8
     font-family: $sans
     font-size: responsive 14px 16px
     font-range: 480px 1440px
