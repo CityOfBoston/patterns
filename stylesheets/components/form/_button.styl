@@ -7,6 +7,7 @@
 
    Modifier:
     c = charles blue
+    sb = small block (becomes block on small screens)
 
  */
 
@@ -23,3 +24,9 @@
 
   &--c
     background-color: $charles-blue !important
+
+  &--sb
+    margin-top: 0.5rem
+
+    @media $media-xlarge
+      margin-top: 0
