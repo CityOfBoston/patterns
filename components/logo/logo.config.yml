@@ -1,0 +1,11 @@
+title: Logo
+handle: logo
+status: ready
+variants:
+  - name: with mayor
+    context:
+      show_mayor: true
+      image: /images/public/logo.svg
+context:
+  show_mayor: false
+  image: /images/public/logo.svg
