@@ -13,7 +13,7 @@ fractal.set('project.title', 'Crispus');
 /*
  * A place to build the project to
  */
-fractal.web.set('builder.dest', __dirname + '/dist');
+fractal.web.set('builder.dest', __dirname + '/public');
 
 /*
  * Tell Fractal where to look for components.
