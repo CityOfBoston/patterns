@@ -11,20 +11,20 @@ plugins.autoprefixer = require('autoprefixer');
 
 // Set config options needed
 let options = {
-  dest: "./public/"
+  dest: "./assets/"
 };
 
 // Create object of needed paths
 options.paths = {
   ie: options.dest + 'ie',
-  image: options.dest + 'image',
-  script: options.dest + 'script',
+  image: options.dest + 'images',
+  script: options.dest + 'scripts',
   styles: options.dest + 'css'
 }
 
 // This will get the task to allow us to use the configs above
 function getTask(task) {
-  return require('./gulp-tasks/' + task)(gulp, plugins, options.paths, util);
+  return require('./gulp-tasks/' + task)(gulp, plugins, options, util);
 }
 
 // Tasks!

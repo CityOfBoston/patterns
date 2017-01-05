@@ -8,7 +8,12 @@
 /*
  * Give your project a title.
  */
-fractal.set('project.title', 'City of Boston');
+fractal.set('project.title', 'Crispus');
+
+/*
+ * A place to build the project to
+ */
+fractal.web.set('builder.dest', __dirname + '/dist');
 
 /*
  * Tell Fractal where to look for components.
@@ -23,23 +28,19 @@ fractal.set('docs.path', 'docs');
 /*
  * Tell the Fractal web preview plugin where to look for static assets.
  */
-fractal.web.set('static.path', __dirname + '/public');
+fractal.web.set('static.path', __dirname + '/assets');
 
 /*
  * Tell the Fractal web preview plugin to use this template for previews.
  */
 fractal.set('components.default.preview', '@preview');
 
-// Define a theme
-const Truth = require('@frctl/mandelbrot')({
-  "skin": "white",
-  "styles": [
-    "default",
-    "/theme/css.css"
-  ]
+/*
+ * Configure the server
+ */
+fractal.web.set('server.sync', true);
+fractal.web.set('server.syncOptions', {
+  open: true,
+  notify: true,
+  https: true,
 });
-
-// specify a directory to hold the theme override templates
-Truth.addLoadPath(__dirname + '/theme');
-
-fractal.web.theme(Truth);

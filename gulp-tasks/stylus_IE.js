@@ -14,7 +14,7 @@ module.exports = function (gulp, plugins, options) {
           ])
         ]
       }))
-      .pipe(gulp.dest('./public/css'))
+      .pipe(gulp.dest(options.paths.styles))
 
     return stream;
   };
