@@ -1,8 +1,8 @@
-title: 'Form: Radio'
-handle: form_radio
+title: 'Checkbox'
+handle: checkbox
 status: ready
 context:
-  radios:
+  checkboxes:
     - label: Public Notices
       index: 0
     - label: Intergovernmental Relations
