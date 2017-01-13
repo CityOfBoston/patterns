@@ -1,3 +1,15 @@
 {
-  "root": "public/"
+  "root": "public/",
+  "https_only": true,
+  "headers": {
+    "/": {
+      "Cache-Control": "no-store, no-cache"
+    },
+    "**.js": {
+      "Cache-Control": "public, max-age=31536000"
+    },
+    "**.css": {
+      "Cache-Control": "public, max-age=31536000"
+    }
+  }
 }
