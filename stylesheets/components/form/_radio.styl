@@ -22,28 +22,29 @@
     margin-bottom: $sizing-200
 
   &-f
-    height: 35px
+    height: 30px
     margin: 0
     padding: 0
-    width: 35px
+    width: 30px
 
     @media $media-medium
-      height: 42px
-      width: 42px
+      height: 35px
+      width: 35px
 
     &:before
       content: ""
       display: block
-      height: 35px
-      width: 35px
+      height: 30px
+      width: 30px
       background-color: #ffffff
       border: 3px solid $charles-blue
       box-sizing: border-box
       border-radius: 100%
+      position: absolute
 
       @media $media-medium
-        height: 42px
-        width: 42px
+        height: 35px
+        width: 35px
 
     &:checked
       &:before
@@ -51,6 +52,8 @@
         box-shadow: inset 0 0 0 7px $white
 
     &:focus
+      outline: none
+      
       &:before
         box-shadow: inset 0 0 0 7px $white, 0 0 0 3px $optimistic-blue
 
