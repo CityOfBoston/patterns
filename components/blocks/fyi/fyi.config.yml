@@ -1,0 +1,17 @@
+title: FYI
+handle: fyi
+status: wip
+variants:
+  - name: icon
+    status: 'wip'
+    context:
+      title: Light snow in the forecast
+      description: The mayor has not declared a snow emergency.
+      link_text: Learn about winter resources
+      link_url: https://boston.gov/winter
+      image: https://cdn.rawgit.com/CityOfBoston/bostonicons/a33c3766/small-circle-icons/snow_red.svg
+context:
+  title: Light snow in the forecast
+  description: The mayor has not declared a snow emergency.
+  link_text: Learn about winter resources
+  link_url: https://boston.gov/winter

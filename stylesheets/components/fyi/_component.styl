@@ -1,0 +1,87 @@
+/*
+
+   FYI
+
+   Base:
+    fyi
+
+   Elements:
+    c = container
+    i = icon
+    s = slash
+    t = title
+    l = link
+    d = description
+
+   Modifier:
+    None Yet
+
+ */
+
+.fyi
+  &-c
+    color: $white
+    display: flex
+    flex-flow: column
+    text-align: center
+
+    @media $media-xxlarge
+      flex-flow: row
+      text-align: left
+      align-items: center
+
+  &-t
+    color: $freedom-red
+    font-family: $sans
+    font-size: $font200
+    text-transform: uppercase
+    letter-spacing: 1px
+    line-height: $line-height-100
+    margin-bottom: $sizing-200
+
+    @media $media-xxlarge
+      margin-bottom: 0
+      white-space: nowrap
+
+  &-d
+    font-family: $serif
+    font-size: responsive 16px 18px
+    font-range: 480px 1440px
+    font-style: italic
+    line-height: $line-height-100
+    margin-bottom: $sizing-200
+
+    @media $media-xxlarge
+      margin-bottom: 0
+      margin-right: $sizing-300
+
+  &-i
+    width: 45px
+    height: 45px
+    display: block
+    margin: 0 auto $sizing-200
+
+    @media $media-xxlarge
+      margin: 0 $sizing-300 0 0
+
+  &-l,
+  &-l:link
+    color: $optimistic-blue
+    font-family: $sans
+    font-size: $font200
+    text-transform: uppercase
+    text-decoration: none
+    line-height: $line-height-100
+
+    @media $media-xxlarge
+      white-space: nowrap
+
+  &-s
+    display: none
+
+    @media $media-xxlarge
+      display: block
+      margin: 0 $sizing-300
+      font-size: 36px
+      position: relative
+      color: $freedom-red
