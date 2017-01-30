@@ -1,0 +1,72 @@
+/*
+
+   FYI
+
+   Base:
+    hro
+
+   Elements:
+    t = title
+    i = intro
+    sh = subheader
+
+   Modifier:
+    None Yet
+
+ */
+
+.hro
+  text-align: center
+  padding-left: 5%
+  padding-right: 5%
+  background: $optimistic-blue
+
+  &-c
+    padding-top: 6%
+    padding-bottom: 6%
+
+    @media $media-xlarge
+      padding-top: 4%
+      padding-bottom: 4%
+
+  &-i
+    color: $white
+    font-family: $serif
+    font-size: responsive 18px 30px
+    font-range: 480px 1440px
+    font-style: italic
+    line-height: $line-height-000
+    padding-bottom: 1%
+
+    @media $media-xlarge
+      padding-bottom: 0.5%
+
+    &--l
+      font-size: responsive 18px 35px
+
+  &-t
+    color: $white
+    font-family: $sans
+    font-size: responsive 30px 75px
+    font-range: 480px 1440px
+    font-weight: 700
+    line-height: $line-height-000
+    text-transform: uppercase
+    padding-bottom: 1.75%
+
+    @media $media-xlarge
+      padding-bottom: 1.25%
+
+    &--l
+      font-size: responsive 35px 90px
+
+  &-st
+    color: $charles-blue
+    font-family: $serif
+    font-size: responsive 18px 30px
+    font-range: 480px 1440px
+    font-style: italic
+    line-height: $line-height-000
+
+    &--l
+      font-size: responsive 18px 35px
