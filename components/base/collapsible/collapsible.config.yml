@@ -1,6 +1,9 @@
 title: Collapsible
 handle: collapsible
 status: ready
+variants:
+  - name: Hub
+    preview: '@hub'
 context:
   department:
     name: Innovation and Technology
