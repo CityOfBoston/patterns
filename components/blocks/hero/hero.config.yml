@@ -23,6 +23,7 @@ variants:
       home: true
       intro: welcome to the new
       title: Boston.gov
+      cta: false
       image:
         wide1x: https://www.boston.gov/sites/default/files/styles/rep_wide_2000x700custom_boston_wide_1x/public/hero-image-07-2016/25832647073_167d235f54_o.jpg?itok=nWpQdSFD&amp;timestamp=1469541909
         desktop1x: https://www.boston.gov/sites/default/files/styles/rep_wide_2000x700custom_boston_desktop_1x/public/hero-image-07-2016/25832647073_167d235f54_o.jpg?itok=GJmuhNoE&amp;timestamp=1469541909
@@ -31,14 +32,17 @@ variants:
   - name: No Image
     status: 'wip'
     context:
+      intro: false
       title: How to apply for a business certificate
       subheader: Companies in Boston need to get a business certificate through the City Clerk’s office. You need to renew your certificate every four years.
       image: false
+      cta: false
 context:
   home: true
   intro: Welcome to the new
   title: Boston.gov
   subheader: Mayor Martin J. Walsh
+  cta: false
   image:
     wide1x: https://www.boston.gov/sites/default/files/styles/rep_wide_2000x700custom_boston_wide_1x/public/hero-image-07-2016/25832647073_167d235f54_o.jpg?itok=nWpQdSFD&amp;timestamp=1469541909
     desktop1x: https://www.boston.gov/sites/default/files/styles/rep_wide_2000x700custom_boston_desktop_1x/public/hero-image-07-2016/25832647073_167d235f54_o.jpg?itok=GJmuhNoE&amp;timestamp=1469541909

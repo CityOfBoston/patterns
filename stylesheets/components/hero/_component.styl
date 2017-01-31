@@ -11,7 +11,9 @@
     sh = subheader
 
    Modifier:
-    None Yet
+    d = default
+    b = blank
+    t = image with title
 
  */
 
@@ -19,11 +21,31 @@
   text-align: center
   padding-left: 5%
   padding-right: 5%
-  background: $optimistic-blue
+  background-repeat: no-repeat
+  background-size: cover
+  background-position: center
+  position: relative
+
+  &--d
+    background: repeating-linear-gradient(-45deg, #2d82cf, #2d82cf 3px, #288be4 3px, #288be4 30px)
+    background-size: 42px 42px
+
+  &--t
+    &:after
+      content: ''
+      position: absolute
+      top: 0
+      right: 0
+      bottom: 0
+      left: 0
+      background-color: alpha($optimistic-blue, 0.6)
+      z-index: 1
 
   &-c
     padding-top: 6%
     padding-bottom: 6%
+    position: relative
+    z-index: 2
 
     @media $media-xlarge
       padding-top: 4%
@@ -70,3 +92,6 @@
 
     &--l
       font-size: responsive 18px 35px
+
+    &--w
+      color: #ffffff

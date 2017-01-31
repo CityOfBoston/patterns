@@ -1,11 +1,41 @@
-<div class="hro">
+{{#if image}}
+  <style>
+    .hro {
+      background-image: url({{image.mobile1x}});
+    }
+
+    @media screen and (min-width: 768px) {
+      .hro {
+        background-image: url({{image.tablet1x}});
+      }
+    }
+
+    @media screen and (min-width: 1024px) {
+      .hro {
+        background-image: url({{image.desktop1x}});
+      }
+    }
+
+    @media screen and (min-width: 1200px) {
+      .hro {
+        background-image: url({{image.wide1x}});
+      }
+    }
+  </style>
+{{/if}}
+
+<div class="hro{{#if image}}{{#if title}} hro--t{{else}} hro--b{{/if}}{{else}} hro--d{{/if}}">
   <div class="hro-c">
     {{#if intro}}
       <div class="hro-i{{#if home}} hro-i--l{{/if}}">{{intro}}</div>
     {{/if}}
     <h1 class="hro-t{{#if home}} hro-t--l{{/if}}">{{title}}</h1>
-    {{#if subheader}}
-      <div class="hro-st{{#if home}} hro-st--l{{/if}}">{{subheader}}</div>
+    {{#if cta}}
+      <a href="{{cta.link}}" class="btn btn--c btn--ib">{{cta.text}}</a>
+    {{else}}
+      {{#if subheader}}
+        <div class="hro-st{{#if home}} hro-st--l{{/if}}{{#if image}} hro-st--w{{/if}}">{{subheader}}</div>
+      {{/if}}
     {{/if}}
   </div>
 </div>
