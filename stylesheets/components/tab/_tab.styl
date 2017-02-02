@@ -1,0 +1,84 @@
+/*
+
+   Tabs
+
+   Base:
+    tab
+
+   Modifier:
+
+ */
+
+.tab
+  margin: 0
+  padding: 0
+  text-align: center
+  white-space: nowrap
+  margin: 0 auto
+
+  &-li
+    display: block
+    border: 2px solid $charles-blue
+
+    &:not(:last-child)
+      border-bottom: none
+
+    @media $media-large
+      display: inline-block
+      border: none
+      margin: 0 1px
+
+    @media $media-xlarge
+      display: inline-block
+      border: none
+      margin: 0 1px
+      width: 23%
+
+    &-a
+      background: $white
+      color: $charles-blue
+      cursor: pointer
+      display: block
+      font-family: $sans
+      padding: $sizing-300
+      text-align: center
+      text-decoration: none
+      text-transform: uppercase
+      font-size: responsive 12px 16px
+      font-range: 480px 1440px
+      font-weight: 300
+      line-height: 1
+      white-space: nowrap
+
+      @media $media-large
+        background: $charles-blue
+        color: $optimistic-blue
+        padding: $sizing-300 $sizing-500
+
+      @media $media-xlarge
+        padding: $sizing-400 0
+
+      &:hover
+        color: $freedom-red
+
+        @media $media-large
+          color: $freedom-red
+
+// Handle the selected states
+.tab-ctrl
+  display: none
+
+  &-0:checked ~ .tab .tab-li-a-0,
+  &-1:checked ~ .tab .tab-li-a-1,
+  &-2:checked ~ .tab .tab-li-a-2,
+  &-3:checked ~ .tab .tab-li-a-3
+    color: $charles-blue
+    background-color: $white
+
+    &:hover
+      color: $charles-blue
+      background-color: $white
+
+    &:visited
+      color: $charles-blue
+      background-color: $white

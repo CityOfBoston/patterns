@@ -1,0 +1,9 @@
+{{#each links}}
+  <input id="tabCTRL{{@index}}" type="radio" name="tab-ctrl" class="tab-ctrl tab-ctrl-{{@index}}" {{#if selected}} checked{{/if}}>
+{{/each}}
+
+<ul class="tab">
+  {{#each links}}<li class="tab-li">
+    <label for="tabCTRL{{@index}}" data-href="{{link}}" class="tab-li-a tab-li-a-{{@index}}">{{text}}</label>
+  </li>{{/each}}
+</ul>
