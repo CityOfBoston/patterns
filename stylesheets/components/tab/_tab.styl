@@ -10,15 +10,23 @@
  */
 
 .tab
-  margin: 0
+  margin: 0 auto
   padding: 0
   text-align: center
-  white-space: nowrap
-  margin: 0 auto
+
+  @media $media-large
+    white-space: nowrap
+
+  @media $media-xlarge
+    white-space: normal
+
+  &-p
+    display: none
 
   &-li
-    display: block
-    border: 2px solid $charles-blue
+    box-sizing: border-box
+    position: relative
+    display: none
 
     &:not(:last-child)
       border-bottom: none
@@ -27,6 +35,7 @@
       display: inline-block
       border: none
       margin: 0 1px
+      height: auto
 
     @media $media-xlarge
       display: inline-block
@@ -64,21 +73,81 @@
         @media $media-large
           color: $freedom-red
 
-// Handle the selected states
+      &--c
+        background-color: $optimistic-blue
+        color: $white
+
+        &:hover
+          color: $white
+
+        @media $media-large
+          display: none
+
+    &-m
+      position: absolute
+      top: 0
+      left: 0
+      right: 0
+      bottom: 0
+      display: none
+
+
+// Handle the selected state of the menu
+.tab-menu-ctrl
+  display: none
+
+  &:checked ~ .tab
+    & .tab-li
+      @media $media-large-max
+        display: block
+
+// Handle the selected states of tabs
 .tab-ctrl
   display: none
 
+  // Here, we manage the tab state
+  &-0:checked ~ .tab .tab-li-0,
+  &-1:checked ~ .tab .tab-li-1,
+  &-2:checked ~ .tab .tab-li-2,
+  &-3:checked ~ .tab .tab-li-3
+    @media $media-large-max
+      display: block
+
+    .tab-li-m
+      @media $media-large-max
+        display: block
+
+  // Here, we manage the link state of each tab
   &-0:checked ~ .tab .tab-li-a-0,
   &-1:checked ~ .tab .tab-li-a-1,
   &-2:checked ~ .tab .tab-li-a-2,
   &-3:checked ~ .tab .tab-li-a-3
-    color: $charles-blue
-    background-color: $white
+    color: $white
+    background-color: $charles-blue
+
+    @media $media-large-max
+      &:after
+        content: ''
+        background: url(/images/global/icons/chevron.svg) no-repeat right center
+        height: 20px
+        width: 14px
+        position: absolute
+        right: $sizing-400
+        top: 50%
+        transform: translateY(-52%)
+        transition: 0.125s all
+
+    @media $media-large
+      color: $charles-blue
+      background-color: $white
 
     &:hover
       color: $charles-blue
       background-color: $white
 
-    &:visited
-      color: $charles-blue
-      background-color: $white
+  // Here, we manage the state of each panel
+  &-0:checked ~ .tab-pc .tab-p-0,
+  &-1:checked ~ .tab-pc .tab-p-1,
+  &-2:checked ~ .tab-pc .tab-p-2,
+  &-3:checked ~ .tab-pc .tab-p-3
+    display: block
