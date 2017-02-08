@@ -10,12 +10,16 @@
  */
 
 .tab
+  line-height: $line-height-000
   margin: 0 auto
   padding: 0
   text-align: center
+  max-width: 66.67rem
+  margin: 0 auto
 
   @media $media-large
     white-space: nowrap
+    padding: 0
 
   @media $media-xlarge
     white-space: normal
@@ -34,14 +38,13 @@
     @media $media-large
       display: inline-block
       border: none
-      margin: 0 1px
+      margin: 0 2px
       height: auto
 
     @media $media-xlarge
       display: inline-block
       border: none
-      margin: 0 1px
-      width: 23%
+      max-width: 25%
 
     &-a
       background: $white
@@ -49,15 +52,22 @@
       cursor: pointer
       display: block
       font-family: $sans
-      padding: $sizing-300
+      padding: $sizing-400 $sizing-300
       text-align: center
       text-decoration: none
       text-transform: uppercase
-      font-size: responsive 12px 16px
+      font-size: responsive 14px 16px
       font-range: 480px 1440px
-      font-weight: 300
+      font-weight: 500
       line-height: 1
+      margin: 0
+      text-overflow: ellipsis
       white-space: nowrap
+      width: 100%
+
+      @media $media-large-max
+        color: $optimistic-blue
+        border-bottom: 2px solid $optimistic-blue
 
       @media $media-large
         background: $charles-blue
@@ -65,7 +75,7 @@
         padding: $sizing-300 $sizing-500
 
       @media $media-xlarge
-        padding: $sizing-400 0
+        padding: $sizing-400 $sizing-300
 
       &:hover
         color: $freedom-red
@@ -74,21 +84,42 @@
           color: $freedom-red
 
       &--c
-        background-color: $optimistic-blue
+        background-color: $freedom-red
         color: $white
 
         &:hover
           color: $white
 
-        @media $media-large
-          display: none
-
     &-m
-      position: absolute
-      top: 0
-      left: 0
-      right: 0
-      bottom: 0
+      background: $charles-blue
+      color: $white
+      cursor: pointer
+      display: none
+      font-family: $sans
+      padding: $sizing-400 $sizing-300
+      text-align: center
+      text-decoration: none
+      text-transform: uppercase
+      font-size: responsive 14px 16px
+      font-range: 480px 1440px
+      font-weight: 500
+      position: relative
+      line-height: 1
+      margin: 0
+      white-space: nowrap
+
+      &:after
+        content: ''
+        background: url(/images/global/icons/chevron.svg) no-repeat right center
+        height: 20px
+        width: 14px
+        position: absolute
+        right: $sizing-400
+        top: 50%
+        transform: translateY(-52%)
+        transition: 0.125s all
+
+    &-close
       display: none
 
 
@@ -96,7 +127,9 @@
 .tab-menu-ctrl
   display: none
 
-  &:checked ~ .tab
+  // Sometimes the tabs are in heros
+  &:checked ~ .tab,
+  &:checked ~ .hro
     & .tab-li
       @media $media-large-max
         display: block
@@ -109,7 +142,11 @@
   &-0:checked ~ .tab .tab-li-0,
   &-1:checked ~ .tab .tab-li-1,
   &-2:checked ~ .tab .tab-li-2,
-  &-3:checked ~ .tab .tab-li-3
+  &-3:checked ~ .tab .tab-li-3,
+  &-0:checked ~ .hro .tab-li-0,
+  &-1:checked ~ .hro .tab-li-1,
+  &-2:checked ~ .hro .tab-li-2,
+  &-3:checked ~ .hro .tab-li-3
     @media $media-large-max
       display: block
 
@@ -118,32 +155,37 @@
         display: block
 
   // Here, we manage the link state of each tab
-  &-0:checked ~ .tab .tab-li-a-0,
-  &-1:checked ~ .tab .tab-li-a-1,
-  &-2:checked ~ .tab .tab-li-a-2,
-  &-3:checked ~ .tab .tab-li-a-3
-    color: $white
-    background-color: $charles-blue
+  &-0:checked ~ .tab .tab-li-0,
+  &-1:checked ~ .tab .tab-li-1,
+  &-2:checked ~ .tab .tab-li-2,
+  &-3:checked ~ .tab .tab-li-3,
+  &-0:checked ~ .hro .tab-li-0,
+  &-1:checked ~ .hro .tab-li-1,
+  &-2:checked ~ .hro .tab-li-2,
+  &-3:checked ~ .hro .tab-li-3
+    .tab-li-a
+      display: none
 
-    @media $media-large-max
-      &:after
-        content: ''
-        background: url(/images/global/icons/chevron.svg) no-repeat right center
-        height: 20px
-        width: 14px
-        position: absolute
-        right: $sizing-400
-        top: 50%
-        transform: translateY(-52%)
-        transition: 0.125s all
+      @media $media-large-max
+        &:after
+          content: ''
+          background: url(/images/global/icons/chevron.svg) no-repeat right center
+          height: 20px
+          width: 14px
+          position: absolute
+          right: $sizing-400
+          top: 50%
+          transform: translateY(-52%)
+          transition: 0.125s all
 
-    @media $media-large
-      color: $charles-blue
-      background-color: $white
+      @media $media-large
+        color: $charles-blue
+        background-color: $white
+        display: block
 
-    &:hover
-      color: $charles-blue
-      background-color: $white
+      &:hover
+        color: $charles-blue
+        background-color: $white
 
   // Here, we manage the state of each panel
   &-0:checked ~ .tab-pc .tab-p-0,

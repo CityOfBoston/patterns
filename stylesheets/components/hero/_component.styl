@@ -14,18 +14,19 @@
     d = default
     b = blank
     t = image with title
+    wh = with header (adds top padding to account for fixed position headers)
 
  */
 
 .hro
   text-align: center
-  padding-left: 5%
-  padding-right: 5%
-  padding-top: $sizing-700
   background-repeat: no-repeat
   background-size: cover
   background-position: center
   position: relative
+
+  &--wh
+    padding-top: $sizing-700
 
   &--d
     background: repeating-linear-gradient(-45deg, #2d82cf, #2d82cf 3px, #288be4 3px, #288be4 30px)
@@ -44,13 +45,11 @@
 
   &-c
     padding-top: 6%
-    padding-bottom: 6%
     position: relative
     z-index: 2
 
     @media $media-xlarge
       padding-top: 4%
-      padding-bottom: 4%
 
   &-i
     color: $white
@@ -74,7 +73,7 @@
     font-range: 480px 1440px
     font-weight: 700
     line-height: $line-height-000
-    margin: 0
+    margin: $sizing-400 0 0
     text-transform: uppercase
     padding-bottom: 1.75%
 
@@ -90,7 +89,8 @@
     font-size: responsive 18px 30px
     font-range: 480px 1440px
     font-style: italic
-    line-height: $line-height-000
+    line-height: $line-height-200
+    margin-bottom: $sizing-700
 
     &--l
       font-size: responsive 18px 35px
