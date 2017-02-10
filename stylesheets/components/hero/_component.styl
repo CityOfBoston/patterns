@@ -29,7 +29,7 @@
     padding-top: $sizing-700
 
   &--d
-    background: repeating-linear-gradient(-45deg, #2d82cf, #2d82cf 3px, #288be4 3px, #288be4 30px)
+    background: repeating-linear-gradient(-45deg, $hero-alt, $hero-alt 3px, $hero-main 3px, $hero-main 30px)
     background-size: 42px 42px
 
   &--t
@@ -45,11 +45,13 @@
 
   &-c
     padding-top: 6%
+    padding-bottom: 4%
     position: relative
     z-index: 2
 
     @media $media-xlarge
       padding-top: 4%
+      padding-bottom: 2%
 
   &-i
     color: $white
@@ -79,9 +81,6 @@
 
     @media $media-xlarge
       padding-bottom: 1.25%
-
-    &--l
-      font-size: responsive 35px 90px
 
   &-st
     color: $charles-blue
