@@ -15,13 +15,30 @@
 .h
   background-color: #ffffff
   box-shadow: 0 1px 2px 1px rgba(0,0,0,0.1)
+  position: fixed
   padding-right: $sizing-300
-  position: relative
   display: flex
   align-items: center
+  top: 0
+  left: 0
+  right: 0
+  z-index: 3
 
   .hb
     margin-right: $sizing-300
 
   .nv-h
     margin-left: auto
+
+  &-s
+    display: none
+    position: absolute
+    top: 100%
+    left: 0
+    right: 0
+    z-index: -1
+    padding: $sizing-600 10%
+    background-color: $grey-000
+
+    @media $media-medium
+      padding: $sizing-600 20%

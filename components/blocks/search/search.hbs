@@ -1,6 +1,8 @@
 <form class="sf" accept-charset="UTF-8" method="get">
   <input name="utf8" type="hidden" value="✓">
-  <label class="sf-l" for="q">Search results for:</label>
+  {{#if show_label}}
+    <label class="sf-l" for="q">Search results for:</label>
+  {{/if}}
   <div class="sf-i">
     <input type="text" name="q" id="q" value="{{term}}" class="sf-i-f" autocomplete="off">
     <button class="sf-i-b">Search</button>

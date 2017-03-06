@@ -2,6 +2,7 @@ title: Header
 handle: Header
 status: wip
 context:
+  show_label: false
   show_mayor: true
   links:
     - name: Public Notices

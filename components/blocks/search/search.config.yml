@@ -2,4 +2,5 @@ title: 'Form: Search'
 handle: form_search
 status: ready
 context:
+  show_label: true
   term: City Clerk
