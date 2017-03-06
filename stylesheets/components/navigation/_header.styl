@@ -1,0 +1,53 @@
+/*
+
+   HEADER NAV
+
+   Base:
+    nv-h
+
+ */
+
+.nv
+  &-h
+    &-l
+      list-style: none
+      margin: 0
+      padding: 0
+      display: flex
+      align-items: center
+
+      &-i
+        margin: 0
+        padding: 0
+
+      &-a
+        color: $charles-blue
+        display: none
+        font-family: $sans
+        font-size: $font200
+        line-height: 3.6rem
+        letter-spacing: 1.4px
+        margin-left: $sizing-400
+        text-decoration: none
+        text-transform: uppercase
+
+        &--k
+          display: block
+
+          &--s
+            display: none
+
+            @media $media-small
+              display: block
+
+        @media $media-large
+          display: block
+
+        &-ic
+          width: 32px
+          height: 32px
+
+        &-i
+          fill: $freedom-red
+          width: 100%
+          height: 100%
