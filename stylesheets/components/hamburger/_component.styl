@@ -1,0 +1,35 @@
+.hb
+  background-color: $freedom-red
+  cursor: pointer
+  display: block
+  height: 65px
+  position: relative
+  width: 65px
+  user-select: none
+
+  &-w
+    left: 50%
+    padding-top: 3px
+    position: absolute
+    text-align: center
+    top: 50%
+    transform: translateY(-50%) translateX(-50%)
+
+  &-b
+    hamburger-generator(30px, 4px, 5px, #fff, $timing-function: linear)
+
+  &-t
+    color: #ffffff
+    font-family: $sans
+    font-size: 0.65rem
+    padding-top: 5px
+    text-transform: uppercase
+    letter-spacing: 0.5px
+
+  &-tr
+    display: none
+
+    &:checked ~ .h
+      .hb
+        &-b
+          hamburger-animation()

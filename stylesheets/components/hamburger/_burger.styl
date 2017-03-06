@@ -1,0 +1,67 @@
+// ========================================================================
+//
+// Name:           Hamburger Icon
+// Description:    Mixins for creating hamburger icons.
+// Version:        1.1.0
+//
+// Author:         Denis Malinochkin
+// Git:            https://github.com/mrmlnc/hamburger-icon
+//
+// twitter:        @mrmlnc
+//
+// ========================================================================
+
+// Hamburger Settings
+// ------------------------------------------------------------------------
+$hamburger-settings = ();
+
+// Hamburger Generator
+// ------------------------------------------------------------------------
+hamburger-generator($width = 32px, $height = 3px, $gutter = 5px, $color = #000,
+                    $border-radius = 0, $duration = .1s,
+                    $timing-function = ease)
+  // Set variables
+  push($hamburger-settings, $height, $gutter)
+
+  position: relative
+  margin: ($height + $gutter) auto
+
+  &,
+  &:before,
+  &:after
+    display: block
+    width: $width
+    height: $height
+    transition: background-color $duration $timing-function,
+                transform $duration $timing-function
+
+    if ($border-radius != 0)
+      border-radius: $border-radius
+
+    background-color: $color
+
+  &:before,
+  &:after
+    position: absolute
+    content: ""
+
+  &:before
+    top: -($height + $gutter)
+
+  &:after
+    top: $height + $gutter
+
+
+
+// Hamburger Animation
+// ------------------------------------------------------------------------
+hamburger-animation()
+  $height = $hamburger-settings[0]
+  $gutter = $hamburger-settings[1]
+  background-color: transparent
+
+  &:before
+    transform: translateY($gutter + $height) rotate(45deg)
+
+  &:after
+    transform: translateY(-($gutter + $height)) rotate(-45deg)
