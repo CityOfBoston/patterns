@@ -9,13 +9,16 @@
 
 .nv
   &-m
-    width: 300px
+    width: 265px
     position: absolute
     top: 0
     bottom: 0
     overflow-y: auto
     background-color: $charles-blue
     z-index: 0
+
+    @media $media-small
+      left: 300px
 
     &-h
       background-color: $white
@@ -71,6 +74,7 @@
         // If the menu has kids
         &--k
           position: relative
+          padding-right: $sizing-600
 
           &:after
             content: ''
