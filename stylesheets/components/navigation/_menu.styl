@@ -10,7 +10,9 @@
 .nv
   &-m
     width: 300px
-    position: fixed
+    position: absolute
+    top: 0
+    bottom: 0
     overflow-y: auto
     background-color: $charles-blue
 
@@ -18,7 +20,7 @@
       background-color: $white
       text-align: center
       padding: $sizing-700
-      margin-bottom: 3px
+      margin-bottom: 2px
 
       &-t
         color: $charles-blue
@@ -34,3 +36,104 @@
       &-i
         display: block
         margin: 0 auto
+
+    &-c
+      &-a
+        color: $white
+        display: block
+        padding: $sizing-500 $sizing-400
+        background: $optimistic-blue
+        margin-bottom: 2px
+        font-family: $sans
+        font-size: $font-200
+        text-decoration: none
+        text-transform: uppercase
+
+        &:hover
+          background-color: $optimistic-blue-hover
+
+        &--h
+          display: none
+
+        &--s
+          background-color: $optimistic-blue-hover
+
+          &:hover
+            background-color: $charles-blue
+
+        &--y
+          background-color: $yellow
+
+          &:hover
+            background-color: $yellow-hover
+
+        // If the menu has kids
+        &--k
+          position: relative
+
+          &:after
+            content: ''
+            position: absolute
+            right: $sizing-300
+            top: 50%
+            height: 16px
+            width: 16px
+            background-image: url(/images/global/icons/chevron.svg)
+            background-repeat: no-repeat
+            background-position: 95% center
+            background-size: contain
+            transform: translateY(-50%) rotate(90deg)
+
+          &--a
+            &:after
+              transform: translateY(-50%) rotate(0)
+
+      &-b
+        cursor: pointer
+        display: block
+        padding: 0
+        font-family: $sans
+        font-size: $font-200
+        text-transform: uppercase
+        color: $white
+        background: transparent
+        margin: 0
+        line-height: 1
+        border: none
+        padding: $sizing-300 $sizing-400 $sizing-300 2.5rem
+        width: 100%
+        text-align: left
+        position: relative
+
+        &:before
+          content: ''
+          position: absolute
+          left: $sizing-400
+          top: 50%
+          height: 13px
+          width: 13px
+          background-image: url(/images/global/icons/chevron-blue.svg)
+          background-repeat: no-repeat
+          background-position: 95% center
+          background-size: contain
+          transform: translateY(-50%) rotate(-180deg)
+
+        &--h
+          display: none
+
+      &-l
+        margin: 0
+        padding: 0
+        list-style: none
+
+        &-i
+          &--h
+            display: none
+
+        &-l
+          margin: 0
+          padding: 0
+          list-style: none
+
+          &--h
+            display: none

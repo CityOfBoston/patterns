@@ -5,4 +5,149 @@
     </div>
     <div id="nv-m-h-t" class="nv-m-h-t">&nbsp;</div>
   </div>
+  <div class="nv-m-c">
+    <ul class="nv-m-c-l">
+      {{#each links as |link|}}
+        <li class="nv-m-c-l-i{{#if link.has_kids}} nv-m-c-l-i--k{{/if}}">
+          {{#if link.has_kids}}
+            <button class="nv-m-c-b nv-m-c-b--h">Back</button>
+          {{/if}}
+          <a href="{{ link.href }}" class="nv-m-c-a nv-m-c-a--{{#if link.theme}}{{link.theme}}{{else}}p{{/if}}{{#if link.has_kids}} nv-m-c-a--k{{/if}}">{{ link.name }}</a>
+          {{#if link.has_kids}}
+            <ul class="nv-m-c-l-l">
+              {{#each link.links as |child|}}
+                <li class="nv-m-c-l-l-i">
+                  <a href="{{ child.href }}" class="nv-m-c-a nv-m-c-a--s">{{ child.name }}</a>
+                </li>
+              {{/each}}
+            </ul>
+          {{/if}}
+        </li>
+      {{/each}}
+    </ul>
+  </div>
 </nav>
+
+<script>
+  'use strict'
+
+  var BostonMenu = (function () {
+    // Set height
+    var secondaryNavs;
+    var secondaryTriggers;
+    var listItems;
+    var secondaryNavItems;
+    var backTriggers;
+
+    function handleTrigger(ev, method) {
+      var backTrigger;
+      var secondaryNav;
+      var trigger = ev.target;
+      var parentItem = trigger.parentNode;
+      var title = document.getElementById('nv-m-h-t');
+
+      // Find the secondary nav and back trigger
+      parentItem.childNodes.forEach(function(child) {
+        if (child.classList && child.classList.contains('nv-m-c-l-l')) {
+          secondaryNav = child;
+        }
+
+        if (child.classList && child.classList.contains('nv-m-c-b')) {
+          backTrigger = child;
+        }
+
+        if (child.classList && child.classList.contains('nv-m-c-a')) {
+          trigger = child;
+        }
+      });
+
+      if (method === 'nav') {
+        // Hide all the other menu items
+        listItems.forEach(function(listItem) {
+          if (parentItem != listItem) {
+            listItem.classList.add('nv-m-c-l-i--h');
+          }
+        });
+
+        // Hide the trigger
+        trigger.classList.add('nv-m-c-a--h');
+
+        // Show the secondary nav
+        secondaryNav.classList.remove('nv-m-c-l-l--h');
+
+        // Show the back button
+        backTrigger.classList.remove('nv-m-c-b--h');
+
+        // Update the title
+        title.innerHTML = trigger.innerHTML;
+      } else {
+        // Hide all the other menu items
+        listItems.forEach(function(listItem) {
+          if (parentItem != listItem) {
+            listItem.classList.remove('nv-m-c-l-i--h');
+          }
+        });
+
+        // Hide the trigger
+        trigger.classList.remove('nv-m-c-a--h');
+
+        // Show the secondary nav
+        secondaryNav.classList.add('nv-m-c-l-l--h');
+
+        // Show the back button
+        backTrigger.classList.add('nv-m-c-b--h');
+
+        // Update the title
+        title.innerHTML = '&nbsp;';
+      }
+    }
+
+    function start() {
+      listItems = document.querySelectorAll('.nv-m-c-l-i');
+      backTriggers = document.querySelectorAll('.nv-m-c-b');
+      secondaryTriggers = document.querySelectorAll('.nv-m-c-a--k');
+      secondaryNavs = document.querySelectorAll('.nv-m-c-l-l');
+      secondaryNavItems = document.querySelectorAll('.nv-m-c-a--s');
+
+      // Set the secondary navigation menus to hidden
+      secondaryNavs.forEach(function(nav) {
+        nav.classList.add('nv-m-c-l-l--h');
+      });
+
+      // Get the secondary navigation triggers ready
+      secondaryTriggers.forEach(function(trigger) {
+        // Set to active
+        trigger.classList.add('nv-m-c-a--k--a');
+
+        // Handle clicks
+        trigger.addEventListener('click', function(ev) {
+          ev.preventDefault();
+
+          handleTrigger(ev, 'nav');
+        });
+      });
+
+      // Get the secondary navigation triggers ready
+      backTriggers.forEach(function(trigger) {
+        // Handle clicks
+        trigger.addEventListener('click', function(ev) {
+          ev.preventDefault();
+
+          handleTrigger(ev, 'reset');
+        });
+      });
+
+      // Set the secondary navigation menus to hidden
+      secondaryNavItems.forEach(function(nav) {
+        nav.classList.remove('nv-m-c-a--s');
+        nav.classList.add('nv-m-c-a--p');
+      });
+    }
+
+    return {
+      start: start
+    }
+  })()
+
+  BostonMenu.start()
+</script>
