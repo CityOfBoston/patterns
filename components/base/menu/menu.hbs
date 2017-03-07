@@ -7,7 +7,7 @@
   </div>
   <div class="nv-m-c">
     <ul class="nv-m-c-l">
-      {{#each links as |link|}}
+      {{#each menu_links as |link|}}
         <li class="nv-m-c-l-i{{#if link.has_kids}} nv-m-c-l-i--k{{/if}}">
           {{#if link.has_kids}}
             <button class="nv-m-c-b nv-m-c-b--h">Back</button>
@@ -38,6 +38,11 @@
     var listItems;
     var secondaryNavItems;
     var backTriggers;
+    var burger;
+
+    function handleBurgerChange(ev) {
+      document.body.classList.toggle('no-s');
+    }
 
     function handleTrigger(ev, method) {
       var backTrigger;
@@ -103,6 +108,7 @@
     }
 
     function start() {
+      burger = document.getElementById('hb-tr');
       listItems = document.querySelectorAll('.nv-m-c-l-i');
       backTriggers = document.querySelectorAll('.nv-m-c-b');
       secondaryTriggers = document.querySelectorAll('.nv-m-c-a--k');
@@ -142,6 +148,10 @@
         nav.classList.remove('nv-m-c-a--s');
         nav.classList.add('nv-m-c-a--p');
       });
+
+      if (burger) {
+        burger.addEventListener('change', handleBurgerChange);
+      }
     }
 
     return {

@@ -1,7 +1,14 @@
-title: Menu
-handle: menu
-status: ready
+title: Base
+handle: base
+status: wip
 context:
+  links:
+    - name: Public Notices
+      href: https://boston.gov/public-notices
+    - name: Pay and Apply
+      href: https://boston.gov/pay-and-apply
+    - name: Feedback
+      href: https://boston.gov/feedback
   menu_links:
     - name: Help/311
       href: https://boston.gov/311

@@ -8,6 +8,25 @@
  */
 
 .mn
-  background: #d3d3d3
-  min-height: 1000px
-  margin-top: 45px
+  background: #ffffff
+  padding-top: 45px
+  position: relative
+  z-index: 1
+  transition: left 0.2s
+
+  &-c
+    min-height: 100vh
+    min-width: 100vw
+
+.hb-tr:checked
+  & ~ .mn
+    left: 256px
+
+    @media $media-small
+      left: 300px
+
+    .h
+      left: 256px
+
+      @media $media-small
+        left: 300px
