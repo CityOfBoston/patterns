@@ -1,6 +1,6 @@
 title: Base
 handle: base
-status: wip
+status: ready
 context:
   links:
     - name: Public Notices
