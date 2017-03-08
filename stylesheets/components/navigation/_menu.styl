@@ -21,12 +21,12 @@
       width: 300px
 
     &-h
-      background-color: $white
+      background-color: $nav-header
       text-align: center
       padding: $sizing-700
 
       &-t
-        color: $charles-blue
+        color: $nav-header-text
         font-size: $font-700
         font-family: $sans
         font-weight: 700
@@ -39,6 +39,7 @@
       &-i
         display: block
         margin: 0 auto
+        max-width: 150px
 
     &-c
       &-a
@@ -62,11 +63,11 @@
         &--h
           display: none
 
-        &--s
+        &.nolink
           background-color: $optimistic-blue-hover
 
           &:hover
-            background-color: $charles-blue
+            background-color: $optimistic-blue-hover
 
         &--y,
         &.three-one-one
