@@ -10,7 +10,7 @@
 .nv
   &-m
     width: 265px
-    position: absolute
+    position: fixed
     top: 0
     bottom: 0
     overflow-y: auto
@@ -24,7 +24,6 @@
       background-color: $white
       text-align: center
       padding: $sizing-700
-      margin-bottom: 2px
 
       &-t
         color: $charles-blue
@@ -43,13 +42,17 @@
 
     &-c
       &-a
-        color: $white
         display: block
+
+      &-a
+        color: $white !important
         padding: $sizing-500 $sizing-400
         background: $optimistic-blue
-        margin-bottom: 2px
+        line-height: 1
+        margin-top: 2px
         font-family: $sans
-        font-size: $font-200
+        font-size: responsive 14px 16px
+        font-range: 480px 1440px
         text-decoration: none
         text-transform: uppercase
 
@@ -99,7 +102,8 @@
         display: block
         padding: 0
         font-family: $sans
-        font-size: $font-200
+        font-size: responsive 14px 16px
+        font-range: 480px 1440px
         text-transform: uppercase
         color: $white
         background: transparent
@@ -110,6 +114,9 @@
         width: 100%
         text-align: left
         position: relative
+
+        &:hover
+          background-color: transparent
 
         &:before
           content: ''
