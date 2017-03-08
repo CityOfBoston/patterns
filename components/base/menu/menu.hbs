@@ -9,12 +9,12 @@
     <ul class="nv-m-c-l">
       {{#each menu_links as |link|}}
         <li class="nv-m-c-l-i{{#if link.has_kids}} nv-m-c-l-i--k{{/if}}">
-          {{#if link.has_kids}}
-            <button class="nv-m-c-b nv-m-c-b--h">Back</button>
-          {{/if}}
-          <a href="{{ link.href }}" class="nv-m-c-a nv-m-c-a--{{#if link.theme}}{{link.theme}}{{else}}p{{/if}}{{#if link.has_kids}} nv-m-c-a--k{{/if}}">{{ link.name }}</a>
+          <a href="{{ link.href }}" class="nv-m-c-a nv-m-c-a--{{#if link.theme}}{{link.theme}}{{else}}p{{/if}}{{#if link.has_kids}} nolink{{/if}}">{{ link.name }}</a>
           {{#if link.has_kids}}
             <ul class="nv-m-c-l-l">
+              {{#if link.has_kids}}
+                <li class="nv-m-c-bc nv-m-c-b--h"><button class="nv-m-c-b">Back</button></li>
+              {{/if}}
               {{#each link.links as |child|}}
                 <li class="nv-m-c-l-l-i">
                   <a href="{{ child.href }}" class="nv-m-c-a nv-m-c-a--s">{{ child.name }}</a>
@@ -48,21 +48,24 @@
       var backTrigger;
       var secondaryNav;
       var trigger = ev.target;
-      var parentItem = trigger.parentNode;
+      var parentItem = method === 'reset' ? trigger.parentNode.parentNode.parentNode : trigger.parentNode;
       var title = document.getElementById('nv-m-h-t');
 
-      // Find the secondary nav and back trigger
+      // Find the secondary nav and trigger
       parentItem.childNodes.forEach(function(child) {
         if (child.classList && child.classList.contains('nv-m-c-l-l')) {
           secondaryNav = child;
         }
 
-        if (child.classList && child.classList.contains('nv-m-c-b')) {
-          backTrigger = child;
-        }
-
         if (child.classList && child.classList.contains('nv-m-c-a')) {
           trigger = child;
+        }
+      });
+
+      // Find the backTrigger
+      secondaryNav.childNodes.forEach(function(child) {
+        if (child.classList && child.classList.contains('nv-m-c-bc')) {
+          backTrigger = child;
         }
       });
 
@@ -111,7 +114,7 @@
       burger = document.getElementById('brg-tr');
       listItems = document.querySelectorAll('.nv-m-c-l-i');
       backTriggers = document.querySelectorAll('.nv-m-c-b');
-      secondaryTriggers = document.querySelectorAll('.nv-m-c-a--k');
+      secondaryTriggers = document.querySelectorAll('.nolink');
       secondaryNavs = document.querySelectorAll('.nv-m-c-l-l');
       secondaryNavItems = document.querySelectorAll('.nv-m-c-a--s');
 
@@ -123,7 +126,7 @@
       // Get the secondary navigation triggers ready
       secondaryTriggers.forEach(function(trigger) {
         // Set to active
-        trigger.classList.add('nv-m-c-a--k--a');
+        trigger.classList.add('nolink--a');
 
         // Handle clicks
         trigger.addEventListener('click', function(ev) {
