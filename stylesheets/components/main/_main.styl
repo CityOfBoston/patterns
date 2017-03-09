@@ -13,20 +13,10 @@
   position: relative
   z-index: 1
   transition: left 0.2s
+  left: 0
+  min-width: 100%
+  min-height: 100%
 
   &-c
     min-height: 100vh
     min-width: 100vw
-
-.brg-tr:checked
-  & ~ .mn
-    left: 256px
-
-    @media $media-small
-      left: 300px
-
-    .h
-      left: 256px
-
-      @media $media-small
-        left: 300px
