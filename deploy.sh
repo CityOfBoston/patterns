@@ -18,10 +18,9 @@ git config user.email "digital@boston.gov"
 
 git remote add upstream "https://$GH_TOKEN@github.com/cityofboston/patterns.git"
 git fetch upstream
-git reset upstream/gh-pages
 
 touch .
 
 git add -A .
 git commit -m "rebuild pages at ${rev}"
-git push -q upstream HEAD:gh-pages
+git push -q upstream HEAD:gh-pages -f
