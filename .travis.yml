@@ -10,5 +10,5 @@ after_success:
   - test $TRAVIS_PULL_REQUEST == "false" && test $TRAVIS_BRANCH == "master" && bash deploy.sh
 env:
   global:
-  - ENCRYPTION_LABEL: "encrypted_6a4d0aaec6ec_key"
+  - ENCRYPTION_LABEL: "6a4d0aaec6ec"
   - COMMIT_AUTHOR_EMAIL: "digital@boston.gov"
