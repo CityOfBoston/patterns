@@ -2,5 +2,5 @@ language: node_js
 script: bash ./deploy.sh
 env:
   global:
-  - ENCRYPTION_LABEL: "<.... encryption label from previous step ....>"
+  - ENCRYPTION_LABEL: "encrypted_6a4d0aaec6ec_key"
   - COMMIT_AUTHOR_EMAIL: "matthew.crist@boston.gov"
