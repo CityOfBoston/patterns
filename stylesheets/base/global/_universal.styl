@@ -14,7 +14,7 @@ img
 
   &--sq
     height: 7px
-    background: url(/images/squiggle.svg) repeat-x center
+    background: url(../images/squiggle.svg) repeat-x center
     background-size: contain
 
 // Hide things only at tablet and above
@@ -22,3 +22,13 @@ img
   @media $media-medium
     &--hidden
       display: none
+
+// Accessibility helpers
+.a11y
+  &--h
+    display: block
+    height: 1px
+    width: 1px
+    position: absolute
+    overflow: hidden
+    top: -100px
