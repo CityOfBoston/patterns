@@ -16,8 +16,5 @@
     "rucksack-css": "^0.8.6",
     "run-sequence": "^1.2.2",
     "serve-static": "^1.11.1"
-  },
-  "scripts": {
-    "postinstall": "gulp build; fractal build"
   }
 }
