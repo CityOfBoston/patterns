@@ -19,15 +19,27 @@
   padding: $sizing-300 $sizing-400
   text-transform: uppercase
   text-decoration: none
+  border: none
+  cursor: pointer
 
   &:hover
     background-color: $freedom-red
+
+  &:disabled
+    cursor: default
+    background-color: $grey-300 !important
 
   &--ib
     display: inline-block
 
   &--c
     background-color: $charles-blue !important
+
+  &--y
+    background-color: $yellow
+
+    &:hover
+      background-color: $yellow-hover
 
   &--sb
     margin-top: 0.5rem
