@@ -15,8 +15,11 @@
   background-color: $optimistic-blue
   color: $white
   font-family: $sans
+  font-size: $font-200
+  font-weight: 700
+  letter-spacing: 1px
   line-height: 1
-  padding: $sizing-300 $sizing-400
+  padding: $sizing-300 $sizing-500
   text-transform: uppercase
   text-decoration: none
   border: none
@@ -27,13 +30,16 @@
 
   &:disabled
     cursor: default
-    background-color: $grey-300 !important
+    background-color: $grey-300
+
+    &:hover
+      background-color: $grey-300
 
   &--ib
     display: inline-block
 
   &--c
-    background-color: $charles-blue !important
+    background-color: $charles-blue
 
   &--y
     background-color: $yellow
