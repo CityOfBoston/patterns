@@ -1,0 +1,15 @@
+title: 'Button'
+handle: button
+status: ready
+variants:
+  - name: 'Yellow'
+    context:
+      theme: 'y'
+  - name: 'Charles Blue'
+    context:
+      theme: 'c'
+context:
+  buttons:
+    - label: Next
+    - label: Next
+      disabled: true
