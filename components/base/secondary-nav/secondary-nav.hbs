@@ -1,0 +1,13 @@
+<nav class="nv-s{{#if theme}} nv-s--{{theme}}{{/if}}">
+  <input type="checkbox" id="nv-s-tr" class="nv-s-tr" aria-hidden="true">
+
+  <ul class="nv-s-l">
+    <li class="nv-s-l-i">
+      <label for="nv-s-tr" class="nv-s-l-b" type="button">Navigation</label>
+    </li>
+
+    {{#each links as |link|}}
+      <li class="nv-s-l-i"><a href="{{ link.href }}" title="{{ link.name }}" class="nv-s-l-a{{#if link.active}} nv-s-l-a--active{{/if}}">{{ link.name }}</a></li>
+    {{/each}}
+  </ul>
+</nav>
