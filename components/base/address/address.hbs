@@ -1,4 +1,4 @@
-<div class="addr" itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
+<div class="addr{{#if styled}} addr--s{{/if}}" itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
   <div itemprop="streetAddress" class="addr-a">
     {{address.thoroughfare}}
     {{#if address.thoroughfare2}}
