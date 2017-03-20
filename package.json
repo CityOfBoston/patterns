@@ -1,6 +1,9 @@
 {
   "name": "cob-patterns",
   "version": "0.0.1",
+  "scripts": {
+    "postinstall": "gulp build"
+  },
   "dependencies": {
     "@frctl/fractal": "^1.0",
     "autoprefixer": "^6.3.6",
