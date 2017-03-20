@@ -1,10 +1,10 @@
-<form class="sf" accept-charset="UTF-8" method="get">
+<form class="sf{{#if theme}} sf--{{theme}}{{/if}}" accept-charset="UTF-8" method="get">
   <input name="utf8" type="hidden" value="✓">
   {{#if show_label}}
     <label class="sf-l" for="q">Search results for:</label>
   {{/if}}
   <div class="sf-i">
-    <input type="text" name="q" id="q" value="{{term}}" class="sf-i-f" autocomplete="off">
+    <input type="text" name="q" id="q" value="{{term}}" placeholder="Search…" class="sf-i-f" autocomplete="off">
     <button class="sf-i-b">Search</button>
   </div>
 </form>
