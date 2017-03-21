@@ -6,6 +6,10 @@ variants:
     context:
       theme: sm
       show_label: false
+  - name: Medium
+    context:
+      theme: md 
+      show_label: false
   - name: Yellow
     context:
       theme: y
