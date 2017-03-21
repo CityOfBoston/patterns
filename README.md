@@ -2,6 +2,7 @@
 
 This is the pattern library for the City of Boston. It's currently a work in progress, but we're adding to it every day.
 
+[![Build Status](https://travis-ci.org/CityOfBoston/patterns.svg?branch=develop)](https://travis-ci.org/CityOfBoston/patterns)
 [![Greenkeeper badge](https://badges.greenkeeper.io/CityOfBoston/patterns.svg)](https://greenkeeper.io/)
 
 ## Installing
