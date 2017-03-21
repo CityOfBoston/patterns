@@ -11,5 +11,9 @@ variants:
 context:
   buttons:
     - label: Next
+      type: button
     - label: Next
       disabled: true
+      type: button
+    - label: Next
+      type: a

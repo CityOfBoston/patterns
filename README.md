@@ -15,7 +15,7 @@ Once the repository has been cloned, you can build the components with:
 
 `yarn gulp build`
 
-After building the components, you can run `yarn fractal start --watch` to get a server running. You should be able to visit `http://localhost:3000` in your browser and view the pattern library.
+After building the components, you can run `yarn fractal -- start --watch` to get a server running. You should be able to visit `http://localhost:3000` in your browser and view the pattern library.
 
 ## Development
 
@@ -25,7 +25,7 @@ To develop against the pattern library, you can run:
 
 `yarn gulp`
 
-This will build the components and watch for changes. Run `yarn fractal start --watch` in another window to keep a server running.
+This will build the components and watch for changes. Run `yarn fractal -- start --watch` in another window to keep a server running.
 
 ## Reporting bugs
 
