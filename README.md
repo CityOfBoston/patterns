@@ -4,6 +4,8 @@ This is the pattern library for the City of Boston. It's currently a work in pro
 
 ## Installing
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/CityOfBoston/patterns.svg)](https://greenkeeper.io/)
+
 We recommend using [`yarn`](https://yarnpkg.com/en/). Run `yarn` to install dependencies.
 
 ## Running
