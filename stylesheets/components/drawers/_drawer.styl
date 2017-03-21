@@ -1,0 +1,117 @@
+/*
+
+   Drawer
+
+   Base:
+    dr
+
+   Elements:
+    h = header
+    c = content
+    ic = icon
+    t = title
+    st = subtitle
+
+   Modifier:
+    None Yet
+
+ */
+
+.dr
+  background: $white
+
+  &:first-child
+    margin-top: $sizing-500
+
+  &:not(:first-child)
+    margin-top: $sizing-200
+
+  &-tr
+    &:checked ~ .dr
+      &-h
+        background-color: $charles-blue
+
+        .dr-t
+          color: $white
+
+        .dr-st
+          color: $optimistic-blue
+
+        .dr-ic svg
+          transform: rotate(-90deg)
+
+        .dr-i
+          fill: $white
+
+    &:checked ~ .dr
+      &-c
+        display: block
+
+  &-h
+    display: block
+    letter-spacing: 0
+    margin: 0
+    padding: $sizing-500
+    padding-right: $sizing-500 * 2.25
+    position: relative
+    text-transform: none
+    user-select: none
+
+    &:hover
+      cursor: pointer
+      background-color: $optimistic-blue
+      color: $white
+
+      .dr-t
+      .dr-st
+        color: $white
+
+      .dr-i
+        fill: $white
+
+  &-c
+    display: none
+    background: $white
+    padding: $sizing-500
+
+    p:first-child
+    ul:first-child
+      margin-top: 0
+
+    p:last-child
+    ul:last-child
+      margin-bottom: 0
+
+  &-ic
+    height: 25px
+    width: 14px
+    position: absolute
+    right: $sizing-500
+    top: 50%
+    transform: translateY(-49%)
+
+    svg
+      max-height: 100%
+      max-width: 100%
+      transform: rotate(90deg)
+
+  &-i
+    fill: $optimistic-blue
+
+  &-t
+    color: $charles-blue
+    font-family: $serif
+    font-size: responsive 16px 25px
+    font-range: 480px 1440px
+    font-style: italic
+    line-height: $line-height-100
+
+  &-st
+    color: $charles-blue
+    font-family: $sans
+    font-size: responsive 12px 16px
+    font-range: 480px 1440px
+    line-height: $line-height-100
+    text-transform: uppercase
+    color: $optimistic-blue
+    margin-top: $sizing-100
