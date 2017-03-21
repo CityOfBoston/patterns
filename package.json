@@ -2,7 +2,7 @@
   "name": "cob-patterns",
   "version": "0.0.1",
   "scripts": {
-    "heroku-postinstall": "gulp build && fractal build"
+    "heroku-postbuild": "gulp build && fractal build"
   },
   "dependencies": {
     "@frctl/fractal": "^1.1.3",
