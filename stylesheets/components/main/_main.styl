@@ -17,6 +17,13 @@
   min-width: 100%
   min-height: 100%
 
-  &-c
+  // takes up the full page height (minus sticky header)
+  &--full
     min-height: 100vh
-    min-width: 100vw
+    display: flex
+    flex-direction: column
+    justify-content: center
+
+  // when secondary navigation is included
+  &--nv-s
+    padding-top: 119px
