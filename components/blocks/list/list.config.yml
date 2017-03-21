@@ -1,6 +1,6 @@
 title: List
 handle: List
-status: active
+status: ready
 context:
   items:
     - content: Speed limit sign needed
