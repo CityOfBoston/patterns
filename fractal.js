@@ -42,5 +42,5 @@ fractal.web.set('server.sync', true);
 fractal.web.set('server.syncOptions', {
   open: true,
   notify: true,
-  https: false,
+  https: true,
 });
