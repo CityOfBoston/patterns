@@ -1,6 +1,19 @@
 title: 'Form: Search'
 handle: form_search
 status: ready
+variants:
+  - name: Small
+    context:
+      theme: sm
+      show_label: false
+  - name: Medium
+    context:
+      theme: md 
+      show_label: false
+  - name: Yellow
+    context:
+      theme: y
+
 context:
   show_label: true
   term: City Clerk

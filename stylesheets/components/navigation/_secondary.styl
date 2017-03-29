@@ -1,0 +1,99 @@
+/*
+
+   SECONDARY NAV
+
+   Base:
+    nv-s
+
+ */
+.nv
+  box-shadow: 0 1px 2px 1px rgba(0,0,0,0.1)
+
+  &-s
+    line-height: $line-height-000
+
+    &-tr
+      display: none
+
+      &:checked ~ .nv-s-l
+        .nv-s-l-a
+          display: block
+        .nv-s-l-b:after
+          transform: translateY(-52%) rotateZ(90deg)
+
+    &-l
+      background-color: $charles-blue
+      list-style: none
+      margin: 0
+      padding: 0
+      align-items: center
+      justify-content: flex-end
+
+      @media $media-large
+        display: flex
+        padding-right: $sizing-400
+
+      &-i
+        margin: 0
+        padding: 0
+
+      &-a
+      &-b
+        position: relative
+        font-family: $sans
+        font-size: $font-200
+        letter-spacing: 1.4px
+        padding: $sizing-400 0 $sizing-400 $sizing-300
+        text-decoration: none
+        text-transform: uppercase
+
+      &-a
+        display: none
+        background-color: white
+        color: $optimistic-blue
+        border-bottom: 2px solid $optimistic-blue
+
+        @media $media-large
+          display: block
+          background-color: transparent
+          color: white
+          border: none
+
+        &--active
+          color: $freedom-red
+
+
+      &-b
+        display: block
+        color: $white
+
+        &:after
+          content: ''
+          background: url("/images/global/icons/chevron.svg") no-repeat right center
+          height: 20px
+          width: 14px
+          position: absolute
+          right: 20px
+          right: 1.25rem
+          top: 50%
+          transform: translateY(-52%)
+          transition: 0.125s all
+
+        @media $media-large
+          display: none
+
+    &--c &-l
+      justify-content: center
+
+    // Top position is here to line up with the height of header
+    &--sticky
+      position: fixed
+      z-index: 3
+      top: 65px
+      left: 0
+      right: 0
+
+    // "y" theme only changes the color of the active link on desktop, not mobile
+    &--y &-l-a--active
+      @media $media-large
+        color: $yellow

@@ -44,19 +44,17 @@
       z-index: 1
 
   &-c
-    padding-top: 6%
-    padding-bottom: 4%
+    padding: 12% 0 10%
     position: relative
     z-index: 2
 
     @media $media-xlarge
-      padding-top: 4%
-      padding-bottom: 2%
+      padding: 5% 0 3%
 
   &-i
     color: $white
     font-family: $serif
-    font-size: responsive 18px 30px
+    font-size: responsive 22px 30px
     font-range: 480px 1440px
     font-style: italic
     line-height: $line-height-000
@@ -71,16 +69,19 @@
   &-t
     color: $white
     font-family: $sans
-    font-size: responsive 30px 75px
+    font-size: responsive 40px 75px
     font-range: 480px 1440px
     font-weight: 700
     line-height: $line-height-000
-    margin: $sizing-400 0 0
+    margin: 0
     text-transform: uppercase
     padding-bottom: 1.75%
 
     @media $media-xlarge
       padding-bottom: 1.25%
+
+      &--l
+        font-size: responsive 45px 90px
 
   &-st
     color: $charles-blue

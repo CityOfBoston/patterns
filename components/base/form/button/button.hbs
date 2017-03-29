@@ -1,0 +1,5 @@
+{{#each buttons as |button|}}
+  <div class="m-v400 m-h200">
+    <{{type}} class="btn{{#if ../theme}} btn--{{../theme}}{{/if}}" {{#if disabled}}disabled{{/if}}>{{label}}</{{type}}>
+  </div>
+{{/each}}

@@ -1,0 +1,55 @@
+/*
+
+   Textboxes
+
+   Base:
+     txt
+
+   Elements:
+    l = label
+    f = field
+
+   Modifier:
+    None Yet
+
+ */
+
+.txt
+  align-items: center
+  display: block
+  margin: 0
+  position: relative
+
+  &:not(:last-child)
+    margin: 0 0 $sizing-200
+
+  &-f
+    font-family: $serif
+    display: block
+    font-size: inherit
+    line-height: inherit
+    color: $charles-blue
+    border: $border-200 solid $charles-blue
+    padding: $sizing-400 $sizing-300
+
+    input[type=text]&, textarea&
+      width: 100%
+
+    &::placeholder
+      font-style: italic
+      color: $grey-300
+
+    &:focus
+      box-shadow: 0 0 0 3px $optimistic-blue
+
+  &-l
+    color: $charles-blue
+    font-family: $sans
+    font-size: responsive 14px 16px
+    font-range: 480px 1440px
+    font-weight: bold
+    line-height: 1.4
+    margin: $sizing-500 0 $sizing-100
+    letter-spacing: 1px
+    text-transform: uppercase
+    display: block

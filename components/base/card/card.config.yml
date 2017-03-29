@@ -1,0 +1,41 @@
+title: Card
+handle: card
+status: wip
+variants:
+  - name: Hub
+    preview: '@hub'
+  - name: No subtitle
+    context:
+      cards:
+        - index: 1
+          href: https://www.boston.gov/neighborhood/allston
+          title: 'Allston'
+          content: 'Learn more about one of Boston’s most diverse and active neighborhoods.'
+  - name: No subtitle with image
+    context:
+      cards:
+        - index: 1
+          image:
+            url: https://www.boston.gov/sites/default/files/styles/grid_card_image/public/allston2.jpg?itok=jMsIfnJ6
+            title: 'Allston'
+          href: https://www.boston.gov/neighborhood/allston
+          title: 'Allston'
+          content: 'Learn more about one of Boston’s most diverse and active neighborhoods.'
+  - name: No image
+    context:
+      cards:
+        - index: 1
+          href: https://www.boston.gov/neighborhood/allston
+          title: 'Allston'
+          subtitle: 'Neighborhood'
+          content: 'Learn more about one of Boston’s most diverse and active neighborhoods.'
+context:
+  cards:
+    - index: 1
+      href: https://www.boston.gov/neighborhood/allston
+      image:
+        url: https://www.boston.gov/sites/default/files/styles/grid_card_image/public/allston2.jpg?itok=jMsIfnJ6
+        title: 'Allston'
+      title: 'Allston'
+      subtitle: 'Neighborhood'
+      content: 'Learn more about one of Boston’s most diverse and active neighborhoods.'

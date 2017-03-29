@@ -9,3 +9,7 @@ context:
     locality: 'Boston'
     state: 'MA'
     postal_code: '02201'
+variants:
+  - name: Styled
+    context:
+      styled: true

@@ -4,6 +4,13 @@
 img
   border: 0
 
+a
+  color: $optimistic-blue
+  text-decoration: none
+
+  &:hover
+    color: $freedom-red
+
 .d
   &-n
     display: none
@@ -16,6 +23,10 @@ img
     height: 7px
     background: url(../images/squiggle.svg) repeat-x center
     background-size: contain
+
+  &--dash
+    width: 100%
+    border-bottom: 1px dashed $grey-100
 
 // Hide things only at tablet and above
 .tablet

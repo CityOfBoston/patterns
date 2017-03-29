@@ -1,0 +1,32 @@
+title: Drawers
+handle: drawers
+status: ready
+variants:
+  - name: hub
+    status: 'ready'
+    preview: '@hub'
+context:
+  header:
+    title: Election Results
+    contact: false
+  drawers:
+    - index: 1
+      title: 'November 8, 2016: General Election'
+      subtitle: 'Last updated: 2/2017'
+      content: '<p>Here is some test content.</p><p>Here is some test content.</p><p>Here is some test content.</p><p>Here is some test content.</p>'
+    - index: 2
+      title: 'November 8, 2016: General Election'
+      subtitle: 'Last updated: 2/2017'
+      content: '<p>Here is some test content.</p><p>Here is some test content.</p><p>Here is some test content.</p><p>Here is some test content.</p>'
+    - index: 3
+      title: 'November 8, 2016: General Election'
+      subtitle: 'Last updated: 2/2017'
+      content: '<p>Here is some test content.</p><p>Here is some test content.</p><p>Here is some test content.</p><p>Here is some test content.</p>'
+    - index: 4
+      title: 'November 8, 2016: General Election'
+      subtitle: 'Last updated: 2/2017'
+      content: '<p>Here is some test content.</p><p>Here is some test content.</p><p>Here is some test content.</p><p>Here is some test content.</p>'
+    - index: 5
+      title: 'November 8, 2016: General Election'
+      subtitle: 'Last updated: 2/2017'
+      content: '<p>Here is some test content.</p><p>Here is some test content.</p><p>Here is some test content.</p><p>Here is some test content.</p>'

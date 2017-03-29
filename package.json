@@ -1,19 +1,22 @@
 {
   "name": "cob-patterns",
   "version": "0.0.1",
+  "scripts": {
+    "heroku-postbuild": "gulp build && fractal build"
+  },
   "dependencies": {
-    "@frctl/fractal": "^1.0",
+    "@frctl/fractal": "^1.1.3",
     "autoprefixer": "^6.3.6",
     "gulp": "^3.9.1",
     "gulp-concat": "^2.6.1",
     "gulp-load-plugins": "^1.2.4",
     "gulp-stylus": "^2.3.1",
     "laggard": "^0.1.0",
-    "lost": "^7.0.4",
+    "lost": "^8.0.0",
     "postcss-flexibility": "^1.1.0",
     "poststylus": "^0.2.3",
     "require-dir": "^0.3.0",
-    "rucksack-css": "^0.8.6",
+    "rucksack-css": "^0.9.1",
     "run-sequence": "^1.2.2",
     "serve-static": "^1.11.1"
   }
