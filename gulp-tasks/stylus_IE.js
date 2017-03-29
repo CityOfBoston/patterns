@@ -7,7 +7,9 @@ module.exports = function (gulp, plugins, options) {
         use: [
           plugins.poststylus([
             'lost',
-            plugins.autoprefixer(),
+            plugins.autoprefixer({
+              browsers: ['ie < 10']
+            }),
             'rucksack-css',
             'laggard',
             require('postcss-flexibility')
