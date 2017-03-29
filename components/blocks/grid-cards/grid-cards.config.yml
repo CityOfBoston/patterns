@@ -1,5 +1,5 @@
-title: Grid of Transactions
-handle: grid_transactions
+title: Grid of Cards
+handle: grid_cards
 status: ready
 variants:
   - name: hub
