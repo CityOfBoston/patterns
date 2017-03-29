@@ -5,7 +5,12 @@ variants:
   - name: hub
     status: 'ready'
     preview: '@hub'
+  - name: Yellow
+    context:
+      backgroundTheme: ""
+      theme: lwi--y
 context:
+  backgroundTheme: b--g
   header:
     title: Starting Transactions
     contact: false
