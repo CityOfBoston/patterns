@@ -1,9 +1,0 @@
-title: Search Result
-handle: search_result
-status: ready
-context:
-  header:
-    title: Transportation Department
-    contact:
-      title: Public Works
-      link: https://pilot.boston.gov/departments/public-works

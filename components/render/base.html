@@ -1,0 +1,286 @@
+
+
+<input type="checkbox" id="brg-tr" class="brg-tr" tabindex="0">
+
+<nav class="nv-m">
+  <div class="nv-m-h">
+    <div class="nv-m-h-ic">
+      <img src="/images/b-dark.svg" title="B" aria-hidden="true" class="nv-m-h-i" />
+    </div>
+    <div id="nv-m-h-t" class="nv-m-h-t">&nbsp;</div>
+  </div>
+  <div class="nv-m-c">
+    <ul class="nv-m-c-l">
+        <li class="nv-m-c-l-i">
+          <a href="https://boston.gov/311" class="nv-m-c-a nv-m-c-a--y">Help/311</a>
+        </li>
+        <li class="nv-m-c-l-i">
+          <a href="https://boston.gov/feedback" class="nv-m-c-a nv-m-c-a--p">Programs and Initiatives</a>
+        </li>
+        <li class="nv-m-c-l-i">
+          <a href="https://boston.gov/feedback" class="nv-m-c-a nv-m-c-a--p">Programs and Initiatives</a>
+        </li>
+        <li class="nv-m-c-l-i">
+          <a href="https://boston.gov/feedback" class="nv-m-c-a nv-m-c-a--p">Programs and Initiatives</a>
+        </li>
+        <li class="nv-m-c-l-i">
+          <a href="https://boston.gov/feedback" class="nv-m-c-a nv-m-c-a--p">Programs and Initiatives</a>
+        </li>
+        <li class="nv-m-c-l-i nv-m-c-l-i--k">
+          <a href="https://boston.gov/feedback" class="nv-m-c-a nv-m-c-a--p nolink">Programs and Initiatives 6</a>
+            <ul class="nv-m-c-l-l">
+                <li class="nv-m-c-bc nv-m-c-b--h"><button class="nv-m-c-b">Back</button></li>
+                <li class="nv-m-c-l-l-i">
+                  <a href="https://boston.gov/feedback" class="nv-m-c-a nv-m-c-a--s">Programs and Initiatives 2</a>
+                </li>
+                <li class="nv-m-c-l-l-i">
+                  <a href="https://boston.gov/feedback" class="nv-m-c-a nv-m-c-a--s">Programs and Initiatives 3</a>
+                </li>
+                <li class="nv-m-c-l-l-i">
+                  <a href="https://boston.gov/feedback" class="nv-m-c-a nv-m-c-a--s">Programs and Initiatives 4</a>
+                </li>
+                <li class="nv-m-c-l-l-i">
+                  <a href="https://boston.gov/feedback" class="nv-m-c-a nv-m-c-a--s">Programs and Initiatives 5</a>
+                </li>
+            </ul>
+        </li>
+        <li class="nv-m-c-l-i nv-m-c-l-i--k">
+          <a href="https://boston.gov/feedback" class="nv-m-c-a nv-m-c-a--p nolink">Programs and Initiatives 10</a>
+            <ul class="nv-m-c-l-l">
+                <li class="nv-m-c-bc nv-m-c-b--h"><button class="nv-m-c-b">Back</button></li>
+                <li class="nv-m-c-l-l-i">
+                  <a href="https://boston.gov/feedback" class="nv-m-c-a nv-m-c-a--s">Programs and Initiatives 12</a>
+                </li>
+                <li class="nv-m-c-l-l-i">
+                  <a href="https://boston.gov/feedback" class="nv-m-c-a nv-m-c-a--s">Programs and Initiatives 13</a>
+                </li>
+                <li class="nv-m-c-l-l-i">
+                  <a href="https://boston.gov/feedback" class="nv-m-c-a nv-m-c-a--s">Programs and Initiatives 14</a>
+                </li>
+                <li class="nv-m-c-l-l-i">
+                  <a href="https://boston.gov/feedback" class="nv-m-c-a nv-m-c-a--s">Programs and Initiatives 15</a>
+                </li>
+            </ul>
+        </li>
+        <li class="nv-m-c-l-i">
+          <a href="https://boston.gov/feedback" class="nv-m-c-a nv-m-c-a--p">Programs and Initiatives</a>
+        </li>
+        <li class="nv-m-c-l-i">
+          <a href="https://boston.gov/feedback" class="nv-m-c-a nv-m-c-a--p">Programs and Initiatives</a>
+        </li>
+        <li class="nv-m-c-l-i">
+          <a href="https://boston.gov/feedback" class="nv-m-c-a nv-m-c-a--p">Programs and Initiatives</a>
+        </li>
+        <li class="nv-m-c-l-i">
+          <a href="https://boston.gov/feedback" class="nv-m-c-a nv-m-c-a--p">Programs and Initiatives</a>
+        </li>
+    </ul>
+  </div>
+</nav>
+
+<script>
+  'use strict'
+
+  var BostonMenu = (function () {
+    // Set height
+    var secondaryNavs;
+    var secondaryTriggers;
+    var listItems;
+    var secondaryNavItems;
+    var backTriggers;
+    var burger;
+    var placeholder;
+
+    function handleBurgerChange(ev) {
+      document.body.classList.toggle('no-s');
+    }
+
+    function handleTrigger(ev, method) {
+      var backTrigger;
+      var secondaryNav;
+      var trigger = ev.target;
+      var parentItem = method === 'reset' ? trigger.parentNode.parentNode.parentNode : trigger.parentNode;
+      var title = document.getElementById('nv-m-h-t');
+
+      // Find the secondary nav and trigger
+      for (var i = 0; i < parentItem.childNodes.length; i++) {
+        if (parentItem.childNodes[i].classList && parentItem.childNodes[i].classList.contains('nv-m-c-l-l')) {
+          secondaryNav = parentItem.childNodes[i];
+        }
+
+        if (parentItem.childNodes[i].classList && parentItem.childNodes[i].classList.contains('nv-m-c-a')) {
+          trigger = parentItem.childNodes[i];
+        }
+      }
+
+      // Find the backTrigger
+      for (var i = 0; i < secondaryNav.childNodes.length; i++) {
+        if (secondaryNav.childNodes[i].classList && secondaryNav.childNodes[i].classList.contains('nv-m-c-bc')) {
+          backTrigger = secondaryNav.childNodes[i];
+        }
+      }
+
+      if (method === 'nav') {
+        for (var i = 0; i < listItems.length; i++) {
+          if (parentItem != listItems[i]) {
+            listItems[i].classList.add('nv-m-c-l-i--h');
+          }
+        }
+
+        // Hide the trigger
+        trigger.classList.add('nv-m-c-a--h');
+
+        // Show the secondary nav
+        secondaryNav.classList.remove('nv-m-c-l-l--h');
+
+        // Show the back button
+        backTrigger.classList.remove('nv-m-c-b--h');
+
+        // Update the title
+        title.innerHTML = trigger.innerHTML;
+      } else {
+        for (var i = 0; i < listItems.length; i++) {
+          if (parentItem != listItems[i]) {
+            listItems[i].classList.remove('nv-m-c-l-i--h');
+          }
+        }
+
+        // Hide the trigger
+        trigger.classList.remove('nv-m-c-a--h');
+
+        // Show the secondary nav
+        secondaryNav.classList.add('nv-m-c-l-l--h');
+
+        // Show the back button
+        backTrigger.classList.add('nv-m-c-b--h');
+
+        // Update the title
+        title.innerHTML = placeholder;
+      }
+    }
+
+    function start() {
+      burger = document.getElementById('brg-tr');
+      listItems = document.querySelectorAll('.nv-m-c-l-i');
+      backTriggers = document.querySelectorAll('.nv-m-c-b');
+      secondaryTriggers = document.querySelectorAll('.nolink');
+      secondaryNavs = document.querySelectorAll('.nv-m-c-l-l');
+      secondaryNavItems = document.querySelectorAll('.nv-m-c-a--s');
+
+      placeholder = document.getElementById('nv-m-h-t').innerHTML;
+
+      // Set the secondary navigation menus to hidden
+      for (var i = 0; i < secondaryNavs.length; i++) {
+        secondaryNavs[i].classList.add('nv-m-c-l-l--h');
+      }
+
+      // Get the secondary navigation triggers ready
+      for (var i = 0; i < secondaryTriggers.length; i++) {
+        // Set to active
+        secondaryTriggers[i].classList.add('nolink--a');
+
+        // Handle clicks
+        secondaryTriggers[i].addEventListener('click', function(ev) {
+          ev.preventDefault();
+
+          handleTrigger(ev, 'nav');
+        });
+      }
+
+      // Get the secondary navigation triggers ready
+      for (var i = 0; i < backTriggers.length; i++) {
+        backTriggers[i].addEventListener('click', function(ev) {
+          ev.preventDefault();
+
+          handleTrigger(ev, 'reset');
+        });
+      }
+
+      // Set the secondary navigation menus to hidden
+      for (var i = 0; i < secondaryNavItems.length; i++) {
+        secondaryNavItems[i].classList.remove('nv-m-c-a--s');
+        secondaryNavItems[i].classList.add('nv-m-c-a--p');
+      }
+
+      if (burger) {
+        burger.addEventListener('change', handleBurgerChange);
+      }
+    }
+
+    return {
+      start: start
+    }
+  })()
+
+  BostonMenu.start()
+</script>
+<div class="mn">
+  <input type="checkbox" id="s-tr" class="s-tr" aria-hidden="true">
+  
+  <header class="h" role="header">
+    <input type="checkbox" id="brg-tr" class="brg-tr a11y--h" >
+    
+    <label for="brg-tr" class="brg-b" type="button">
+      <div class="brg">
+        <span class="brg-c">
+          <span class="brg-c-i"></span>
+        </span>
+        <span class="brg-t"><span class="a11y--h">Toggle </span>Menu</span>
+      </div>
+    </label>
+    <div class="lo">
+      <a href="#" class="lo-l">
+        <img src="/images/public/logo.svg" alt="City of Boston" class="lo-i" />
+      </a>
+    </div>
+    <a href="#" class="s">
+      <img src="/images/public/seal.svg" alt="City of Boston" class="s-i" />
+    </a>
+    <nav class="nv-h">
+      <ul class="nv-h-l">
+          <li class="nv-h-l-i"><a href="https://boston.gov/public-notices" title="Public Notices" class="nv-h-l-a">Public Notices</a></li>
+          <li class="nv-h-l-i"><a href="https://boston.gov/pay-and-apply" title="Pay and Apply" class="nv-h-l-a">Pay and Apply</a></li>
+          <li class="nv-h-l-i"><a href="https://boston.gov/feedback" title="Feedback" class="nv-h-l-a">Feedback</a></li>
+        <li class="tr nv-h-l-i">
+          <a href="#translate" title="Translate" class="nv-h-l-a nv-h-l-a--k--s tr-link">Translate</a>
+          <ul class="tr-dd">
+            <li><span class="notranslate tr-dd-link tr-dd-link--message">Loading...</span></li>
+            <li><a href="#" class="notranslate tr-dd-link" data-ln="ht">Kreyòl Ayisyen</a></li>
+            <li><a href="#" class="notranslate tr-dd-link" data-ln="pt">Portugese</a></li>
+            <li><a href="#" class="notranslate tr-dd-link" data-ln="es">Español</a></li>
+            <li><a href="#" class="notranslate tr-dd-link" data-ln="vi">Tiếng Việt</a></li>
+            <li><a href="#" class="notranslate tr-dd-link tr-dd-link--hidden" data-ln="en">English</a></li>
+          </ul>
+        </li>
+        <li class="nv-h-l-i">
+          <label for="s-tr" title="Search" class="nv-h-l-a nv-h-l-a--k nv-h-l-a-ic">
+            <svg id="Layer_2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 41"><title>Search</title><path class="nv-h-l-a-i" d="M24.2.6C15.8.6 9 7.4 9 15.8c0 3.7 1.4 7.2 3.6 9.8L1.2 37c-.8.8-.8 2 0 2.8.4.4.9.6 1.4.6s1-.2 1.4-.6l11.5-11.5C18 30 21 31 24.2 31c8.4 0 15.2-6.8 15.2-15.2C39.4 7.4 32.6.6 24.2.6zm0 26.5c-6.2 0-11.2-5-11.2-11.2S18 4.6 24.2 4.6s11.2 5 11.2 11.2-5 11.3-11.2 11.3z"/></svg>
+          </label>
+        </li>
+      </ul>
+    </nav>
+    <div class="h-s">
+      <form class="sf" accept-charset="UTF-8" method="get">
+        <input name="utf8" type="hidden" value="✓">
+        <div class="sf-i">
+          <input type="text" name="q" id="q" value="" placeholder="Search…" class="sf-i-f" autocomplete="off">
+          <button class="sf-i-b">Search</button>
+        </div>
+      </form>
+    </div>
+  </header>
+  <div class="mn-c"><%- yield %></div>
+  <footer class="ft">
+    <div class="ft-c">
+      <ul class="ft-ll ft-ll--r">
+        <li class="ft-ll-i"><a href="http://www.cityofboston.gov/311/" class="ft-ll-a lnk--yellow"><span class="ft-ll-311">BOS:311</span><span class="tablet--hidden"> - </span>Report an issue</a></li>
+      </ul>
+      <ul class="ft-ll">
+          <li class="ft-ll-i"><a href="https://boston.gov/public-notices" class="ft-ll-a">Public Notices</a></li>
+          <li class="ft-ll-i"><a href="https://boston.gov/pay-and-apply" class="ft-ll-a">Pay and Apply</a></li>
+          <li class="ft-ll-i"><a href="https://boston.gov/feedback" class="ft-ll-a">Feedback</a></li>
+      </ul>
+    </div>
+  </footer>
+</div>
+

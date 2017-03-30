@@ -1,7 +1,0 @@
-title: B
-handle: b
-status: ready
-variants:
-  - name: centered
-    context:
-      theme: c

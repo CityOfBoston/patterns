@@ -1,9 +1,0 @@
-title: List
-handle: List
-status: ready
-context:
-  items:
-    - content: Speed limit sign needed
-    - content: Excessive noise
-    - content: Request a speedbump
-    - content: Request a traffic study

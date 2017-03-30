@@ -1,7 +1,0 @@
-title: Borders
-handle: br
-status: ready
-variants:
-  - name: Yellow
-    context:
-      theme: y

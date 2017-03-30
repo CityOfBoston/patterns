@@ -1,9 +1,0 @@
-title: Logo
-handle: logo
-status: ready
-variants:
-  - name: mayor
-    context:
-      show_mayor: true
-context:
-  show_mayor: false
