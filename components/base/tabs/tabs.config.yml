@@ -1,6 +1,10 @@
 title: 'Tabs'
 handle: tabs
-status: wip
+status: ready
+variants:
+  - name: hub
+    status: 'ready'
+    preview: '@hub'
 context:
   links:
     - text: New applicants

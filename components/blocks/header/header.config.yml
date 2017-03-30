@@ -1,6 +1,6 @@
 title: Header
 handle: Header
-status: wip
+status: ready
 context:
   show_label: false
   show_mayor: true
