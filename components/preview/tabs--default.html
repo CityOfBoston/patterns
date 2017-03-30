@@ -1,0 +1,54 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css?family=Lora:400,400i|Montserrat:400,700" rel="stylesheet">
+  <!--[if !IE]><!-->
+	<link rel="stylesheet" type="text/css" href="../../css/public.css" />
+  <!--<![endif]-->
+  <!--[if lt IE 10]>
+    <link media="all" rel="stylesheet" href="../../css/ie.css">
+  <![endif]-->
+  <title>Preview Layout</title>
+</head>
+<body>
+  <input id="tabMenuCTRL" type="checkbox" name="tab-menu-ctrl" class="tab-menu-ctrl" aria-hidden="true">
+
+  <input id="tabCTRL0" type="radio" name="tab-ctrl" class="tab-ctrl tab-ctrl-0" data-hash="#new_applicants"  aria-hidden="true">
+  <input id="tabCTRL1" type="radio" name="tab-ctrl" class="tab-ctrl tab-ctrl-1" data-hash="#renew_certificate" checked aria-hidden="true">
+  <input id="tabCTRL2" type="radio" name="tab-ctrl" class="tab-ctrl tab-ctrl-2" data-hash="#change_address"  aria-hidden="true">
+  <input id="tabCTRL3" type="radio" name="tab-ctrl" class="tab-ctrl tab-ctrl-3" data-hash="#withdraw_business"  aria-hidden="true">
+
+<ul class="tab">
+  <li class="tab-li tab-li-0">
+    <label for="tabMenuCTRL" class="tab-li-m">New applicants</label>
+    <label for="tabCTRL0" data-href="#new_applicants" class="tab-li-a tab-li-a-0">New applicants</label>
+  </li><li class="tab-li tab-li-1">
+    <label for="tabMenuCTRL" class="tab-li-m">Renew your certificate</label>
+    <label for="tabCTRL1" data-href="#renew_certificate" class="tab-li-a tab-li-a-1">Renew your certificate</label>
+  </li><li class="tab-li tab-li-2">
+    <label for="tabMenuCTRL" class="tab-li-m">Change your address</label>
+    <label for="tabCTRL2" data-href="#change_address" class="tab-li-a tab-li-a-2">Change your address</label>
+  </li><li class="tab-li tab-li-3">
+    <label for="tabMenuCTRL" class="tab-li-m">Withdraw your business</label>
+    <label for="tabCTRL3" data-href="#withdraw_business" class="tab-li-a tab-li-a-3">Withdraw your business</label>
+  </li>
+  <li class="tab-li tab-li-close">
+    <label for="tabMenuCTRL" class="tab-li-a tab-li-a--c" aria-hidden="true">Close</label>
+  </li>
+</ul>
+
+<div class="tab-pc">
+    <div class="tab-p tab-p-0">This is the content for New applicants</div>
+    <div class="tab-p tab-p-1">This is the content for Renew your certificate</div>
+    <div class="tab-p tab-p-2">This is the content for Change your address</div>
+    <div class="tab-p tab-p-3">This is the content for Withdraw your business</div>
+</div>
+
+  <script src="../../scripts/all.js"></script>
+</body>
+</html>
+
