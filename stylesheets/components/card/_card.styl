@@ -28,9 +28,14 @@
     .cd-d
       color: $white
 
-    .cd-i
-    .cd-ic img
-      mix-blend-mode: soft-light
+    .cd-ic
+      background-blend-mode: multiply
+
+  &-ic
+    padding-bottom: 35%
+    background-color: $optimistic-blue
+    background-position: center
+    background-size: cover
 
   &-c
     padding: $sizing-700
@@ -43,16 +48,17 @@
     line-height: $line-height-200
     margin: 0
 
-  &-i
-  &-ic img
-    display: block
-    max-height: 100%
-    max-width: 100%
-    background-color: $optimistic-blue
-
   &-d
     color: $grey-300
     font-size: responsive 15px 18px
     font-range: 480px 1440px
     line-height: $line-height-300
     margin-top: $sizing-300
+
+// Handle white theme variation
+.b--w
+  .cd
+    border: 2px solid #e0e0e0
+
+    &-c
+      border-top: 2px solid #e0e0e0
