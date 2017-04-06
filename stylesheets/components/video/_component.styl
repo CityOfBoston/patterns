@@ -1,0 +1,102 @@
+/*
+
+   VIDEO
+
+   Base:
+    vid
+
+   Elements:
+    c = container
+    ci = container inner
+
+ */
+
+.vid
+  min-height: 300px
+  max-height: 700px
+  height: 50.625vw
+  background-color: $optimistic-blue
+  background-size: cover
+  background-repeat: no-repeat
+  background-blend-mode: multiply
+
+  &-c
+    position: absolute
+    top: 0
+    left: 0
+    right: 0
+    bottom: 0
+
+  &-ci
+    position: absolute
+    width: 100%
+    top: 50%
+    transform: translateY(-50%)
+
+  &-cta
+    height: 65px
+    width: 65px
+    padding: 0
+    margin: 0
+    line-height: 1
+    background: transparent
+    border: none
+    cursor: pointer
+
+    &:hover
+      background: transparent
+
+    @media $media-medium
+      height: 75px
+      width: 75px
+
+    @media $media-large
+      height: 85px
+      width: 85px
+
+    @media $media-xlarge
+      height: 97px
+      width: 97px
+
+    &-i
+      height: 100%
+      width: 100%
+
+  &-v
+    position: absolute
+    top: 0
+    left: 0
+    right: 0
+    bottom: 0
+    height: 100%
+    width: 100%
+    border: none
+
+  &-t
+    color: $white
+    font-family: $sans
+    font-size: responsive 30px 75px
+    font-range: 480px 1440px
+    font-weight: 700
+    letter-spacing: -1px
+    line-height: 1
+    text-transform: uppercase
+    margin: 0
+    max-width: 75%
+
+    @media $media-medium
+      max-width: 50%
+
+  &-st
+    color: $white
+    font-size: responsive 14px 18px
+    font-range: 480px 1440px
+    font-style: italic
+    line-height: $line-height-100
+
+    &-a
+      color: $white
+      text-decoration: none
+
+      &:hover
+        color: $white
