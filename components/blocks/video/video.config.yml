@@ -1,0 +1,21 @@
+title: Video
+handle: video
+status: ready
+variants:
+  - name: Youtube Channel
+    context:
+      title: Watch City TV
+      department: Cable
+      department_url: https://www.boston.gov/cable
+      video_id: UCImopNmmU11qfuWBbiXdowQ
+      video_channel: true
+      image:
+        url: "/images/crispus/boston.jpg"
+context:
+  title: Meet the pothole kings
+  department: Public Works
+  department_url: https://www.boston.gov/departments/public-works
+  video_id: bTqVqk7FSmY
+  video_channel: false
+  image:
+    url: "/images/crispus/boston.jpg"
