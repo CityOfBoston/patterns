@@ -6,6 +6,13 @@
   &-a400
     padding: $sizing-400
 
+  &-a500
+    padding: $sizing-500
+
+  &-a800--xl
+    @media $media-xlarge
+      padding: $sizing-800
+      
   // Vertical paddings
   &-v200
     padding-top: $sizing-200
@@ -70,10 +77,13 @@
       margin-right: 30%
 
   // Vertical
+  &-v100
+    margin-top: $sizing-100
+    margin-bottom: $sizing-100
+
   &-v200
-    @media $media-small
-      margin-top: $sizing-200
-      margin-bottom: $sizing-200
+    margin-top: $sizing-200
+    margin-bottom: $sizing-200
 
   &-v300
     margin-top: $sizing-300

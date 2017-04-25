@@ -29,6 +29,9 @@ variants:
           title: 'Allston'
           subtitle: 'Neighborhood'
           content: 'Learn more about one of Boston’s most diverse and active neighborhoods.'
+  - name: Plain style
+    context:
+      theme: plain
 context:
   cards:
     - index: 1
