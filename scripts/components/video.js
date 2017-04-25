@@ -6,7 +6,6 @@ var BostonVideo = (function () {
   var video = {};
 
   function getURL(video_id, video_channel) {
-    console.log(video_channel);
     if (video_channel == 'true') {
       return "https://www.youtube.com/embed/live_stream?autoplay=1&channel=" + video_id;
     } else {
