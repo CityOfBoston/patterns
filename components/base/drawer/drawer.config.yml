@@ -4,6 +4,17 @@ status: ready
 variants:
   - name: Hub
     preview: '@hub'
+  - name: JS Controlled
+    context:
+      drawers:
+        - title: 'November 8, 2016: General Election'
+          subtitle: 'Last updated: 2/2017'
+          js: true
+        - title: 'November 8, 2016: General Election'
+          subtitle: 'Last updated: 2/2017'
+          js: true
+          variant: 'dr--open'
+
 context:
   drawers:
     - index: 1
