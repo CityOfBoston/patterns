@@ -1,5 +1,5 @@
 <ul class="ul">
   {{#each items as |item|}}
-    <li><span class="t--sans t--upper"><a href="javascript:void(0)">{{ item.content }}</a></span></li>
+    <li class="{{ item.class }}"><a href="javascript:void(0)">{{{ item.content }}}</a></li>
   {{/each}}
 </ul>
