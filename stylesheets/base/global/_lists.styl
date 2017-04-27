@@ -1,6 +1,6 @@
 .ul
   list-style: none
-  padding: 0 $sizing-500
+  padding: 0 0 0 $sizing-600
   margin: 0
 
   & > li
@@ -12,9 +12,11 @@
       border-color: transparent $charles-blue
       border-style: solid
       border-width: $border-400 0 $border-400 $border-500
-      display: block
-      position: relative
+      display: inline-block
       height: 0
       width: 0
-      left: -($sizing-400)
-      top: 1rem
+      vertical-align: middle
+      margin-left: -($border-500 + $sizing-200)
+      margin-right: $sizing-200
+      // compensates a bit for descenders to line us up centered with the text
+      margin-bottom: 0.25em
