@@ -1,0 +1,35 @@
+/*
+
+   LINK WITH ARROW
+
+   Base:
+    lwa
+
+   Modifier:
+    w = white theme
+
+ */
+
+.lwa
+  display: flex
+  align-items: center
+  background-image: url(../images/global/icons/chevron.svg)
+  background-position: center right
+  background-repeat: no-repeat
+  background-size: 10px
+  font-family: $sans
+  font-size: responsive 14px 16px
+  font-range: 480px 1440px
+  line-height: $line-height-100
+  padding: $sizing-400
+  padding-left: 0
+  text-transform: uppercase
+  border-bottom: 1px dashed #355973
+
+  &--w
+    &:link
+    &:visited
+      color: $white
+
+    &:hover
+      color: $yellow
