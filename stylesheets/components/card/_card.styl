@@ -28,9 +28,15 @@
     .cd-d
       color: $white
 
-    .cd-i
-    .cd-ic img
-      mix-blend-mode: soft-light
+    .cd-ic
+      background-color: $blended-optimistic-blue
+      background-blend-mode: multiply
+
+  &-ic
+    padding-bottom: 35%
+    background-color: $optimistic-blue
+    background-position: center
+    background-size: cover
 
   &-c
     padding: $sizing-700
@@ -43,16 +49,36 @@
     line-height: $line-height-200
     margin: 0
 
-  &-i
-  &-ic img
-    display: block
-    max-height: 100%
-    max-width: 100%
-    background-color: $optimistic-blue
-
   &-d
     color: $grey-300
     font-size: responsive 15px 18px
     font-range: 480px 1440px
     line-height: $line-height-300
     margin-top: $sizing-300
+
+  &--plain
+    &:hover
+      background-color: $white
+      .cd-t
+        color: $charles-blue
+      .cd-st
+        color: inherit
+      .cd-d
+        color: $grey-300
+
+    .cd-t
+      color: $charles-blue
+
+// Handle white theme variation
+.b--w
+  .cd
+    border: 2px solid #e0e0e0
+
+    &:hover
+      border-color: $optimistic-blue
+
+      .cd-c
+        border-color: $optimistic-blue
+
+    &-c
+      border-top: 2px solid #e0e0e0

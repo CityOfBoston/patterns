@@ -1,9 +1,7 @@
 {{#each cards as |card|}}
-  <a href="{{ card.href }}" class="cd m-t400 g--3">
+  <a href="{{ card.href }}" class="cd m-t500 g--4 g--4--sl{{#../theme}} cd--{{this}}{{/../theme}}">
     {{#if card.image}}
-      <div class="cd-ic">
-        <img src="{{ card.image.url }}" alt="{{ card.image.title }}" class="cd-i" />
-      </div>
+      <div class="cd-ic" style="background-image: url({{ card.image.url }})"></div>
     {{/if}}
     <div class="cd-c">
       <div class="cd-t">{{ card.title }}</div>
