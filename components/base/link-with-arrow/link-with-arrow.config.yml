@@ -1,0 +1,12 @@
+title: Link with arrow
+handle: link_with_arrow
+status: ready
+variants:
+  - name: white
+    context:
+      links:
+        - name: Pay a parking ticket
+          theme: w
+context:
+  links:
+    - name: Pay a parking ticket

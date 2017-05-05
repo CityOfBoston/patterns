@@ -1,0 +1,3 @@
+{{#each links as |link|}}
+  <a href="{{ link.href }}" title="{{ link.name }}" class="lwa{{#if link.theme}} lwa--{{ link.theme }}{{/if}}">{{ link.name }}</a>
+{{/each}}
