@@ -458,6 +458,7 @@ a:hover {
   margin: 0 auto;
   padding: 35px 10%;
   padding: 2.1875rem 10%;
+  position: relative;
 }
 .b-c--mh {
   min-height: 500px;
@@ -476,6 +477,23 @@ a:hover {
 }
 .b-c--nbp {
   padding-bottom: 0;
+}
+.b-t {
+  margin-bottom: 16px;
+  margin-bottom: 1rem;
+}
+@media screen and (min-width: 840px) {
+  .b-t {
+    margin-bottom: 0;
+    max-width: 66.67rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    -ms-transform: translateY(-50%);
+        transform: translateY(-50%);
+    padding: 1rem;
+  }
 }
 .b-fv {
   max-width: 1066.72px;
@@ -1651,6 +1669,24 @@ textarea.txt-f {
   background-size: cover;
   background-position: center;
   position: relative;
+}
+.hro--pt {
+  padding-top: 56px;
+  padding-top: 3.5rem;
+}
+.hro--pb {
+  padding-bottom: 33.33%;
+  max-height: 400px;
+}
+@media screen and (min-width: 768px) {
+  .hro--pb {
+    padding-bottom: 28%;
+  }
+}
+@media screen and (min-width: 980px) {
+  .hro--pb {
+    padding-bottom: 25%;
+  }
 }
 .hro--wh {
   padding-top: 35px;
