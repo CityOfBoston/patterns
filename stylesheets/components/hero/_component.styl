@@ -15,7 +15,9 @@
     b = blank
     t = image with title
     wh = with header (adds top padding to account for fixed position headers)
-
+    mh = min-height
+    pb = padding-bottom
+    hm = hide on mobile
  */
 
 .hro
@@ -24,6 +26,19 @@
   background-size: cover
   background-position: center
   position: relative
+
+  &--pt
+    padding-top: 3.5rem // The height of Boston.gov header
+
+  &--pb
+    padding-bottom: 33.33%
+    max-height: 400px
+
+    @media $media-medium
+      padding-bottom: 28%
+
+    @media $media-xlarge
+      padding-bottom: 25%
 
   &--wh
     padding-top: $sizing-700

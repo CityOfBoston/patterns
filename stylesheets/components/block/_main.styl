@@ -21,6 +21,7 @@
     max-width: 66.67rem
     margin: 0 auto
     padding: $sizing-700 10%
+    position: relative
 
     &--mh
       min-height: 500px
@@ -37,6 +38,20 @@
 
     &--nbp
       padding-bottom: 0
+
+  // Block tab
+  &-t
+    margin-bottom: $sizing-300
+
+    @media $media-large
+      margin-bottom: 0
+      max-width: 66.67rem
+      position: absolute
+      top: 0
+      left: 0
+      right: 0
+      transform: translateY(-50%)
+      padding: $sizing-300
 
   // Vertical filters tab
   &-fv
