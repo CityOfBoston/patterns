@@ -272,6 +272,10 @@ h6 {
   margin-bottom: 16px;
   margin-bottom: 1rem;
 }
+.m-b500 {
+  margin-bottom: 27.56px;
+  margin-bottom: 1.7225rem;
+}
 .m-t000 {
   margin-top: 0;
 }
@@ -315,7 +319,7 @@ h6 {
 .t--info {
   color: #091f2f;
   font-family: "Lora", Georgia, serif;
-  font-size: calc(12px + 8 * ((100vw - 480px) / 960));
+  font-size: calc(16px + 4 * ((100vw - 480px) / 960));
   font-style: italic;
   line-height: 1.56666666667;
 }
@@ -326,7 +330,24 @@ h6 {
 }
 @media screen and (max-width: 480px) {
   .t--info {
-    font-size: 12px;
+    font-size: 16px;
+  }
+}
+.t--subinfo {
+  color: #091f2f;
+  font-family: "Lora", Georgia, serif;
+  font-size: calc(14px + 2 * ((100vw - 480px) / 960));
+  font-style: italic;
+  line-height: 1.56666666667;
+}
+@media screen and (min-width: 1440px) {
+  .t--subinfo {
+    font-size: 16px;
+  }
+}
+@media screen and (max-width: 480px) {
+  .t--subinfo {
+    font-size: 14px;
   }
 }
 .t--subtitle {
@@ -370,6 +391,9 @@ h6 {
   letter-spacing: 0;
   color: #fb4d42;
   text-transform: none;
+}
+.t--err {
+  color: #fb4d42;
 }
 .ta-c {
   text-align: center;
@@ -2542,6 +2566,44 @@ textarea.txt-f {
 .hro-st--w {
   color: #fff;
 }
+.lwa {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  -js-display: flex;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-image: url("../images/global/icons/chevron.svg");
+  background-position: center right;
+  background-repeat: no-repeat;
+  background-size: 10px;
+  font-family: "Montserrat", Arial, sans-serif;
+  font-size: calc(12px + 2 * ((100vw - 480px) / 960));
+  line-height: 1.1;
+  padding: 20px;
+  padding: 1.25rem;
+  padding-left: 0;
+  text-transform: uppercase;
+  border-bottom: 1px dashed #355973;
+}
+@media screen and (min-width: 1440px) {
+  .lwa {
+    font-size: 14px;
+  }
+}
+@media screen and (max-width: 480px) {
+  .lwa {
+    font-size: 12px;
+  }
+}
+.lwa--w:link,
+.lwa--w:visited {
+  color: #fff;
+}
+.lwa--w:hover {
+  color: #fcb61a;
+}
 .lwi {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -3555,8 +3617,7 @@ textarea.txt-f {
 .stp {
   text-transform: uppercase;
   font-family: "Montserrat", Arial, sans-serif;
-  font-size: 26.667px;
-  font-size: 1.6667rem;
+  font-size: calc(16px + 4 * ((100vw - 480px) / 960));
   color: #091f2f;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -3566,6 +3627,16 @@ textarea.txt-f {
       -ms-flex-align: center;
           align-items: center;
   min-height: 1.5em;
+}
+@media screen and (min-width: 1440px) {
+  .stp {
+    font-size: 20px;
+  }
+}
+@media screen and (max-width: 480px) {
+  .stp {
+    font-size: 16px;
+  }
 }
 .stp-number {
   display: inline-block;
