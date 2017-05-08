@@ -1,11 +1,14 @@
 {{#each textboxes as |textbox|}}
   <div class="txt">
-    <label for="{{id}}" class="txt-l">{{label}}</label>
+    <label for="{{id}}" class="txt-l{{#if error }} t--err{{/if}}">{{label}}</label>
     {{#if ../inputType }}
-      <input id="{{id}}" type="text" value="{{value}}" placeholder="{{placeholder}}" class="txt-f">
+      <input id="{{id}}" type="text" value="{{value}}" placeholder="{{placeholder}}" class="txt-f{{#if error }} txt-f--err{{/if}}"{{#if size }} size="{{ size }}"{{/if}}>
     {{/if}}
     {{#if ../textareaType }}
       <textarea id="{{id}}" placeholder="{{placeholder}}" class="txt-f" rows="10">{{value}}</textarea>
+    {{/if}}
+    {{#if error }}
+      <div class="t--subinfo t--err m-t100">{{ error }}</div>
     {{/if}}
   </div>
 {{/each}}

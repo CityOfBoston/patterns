@@ -1,0 +1,30 @@
+title: Subscription
+handle: form_subscription
+status: ready
+context:
+  action: https://www.boston.gov
+  method: GET
+  inputType: true
+  textboxes:
+    - label: Your Email Address
+      placeholder: Email address
+      id: text
+    - label: Zip Code
+      placeholder: Zip Code
+      size: 10
+      id: text
+variants:
+  - name: Error
+    context:
+      action: https://www.boston.gov
+      method: GET
+      inputType: true
+      textboxes:
+        - label: Your Email Address
+          placeholder: Email address
+          id: text
+          error: Please enter a valid email address
+        - label: Zip Code
+          placeholder: Zip Code
+          size: 10
+          id: text

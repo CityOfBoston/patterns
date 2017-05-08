@@ -31,8 +31,12 @@
     color: $charles-blue
     border: $border-200 solid $charles-blue
     padding: $sizing-400 $sizing-300
+    margin: 0
     // fixes Chrome 57 bug of not rendering left/right/bottom of the box shadow
     position: relative
+
+    &--err
+      border-color: $freedom-red
 
     input[type=text]&, textarea&
       width: 100%
