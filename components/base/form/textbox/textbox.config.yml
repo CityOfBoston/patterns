@@ -8,12 +8,15 @@ context:
     - label: First name
       placeholder: First name
       value: Carol Danvers
+      id: text
     - label: Email
       placeholder: Your email address
       value: ""
+      id: text
 variants:
   - name: Textarea
     context:
+      id: text
       inputType: false
       textareaType: true
   - name: Error
