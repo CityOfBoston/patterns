@@ -72,6 +72,7 @@
     line-height: 1.4
     margin-left: 7px
     width: calc(100% - 42px)
+    text-transform: none
 
     @media $media-medium
       margin-left: 15px
@@ -79,3 +80,9 @@
     @media $media-large
       // Helps to make sure we're centered at larger font sizes
       margin-top: -.1em
+
+    &--sans
+      font-family: $sans
+      font-weight: 700
+      font-size: responsive 12px 14px
+      text-transform: uppercase
