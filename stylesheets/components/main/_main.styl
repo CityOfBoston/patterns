@@ -22,7 +22,10 @@
     min-height: 100vh
     display: flex
     flex-direction: column
-    justify-content: center
+    justify-content: flex-start
+
+    @media $media-large
+      justify-content: center
 
   // when secondary navigation is included
   &--nv-s
