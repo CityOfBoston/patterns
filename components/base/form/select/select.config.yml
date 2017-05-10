@@ -1,0 +1,35 @@
+title: 'Select'
+handle: select
+status: ready
+context:
+  selects:
+    - id: language
+      label: Choose a language
+      options:
+        - key: English
+          value: en
+        - key: Spanish
+          value: es
+        - key: Chinese
+          value: cn
+    - id: language
+      label: Choose a language
+      theme: fw
+      options:
+        - key: English
+          value: en
+        - key: Spanish
+          value: es
+        - key: Chinese
+          value: cn
+    - id: language
+      label: Choose a language
+      theme: fw
+      error: Please select a language
+      options:
+        - key: English
+          value: en
+        - key: Spanish
+          value: es
+        - key: Chinese
+          value: cn

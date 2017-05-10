@@ -12,7 +12,7 @@
   &-a800--xl
     @media $media-xlarge
       padding: $sizing-800
-      
+
   // Vertical paddings
   &-v200
     padding-top: $sizing-200
@@ -124,8 +124,19 @@
   &-t300
     margin-top: $sizing-300
 
+    // Top margin only on mobile
+    &--mo
+      @media $media-small
+        margin-top: 0
+
+
   &-t400
     margin-top: $sizing-400
 
   &-t500
     margin-top: $sizing-500
+
+  // left
+  &-lAAA
+    @media $media-small
+      margin-left: auto
