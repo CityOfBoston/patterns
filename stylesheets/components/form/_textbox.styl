@@ -21,13 +21,14 @@
   position: relative
 
   &:not(:last-child)
-    margin: 0 0 $sizing-200
+    margin: 0 0 $sizing-300
 
   &-f
     font-family: $serif
+    height: auto
     display: block
     font-size: inherit
-    line-height: inherit
+    line-height: $line-height-000
     color: $charles-blue
     border: $border-200 solid $charles-blue
     padding: $sizing-400 $sizing-300
@@ -37,6 +38,9 @@
 
     &--err
       border-color: $freedom-red
+
+    &--sm
+      padding: $sizing-200 $sizing-300
 
     input[type=text]&, textarea&
       width: 100%
@@ -59,3 +63,6 @@
     letter-spacing: 1px
     text-transform: uppercase
     display: block
+
+    &--mt000
+      margin-top: 0

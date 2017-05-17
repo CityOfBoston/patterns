@@ -1,6 +1,6 @@
-<div class="di">
+<div class="di{{#if themes}}{{#each themes as |theme|}} di--{{theme.theme}}{{/each}}{{/if}}">
   <div class="di-ic">
-    <a href="{{ department.url }}" title="{{ department.name }}" class="di-tt">
+    <a href="{{ department.url }}" title="{{ department.name }}" class="di-a{{#if tooltip}} di-tt{{/if}}">
       <img typeof="foaf:Image" src="{{ department.icon }}" alt="{{ department.name }}" class="di-i">
     </a>
   </div>

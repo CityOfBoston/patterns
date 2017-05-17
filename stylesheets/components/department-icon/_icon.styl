@@ -9,6 +9,9 @@
     i = icon
     ic = icon container
     tt = tooltip
+    c = in a circle
+    c--w = in a circle with a white border
+    c--l = in a big circle
 
    Modifier:
     None Yet
@@ -21,11 +24,48 @@
   @media $media-xlarge
     display: block
 
+  &--c
+    border: 3px solid $charles-blue
+    height: 120px
+    width: 120px
+    position: relative
+    border-radius: 50%
+
+    .di-a
+      position: absolute
+      top: 0
+      left: 0
+      right: 0
+      bottom: 0
+
+    .di-i
+    img
+      position: absolute
+      top: 50%
+      left: 50%
+      transform: translate(-50%, -50%)
+
+    &--w
+      border-color: $white
+
+    &--l
+      height: 150px
+      width: 150px
+
+      .di-i
+      img
+        max-width: 65px
+        max-height: 65px
+
+
   &-i
   img
     width: 100%
-    max-width: 50px
-    max-height: 50px
+    max-width: 60px
+    max-height: 60px
+
+  &-a
+    display: block
 
   &-tt
     display: block

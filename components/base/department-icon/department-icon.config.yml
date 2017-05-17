@@ -1,7 +1,28 @@
 title: Department Icon
 handle: department_icon
 status: ready
+preview: '@centered'
+variants:
+  - name: In Circle
+    context:
+      tooltip: false
+      themes:
+        - theme: c
+  - name: In Circle Reversed
+    preview: '@centered-dark'
+    context:
+      tooltip: false
+      themes:
+        - theme: c
+        - theme: c--w
+  - name: In Circle Large
+    context:
+      tooltip: true
+      themes:
+        - theme: c
+        - theme: c--l
 context:
+  tooltip: true
   department:
     name: Innovation and Technology
     icon: https://www.boston.gov/sites/default/files/department_icons/icons_doit.svg

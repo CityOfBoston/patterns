@@ -19,10 +19,12 @@
     @media $media-medium
       display: flex
       flex-grow: 1
+      flex-direction: column
 
     &--i
       @media $media-medium
         display: flex
+        flex-direction: row
 
         .txt
           &:not(:last-child)
@@ -36,3 +38,12 @@
 
         .txt-l
           margin-top: 0
+
+        .cb
+          margin-bottom: 0
+
+          &:not(:first-child)
+            margin-left: $sizing-300
+
+    &--c
+      align-items: center
