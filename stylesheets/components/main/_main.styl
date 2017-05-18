@@ -19,7 +19,11 @@
 
   // takes up the full page height (minus sticky header)
   &--full
-    min-height: 100vh
+    // We leave 64px on the bottom to accommodate the bottom toolbar on mobile
+    // safari. It's assumed that the bottom footer will be below this element,
+    // so it will fill in that space. It can be good on other browsers to show
+    // a bit of the footer anyway.
+    min-height: calc(100vh - 64px)
     display: flex
     flex-direction: column
     justify-content: flex-start
