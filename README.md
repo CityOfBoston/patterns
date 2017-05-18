@@ -1,6 +1,8 @@
 <img src="https://cloud.githubusercontent.com/assets/9234/19400090/8c20c53c-9222-11e6-937c-02bce55e5301.png" alt="City of Boston" width="150" />
 
-This is the pattern library for the City of Boston. It's currently a work in progress, but we're adding to it every day.
+This is the pattern library for the City of Boston. It's currently a work in progress, but we're adding to it every day. 
+
+**This project contains the marks and trade dress of the City of Boston's digital properties and should not be reused without the express permission of the City of Boston.**
 
 [![Build Status](https://travis-ci.org/CityOfBoston/patterns.svg?branch=develop)](https://travis-ci.org/CityOfBoston/patterns)
 [![Greenkeeper badge](https://badges.greenkeeper.io/CityOfBoston/patterns.svg)](https://greenkeeper.io/)
