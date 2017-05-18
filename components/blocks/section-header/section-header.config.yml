@@ -10,6 +10,10 @@ variants:
     context:
       header:
         theme: w
+  - name: Small
+    context:
+      header:
+        theme: sm
 context:
   header:
     title: Transportation Department

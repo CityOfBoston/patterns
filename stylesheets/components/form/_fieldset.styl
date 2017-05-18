@@ -1,0 +1,49 @@
+/*
+
+   Fieldset
+
+   Base:
+    fs
+
+   Modifier:
+    i = fields inline
+
+ */
+
+.fs
+  border: none
+  margin: 0
+  padding: 0
+
+  &-c
+    @media $media-medium
+      display: flex
+      flex-grow: 1
+      flex-direction: column
+
+    &--i
+      @media $media-medium
+        display: flex
+        flex-direction: row
+
+        .txt
+          &:not(:last-child)
+            padding-right: $sizing-300
+
+          &:first-child
+            flex-grow: 1
+
+          &:not(:last-child)
+            margin-bottom: 0
+
+        .txt-l
+          margin-top: 0
+
+        .cb
+          margin-bottom: 0
+
+          &:not(:first-child)
+            margin-left: $sizing-300
+
+    &--c
+      align-items: center
