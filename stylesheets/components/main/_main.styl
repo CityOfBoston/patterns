@@ -28,9 +28,14 @@
     flex-direction: column
     justify-content: flex-start
 
-    @media $media-large
-      justify-content: center
+    // vertically-centered on larger screens
+    &-vc
+      @media $media-large
+        justify-content: center
 
   // when secondary navigation is included
   &--nv-s
     padding-top: 119px
+
+  &--g
+    background-color: $grey-000
