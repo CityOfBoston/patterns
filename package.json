@@ -9,6 +9,7 @@
     "autoprefixer": "^6.3.6",
     "gulp": "^3.9.1",
     "gulp-concat": "^2.6.1",
+    "gulp-cssnano": "^2.1.2",
     "gulp-load-plugins": "^1.2.4",
     "gulp-stylus": "^2.3.1",
     "laggard": "^0.1.0",
