@@ -4,6 +4,10 @@
 var BostonVideo = (function () {
   // Set height
   var video = {};
+  var trigger;
+  var container;
+  var video_id;
+  var video_channel;
 
   function getURL(video_id, video_channel) {
     if (video_channel == 'true') {
