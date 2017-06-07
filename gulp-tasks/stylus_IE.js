@@ -16,6 +16,7 @@ module.exports = function (gulp, plugins, options) {
           ])
         ]
       }))
+      .pipe(plugins.cssnano())
       .pipe(gulp.dest(options.paths.styles))
 
     return stream;
