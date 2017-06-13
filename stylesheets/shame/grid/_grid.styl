@@ -20,8 +20,7 @@
   &--2
     lost-column: 12/12
 
-  &--3,
-  &--33
+  &--3
     lost-column: 12/12
 
   &--4
@@ -51,30 +50,36 @@
   &--12
     lost-column: 12/12
 
-  &--4
-    margin-top: $sizing-200
-
   @media $media-large
     &--1
-      lost-column: 1/12
+      lost-column: 1/12 12
+
+      &--sl
+        lost-column: 6/12 2
 
     &--2
-      lost-column: 2/12
+      lost-column: 2/12 6
+
+      &--sl
+        lost-column: 6/12 2
 
     &--3
-      lost-column: 6/12
+      lost-column: 3/12 4
+
+      &--sl
+        lost-column: 6/12 2
 
     &--4
-      lost-column: 1/2
+      lost-column: 4/12 3
 
-    &--44
-      lost-column: 4/12
+      &--sl
+        lost-column: 6/12 2
 
     &--5
       lost-column: 5/12
 
     &--6
-      lost-column: 6/12
+      lost-column: 6/12 2
 
     &--7
       lost-column: 7/12
@@ -94,12 +99,23 @@
     &--12
       lost-column: 12/12
 
-    &--4
-      margin-top: $sizing-400
-
   @media $media-xlarge
-    &--33
-      lost-column: 3/12
-      
+    &--1
+      &--sl
+        lost-column: 1/12 12
+        
+    &--2
+      &--sl
+        lost-column: 2/12 6
+        
+    &--3
+      &--sl
+        lost-column: 3/12 4
+        
     &--4
-      lost-column: 1/4
+      &--sl
+        lost-column: 4/12 3
+        
+    &--5
+      &--sl
+        lost-column: 5/12
