@@ -1,0 +1,64 @@
+/*
+
+   Modals
+
+   Base:
+    md
+
+   Elements:
+    c = Container
+    cb = close-button
+    b = Body
+ */
+
+.md
+  position: fixed
+  top: 0
+  bottom: 0
+  left: 0
+  right: 0
+  background-color: alpha($optimistic-blue, 0.75)
+  z-index: 1000
+  overflow-y: auto
+
+  &-cb
+    position: absolute
+    width: 65px
+    height: 65px
+    padding: 0
+    top: 0
+    right: 0
+    color: $white
+
+    &:after
+      background-color: $freedom-red
+      position: absolute
+      color: $white
+      content: " "
+      top: 0
+      left: 0
+      bottom: 0
+      right: 0
+      z-index: 1
+
+    &:before
+      content:'\00D7'
+      position: absolute
+      font-size: $font-800
+      z-index: 2
+      top: 50%
+      left: 50%
+      transform: translateY(-50%) translateX(-50%)
+
+    &:hover
+      background-color: $optimistic-blue
+
+  &-c
+    background-color: $white
+    margin: 0.5rem
+    max-width: 800px
+    position: relative
+    padding-top: 65px
+
+    @media $media-medium
+      margin: 4rem auto
