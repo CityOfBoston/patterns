@@ -20,5 +20,8 @@
     "rucksack-css": "^0.9.1",
     "run-sequence": "^1.2.2",
     "serve-static": "^1.11.1"
+  },
+  "devDependencies": {
+    "gulp-uglify": "^3.0.0"
   }
 }

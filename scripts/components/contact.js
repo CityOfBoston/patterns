@@ -10,6 +10,8 @@ var BostonContact = (function () {
   function handleEmailClick(ev) {
     ev.preventDefault();
 
+    document.body.classList.add('no-s');
+
     var template = document.getElementById('contactFormTemplate');
     var container = document.createElement('div');
 
@@ -36,6 +38,7 @@ var BostonContact = (function () {
 
   function handleEmailClose(ev) {
     ev.preventDefault();
+    document.body.classList.remove('no-s');
     document.getElementById('contactFormModal').remove();
   }
 
