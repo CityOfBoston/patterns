@@ -14,14 +14,10 @@
 
 .ph
   position: relative
-  height: 250px
-
-  @media $media-medium
-    height: 420px
 
   @media $media-xlarge
     height: 500px
-
+    
     &--wc
       height: 800px
 
@@ -44,13 +40,16 @@
   &-c
     background-color: $white
     border-bottom: $border-200 solid $charles-blue
+    padding: 10%
 
     @media $media-xlarge
       position: absolute
       border-bottom: none
       border-top: $border-200 solid $charles-blue
       width: 30%
+      min-width: 300px
       max-width: 400px
       top: 50%
       left: 0
       transform: translateY(-50%)
+      padding: $sizing-600
