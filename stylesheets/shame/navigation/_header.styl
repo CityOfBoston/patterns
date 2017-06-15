@@ -1,0 +1,31 @@
+/*
+
+   HEADER NAV
+
+   Base:
+    nv-h
+
+ */
+
+.brg-b
+  float: left
+
+.nv
+  &-h
+    float: right
+      
+    &-l
+      lost-utility: clearfix
+
+      &-i
+        float: left
+
+      &-a
+        &-ic
+          margin-top: 0
+
+          @media $media-large
+            margin-top: -4px
+
+          & > *
+            vertical-align: middle
