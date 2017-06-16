@@ -14,7 +14,7 @@ var BostonNewsletter = (function () {
       var formData = new FormData(form);
 
       if (isValid) {
-        disableButton(form);
+        Boston.disableButton(form, 'Loading...');
 
         Boston.request({
           data: formData,
@@ -30,7 +30,7 @@ var BostonNewsletter = (function () {
             }
           },
           error: function() {
-            enableButton(form)
+            Boston.enableButton(form, 'Sign up')
             handleError();
           }
         });
@@ -38,56 +38,31 @@ var BostonNewsletter = (function () {
     });
   }
 
-  function disableButton(form) {
-    var button = Boston.childByEl(form, 'btn');
-
-    if (button.length > 0) {
-      for (var i = 0; i < button.length; i++) {
-        button[i].disabled = true;
-        button[i].innerHTML = 'Loading...';
-      }
-    }
-  }
-
-  function enableButton(form) {
-    var button = Boston.childByEl(form, 'btn');
-
-    if (button.length > 0) {
-      for (var i = 0; i < button.length; i++) {
-        button[i].disabled = false;
-        button[i].innerHTML = 'Sign Up';
-      }
-    }
-  }
-
   function handleError() {
-
   }
 
   function validateForm(form) {
     var email = Boston.childByEl(form, 'bos-newsletter-email');
     var zip = Boston.childByEl(form, 'bos-newsletter-zip');
+    var valid = true;
 
-    var emailRE = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    var zipRE = /(^\d{5}$)|(^\d{5}-\d{4}$)/;
-
-    if (email[0].value == '' || !emailRE.test(email[0].value)) {
+    if (email[0].value == '' || !Boston.emailRE.test(email[0].value)) {
       var errors = document.createElement('div');
       errors.className = "t--subinfo t--err m-t100";
       errors.innerHTML = "Please enter a valid email address";
       email[0].parentElement.appendChild(errors);
-      return false;
+      valid = false;
     }
 
-    if (zip[0].value !== '' && !zipRE.test(zip[0].value)) {
+    if (zip[0].value !== '' && !Boston.zipRE.test(zip[0].value)) {
       var errors = document.createElement('div');
       errors.className = "t--subinfo t--err m-t100";
       errors.innerHTML = "Please enter a valid zip code";
       zip[0].parentElement.appendChild(errors);
-      return false;
+      valid = false;
     }
 
-    return true;
+    return valid;
   }
 
   function resetForm(form) {

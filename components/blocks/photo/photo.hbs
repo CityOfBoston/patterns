@@ -1,0 +1,40 @@
+{{#if image}}
+  <style>
+    @media screen and (max-width: 768px) {
+      .ph-p {
+        background-image: url({{image.mobile1x}});
+      }
+    }
+
+    @media screen and (min-width: 768px) {
+      .ph-p {
+        background-image: url({{image.tablet1x}});
+      }
+    }
+
+    @media screen and (min-width: 1024px) {
+      .ph-p {
+        background-image: url({{image.desktop1x}});
+      }
+    }
+
+    @media screen and (min-width: 1200px) {
+      .ph-p {
+        background-image: url({{image.wide1x}});
+      }
+    }
+  </style>
+{{/if}}
+
+<div class="b b--fw">
+  <div class="ph{{#if has_caption}} ph--wc{{/if}}">
+    <div class="ph-p"></div>
+    {{#if has_caption}}
+      <div class="ph-c">
+        <div class="h2 tt-u m-b200">{{ title }}</div>
+        <div class="t--info m-b200">{{ caption }}</div>
+        <div class="t--legal tt-u">Photo Credit: {{ credit }}</div>
+      </div>
+    {{/if}}
+  </div>
+</div>
