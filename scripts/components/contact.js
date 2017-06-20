@@ -10,30 +10,32 @@ var BostonContact = (function () {
   function handleEmailClick(ev) {
     ev.preventDefault();
 
-    document.body.classList.add('no-s');
+    if (document.getElementById('contactMessage')) {
+      document.body.classList.add('no-s');
 
-    var template = document.getElementById('contactFormTemplate');
-    var container = document.createElement('div');
+      var template = document.getElementById('contactFormTemplate');
+      var container = document.createElement('div');
 
-    container.id = "contactFormModal";
-    container.innerHTML = template.innerHTML;
+      container.id = "contactFormModal";
+      container.innerHTML = template.innerHTML;
 
-    document.body.appendChild(container);
+      document.body.appendChild(container);
 
-    if (ev.target.title && ev.target.title !== '') {
-      document.getElementById('contactMessage').innerHTML = ev.target.title;
+      if (ev.target.title && ev.target.title !== '') {
+        document.getElementById('contactMessage').innerHTML = ev.target.title;
+      }
+
+      var close = Boston.childByEl(container, 'md-cb');
+      close[0].addEventListener('click', handleEmailClose);
+
+      var form = document.getElementById('contactForm');
+      form.addEventListener('submit', handleFormSubmit);
+
+      // Set the hidden fields
+      setBrowser(ev.target);
+      setURL(ev.target);
+      setToAddress(ev.target);
     }
-
-    var close = Boston.childByEl(container, 'md-cb');
-    close[0].addEventListener('click', handleEmailClose);
-
-    var form = document.getElementById('contactForm');
-    form.addEventListener('submit', handleFormSubmit);
-
-    // Set the hidden fields
-    setBrowser(ev.target);
-    setURL(ev.target);
-    setToAddress(ev.target);
   }
 
   function handleEmailClose(ev) {
@@ -120,11 +122,14 @@ var BostonContact = (function () {
   }
 
   function start() {
-    var emailLinks = document.querySelectorAll('a[href^=mailto]');
+    // The page needs to include a template with id of contactMessage
+    if (document.getElementById('contactMessage')) {
+      var emailLinks = document.querySelectorAll('a[href^=mailto]');
 
-    if (emailLinks.length > 0) {
-      for (var i = 0; i < emailLinks.length; i++) {
-        initEmailLink(emailLinks[i]);
+      if (emailLinks.length > 0) {
+        for (var i = 0; i < emailLinks.length; i++) {
+          initEmailLink(emailLinks[i]);
+        }
       }
     }
   }
