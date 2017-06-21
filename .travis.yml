@@ -3,6 +3,7 @@ node_js:
 - '6'
 install:
 - npm install
+- rvm use 2.4
 - gem install percy-cli
 script:
 - gulp build
