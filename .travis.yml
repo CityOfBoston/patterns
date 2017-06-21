@@ -10,7 +10,7 @@ script:
 - gulp build
 - fractal build
 after_script:
-- percy snapshot public --baseurl "/components" --snapshots_regex="(?!components/detail)" --widths "375,768,1024,1280"
+- percy snapshot --widths "375,768,1024,1280" public --baseurl "/components" --snapshots_regex="(?!components/detail)"
 after_success:
 - test $TRAVIS_PULL_REQUEST == "false" && test $TRAVIS_BRANCH == "master" && bash
   deploy.sh
