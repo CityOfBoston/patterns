@@ -17,25 +17,25 @@ context:
   links:
     - name: Pay a parking ticket for Boston
       href: https://www.boston.gov/departments/parking-clerk/how-pay-parking-ticket
-      image: https://cdn.rawgit.com/CityOfBoston/bostonicons/master/experiential/pay_taxes.svg
+      image: /images/b-dark.svg
     - name: Pay a parking ticket
       href: https://www.boston.gov/departments/parking-clerk/how-pay-parking-ticket
-      image: https://cdn.rawgit.com/CityOfBoston/bostonicons/master/experiential/pay_taxes.svg
+      image: /images/b-dark.svg
     - name: Pay a parking ticket
       href: https://www.boston.gov/departments/parking-clerk/how-pay-parking-ticket
-      image: https://cdn.rawgit.com/CityOfBoston/bostonicons/master/experiential/pay_taxes.svg
+      image: /images/b-dark.svg
     - name: Pay a parking ticket
       href: https://www.boston.gov/departments/parking-clerk/how-pay-parking-ticket
-      image: https://cdn.rawgit.com/CityOfBoston/bostonicons/master/experiential/pay_taxes.svg
+      image: /images/b-dark.svg
     - name: Pay a parking ticket for Boston
       href: https://www.boston.gov/departments/parking-clerk/how-pay-parking-ticket
-      image: https://cdn.rawgit.com/CityOfBoston/bostonicons/master/experiential/pay_taxes.svg
+      image: /images/b-dark.svg
     - name: Pay a parking ticket
       href: https://www.boston.gov/departments/parking-clerk/how-pay-parking-ticket
-      image: https://cdn.rawgit.com/CityOfBoston/bostonicons/master/experiential/pay_taxes.svg
+      image: /images/b-dark.svg
     - name: Pay a parking ticket
       href: https://www.boston.gov/departments/parking-clerk/how-pay-parking-ticket
-      image: https://cdn.rawgit.com/CityOfBoston/bostonicons/master/experiential/pay_taxes.svg
+      image: /images/b-dark.svg
     - name: Pay a parking ticket
       href: https://www.boston.gov/departments/parking-clerk/how-pay-parking-ticket
-      image: https://cdn.rawgit.com/CityOfBoston/bostonicons/master/experiential/pay_taxes.svg
+      image: /images/b-dark.svg
