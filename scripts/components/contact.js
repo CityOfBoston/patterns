@@ -10,7 +10,7 @@ var BostonContact = (function () {
   function handleEmailClick(ev) {
     ev.preventDefault();
 
-    if (document.getElementById('contactMessage')) {
+    if (document.getElementById('contactFormTemplate')) {
       document.body.classList.add('no-s');
 
       var template = document.getElementById('contactFormTemplate');
@@ -123,7 +123,7 @@ var BostonContact = (function () {
 
   function start() {
     // The page needs to include a template with id of contactMessage
-    if (document.getElementById('contactMessage')) {
+    if (document.getElementById('contactFormTemplate')) {
       var emailLinks = document.querySelectorAll('a[href^=mailto]');
 
       if (emailLinks.length > 0) {
