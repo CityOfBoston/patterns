@@ -14,7 +14,7 @@
 <link rel="stylesheet" href="themes/mandelbrot/css/default.css?cachebust=1.1.0" type="text/css">
 
 
-<title>City of Boston Patterns | Crispus</title>
+<title>Crispus | Crispus</title>
 
 </head>
 <body>
@@ -52,7 +52,7 @@
 
     <div class="Document-header">
         
-        <h1 class="Document-title">City of Boston Patterns</h1>
+        <h1 class="Document-title">Crispus</h1>
         
 
 
@@ -69,7 +69,23 @@
 
     
     
-    <p>This is the pattern library for the City of Boston. It’s currently a work in progress, but we’re adding to it every day.</p>
+    <p>This is the pattern library for the City of Boston. It’s currently a work in progress, but we’re adding to it every day. Currently, it powers much of Boston.gov and all of Boston’s 311 web portal.</p>
+<h2 id="getting-started">Getting Started</h2>
+<p>To get started with Crispus, you’ll need to add the styles. This can be done with:</p>
+<code><pre><span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"https://fonts.googleapis.com/css?family=Lora:400,400i|Montserrat:400,700"</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"stylesheet"</span>&gt;</span>
+<span class="hljs-comment">&lt;!--[if !IE]&gt;&lt;!--&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"stylesheet"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text/css"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"https://www.boston.gov/crispus/css/public.css"</span> /&gt;</span>
+<span class="hljs-comment">&lt;!--&lt;![endif]--&gt;</span>
+<span class="hljs-comment">&lt;!--[if lt IE 10]&gt;
+  &lt;link media="all" rel="stylesheet" href="https://www.boston.gov/crispus/css/ie.css"&gt;
+&lt;![endif]--&gt;</span></pre></code><p>This will give you all of the fonts that you need as well as all Crispus stylings.</p>
+<h3 id="scripts">Scripts</h3>
+<p>While we strive for no required javascript, there are a few places where it is necessary. Some components like the nav and video use inline scripts. If integrating those, make sure to include those scripts (for now).</p>
+<p>Other components can have their scripts included with:</p>
+<code><pre><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"https://www.boston.gov/crispus/scripts/all.js"</span>&gt;</span><span class="undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></pre></code><h3 id="application-wrapper">Application Wrapper</h3>
+<p>Boston.gov also provides a prebuilt header / footer layout for use with your applications. This can be used from:</p>
+<code><pre>https:<span class="hljs-regexp">//</span>www.boston.gov<span class="hljs-regexp">/api/</span>v1<span class="hljs-regexp">/layouts/</span>app</pre></code><p>This template needs to be used in a dynamic manner. For example, during an application’s build process, the layout could be downloaded and applied to the application. An exmaple of this can be reviewed on <a href="https://github.com/CityOfBoston/311/blob/526a034b980113d374ff3e7a47fe2bb6e8cfccba/scripts/fetch-templates.js">Boston’s 311 website code</a>.</p>
+<p>The benefit of adding this into an application is that it will more seamlessly fit within the Boston.gov ecosystem and automatically includes Crispus.</p>
 
     
 
@@ -527,10 +543,21 @@
         
     
         
+        <li class="Tree-item Tree-collection Tree-depth-3" data-behaviour="collection" id="tree-components-collection-department_icon">
+            <h4 class="Tree-collectionLabel" data-role="toggle">
+                <span>Department Icon</span>
+            </h4>
+            <ul class="Tree-collectionItems" data-role="items">
+            
+            
+            
+            
+    
+        
         
         <li class="Tree-item Tree-entity" data-role="item">
-            <a class="Tree-entityLink" href="components/detail/department_icon.html" data-pjax>
-                <span>Department Icon</span>
+            <a class="Tree-entityLink" href="components/detail/department_icon--default.html" data-pjax>
+                <span>Default</span>
                 
 
 <div class="Status Status--unlabelled">
@@ -547,6 +574,83 @@
 
 
             </a>
+        </li>
+        
+    
+        
+        
+        <li class="Tree-item Tree-entity" data-role="item">
+            <a class="Tree-entityLink" href="components/detail/department_icon--in-circle.html" data-pjax>
+                <span>In Circle</span>
+                
+
+<div class="Status Status--unlabelled">
+
+<div class="Status-dots">
+
+
+<span class="Status-dot" style="border-color: #29CC29;" title="Ready"></span>
+
+
+</div>
+
+</div>
+
+
+            </a>
+        </li>
+        
+    
+        
+        
+        <li class="Tree-item Tree-entity" data-role="item">
+            <a class="Tree-entityLink" href="components/detail/department_icon--in-circle-reversed.html" data-pjax>
+                <span>In Circle Reversed</span>
+                
+
+<div class="Status Status--unlabelled">
+
+<div class="Status-dots">
+
+
+<span class="Status-dot" style="border-color: #29CC29;" title="Ready"></span>
+
+
+</div>
+
+</div>
+
+
+            </a>
+        </li>
+        
+    
+        
+        
+        <li class="Tree-item Tree-entity" data-role="item">
+            <a class="Tree-entityLink" href="components/detail/department_icon--in-circle-large.html" data-pjax>
+                <span>In Circle Large</span>
+                
+
+<div class="Status Status--unlabelled">
+
+<div class="Status-dots">
+
+
+<span class="Status-dot" style="border-color: #29CC29;" title="Ready"></span>
+
+
+</div>
+
+</div>
+
+
+            </a>
+        </li>
+        
+    
+
+            </ul>
         </li>
         
     
@@ -786,6 +890,30 @@
         
     
         
+        
+        <li class="Tree-item Tree-entity" data-role="item">
+            <a class="Tree-entityLink" href="components/detail/select.html" data-pjax>
+                <span>Select</span>
+                
+
+<div class="Status Status--unlabelled">
+
+<div class="Status-dots">
+
+
+<span class="Status-dot" style="border-color: #29CC29;" title="Ready"></span>
+
+
+</div>
+
+</div>
+
+
+            </a>
+        </li>
+        
+    
+        
         <li class="Tree-item Tree-collection Tree-depth-4" data-behaviour="collection" id="tree-components-collection-textbox">
             <h4 class="Tree-collectionLabel" data-role="toggle">
                 <span>Textbox</span>
@@ -825,6 +953,78 @@
         <li class="Tree-item Tree-entity" data-role="item">
             <a class="Tree-entityLink" href="components/detail/textbox--textarea.html" data-pjax>
                 <span>Textarea</span>
+                
+
+<div class="Status Status--unlabelled">
+
+<div class="Status-dots">
+
+
+<span class="Status-dot" style="border-color: #29CC29;" title="Ready"></span>
+
+
+</div>
+
+</div>
+
+
+            </a>
+        </li>
+        
+    
+        
+        
+        <li class="Tree-item Tree-entity" data-role="item">
+            <a class="Tree-entityLink" href="components/detail/textbox--error.html" data-pjax>
+                <span>Error</span>
+                
+
+<div class="Status Status--unlabelled">
+
+<div class="Status-dots">
+
+
+<span class="Status-dot" style="border-color: #29CC29;" title="Ready"></span>
+
+
+</div>
+
+</div>
+
+
+            </a>
+        </li>
+        
+    
+        
+        
+        <li class="Tree-item Tree-entity" data-role="item">
+            <a class="Tree-entityLink" href="components/detail/textbox--implicit-input.html" data-pjax>
+                <span>Implicit Input</span>
+                
+
+<div class="Status Status--unlabelled">
+
+<div class="Status-dots">
+
+
+<span class="Status-dot" style="border-color: #29CC29;" title="Ready"></span>
+
+
+</div>
+
+</div>
+
+
+            </a>
+        </li>
+        
+    
+        
+        
+        <li class="Tree-item Tree-entity" data-role="item">
+            <a class="Tree-entityLink" href="components/detail/textbox--implicit-textarea.html" data-pjax>
+                <span>Implicit Textarea</span>
                 
 
 <div class="Status Status--unlabelled">
@@ -2023,6 +2223,70 @@
         
     
         
+        <li class="Tree-item Tree-collection Tree-depth-3" data-behaviour="collection" id="tree-components-collection-photo">
+            <h4 class="Tree-collectionLabel" data-role="toggle">
+                <span>Photo</span>
+            </h4>
+            <ul class="Tree-collectionItems" data-role="items">
+            
+            
+            
+            
+    
+        
+        
+        <li class="Tree-item Tree-entity" data-role="item">
+            <a class="Tree-entityLink" href="components/detail/photo--default.html" data-pjax>
+                <span>Default</span>
+                
+
+<div class="Status Status--unlabelled">
+
+<div class="Status-dots">
+
+
+<span class="Status-dot" style="border-color: #29CC29;" title="Ready"></span>
+
+
+</div>
+
+</div>
+
+
+            </a>
+        </li>
+        
+    
+        
+        
+        <li class="Tree-item Tree-entity" data-role="item">
+            <a class="Tree-entityLink" href="components/detail/photo--with-caption.html" data-pjax>
+                <span>With Caption</span>
+                
+
+<div class="Status Status--unlabelled">
+
+<div class="Status-dots">
+
+
+<span class="Status-dot" style="border-color: #FF9233;" title="WIP"></span>
+
+
+</div>
+
+</div>
+
+
+            </a>
+        </li>
+        
+    
+
+            </ul>
+        </li>
+        
+    
+        
         <li class="Tree-item Tree-collection Tree-depth-3" data-behaviour="collection" id="tree-components-collection-form_search">
             <h4 class="Tree-collectionLabel" data-role="toggle">
                 <span>Search</span>
@@ -2241,6 +2505,30 @@
         </li>
         
     
+        
+        
+        <li class="Tree-item Tree-entity" data-role="item">
+            <a class="Tree-entityLink" href="components/detail/section_header--small.html" data-pjax>
+                <span>Small</span>
+                
+
+<div class="Status Status--unlabelled">
+
+<div class="Status-dots">
+
+
+<span class="Status-dot" style="border-color: #29CC29;" title="Ready"></span>
+
+
+</div>
+
+</div>
+
+
+            </a>
+        </li>
+        
+    
 
             </ul>
         </li>
@@ -2371,6 +2659,166 @@
     
 
             </ul>
+        </li>
+        
+    
+
+            </ul>
+        </li>
+        
+    
+        
+        <li class="Tree-item Tree-collection Tree-depth-2" data-behaviour="collection" id="tree-components-collection-forms">
+            <h4 class="Tree-collectionLabel" data-role="toggle">
+                <span>Forms</span>
+            </h4>
+            <ul class="Tree-collectionItems" data-role="items">
+            
+            
+            
+            
+    
+        
+        <li class="Tree-item Tree-collection Tree-depth-3" data-behaviour="collection" id="tree-components-collection-emergency_alerts">
+            <h4 class="Tree-collectionLabel" data-role="toggle">
+                <span>Emergency Alerts</span>
+            </h4>
+            <ul class="Tree-collectionItems" data-role="items">
+            
+            
+            
+            
+    
+        
+        
+        <li class="Tree-item Tree-entity" data-role="item">
+            <a class="Tree-entityLink" href="components/detail/emergency_alerts.html" data-pjax>
+                <span>Emergency Alerts</span>
+                
+
+<div class="Status Status--unlabelled">
+
+<div class="Status-dots">
+
+
+<span class="Status-dot" style="border-color: #29CC29;" title="Ready"></span>
+
+
+</div>
+
+</div>
+
+
+            </a>
+        </li>
+        
+    
+
+            </ul>
+        </li>
+        
+    
+        
+        <li class="Tree-item Tree-collection Tree-depth-3" data-behaviour="collection" id="tree-components-collection-form_subscription">
+            <h4 class="Tree-collectionLabel" data-role="toggle">
+                <span>Subscription</span>
+            </h4>
+            <ul class="Tree-collectionItems" data-role="items">
+            
+            
+            
+            
+    
+        
+        
+        <li class="Tree-item Tree-entity" data-role="item">
+            <a class="Tree-entityLink" href="components/detail/form_subscription--default.html" data-pjax>
+                <span>Default</span>
+                
+
+<div class="Status Status--unlabelled">
+
+<div class="Status-dots">
+
+
+<span class="Status-dot" style="border-color: #29CC29;" title="Ready"></span>
+
+
+</div>
+
+</div>
+
+
+            </a>
+        </li>
+        
+    
+        
+        
+        <li class="Tree-item Tree-entity" data-role="item">
+            <a class="Tree-entityLink" href="components/detail/form_subscription--error.html" data-pjax>
+                <span>Error</span>
+                
+
+<div class="Status Status--unlabelled">
+
+<div class="Status-dots">
+
+
+<span class="Status-dot" style="border-color: #29CC29;" title="Ready"></span>
+
+
+</div>
+
+</div>
+
+
+            </a>
+        </li>
+        
+    
+
+            </ul>
+        </li>
+        
+    
+
+            </ul>
+        </li>
+        
+    
+        
+        <li class="Tree-item Tree-collection Tree-depth-2" data-behaviour="collection" id="tree-components-collection-grid">
+            <h4 class="Tree-collectionLabel" data-role="toggle">
+                <span>Grid</span>
+            </h4>
+            <ul class="Tree-collectionItems" data-role="items">
+            
+            
+            
+            
+    
+        
+        
+        <li class="Tree-item Tree-entity" data-role="item">
+            <a class="Tree-entityLink" href="components/detail/grid.html" data-pjax>
+                <span>Base</span>
+                
+
+<div class="Status Status--unlabelled">
+
+<div class="Status-dots">
+
+
+<span class="Status-dot" style="border-color: #29CC29;" title="Ready"></span>
+
+
+</div>
+
+</div>
+
+
+            </a>
         </li>
         
     
