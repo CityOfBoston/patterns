@@ -2,6 +2,8 @@
 // This module controls the City of Boston video component
 // ---------------------------
 var BostonContact = (function () {
+  var to_address;
+
   function initEmailLink(emailLink) {
     // Handle the onclick event
     emailLink.addEventListener('click', handleEmailClick);
@@ -68,7 +70,7 @@ var BostonContact = (function () {
         error: function() {
           handleError(form);
         }
-      });
+      }, "c43517a240ee61898c00600eaa775aa0d0e639322c3f275b780f66062f69");
     }
   }
 
@@ -81,6 +83,7 @@ var BostonContact = (function () {
     var name = Boston.childByEl(form, 'bos-contact-name');
     var subject = Boston.childByEl(form, 'bos-contact-subject');
     var message = Boston.childByEl(form, 'bos-contact-message');
+    var address_to = document.getElementById('contactFormToAddress');
     var valid = true;
 
     if (email[0].value == '' || !Boston.emailRE.test(email[0].value)) {
@@ -103,6 +106,10 @@ var BostonContact = (function () {
       valid = false;
     }
 
+    if (address_to.value !== to_address) {
+      valid = false;
+    }
+
     return valid;
   }
 
@@ -114,6 +121,7 @@ var BostonContact = (function () {
   function setToAddress(link) {
     var toField = document.getElementById('contactFormToAddress');
     toField.value = link.getAttribute('href').replace('mailto:', '');
+    to_address = link.getAttribute('href').replace('mailto:', '');
   }
 
   function setURL(link) {
