@@ -24,10 +24,6 @@ var BostonTabs = (function () {
     for (var i = 0; i < controls.length; i++) {
       if (controls[i].getAttribute('data-href') == location.hash) {
         controls[i].checked = true;
-
-        setTimeout(function() {
-          window.scrollTo(0, 0);
-        }, 1);
       }
     }
   }
