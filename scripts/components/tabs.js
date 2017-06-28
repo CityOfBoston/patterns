@@ -22,8 +22,12 @@ var BostonTabs = (function () {
     var controls = document.querySelectorAll('.tab-ctrl');
 
     for (var i = 0; i < controls.length; i++) {
-      if (controls[i].getAttribute('data-hash') == location.hash) {
-        controls[i].checked = true
+      if (controls[i].getAttribute('data-href') == location.hash) {
+        controls[i].checked = true;
+
+        setTimeout(function() {
+          window.scrollTo(0, 0);
+        }, 1);
       }
     }
   }
@@ -53,4 +57,4 @@ var BostonTabs = (function () {
   }
 })()
 
-BostonTabs.start()
+BostonTabs.start();
