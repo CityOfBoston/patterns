@@ -1,8 +1,9 @@
 title: Link with icon
 handle: link_with_icon
 status: ready
+preview: '@centered-dark'
 context:
   links:
     - name: Pay a parking ticket
       href: https://www.boston.gov/departments/parking-clerk/how-pay-parking-ticket
-      image: https://cdn.rawgit.com/CityOfBoston/bostonicons/master/experiential/pay_taxes.svg
+      image: https://www.boston.gov/sites/default/files/experiential_icons_no_ticket.svg
