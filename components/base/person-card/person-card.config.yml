@@ -1,0 +1,11 @@
+title: Person Card
+handle: person-card
+status: wip
+preview: '@centered'
+context:
+  people:
+  - name: Mayor Martin J. Walsh
+    position: Mayor
+    image: https://www.boston.gov/sites/default/files/mayor-walsh2.jpg
+    contact: mailto:mayor@boston.gov
+    url: https://www.boston.gov/mayor
