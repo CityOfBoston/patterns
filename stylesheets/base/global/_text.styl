@@ -75,10 +75,14 @@
 
     &--h
       &:hover
+      &:link:hover
         color: $optimistic-blue
 
   &--w
     color: $white
+
+    &:link
+      color: $white
 
     &--h
       &:hover
@@ -91,6 +95,7 @@
   &--s100
     font-size: responsive $font-100 $font-200
     font-range: 480px 1440px
+    line-height: $line-height-000
 
 // Text-alignment
 .ta
