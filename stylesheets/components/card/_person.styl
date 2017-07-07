@@ -15,7 +15,6 @@
  */
 
 .cdp
-  background-color: $grey-000
   display: flex
   flex-direction: column
 
@@ -64,3 +63,22 @@
     @media $media-xxlarge
       width: 173px
       height: 173px
+
+/* Handle theme variations */
+.b--g
+  .cdp
+    &-l
+      background-color: $white
+
+      &:hover
+        background-color: $optimistic-blue
+
+.b--b
+  .cdp
+    &-a
+      background-color: $optimistic-blue
+      border-top: $border-200 solid $charles-blue
+
+      &:hover
+        color: $white
+        background-color: $freedom-red
