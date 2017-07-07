@@ -1,0 +1,66 @@
+title: Grid of People
+handle: grid_person_cards
+status: wip
+variants:
+  - name: hub
+    status: 'ready'
+    preview: '@hub'
+context:
+  header:
+    title: City Government
+    contact: false
+  people:
+    - name: Mayor Martin J. Walsh
+      position: Mayor
+      image: https://www.boston.gov/sites/default/files/mayor-walsh2.jpg
+      contact: mailto:mayor@boston.gov
+      url: https://www.boston.gov/mayor
+      grid: g--1 g--3--sl
+    - name: Mayor Martin J. Walsh
+      position: Mayor
+      image: https://www.boston.gov/sites/default/files/mayor-walsh2.jpg
+      contact: mailto:mayor@boston.gov
+      url: https://www.boston.gov/mayor
+      grid: g--1 g--3--sl
+    - name: Mayor Martin J. Walsh
+      position: Mayor
+      image: https://www.boston.gov/sites/default/files/mayor-walsh2.jpg
+      contact: mailto:mayor@boston.gov
+      url: https://www.boston.gov/mayor
+      grid: g--1 g--3--sl
+    - name: Mayor Martin J. Walsh
+      position: Mayor
+      image: https://www.boston.gov/sites/default/files/mayor-walsh2.jpg
+      contact: mailto:mayor@boston.gov
+      url: https://www.boston.gov/mayor
+      grid: g--1 g--3--sl
+    - name: Mayor Martin J. Walsh
+      position: Mayor
+      image: https://www.boston.gov/sites/default/files/mayor-walsh2.jpg
+      contact: mailto:mayor@boston.gov
+      url: https://www.boston.gov/mayor
+      grid: g--1 g--3--sl
+    - name: Mayor Martin J. Walsh
+      position: Mayor
+      image: https://www.boston.gov/sites/default/files/mayor-walsh2.jpg
+      contact: mailto:mayor@boston.gov
+      url: https://www.boston.gov/mayor
+      grid: g--1 g--3--sl
+    - name: Mayor Martin J. Walsh
+      position: Mayor
+      image: https://www.boston.gov/sites/default/files/mayor-walsh2.jpg
+      contact: mailto:mayor@boston.gov
+      url: https://www.boston.gov/mayor
+      grid: g--1 g--3--sl
+    - name: Mayor Martin J. Walsh
+      position: Mayor
+      image: https://www.boston.gov/sites/default/files/mayor-walsh2.jpg
+      contact: mailto:mayor@boston.gov
+      url: https://www.boston.gov/mayor
+      grid: g--1 g--3--sl
+    - name: Mayor Martin J. Walsh
+      position: Mayor
+      image: https://www.boston.gov/sites/default/files/mayor-walsh2.jpg
+      contact: mailto:mayor@boston.gov
+      url: https://www.boston.gov/mayor
+      grid: g--1 g--3--sl
