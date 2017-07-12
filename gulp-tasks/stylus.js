@@ -10,7 +10,9 @@ module.exports = function (gulp, plugins, options) {
         use: [
           plugins.poststylus([
             'lost',
-            plugins.autoprefixer(),
+            plugins.autoprefixer({
+              browsers: ['safari <= 5']
+            }),
             'rucksack-css',
             'laggard',
             require('postcss-flexibility')
