@@ -63,21 +63,18 @@ var BostonMap = (function () {
     var zoom = mapObj.componentZoom ? mapObj.componentZoom : mapObj.esriZoom ? mapObj.esriZoom : 14;
 
     // Apply default coordinates and zoom level.
-    var map[map[0].id] = L.map(mapID, {zoomControl: false}).setView([latitude, longitude], zoom);
+    map[map[0].id] = L.map(mapID, {zoomControl: false}).setView([latitude, longitude], zoom);
 
     if (mapOptions == 1) {
       // Add zoom control to bottom right.
       L.control.zoom({
         position:'bottomright'
-      }).addTo(map);
-    } else {
-      alert('test');
-      map.dragging.disable();
+      }).addTo(map[map[0].id]);
     }
 
     // Add custom pins created in Map component.
     for (var j = 0; j < points.length; j++) {
-      var customPin = L.marker([points[j].lat, points[j].long]).addTo(map);
+      var customPin = L.marker([points[j].lat, points[j].long]).addTo(map[map[0].id]);
       customPin.bindPopup(
         '<a class="title" href="' + points[j].url + '" target="_blank">' +
           '<b>' +
@@ -91,7 +88,7 @@ var BostonMap = (function () {
     }
 
     // Add mapbox basemap.
-    L.tileLayer(basemapUrl).addTo(map);
+    L.tileLayer(basemapUrl).addTo(map[map[0].id]);
 
     // Set the legend position.
     var legend = L.control({position: 'topleft'});
@@ -107,7 +104,7 @@ var BostonMap = (function () {
           "color": feeds[k].color,
           "weight": 3
         }
-      }).addTo(map);
+      }).addTo(map[map[0].id]);
       // Create popups for pin markers
       layerObj.bindPopup(createPopup(feeds[k].popup));
       // Add item to legend.
@@ -117,7 +114,7 @@ var BostonMap = (function () {
     // Add "div" variable created in loop to legend.
     legend.onAdd = createLegend(div);
     // Add legend to map.
-    legend.addTo(map);
+    legend.addTo(map[map[0].id]);
   }
 
   function start() {
