@@ -12,8 +12,11 @@
  */
 
 .sh
-  border-bottom: $border-400 solid $charles-blue
+  border-bottom: $border-300 solid $charles-blue
   padding-bottom: $sizing-100
+
+  @media $media-large
+    border-bottom: $border-400 solid $charles-blue
 
   &--sm
     border-bottom: $border-200 solid $charles-blue

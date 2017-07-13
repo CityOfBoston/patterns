@@ -23,12 +23,20 @@
 
   &-cb
     position: absolute
-    width: 65px
-    height: 65px
+    width: 45px
+    height: 45px
     padding: 0
     top: 0
     right: 0
     color: $white
+
+    @media $media-large
+      width: 55px
+      height: 55px
+
+    @media $media-xlarge
+      width: 65px
+      height: 65px
 
     &:after
       background-color: $freedom-red

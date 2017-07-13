@@ -15,7 +15,8 @@
   background-color: $optimistic-blue
   color: $white
   font-family: $sans
-  font-size: $font-200
+  font-size: responsive 14px 16px
+  font-range: 480px 1440px
   font-weight: 700
   letter-spacing: 1px
   line-height: 1rem
@@ -78,6 +79,23 @@
 
     @media $media-xlarge
       margin-top: 0
+
+  &--100
+    padding: $sizing-200 $sizing-300
+
+  &--200
+    padding: $sizing-300
+
+    &--m
+      @media $media-medium
+        padding: $sizing-300
+
+  &--300
+    padding: $sizing-400
+
+    &--l
+      @media $media-large
+        padding: $sizing-400
 
   &--700
     padding: $sizing-400 $sizing-900
