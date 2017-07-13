@@ -46,7 +46,7 @@ var Boston = (function () {
     field.parentElement.appendChild(errors);
   }
 
-  function request(obj) {
+  function request(obj, token) {
     var request = new XMLHttpRequest();
     request.open(obj.method, obj.url, true);
 
@@ -57,6 +57,10 @@ var Boston = (function () {
         obj.error(request);
       }
     };
+
+    if (token) {
+      request.setRequestHeader("Authorization", "Token " + token);
+    }
 
     request.onerror = function() {
       obj.error(request);

@@ -1,0 +1,12 @@
+{{#each people as |person|}}
+<div class="cdp {{#if person.grid}} m-t500 {{person.grid}}{{/if}}">
+  <a href="{{ person.url }}" class="cdp-l d-b p-a300">
+    <img src="{{ person.image }}" alt="{{ person.name }}" class="cdp-i" />
+    <div>
+      <div class="cdp-t t--sans t--upper">{{ person.name }}</div>
+      <div class="cdp-st t--subinfo t--g300">{{ person.position }}</div>
+    </div>
+  </a>
+  <a href="{{ person.contact }}" class="d-b bg--cb cdp-a ta-c p-a300 t--upper t--sans t--w t--ob--h t--s100">Send Email</a>
+</div>
+{{/each}}

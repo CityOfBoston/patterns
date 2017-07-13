@@ -1,0 +1,73 @@
+/*
+
+   BREADCRUMB
+
+   Base:
+    brc
+
+   Modifier:
+    wh = with hero
+
+   Element:
+    s = separator
+    t = title
+    lu = last updated
+    l = list
+    l-i = list item
+ */
+
+.brc
+  border-bottom: 1px dashed $grey-100
+  line-height: 1
+  padding-bottom: $sizing-200
+  padding-right: 28%
+  display: none
+
+  &--wh
+    @media $media-large
+      margin: -3rem
+      margin-top: -150px
+      position: relative
+      background-color: $white
+      padding: 3rem
+      padding-bottom: 100px
+      margin-bottom: -100px
+
+  @media $media-large
+    display: block
+
+  &-l
+    margin: 0
+    padding: 0
+    list-style: none
+    background: none
+
+    &-i
+      margin: 0
+      padding: 0
+      list-style: none
+      background: none
+      display: inline-block
+      font-family: $sans
+      font-size: responsive 12px 13px
+      font-range: 1024px 1920px
+      text-transform: uppercase
+      color: $freedom-red
+
+  &-s
+    color: $grey-200
+    font-size: 16px
+    margin-left: -4px
+    padding: 0 $sizing-200
+
+  &-lu
+    float: right
+    margin-top: -37px
+    font-size: responsive 14px 16px
+    font-range: 1024px 1920px
+    font-style: italic
+    display: none
+
+    @media $media-large
+      display: block
+      position: relative
