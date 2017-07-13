@@ -13,7 +13,7 @@ rev=$(git rev-parse --short HEAD)
 cd public
 
 git init
-git config user.name "City of Boston Digital Team"
+git config user.name "cob-deployer"
 git config user.email "digital@boston.gov"
 
 git remote add upstream "https://$GH_TOKEN@github.com/cityofboston/patterns.git"
