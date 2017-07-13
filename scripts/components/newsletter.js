@@ -1,5 +1,5 @@
 'use strict'
-// This module controls the City of Boston video component
+// This module controls the City of Boston newsletter component
 // ---------------------------
 var BostonNewsletter = (function () {
   function initForm(form) {

@@ -14,7 +14,35 @@
 
 .mp
   width: 100%
-  padding-bottom: 48%
+  padding-bottom: 130%
+
+  @media $media-medium
+    padding-bottom: 75%
+
+  @media $media-large
+    padding-bottom: 60%
+
+  @media $media-xlarge
+    padding-bottom: 48%
+
+  &.is-active
+    .mp-e
+      display: block
+
+    .mp-h
+      display: none
+
+    .mp-e
+    .legend
+    .leaflet-control
+      opacity: 1
+
+  &-e
+    position: absolute
+    top: 0
+    right: 0
+    z-index: 2
+    display: none
 
   &-h
     position: absolute
@@ -32,6 +60,21 @@
       transform: translate(-50%, -50%)
       width: 90%
 
+      @media $media-medium
+        width: 75%
+
+      @media $media-large
+        width: 60%
+
+      @media $media-xlarge
+        width: 48%
+
+  .leaflet-control
+  .legend
+  .mp-e
+    opacity: 0
+    transition: all 0.2s
+
   .legend
     border-radius: 0
     color: $charles-blue
@@ -46,3 +89,14 @@
       height: $sizing-200
       width: $sizing-200
       margin-right: $sizing-200
+
+  .map
+    position: absolute
+    top: 0
+    left: 0
+    right: 0
+    bottom: 0
+    z-index: 1
+
+  &-st
+    line-height: $line-height-300
