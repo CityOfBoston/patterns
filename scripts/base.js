@@ -39,6 +39,10 @@ var Boston = (function () {
     }
   }
 
+  function hasClass(element, cls) {
+    return (' ' + element.className + ' ').indexOf(' ' + cls + ' ') > -1;
+  }
+
   function invalidateField(field, message) {
     var errors = document.createElement('div');
     errors.className = "t--subinfo t--err m-t100";
@@ -80,6 +84,7 @@ var Boston = (function () {
     disableButton: disableButton,
     enableButton: enableButton,
     emailRE: emailRE,
+    hasClass: hasClass,
     invalidateField: invalidateField,
     zipRE: zipRE
   }
