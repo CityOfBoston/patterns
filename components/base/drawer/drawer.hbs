@@ -1,6 +1,6 @@
 {{#each drawers as |drawer|}}
   <div class="dr{{#if variant}} {{variant}}{{/if}}">
-    {{#unless js}}<input type="checkbox" id="dr-tr{{ drawer.index }}" class="dr-tr a11y--h">{{/unless}}
+    {{#unless js}}<input type="checkbox" id="dr-tr{{ drawer.index }}" class="dr-tr a11y--h"{{#if drawer.open}} checked{{/if}}>{{/unless}}
     <{{#if js}}button{{else}}label for="dr-tr{{ drawer.index }}"{{/if}} class="dr-h">
       <div class="dr-ic"><svg xmlns="http://www.w3.org/2000/svg" viewBox="-2 8.5 18 25"><path class="dr-i" d="M16 21L.5 33.2c-.6.5-1.5.4-2.2-.2-.5-.6-.4-1.6.2-2l12.6-10-12.6-10c-.6-.5-.7-1.5-.2-2s1.5-.7 2.2-.2L16 21z"/></svg></div>
       <div class="dr-t">{{ drawer.title }}</div>
