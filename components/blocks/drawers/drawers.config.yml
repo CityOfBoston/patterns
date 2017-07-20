@@ -5,6 +5,19 @@ variants:
   - name: hub
     status: 'ready'
     preview: '@hub'
+  - name: default open
+    status: 'ready'
+    context:
+      drawers:
+        - index: 1
+          title: 'November 8, 2016: General Election'
+          subtitle: 'Last updated: 2/2017'
+          content: '<p>Here is some test content.</p><p>Here is some test content.</p><p>Here is some test content.</p><p>Here is some test content.</p>'
+          open: true
+        - index: 2
+          title: 'November 8, 2016: General Election'
+          subtitle: 'Last updated: 2/2017'
+          content: '<p>Here is some test content.</p><p>Here is some test content.</p><p>Here is some test content.</p><p>Here is some test content.</p>'
 context:
   header:
     title: Election Results
