@@ -30,63 +30,53 @@ th {
   padding: 0;
 }
 
-table.responsive-table {
-  @media (min-width: 768px) {
-    width: 100%;
-    margin:0;
-    padding:0;
-  }
-}
-
-table.responsive-table thead {
-  display: none;
-  text-transform: uppercase;
-  @media (min-width: 768px) {
-    display: table-header-group;
-  }
-}
-
-table.responsive-table th {
-  display: none;
-  background-color: $charles-blue;
-  font-family: $sans;
-  font-weight: inherit;
-  line-height: 2.16667em;
-  text-transform: uppercase;
-  color: $white;
-  @media (min-width: 768px) {
-    display: table-cell;
-  }
-  &:first-of-type,
-  &.table-left {
-    text-align: left;
-  }
-  text-align: right;
-  padding: 9px;
-}
-
-table.responsive-table tr {
-  display: block;
-  @media (min-width: 768px) {
-    display: table-row;
-  }
-}
-
-table.responsive-table tr:after {
-  content: "";
-  display: table;
-  clear: both;
-  margin-bottom: 15px;
-  @media (min-width: 768px) {
+.responsive-table {
+  thead {
     display: none;
-    margin-bottom: 0;
+    text-transform: uppercase;
+    @media (min-width: 768px) {
+      display: table-header-group;
+    }
+    th {
+      background-color: $charles-blue;
+      font-family: $sans;
+      font-weight: inherit;
+      line-height: 2.16667em;
+      text-transform: uppercase;
+      color: $white;
+      text-align: right;
+      padding: 10px;
+      @media (min-width: 768px) {
+        display: table-cell;
+      }
+      &:first-of-type {
+        text-align: left;
+      }
+    }
   }
-}
-
-table.responsive-table tr:before {
-  display: block;
-  @media (min-width: 768px) {
-    display: none;
+  tbody {
+    tr {
+      display: block;
+      @media (min-width: 768px) {
+        display: table-row;
+      }
+      &:before {
+        display: block;
+        @media (min-width: 768px) {
+          display: none;
+        }
+      }
+      &:after {
+        content: "";
+        display: table;
+        clear: both;
+        margin-bottom: 15px;
+        @media (min-width: 768px) {
+          display: none;
+          margin-bottom: 0;
+        }
+      }
+    }
   }
 }
 
