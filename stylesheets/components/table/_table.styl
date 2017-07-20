@@ -31,6 +31,14 @@ th {
 }
 
 .responsive-table {
+  border: none;
+  @media (min-width: 768px) {
+    border-width: 1px;
+    border-style: solid;
+  }
+  &* {
+    border-color: $charles-blue;
+  }
   thead {
     display: none;
     text-transform: uppercase;
@@ -55,10 +63,14 @@ th {
     }
   }
   tbody {
+    color: $charles-blue;
     tr {
       display: block;
       @media (min-width: 768px) {
         display: table-row;
+      }
+      &:nth-child(odd) {
+        background-color: #F2F2F2;
       }
       &:before {
         display: block;
@@ -76,77 +88,42 @@ th {
           margin-bottom: 0;
         }
       }
+      td {
+        display: block;
+        float: left;
+        clear: left;
+        width: 100%;
+        text-align: right;
+        padding: 10px;
+        line-height: 2.16667em;
+        &:first-of-type {
+          text-align: left;
+          font-style: italic;
+        }
+        @media (min-width: 768px) {
+          width: inherit;
+          clear: none;
+          float: none;
+          display: table-cell;
+        }
+        &:before {
+          content: attr(data-label);
+          float: left;
+          text-transform: uppercase;
+          font-weight: bold;
+          @media (min-width: 768px) {
+            display: none;
+          }
+        }
+      }
     }
   }
 }
 
-table.responsive-table td {
-  display: block;
-  float: left;
-  clear: left;
-  width: 100%;
-  text-align: right;
-  padding: 10px;
-  @media (min-width: 768px) {
-    width: inherit;
-    clear: none;
-    float: none;
-    display: table-cell;
-    //text-align: center;
-  }
-}
-
-table.responsive-table td:before {
-  content: attr(data-label);
-  float: left;
-  text-transform: uppercase;
-  font-weight: bold;
-  @media (min-width: 768px) {
-    display: none;
-  }
-}
-
-table.responsive-table,
-table.responsive-table * {
-  border-color: $charles-blue;
-}
-
-table.responsive-table {
-  border: none;
-  @media (min-width: 768px) {
-    border-width: 1px;
-    border-style: solid;
-  }
-}
-
-table.responsive-table tr {
-  border-width: 1px;
-}
-
-table.responsive-table td {
-  line-height: 2.16667em;
-  &:not(:last-child) {
-    border-bottom: none;
-  }
-  @media (min-width: 768px) {
-    &:last-child {
-      border-right: none;
-    }
-  }
-}
 
 tbody {
-  color: $charles-blue;
   tr {
-    &:nth-child(odd) {
-      background-color: #F2F2F2;
-    }
     td {
-      &:first-of-type,
-      &.table-left {
-        text-align: left;
-        font-style: italic;
-      }
       border: none;
       text-align: right;
     }
