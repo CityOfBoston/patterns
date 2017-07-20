@@ -134,15 +134,11 @@ table.responsive-table tr {
 }
 
 table.responsive-table td {
-  //border: 1px solid $charles-blue;
+  line-height: 2.16667em;
   &:not(:last-child) {
     border-bottom: none;
   }
   @media (min-width: 768px) {
-    //border-right-width: 1px;
-    //border-right-style: solid;
-    //border-bottom-width: 1px;
-    //border-bottom-style: solid;
     &:last-child {
       border-right: none;
     }
@@ -150,7 +146,7 @@ table.responsive-table td {
 }
 
 tbody {
-  color: #091F2F;
+  color: $charles-blue;
   tr {
     &:nth-child(odd) {
       background-color: #F2F2F2;
@@ -166,7 +162,7 @@ tbody {
     }
   }
   tr.total {
-    background-color: #091F2F;
+    background-color: $charles-blue;
     color: white;
   }
   tr.subtotal {
