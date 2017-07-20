@@ -6,11 +6,7 @@
     tbl
 
    Elements:
-    h = header
-    c = content
-    ic = icon
-    t = title
-    st = subtitle
+    None Yet
 
    Modifier:
     None Yet
@@ -21,11 +17,6 @@
   width: 100%;
   border-collapse: collapse;
   border-spacing: 0;
-  border: none;
-  @media (min-width: 768px) {
-    border-width: 1px;
-    border-style: solid;
-  }
   &* {
     border-color: $charles-blue;
   }
@@ -46,6 +37,9 @@
       padding: 10px;
       @media (min-width: 768px) {
         display: table-cell;
+      }
+      &:not(:last-child) {
+        border-right-color: $white;
       }
       &:first-of-type {
         text-align: left;
