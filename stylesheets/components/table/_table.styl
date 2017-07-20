@@ -18,8 +18,6 @@
  */
 
 table {
-  // Add vertical rhythm margins.
-  @include margin(1 0);
   // Remove most spacing between table cells.
   border-collapse: collapse;
   border-spacing: 0;
@@ -59,6 +57,12 @@ table.responsive-table th {
   @media (min-width: 768px) {
     display: table-cell;
   }
+  &:first-of-type,
+  &.table-left {
+    text-align: left;
+  }
+  text-align: right;
+  padding: 9px;
 }
 
 table.responsive-table tr {
@@ -98,7 +102,7 @@ table.responsive-table td {
     clear: none;
     float: none;
     display: table-cell;
-    text-align: center;
+    //text-align: center;
   }
 }
 
@@ -130,19 +134,51 @@ table.responsive-table tr {
 }
 
 table.responsive-table td {
-  border: 1px solid $charles-blue;
+  //border: 1px solid $charles-blue;
   &:not(:last-child) {
     border-bottom: none;
   }
   @media (min-width: 768px) {
-    border-right-width: 1px;
-    border-right-style: solid;
-    border-bottom-width: 1px;
-    border-bottom-style: solid;
+    //border-right-width: 1px;
+    //border-right-style: solid;
+    //border-bottom-width: 1px;
+    //border-bottom-style: solid;
     &:last-child {
       border-right: none;
     }
   }
+}
+
+tbody {
+  color: #091F2F;
+  tr {
+    &:nth-child(odd) {
+      background-color: #F2F2F2;
+    }
+    td {
+      &:first-of-type,
+      &.table-left {
+        text-align: left;
+        font-style: italic;
+      }
+      border: none;
+      text-align: right;
+    }
+  }
+  tr.total {
+    background-color: #091F2F;
+    color: white;
+  }
+  tr.subtotal {
+    background-color: #58585B;
+    color: white;
+  }
+}
+@media (max-width: 767px) {
+.responsive-table tbody tr td:first-of-type,
+.responsive-table tbody tr td.table-left {
+  text-align: right;
+}
 }
 
 table.responsive-table th {
