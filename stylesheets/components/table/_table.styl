@@ -33,7 +33,7 @@ th {
 }
 
 table.responsive-table {
-  @include respond-to(m) {
+  @media (min-width: 768px) {
     width: 100%;
     margin:0;
     padding:0;
@@ -43,23 +43,27 @@ table.responsive-table {
 table.responsive-table thead {
   display: none;
   text-transform: uppercase;
-  @include respond-to(m) {
+  @media (min-width: 768px) {
     display: table-header-group;
   }
 }
 
 table.responsive-table th {
   display: none;
-  background-color: color($charles-blue);
-  @include sans-upper-dark(color($white));
-  @include respond-to(m) {
+  background-color: $charles-blue;
+  font-family: $sans;
+  font-weight: inherit;
+  line-height: 2.16667em;
+  text-transform: uppercase;
+  color: $white;
+  @media (min-width: 768px) {
     display: table-cell;
   }
 }
 
 table.responsive-table tr {
   display: block;
-  @include respond-to(m) {
+  @media (min-width: 768px) {
     display: table-row;
   }
 }
@@ -69,7 +73,7 @@ table.responsive-table tr:after {
   display: table;
   clear: both;
   margin-bottom: 15px;
-  @include respond-to(m) {
+  @media (min-width: 768px) {
     display: none;
     margin-bottom: 0;
   }
@@ -77,7 +81,7 @@ table.responsive-table tr:after {
 
 table.responsive-table tr:before {
   display: block;
-  @include respond-to(m) {
+  @media (min-width: 768px) {
     display: none;
   }
 }
@@ -89,7 +93,7 @@ table.responsive-table td {
   width: 100%;
   text-align: right;
   padding: 10px;
-  @include respond-to(m) {
+  @media (min-width: 768px) {
     width: inherit;
     clear: none;
     float: none;
@@ -103,19 +107,19 @@ table.responsive-table td:before {
   float: left;
   text-transform: uppercase;
   font-weight: bold;
-  @include respond-to(m) {
+  @media (min-width: 768px) {
     display: none;
   }
 }
 
 table.responsive-table,
 table.responsive-table * {
-  border-color: color($blue-extra-dark);
+  border-color: $charles-blue;
 }
 
 table.responsive-table {
   border: none;
-  @include respond-to(m) {
+  @media (min-width: 768px) {
     border-width: 1px;
     border-style: solid;
   }
@@ -126,11 +130,11 @@ table.responsive-table tr {
 }
 
 table.responsive-table td {
-  border: 1px solid color($blue-extra-dark);
+  border: 1px solid $charles-blue;
   &:not(:last-child) {
     border-bottom: none;
   }
-  @include respond-to(m) {
+  @media (min-width: 768px) {
     border-right-width: 1px;
     border-right-style: solid;
     border-bottom-width: 1px;
@@ -142,12 +146,12 @@ table.responsive-table td {
 }
 
 table.responsive-table th {
-  border: 1px solid color($blue-extra-dark);
+  border: 1px solid $charles-blue;
 }
 
 table.responsive-table--horizontal th:not(:last-child) {
-  border-right-color: color($white);
+  border-right-color: $white;
 }
 table.responsive-table--vertical tr:not(:last-child) th {
-  border-bottom-color: color($white);
+  border-bottom-color: $white;
 }
