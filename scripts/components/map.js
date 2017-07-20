@@ -43,7 +43,6 @@ var BostonMap = (function () {
 
     // Get array of map objects from Drupal.
     var mapJSON = mapData[map[0].id];
-    console.log(mapJSON);
 
     // Convert JSON into javascript object.
     var mapObj = JSON.parse(mapJSON);
