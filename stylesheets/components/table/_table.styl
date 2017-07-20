@@ -72,23 +72,8 @@ th {
       &:nth-child(odd) {
         background-color: #F2F2F2;
       }
-      &:before {
-        display: block;
-        @media (min-width: 768px) {
-          display: none;
-        }
-      }
-      &:after {
-        content: "";
-        display: table;
-        clear: both;
-        margin-bottom: 15px;
-        @media (min-width: 768px) {
-          display: none;
-          margin-bottom: 0;
-        }
-      }
       td {
+        border: none;
         display: block;
         float: left;
         clear: left;
@@ -96,15 +81,15 @@ th {
         text-align: right;
         padding: 10px;
         line-height: 2.16667em;
-        &:first-of-type {
-          text-align: left;
-          font-style: italic;
-        }
         @media (min-width: 768px) {
           width: inherit;
           clear: none;
           float: none;
           display: table-cell;
+          &:first-of-type {
+            text-align: left;
+            font-style: italic;
+          }
         }
         &:before {
           content: attr(data-label);
@@ -118,39 +103,4 @@ th {
       }
     }
   }
-}
-
-
-tbody {
-  tr {
-    td {
-      border: none;
-      text-align: right;
-    }
-  }
-  tr.total {
-    background-color: $charles-blue;
-    color: white;
-  }
-  tr.subtotal {
-    background-color: #58585B;
-    color: white;
-  }
-}
-@media (max-width: 767px) {
-.responsive-table tbody tr td:first-of-type,
-.responsive-table tbody tr td.table-left {
-  text-align: right;
-}
-}
-
-table.responsive-table th {
-  border: 1px solid $charles-blue;
-}
-
-table.responsive-table--horizontal th:not(:last-child) {
-  border-right-color: $white;
-}
-table.responsive-table--vertical tr:not(:last-child) th {
-  border-bottom-color: $white;
 }
