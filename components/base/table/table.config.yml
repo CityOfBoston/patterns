@@ -1,0 +1,19 @@
+title: Table
+handle: table
+status: ready
+context:
+  title: "Playgrounds and Parks in Allston-Brighton"
+  headers:
+    - name: "Location"
+    - name: "Address"
+    - name: "Features"
+  rows:
+    - col1: 'Brighton Common'
+      col2: '30 Chestnut Hill Ave'
+      col3: 'Stage/Amphitheater'
+    - col1: 'Commonwealth Avenue Outbound'
+      col2: '484 Commonwealth Avenue'
+      col3: 'Public Art'
+    - col1: 'Oak Square'
+      col2: '430 Faneuil Street'
+      col3: 'Public Art'
