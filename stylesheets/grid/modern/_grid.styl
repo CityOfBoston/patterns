@@ -58,6 +58,11 @@
   &--12
     lost-column: 12/12
 
+  @media $media-medium
+    &--3
+      &--m
+        lost-column: 3/12 4
+
   @media $media-large
     &--1
       lost-column: 1/12 12
@@ -68,17 +73,26 @@
     &--2
       lost-column: 2/12 6
 
+      &--l
+        lost-column: 2/12 6
+
       &--sl
         lost-column: 6/12 2
 
     &--3
       lost-column: 3/12 4
 
+      &--l
+        lost-column: 3/12 4
+
       &--sl
         lost-column: 6/12 2
 
     &--4
       lost-column: 4/12 3
+
+      &--l
+        lost-column: 4/12 3
 
       &--sl
         lost-column: 6/12 2
@@ -88,6 +102,9 @@
 
     &--6
       lost-column: 6/12 2
+
+      &--l
+        lost-column: 6/12 2
 
     &--7
       lost-column: 7/12
@@ -127,3 +144,7 @@
     &--5
       &--sl
         lost-column: 5/12
+
+    &--6
+      &--sl
+        lost-column: 6/12 2
