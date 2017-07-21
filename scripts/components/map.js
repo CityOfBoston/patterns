@@ -43,6 +43,7 @@ var BostonMap = (function () {
 
     // Get array of map objects from Drupal.
     var mapJSON = mapData[map[0].id];
+
     // Convert JSON into javascript object.
     var mapObj = JSON.parse(mapJSON);
     // Set the Map ID used to create a unique canvas for each map.
