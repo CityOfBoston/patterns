@@ -1,0 +1,25 @@
+title: Cabinet
+handle: cabinet
+status: ready
+context:
+  people:
+    - name: Mayor Martin J. Walsh
+      position: Mayor
+      image: https://www.boston.gov/sites/default/files/mayor-walsh2.jpg
+      contact: mailto:mayor@boston.gov
+      url: https://www.boston.gov/mayor
+      grid: false
+  cabinet:
+    title: Mayor's Office
+    purpose: The agencies reporting to the Mayor's Office represent the Mayor and the City in legal matters, public relations, and elections. The Mayor's vision for the future of the City is reflected in the policies and directions carried forward by the staff of these offices.
+  divisions:
+    - name: Mayor's Office
+      url: https://www.boston.gov/contact/mayors-office
+    - name: Elections
+      url: https://www.boston.gov/contact/elections
+    - name: Law
+      url: https://www.boston.gov/contact/law
+    - name: Press Office
+      url: https://www.boston.gov/contact/press-office
+    - name: Women's Advancement
+      url: https://www.boston.gov/contact/womens-advancement
