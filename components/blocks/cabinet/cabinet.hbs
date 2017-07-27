@@ -1,0 +1,25 @@
+<div class="b b--fw">
+  <div class="b-c">
+    <div class="g">
+      <div class="g--3 m-b300 b-b000--s">
+        {{> @person-card }}
+      </div>
+      <div class="g--9">
+        <div class="g">
+          <div class="g--8">
+            <h3 class="t--intro">{{ cabinet.title }}</h3>
+            <p class="t--s500 lh--300">{{ cabinet.purpose }}</p>
+          </div>
+          <div class="g--4">
+            <h4 class="t--sans t--upper m-b300">Departments, Boards, and Agencies</h4>
+            <ul class="ul">
+              {{#each divisions as |division|}}
+                <li class="t--sans tt-u"><a href="{{ division.url }}">{{ division.name }}</a></li>
+              {{/each}}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
