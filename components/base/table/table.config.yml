@@ -25,3 +25,5 @@ context:
           value: '430 Faneuil Street'
         - label: 'Features'
           value: 'Public Art'
+variants:
+  - name: Vertical
