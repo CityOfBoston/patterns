@@ -1,25 +1,12 @@
 <table border="1" cellpadding="1" cellspacing="1" class="responsive-table responsive-table--vertical">
   <tbody>
-    <tr>
-      <th>Header 1</th>
-      <td data-label="Header 1">test</td>
-      <td data-label="Header 1">test</td>
-      <td data-label="Header 1">test</td>
-      <td data-label="Header 1">test</td>
-    </tr>
-    <tr>
-      <th>header 2</th>
-      <td data-label="header 2">test 2</td>
-      <td data-label="header 2">test 2</td>
-      <td data-label="header 2">test 2</td>
-      <td data-label="header 2">test 2</td>
-    </tr>
-    <tr>
-      <th>header 3</th>
-      <td data-label="header 3">test 3</td>
-      <td data-label="header 3">test 3</td>
-      <td data-label="header 3">test 3</td>
-      <td data-label="header 3">test3</td>
-    </tr>
+    {{#each rows as |row|}}
+      <tr>
+        <th>{{ row.label }}</th>
+          {{#each row.value as |item|}}
+            <td data-label="{{ row.label }}">{{ item }}</td>
+          {{/each}}
+      </tr>
+    {{/each}}
   </tbody>
 </table>
