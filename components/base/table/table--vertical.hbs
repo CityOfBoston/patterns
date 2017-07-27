@@ -2,9 +2,9 @@
   <tbody>
     {{#each rows as |row|}}
       <tr>
-        <th>{{ row.label }}</th>
-          {{#each row.value as |item|}}
-            <td data-label="{{ row.label }}">{{ item }}</td>
+        <th>{{ row.row.0.label }}</th>
+          {{#each row.row as |item|}}
+            <td data-label="{{ item.label }}">{{ item.value }}</td>
           {{/each}}
       </tr>
     {{/each}}
