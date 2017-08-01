@@ -31,16 +31,20 @@ var BostonTable = (function () {
           }
         }
       }
-      document.body.appendChild(newTable);
+      tables[i].replaceWith(newTable);
     }
   }
 
   function start() {
-    // Check for vertical tables
+    // Check for vertical tables.
     var tables = document.querySelectorAll('.responsive-table--vertical');
 
-    // If there are vertical tables, run...
-    if (tables.length > 0) {
+    // Get the current window size.
+    var width = window.innerWidth
+      || document.documentElement.clientWidth
+      || document.body.clientWidth;
+    // If there are vertical tables, and we're on a mobile screen, run...
+    if (tables.length > 0 && width <= 768) {
       columnToTable(tables);
     }
   }
