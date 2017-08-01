@@ -18,11 +18,12 @@ var BostonTable = (function () {
       for(var c = 0; c < maxColumns; c++) {
         newTable.insertRow(c);
         for(var r = 0; r < tables[i].rows.length; r++) {
+          console.log(tables[i].rows[r].cells[c].tagName);
           if(tables[i].rows[r].length <= c) {
             newTable.rows[c].insertCell(r);
             newTable.rows[c].cells[r] = '-';
           }
-          else {
+          else if (tables[i].rows[r].cells[c].tagName != 'TH') {
             newTable.rows[c].insertCell(r);
             newTable.rows[c].cells[r].innerHTML = tables[i].rows[r].cells[c].innerHTML;
           }
