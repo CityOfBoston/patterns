@@ -3,9 +3,24 @@
 // ---------------------------
 var BostonTable = (function () {
 
-  function columnToTable(tables) {
+  function columnToTable(tables, reset) {
     // Loop through all vertical tables on the page.
     for (var i = 0, length = tables.length; i < length; i++) {
+      if (reset) {
+        //console.log(tables[i]);
+        var updatedTables = document.querySelectorAll('.responsive-table--vertical');
+        for (var j = 0, length = updatedTables.length; j < length; j++) {
+          if (i == j) {
+            console.log("Existing: ");
+            console.log(updatedTables[j]);
+            console.log("");
+            console.log("Orig: ");
+            console.log(tables[i]);
+            updatedTables[j].replaceWith(tables[i]);
+          }
+        }
+        return;
+      }
       var newTable = document.createElement('table');
       newTable.setAttribute('class', 'responsive-table responsive-table--vertical');
       var maxColumns = 0;
@@ -39,14 +54,22 @@ var BostonTable = (function () {
     // Check for vertical tables.
     var tables = document.querySelectorAll('.responsive-table--vertical');
 
+    window.onresize = function(event) {
     // Get the current window size.
     var width = window.innerWidth
       || document.documentElement.clientWidth
       || document.body.clientWidth;
+
     // If there are vertical tables, and we're on a mobile screen, run...
     if (tables.length > 0 && width <= 768) {
+      //console.log("small");
       columnToTable(tables);
     }
+    else {
+      //console.log("large");
+      columnToTable(tables, "reset");
+    }
+    };
   }
   return {
     start: start
