@@ -23,24 +23,24 @@
     @media (min-width: 768px) {
       display: table-header-group;
     }
-    th {
-      background-color: $charles-blue;
-      font-family: $sans;
-      font-weight: inherit;
-      line-height: 2.16667em;
-      text-transform: uppercase;
-      color: $white;
-      text-align: right;
-      padding: 10px;
-      @media (min-width: 768px) {
-        display: table-cell;
-      }
-      &:not(:last-child) {
-        border-right-color: $white;
-      }
-      &:first-of-type {
-        text-align: left;
-      }
+  }
+  th {
+    background-color: $charles-blue;
+    font-family: $sans;
+    font-weight: inherit;
+    line-height: 2.16667em;
+    text-transform: uppercase;
+    color: $white;
+    text-align: right;
+    padding: 10px;
+    @media (min-width: 768px) {
+      display: table-cell;
+    }
+    &:not(:last-child) {
+      border-right-color: $white;
+    }
+    &:first-of-type {
+      text-align: left;
     }
   }
   tbody {
