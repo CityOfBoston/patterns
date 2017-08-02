@@ -57,20 +57,22 @@ var BostonTable = (function () {
     // Check for vertical tables.
     var tables = document.querySelectorAll('.responsive-table--vertical');
 
-    window.onresize = function(event) {
-    // Get the current window size.
-    var width = window.innerWidth
-      || document.documentElement.clientWidth
-      || document.body.clientWidth;
+    var onResizing = function(event) {
+      // Get the current window size.
+      var width = window.innerWidth
+        || document.documentElement.clientWidth
+        || document.body.clientWidth;
 
-    // If there are vertical tables, and we're on a mobile screen, run...
-    if (tables.length > 0 && width <= 768) {
-      transposeTable(tables);
-    }
-    else {
-      transposeTable(tables, "reset");
-    }
+      // If there are vertical tables, and we're on a mobile screen, run...
+      if (tables.length > 0 && width <= 768) {
+        transposeTable(tables);
+      }
+      else {
+        transposeTable(tables, "reset");
+      }
     };
+    window.onresize = onResizing;
+    window.onload = onResizing;
   }
   return {
     start: start
