@@ -1,5 +1,85 @@
 // Paddings
 .p
+  // Vertical paddings
+  &-v200
+    padding-top: $sizing-200
+    padding-bottom: $sizing-200
+
+  &-v300
+    padding-top: $sizing-300
+    padding-bottom: $sizing-300
+
+  &-v400
+    padding-top: $sizing-400
+    padding-bottom: $sizing-400
+
+  // Horizontal paddings
+  &-h100
+    @media $media-small
+      padding-left: 5%
+      padding-right: 5%
+
+  &-h200
+    @media $media-small
+      padding-left: 10%
+      padding-right: 10%
+
+  &-h300
+    @media $media-small
+      padding-left: 20%
+      padding-right: 20%
+
+  &-t000
+    padding-top: $sizing-000
+
+  // Top
+  &-t000
+    padding-top: $sizing-000
+
+  &-t100
+    padding-top: $sizing-300
+
+  &-t200
+    padding-top: $sizing-300
+
+  &-t300
+    padding-top: $sizing-300
+
+  &-t400
+    @media $media-small
+      padding-top: $sizing-400
+
+  &-t500
+    @media $media-small
+      padding-top: $sizing-500
+
+    @media $media-small-max
+      &--so
+        padding-top: $sizing-500
+
+    @media $media-medium-max
+      &--mo
+        padding-top: $sizing-500
+
+  // Bottom
+  &-b700
+    padding-bottom: $sizing-700
+
+  // Right
+  &-r400
+    padding-right: $sizing-400
+
+  &-r500
+    padding-right: $sizing-500
+
+  // All paddings
+  &-a000
+    padding: 0
+
+    @media $media-small
+      &--s
+        padding: 0
+
   &-a300
     padding: $sizing-300
 
@@ -34,65 +114,6 @@
     &--xl
       @media $media-xlarge
         padding: $sizing-800
-
-  // Vertical paddings
-  &-v200
-    padding-top: $sizing-200
-    padding-bottom: $sizing-200
-
-  &-v300
-    padding-top: $sizing-300
-    padding-bottom: $sizing-300
-
-  &-v400
-    padding-top: $sizing-400
-    padding-bottom: $sizing-400
-
-  // Horizontal paddings
-  &-h100
-    @media $media-small
-      padding-left: 5%
-      padding-right: 5%
-
-  &-h200
-    @media $media-small
-      padding-left: 10%
-      padding-right: 10%
-
-  &-h300
-    @media $media-small
-      padding-left: 20%
-      padding-right: 20%
-      
-  &-t000
-    padding-top: $sizing-000
-
-  &-t300
-    @media $media-small
-      padding-top: $sizing-300
-
-  &-t400
-    @media $media-small
-      padding-top: $sizing-400
-
-  &-t500
-    @media $media-small
-      padding-top: $sizing-500
-
-    @media $media-small-max
-      &--so
-        padding-top: $sizing-500
-
-    @media $media-medium-max
-      &--mo
-        padding-top: $sizing-500
-
-  // Right
-  &-r400
-    padding-right: $sizing-400
-
-  &-r500
-    padding-right: $sizing-500
 
 // Margins
 .m
@@ -218,6 +239,12 @@
   &-rAAA
     @media $media-small
       margin-right: auto
+
+  &-r200
+    margin-right: $sizing-200
+
+  &-r300
+    margin-right: $sizing-300
 
   &-r400
     margin-right: $sizing-400

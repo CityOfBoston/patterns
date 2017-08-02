@@ -13,7 +13,7 @@
     st = subtitle
 
    Modifier:
-    None Yet
+    sm = small
 
    Use dr--open to force the drawer open. Useful for JavaScript cases where
    you want control over the opening / closing rather than using checkboxes.
@@ -39,8 +39,11 @@
         .dr-st
           color: $optimistic-blue
 
-        .dr-ic svg
-          transform: rotate(-90deg)
+        .dr-ic
+          margin-top: -9px
+          
+          svg
+            transform: rotate(-90deg)
 
         .dr-i
           fill: $white
@@ -91,12 +94,12 @@
       margin-bottom: 0
 
   &-ic
-    height: 25px
-    width: 14px
+    height: 20px
+    width: 26px
     position: absolute
     right: $sizing-500
     top: 50%
-    transform: translateY(-49%)
+    margin-top: -8px
 
     svg
       max-height: 100%
