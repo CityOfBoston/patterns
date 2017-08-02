@@ -1,7 +1,12 @@
 title: Person Card
 handle: person-card
-status: wip
+status: ready
 preview: '@centered'
+variants:
+  - name: On Grey
+    preview: '@centered-grey'
+  - name: On Blue
+    preview: '@centered-dark'
 context:
   people:
   - name: Mayor Martin J. Walsh
