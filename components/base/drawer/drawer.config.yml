@@ -4,6 +4,11 @@ status: ready
 variants:
   - name: Hub
     preview: '@hub'
+  - name: Mini
+    context:
+      drawers:
+        - title: 'Filter by title'
+          variant: 'dr--sm'
   - name: JS Controlled
     context:
       drawers:
@@ -14,7 +19,6 @@ variants:
           subtitle: 'Last updated: 2/2017'
           js: true
           variant: 'dr--open'
-
 context:
   drawers:
     - index: 1
