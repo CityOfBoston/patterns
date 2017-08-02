@@ -1,0 +1,87 @@
+/*
+
+   Table
+
+   Base:
+    tbl
+
+   Elements:
+    None Yet
+
+   Modifier:
+    None Yet
+
+ */
+
+.responsive-table {
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+  thead {
+    display: none;
+    text-transform: uppercase;
+    @media (min-width: 768px) {
+      display: table-header-group;
+    }
+    th {
+      background-color: $charles-blue;
+      font-family: $sans;
+      font-weight: inherit;
+      line-height: 2.16667em;
+      text-transform: uppercase;
+      color: $white;
+      text-align: right;
+      padding: 10px;
+      @media (min-width: 768px) {
+        display: table-cell;
+      }
+      &:not(:last-child) {
+        border-right-color: $white;
+      }
+      &:first-of-type {
+        text-align: left;
+      }
+    }
+  }
+  tbody {
+    tr {
+      display: block;
+      overflow: hidden;
+      @media (min-width: 768px) {
+        display: table-row;
+      }
+      &:nth-child(odd) {
+        background-color: #F2F2F2;
+      }
+      td {
+        border: none;
+        display: block;
+        float: left;
+        clear: left;
+        width: 100%;
+        text-align: right;
+        padding: 10px;
+        line-height: 2.16667em;
+        @media (min-width: 768px) {
+          width: inherit;
+          clear: none;
+          float: none;
+          display: table-cell;
+          &:first-of-type {
+            text-align: left;
+            font-style: italic;
+          }
+        }
+        &:before {
+          content: attr(data-label);
+          float: left;
+          text-transform: uppercase;
+          font-weight: bold;
+          @media (min-width: 768px) {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+}
