@@ -28,6 +28,9 @@
     @media $media-small
       padding-left: 20%
       padding-right: 20%
+      
+  &-t000
+    padding-top: $sizing-000
 
   // Top
   &-t000
@@ -50,9 +53,19 @@
     @media $media-small
       padding-top: $sizing-500
 
+<<<<<<< HEAD
   // Bottom
   &-b700
     padding-bottom: $sizing-700
+=======
+    @media $media-small-max
+      &--so
+        padding-top: $sizing-500
+
+    @media $media-medium-max
+      &--mo
+        padding-top: $sizing-500
+>>>>>>> 220e837eb9577b9f478645ba609c332a4d698029
 
   // Right
   &-r400
@@ -171,11 +184,27 @@
   &-t000
     margin-top: 0
 
+    @media $media-small
+      &--s
+        margin-top: 0
+
+    @media $media-medium
+      &--m
+        margin-top: 0
+
+    @media $media-large
+      &--l
+        margin-top: 0
+
   &-t100
     margin-top: $sizing-100
 
   &-t200
     margin-top: $sizing-200
+
+    @media $media-xlarge
+      &--xl
+        margin-top: $sizing200
 
   &-t300
     margin-top: $sizing-300
@@ -185,8 +214,16 @@
       @media $media-small
         margin-top: 0
 
+    @media $media-xlarge
+      &--xl
+        margin-top: $sizing-300
+
   &-t400
     margin-top: $sizing-400
+
+    @media $media-xlarge
+      &--xl
+        margin-top: $sizing-400
 
   &-t500
     margin-top: $sizing-500
