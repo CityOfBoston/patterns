@@ -1,0 +1,84 @@
+/*
+
+   STRIKETHROUGH
+
+   Base:
+    str
+
+   Modifier:
+    g = green
+    r = red
+    b = blue
+
+ */
+
+
+.str
+  text-align: center
+  width: 100%
+  position: relative
+
+  &:before
+    content: ''
+    position: absolute
+    top: 50%
+    transform: translateY(-50%)
+    border-top: $border-200 solid $charles-blue
+    left: 0
+    right: 0
+
+    @media $media-small
+      border-width: $border-300
+
+    @media $media-large
+      border-width: $border-400
+
+  &-c
+    background: $white
+    display: inline-block
+    margin-left: $sizing-300
+    margin-right: $sizing-300
+    padding-left: 1%
+    padding-right: 1%
+    position: relative
+
+  &-t
+    font-size: responsive 20px 28px
+    font-range: 480px 1440px
+    font-weight: 700
+    line-height: $line-height-000
+    color: $charles-blue
+    text-transform: uppercase
+    font-family: $sans
+
+    &--r
+      color: $freedom-red
+
+  &-st
+    font-size: responsive 12px 14px
+    font-range: 480px 1440px
+    line-height: $line-height-000
+    color: $charles-blue
+    text-transform: uppercase
+    font-family: $sans
+
+  &--b
+    &:before
+      border-color: $freedom-red
+
+    .str
+      &-c
+        background-color: $charles-blue
+
+      &-t
+      &-st
+        color: $white
+
+  &--r
+    .str
+      &-c
+        background-color: $freedom-red
+
+      &-t
+      &-st
+        color: $white

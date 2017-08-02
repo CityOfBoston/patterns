@@ -1,0 +1,28 @@
+title: Strikethrough
+handle: strikethrough
+status: ready
+preview: '@centered'
+variants:
+  - name: Holiday
+    context:
+      date: Thursday, November 26
+      title: Thanksgiving
+  - name: "Emergency Alert - Red"
+    preview: '@centered-red'
+    context:
+      title: Show Emergency declared in Boston
+      date: false
+      theme: 'r'
+  - name: "Emergency Alert - Blue"
+    preview: '@centered-dark'
+    context:
+      title: Show Emergency declared in Boston
+      date: false
+      theme: 'b'
+  - name: "Grey"
+    preview: '@centered-grey'
+    context:
+      date: Wednesday, August 2
+      theme: 'g'
+context:
+  date: Wednesday, August 2
