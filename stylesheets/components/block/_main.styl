@@ -36,6 +36,9 @@
       padding-top: $sizing-300
       padding-bottom: $sizing-300
 
+    &--ntp
+      padding-top: 0
+
     &--nbp
       padding-bottom: 0
 
@@ -65,6 +68,10 @@
     margin: 0 auto
     padding: $sizing-300 10%
 
+  // Contents centered
+  &--cc
+    text-align: center
+
   &--fw
     left: 50%
     position: relative
@@ -93,6 +100,22 @@
   &--mb300
     margin-bottom: $sizing-300
 
+  // With tail
+  &--wt
+    position: relative
+
+    &:after
+      content: ''
+      top: 100%
+      left: 50%
+      position: absolute
+      width: 0
+      height: 0
+      border-left: 20px solid transparent
+      border-right: 20px solid transparent
+      border-top: 20px solid $white
+      transform: translateX(-50%)
+
   @media $media-xxlarge
     &-c
       padding: $sizing-800 0
@@ -106,6 +129,9 @@
       &--xsmv
         padding-top: $sizing-300
         padding-bottom: $sizing-300
+
+      &--ntp
+        padding-top: 0
 
       &--nbp
         padding-bottom: 0
