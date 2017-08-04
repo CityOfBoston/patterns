@@ -1,0 +1,79 @@
+/*
+
+   CARD: PERSON
+
+   Base:
+    cd-p
+
+   Elements:
+    t = title
+    b = body
+
+   Modifier:
+    None Yet
+
+ */
+
+.cds
+  display: flex
+  flex-direction: column
+
+  &:not(:first-child)
+    border-top: 1px dotted $grey-200
+
+    @media $media-large
+      border-top: none
+
+  &-ic
+    margin-right: $sizing-300
+    position: relative
+    display: inline-block
+    min-width: 65px
+
+    @media $media-large
+      margin-left: auto
+      margin-right: auto
+
+  &-d
+    p:last-child
+      margin: 0
+
+  &-ia
+    position: absolute
+    top: -5px
+    right: -5px
+
+  &-t
+    line-height: $line-height-100
+
+  &-l
+    background-color: rgb(255,255,255);
+    display: flex
+    align-items: center
+    text-align: left
+    flex: 1
+
+    @media $media-large
+      display: block
+      text-align: center
+
+    &:hover
+      color: $optimistic-blue
+
+      .cds-t
+        text-decoration: underline
+
+      .svg-stroke-hover
+        stroke: $optimistic-blue
+
+      .svg-fill-hover
+        fill: $optimistic-blue
+
+/* Handle theme variations */
+.b--g
+  .cdp
+    &-l
+      background-color: $white
+
+      &:hover
+        background-color: $optimistic-blue
