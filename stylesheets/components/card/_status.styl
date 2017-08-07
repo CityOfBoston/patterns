@@ -15,20 +15,20 @@
  */
 
 .cds
-  display: flex
-  flex-direction: column
-
   &:not(:first-child)
     border-top: 1px dotted $grey-200
+    padding-top: $sizing-400
 
     @media $media-large
       border-top: none
+      padding-top: 0
 
   &-ic
     margin-right: $sizing-300
     position: relative
     display: inline-block
-    min-width: 65px
+    height: 65px
+    width: 65px
 
     @media $media-large
       margin-left: auto
@@ -44,12 +44,12 @@
     right: -5px
 
   &-t
+    font-size: responsive 14px 16px
     line-height: $line-height-100
 
   &-l
     background-color: rgb(255,255,255);
     display: flex
-    align-items: center
     text-align: left
     flex: 1
 
