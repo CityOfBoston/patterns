@@ -28,19 +28,16 @@
     background-color: $charles-blue;
     font-family: $sans;
     font-weight: inherit;
-    line-height: 2.16667em;
+    line-height: $line-height-200;
     text-transform: uppercase;
     color: $white;
-    text-align: right;
-    padding: 10px;
+    text-align: left;
+    padding: $sizing-300;
     @media (min-width: 768px) {
       display: table-cell;
     }
     &:not(:last-child) {
       border-right-color: $white;
-    }
-    &:first-of-type {
-      text-align: left;
     }
   }
   tbody {
@@ -60,17 +57,15 @@
         clear: left;
         width: 100%;
         text-align: right;
-        padding: 10px;
-        line-height: 2.16667em;
+        padding: $sizing-300;
+        line-height: $line-height-200;
+        vertical-align: top;
         @media (min-width: 768px) {
           width: inherit;
           clear: none;
           float: none;
           display: table-cell;
-          &:first-of-type {
-            text-align: left;
-            font-style: italic;
-          }
+          text-align: left;
         }
         &:before {
           content: attr(data-label);
