@@ -44,3 +44,13 @@ fractal.web.set('server.syncOptions', {
   notify: true,
   https: true,
 });
+
+const hbs = require('@frctl/handlebars')({
+    helpers: {
+      filename_to_string: function(str) {
+        return str.replace(/-/g, ' ').replace('.svg', '');
+      }
+    }
+});
+
+fractal.components.engine(hbs);
