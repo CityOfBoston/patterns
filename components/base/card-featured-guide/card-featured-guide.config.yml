@@ -1,0 +1,28 @@
+title: "Card: Featured Guide"
+handle: card-featured-guide
+status: ready
+preview: '@centered-grey'
+variants:
+  - name: Charles Blue
+    context:
+      cards:
+        - index: 1
+          image: https://www.boston.gov/sites/default/files/styles/topic_thumbnail/public/topic-thumbnail-11-2016/leaf-waste.jpg
+          href: https://www.boston.gov/trash-and-recycling-guide
+          theme: cb
+          title: Trash and Recycling
+  - name: Red
+    context:
+      cards:
+        - index: 1
+          image: https://www.boston.gov/sites/default/files/styles/topic_thumbnail/public/topic-thumbnail-11-2016/leaf-waste.jpg
+          href: https://www.boston.gov/trash-and-recycling-guide
+          theme: r
+          title: Trash and Recycling
+context:
+  cards:
+    - index: 1
+      image: https://www.boston.gov/sites/default/files/styles/topic_thumbnail/public/topic-thumbnail-11-2016/leaf-waste.jpg
+      href: https://www.boston.gov/trash-and-recycling-guide
+      theme: ob
+      title: Trash and Recycling
