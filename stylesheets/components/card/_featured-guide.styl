@@ -55,6 +55,10 @@
     &:before
       background-color: transparent
 
+      @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none)
+        background-color: $optimistic-blue
+        opacity: 0.5
+
   &-c
     padding: $sizing-500
     position: relative
