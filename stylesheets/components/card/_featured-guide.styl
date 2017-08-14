@@ -1,0 +1,151 @@
+/*
+
+   CARD: PERSON
+
+   Base:
+    cdfg
+
+   Elements:
+    t = title
+    i = index
+    c = container
+
+   Modifier:
+    None Yet
+
+ */
+
+.cdfg
+  display: block
+  width: 100%
+  background-position: center
+  background-size: cover
+  background-repeat: no-repeat
+  background-blend-mode: multiply
+  background-color: $blended-optimistic-blue
+  position: relative
+
+  @media $media-xlarge
+    width: 25%
+
+  &-oc
+    display: flex
+    flex-wrap: wrap
+
+    @media $media-xlarge-max
+      flex-direction: column
+
+  &:before
+    content: ''
+    position: absolute
+    top: 0
+    left: 0
+    right: 0
+    bottom: 0
+    background-color: $optimistic-blue
+    transition: all 0.1s
+
+  &:hover
+    .cdfg-i
+    .cdfg-d
+    .cdfg-t
+      border-color: $white
+      color: $white
+
+    &:before
+      background-color: transparent
+
+  &-c
+    padding: $sizing-500
+    position: relative
+    z-index: 1
+
+    @media $media-xlarge
+      padding: $sizing-700
+
+  &-d
+    font-size: responsive 16px 25px
+    font-range: 480px 1440px
+    font-family: $serif
+    font-style: italic
+    color: $charles-blue
+    line-height: $line-height-000
+    margin-top: 0.25rem
+
+    @media $media-xlarge
+      margin-top: 0.375rem
+
+  &-i
+    float: left
+    width: 45px
+    height: 45px
+    border: 3px solid $charles-blue
+    color: $charles-blue
+    border-radius: 50%
+    position: relative
+    font-weight: 700
+
+    @media $media-medium
+      width: 55px
+      height: 55px
+
+    @media $media-xlarge
+      width: 60px
+      height: 60px
+      float: none
+      margin-bottom: $sizing-800
+
+    span
+      font-size: responsive 18px 23px
+      font-range: 480px 1440px
+      position: absolute
+      top: 50%
+      left: 50%
+      transform: translate(-50%, -50%)
+      font-family: $sans
+
+  &-ic
+    margin-left: 60px
+
+    @media $media-medium
+      margin-left: 70px
+
+    @media $media-xlarge
+      margin-left: 0
+
+  &-t
+    font-family: $sans
+    font-size: responsive 20px 30px
+    font-range: 480px 1440px
+    line-height: $line-height-000
+    text-transform: uppercase
+    font-weight: 700
+
+    @media $media-xlarge
+      margin-bottom: $sizing-800
+
+  &--ob
+    .cdfg
+      &-t
+        color: $white
+
+  &--cb
+    &:before
+      background-color: $charles-blue
+
+    .cdfg
+      &-i
+      &-d
+        color: $freedom-red
+        border-color: $freedom-red
+
+      &-t
+        color: $optimistic-blue
+
+  &--r
+    &:before
+      background-color: $freedom-red
+
+    .cdfg
+      &-t
+        color: $white

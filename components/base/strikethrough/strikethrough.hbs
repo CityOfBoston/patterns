@@ -1,0 +1,6 @@
+<div class="str{{#if theme}} str--{{theme}}{{/if}}">
+  <div class="str-c">
+    <div class="str-t{{#if title}}{{#if date}} str-t--r m-b100{{/if}}{{/if}}">{{#if title}}{{ title }}{{else}}{{ date }}{{/if}}</div>
+    {{#if title}}{{#if date}}<div class="str-st">{{ date }}</div>{{/if}}{{/if}}
+  </div>
+</div>

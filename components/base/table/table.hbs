@@ -1,0 +1,22 @@
+<table border="1" cellpadding="1" cellspacing="1" class="responsive-table responsive-table--horizontal">
+  <thead>
+    <tr>
+      {{#each rows}}
+        {{#if @first}}
+          {{#each row}}
+            <th>{{ label }}</th>
+          {{/each}}
+        {{/if}}
+      {{/each}}
+    </tr>
+  </thead>
+  <tbody>
+    {{#each rows as |row|}}
+      <tr>
+        {{#each row.row as |item|}}
+          <td data-label="{{ item.label }}">{{ item.value }}</td>
+        {{/each}}
+      </tr>
+    {{/each}}
+  </tbody>
+</table>

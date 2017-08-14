@@ -1,0 +1,12 @@
+<table border="1" cellpadding="1" cellspacing="1" class="responsive-table responsive-table--vertical">
+  <tbody>
+    {{#each rows as |row|}}
+      <tr>
+        <th>{{ row.row.0.label }}</th>
+          {{#each row.row as |item|}}
+            <td data-label="{{ item.label }}">{{ item.value }}</td>
+          {{/each}}
+      </tr>
+    {{/each}}
+  </tbody>
+</table>

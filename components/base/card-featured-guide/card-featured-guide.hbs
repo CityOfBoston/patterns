@@ -1,0 +1,11 @@
+{{#each cards as |card|}}
+  <a href="{{ card.href }}" class="cdfg {{#if card.theme }} cdfg--{{ card.theme }}{{/if}}" style="background-image: url({{ card.image }})">
+    <div class="cdfg-c">
+      <div class="cdfg-i"><span>{{ card.index }}</span></div>
+      <div class="cdfg-ic">
+        <div class="cdfg-d">Guide:</div>
+        <div class="cdfg-t">{{ card.title }}</div>
+      </div>
+    </div>
+  </a>
+{{/each}}
