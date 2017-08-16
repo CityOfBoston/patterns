@@ -26,6 +26,10 @@
   &-i
     position: relative
 
+    // For drupal
+    .form-item
+      margin: 0
+
     &-f
       background-color: transparent
       border: none
@@ -46,9 +50,15 @@
       &:focus
         outline: none
 
+      &::placeholder
+        font-style: italic
+        color: $grey-400
+        line-height: 1.2
+
     &-b
       background: $icon_search no-repeat center
       background-size: contain
+      background-color: transparent !important
       border: none
       cursor: pointer
       height: 25px
@@ -106,3 +116,13 @@
 
   &--y &-i-b
     background-image: $icon_search_yellow
+
+
+.b--b
+  .sf
+    &-i
+      &-f
+        border-color: $white
+
+        &::placeholder
+          color: $grey-600
