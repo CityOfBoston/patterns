@@ -1,0 +1,15 @@
+{{#each cards as |card|}}
+  <a href="{{ card.href }}" class="cdd{{#if card.theme }} cdd--{{ card.theme }}{{/if}}{{#if card.grid }} {{ card.grid }}{{/if}}">
+    <div class="cdd-c">
+      <div class="cdd-ic">
+        <img src="{{ card.image }}" title="{{ card.title }}" class="cdd-i" />
+      </div>
+      <div class="cdd-d">
+        <div class="cdd-d-i">
+          <div class="t--sans t--upper t--cb m-b100 t--s100">{{ card.title }}</div>
+          <div class="t--subinfo">{{ card.phone }}</div>
+        </div>
+      </div>
+    </div>
+  </a>
+{{/each}}

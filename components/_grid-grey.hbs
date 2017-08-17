@@ -8,8 +8,12 @@
   <title>Preview Layout</title>
 </head>
 <body>
-  <div style="min-height: 100vh; display: flex; align-items: center; justify-content: center">
-    {{{ yield }}}
+  <div style="min-height: 100vh; display: flex; align-items: center; justify-content: center; background-color: #eaeaea" class="b--g b--fw">
+    <div class="b-c">
+      <div class="g">
+        {{{ yield }}}
+      </div>
+    </div>
   </div>
   <script src="{{path '/scripts/all.js'}}"></script>
 </body>
