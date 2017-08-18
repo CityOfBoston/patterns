@@ -56,6 +56,15 @@
     line-height: $line-height-300
     margin-top: $sizing-300
 
+    &--mt0
+      margin-top: 0
+
+    p
+      margin: 0 0 1rem
+
+      &:last-child
+        margin: 0
+
   &--plain
     &:hover
       background-color: $white
@@ -68,6 +77,32 @@
 
     .cd-t
       color: $charles-blue
+
+  &--e[href*="//"]:not([href*="www.boston.gov"])
+    position: relative
+
+    &:after
+      content: ''
+      border-right: 20px solid $charles-blue;
+      border-left: 20px solid $charles-blue;
+      border-bottom: 10px solid transparent;
+      height: 40px
+      position: absolute
+      top: 0
+      right: 1rem
+      z-index: 1
+
+    &:before
+      content: ''
+      background-repeat: no-repeat
+      background-image: url(../images/global/icons/external-link-white.svg)
+      position: absolute
+      top: 0
+      right: 1rem
+      transform: translate(-8px, 11px)
+      z-index: 2
+      height: 20px
+      width: 20px
 
 // Handle white theme variation
 .b--w

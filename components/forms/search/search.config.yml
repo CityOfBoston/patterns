@@ -6,14 +6,15 @@ variants:
     context:
       theme: sm
       show_label: false
+      term: City Clerk
   - name: Medium
     context:
-      theme: md 
+      theme: md
       show_label: false
+      term: City Clerk
   - name: Yellow
     context:
       theme: y
 
 context:
   show_label: true
-  term: City Clerk
