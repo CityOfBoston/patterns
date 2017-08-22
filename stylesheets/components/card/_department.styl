@@ -1,0 +1,74 @@
+/*
+
+   CARD
+
+   Base:
+    cd
+
+   Elements:
+    t = title
+    b = body
+
+   Modifier:
+    None Yet
+
+ */
+
+.cdd
+  display: block
+  background-color: $white
+  border: $border-150 solid $grey-100
+  position: relative
+  line-height: $line-height-000
+
+  &:hover
+    border-color: $charles-blue
+    background-color: $charles-blue
+
+    .cdd
+      &-ic
+        border-color: $charles-blue
+
+    .t--sans
+      color: $freedom-red
+
+    .t--subinfo
+      color: $white
+
+  &-c
+    display: flex
+
+  &-ic
+    background-color: $white
+    padding: $sizing-200
+    border-right: $border-150 solid $grey-100
+    display: flex
+    align-items: center
+
+    @media $media-medium
+      padding: $sizing-300
+
+    img
+      min-width: 25px
+      min-height: 25px
+      width: 25px
+      height: 25px
+
+      @media $media-medium
+        min-width: 56px
+        min-height: 56px
+        width: 56px
+        height: 56px
+
+  &-d
+    position: relative
+    display: flex
+    align-items: center
+    min-height: 100px
+
+    @media $media-xxlarge
+      height: 120px
+
+    &-i
+      padding: $sizing-400 $sizing-300
+      overflow: hidden

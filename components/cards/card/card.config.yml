@@ -1,9 +1,10 @@
 title: Card
 handle: card
-status: wip
+status: ready
+preview: '@centered-grey'
 variants:
   - name: Hub
-    preview: '@hub'
+    preview: '@centered-hub'
   - name: No subtitle
     context:
       cards:
