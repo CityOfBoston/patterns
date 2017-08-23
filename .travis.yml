@@ -15,8 +15,6 @@ after_success:
 - test $TRAVIS_PULL_REQUEST == "false" && test $TRAVIS_BRANCH == "master" && bash ./travis/deploy.sh
 deploy:
   provider: s3
-    access_key_id: "Test"
-    secret_access_key: "Test"
     bucket: "patterns.boston.gov"
     skip_cleanup: true
     local-dir: public
