@@ -15,13 +15,13 @@ after_success:
 - test $TRAVIS_PULL_REQUEST == "false" && test $TRAVIS_BRANCH == "master" && bash ./travis/deploy.sh
 deploy:
   provider: s3
-    access_key_id: $AWS_ACCESS_KEY_ID
-    secret_access_key: $AWS_SECRET_ACCESS_KEY
+    access_key_id: "Test"
+    secret_access_key: "Test"
     bucket: "patterns.boston.gov"
     skip_cleanup: true
     local-dir: public
     on:
-      branch: production
+      branch: master
 env:
   global:
   - secure: DQrWraUARyNuUA1KXDT1IJxQG6SrflD622+TX1SKeL0UemhxzliGMBqOgYt2KSrXqTjzimUcGyeSpJhC3hM5ACgNF3ft3Eikw5/2jc9P8oBRzPafnm/QtbD2EI5rwA+VxjqmSbP6rh49CB/ftnkymp0OLH0PD3Epw7BwlmoPPRueyh3uAR5YyMcfSuVaEeJMu6sk3hKaPF0ykGxqDKJcNs0dw50V2hBqYoaj9aWvsvLYZO7j/vrz8Qm+/m7bm0TDVXsnjwTpuSvpSPPQZW4ul92DldYSrvEXxBOL0tSjYa3+uEjto7WZlkRHUgtDvoznxQImrYCpSwlSh1VJdG+JB9STj5xD/+6LPrQiW4s9Q3BPP4KPneT71wTDaaPVE3syx/ZlhK0qBOqhd+KqFdzQ5+r4vysOc8MKVRGtBHJ/7dbN+27wguV9KE/10c2Ln+FUs7TVBnWKhwarT5erVj36/zdWNEPFtZSj41uYwKUc1Q2gwPnyzf6wA49P8UDgIISqWDEWRA6fuDpPZbwP4KGdlLjyAD/CT6ZgyEoLZpmSVRRJ4P/MraSRCaN28dsR/6YrddgpHcZfcngGF79ftP3EsP0Y34lU/UEgQuB+gfz5b5UxeF3VY8uApEl1q8llz/6SKZsrUZ3VVPbb3gMoylgsWmAlfC2v9KcdLC05Ry6YO14=
