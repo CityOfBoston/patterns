@@ -9,13 +9,14 @@ var BostonMenu = (function () {
   var backTriggers;
   var burger;
   var placeholder;
-  var listLinks;
+  var nav;
 
   function handleBurgerChange(ev) {
     document.body.classList.toggle('no-s');
   }
 
   function handleTrigger(ev, method) {
+
     var backTrigger;
     var secondaryNav;
     var trigger = ev.target;
@@ -80,9 +81,9 @@ var BostonMenu = (function () {
   }
 
   function start() {
+    nav = document.querySelectorAll('.nv-m');
     burger = document.getElementById('brg-tr');
     listItems = document.querySelectorAll('.nv-m-c-l-i');
-    listLinks = document.querySelectorAll('.nv-m-c-a');
     backTriggers = document.querySelectorAll('.nv-m-c-b');
     secondaryTriggers = document.querySelectorAll('.nolink');
     secondaryNavs = document.querySelectorAll('.nv-m-c-l-l');
@@ -90,14 +91,9 @@ var BostonMenu = (function () {
 
     placeholder = document.getElementById('nv-m-h-t').innerHTML;
 
-    // Watch for focus on listLinks
-    for (var i = 0; i < listLinks.length; i++) {
-      listLinks[i].addEventListener('focus', function(ev) {
+    for (var i = 0; i < nav.length; i++) {
+      nav[i].addEventListener('focusin', function() {
         burger.checked = true;
-      });
-
-      listLinks[i].addEventListener('blur', function(ev) {
-        burger.checked = false;
       });
     }
 
@@ -114,7 +110,6 @@ var BostonMenu = (function () {
       // Handle clicks
       secondaryTriggers[i].addEventListener('click', function(ev) {
         ev.preventDefault();
-
         handleTrigger(ev, 'nav');
       });
     }
