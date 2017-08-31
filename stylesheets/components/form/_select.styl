@@ -38,6 +38,16 @@
     &--err:after
       border-color: $freedom-red
 
+    &--sq:after
+      content: 'Select'
+      font-family: $sans
+      text-transform: uppercase
+      color: white
+      font-size: .8rem
+      text-align: center
+      padding-top: 8px
+      background-position: center 30px 
+
     &--fw
       width: 100%
 
@@ -62,6 +72,13 @@
       padding-bottom: $sizing-300
       line-height: $line-height-200
 
+    &--sq
+      text-indent: -9999px
+      width: 60px
+      padding-left: 0
+      padding-right: 0
+      box-sizing: content-box
+
     &--err
       border-color: $freedom-red
       color: $freedom-red
@@ -80,6 +97,14 @@
     letter-spacing: 1px
     text-transform: uppercase
     display: block
+
+    &--sq
+      display: block
+      height: 1px
+      width: 1px
+      position: absolute
+      overflow: hidden
+      top: -100px
 
     &--mt000
       margin-top: 0
