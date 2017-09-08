@@ -32,35 +32,18 @@ var BostonSeal = (function () {
 
     // Figure out which class to use
     var className  = isTopic ? 's--h' : 's--u'
+    var hide = scrollPos > elHeight;
 
-    if (scrollPos > elHeight) {
+    if (hide) {
       // Add the class
-      theSeal[0].classList.add(className)
-
-      if (isTopic) {
-        // Create the event.
-        var event = document.createEvent('Event');
-
-        // Define that the event name is 'build'.
-        event.initEvent('seal:hidden', true, true);
-
-        // Fire an event to tell the world about the seal
-        document.body.dispatchEvent(event)
-      }
+      theSeal[0].classList.add(className);
     } else {
       // Add the class
-      theSeal[0].classList.remove(className)
+      theSeal[0].classList.remove(className);
+    }
 
-      if (isTopic) {
-        // Create the event.
-        var event = document.createEvent('Event');
-
-        // Define that the event name is 'build'.
-        event.initEvent('seal:down', true, true);
-
-        // Fire an event to tell the world about the seal
-        document.body.dispatchEvent(event)
-      }
+    if (isTopic) {
+      BostonHeader.handleGuideTitleTrigger(hide);
     }
   }
 

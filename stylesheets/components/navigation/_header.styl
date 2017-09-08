@@ -21,15 +21,24 @@
         padding: 0
 
       &-a
-        color: $charles-blue
+        color: $header-nav-color
         display: none
         font-family: $sans
-        font-size: $font-200
+        font-style: normal
+        font-size: responsive 12px 14px
+        font-range: 1300px 1440px
         line-height: 65px
-        letter-spacing: 1.4px
+        letter-spacing: 1px
         margin-left: $sizing-400
         text-decoration: none
         text-transform: uppercase
+
+        &:link
+        &:visited
+          color: $header-nav-color
+
+        &:hover
+          color: $header-nav-hover
 
         &--k
           display: block
@@ -55,6 +64,6 @@
             margin-top: -8px
 
         &-i
-          fill: $freedom-red
+          fill: $header-search
           width: 100%
           height: 100%
