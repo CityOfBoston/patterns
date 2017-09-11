@@ -1,8 +1,8 @@
 {{#each selects as |select|}}
   <div class="sel">
-    <label for="{{id}}" class="sel-l{{#if error }} sel-l--err{{/if}}">{{label}}</label>
+    <label for="{{id}}" class="sel-l{{#if theme }} sel-l--{{theme}}{{/if}}{{#if error }} sel-l--err{{/if}}">{{label}}</label>
     <div class="sel-c{{#if theme }} sel-c--{{theme}}{{/if}}{{#if error }} sel-c--err{{/if}}">
-      <select name="{{id}}" id="{{id}}" class="sel-f{{#if error }} sel-f--err{{/if}}">
+      <select name="{{id}}" id="{{id}}" class="sel-f{{#if theme }} sel-f--{{theme}}{{/if}}{{#if error }} sel-f--err{{/if}}">
         {{#each options as |option|}}
           <option value="{{value}}">{{key}}</option>
         {{/each}}

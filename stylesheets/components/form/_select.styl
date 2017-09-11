@@ -38,6 +38,16 @@
     &--err:after
       border-color: $freedom-red
 
+    &--sq:after
+      content: 'Select'
+      font-family: $sans
+      text-transform: uppercase
+      color: white
+      font-size: .8rem
+      text-align: center
+      padding-top: 8px
+      background-position: center 30px 
+
     &--fw
       width: 100%
 
@@ -62,6 +72,25 @@
       padding-bottom: $sizing-300
       line-height: $line-height-200
 
+    &--sq
+      // IE10 doesn't support the pointer-events property used to make the
+      // arrow "click through" to the select box. When all you can see is
+      // the arrow, this presents a problem, so we have to position the select
+      // above the arrow, then make it hidden so just its focus ring appears.
+      position: relative
+      box-sizing: content-box
+      z-index: 2
+      width: 0
+      padding-left: 0
+      padding-right: 60px
+      overflow: hidden
+      text-indent: -9999px
+      background: transparent
+      
+      // hides the arrow box on IE10
+      &::-ms-expand
+        display: none
+        
     &--err
       border-color: $freedom-red
       color: $freedom-red
@@ -80,6 +109,14 @@
     letter-spacing: 1px
     text-transform: uppercase
     display: block
+
+    &--sq
+      display: block
+      height: 1px
+      width: 1px
+      position: absolute
+      overflow: hidden
+      top: -100px
 
     &--mt000
       margin-top: 0

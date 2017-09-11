@@ -33,3 +33,13 @@ context:
           value: es
         - key: Chinese
           value: cn
+    - id: language
+      label: Choose a language
+      theme: sq
+      options:
+        - key: English
+          value: en
+        - key: Spanish
+          value: es
+        - key: Chinese
+          value: cn
