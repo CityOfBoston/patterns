@@ -1,0 +1,55 @@
+.nv
+  &-dd
+    position: relative
+
+    &-tr:checked ~ .nv-dd-c
+      display: block
+
+    &-l
+      margin-top: 0
+      margin-right: 0
+      margin-bottom: 0
+
+      &:hover
+        color: $header-nav-hover
+        cursor: pointer
+
+    &-c
+      position: absolute
+      margin: 3px 0 0
+      list-style: none
+      padding: 0
+      background-color: $optimistic-blue
+      right: 0
+      width: 250px
+      z-index: 0
+      display: none
+
+      &-link
+        text-align: left
+        margin-left: 0
+        line-height: 1
+        letter-spacing: 1.4px
+        padding: 1em 1.4em
+        color: #ffffff
+        font-size: $font-100
+        font-range: 480px 1440px
+        font-family: $sans
+        text-transform: uppercase
+        display: block
+
+        &:link,
+        &:visited
+          color: $white
+
+        &:hover
+          color: $charles-blue
+
+        &--hidden
+          display: none
+
+        &--message
+          display: block
+
+          &:hover
+            color: #ffffff
