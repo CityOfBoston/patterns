@@ -11,7 +11,7 @@ module.exports = function (gulp, plugins, options) {
           plugins.poststylus([
             'lost',
             plugins.autoprefixer({
-              browsers: ['safari <= 5']
+              browsers: ['safari <= 5', 'ie > 9']
             }),
             'rucksack-css',
             'laggard',
