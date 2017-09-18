@@ -14,9 +14,9 @@ deploy:
   access_key_id: $ACCESS_KEY_ID
   secret_access_key: $SECRET_ACCESS_KEY
   bucket: "patterns.boston.gov"
-  skip_cleanup: true
   acl: public_read
   region: us-east-2
+  local_dir: public
 after_script:
 - test $TRAVIS_PULL_REQUEST != "false" && test $TRAVIS_BRANCH == "develop" && bash ./travis/percy.sh
 after_success:
