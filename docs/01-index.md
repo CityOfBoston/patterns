@@ -11,10 +11,10 @@ To get started with Crispus, you'll need to add the styles. This can be done wit
 ```
 <link href="https://fonts.googleapis.com/css?family=Lora:400,400i|Montserrat:400,700" rel="stylesheet">
 <!--[if !IE]><!-->
-<link rel="stylesheet" type="text/css" href="https://www.boston.gov/crispus/css/public.css" />
+<link rel="stylesheet" type="text/css" href="https://patterns.boston.gov/crispus/css/public.css" />
 <!--<![endif]-->
 <!--[if lt IE 10]>
-  <link media="all" rel="stylesheet" href="https://www.boston.gov/crispus/css/ie.css">
+  <link media="all" rel="stylesheet" href="https://patterns.boston.gov/crispus/css/ie.css">
 <![endif]-->
 ```
 
@@ -27,7 +27,7 @@ While we strive for no required javascript, there are a few places where it is n
 Other components can have their scripts included with:
 
 ```
-<script src="https://www.boston.gov/crispus/scripts/all.js"></script>
+<script src="https://patterns.boston.gov/crispus/scripts/all.js"></script>
 ```
 
 ### Application Wrapper
