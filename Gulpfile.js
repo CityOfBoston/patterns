@@ -17,6 +17,7 @@ let options = {
 // Create object of needed paths
 options.paths = {
   ie: options.dest + 'ie',
+  fonts: options.dest + 'fonts',
   image: options.dest + 'images',
   script: options.dest + 'scripts',
   styles: options.dest + 'css',
@@ -31,11 +32,12 @@ function getTask(task) {
 // Tasks!
 // -----------------------
 gulp.task('legacy', getTask('stylus_legacy'));
+gulp.task('fonts', getTask('fonts'));
 gulp.task('images', getTask('images'));
 gulp.task('scripts', getTask('scripts'));
 gulp.task('watch:scripts', getTask('scripts_watch'));
 gulp.task('stylus', getTask('stylus'));
 gulp.task('stylus:ie', getTask('stylus_IE'));
 gulp.task('watch:stylus', getTask('stylus_watch'));
-gulp.task('build', ['images', 'legacy', 'stylus', 'scripts', 'stylus:ie']);
-gulp.task('default', ['images', 'legacy', 'scripts', 'watch:scripts', 'stylus', 'stylus:ie', 'watch:stylus']);
+gulp.task('build', ['fonts', 'images', 'legacy', 'stylus', 'scripts', 'stylus:ie']);
+gulp.task('default', ['fonts', 'images', 'legacy', 'scripts', 'watch:scripts', 'stylus', 'stylus:ie', 'watch:stylus']);
