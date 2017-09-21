@@ -43,6 +43,10 @@ fractal.web.set('server.syncOptions', {
   open: true,
   notify: true,
   https: true,
+  middleware: function (req, res, next) {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    next();
+  }
 });
 
 const hbs = require('@frctl/handlebars')({
