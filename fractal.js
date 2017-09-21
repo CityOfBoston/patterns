@@ -54,3 +54,13 @@ const hbs = require('@frctl/handlebars')({
 });
 
 fractal.components.engine(hbs);
+
+const mandelbrot = require('@frctl/mandelbrot');
+
+const crispusTheme = mandelbrot({
+  skin: "blue",
+  panels: ["html", "info", "resources", "notes"],
+  styles: ["default", "/css/theme.css"]
+});
+
+fractal.web.theme(crispusTheme);

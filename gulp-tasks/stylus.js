@@ -4,7 +4,8 @@ module.exports = function (gulp, plugins, options) {
   return function () {
     var stream = gulp.src([
         './stylesheets/public.styl',
-        './stylesheets/hub.styl'
+        './stylesheets/hub.styl',
+        './stylesheets/theme.styl'
       ])
       .pipe(plugins.stylus({
         use: [
