@@ -1,6 +1,5 @@
-@import url('https://fonts.googleapis.com/css?family=Lora|Montserrat');
-
 @require 'variables/**/**.styl';
+@require 'fonts/**/stylesheet.styl';
 
 html,
 body
@@ -24,14 +23,14 @@ a:hover
 .Tree
   &-collectionLabel,
   &-entityLink
-    font-family: 'Montserrat', sans-serif
+    font-family: $sans
     font-weight: 300
 
   &-collectionLabel span::before
     top: 0.375rem
 
   &-title
-    font-family: 'Montserrat', sans-serif
+    font-family: $sans
     font-weight: 700
     text-transform: uppercase
     color: $charles-blue
@@ -89,5 +88,5 @@ a:hover
   &-title
     text-transform: uppercase
     font-weight: 900
-    font-family: 'Montserrat', sans-serif
+    font-family: $sans
     letter-spacing: 1px

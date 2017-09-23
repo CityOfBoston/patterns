@@ -9,7 +9,6 @@ title: Overview
 To get started with Crispus, you'll need to add the styles. This can be done with:
 
 ```
-<link href="https://fonts.googleapis.com/css?family=Lora:400,400i|Montserrat:400,700" rel="stylesheet">
 <!--[if !IE]><!-->
 <link rel="stylesheet" type="text/css" href="https://patterns.boston.gov/crispus/css/public.css" />
 <!--<![endif]-->
