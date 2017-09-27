@@ -1,0 +1,83 @@
+/*
+
+   Multi Option
+
+   This element is used when there are large lists to select from
+
+   Base:
+    mo
+
+   Modifier:
+    i = fields inline
+
+ */
+
+.mo
+  position: relative
+
+  @media $media-large
+    position: static
+
+  &-tr
+    &:checked
+      & ~ .mo-t
+        color: $white
+        background-color: $charles-blue
+        position: relative
+        z-index: 2
+
+        &:after
+          transform: rotate(-180deg)
+          border-left: none
+          border-right: $border-200 solid $charles-blue
+
+      & ~ .mo-c
+        display: block
+        z-index: 1
+        position: absolute
+        max-height: 700px
+        overflow-x: scroll
+        right: 0
+        left: 0
+
+  &-t
+    background-color: $white
+    border: $border-200 solid $charles-blue
+    color: $optimistic-blue
+    cursor: pointer
+    display: block
+    font-family: $sans
+    text-transform: uppercase
+    line-height: 1
+    margin: 0
+    padding: $sizing-400
+    font-size: responsive 14px 16px
+    font-range: 480px 1440px
+    position: relative
+
+    em
+      font-family: $serif
+      color: $charles-blue
+      text-transform: none
+
+    &:after
+      content: ' '
+      position: absolute
+      z-index: 1
+      pointer-events: none
+      top: 0
+      bottom: 0
+      right: 0
+      border-left: $border-200 solid $charles-blue
+      background: $optimistic-blue
+      width: 60px
+      background-image: url(../images/global/icons/chevron-down.svg)
+      background-repeat: no-repeat
+      background-position: center
+      background-size: 20px
+
+  &-c
+    background-color: $white
+    border: $border-200 solid $charles-blue
+    display: none
+    width: 100%
