@@ -53,6 +53,8 @@ context:
     - file: city-tv-.svg
     - file: cityscore.svg
     - file: clean.svg
+    - file: climate-change.svg
+    - file: climate-change-color.svg
     - file: closed-road.svg
     - file: cold-weather-safety-tips.svg
     - file: community-centers.svg
