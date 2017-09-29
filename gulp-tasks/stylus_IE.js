@@ -8,7 +8,7 @@ module.exports = function (gulp, plugins, options) {
           plugins.poststylus([
             'lost',
             plugins.autoprefixer({
-              browsers: ['ie < 10']
+              browsers: ['IE 9', 'IE 8']
             }),
             'rucksack-css',
             'laggard',
