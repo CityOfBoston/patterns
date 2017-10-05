@@ -27,19 +27,16 @@
 
   // Horizontal paddings
   &-h100
-    @media $media-small
-      padding-left: 5%
-      padding-right: 5%
+    padding-left: 5%
+    padding-right: 5%
 
   &-h200
-    @media $media-small
-      padding-left: 10%
-      padding-right: 10%
+    padding-left: 10%
+    padding-right: 10%
 
   &-h300
-    @media $media-small
-      padding-left: 20%
-      padding-right: 20%
+    padding-left: 20%
+    padding-right: 20%
 
   &-t000
     padding-top: $sizing-000
@@ -195,6 +192,18 @@
 
   &-b300
     margin-bottom: $sizing-300
+
+    @media $media-small-max
+      &--so
+        margin-bottom: $sizing-300
+
+    @media $media-medium-max
+      &--mo
+        margin-bottom: $sizing-300
+
+    @media $media-large-max
+      &--mo
+        margin-bottom: $sizing-300
 
   &-b500
     margin-bottom: $sizing-500
