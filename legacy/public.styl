@@ -5811,18 +5811,12 @@ section.contact-departments,
     .with-hero,
     .node-type-public-notice .node-public-notice {
         position: relative;
-        width: 100%;
-        padding: 45px 50px 0;
-        background-color: #fff
-    }
-}
-@media (min-width: 1300px) {
-    .with-hero,
-    .node-type-public-notice .node-public-notice {
-        width: calc(100% + 100px);
-        -ms-transform: translate(50px, 0);
-        transform: translate(50px, 0);
-        right: 100px
+        .desktop-33-right {
+            margin-top: 45px;
+        }
+        h1 ~ .desktop-33-right {
+            margin-top: 0px;
+        }
     }
 }
 .node-type-program-initiative-profile .title {
@@ -8107,13 +8101,11 @@ article.view-mode-listing_long a.item-link {
 .node-type-article .node-public-notice h1.title,
 .node-type-article .node-public-notice .timeline-step-wrapper .title.timeline-number,
 .timeline-step-wrapper .node-type-article .node-public-notice .title.timeline-number,
-.node-type-post .with-hero h1.title,
 .node-type-post .with-hero .timeline-step-wrapper .title.timeline-number,
 .timeline-step-wrapper .node-type-post .with-hero .title.timeline-number,
 .node-type-post .node-public-notice h1.title,
 .node-type-post .node-public-notice .timeline-step-wrapper .title.timeline-number,
 .timeline-step-wrapper .node-type-post .node-public-notice .title.timeline-number,
-.node-type-event .with-hero h1.title,
 .node-type-event .with-hero .timeline-step-wrapper .title.timeline-number,
 .timeline-step-wrapper .node-type-event .with-hero .title.timeline-number,
 .node-type-event .node-public-notice h1.title,
@@ -8122,7 +8114,6 @@ article.view-mode-listing_long a.item-link {
 .node-type-public-notice .with-hero h1.title,
 .node-type-public-notice .with-hero .timeline-step-wrapper .title.timeline-number,
 .timeline-step-wrapper .node-type-public-notice .with-hero .title.timeline-number,
-.node-type-public-notice .node-public-notice h1.title,
 .node-type-public-notice .node-public-notice .timeline-step-wrapper .title.timeline-number,
 .timeline-step-wrapper .node-type-public-notice .node-public-notice .title.timeline-number {
     margin-top: 0
