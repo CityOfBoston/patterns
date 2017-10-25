@@ -1,0 +1,22 @@
+title: Spacing
+handle: spacing
+status: ready
+preview: '@grid-base'
+context:
+  directions:
+    - direction: 'a'
+    - direction: 'h'
+    - direction: 'v'
+    - direction: 't'
+    - direction: 'b'
+    - direction: 'l'
+    - direction: 'r'
+  values:
+    - value: '000'
+    - value: '100'
+    - value: '200'
+    - value: '300'
+    - value: '400'
+    - value: '500'
+    - value: '600'
+    - value: '700'
