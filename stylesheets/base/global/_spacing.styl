@@ -1,6 +1,14 @@
 // Paddings
 .p
   // Vertical paddings
+  &-v000
+    padding-top: $sizing-000
+    padding-bottom: $sizing-000
+
+  &-v100
+    padding-top: $sizing-100
+    padding-bottom: $sizing-100
+
   &-v200
     padding-top: $sizing-200
     padding-bottom: $sizing-200
@@ -26,6 +34,10 @@
     padding-bottom: $sizing-700
 
   // Horizontal paddings
+  &-h000
+    padding-left: 2%
+    padding-right: 2%
+
   &-h100
     padding-left: 5%
     padding-right: 5%
@@ -37,9 +49,6 @@
   &-h300
     padding-left: 20%
     padding-right: 20%
-
-  &-t000
-    padding-top: $sizing-000
 
   // Top
   &-t000
@@ -70,22 +79,61 @@
       &--mo
         padding-top: $sizing-500
 
+  &-t600
+    padding-top: $sizing-600
+
+  &-t700
+    padding-top: $sizing-700
+
   // Bottom
+  &-b000
+    padding-bottom: $sizing-000
+
+  &-b100
+    padding-bottom: $sizing-100
+
+  &-b200
+    padding-bottom: $sizing-200
+
   &-b300
     padding-bottom: $sizing-300
 
   &-b400
     padding-bottom: $sizing-400
 
+  &-b500
+    padding-bottom: $sizing-500
+  
+  &-b600
+    padding-bottom: $sizing-600
+
   &-b700
     padding-bottom: $sizing-700
 
   // Right
+  &-r000
+    padding-right: $sizing-000
+
+  &-r100
+    padding-right: $sizing-100
+  
+  &-r200
+    padding-right: $sizing-200
+
+  &-r300
+    padding-right: $sizing-300
+
   &-r400
     padding-right: $sizing-400
 
   &-r500
     padding-right: $sizing-500
+
+  &-r600
+    padding-right: $sizing-600
+
+  &-r700
+    padding-right: $sizing-700
 
   // All paddings
   &-a000
@@ -94,6 +142,12 @@
     @media $media-small
       &--s
         padding: 0
+
+  &-a100
+    padding: $sizing-100
+
+  &-a200
+    padding: $sizing-200
 
   &-a300
     padding: $sizing-300
@@ -123,6 +177,9 @@
       @media $media-xlarge
         padding: $sizing-600
 
+  &-a700
+    padding: $sizing-700
+
   &-a800
     padding: $sizing-800
 
@@ -132,6 +189,11 @@
 
 // Margins
 .m
+  &-h000
+    @media $media-small
+      margin-left: 2.5%
+      margin-right: 2.5%
+
   &-h100
     @media $media-small
       margin-left: 5%
@@ -153,6 +215,10 @@
       margin-right: 30%
 
   // Vertical
+  &-v000
+    margin-top: $sizing-000
+    margin-bottom: $sizing-000
+
   &-v100
     margin-top: $sizing-100
     margin-bottom: $sizing-100
@@ -176,6 +242,14 @@
     @media $media-small
       margin-top: $sizing-500
       margin-bottom: $sizing-500
+
+  &-v600
+    margin-top: $sizing-600
+    margin-bottom: $sizing-600
+
+  &-v700
+    margin-top: $sizing-700
+    margin-bottom: $sizing-700
 
   // Bottom
   &-b000
@@ -204,6 +278,9 @@
     @media $media-large-max
       &--mo
         margin-bottom: $sizing-300
+  
+  &-b400
+    margin-bottom: $sizing-400
 
   &-b500
     margin-bottom: $sizing-500
@@ -218,6 +295,9 @@
 
   &-b600
     margin-bottom: $sizing-600
+
+  &-b700
+    margin-bottom: $sizing-700
 
   // Top
   &-t000
@@ -271,10 +351,19 @@
       @media $media-medium
         margin-top: $sizing-500
 
+  &-t600
+    margin-top: $sizing-600
+
+  &-t700
+    margin-top: $sizing-700
+
   // left
   &-lAAA
     @media $media-small
       margin-left: auto
+  
+  &-l000
+    margin-top: $sizing-000
 
   &-l100
     margin-left: $sizing-100
@@ -287,11 +376,26 @@
 
   &-l400
     margin-left: $sizing-400
+  
+  &-l500
+    margin-top: $sizing-000
+
+  &-l600
+    margin-top: $sizing-000
+
+  &-l700
+    margin-top: $sizing-000
 
   // right
   &-rAAA
     @media $media-small
       margin-right: auto
+
+  &-r000
+    margin-right: $sizing-000
+
+  &-r100
+    margin-right: $sizing-100
 
   &-r200
     margin-right: $sizing-200
@@ -304,3 +408,9 @@
 
   &-r500
     margin-right: $sizing-500
+
+  &-r600
+    margin-right: $sizing-600
+
+  &-r700
+    margin-right: $sizing-700

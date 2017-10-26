@@ -1,0 +1,23 @@
+<h2 class="h2 m-b300">Paddings</h2>
+
+{{#each directions as |direction|}}
+  <div class="m-b600">
+    {{#each ../values as |value|}}
+      <div class="m-b300">
+        <div class="bg--g100 p-{{direction.direction}}{{value.value}}">.p-{{direction.direction}}{{value.value}}</div>
+      </div>
+    {{/each}}
+  </div>
+{{/each}}
+
+<h2 class="h2 m-b300">Margins</h2>
+
+{{#each directions as |direction|}}
+  <div class="m-b600">
+    {{#each ../values as |value|}}
+      <div class="m-b300">
+        <div class="bg--g100 p-a300 m-{{direction.direction}}{{value.value}}">.m-{{direction.direction}}{{value.value}}</div>
+      </div>
+    {{/each}}
+  </div>
+{{/each}}
