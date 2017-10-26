@@ -132,7 +132,7 @@ var BostonContact = (function () {
   function start() {
     // The page needs to include a template with id of contactMessage
     if (document.getElementById('contactFormTemplate')) {
-      var emailLinks = document.querySelectorAll('a[href^=mailto]');
+      var emailLinks = document.querySelectorAll('a[href^=mailto]:not(.hide-form)');
 
       if (emailLinks.length > 0) {
         for (var i = 0; i < emailLinks.length; i++) {
