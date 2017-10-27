@@ -8,7 +8,7 @@
 /*
  * Give your project a title.
  */
-fractal.set('project.title', 'Crispus');
+fractal.set('project.title', 'Fleet');
 
 /*
  * A place to build the project to
