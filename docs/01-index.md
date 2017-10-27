@@ -26,7 +26,7 @@ While we strive for no required javascript, there are a few places where it is n
 Other components can have their scripts included with:
 
 ```
-<script src="https://patterns.boston.gov/crispus/scripts/all.js"></script>
+<script src="https://patterns.boston.gov/scripts/all.js"></script>
 ```
 
 ### Application Wrapper
