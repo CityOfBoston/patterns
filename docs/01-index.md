@@ -6,18 +6,18 @@ title: Overview
 
 ## Getting Started
 
-To get started with Crispus, you'll need to add the styles. This can be done with:
+To get started with Fleet, you'll need to add the styles. This can be done with:
 
 ```
 <!--[if !IE]><!-->
-<link rel="stylesheet" type="text/css" href="https://patterns.boston.gov/crispus/css/public.css" />
+<link rel="stylesheet" type="text/css" href="https://patterns.boston.gov/css/public.css" />
 <!--<![endif]-->
 <!--[if lt IE 10]>
-  <link media="all" rel="stylesheet" href="https://patterns.boston.gov/crispus/css/ie.css">
+  <link media="all" rel="stylesheet" href="https://patterns.boston.gov/css/ie.css">
 <![endif]-->
 ```
 
-This will give you all of the fonts that you need as well as all Crispus stylings.
+This will give you all of the fonts that you need as well as all Fleet stylings.
 
 ### Scripts
 
@@ -39,4 +39,4 @@ https://www.boston.gov/api/v1/layouts/app
 
 This template needs to be used in a dynamic manner. For example, during an application's build process, the layout could be downloaded and applied to the application. An exmaple of this can be reviewed on [Boston's 311 website code](https://github.com/CityOfBoston/311/blob/526a034b980113d374ff3e7a47fe2bb6e8cfccba/scripts/fetch-templates.js).
 
-The benefit of adding this into an application is that it will more seamlessly fit within the Boston.gov ecosystem and automatically includes Crispus.
+The benefit of adding this into an application is that it will more seamlessly fit within the Boston.gov ecosystem and automatically includes Fleet.
