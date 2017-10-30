@@ -89,7 +89,8 @@ var BostonMenu = (function () {
     secondaryNavs = document.querySelectorAll('.nv-m-c-l-l');
     secondaryNavItems = document.querySelectorAll('.nv-m-c-a--s');
 
-    placeholder = document.getElementById('nv-m-h-t').innerHTML;
+    var title = document.getElementById('nv-m-h-t');
+    placeholder = title ? title.innerHTML : '';
 
     for (var i = 0; i < nav.length; i++) {
       nav[i].addEventListener('focusin', function() {
