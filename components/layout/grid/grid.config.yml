@@ -2,3 +2,7 @@ title: Grid
 handle: grid
 status: ready
 preview: '@grid-base'
+variants:
+  - name: Reverse
+    context:
+      variant: g--r
