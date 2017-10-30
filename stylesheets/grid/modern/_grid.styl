@@ -79,14 +79,27 @@
         lost-column: 9/12
 
   @media $media-large
+    &.g--r
+      flex-direction: row-reverse
+
     &--1
       lost-column: 1/12 12
+
+      .g--r &:first-child
+        margin-right: 0
+      .g--r &:last-child
+        margin-right: 1.5rem
 
       &--sl
         lost-column: 6/12 2
 
     &--2
       lost-column: 2/12 6
+
+      .g--r &:first-child
+        margin-right: 0
+      .g--r &:last-child
+        margin-right: 1.5rem
 
       &--l
         lost-column: 2/12 6
@@ -100,6 +113,11 @@
     &--3
       lost-column: 3/12 4
 
+      .g--r &:first-child
+        margin-right: 0
+      .g--r &:last-child
+        margin-right: 1.5rem
+
       &--l
         lost-column: 3/12 4
 
@@ -108,6 +126,11 @@
 
     &--4
       lost-column: 4/12 3
+
+      .g--r &:first-child
+        margin-right: 0
+      .g--r &:last-child
+        margin-right: 1.5rem
 
       &--l
         lost-column: 4/12 3
@@ -118,8 +141,18 @@
     &--5
       lost-column: 5/12
 
+      .g--r &:first-child
+        margin-right: 0
+      .g--r &:last-child
+        margin-right: 1.5rem
+
     &--6
       lost-column: 6/12 2
+
+      .g--r &:first-child
+        margin-right: 0
+      .g--r &:last-child
+        margin-right: 1.5rem
 
       &--l
         lost-column: 6/12 2
@@ -127,17 +160,42 @@
     &--7
       lost-column: 7/12
 
+      .g--r &:first-child
+        margin-right: 0
+      .g--r &:last-child
+        margin-right: 1.5rem
+
     &--8
       lost-column: 8/12
+
+      .g--r &:first-child
+        margin-right: 0
+      .g--r &:last-child
+        margin-right: 1.5rem
 
     &--9
       lost-column: 9/12
 
+      .g--r &:first-child
+        margin-right: 0
+      .g--r &:last-child
+        margin-right: 1.5rem
+
     &--10
       lost-column: 10/12
 
+      .g--r &:first-child
+        margin-right: 0
+      .g--r &:last-child
+        margin-right: 1.5rem
+
     &--11
       lost-column: 11/12
+
+      .g--r &:first-child
+        margin-right: 0
+      .g--r &:last-child
+        margin-right: 1.5rem
 
     &--12
       lost-column: 12/12
