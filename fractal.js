@@ -8,7 +8,7 @@
 /*
  * Give your project a title.
  */
-fractal.set('project.title', 'Crispus');
+fractal.set('project.title', 'Fleet');
 
 /*
  * A place to build the project to
@@ -61,10 +61,10 @@ fractal.components.engine(hbs);
 
 const mandelbrot = require('@frctl/mandelbrot');
 
-const crispusTheme = mandelbrot({
+const fleetTheme = mandelbrot({
   skin: "blue",
   panels: ["html", "info", "resources", "notes"],
   styles: ["default", "/css/theme.css"]
 });
 
-fractal.web.theme(crispusTheme);
+fractal.web.theme(fleetTheme);
