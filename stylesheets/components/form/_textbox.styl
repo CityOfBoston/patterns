@@ -25,13 +25,27 @@
 
   &-f
     font-family: $serif
-    height: auto
     display: block
-    font-size: inherit
-    line-height: $line-height-300
+    font-size: 1rem
+    
+    // Force this for IE, which doesn't pick up on the height needing to be
+    // based on the line-height
+    height: "%srem" % ($line-height-600)
+    line-height: $line-height-600
+
+    // We need the height and the line-height to match up for proper vertical
+    // centering in IE, so we use content-box so we don't need to worry about
+    // accommodating the border.
+    //
+    // We do this instead of using "calc" on the height because Chrome on
+    // Windows will clip descenders when the height is specified as a calc.
+    box-sizing: content-box
+    
     color: $charles-blue
     border: $border-200 solid $charles-blue
-    padding: $sizing-300 $sizing-300
+    // We get all of the height from height / line-height for the
+    // minimum amount of descender clipping in Firefox.
+    padding: 0 $sizing-300
     margin: 0
     // fixes Chrome 57 bug of not rendering left/right/bottom of the box shadow
     position: relative
@@ -40,17 +54,36 @@
       border-color: $freedom-red
 
     &--sm
-      padding: $sizing-200 $sizing-300
+      height: "%srem" % $line-height-400
+      line-height: $line-height-400
 
     input[type=email]&,
     input[type=text]&,
     textarea&
-      width: 100%
+      // Since we're using content-box above, this needs to change to
+      // a calculation to keep the padding / border from going offscreen.
+      // (And we want a width of effectively 100% instead of the arbitrary
+      // size a browser will give an input field, despite it being display:
+      // block)
+      width: 90%
+      width: "calc(100% - 2 * %s - 2 * %s)" % ($sizing-300 $border-200)
 
+    textarea&
+      height: auto
+      line-height: $line-height-300
+      padding: $sizing-200 $sizing-300
+      
     &::placeholder
       font-style: italic
-      color: $grey-400
-      line-height: inherit
+      color: $grey-300
+      line-height: $line-height-600
+
+    textarea&::placeholder
+      line-height: $line-height-300
+
+    &::-ms-clear
+      width: 1rem
+      height: 1rem
 
     &:focus
       box-shadow: 0 0 0 3px $optimistic-blue
