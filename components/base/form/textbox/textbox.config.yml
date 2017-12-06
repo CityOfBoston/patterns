@@ -5,20 +5,40 @@ context:
   inputType: true
   textareaType: false
   textboxes:
-    - label: First name
-      placeholder: First name
+    - label: Full name
+      placeholder: Full name
       value: Danielle Cage
       id: text
     - label: Email
       placeholder: Your email address
       value: ""
-      id: text
+      id: empty-text
+    - label: Small
+      placeholder: Full name
+      value: Steve Rogers
+      id: small-text
+      classes: txt-f--sm
 variants:
   - name: Textarea
     context:
       id: text
       inputType: false
       textareaType: true
+      textboxes:
+        - label: Captains America
+          placeholder: Full names
+          # for textareas we want to see multiple lines
+          value: |+
+            Steve Rogers&
+            Bucky Barnes&
+            Danielle Cage&
+            Samantha Wilson&
+            Steve Mouser
+          id: text
+        - label: Email
+          placeholder: Your email address
+          value: ""
+          id: empty-text
   - name: Error
     context:
       inputType: true

@@ -62,12 +62,16 @@
     padding: 0.5em 3.5em 0.5em 1em
     padding: $sizing-300 85px $sizing-300 $sizing-300
     width: 100%
-    height: "calc(2 * %s + 2 * %s + %s)" % ($sizing-300 $border-200 1.5rem)
+    height: "calc(2 * %s + 2 * %s + %s * 1rem)" % ($sizing-300 $border-200 $line-height-300)
 
     margin: 0
     box-sizing: border-box
     -moz-appearance: none
     appearance: none
+
+    // hides the arrow box on IE10
+    &::-ms-expand
+      display: none
 
     &--sm
       padding-top: $sizing-300
@@ -90,10 +94,6 @@
       text-indent: -9999px
       background: transparent
       
-      // hides the arrow box on IE10
-      &::-ms-expand
-        display: none
-        
     &--err
       border-color: $freedom-red
       color: $freedom-red

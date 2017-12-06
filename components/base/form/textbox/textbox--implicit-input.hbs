@@ -1,6 +1,6 @@
 {{#each textboxes as |textbox|}}
   <label class="txt">
     <span class="txt-l">{{label}}</span>
-    <input type="text" value="{{value}}" placeholder="{{placeholder}}" class="txt-f">
+    <input type="text" value="{{value}}" placeholder="{{placeholder}}" class="txt-f{{#if classes}} {{classes}}{{/if}}">
   </label>
 {{/each}}
