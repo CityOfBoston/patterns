@@ -68,6 +68,20 @@
       width: 90%
       width: "calc(100% - 2 * %s - 2 * %s)" % ($sizing-300 $border-200)
 
+      &.txt-f--combo
+        width: 85%
+        // Need to leave space for a .sel-f--sq element, and now a total of
+        // 3 border-200s (left, right, and separator between the elements)
+        width: "calc(100% - 2 * %s - 3 * %s - %s)" % ($sizing-300 $border-200 $select-arrow-box-width)
+
+    input[type=email]&--auto,
+    input[type=text]&--auto,
+    textarea&--auto
+      width: auto
+      
+      &.txt-f--combo
+        width: auto
+
     textarea&
       height: auto
       line-height: $line-height-300
@@ -87,6 +101,10 @@
 
     &:focus
       box-shadow: 0 0 0 3px $optimistic-blue
+
+    &--combo
+      border-right: 0
+      float: left
 
   &-l
     color: $charles-blue

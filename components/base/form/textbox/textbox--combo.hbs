@@ -1,0 +1,16 @@
+{{#each textboxes as |textbox|}}
+  <div class="txt">
+    <label for="{{id}}" class="txt-l{{#if error }} t--err{{/if}}">{{label}}</label>
+    <input type="text" value="{{value}}" placeholder="{{placeholder}}" class="txt-f txt-f--combo{{#if error }} txt-f--err{{/if}}{{#if classes}} {{classes}}{{/if}}{{#if size}} txt-f--auto{{/if}}"{{#if size }} size="{{ size }}"{{/if}}>
+    <div class="sel-c sel-c--sq">
+      <select class="sel-f sel-f--sq" id="{{id}}">
+        {{#each options as |option|}}
+          <option>{{name}}</option>
+        {{/each}}
+      </select>
+    </div>
+    {{#if error }}
+      <div class="t--subinfo t--err m-t100">{{ error }}</div>
+    {{/if}}
+  </div>
+{{/each}}

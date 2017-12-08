@@ -14,10 +14,18 @@
 
  */
 
+$select-arrow-box-width = 60px
+
 .sel
   &-c
     display: inline-block
     position: relative
+
+    &--sq
+      // Safari seems to calculate .sel-c’s width based on the content
+      // in the <option>s of the <select>, regardless of the <select>’s
+      // width. We force it down to just the size of the box.
+      width: "calc(%s + 2 * %s)" % ($select-arrow-box-width $border-200)
 
     &:after
       content: ' '
@@ -29,7 +37,7 @@
       right: $border-200
       border-left: $border-200 solid $charles-blue
       background: $optimistic-blue
-      width: 60px
+      width: $select-arrow-box-width
       background-image: url(../images/global/icons/chevron-down.svg)
       background-repeat: no-repeat
       background-position: center
@@ -58,9 +66,8 @@
     display: inline-block
     font: inherit
     font-size: inherit
-    line-height: $line-height-000
-    padding: 0.5em 3.5em 0.5em 1em
-    padding: $sizing-300 85px $sizing-300 $sizing-300
+    line-height: $line-height-400
+    padding: 0 85px 0 $sizing-300
     width: 100%
     height: "calc(2 * %s + 2 * %s + %s * 1rem)" % ($sizing-300 $border-200 $line-height-300)
 
@@ -84,12 +91,10 @@
       // the arrow, this presents a problem, so we have to position the select
       // above the arrow, then make it hidden so just its focus ring appears.
       position: relative
-      box-sizing: content-box
       z-index: 2
       width: 0
-      height: 1.5rem
       padding-left: 0
-      padding-right: 60px
+      padding-right: $select-arrow-box-width
       overflow: hidden
       text-indent: -9999px
       background: transparent

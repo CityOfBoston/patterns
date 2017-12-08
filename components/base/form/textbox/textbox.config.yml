@@ -19,6 +19,27 @@ context:
       id: small-text
       classes: txt-f--sm
 variants:
+  - name: Combo
+    context:
+      textboxes:
+        - label: Full name
+          placeholder: Full name
+          id: text
+          options:
+            - name: Danielle Cage
+            - name: Steve Rogers
+            - name: Bucky Barnes
+        - label: Quantity
+          id: q
+          size: 5
+          value: 4
+          classes: ta-r
+          options:
+            - name: 1
+            - name: 2
+            - name: 3
+            - name: 4
+            - name: 5
   - name: Textarea
     context:
       id: text
