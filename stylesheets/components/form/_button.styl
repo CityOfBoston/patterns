@@ -50,6 +50,16 @@
   &--b
     display: block
     text-align: center
+    width: 100%
+
+  // Button that fills the remaining space in a flex row
+  &--row
+    flex: 1
+    align-self: stretch
+    // flex behavior should give us the space we need. Set a low
+    // minimum because fitting in with the UI is a higher priority
+    // than the above sizing-400
+    padding: $sizing-100
 
   &--c
     background-color: $charles-blue
