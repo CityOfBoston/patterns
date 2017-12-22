@@ -37,6 +37,6 @@ Boston.gov also provides a prebuilt header / footer layout for use with your app
 https://www.boston.gov/api/v1/layouts/app
 ```
 
-This template needs to be used in a dynamic manner. For example, during an application's build process, the layout could be downloaded and applied to the application. An exmaple of this can be reviewed on [Boston's 311 website code](https://github.com/CityOfBoston/311/blob/526a034b980113d374ff3e7a47fe2bb6e8cfccba/scripts/fetch-templates.js).
+This template needs to be used in a dynamic manner. For example, during an application's build process, the layout could be downloaded and applied to the application. An example of this can be reviewed on [Boston's 311 website code](https://github.com/CityOfBoston/311/blob/526a034b980113d374ff3e7a47fe2bb6e8cfccba/scripts/fetch-templates.js).
 
 The benefit of adding this into an application is that it will more seamlessly fit within the Boston.gov ecosystem and automatically includes Fleet.
