@@ -58,6 +58,7 @@
       line-height: $line-height-400
 
     input[type=email]&,
+    input[type=phone]&,
     input[type=text]&,
     textarea&
       // Since we're using content-box above, this needs to change to
@@ -75,6 +76,7 @@
         width: "calc(100% - 2 * %s - 3 * %s - %s)" % ($sizing-300 $border-200 $select-arrow-box-width)
 
     input[type=email]&--auto,
+    input[type=phone]&--auto,
     input[type=text]&--auto,
     textarea&--auto
       width: auto
@@ -117,6 +119,11 @@
     letter-spacing: 1px
     text-transform: uppercase
     display: block
+
+    &--sm
+      font-size: $font-100
+      font-weight: normal
+      margin-top: 0
 
     &--mt000
       margin-top: 0

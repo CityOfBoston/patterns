@@ -36,6 +36,13 @@
       padding-top: $sizing-300
       padding-bottom: $sizing-300
 
+    // horizontally-small
+    &--hsm
+      // without setting width, if this ends up in a flex container
+      // it will shrink to fit its contents, not go up to max-width
+      width: 100%
+      max-width: 41.25rem
+
     &--ntp
       padding-top: 0
 
@@ -47,6 +54,33 @@
 
     &--wbb
       border-bottom: $border-100 dotted $grey-200
+
+    // Makes a block that "breaks out" of b-c and goes edge-to-edge
+    // (up to the above max-width), replicating the padding inside.
+    // Good for when you want a block to have a background that goes
+    // edge-to-edge.
+    &--hedge {
+      margin-left: -12.5%;
+      margin-right: -12.5%;
+      padding-left: 12.5%;
+      padding-right: 12.5%;
+    }
+
+    // compensates to remove the bottom padding from a b-c parent.
+    &--bedge {
+      margin-bottom: "calc(-1 * %s)" % ($sizing-700)
+    }
+
+  // Flex fill
+  &-ff
+    // Has to be just grow instead of the "flex" shorthand, otherwise
+    // IE won't grow the element to contain its children if they're
+    // taller than the size this is flexing to.
+    flex-grow: 1
+    width: 100%
+    
+    display: flex
+    flex-direction: column
 
   // Block tab
   &-t
