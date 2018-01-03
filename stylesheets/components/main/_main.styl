@@ -31,6 +31,15 @@
     @media $media-large
       min-height: 100vh
 
+    // IE won't flex children to the size of a min-height'd
+    // flex-direction: column element because of a bug. Wrapping
+    // that element in a row-direction flex element prevents
+    // the bug.
+    //
+    // This element should wrap "mn mn--full" elements
+    &-ie
+      display: flex
+
     // vertically-centered on larger screens
     &-vc
       @media $media-large
