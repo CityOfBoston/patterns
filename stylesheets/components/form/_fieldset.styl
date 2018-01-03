@@ -12,8 +12,29 @@
 
 .fs
   border: none
-  margin: 0
+  margin-left: 0
+  margin-right: 0
   padding: 0
+
+  // legend
+  &-l
+    padding: 0
+    margin-bottom: $sizing-200
+
+    text-transform: uppercase
+    // removes the space left for the descenders we don't have
+    // because uppercase
+    line-height: .7
+    font-family: $sans
+    font-size: responsive 16px 20px
+    font-range: 480px 1440px
+    color: $charles-blue
+    display: block
+
+    // legends can't display: flex, so here's a content that can do a flex row
+    &-c
+      display: flex
+      align-items: center
 
   &-c
     @media $media-medium
