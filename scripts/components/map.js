@@ -25,29 +25,29 @@ var BostonMap = (function () {
   }
 
   function initMap(mapContainer) {
-    var map = Boston.childByEl(mapContainer, 'map');
-    var button = Boston.childByEl(mapContainer, 'mp-v');
-    var close = Boston.childByEl(mapContainer, 'mp-e');
+    var mapEl = Boston.childByEl(mapContainer, 'map')[0];
+    var buttonEl = Boston.childByEl(mapContainer, 'mp-v')[0];
+    var closeEl = Boston.childByEl(mapContainer, 'mp-e')[0];
 
-    if (button.length > 0 && close.length > 0) {
+    if (buttonEl && closeEl) {
       // Toggle the view
-      button[0].addEventListener('click', function (e) {
+      buttonEl.addEventListener('click', function (e) {
         toggleMap(e, mapContainer);
       });
 
       // Toggle the view
-      close[0].addEventListener('click', function (e) {
+      closeEl.addEventListener('click', function (e) {
         toggleMap(e, mapContainer);
       });
     }
 
+    // Set the Map ID used to create a unique canvas for each map.
+    var mapID = mapEl.id;
     // Get array of map objects from Drupal.
-    var mapJSON = mapData[map[0].id];
+    var mapJSON = mapData[mapID];
 
     // Convert JSON into javascript object.
     var mapObj = JSON.parse(mapJSON);
-    // Set the Map ID used to create a unique canvas for each map.
-    var mapID = mapObj.mapID;
     // Set ESRI Feed title, url, and color info.
     var feeds = mapObj.feeds;
     // Set Custom Pins title, desc, latitude and longitude info.
@@ -64,18 +64,18 @@ var BostonMap = (function () {
     var zoom = mapObj.componentZoom ? mapObj.componentZoom : mapObj.esriZoom ? mapObj.esriZoom : 14;
 
     // Apply default coordinates and zoom level.
-    map[map[0].id] = L.map(mapID, {zoomControl: false}).setView([latitude, longitude], zoom);
+    var map = L.map(mapID, {zoomControl: false}).setView([latitude, longitude], zoom);
 
     if (mapOptions == 1) {
       // Add zoom control to bottom right.
       L.control.zoom({
         position:'bottomright'
-      }).addTo(map[map[0].id]);
+      }).addTo(map);
     }
 
     // Add custom pins created in Map component.
     for (var j = 0; j < points.length; j++) {
-      var customPin = L.marker([points[j].lat, points[j].long]).addTo(map[map[0].id]);
+      var customPin = L.marker([points[j].lat, points[j].long]).addTo(map);
       customPin.bindPopup(
         '<a class="title" href="' + points[j].url + '" target="_blank">' +
           '<b>' +
@@ -89,7 +89,7 @@ var BostonMap = (function () {
     }
 
     // Add mapbox basemap.
-    L.tileLayer(basemapUrl).addTo(map[map[0].id]);
+    L.tileLayer(basemapUrl).addTo(map);
 
     // Set the legend position.
     var legend = L.control({position: 'topleft'});
@@ -105,7 +105,7 @@ var BostonMap = (function () {
           "color": feeds[k].color,
           "weight": 3
         }
-      }).addTo(map[map[0].id]);
+      }).addTo(map);
       // Create popups for pin markers
       layerObj.bindPopup(createPopup(feeds[k].popup));
       // Add item to legend.
@@ -115,7 +115,7 @@ var BostonMap = (function () {
     // Add "div" variable created in loop to legend.
     legend.onAdd = createLegend(div);
     // Add legend to map.
-    legend.addTo(map[map[0].id]);
+    legend.addTo(map);
   }
 
   function start() {
