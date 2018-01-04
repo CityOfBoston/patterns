@@ -11,7 +11,7 @@
     d = description
 
    Modifier:
-    None Yet
+    b = block
 
  */
 
@@ -33,6 +33,16 @@
     &:not(:last-child)
       border-bottom: 1px dashed $grey-100
       padding-bottom: $sizing-300
+
+    &--b
+      line-height: 1
+
+      .dl-t
+        float: none
+        width: 100%
+      
+      .dl-d
+        margin-top: $sizing-100
 
   &-t
     clear: both
