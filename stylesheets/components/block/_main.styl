@@ -136,6 +136,15 @@
       border-top: 20px solid $white
       transform: translateX(-50%)
 
+  @media $media-large
+    &-c
+      &--hsm
+        // if we wait until the xxlarge breakpoint to remove the 10% left/right
+        // padding (see below) the horizontally-small variant's content is
+        // too narrow.
+        padding-left: 0
+        padding-right: 0
+
   @media $media-xxlarge
     &-c
       padding: $sizing-800 0
