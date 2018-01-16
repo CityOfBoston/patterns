@@ -5,18 +5,22 @@ context:
   inputType: true
   textareaType: false
   textboxes:
-    - label: Full name
+    - label: Default (filled)
       placeholder: Full name
       value: Danielle Cage
       id: text
-    - label: Email
+    - label: Default (placeholder)
       placeholder: Your email address
       value: ""
       id: empty-text
-    - label: Small
+    - label: Small (filled)
       placeholder: Full name
       value: Steve Rogers
-      id: small-text
+      id: small-text-f
+      classes: txt-f--sm
+    - label: Small (placeholder)
+      placeholder: Full name
+      id: small-text-p
       classes: txt-f--sm
 variants:
   - name: Combo
