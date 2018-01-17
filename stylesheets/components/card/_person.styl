@@ -17,11 +17,11 @@
 .cdp
   display: flex
   flex-wrap: wrap
-  flex-direction: column
 
   &-a
     line-height: $line-height-000
     width: 100%
+    align-self: flex-end
 
   &-t
     line-height: $line-height-100
@@ -32,7 +32,8 @@
     background-color: $grey-000
     text-align: left
     width: 100%
-    flex-grow: 1
+    //height: -webkit-fill-available 
+    height: calc(100% - 50px);
 
     @media $media-large
       display: block
