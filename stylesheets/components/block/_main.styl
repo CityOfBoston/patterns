@@ -18,8 +18,10 @@
 .b
   // Block content
   &-c
+    width: 100%
     max-width: 66.67rem
-    margin: 0 auto
+    margin-left: auto
+    margin-right: auto
     padding: $sizing-700 10%
     position: relative
 
@@ -54,22 +56,6 @@
 
     &--wbb
       border-bottom: $border-100 dotted $grey-200
-
-    // Makes a block that "breaks out" of b-c and goes edge-to-edge
-    // (up to the above max-width), replicating the padding inside.
-    // Good for when you want a block to have a background that goes
-    // edge-to-edge.
-    &--hedge {
-      margin-left: -12.5%;
-      margin-right: -12.5%;
-      padding-left: 12.5%;
-      padding-right: 12.5%;
-    }
-
-    // compensates to remove the bottom padding from a b-c parent.
-    &--bedge {
-      margin-bottom: "calc(-1 * %s)" % ($sizing-700)
-    }
 
   // Flex fill
   &-ff
@@ -149,6 +135,15 @@
       border-right: 20px solid transparent
       border-top: 20px solid $white
       transform: translateX(-50%)
+
+  @media $media-large
+    &-c
+      &--hsm
+        // if we wait until the xxlarge breakpoint to remove the 10% left/right
+        // padding (see below) the horizontally-small variant's content is
+        // too narrow.
+        padding-left: 0
+        padding-right: 0
 
   @media $media-xxlarge
     &-c

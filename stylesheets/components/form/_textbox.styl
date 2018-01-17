@@ -49,13 +49,22 @@
     margin: 0
     // fixes Chrome 57 bug of not rendering left/right/bottom of the box shadow
     position: relative
+      
+    &::placeholder
+      font-style: italic
+      color: $grey-300
+      line-height: $line-height-600
 
     &--err
       border-color: $freedom-red
 
     &--sm
+      padding-top: 1px
       height: "%srem" % $line-height-400
       line-height: $line-height-400
+
+      &::placeholder
+        line-height: $line-height-400
 
     input[type=email]&,
     input[type=phone]&,
@@ -88,11 +97,6 @@
       height: auto
       line-height: $line-height-300
       padding: $sizing-200 $sizing-300
-      
-    &::placeholder
-      font-style: italic
-      color: $grey-300
-      line-height: $line-height-600
 
     textarea&::placeholder
       line-height: $line-height-300
