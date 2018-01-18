@@ -1,13 +1,63 @@
 'use strict'
 // This module controls the City of Boston newsletter component
 // ---------------------------
+// TODO: add drupal inputs for:
+// * icon url
+// * find user location flag
+
 var BostonMap = (function () {
   var map = [];
 
+  // Create point layer
+  function createLayer(feed) {
+
+    // create icon
+    var icon = L.icon({
+        iconUrl: "https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-green.png",
+      });
+
+    // figure out is markers should be clustered or not
+    var baseObj = (feed.cluster === 1) ? L.esri.Cluster : L.esri;
+    // add layer
+    var layerObj = baseObj.featureLayer({
+      // add data url
+      url: feed.url,
+      style: {
+        "color": feed.color,
+        "weight": 3
+      },
+      // add icon
+      pointToLayer: function(feature, latlng) {
+        return L.marker(latlng, {
+          icon: icon,
+        })
+      }
+    });
+    return layerObj;
+  }
+
+  // Find user location
+  function findUserLoc() {
+    // find user location
+    map.locate({setView: true, maxZoom: 18});
+
+    function onLocationFound(e) {
+      var radius = e.accuracy / 2;
+      var user_loc = L.marker(e.latlng).addTo(map)
+        .bindPopup('<p class="title">You are here.</p>').openPopup();
+      var radius_circle = L.circle(e.latlng, radius, {color:'#091F2F',opacity:1,fillOpacity:.2}).addTo(map);
+    }
+
+    map.on('locationfound', onLocationFound);
+
+  }
+
+  // Create pop-up
   function createPopup (p) {
     return function (layer) { return L.Util.template(p, layer.feature.properties); };
   }
 
+  // Create legend
   function createLegend(d) {
     return function (map) { return d; };
   }
@@ -41,6 +91,11 @@ var BostonMap = (function () {
       });
     }
 
+    // Find user location
+    var FIND_USER_LOCATION = false;
+    var ICON_URL = "https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-green.png";
+    var FEED_NAME = "City Council";
+    var ICON_EXISTS = null;
     // Set the Map ID used to create a unique canvas for each map.
     var mapID = mapEl.id;
     // Get array of map objects from Drupal.
@@ -50,6 +105,7 @@ var BostonMap = (function () {
     var mapObj = JSON.parse(mapJSON);
     // Set ESRI Feed title, url, and color info.
     var feeds = mapObj.feeds;
+    console.log(feeds);
     // Set Custom Pins title, desc, latitude and longitude info.
     var points = mapObj.points;
     // Set Map Options (0 = Static, 1 = Zoom).
@@ -65,7 +121,6 @@ var BostonMap = (function () {
 
     // Apply default coordinates and zoom level.
     var map = L.map(mapID, {zoomControl: false}).setView([latitude, longitude], zoom);
-
     if (mapOptions == 1) {
       // Add zoom control to bottom right.
       L.control.zoom({
@@ -94,28 +149,29 @@ var BostonMap = (function () {
     // Set the legend position.
     var legend = L.control({position: 'topleft'});
     var div = L.DomUtil.create('div', 'info legend');
+    var table = L.DomUtil.create('table', 'legend table', div);
 
     // Add layer for ESRI feed(s) and add item for legend.
     for (var k = 0; k < feeds.length; k++) {
-      // Check if pins should be clustered.
-      var baseObj = (feeds[k].cluster == 1) ? L.esri.Cluster : L.esri;
-      var layerObj = baseObj.featureLayer({
-        url: feeds[k].url,
-        style: {
-          "color": feeds[k].color,
-          "weight": 3
-        }
-      }).addTo(map);
+      // Create layer object
+      var layerObj = createLayer(feeds[k]);
+      layerObj.addTo(map);
       // Create popups for pin markers
       layerObj.bindPopup(createPopup(feeds[k].popup));
       // Add item to legend.
-      div.innerHTML += '<i style="background:' + feeds[k].color + '"></i> ' + feeds[k].title + '<br>';
+      if (feeds[k].color == null) {
+        table.innerHTML += '<tr><td><img style="width:25px" src="'+ ICON_URL + '"></td><td class="t--intro">' + feeds[k].title + '</td></tr>';
+      } else if (feeds[k].color != null) {
+        table.innerHTML += '<tr><td><svg width="50" height="5.5"><path stroke-width="50px" stroke-linejoin="bevel" d="M25,-3 v3,3" fill="none" stroke=' + feeds[k].color + '></rect></svg></td><td class="t--intro">' + feeds[k].title + '</td></tr>';
+      }
     }
 
     // Add "div" variable created in loop to legend.
     legend.onAdd = createLegend(div);
     // Add legend to map.
     legend.addTo(map);
+
+    if (FIND_USER_LOCATION == true) { findUserLoc(); }
   }
 
   function start() {
