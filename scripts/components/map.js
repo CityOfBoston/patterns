@@ -141,7 +141,19 @@ var BostonMap = (function () {
 
     // Set the legend position.
     var legend = L.control({position: 'topleft'});
-    var div = L.DomUtil.create('div', 'info legend');
+
+    // `element` is the element you want to wrap
+    var legendDiv = document.querySelector(".leaflet-left");
+    legendDiv.setAttribute("class", "co");
+    var input = L.DomUtil.create('input', 'co-f d-n', legendDiv);
+    input.setAttribute("type", "checkbox");
+    input.setAttribute("aria-hidden", true);
+    input.setAttribute("id", "collapsible");
+    var label = L.DomUtil.create('label', 'co-t', legendDiv);
+    label.setAttribute("for", "collapsible");
+    label.innerHTML = "Filter Map and View Legend"
+
+    var div = L.DomUtil.create('div', 'info legend co-b');
     var table = L.DomUtil.create('table', 'legend table', div);
 
     // Add layer for ESRI feed(s) and add item for legend.
