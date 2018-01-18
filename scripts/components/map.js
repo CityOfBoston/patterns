@@ -36,22 +36,6 @@ var BostonMap = (function () {
     return layerObj;
   }
 
-  // Find user location
-  function findUserLoc() {
-    // find user location
-    map.locate({setView: true, maxZoom: 18});
-
-    function onLocationFound(e) {
-      var radius = e.accuracy / 2;
-      var user_loc = L.marker(e.latlng).addTo(map)
-        .bindPopup('<p class="title">You are here.</p>').openPopup();
-      var radius_circle = L.circle(e.latlng, radius, {color:'#091F2F',opacity:1,fillOpacity:.2}).addTo(map);
-    }
-
-    map.on('locationfound', onLocationFound);
-
-  }
-
   // Create pop-up
   function createPopup (p) {
     return function (layer) { return L.Util.template(p, layer.feature.properties); };
@@ -94,18 +78,14 @@ var BostonMap = (function () {
     // Find user location
     var FIND_USER_LOCATION = false;
     var ICON_URL = "https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-green.png";
-    var FEED_NAME = "City Council";
-    var ICON_EXISTS = null;
     // Set the Map ID used to create a unique canvas for each map.
     var mapID = mapEl.id;
     // Get array of map objects from Drupal.
     var mapJSON = mapData[mapID];
-
     // Convert JSON into javascript object.
     var mapObj = JSON.parse(mapJSON);
     // Set ESRI Feed title, url, and color info.
     var feeds = mapObj.feeds;
-    console.log(feeds);
     // Set Custom Pins title, desc, latitude and longitude info.
     var points = mapObj.points;
     // Set Map Options (0 = Static, 1 = Zoom).
@@ -121,6 +101,19 @@ var BostonMap = (function () {
 
     // Apply default coordinates and zoom level.
     var map = L.map(mapID, {zoomControl: false}).setView([latitude, longitude], zoom);
+
+    // Find user location
+    if (FIND_USER_LOCATION == true) {
+      map.locate({setView: true, maxZoom: 16});
+      function onLocationFound(e) {
+        var radius = e.accuracy / 2;
+        var user_loc = L.marker(e.latlng).addTo(map)
+          .bindPopup('<p class="t--intro">Hi! You are here.</p>').openPopup();
+        var radius_circle = L.circle(e.latlng, radius, {color:'#091F2F',opacity:1,fillOpacity:.2}).addTo(map);
+      }
+      map.on('locationfound', onLocationFound);
+    }
+
     if (mapOptions == 1) {
       // Add zoom control to bottom right.
       L.control.zoom({
@@ -170,8 +163,6 @@ var BostonMap = (function () {
     legend.onAdd = createLegend(div);
     // Add legend to map.
     legend.addTo(map);
-
-    if (FIND_USER_LOCATION == true) { findUserLoc(); }
   }
 
   function start() {
