@@ -29,6 +29,12 @@ To develop against the pattern library, you can run:
 
 This will build the components and watch for changes. Run `yarn fractal -- start --watch` in another window to keep a server running.
 
+## Check-in / Deployment
+
+PRs should be made against the develop branch. To do a deploy, force-push the
+develop branch on to the production branch. Force-push prevents production from
+accidentally getting changes that aren’t in develop.
+
 ## Reporting bugs
 
 If you need to submit a bug report for the pattern library, please follow these guidelines. Following these guidelines helps us and the community better understand your report, reproduce the bug, and find related issues.
