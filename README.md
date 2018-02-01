@@ -15,9 +15,9 @@ We recommend using [`yarn`](https://yarnpkg.com/en/). Run `yarn` to install depe
 
 Once the repository has been cloned, you can build the components with:
 
-`yarn gulp build`
+`npx gulp build`
 
-After building the components, you can run `yarn fractal -- start --watch` to get a server running. You should be able to visit `http://localhost:3000` in your browser and view the pattern library.
+After building the components, you can run `npx fractal start --watch` to get a server running. You should be able to visit `http://localhost:3000` in your browser and view the pattern library.
 
 ## Development
 
@@ -25,9 +25,11 @@ The pattern library is built using Stylus. We're using PostCSS, Autoprefixer, an
 
 To develop against the pattern library, you can run:
 
-`yarn gulp`
+`npm run dev`
 
-This will build the components and watch for changes. Run `yarn fractal -- start --watch` in another window to keep a server running.
+This will build the components and watch for changes, and start up a Fractal server on localhost to show the library.
+
+Fractal uses a self-signed SSL certificate that is not trusted by browsers. If you’re using Chrome, you can allow invalid local signatures from this config setting: chrome://flags/#allow-insecure-localhost
 
 ## Check-in / Deployment
 
