@@ -4,7 +4,7 @@ node_js:
 branches:
   only:
   - develop
-  - master
+  - production
 before_install:
 - rvm install 2.4.0
 install:
@@ -14,7 +14,7 @@ script:
 - gulp build
 - fractal build
 after_script:
-- test $TRAVIS_BRANCH == "develop" && bash ./travis/percy.sh
+- bash ./travis/percy.sh
 deploy:
   provider: s3
   skip_cleanup: true
@@ -25,7 +25,7 @@ deploy:
   region: "$AWS_DEFAULT_REGION"
   local_dir: public
   on:
-    branch: master
+    branch: production
 after_deploy:
 - bash ./travis/invalidate_cache.sh
 env:
