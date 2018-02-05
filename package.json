@@ -2,17 +2,23 @@
   "name": "cob-patterns",
   "version": "0.0.1",
   "scripts": {
-    "heroku-postbuild": "gulp build && fractal build"
+    "dev": "concurrently \"gulp\" \"fractal start --watch\" \"stencil build --watch\"",
+    "build": "stencil build && gulp build && fractal build",
+    "heroku-postbuild": "npm run build"
   },
   "dependencies": {
     "@frctl/fractal": "^1.1.4",
+    "@stencil/core": "github:CityOfBoston/stencil",
+    "@types/jest": "^22.1.1",
     "autoprefixer": "^6.3.6",
+    "concurrently": "^3.5.1",
     "gulp": "^3.9.1",
     "gulp-concat": "^2.6.1",
     "gulp-cssnano": "^2.1.2",
     "gulp-load-plugins": "^1.2.4",
     "gulp-stylus": "^2.3.1",
     "gulp-uglify": "^3.0.0",
+    "jest": "^22.1.4",
     "laggard": "^0.1.0",
     "lost": "^8.1.0",
     "postcss-flexibility": "^1.1.0",
