@@ -1,12 +1,16 @@
 import { Component, Element, Method, Prop, State } from "@stencil/core";
 
+// copied from base.js
+const EMAIL_REGEXP = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
 @Component({
   tag: "cob-contact-form"
 })
 export class ContactForm {
   @Element() el: any;
 
-  @Prop({ context: 'isServer' }) private isServer: boolean;
+  @Prop({ context: "isServer" })
+  private isServer: boolean;
 
   @Prop() visible: boolean = false;
   @Prop() defaultSubject: string = "";
@@ -21,6 +25,7 @@ export class ContactForm {
 
   @State() loading: boolean = false;
   @State() success: boolean = false;
+  @State() emailErrorMessage: string | null = null;
   @State() errorMessage: string | null = null;
 
   componentWillLoad() {
@@ -29,6 +34,7 @@ export class ContactForm {
 
   @Method()
   show() {
+    this.success = false;
     this.el.visible = true;
   }
 
@@ -43,6 +49,14 @@ export class ContactForm {
 
   handleEmailInput(ev) {
     this.email = ev.target.value;
+  }
+
+  handleEmailBlur() {
+    if (!EMAIL_REGEXP.test(this.email)) {
+      this.emailErrorMessage = 'Please enter a valid email address';
+    } else {
+      this.emailErrorMessage = null;
+    }
   }
 
   handleSubjectInput(ev) {
@@ -77,10 +91,12 @@ export class ContactForm {
       });
       if (resp.status === 200) {
         this.success = true;
+        this.message = "";
+        this.subject = this.defaultSubject;
       } else {
-        if (resp.headers.get("content-type") === "application/json") {
-          const json = await resp.json();
-          console.log(json)
+        const contentType = resp.headers.get("content-type");
+        if (contentType && contentType.includes("application/json")) {
+          this.errorMessage = "The server returned an error.";
         } else {
           this.errorMessage = await resp.text();
         }
@@ -124,7 +140,16 @@ export class ContactForm {
   }
 
   renderForm() {
-    const { errorMessage, loading, name, subject, email, message, to } = this;
+    const {
+      errorMessage,
+      emailErrorMessage,
+      loading,
+      name,
+      subject,
+      email,
+      message,
+      to
+    } = this;
 
     const missing = !(name && subject && email && message);
 
@@ -173,10 +198,18 @@ export class ContactForm {
                   name="email[from_address]"
                   type="text"
                   placeholder="email@address.com"
-                  class="txt-f txt-f--sm"
+                  class={`txt-f txt-f--sm ${
+                    emailErrorMessage ? "txt-f--err" : ""
+                  }`}
                   value={email}
                   onInput={ev => this.handleEmailInput(ev)}
+                  onBlur={ev => this.handleEmailBlur()}
                 />
+                {emailErrorMessage && (
+                  <div class="t--subinfo t--err m-t100">
+                    {emailErrorMessage}
+                  </div>
+                )}
               </div>
               <div class="txt m-b300">
                 <label
