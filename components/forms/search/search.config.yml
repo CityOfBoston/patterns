@@ -2,7 +2,14 @@ title: 'Form: Search'
 handle: form_search
 status: ready
 variants:
+  - name: Default Filled
+    context:
+      term: City Clerk
   - name: Small
+    context:
+      theme: sm
+      show_label: false
+  - name: Small Filled
     context:
       theme: sm
       show_label: false
@@ -11,10 +18,19 @@ variants:
     context:
       theme: md
       show_label: false
+  - name: Medium Filled
+    context:
+      theme: md
+      show_label: false
       term: City Clerk
   - name: Yellow
     context:
       theme: y
+  - name: Yellow Filled
+    context:
+      theme: y
+      term: City Clerk
+
 
 context:
   show_label: true
