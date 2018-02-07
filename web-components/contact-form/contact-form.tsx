@@ -1,27 +1,27 @@
-import { Component, Element, Method, Prop, State } from "@stencil/core";
+import { Component, Element, Method, Prop, State } from '@stencil/core';
 
 // copied from base.js
-const EMAIL_REGEXP = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+const EMAIL_REGEXP = /^(([^<>()[]\\.,;:\s@"]+(\.[^<>()[]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
 @Component({
-  tag: "cob-contact-form"
+  tag: 'cob-contact-form',
 })
 export class ContactForm {
   @Element() el: any;
 
-  @Prop({ context: "isServer" })
+  @Prop({ context: 'isServer' })
   private isServer: boolean;
 
   @Prop() visible: boolean = false;
-  @Prop() defaultSubject: string = "";
-  @Prop() action: string = "https://contactform.boston.gov/emails";
-  @Prop() token: string = "";
-  @Prop() to: string = "feedback@boston.gov";
+  @Prop() defaultSubject: string = '';
+  @Prop() action: string = 'https://contactform.boston.gov/emails';
+  @Prop() token: string = '';
+  @Prop() to: string = 'feedback@boston.gov';
 
-  @State() name: string = "";
-  @State() email: string = "";
-  @State() subject: string = "";
-  @State() message: string = "";
+  @State() name: string = '';
+  @State() email: string = '';
+  @State() subject: string = '';
+  @State() message: string = '';
 
   @State() loading: boolean = false;
   @State() success: boolean = false;
@@ -70,7 +70,7 @@ export class ContactForm {
   async submit(ev) {
     ev.preventDefault();
 
-    const formEl = this.el.querySelector("form");
+    const formEl = this.el.querySelector('form');
 
     if (!formEl) {
       return;
@@ -83,20 +83,20 @@ export class ContactForm {
 
     try {
       const resp = await fetch(action, {
-        method: "POST",
+        method: 'POST',
         headers: new Headers({
-          Authorization: `Token ${token}`
+          Authorization: `Token ${token}`,
         }),
-        body: form
+        body: form,
       });
       if (resp.status === 200) {
         this.success = true;
-        this.message = "";
+        this.message = '';
         this.subject = this.defaultSubject;
       } else {
-        const contentType = resp.headers.get("content-type");
-        if (contentType && contentType.includes("application/json")) {
-          this.errorMessage = "The server returned an error.";
+        const contentType = resp.headers.get('content-type');
+        if (contentType && contentType.includes('application/json')) {
+          this.errorMessage = 'The server returned an error.';
         } else {
           this.errorMessage = await resp.text();
         }
@@ -121,7 +121,7 @@ export class ContactForm {
           <button
             class="md-cb"
             type="button"
-            style={{ border: "none" }}
+            style={{ border: 'none' }}
             onClick={() => this.hide()}
           >
             Close
@@ -148,7 +148,7 @@ export class ContactForm {
       subject,
       email,
       message,
-      to
+      to,
     } = this;
 
     const missing = !(name && subject && email && message);
@@ -164,12 +164,12 @@ export class ContactForm {
           <input
             name="email[url]"
             type="hidden"
-            value={this.isServer ? "" : window.location.toString()}
+            value={this.isServer ? '' : window.location.toString()}
           />
           <input
             name="email[browser]"
             type="hidden"
-            value={this.isServer ? "" : navigator.userAgent}
+            value={this.isServer ? '' : navigator.userAgent}
           />
           <div class="fs">
             <div class="fs-c">
@@ -199,7 +199,7 @@ export class ContactForm {
                   type="text"
                   placeholder="email@address.com"
                   class={`txt-f txt-f--sm ${
-                    emailErrorMessage ? "txt-f--err" : ""
+                    emailErrorMessage ? 'txt-f--err' : ''
                   }`}
                   value={email}
                   onInput={ev => this.handleEmailInput(ev)}
