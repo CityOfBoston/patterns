@@ -1,0 +1,12 @@
+{
+  "parser": "typescript-eslint-parser",
+  "overrides": [
+    {
+      "files": [ "*.ts", "*.tsx" ],
+      "rules": {
+        "no-unused-vars": 0,
+        "no-undef": 0
+      }
+    }
+  ]
+}

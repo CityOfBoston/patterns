@@ -1,12 +1,8 @@
-const path = require('path');
-
 exports.config = {
   srcDir: 'web-components',
 
   namespace: 'all',
-  bundles: [
-    { components: ['cob-contact-form'] },
-  ],
+  bundles: [{ components: ['cob-contact-form'] }],
 
   // URL where we want our components, index.html, and sw.js to live
   publicPath: '/web-components/',
