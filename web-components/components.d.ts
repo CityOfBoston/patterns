@@ -38,4 +38,102 @@ declare global {
   }
 }
 
+
+import {
+  CobMapEsriLayer as CobMapEsriLayer
+} from './map-esri-layer/map-esri-layer';
+
+declare global {
+  interface HTMLCobMapEsriLayerElement extends CobMapEsriLayer, HTMLElement {
+  }
+  var HTMLCobMapEsriLayerElement: {
+    prototype: HTMLCobMapEsriLayerElement;
+    new (): HTMLCobMapEsriLayerElement;
+  };
+  interface HTMLElementTagNameMap {
+    "cob-map-esri-layer": HTMLCobMapEsriLayerElement;
+  }
+  interface ElementTagNameMap {
+    "cob-map-esri-layer": HTMLCobMapEsriLayerElement;
+  }
+  namespace JSX {
+    interface IntrinsicElements {
+      "cob-map-esri-layer": JSXElements.CobMapEsriLayerAttributes;
+    }
+  }
+  namespace JSXElements {
+    export interface CobMapEsriLayerAttributes extends HTMLAttributes {
+      color?: string;
+      hoverColor?: string;
+      title?: string;
+      url?: string;
+    }
+  }
+}
+
+
+import {
+  CobMapLegend as CobMapLegend
+} from './map-legend/map-legend';
+
+declare global {
+  interface HTMLCobMapLegendElement extends CobMapLegend, HTMLElement {
+  }
+  var HTMLCobMapLegendElement: {
+    prototype: HTMLCobMapLegendElement;
+    new (): HTMLCobMapLegendElement;
+  };
+  interface HTMLElementTagNameMap {
+    "cob-map-legend": HTMLCobMapLegendElement;
+  }
+  interface ElementTagNameMap {
+    "cob-map-legend": HTMLCobMapLegendElement;
+  }
+  namespace JSX {
+    interface IntrinsicElements {
+      "cob-map-legend": JSXElements.CobMapLegendAttributes;
+    }
+  }
+  namespace JSXElements {
+    export interface CobMapLegendAttributes extends HTMLAttributes {
+      collapsedTitle?: string;
+      open?: boolean;
+    }
+  }
+}
+
+
+import {
+  CobMap as CobMap
+} from './map/map';
+
+declare global {
+  interface HTMLCobMapElement extends CobMap, HTMLElement {
+  }
+  var HTMLCobMapElement: {
+    prototype: HTMLCobMapElement;
+    new (): HTMLCobMapElement;
+  };
+  interface HTMLElementTagNameMap {
+    "cob-map": HTMLCobMapElement;
+  }
+  interface ElementTagNameMap {
+    "cob-map": HTMLCobMapElement;
+  }
+  namespace JSX {
+    interface IntrinsicElements {
+      "cob-map": JSXElements.CobMapAttributes;
+    }
+  }
+  namespace JSXElements {
+    export interface CobMapAttributes extends HTMLAttributes {
+      basemapUrl?: string;
+      latitude?: number;
+      longitude?: number;
+      showZoomControl?: boolean;
+      zoom?: number;
+    }
+  }
+}
+
 declare global { namespace JSX { interface StencilJSX {} } }
