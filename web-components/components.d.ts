@@ -5,12 +5,21 @@
  */
 
 
+declare global {
+  interface HTMLStencilElement extends HTMLElement {
+    componentOnReady(): Promise<this>;
+    componentOnReady(done: (ele?: this) => void): void;
+  }
+}
+
+
+
 import {
   ContactForm as CobContactForm
 } from './contact-form/contact-form';
 
 declare global {
-  interface HTMLCobContactFormElement extends CobContactForm, HTMLElement {
+  interface HTMLCobContactFormElement extends CobContactForm, HTMLStencilElement {
   }
   var HTMLCobContactFormElement: {
     prototype: HTMLCobContactFormElement;
@@ -44,7 +53,7 @@ import {
 } from './map-esri-layer/map-esri-layer';
 
 declare global {
-  interface HTMLCobMapEsriLayerElement extends CobMapEsriLayer, HTMLElement {
+  interface HTMLCobMapEsriLayerElement extends CobMapEsriLayer, HTMLStencilElement {
   }
   var HTMLCobMapEsriLayerElement: {
     prototype: HTMLCobMapEsriLayerElement;
@@ -77,7 +86,7 @@ import {
 } from './map-legend/map-legend';
 
 declare global {
-  interface HTMLCobMapLegendElement extends CobMapLegend, HTMLElement {
+  interface HTMLCobMapLegendElement extends CobMapLegend, HTMLStencilElement {
   }
   var HTMLCobMapLegendElement: {
     prototype: HTMLCobMapLegendElement;
@@ -108,7 +117,7 @@ import {
 } from './map/map';
 
 declare global {
-  interface HTMLCobMapElement extends CobMap, HTMLElement {
+  interface HTMLCobMapElement extends CobMap, HTMLStencilElement {
   }
   var HTMLCobMapElement: {
     prototype: HTMLCobMapElement;
