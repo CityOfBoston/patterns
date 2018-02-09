@@ -1,0 +1,4 @@
+plugins:
+  # We need to disable inlineStyles because it can move clip-path
+  # attributes to places where they cancel each other out.
+  - inlineStyles: false
