@@ -1,4 +1,11 @@
-/public
-/assets
 /node_modules
+
+# Build / deploy directories
+/assets
+/public
+
+# Legacy JS we don't want to get into
 /scripts
+
+# Auto-generated file
+/web-components/components.d.ts

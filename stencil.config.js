@@ -2,7 +2,10 @@ exports.config = {
   srcDir: 'web-components',
 
   namespace: 'all',
-  bundles: [{ components: ['cob-contact-form'] }],
+  bundles: [
+    { components: ['cob-contact-form'] },
+    { components: ['cob-map', 'cob-map-legend', 'cob-map-esri-layer'] },
+  ],
 
   // URL where we want our components, index.html, and sw.js to live
   publicPath: '/web-components/',

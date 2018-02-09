@@ -203,7 +203,7 @@ export class ContactForm {
                   }`}
                   value={email}
                   onInput={ev => this.handleEmailInput(ev)}
-                  onBlur={ev => this.handleEmailBlur()}
+                  onBlur={() => this.handleEmailBlur()}
                 />
                 {emailErrorMessage && (
                   <div class="t--subinfo t--err m-t100">

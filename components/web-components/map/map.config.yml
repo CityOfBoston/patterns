@@ -1,0 +1,7 @@
+title: 'Web Components: Map'
+handle: map
+status: ready
+variants:
+  - name: Legend Open
+    context:
+      legend_open: true
