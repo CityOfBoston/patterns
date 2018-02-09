@@ -9,7 +9,11 @@
     "precommit": "lint-staged"
   },
   "lint-staged": {
-    "*.{js,jsx,ts,tsx}": "eslint --quiet"
+    "*.{js,jsx,ts,tsx}": "eslint --quiet",
+    "*.svg": [
+      "svgo --config svgo.yml",
+      "git add"
+    ]
   },
   "dependencies": {
     "@frctl/fractal": "^1.1.4",
@@ -46,6 +50,7 @@
     "husky": "^0.14.3",
     "lint-staged": "^6.1.0",
     "prettier": "^1.10.2",
+    "svgo": "^1.0.4",
     "typescript": "^2.7.1",
     "typescript-eslint-parser": "^12.0.0"
   }
