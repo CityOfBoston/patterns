@@ -18,6 +18,7 @@
   },
   "include": [
     "web-components",
+    "web-components/types",
     "types/jsx.d.ts"
   ],
   "exclude": [

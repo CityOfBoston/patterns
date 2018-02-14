@@ -1,7 +1,14 @@
 title: 'Web Components: Map'
 handle: map
 status: ready
+context:
+  title: Parking and city councilors
 variants:
-  - name: Legend Open
+  - name: Address Search
     context:
-      legend_open: true
+      show_address_search: true
+      open_overlay: true
+
+  - name: Overlay Open
+    context:
+      open_overlay: true
