@@ -15,7 +15,7 @@ We recommend using [`yarn`](https://yarnpkg.com/en/). Run `yarn` to install depe
 
 Once the repository has been cloned, you can build the components with:
 
-`npx gulp build`
+`npm gulp build`
 
 After building the components, you can run `npx fractal start --watch` to get a server running. You should be able to visit `http://localhost:3000` in your browser and view the pattern library.
 
