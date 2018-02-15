@@ -12,3 +12,8 @@ context:
     - icon: false
       name: Updated
       description: 11/27/2016 - 10:45AM
+
+variants:
+  - name: Small
+    context:
+      small: true

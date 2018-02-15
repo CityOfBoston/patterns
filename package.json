@@ -18,7 +18,7 @@
   },
   "dependencies": {
     "@frctl/fractal": "^1.1.4",
-    "@stencil/core": "^0.5.1",
+    "@stencil/core": "^0.5.2",
     "@types/geojson": "^7946.0.1",
     "@types/jest": "^22.1.1",
     "@types/leaflet": "^1.2.5",
@@ -42,7 +42,8 @@
     "require-dir": "^0.3.0",
     "rucksack-css": "^0.9.1",
     "run-sequence": "^1.2.2",
-    "serve-static": "^1.11.1"
+    "serve-static": "^1.11.1",
+    "templayed": "github:CityOfBoston/templayed.js"
   },
   "devDependencies": {
     "eslint": "^4.17.0",

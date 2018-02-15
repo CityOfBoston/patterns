@@ -50,13 +50,43 @@
         show-zoom-control
         show-legend
         show-address-search
-        title="Snow Emergency Parking Restrictions">
+        address-search-heading="Nearby routes and parking"
+        heading="Snow Emergency Parking Restrictions">
+        <cob-map-esri-layer url="https://services.arcgis.com/sFnw0xNflSi8J0uh/arcgis/rest/services/City_Council_Districts/FeatureServer/0"
+          color="#0C2639"
+          hover-color="#FB4D42"
+          label="Boston City Council Districts"
+          fill>
+          <script slot="popup" type="text/mustache">
+            <img src="{{Image}}" class="cdp-i" alt="{{Councilor}}" style="margin-bottom: 1rem"/>
+            <div class="ta-c m-v300">
+              <div class="cdp-t t--sans t--upper m-t200">{{Councilor}}</div>
+              <div class="cdp-st t--subinfo t--g300">District {{DISTRICT}}</div>
+            </div>
+            <a href="{{Bio}}" class="d-b bg--cb cdp-a ta-c p-a200 t--upper t--sans t--w t--ob--h t--s100">Visit webpage<span class="a11y--h"> of {{Councillor}}</span></a>
+          </script>
+        </cob-map-esri-layer>
         <cob-map-esri-layer url="https://services.arcgis.com/sFnw0xNflSi8J0uh/arcgis/rest/services/Ownership/FeatureServer/0"
           color="#e1453b"
-          title="Snow Emergency Restricted Parking"></cob-map-esri-layer>
+          label="Snow Emergency Restricted Parking"></cob-map-esri-layer>
         <cob-map-esri-layer url="https://services.arcgis.com/sFnw0xNflSi8J0uh/arcgis/rest/services/SnowParking/FeatureServer/0"
           icon-src="/images/global/icons/mapping/parking.svg"
-          title="Snow Emergency Parking Lots"></cob-map-esri-layer>
+          label="Snow Emergency Parking Lots">
+          <script slot="popup"
+            type="text/mustache">
+            <div style="min-width: 280px">
+              <h3 class="h3 m-v300">{{ Address }}</h4>
+              <div class="m-v300">
+                <ul class="dl dl--sm">
+                  <li class="dl-i"><span class="dl-t">Name:</span> <span class="dl-d">{{Name}}</span></li>
+                  <li class="dl-i"><span class="dl-t">Fee:</span> <span class="dl-d">{{Fee}}</span></li>
+                </ul>
+              </div>
+              {{#Comments}}<div class="t--subinfo m-v300">{{.}}</div>{{/Comments}}
+              {{#Phone}}<div class="t--subinfo m-v300">Call ahead to find out the number of spaces available: <a href="tel:{{.}}">{{.}}</a></div>{{/Phone}}
+            </div>
+          </script>
+        </cob-map-esri-layer>
       </cob-map>
     </div>
   </div>

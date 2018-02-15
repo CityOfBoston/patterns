@@ -1,4 +1,4 @@
-import { Component, Event, Prop, EventEmitter } from '@stencil/core';
+import { Component, Element, Event, Prop, EventEmitter } from '@stencil/core';
 
 import { LayerConfig } from '../map/map';
 
@@ -6,11 +6,20 @@ import { LayerConfig } from '../map/map';
   tag: 'cob-map-esri-layer',
 })
 export class CobMapEsriLayer {
+  @Element() el: HTMLElement;
+
   @Prop() url: string;
-  @Prop() title: string;
+  @Prop() label: string;
   @Prop() color: string = '';
   @Prop() hoverColor: string = '';
   @Prop() iconSrc: string = '';
+  @Prop() fill: boolean = false;
+
+  // We allow either a string attribute or a nested <script> tag to define the
+  // template for popups. The attribute is more correct and better for DOM
+  // generation, but the <script> is supported for easier human-editing (since
+  // the attribute version requires much escaping for <>s).
+  @Prop() popupTemplate: string = '';
 
   @Event() cobMapEsriLayerConfig: EventEmitter;
 
@@ -24,12 +33,17 @@ export class CobMapEsriLayer {
   }
 
   emitConfig() {
+    const popupScript = this.el.querySelector('script[slot=popup]');
+
     const config: LayerConfig = {
       url: this.url,
-      title: this.title,
+      label: this.label,
       color: this.color,
       hoverColor: this.hoverColor,
+      fill: this.fill,
       iconSrc: this.iconSrc,
+      popupTemplate:
+        this.popupTemplate || (popupScript && popupScript.innerHTML),
     };
 
     this.cobMapEsriLayerConfig.emit(config);

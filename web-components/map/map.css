@@ -2,6 +2,12 @@ cob-map {
   display: block;
 }
 
+cob-map.leaflet-container a.leaflet-popup-close-button {
+  /* By default this is too tight in the corner */
+  top: 6px;
+  right: 6px;
+}
+
 cob-map .cob-overlay {
   cursor: default;
 
@@ -100,6 +106,7 @@ cob-map .geocoder-control-suggestions .geocoder-control-suggestion:hover {
 }
 
 cob-map .cob-overlay-content .sf-i-b {
+  /* clicking the icon doesn't do a search, so don't make it look like it does */
   cursor: default;
 }
 
@@ -108,12 +115,13 @@ cob-map .cob-legend-table-row {
   align-items: center;
 }
 
-cob-map .cob-legend-table-icon {
-  margin-right: 0.5rem;
+cob-map .cob-legend-table-icon img {
+  display: block;
 }
 
 cob-map .cob-legend-table-label {
   flex: 1;
   line-height: 1.2;
-  margin-top: -2px;
+  margin-top: -3px;
+  margin-left: 0.5rem;
 }

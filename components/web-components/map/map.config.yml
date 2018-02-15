@@ -2,7 +2,7 @@ title: 'Web Components: Map'
 handle: map
 status: ready
 context:
-  title: Parking and city councilors
+  heading: Parking and city councilors
 variants:
   - name: Address Search
     context:
