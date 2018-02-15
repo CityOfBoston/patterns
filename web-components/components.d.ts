@@ -74,39 +74,9 @@ declare global {
     export interface CobMapEsriLayerAttributes extends HTMLAttributes {
       color?: string;
       hoverColor?: string;
+      iconSrc?: string;
       title?: string;
       url?: string;
-    }
-  }
-}
-
-
-import {
-  CobMapLegend as CobMapLegend
-} from './map-legend/map-legend';
-
-declare global {
-  interface HTMLCobMapLegendElement extends CobMapLegend, HTMLStencilElement {
-  }
-  var HTMLCobMapLegendElement: {
-    prototype: HTMLCobMapLegendElement;
-    new (): HTMLCobMapLegendElement;
-  };
-  interface HTMLElementTagNameMap {
-    "cob-map-legend": HTMLCobMapLegendElement;
-  }
-  interface ElementTagNameMap {
-    "cob-map-legend": HTMLCobMapLegendElement;
-  }
-  namespace JSX {
-    interface IntrinsicElements {
-      "cob-map-legend": JSXElements.CobMapLegendAttributes;
-    }
-  }
-  namespace JSXElements {
-    export interface CobMapLegendAttributes extends HTMLAttributes {
-      collapsedTitle?: string;
-      open?: boolean;
     }
   }
 }
@@ -136,10 +106,15 @@ declare global {
   }
   namespace JSXElements {
     export interface CobMapAttributes extends HTMLAttributes {
+      addressSearchPlaceholder?: string;
       basemapUrl?: string;
       latitude?: number;
       longitude?: number;
+      openOverlay?: boolean;
+      showAddressSearch?: boolean;
+      showLegend?: boolean;
       showZoomControl?: boolean;
+      title?: string;
       zoom?: number;
     }
   }

@@ -1,13 +1,17 @@
 <!DOCTYPE html>
-<html dir="ltr" lang="en">
+<html dir="ltr"
+  lang="en">
 
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
   <title>Stencil Component Starter</title>
 
   <!--[if !IE]><!-->
-  <link rel="stylesheet" type="text/css" href="/css/public.css" />
+  <link rel="stylesheet"
+    type="text/css"
+    href="/css/public.css" />
   <!--<![endif]-->
   <!--[if lt IE 10]>
     <link media="all" rel="stylesheet" href="/css/ie.css">
@@ -23,10 +27,12 @@
         <h2>
           <code>&lt;cob-contact-form&gt;</code>
         </h2>
-        <button class="btn" onClick="document.getElementById('contactForm').show()">Show Feedback</button>
+        <button class="btn"
+          onClick="document.getElementById('contactForm').show()">Show Feedback</button>
       </div>
 
-      <cob-contact-form id="contactForm" token="*****"></cob-contact-form>
+      <cob-contact-form id="contactForm"
+        token="*****"></cob-contact-form>
     </div>
 
     <div class="b-c b-c--xsmv b--w m-v100">
@@ -36,17 +42,21 @@
         </h2>
       </div>
 
-      <cob-map style="height: 500px" latitude="42.347316" longitude="-71.065227" zoom="12" show-zoom-control id="map">
-        <cob-map-esri-layer url="https://services.arcgis.com/sFnw0xNflSi8J0uh/arcgis/rest/services/City_Council_Districts/FeatureServer/0"
-          color="#0C2639" hover-color="#FB4D42" title="Boston City Council districts"></cob-map-esri-layer>
-        <cob-map-legend collapsed-title="City Councilor Look-Up">
-          <div class="t--info">
-            <p class="m-t000">Hover over and click on your district to find your councilor, or search your address.</p>
-            <p>To see all City Council members, including at-large councilors, visit the
-              <a target="_blank" href="https://www.boston.gov/departments/city-council#city-council-members">City Council page.</a>
-            </p>
-          </div>
-        </cob-map-legend>
+      <cob-map id="map"
+        style="height: 500px"
+        latitude="42.347316"
+        longitude="-71.065227"
+        zoom="12"
+        show-zoom-control
+        show-legend
+        show-address-search
+        title="Snow Emergency Parking Restrictions">
+        <cob-map-esri-layer url="https://services.arcgis.com/sFnw0xNflSi8J0uh/arcgis/rest/services/Ownership/FeatureServer/0"
+          color="#e1453b"
+          title="Snow Emergency Restricted Parking"></cob-map-esri-layer>
+        <cob-map-esri-layer url="https://services.arcgis.com/sFnw0xNflSi8J0uh/arcgis/rest/services/SnowParking/FeatureServer/0"
+          icon-src="/images/global/icons/mapping/parking.svg"
+          title="Snow Emergency Parking Lots"></cob-map-esri-layer>
       </cob-map>
     </div>
   </div>

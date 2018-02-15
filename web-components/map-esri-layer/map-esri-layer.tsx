@@ -10,6 +10,7 @@ export class CobMapEsriLayer {
   @Prop() title: string;
   @Prop() color: string = '';
   @Prop() hoverColor: string = '';
+  @Prop() iconSrc: string = '';
 
   @Event() cobMapEsriLayerConfig: EventEmitter;
 
@@ -28,6 +29,7 @@ export class CobMapEsriLayer {
       title: this.title,
       color: this.color,
       hoverColor: this.hoverColor,
+      iconSrc: this.iconSrc,
     };
 
     this.cobMapEsriLayerConfig.emit(config);

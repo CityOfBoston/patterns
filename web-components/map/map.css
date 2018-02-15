@@ -1,3 +1,119 @@
 cob-map {
   display: block;
 }
+
+cob-map .cob-overlay {
+  cursor: default;
+
+  position: absolute;
+
+  top: 1rem;
+  left: 1rem;
+
+  /*
+    We give the legend a default width that can be overriden by classes or style
+    attributes by the external page.
+  */
+  width: 60%;
+  max-width: 500px;
+
+  /* to get above the ESRI map */
+  z-index: 500;
+}
+
+/* Causes the overlay element to expand to its children's vertical margin. */
+cob-map .cob-overlay-content:before {
+  display: table;
+  content: " ";
+}
+cob-map .cob-overlay-content:after {
+  display: table;
+  content: " ";
+  clear: both;
+}
+
+/* We set the inner margin of the contents rather than the padding so that it
+disappears automatically when there's no content. */
+cob-map .cob-overlay-content > * {
+  margin: 1rem 1.5rem;
+}
+
+@media screen and (max-width: 839px) {
+  cob-map .cob-overlay {
+    top: 0;
+    left: 0;
+
+    /*
+      The !importants here are to force that when we get narrow enough to do
+      collapse / expand UI we go to the full width. Prevents the need for the
+      width overrides for the hovering state to have their own media queries.
+    */
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+}
+
+cob-map .geocoder-control-suggestions {
+  width: 100%;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  overflow: auto;
+  display: none;
+
+  border: none !important;
+  border-radius: 0;
+
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.65) !important;
+}
+
+cob-map .geocoder-control-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+cob-map .geocoder-control-suggestions .geocoder-control-suggestion {
+  font-size: 18px;
+  padding: 7px;
+  background: white;
+  border-top: 1px solid #f1f1f1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  cursor: pointer;
+
+  font-style: italic;
+  font-family: Lora, serif;
+}
+
+cob-map .geocoder-control-suggestions .geocoder-control-suggestion:first-child {
+  border: none;
+}
+
+cob-map
+  .geocoder-control-suggestions
+  .geocoder-control-suggestion.geocoder-control-selected,
+cob-map .geocoder-control-suggestions .geocoder-control-suggestion:hover {
+  background: #d2d2d2;
+  border-color: #d2d2d2;
+}
+
+cob-map .cob-overlay-content .sf-i-b {
+  cursor: default;
+}
+
+cob-map .cob-legend-table-row {
+  display: flex;
+  align-items: center;
+}
+
+cob-map .cob-legend-table-icon {
+  margin-right: 0.5rem;
+}
+
+cob-map .cob-legend-table-label {
+  flex: 1;
+  line-height: 1.2;
+  margin-top: -2px;
+}
