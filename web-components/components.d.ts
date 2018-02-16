@@ -73,9 +73,11 @@ declare global {
   namespace JSXElements {
     export interface CobMapEsriLayerAttributes extends HTMLAttributes {
       color?: string;
+      fill?: boolean;
       hoverColor?: string;
       iconSrc?: string;
-      title?: string;
+      label?: string;
+      popupTemplate?: string;
       url?: string;
     }
   }
@@ -106,15 +108,16 @@ declare global {
   }
   namespace JSXElements {
     export interface CobMapAttributes extends HTMLAttributes {
+      addressSearchHeading?: string;
       addressSearchPlaceholder?: string;
       basemapUrl?: string;
+      heading?: string;
       latitude?: number;
       longitude?: number;
       openOverlay?: boolean;
       showAddressSearch?: boolean;
       showLegend?: boolean;
       showZoomControl?: boolean;
-      title?: string;
       zoom?: number;
     }
   }

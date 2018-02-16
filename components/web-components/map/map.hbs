@@ -1,21 +1,56 @@
-<cob-map
-  title="{{title}}"
+<cob-map heading="{{heading}}"
   style="height: 500px"
   latitude="42.347316"
   longitude="-71.065227"
   zoom="12"
   show-zoom-control
-  show-legend{{#if show_address_search}}
-  show-address-search{{/if}}{{#if open_overlay}}
+  show-legend{{#if
+  show_address_search}}
+  show-address-search{{/if}}{{#if
+  open_overlay}}
   open-overlay{{/if}}>
   <cob-map-esri-layer url="https://services.arcgis.com/sFnw0xNflSi8J0uh/arcgis/rest/services/City_Council_Districts/FeatureServer/0"
-    color="#0C2639" hover-color="#FB4D42" title="Boston City Council districts" interactive></cob-map-esri-layer>
+    color="#0C2639"
+    hover-color="#FB4D42"
+    label="Boston City Council Districts"
+    fill>
+    <script slot="popup" type="text/mustache">
+      <img src="\{{Image}}" class="cdp-i" alt="\{{Councilor}}" style="margin-bottom: 1rem"/>
+      <div class="ta-c m-v300">
+        <div class="cdp-t t--sans t--upper m-t200">\{{Councilor}}</div>
+        <div class="cdp-st t--subinfo t--g300">District \{{DISTRICT}}</div>
+      </div>
+      <a href="\{{Bio}}" class="d-b bg--cb cdp-a ta-c p-a200 t--upper t--sans t--w t--ob--h t--s100">Visit webpage<span class="a11y--h"> of {{Councillor}}</span></a>
+    </script>
+  </cob-map-esri-layer>
+  <cob-map-esri-layer url="https://services.arcgis.com/sFnw0xNflSi8J0uh/arcgis/rest/services/Ownership/FeatureServer/0"
+    color="#e1453b"
+    label="Snow Emergency Restricted Parking"></cob-map-esri-layer>
   <cob-map-esri-layer url="https://services.arcgis.com/sFnw0xNflSi8J0uh/arcgis/rest/services/SnowParking/FeatureServer/0"
-    icon-src="/images/global/icons/mapping/parking.svg" title="Snow Emergency Parking Lots"></cob-map-esri-layer>
-{{#unless show_address_search}}  <div class="t--info" slot="instructions">
+    icon-src="/images/global/icons/mapping/parking.svg"
+    label="Snow Emergency Parking Lots">
+    <script slot="popup"
+      type="text/mustache">
+      <div style="min-width: 280px">
+        <h3 class="h3 m-v300">\{{Address}}</h4>
+        <div class="m-v300">
+          <ul class="dl dl--sm">
+            <li class="dl-i"><span class="dl-t">Name:</span> <span class="dl-d">\{{Name}}</span></li>
+            <li class="dl-i"><span class="dl-t">Fee:</span> <span class="dl-d">\{{Fee}}</span></li>
+          </ul>
+        </div>
+        \{{#Comments}}<div class="t--subinfo m-v300">\{{.}}</div>\{{/Comments}}
+        \{{#Phone}}<div class="t--subinfo m-v300">Call ahead to find out the number of spaces available: <a href="tel:\{{.}}">\{{.}}</a></div>\{{/Phone}}
+      </div>
+    </script>
+  </cob-map-esri-layer>
+  {{#unless show_address_search}}
+  <div class="t--info"
+    slot="instructions">
     <p class="m-t000">Hover over and click on your district to find your councilor, or search your address.</p>
     <p>To see all City Council members, including at-large councilors, visit the
-      <a target="_blank" href="https://www.boston.gov/departments/city-council#city-council-members">City Council page.</a>
+      <a target="_blank"
+        href="https://www.boston.gov/departments/city-council#city-council-members">City Council page.</a>
     </p>
   </div>
-{{/unless}}</cob-map>
+  {{/unless}}</cob-map>

@@ -12,6 +12,7 @@
 
    Modifier:
     b = block
+    sm = small (less vertical spacing)
 
  */
 
@@ -30,9 +31,15 @@
     &:not(:first-child)
       padding-top: $sizing-300
 
+    .dl--sm &:not(:first-child)
+      padding-top: $sizing-100
+
     &:not(:last-child)
       border-bottom: 1px dashed $grey-100
       padding-bottom: $sizing-300
+
+    .dl--sm &:not(:last-child)
+      padding-bottom: $sizing-100
 
     &--b
       line-height: 1
@@ -62,7 +69,10 @@
     float: left
     font-family: $sans
     font-size: responsive $font-100 $font-200
-    line-height: $line-height-200
+    // Keeps the line-height relative to the responsive font-size, but
+    // compensates for the dl-t font size being bigger. Aims to preserve
+    // vertical centering.
+    line-height: "calc(%s * 1.25)" % ($line-height-200)
     text-transform: uppercase
     width: 80%
     

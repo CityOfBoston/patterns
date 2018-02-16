@@ -1,3 +1,5 @@
+/* global: templayed */
+
 import { Component, Element, Listen, Prop, State, Watch } from '@stencil/core';
 
 import {
@@ -9,6 +11,7 @@ import {
   map as Lmap,
   marker as Lmarker,
   Control as LeafletControl,
+  Layer as LeafletLayer,
   LayerGroup as LeafletLayerGroup,
   LeafletEvent,
   Map as LeafletMap,
@@ -23,6 +26,10 @@ import {
 } from 'esri-leaflet';
 
 import { geosearch, GeosearchControl } from 'esri-leaflet-geocoder';
+
+// Has a global definition. Look, the code is 5 years old.
+import 'templayed';
+declare function templayed(string): (Object) => string;
 
 const DEFAULT_BASEMAP_URL =
   'https://awsgeo.boston.gov/arcgis/rest/services/Basemaps/BostonCityBasemap_WM/MapServer';
@@ -43,10 +50,13 @@ const WAYPOINT_ICON = Licon({
 
 export interface LayerConfig {
   url: string;
-  title: string;
-  color: string;
+  label: string;
+  color?: string;
   hoverColor?: string;
+  fill?: boolean;
   iconSrc?: string;
+  popupTemplate?: string;
+  popupTemplateCompiled?: (Object) => string;
 }
 
 interface LayerRecord {
@@ -64,13 +74,16 @@ export class CobMap {
   @Prop({ context: 'isServer' })
   private isServer: boolean;
 
-  @Prop() title: string;
+  // Would call this "title" except that causes browsers to show a tooltip when
+  // hovering over the map.
+  @Prop() heading: string;
   @Prop() latitude: number = 42.357004;
   @Prop() longitude: number = -71.062309;
   @Prop() zoom: number = 14;
   @Prop() showZoomControl: boolean = false;
   @Prop() showLegend: boolean = false;
   @Prop() showAddressSearch: boolean = false;
+  @Prop() addressSearchHeading: string = 'Address search';
   @Prop() addressSearchPlaceholder: string = 'Search for an address…';
   @Prop() basemapUrl: string = DEFAULT_BASEMAP_URL;
 
@@ -213,16 +226,47 @@ export class CobMap {
     }
   }
 
-  makeFeatureStyle(config: LayerConfig) {
+  makePopupContent(
+    configElement: HTMLElement,
+    layer: FeatureLayer
+  ): string | null {
+    const layerRecord = this.layerRecordsByConfigElement.get(configElement);
+    if (!layerRecord) {
+      return null;
+    }
+
+    const { config } = layerRecord;
+
+    if (config.popupTemplateCompiled) {
+      const { properties } = layer.feature;
+
+      // We trim the property values down because some Esri values are a string
+      // with spaces, and we want those to be falsey (an empty string) for
+      // template conditionals.
+      const trimmedProperties = {};
+      Object.keys(properties).forEach(key => {
+        const val = properties[key];
+        trimmedProperties[key] = typeof val === 'string' ? val.trim() : val;
+      });
+
+      return config.popupTemplateCompiled(trimmedProperties);
+    } else {
+      return null;
+    }
+  }
+
+  makeFeatureStyle({ color, fill }: LayerConfig) {
     return {
-      color: config.color,
+      color,
+      fill,
       weight: 3,
     };
   }
 
-  makeFeatureHoverStyle(config: LayerConfig) {
+  makeFeatureHoverStyle({ color, hoverColor, fill }: LayerConfig) {
     return {
-      color: config.hoverColor || config.color,
+      color: hoverColor || color,
+      fill,
       weight: 4,
     };
   }
@@ -240,7 +284,8 @@ export class CobMap {
     if (layerRecord) {
       if (
         layerRecord.config.url === url &&
-        layerRecord.config.iconSrc === config.iconSrc
+        layerRecord.config.iconSrc === config.iconSrc &&
+        !!layerRecord.config.popupTemplate === !!config.popupTemplate
       ) {
         // If URL is the same then we can just update the style.
         this.updateLayerConfig(layerRecord, config);
@@ -256,8 +301,7 @@ export class CobMap {
 
     const options = {
       url,
-      // TODO(finh): This needs to change to be about clicking for a popup
-      interactive: !!config.hoverColor,
+      interactive: !!config.popupTemplate,
       pointToLayer: config.iconSrc
         ? (_, latlng) =>
             Lmarker(latlng, {
@@ -267,7 +311,7 @@ export class CobMap {
               }),
             })
         : undefined,
-      onEachFeature: (_, featureLayer: L.Layer) => {
+      onEachFeature: (_, featureLayer: LeafletLayer) => {
         featureLayer.on({
           mouseover: this.onFeatureMouseOver.bind(this, configElement),
           mouseout: this.onFeatureMouseOut.bind(this, configElement),
@@ -276,6 +320,14 @@ export class CobMap {
     };
 
     const layer = featureLayer(options).addTo(this.map);
+
+    if (config.popupTemplate) {
+      config.popupTemplateCompiled = templayed(config.popupTemplate);
+      layer.bindPopup(this.makePopupContent.bind(this, configElement));
+    } else {
+      config.popupTemplateCompiled = null;
+      layer.unbindPopup();
+    }
 
     const newLayerRecord = { layer, config };
     this.updateLayerConfig(newLayerRecord, config);
@@ -371,7 +423,7 @@ export class CobMap {
             class="co-t"
             onClick={this.handleLegendLabelMouseClick.bind(this)}
           >
-            {this.title}
+            {this.heading}
           </label>
 
           <div class="co-b b--w cob-overlay-content">
@@ -379,7 +431,7 @@ export class CobMap {
 
             {this.showAddressSearch && (
               <div class="sf sf--md m-v500">
-                <label class="sf-l">Address search</label>
+                <label class="sf-l">{this.addressSearchHeading}</label>
                 <div class="cob-address-search-field-container m-v100" />
               </div>
             )}
@@ -392,7 +444,7 @@ export class CobMap {
                       {this.renderLegendIcon(config)}
                     </div>
                     <div class="t--subinfo cob-legend-table-label">
-                      {config.title}
+                      {config.label}
                     </div>
                   </div>
                 ))}
@@ -404,12 +456,40 @@ export class CobMap {
     );
   }
 
-  renderLegendIcon({ color, iconSrc }: LayerConfig) {
+  renderLegendIcon({ fill, color, iconSrc }: LayerConfig) {
     if (iconSrc) {
       return <img src={iconSrc} width="50" height="50" />;
+    } else if (fill) {
+      return (
+        <div
+          style={{
+            margin: '4px',
+            border: '3px',
+            borderStyle: 'solid',
+            borderColor: color,
+          }}
+        >
+          <div
+            style={{
+              background: color,
+              opacity: '0.2',
+              width: '36px',
+              height: '36px',
+            }}
+          />
+        </div>
+      );
     } else {
       return (
-        <div style={{ width: '50px', height: '3px', backgroundColor: color }} />
+        <div
+          style={{
+            width: '50px',
+            height: '3px',
+            marginTop: '23px',
+            marginBottom: '24px',
+            backgroundColor: color,
+          }}
+        />
       );
     }
   }
