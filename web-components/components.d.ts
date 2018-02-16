@@ -123,4 +123,34 @@ declare global {
   }
 }
 
+
+import {
+  CobViz as CobViz
+} from './viz/viz';
+
+declare global {
+  interface HTMLCobVizElement extends CobViz, HTMLStencilElement {
+  }
+  var HTMLCobVizElement: {
+    prototype: HTMLCobVizElement;
+    new (): HTMLCobVizElement;
+  };
+  interface HTMLElementTagNameMap {
+    "cob-viz": HTMLCobVizElement;
+  }
+  interface ElementTagNameMap {
+    "cob-viz": HTMLCobVizElement;
+  }
+  namespace JSX {
+    interface IntrinsicElements {
+      "cob-viz": JSXElements.CobVizAttributes;
+    }
+  }
+  namespace JSXElements {
+    export interface CobVizAttributes extends HTMLAttributes {
+      config?: string;
+    }
+  }
+}
+
 declare global { namespace JSX { interface StencilJSX {} } }

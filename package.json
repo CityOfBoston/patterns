@@ -7,7 +7,23 @@
     "build": "stencil build && gulp build && fractal build",
     "heroku-postbuild": "npm run build",
     "lint": "eslint --ext .tsx,.ts,.js .",
-    "precommit": "lint-staged"
+    "test": "jest --no-cache",
+    "test.watch": "jest --watch --no-cache",
+    "precommit": "lint-staged",
+    "prepush": "npm run test"
+  },
+  "jest": {
+    "transform": {
+      "\\/web-components\\/.+\\.(ts|tsx)$": "<rootDir>/node_modules/@stencil/core/testing/jest.preprocessor.js"
+    },
+    "testRegex": "\\.spec\\.(tsx?|jsx?)$",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "json",
+      "jsx"
+    ]
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": "eslint --quiet",
@@ -32,7 +48,6 @@
     "gulp-load-plugins": "^1.2.4",
     "gulp-stylus": "^2.3.1",
     "gulp-uglify": "^3.0.0",
-    "jest": "^22.1.4",
     "laggard": "^0.1.0",
     "leaflet": "github:CityOfBoston/leaflet#dist",
     "lost": "^8.1.0",
@@ -46,11 +61,13 @@
     "templayed": "github:CityOfBoston/templayed.js"
   },
   "devDependencies": {
+    "escape-html": "^1.0.3",
     "eslint": "^4.17.0",
     "eslint-config-prettier": "^2.9.0",
     "eslint-plugin-import": "^2.8.0",
     "eslint-plugin-prettier": "^2.6.0",
     "husky": "^0.14.3",
+    "jest": "^22.1.4",
     "lint-staged": "^6.1.0",
     "prettier": "^1.10.2",
     "svgo": "^1.0.4",
