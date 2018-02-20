@@ -124,6 +124,9 @@ export class CobMap {
 
     this.map = Lmap(this.el, {
       zoomControl: false,
+      // 11 really shows the Greater Boston area well, no need to zoom to show
+      // all of New England or the world.
+      minZoom: 11,
       // This the max we have for the "Gray" Esri map, so we don't allow
       // zooming in any further, even though the Boston map supports it.
       maxZoom: 16,
@@ -192,12 +195,14 @@ export class CobMap {
       return;
     }
 
-    const feature: LeafletPath = ev.target;
+    const feature: LeafletLayer = ev.target;
     const { config } = layerRecord;
 
-    if (config.hoverColor) {
-      feature.setStyle(this.makeFeatureHoverStyle(config));
-      feature.bringToFront();
+    if (feature instanceof LeafletPath) {
+      if (config.hoverColor) {
+        feature.setStyle(this.makeFeatureHoverStyle(config));
+        feature.bringToFront();
+      }
     }
   }
 
@@ -207,11 +212,13 @@ export class CobMap {
       return;
     }
 
-    const feature: LeafletPath = ev.target;
+    const feature: LeafletLayer = ev.target;
     const { config } = layerRecord;
 
-    if (config.hoverColor) {
-      feature.setStyle(this.makeFeatureStyle(config));
+    if (feature instanceof LeafletPath) {
+      if (config.hoverColor) {
+        feature.setStyle(this.makeFeatureStyle(config));
+      }
     }
   }
 
