@@ -2,30 +2,30 @@
 
 import { Component, Element, Listen, Prop, State, Watch } from '@stencil/core';
 
+import { Feature, FeatureCollection } from 'geojson';
+
 import {
   control as Lcontrol,
   latLng as LlatLng,
   latLngBounds as LlatLngBounds,
-  icon as Licon,
-  layerGroup as LlayerGroup,
-  map as Lmap,
-  marker as Lmarker,
   Control as LeafletControl,
+  GeoJSON as LeafletGeoJSON,
+  Icon as LeafletIcon,
   Layer as LeafletLayer,
   LayerGroup as LeafletLayerGroup,
   LeafletEvent,
   Map as LeafletMap,
+  Marker as LeafletMarker,
   Path as LeafletPath,
 } from 'leaflet';
 
-import {
-  FeatureLayer,
-  basemapLayer,
-  featureLayer,
-  tiledMapLayer,
-} from 'esri-leaflet';
+import { basemapLayer, tiledMapLayer, query as esriQuery } from 'esri-leaflet';
 
 import { geosearch, GeosearchControl } from 'esri-leaflet-geocoder';
+
+// This is our fork of Leaflet/Leaflet.markercluster to fix for module-based
+// importing.
+import { MarkerClusterGroup } from 'leaflet.markercluster';
 
 // Has a global definition. Look, the code is 5 years old.
 import 'templayed';
@@ -39,7 +39,7 @@ const BOSTON_BOUNDS = LlatLngBounds(
   LlatLng(42.456141, -70.818901)
 );
 
-const WAYPOINT_ICON = Licon({
+const WAYPOINT_ICON = new LeafletIcon({
   iconUrl: '/images/global/icons/mapping/waypoint-freedom-red.svg',
   shadowUrl: null,
 
@@ -55,18 +55,33 @@ export interface LayerConfig {
   hoverColor?: string;
   fill?: boolean;
   iconSrc?: string;
+  clusterIcons?: boolean;
   popupTemplate?: string;
   popupTemplateCompiled?: (Object) => string;
 }
 
 interface LayerRecord {
-  layer: FeatureLayer;
+  // The parent layer that's on the map. Will usually be featureLayer, except in
+  // the case of icon clustering, when it will be a MarkerClusterGroup.
+  mapLayer: LeafletGeoJSON | MarkerClusterGroup;
+  featuresLayer: LeafletGeoJSON;
   config: LayerConfig;
+}
+
+// The Leaflet GeoJSON layer adds a "feature" property on to the layers that it
+// creates. We use this interface to typecheck that. In reality, the layers will
+// be instances of Path subclasses or Markers.
+interface GeoJSONFeatureLayer extends LeafletLayer {
+  feature: Feature<any> | FeatureCollection<any>;
 }
 
 @Component({
   tag: 'cob-map',
-  styleUrls: ['map.css', '../../node_modules/leaflet/dist/leaflet.css'],
+  styleUrls: [
+    'map.css',
+    '../../node_modules/leaflet/dist/leaflet.css',
+    '../../node_modules/leaflet.markercluster/dist/MarkerCluster.css',
+  ],
 })
 export class CobMap {
   @Element() el;
@@ -122,7 +137,7 @@ export class CobMap {
       return;
     }
 
-    this.map = Lmap(this.el, {
+    this.map = new LeafletMap(this.el, {
       zoomControl: false,
       // 11 really shows the Greater Boston area well, no need to zoom to show
       // all of New England or the world.
@@ -154,7 +169,7 @@ export class CobMap {
       this.onAddressSearchResults.bind(this)
     );
 
-    this.addressSearchResultsLayers = LlayerGroup().addTo(this.map);
+    this.addressSearchResultsLayers = new LeafletLayerGroup().addTo(this.map);
 
     this.map.on({
       moveend: this.handleMapPositionChangeEnd.bind(this),
@@ -213,20 +228,14 @@ export class CobMap {
     }
 
     const feature: LeafletLayer = ev.target;
-    const { config } = layerRecord;
-
-    if (feature instanceof LeafletPath) {
-      if (config.hoverColor) {
-        feature.setStyle(this.makeFeatureStyle(config));
-      }
-    }
+    layerRecord.featuresLayer.resetStyle(feature);
   }
 
   onAddressSearchResults(data) {
     this.addressSearchResultsLayers.clearLayers();
     for (var i = data.results.length - 1; i >= 0; i--) {
       this.addressSearchResultsLayers.addLayer(
-        Lmarker(data.results[i].latlng, {
+        new LeafletMarker(data.results[i].latlng, {
           icon: WAYPOINT_ICON,
         })
       );
@@ -235,7 +244,7 @@ export class CobMap {
 
   makePopupContent(
     configElement: HTMLElement,
-    layer: FeatureLayer
+    featureLayer: GeoJSONFeatureLayer
   ): string | null {
     const layerRecord = this.layerRecordsByConfigElement.get(configElement);
     if (!layerRecord) {
@@ -243,23 +252,27 @@ export class CobMap {
     }
 
     const { config } = layerRecord;
-
-    if (config.popupTemplateCompiled) {
-      const { properties } = layer.feature;
-
-      // We trim the property values down because some Esri values are a string
-      // with spaces, and we want those to be falsey (an empty string) for
-      // template conditionals.
-      const trimmedProperties = {};
-      Object.keys(properties).forEach(key => {
-        const val = properties[key];
-        trimmedProperties[key] = typeof val === 'string' ? val.trim() : val;
-      });
-
-      return config.popupTemplateCompiled(trimmedProperties);
-    } else {
+    if (!config.popupTemplateCompiled) {
       return null;
     }
+
+    const { feature } = featureLayer;
+    if (feature.type !== 'Feature') {
+      return null;
+    }
+
+    const { properties } = feature;
+
+    // We trim the property values down because some Esri values are a string
+    // with spaces, and we want those to be falsey (an empty string) for
+    // template conditionals.
+    const trimmedProperties = {};
+    Object.keys(properties).forEach(key => {
+      const val = properties[key];
+      trimmedProperties[key] = typeof val === 'string' ? val.trim() : val;
+    });
+
+    return config.popupTemplateCompiled(trimmedProperties);
   }
 
   makeFeatureStyle({ color, fill }: LayerConfig) {
@@ -278,41 +291,27 @@ export class CobMap {
     };
   }
 
-  updateLayerConfig(record: LayerRecord, config: LayerConfig) {
-    record.config = config;
-    record.layer.setStyle(this.makeFeatureStyle(config));
-  }
-
   addEsriLayer(configElement: HTMLElement, config: LayerConfig) {
-    const { url } = config;
-
     const layerRecord = this.layerRecordsByConfigElement.get(configElement);
 
     if (layerRecord) {
-      if (
-        layerRecord.config.url === url &&
-        layerRecord.config.iconSrc === config.iconSrc &&
-        !!layerRecord.config.popupTemplate === !!config.popupTemplate
-      ) {
-        // If URL is the same then we can just update the style.
-        this.updateLayerConfig(layerRecord, config);
-        this.updateLayerConfigState();
-
-        return;
-      } else {
-        // If URL is different we need a new layer, so remove this and fall
-        // through to the new layer case.
-        layerRecord.layer.remove();
-      }
+      layerRecord.mapLayer.remove();
     }
 
-    const options = {
-      url,
+    const layerOptions = {
       interactive: !!config.popupTemplate,
+      // We set the style at the options level to create the default for new
+      // features. Calling setStyle() on a GeoJSON layer only updates the
+      // current child feature layers, it doesn't have any effect on this
+      // default.
+      //
+      // Current types require this to be a function, even though the code
+      // supports a hash. Let's not rock the boat and just use a function.
+      style: () => this.makeFeatureStyle(config),
       pointToLayer: config.iconSrc
         ? (_, latlng) =>
-            Lmarker(latlng, {
-              icon: Licon({
+            new LeafletMarker(latlng, {
+              icon: new LeafletIcon({
                 iconUrl: config.iconSrc,
                 iconSize: [30, 30],
               }),
@@ -326,18 +325,57 @@ export class CobMap {
       },
     };
 
-    const layer = featureLayer(options).addTo(this.map);
+    // We create a blank GeoJSON layer just so we have it. Data will be added
+    // after it’s loaded from Esri.
+    const featuresLayer = new LeafletGeoJSON(null, layerOptions);
+
+    const mapLayer = (config.clusterIcons
+      ? new MarkerClusterGroup().addLayer(featuresLayer)
+      : featuresLayer
+    ).addTo(this.map);
+
+    // We manually run an Esri Query rather than using the built-in
+    // FeatureLayer, which queries automatically. FeatureLayer has the advantage
+    // of only loading features that fit within the map’s current view, but the
+    // downside of not being immediately compatible with MarkerClusterGroup (due
+    // to how it adds layers). Since our geo data is all limited to the Boston
+    // metro area, querying just on the map location is not a useful
+    // optimization, so we use GeoJSON directly, which is compatible with
+    // MarkerClusterGroup.
+    //
+    // If limiting by the map’s view is valuable, it will require some massaging
+    // of the FeatureLayer implementation to add its layers to the
+    // MarkerClusterGroup rather than the map directly.
+    esriQuery({ url: config.url })
+      .where('1=1')
+      .run((err, featureCollection) => {
+        if (err) {
+          throw err;
+        }
+
+        featuresLayer.addData(featureCollection);
+
+        if (mapLayer !== featuresLayer) {
+          // MarkerClusterGroup only processes new icons on adding the layer.
+          // There's no method to call to re-pull the child Markers from
+          // featuresLayer now that addData has created them.
+          mapLayer.clearLayers();
+          mapLayer.addLayer(featuresLayer);
+        }
+      });
 
     if (config.popupTemplate) {
       config.popupTemplateCompiled = templayed(config.popupTemplate);
-      layer.bindPopup(this.makePopupContent.bind(this, configElement));
+      // Since the MarkerClusterLayer works by pulling the layers out of their
+      // original parent, we need to bind to the map layer rather than the
+      // feature layer.
+      mapLayer.bindPopup(this.makePopupContent.bind(this, configElement));
     } else {
       config.popupTemplateCompiled = null;
-      layer.unbindPopup();
+      mapLayer.unbindPopup();
     }
 
-    const newLayerRecord = { layer, config };
-    this.updateLayerConfig(newLayerRecord, config);
+    const newLayerRecord = { mapLayer, featuresLayer, config };
 
     this.layerRecordsByConfigElement.set(configElement, newLayerRecord);
     this.updateLayerConfigState();

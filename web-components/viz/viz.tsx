@@ -189,10 +189,12 @@ export class CobViz {
                 legend_label,
                 popover,
                 polygon_style,
+                cluster_icons,
               }) => (
                 <cob-map-esri-layer
                   url={`${service}/${layer}`}
                   iconSrc={icon}
+                  clusterIcons={cluster_icons}
                   popupTemplate={popover}
                   label={legend_label}
                   color={polygon_style.color}

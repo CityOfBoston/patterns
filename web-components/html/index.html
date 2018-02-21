@@ -40,14 +40,15 @@
         <h2>
           <code>&lt;cob-viz&gt;</code>
         </h2>
+      </div>
 
-        <cob-viz map-style="min-height: 500px"
-          map-class="m-v500"
-          map-onmouseover="console.log('mouseover')"
-          map-show-address-search
-          map-zoom="11">
-          <script slot="config"
-            type="application/json">
+      <cob-viz map-style="min-height: 500px"
+        map-class="m-v500"
+        map-onmouseover="console.log('mouseover')"
+        map-show-address-search
+        map-zoom="11">
+        <script slot="config"
+          type="application/json">
             {
               "vizId": "123456",
               "title": "What is my title",
@@ -65,7 +66,7 @@
                 "popover": "<p>I am a popover</p>",
                 "attributes":
                 {
-                  "service": "https://services.arcgis.com/sFnw0xNflSi8J0uh/ArcGIS/rest/services/food_trucks_schedule/FeatureServer",
+                  "service": "https://services.arcgis.com/sFnw0xNflSi8J0uh/arcgis/rest/services/public_bathrooms/FeatureServer",
                   "layer": 0
                 },
                 "legend_label": "I am a legend!"
@@ -85,8 +86,7 @@
               }]
             }
           </script>
-        </cob-viz>
-      </div>
+      </cob-viz>
     </div>
 
     <div class="b-c b-c--xsmv b--w m-v100">
@@ -107,6 +107,7 @@
         address-search-heading="Nearby routes and parking"
         heading="Snow Emergency Parking Restrictions">
         <cob-map-esri-layer url="https://services.arcgis.com/sFnw0xNflSi8J0uh/arcgis/rest/services/City_Council_Districts/FeatureServer/0"
+      
           color="#0C2639"
           hover-color="#FB4D42"
           label="Boston City Council Districts"
@@ -144,7 +145,7 @@
         </cob-map-esri-layer>
       </cob-map>
     </div>
-   </div>
+  </div>
 </body>
 
 </html>
