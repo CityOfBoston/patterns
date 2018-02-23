@@ -9,6 +9,10 @@ variants:
       show_address_search: true
       open_overlay: true
 
+  - name: Cluster Icons
+    context:
+      cluster_icons: true
+
   - name: Overlay Open
     context:
       open_overlay: true

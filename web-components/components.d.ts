@@ -72,6 +72,7 @@ declare global {
   }
   namespace JSXElements {
     export interface CobMapEsriLayerAttributes extends HTMLAttributes {
+      clusterIcons?: boolean;
       color?: string;
       fill?: boolean;
       hoverColor?: string;

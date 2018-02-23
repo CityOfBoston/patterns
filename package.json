@@ -50,6 +50,7 @@
     "gulp-uglify": "^3.0.0",
     "laggard": "^0.1.0",
     "leaflet": "github:CityOfBoston/leaflet#dist",
+    "leaflet.markercluster": "github:CityOfBoston/Leaflet.markercluster#dist",
     "lost": "^8.1.0",
     "postcss": "^6.0.17",
     "postcss-flexibility": "^1.1.0",

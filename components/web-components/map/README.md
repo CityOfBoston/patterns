@@ -54,6 +54,10 @@ features on the map.
 **icon-src**: URL to use as an icon for the layer’s features, and to show in the
 legend for this layer.
 
+**cluster-icons**: If the layer is showing icons, use the
+[markercluster](https://github.com/CityOfBoston/Leaflet.markercluster) Leaflet
+plugin to show nearby icons as a single dot until you zoom in.
+
 **color**: For polygon layers, the color for the borders. (The fill will be a
 semi-transparent version of this color).
 

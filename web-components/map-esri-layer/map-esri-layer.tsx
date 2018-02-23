@@ -14,6 +14,7 @@ export class CobMapEsriLayer {
   @Prop() hoverColor: string = '';
   @Prop() iconSrc: string = '';
   @Prop() fill: boolean = false;
+  @Prop() clusterIcons: boolean = false;
 
   // We allow either a string attribute or a nested <script> tag to define the
   // template for popups. The attribute is more correct and better for DOM
@@ -42,6 +43,7 @@ export class CobMapEsriLayer {
       hoverColor: this.hoverColor,
       fill: this.fill,
       iconSrc: this.iconSrc,
+      clusterIcons: this.clusterIcons,
       popupTemplate:
         this.popupTemplate || (popupScript && popupScript.innerHTML),
     };

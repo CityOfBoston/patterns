@@ -125,3 +125,49 @@ cob-map .cob-legend-table-label {
   margin-top: -3px;
   margin-left: 0.5rem;
 }
+
+cob-map .marker-cluster-small {
+  background-color: rgba(40, 139, 228, 0.6);
+}
+
+cob-map .marker-cluster-small div {
+  background-color: rgba(40, 139, 228, 0.6);
+}
+
+cob-map .marker-cluster-medium {
+  background-color: rgba(40, 139, 228, 0.6);
+}
+
+cob-map .marker-cluster-medium div {
+  background-color: rgba(40, 139, 228, 0.6);
+}
+
+cob-map .marker-cluster-large {
+  background-color: rgba(40, 139, 228, 0.6);
+}
+
+cob-map .marker-cluster-large div {
+  background-color: rgba(40, 139, 228, 0.6);
+}
+
+cob-map .marker-cluster {
+  background-clip: padding-box;
+  border-radius: 20px;
+}
+
+cob-map .marker-cluster div {
+  width: 30px;
+  height: 30px;
+  margin-left: 5px;
+  margin-top: 5px;
+
+  text-align: center;
+  border-radius: 15px;
+
+  font-weight: bold;
+  color: white;
+}
+
+.marker-cluster span {
+  line-height: 30px;
+}
