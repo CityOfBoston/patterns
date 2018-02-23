@@ -33,9 +33,28 @@ Fractal uses a self-signed SSL certificate that is not trusted by browsers. If y
 
 ## Check-in / Deployment
 
-PRs should be made against the develop branch. To do a deploy, force-push the
-develop branch on to the production branch. Force-push prevents production from
-accidentally getting changes that aren’t in develop.
+PRs should be made against the develop branch.
+
+We have a Heroku pipeline that will automatically deploy per-PR instances of the
+patterns library. Look in the PR messages for a link.
+
+[Percy](https://percy.io/) will also run for all of the Fractal component pages,
+so you can see if there are any breaking changes in the deploy.
+
+In general, you should push to production immediately after merging the PR. To
+deploy:
+
+ ```
+$ git fetch
+$ git co origin/develop
+$ git push origin HEAD:production
+ ```
+
+If production hasn’t accidentally accrued changes (which it shouldn’t) this
+should be a clean fast-forward push.
+
+The Travis job will automatically push to S3 and invalidate the CloudFront
+cache.
 
 ## Reporting bugs
 
