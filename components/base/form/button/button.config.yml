@@ -17,3 +17,6 @@ context:
       type: button
     - label: Next
       type: a
+    - label: Next
+      type: a
+      class: 'btn--sm btn--100'
