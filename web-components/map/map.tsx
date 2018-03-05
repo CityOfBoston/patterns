@@ -484,7 +484,11 @@ export class CobMap {
             {this.showLegend && (
               <div class="g cob-legend-table">
                 {this.layerConfigs.map(config => (
-                  <div class="g--6 cob-legend-table-row m-b200">
+                  <div
+                    class={`${
+                      this.layerConfigs.length === 1 ? 'g--12' : 'g--6'
+                    } cob-legend-table-row m-b200`}
+                  >
                     <div class="cob-legend-table-icon">
                       {this.renderLegendIcon(config)}
                     </div>
