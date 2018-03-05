@@ -2,3 +2,7 @@ plugins:
   # We need to disable inlineStyles because it can move clip-path
   # attributes to places where they cancel each other out.
   - inlineStyles: false
+  # It is VERY important to keep the viewBox and not width/height. Otherwise IE
+  # will not scale the SVG contents when it’s used as an img tag.
+  - removeViewBox: false
+  - removeDimensions: true
