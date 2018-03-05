@@ -28,6 +28,12 @@
   cursor: pointer
   display: inline-block
 
+  // compensates for the uppercase letters not being vertically-centered
+  &::after
+    content: ''
+    margin-top: -1px
+    display: block
+
   &:link
   &:visited
     color: white
@@ -92,6 +98,12 @@
 
     @media $media-xlarge
       margin-top: 0
+
+  &--sm
+    font-weight: normal
+    // t--s100
+    font-size: responsive $font-100 $font-200
+    font-range: 480px 1440px
 
   &--100
     padding: $sizing-200 $sizing-300
