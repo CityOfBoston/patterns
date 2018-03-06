@@ -105,6 +105,7 @@ const mandelbrot = require('@frctl/mandelbrot');
 const fleetTheme = mandelbrot({
   skin: 'blue',
   panels: ['html', 'info', 'resources', 'notes'],
+  scripts: ['https://cdn.polyfill.io/v2/polyfill.min.js'],
   styles: ['default', '/css/theme.css'],
 });
 
