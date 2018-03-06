@@ -2,6 +2,7 @@ title: Base
 handle: base
 status: ready
 context:
+  menu_no_checkbox: true
   links:
     - name: Public Notices
       href: https://boston.gov/public-notices

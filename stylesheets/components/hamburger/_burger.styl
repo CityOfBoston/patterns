@@ -23,15 +23,13 @@ $hamburger-hover-transition-timing-function = linear
 $hamburger-hover-use-filter = false
 $hamburger-hover-filter = opacity(50%)
 
-.brg-tr:focus ~ .mn
-  .brg-b
-    outline: auto 5px -webkit-focus-ring-color
-
-.brg-tr:checked ~ .nv-m
+// These two groups of rules are factored out into mixins to
+// support separate :focus-within selectors below.
+show-menu()
   opacity: 1
   transition: opacity 0s
 
-.brg-tr:checked ~ .mn
+adjust-for-menu()
   left: 256px
 
   @media $media-small
@@ -64,6 +62,31 @@ $hamburger-hover-filter = opacity(50%)
 
     &-t
       display: none
+
+
+.brg-tr:focus ~ .mn,
+.brg-tr:focus ~ .mn--full-ie
+  .brg-b
+    outline: auto 5px -webkit-focus-ring-color
+
+.brg-tr:checked ~ .nv-m
+  show-menu()
+
+.brg-tr:checked ~ .mn,
+.brg-tr:checked ~ .mn--full-ie
+  adjust-for-menu()
+
+// :focus-within is here so the menu opens when you tab into its links. It's not
+// supported across browsers, so for IE 11 we need to split it into its own
+// selector rather than chain it with a comma off of the ".brg-tr:checked ~"
+// rules above. Otherwise, the browser will throw out the entire rule, not just
+// ignore the selector it doesn't understand.
+.nv-m:focus-within
+  show-menu()
+
+.nv-m:focus-within ~ .mn,
+.nv-m:focus-within ~ .mn--full-ie
+  adjust-for-menu()
 
 .brg
   top: 50%
