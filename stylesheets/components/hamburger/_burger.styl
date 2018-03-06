@@ -23,20 +23,15 @@ $hamburger-hover-transition-timing-function = linear
 $hamburger-hover-use-filter = false
 $hamburger-hover-filter = opacity(50%)
 
-.brg-tr:focus ~ .mn,
-.brg-tr:focus ~ .mn--full-ie
+.brg-tr:focus ~ .mn
   .brg-b
     outline: auto 5px -webkit-focus-ring-color
 
-.brg-tr:checked ~ .nv-m,
-.nv-m:focus-within
+.brg-tr:checked ~ .nv-m
   opacity: 1
   transition: opacity 0s
 
-.brg-tr:checked ~ .mn,
-.brg-tr:checked ~ .mn--full-ie,
-.nv-m:focus-within ~ .mn,
-.nv-m:focus-within ~ .mn--full-ie
+.brg-tr:checked ~ .mn
   left: 256px
 
   @media $media-small
