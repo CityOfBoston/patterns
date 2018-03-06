@@ -17,10 +17,6 @@
   min-width: 100%
   min-height: 100%
 
-  & .a11y--content-start
-    position: relative
-    top: -65px
-
   // takes up the full page height (minus sticky header)
   &--full
     // We leave 64px on the bottom to accommodate the bottom toolbar on mobile
@@ -42,10 +38,6 @@
     //
     // This element should wrap "mn mn--full" elements
     &-ie
-      // must be relative so that the _menu styles can apply a left to it.
-      position: relative
-      left: 0
-      transition: left 0.2s
       display: flex
 
     // vertically-centered on larger screens
@@ -56,9 +48,6 @@
   // when secondary navigation is included
   &--nv-s
     padding-top: 119px
-
-    & .a11y--content-start
-      top: -119px
 
   &--g
     background-color: $grey-000
