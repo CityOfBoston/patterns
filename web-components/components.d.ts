@@ -79,6 +79,7 @@ declare global {
       iconSrc?: string;
       label?: string;
       popupTemplate?: string;
+      uid?: string;
       url?: string;
     }
   }
@@ -111,6 +112,7 @@ declare global {
     export interface CobMapAttributes extends HTMLAttributes {
       addressSearchHeading?: string;
       addressSearchPlaceholder?: string;
+      addressSearchPopupLayerUid?: string | null;
       basemapUrl?: string;
       heading?: string;
       latitude?: number;

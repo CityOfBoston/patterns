@@ -29,6 +29,10 @@ to “Address search”
 **address-search-placeholder**: String to use as the placeholder in the address
 search box (if visible). Defaults to “Search for an address…”
 
+**address-search-popup-layer-uid**: If provided, clicking on the search result
+markers from an address search will open this layer’s popup. If there’s only one
+search result, the popup will be opened automatically.
+
 **basemap-url**: URL for an ArcGIS tiled layer basemap. Default to our custom
 City of Boston basemap, layered over a generic Esri basemap.
 
@@ -46,6 +50,8 @@ These elements are added as children of `<cob-map>` to include layers of geo
 features on the map.
 
 ### Attributes
+
+**uid**: Identifier string for the layer. Must be unique within the map.
 
 **url**: URL for an ArcGIS feature layer.
 

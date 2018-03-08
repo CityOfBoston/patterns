@@ -31,14 +31,15 @@
 
     <cob-map id="map"
       style="height: 600px"
-      latitude="42.347316"
-      longitude="-71.065227"
+      latitude="42.31667"
+      longitude="-71.13441"
       zoom="12"
       show-zoom-control
       show-legend
       show-address-search
       address-search-heading=""
       address-search-placeholder="Search for your address…"
+      address-search-popup-layer-uid="city-council-districts"
       heading="City Councilor Look-Up">
       <div slot="instructions"
         class="t--info">
@@ -49,10 +50,9 @@
           To see all City Council members, including at-large councilors, visit the
           <a href="https://www.boston.gov/departments/city-council#city-council-members">City Council page</a>.
         </p>
-
       </div>
-      <cob-map-esri-layer url="https://services.arcgis.com/sFnw0xNflSi8J0uh/arcgis/rest/services/City_Council_Districts/FeatureServer/0"
-    
+      <cob-map-esri-layer uid="city-council-districts"
+        url="https://services.arcgis.com/sFnw0xNflSi8J0uh/arcgis/rest/services/City_Council_Districts/FeatureServer/0"
         color="#0C2639"
         hover-color="#FB4D42"
         label="Boston City Council Districts"
