@@ -327,8 +327,7 @@ export class CobMap {
         }
       });
 
-    // TODO(finh): Better loading indicator
-    return '<div className="p-a300 ta-c">…</div>';
+    return '<div class="p-a300 ta-c cob-popup-loading"></div>';
   }
 
   renderPopupContent(
