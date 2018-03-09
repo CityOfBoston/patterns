@@ -8,6 +8,7 @@ import { LayerConfig } from '../map/map';
 export class CobMapEsriLayer {
   @Element() el: HTMLElement;
 
+  @Prop() uid: string = '';
   @Prop() url: string;
   @Prop() label: string;
   @Prop() color: string = '';
@@ -37,6 +38,7 @@ export class CobMapEsriLayer {
     const popupScript = this.el.querySelector('script[slot=popup]');
 
     const config: LayerConfig = {
+      uid: this.uid,
       url: this.url,
       label: this.label,
       color: this.color,

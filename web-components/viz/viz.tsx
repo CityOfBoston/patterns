@@ -81,7 +81,7 @@ export interface MapConfig {
   searchForAddress: boolean;
   zoomToAddress: boolean;
   placeholderText?: string | null;
-  showDataLayer: string;
+  addressSearchPopupDataSourceUid: string;
 }
 
 @Component({
@@ -176,6 +176,7 @@ export class CobViz {
             showZoomControl={map.showZoomControl}
             showAddressSearch={map.searchForAddress}
             addressSearchPlaceholder={map.placeholderText}
+            addressSearchPopupLayerUid={map.addressSearchPopupDataSourceUid}
             {...this.getMapProps()}
           >
             {config.description && (

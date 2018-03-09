@@ -9,10 +9,10 @@ import {
   latLng as LlatLng,
   latLngBounds as LlatLngBounds,
   Control as LeafletControl,
+  FeatureGroup as LeafletFeatureGroup,
   GeoJSON as LeafletGeoJSON,
   Icon as LeafletIcon,
   Layer as LeafletLayer,
-  LayerGroup as LeafletLayerGroup,
   LeafletEvent,
   Map as LeafletMap,
   Marker as LeafletMarker,
@@ -45,10 +45,11 @@ const WAYPOINT_ICON = new LeafletIcon({
 
   iconSize: [35, 46], // size of the icon
   iconAnchor: [17, 46], // point of the icon which will correspond to marker's location
-  popupAnchor: [-3, -76], // point from which the popup should open relative to the iconAnchor
+  popupAnchor: [0, -46], // point from which the popup should open relative to the iconAnchor
 });
 
 export interface LayerConfig {
+  uid: string;
   url: string;
   label: string;
   color?: string;
@@ -100,6 +101,7 @@ export class CobMap {
   @Prop() showAddressSearch: boolean = false;
   @Prop() addressSearchHeading: string = 'Address search';
   @Prop() addressSearchPlaceholder: string = 'Search for an address…';
+  @Prop() addressSearchPopupLayerUid: string | null = null;
   @Prop() basemapUrl: string = DEFAULT_BASEMAP_URL;
 
   @Prop() openOverlay: boolean = false;
@@ -115,7 +117,7 @@ export class CobMap {
   // We keep a reference to the DOM element for the search control because we
   // want to move it into our overlay, rather than have it as an Esri control.
   addressSearchControlEl: HTMLElement | null;
-  addressSearchResultsLayers: LeafletLayerGroup;
+  addressSearchResultsFeatures: LeafletFeatureGroup;
 
   // Used to distinguish between map moves that come from the UI and those that
   // come from someone external changing our attributes. Keeps us from
@@ -160,7 +162,7 @@ export class CobMap {
       expanded: true,
       placeholder: this.addressSearchPlaceholder,
       collapseAfterResult: false,
-      zoomToResult: true,
+      zoomToResult: false,
       searchBounds: BOSTON_BOUNDS,
     });
 
@@ -169,7 +171,9 @@ export class CobMap {
       this.onAddressSearchResults.bind(this)
     );
 
-    this.addressSearchResultsLayers = new LeafletLayerGroup().addTo(this.map);
+    this.addressSearchResultsFeatures = new LeafletFeatureGroup().addTo(
+      this.map
+    );
 
     this.map.on({
       moveend: this.handleMapPositionChangeEnd.bind(this),
@@ -232,17 +236,47 @@ export class CobMap {
   }
 
   onAddressSearchResults(data) {
-    this.addressSearchResultsLayers.clearLayers();
+    this.addressSearchResultsFeatures.clearLayers();
+
+    const markers: LeafletMarker[] = [];
+
     for (var i = data.results.length - 1; i >= 0; i--) {
-      this.addressSearchResultsLayers.addLayer(
-        new LeafletMarker(data.results[i].latlng, {
-          icon: WAYPOINT_ICON,
-        })
+      const marker = new LeafletMarker(data.results[i].latlng, {
+        icon: WAYPOINT_ICON,
+      });
+
+      markers.push(marker);
+      this.addressSearchResultsFeatures.addLayer(marker);
+    }
+
+    const popupLayerConfig =
+      this.addressSearchPopupLayerUid &&
+      this.layerConfigs.find(
+        ({ uid }) => uid === this.addressSearchPopupLayerUid
       );
+
+    if (popupLayerConfig) {
+      // We bind to each marker individually rather than binding to the
+      // FeatureGroup as a whole so that we can call openPopup on the Marker
+      // instance itself.
+      markers.forEach(marker => {
+        marker.bindPopup(
+          this.handleAddressSearchMarkerPopup.bind(this, popupLayerConfig)
+        );
+      });
+    } else {
+      this.addressSearchResultsFeatures.unbindPopup();
+    }
+
+    if (markers.length === 1 && popupLayerConfig) {
+      // Opening the popup will bring it into view automatically.
+      markers[0].openPopup();
+    } else if (markers.length > 0) {
+      this.map.fitBounds(this.addressSearchResultsFeatures.getBounds());
     }
   }
 
-  makePopupContent(
+  handleMapLayerPopup(
     configElement: HTMLElement,
     featureLayer: GeoJSONFeatureLayer
   ): string | null {
@@ -251,17 +285,59 @@ export class CobMap {
       return null;
     }
 
-    const { config } = layerRecord;
-    if (!config.popupTemplateCompiled) {
-      return null;
-    }
-
     const { feature } = featureLayer;
     if (feature.type !== 'Feature') {
       return null;
     }
 
-    const { properties } = feature;
+    return this.renderPopupContent(layerRecord.config, feature.properties);
+  }
+
+  handleAddressSearchMarkerPopup(
+    layerConfig: LayerConfig,
+    marker: LeafletMarker
+  ) {
+    // When a marker is placed on the map we don't have any feature information
+    // for it, so we need to query Esri for the properties we need to render the
+    // popup.
+    //
+    // This query is async, so first we return a loading indicator, and then
+    // when the results come back we change the popup's content and update it to
+    // resize it and bring it into view.
+    esriQuery({ url: layerConfig.url })
+      .contains(marker)
+      .run((err, featureCollection) => {
+        if (err) {
+          // eslint-disable-next-line
+          console.error(err);
+          return;
+        }
+
+        const feature = featureCollection.features[0];
+
+        if (feature) {
+          marker
+            .getPopup()
+            .setContent(
+              this.renderPopupContent(layerConfig, feature.properties)
+            )
+            .update();
+        } else {
+          marker.closePopup();
+        }
+      });
+
+    // TODO(finh): Better loading indicator
+    return '<div className="p-a300 ta-c">…</div>';
+  }
+
+  renderPopupContent(
+    config: LayerConfig,
+    properties: { [key: string]: any }
+  ): string | null {
+    if (!config.popupTemplateCompiled) {
+      return '';
+    }
 
     // We trim the property values down because some Esri values are a string
     // with spaces, and we want those to be falsey (an empty string) for
@@ -369,7 +445,7 @@ export class CobMap {
       // Since the MarkerClusterLayer works by pulling the layers out of their
       // original parent, we need to bind to the map layer rather than the
       // feature layer.
-      mapLayer.bindPopup(this.makePopupContent.bind(this, configElement));
+      mapLayer.bindPopup(this.handleMapLayerPopup.bind(this, configElement));
     } else {
       config.popupTemplateCompiled = null;
       mapLayer.unbindPopup();
