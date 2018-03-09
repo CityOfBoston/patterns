@@ -382,9 +382,11 @@ export class CobMap {
   }
 
   updateLayerConfigState() {
-    this.layerConfigs = Array.from(this.layerRecordsByConfigElement).map(
-      ([_, { config }]) => config
+    const layerConfigs = [];
+    this.layerRecordsByConfigElement.forEach(({ config }) =>
+      layerConfigs.push(config)
     );
+    this.layerConfigs = layerConfigs;
   }
 
   // Handler to keep our attributes up-to-date with map movements from the UI.
