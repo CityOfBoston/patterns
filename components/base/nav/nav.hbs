@@ -1,9 +1,11 @@
 <nav class="nv-h">
   <ul class="nv-h-l">
     {{#each links as |link|}}
-      <li class="nv-h-l-i"><a href="{{ link.href }}" title="{{ link.name }}" class="nv-h-l-a">{{ link.name }}</a></li>
+      <li class="nv-h-l-i">
+        <a href="{{ link.href }}" title="{{ link.name }}" class="nv-h-l-a{{#if always_show}} nv-h-l-a--k{{/if}}">{{ link.name }}</a>
+      </li>
     {{/each}}
-    <li class="tr nv-h-l-i">
+    <li class="tr nv-h-l-i tr--visible">
       <a href="#translate" title="Translate" class="nv-h-l-a nv-h-l-a--k--s tr-link">Translate</a>
       <ul class="tr-dd">
         <li><span class="notranslate tr-dd-link tr-dd-link--message">Loading...</span></li>
