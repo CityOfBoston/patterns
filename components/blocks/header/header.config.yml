@@ -11,3 +11,14 @@ context:
       href: https://boston.gov/pay-and-apply
     - name: Feedback
       href: https://boston.gov/feedback
+variants:
+  - name: Hub
+    preview: '@hub'
+    context:
+      show_mayor: false
+      hub_logo: true
+      links:
+      - name: Login
+        href: https://boston.gov/public-notices
+        always_show: true
+

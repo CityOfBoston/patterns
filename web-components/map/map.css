@@ -110,6 +110,16 @@ cob-map .cob-overlay-content .sf-i-b {
   cursor: default;
 }
 
+cob-map .cob-popup-loading {
+  width: 100px;
+  height: 100px;
+  /* using background for the icon because the experiental icons have a lot of
+     unnecessary horizontal padding */
+  background: url(https://patterns.boston.gov/images/global/icons/experiential/map.svg)
+    center no-repeat;
+  background-size: 200%;
+}
+
 cob-map .cob-legend-table-row {
   display: flex;
   align-items: center;
