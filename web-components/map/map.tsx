@@ -236,6 +236,12 @@ export class CobMap {
   }
 
   onAddressSearchResults(data) {
+    if (data.results.length) {
+      // If we're on mobile, the overlay was open to show the address search
+      // field. We close it to keep it from obscuring the results.
+      this.el.openOverlay = false;
+    }
+
     this.addressSearchResultsFeatures.clearLayers();
 
     const markers: LeafletMarker[] = [];
@@ -327,8 +333,7 @@ export class CobMap {
         }
       });
 
-    // TODO(finh): Better loading indicator
-    return '<div className="p-a300 ta-c">…</div>';
+    return '<div class="p-a300 ta-c cob-popup-loading"></div>';
   }
 
   renderPopupContent(
