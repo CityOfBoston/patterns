@@ -66,6 +66,10 @@ cob-map .geocoder-control-suggestions {
   left: 0;
   overflow: auto;
   display: none;
+  
+  /* ensures this stacks above any sub-1 opacity elements, such as appear in the
+  legend. */
+  z-index: 1;
 
   border: none !important;
   border-radius: 0;
