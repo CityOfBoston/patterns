@@ -2,21 +2,21 @@ exports.config = {
   namespace: 'all',
   buildEs5: true,
 
-  // Re-enable after https://github.com/ionic-team/stencil/issues/468 is sorted
-  // out.
-  serviceWorker: false,
-
   srcDir: 'web-components',
 
-  // Directory that maps to the server’s /
-  wwwDir: 'assets',
-  generateWWW: true,
-  // Since the wwwDir ('assets') is shared by Fractal, we can't delete it.
-  emptyWWW: false,
+  outputTargets: [
+    {
+      type: 'www',
 
-  // Relative to wwwDir. Keeps our components compartmentalized in the Fleet
-  // library.
-  buildDir: 'web-components',
+      dir: 'assets',
+      buildDir: 'web-components',
+      empty: false,
+
+      // Re-enable after https://github.com/ionic-team/stencil/issues/468 is sorted
+      // out.
+      serviceWorker: false,
+    },
+  ],
 
   // Because of https://github.com/ionic-team/stencil/issues/563 we don't use
   // the built-in index.html support, since if it gets written straight into the
