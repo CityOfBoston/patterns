@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html dir="ltr"
+  lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
+  <title>Boston City Council</title>
+
+  <!--[if !IE]><!-->
+  <link rel="stylesheet"
+    type="text/css"
+    href="/css/public.css" />
+  <!--<![endif]-->
+  <!--[if lt IE 10]>
+    <link media="all" rel="stylesheet" href="/css/ie.css">
+  <![endif]-->
+
+</head>
+
+<body>
+  <div class="b b-c">
+
+    <div class="sh m-b500">
+      <a name="councilor-look-up"
+        data-text="Councilor look-up"
+        class="subnav-anchor createNavItem-processed"></a>
+      <h2 class="sh-title">City councilor map look-up</h2>
+    </div>
+
+
+    <cob-viz map-style="height: 600px">
+      <script type="application/json"
+        slot="config">
+        {
+          "vizId": "0PXs0K514dn917qVqw4Su",
+          "title": "City Councilor Look-Up",
+          "description": "       <div class=\"t--info\"> <p>\n          Hover over and click on your district to find your councilor, or search your address.\n        </p>\n        <p>\n          To see all City Council members, including at-large councilors, visit the\n          <a href=\"https://www.boston.gov/departments/city-council#city-council-members\">City Council page</a>.\n        </p>\n </div>",
+          "dataSources": [
+              {
+                  "uid": "HzViXPtxfbDTmKxSXTHv6",
+                  "type": "cob-arcgis",
+                  "icon": "https://patterns.boston.gov/images/global/icons/mapping/waypoint-charles-blue.svg",
+                  "clusterIcons": true,
+                  "polygonStyle": {
+                      "uid": "default",
+                      "color": "#0C2639",
+                      "hoverColor": "#FB4D42"
+                  },
+                  "popover": "<div>&lt;img src=\"{{Image}}\" class=\"cdp-i\" alt=\"{{Councilor}}\" style=\"margin-bottom: 1rem\"/&gt;</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;div class=\"ta-c m-v300\"&gt;</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;div class=\"cdp-t t--sans t--upper m-t200\"&gt;{{Councilor}}&lt;/div&gt;</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;div class=\"cdp-st t--subinfo t--g300\"&gt;District {{DISTRICT}}&lt;/div&gt;</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;/div&gt;</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;a href=\"{{Bio}}\" class=\"btn btn--b btn--100 btn--sm\"&gt;</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Visit webpage&lt;span class=\"a11y--h\"&gt; of {{Councillor}}&lt;/span&gt;</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;/a&gt;</div>",
+                  "attributes": {
+                      "service": "https://services.arcgis.com/sFnw0xNflSi8J0uh/ArcGIS/rest/services/City_Council_Districts/FeatureServer",
+                      "layer": 0
+                  },
+                  "legendLabel": "Boston City Council Districts"
+              }
+          ],
+          "maps": [
+              {
+                  "uid": "OL~DGvQTVMyD00yr068SZ",
+                  "latitude": 42.347316,
+                  "longitude": -71.065227,
+                  "zoom": 12,
+                  "showZoomControl": true,
+                  "showLegend": true,
+                  "findUserLocation": false,
+                  "searchForAddress": true,
+                  "zoomToAddress": false,
+                  "placeholderText": "Search for your address..."
+              }
+          ]
+      }
+      </script>
+    </cob-viz>
+  </div>
+
+  <script src="/web-components/all.js"></script>
+</body>
+
+</html>

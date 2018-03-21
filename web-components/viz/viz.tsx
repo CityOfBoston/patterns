@@ -1,54 +1,10 @@
 import { Component, Element, Prop } from '@stencil/core';
 
-/*
-
-{
-  "vizId": "123456",
-  "title": "What is my title",
-  "description": "This is a description",
-  "data_sources": [
-  {
-      "uid": "SomeRandomValue",
-      "type": "cob-arcgis",
-      "icon": "https://patterns.boston.gov/icons/Bathrooms@3x.png",
-      "cluster_icons": true,
-      "polygon_style":
-      {
-          "name": "default",
-          "color": "#0C2639",
-          "hover_color": "#FB4D42"
-      },
-      "popover": "<p>I am a popover</p>",
-      "attributes":
-      {
-          "service": "https://services.arcgis.com/sFnw0xNflSi8J0uh/ArcGIS/rest/services/food_trucks_schedule/FeatureServer",
-          "layer": 0
-      },
-      "legend_label": "I am a legend!"
-  }],
-  "maps": [
-  {
-      "uid": "ZWVVViN3h1eZf0Ssnlsa8",
-      "latitude": "42.347316",
-      "longitude": "-71.065227",
-      "zoom": "12",
-      "showZoomControl": true,
-      "showLegend": true,
-      "findUserLocation": true,
-      "searchForAddress": true,
-      "zoomToAddress": true,
-      "placeholderText": "Search for an address...",
-      "showDataLayer": "SomeRandomValue"
-  }]
-}
-
-*/
-
 export interface VizConfig {
   vizId: string;
   title: string;
   description: string;
-  data_sources: DataSourceConfig[];
+  dataSources: DataSourceConfig[];
   maps: MapConfig[];
 }
 
@@ -60,21 +16,21 @@ export interface DataSourceConfig {
     layer: number;
   };
   icon: string;
-  cluster_icons: boolean;
-  polygon_style: {
+  clusterIcons: boolean;
+  polygonStyle: {
     name: string;
     color?: string | null;
-    hover_color?: string | null;
+    hoverColor?: string | null;
   };
-  legend_label: string;
+  legendLabel: string;
   popover: string;
 }
 
 export interface MapConfig {
   uid: string;
-  latitude?: string | null;
-  longitude?: string | null;
-  zoom?: string | null;
+  latitude?: number | null;
+  longitude?: number | null;
+  zoom?: number | null;
   showZoomControl: boolean;
   showLegend: boolean;
   findUserLocation: boolean;
@@ -93,14 +49,20 @@ export class CobViz {
   @Prop() config: string = '';
 
   getConfig(): VizConfig | null {
-    const configScript = this.el.querySelector('script[slot=config]');
+    const configScript = this.el.querySelector('script[slot="config"]');
 
-    if (this.config) {
-      return JSON.parse(this.config);
-    } else if (configScript) {
-      return JSON.parse(configScript.innerHTML);
-    } else {
-      return null;
+    try {
+      if (this.config) {
+        return JSON.parse(this.config);
+      } else if (configScript) {
+        return JSON.parse(configScript.innerHTML);
+      } else {
+        return null;
+      }
+    } catch (e) {
+      // eslint-disable-next-line no-console
+      console.error('Could not parse vizwiz JSON', e);
+      throw e;
     }
   }
 
@@ -167,45 +129,54 @@ export class CobViz {
       return null;
     }
 
-    return (
-      <div>
-        {config.maps.map(map => (
-          <cob-map
-            heading={config.title}
-            showLegend={map.showLegend}
-            showZoomControl={map.showZoomControl}
-            showAddressSearch={map.searchForAddress}
-            addressSearchPlaceholder={map.placeholderText}
-            addressSearchPopupLayerUid={map.addressSearchPopupDataSourceUid}
-            {...this.getMapProps()}
-          >
-            {config.description && (
-              <div slot="instructions">{config.description}</div>
-            )}
+    try {
+      return (
+        <div>
+          {config.maps.map(map => (
+            <cob-map
+              heading={config.title}
+              showLegend={map.showLegend}
+              showZoomControl={map.showZoomControl}
+              showAddressSearch={map.searchForAddress}
+              addressSearchHeading=""
+              addressSearchPlaceholder={map.placeholderText}
+              addressSearchPopupLayerUid={map.addressSearchPopupDataSourceUid}
+              zoom={map.zoom}
+              {...this.getMapProps()}
+            >
+              {config.description && (
+                <div slot="instructions" innerHTML={config.description} />
+              )}
 
-            {config.data_sources.map(
-              ({
-                attributes: { layer, service },
-                icon,
-                legend_label,
-                popover,
-                polygon_style,
-                cluster_icons,
-              }) => (
-                <cob-map-esri-layer
-                  url={`${service}/${layer}`}
-                  iconSrc={icon}
-                  clusterIcons={cluster_icons}
-                  popupTemplate={popover}
-                  label={legend_label}
-                  color={polygon_style.color}
-                  hoverColor={polygon_style.hover_color}
-                />
-              )
-            )}
-          </cob-map>
-        ))}
-      </div>
-    );
+              {config.dataSources.map(
+                ({
+                  attributes: { layer, service },
+                  icon,
+                  legendLabel,
+                  popover,
+                  polygonStyle,
+                  clusterIcons,
+                }) => (
+                  <cob-map-esri-layer
+                    url={`${service}/${layer}`}
+                    iconSrc={icon}
+                    clusterIcons={clusterIcons}
+                    popupTemplate={popover}
+                    label={legendLabel}
+                    color={polygonStyle.color}
+                    hoverColor={polygonStyle.hoverColor}
+                    fill
+                  />
+                )
+              )}
+            </cob-map>
+          ))}
+        </div>
+      );
+    } catch (e) {
+      // eslint-disable-next-line no-console
+      console.error('Error configuring <cob-viz>', e);
+      return null;
+    }
   }
 }
