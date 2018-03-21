@@ -3,15 +3,22 @@
  * It contains typing information for all components that exist in this project
  * and imports for stencil collections that might be configured in your stencil.config.js file
  */
-
-
 declare global {
+  namespace JSX {
+    interface Element {}
+    export interface IntrinsicElements {}
+  }
+  namespace JSXElements {}
+
   interface HTMLStencilElement extends HTMLElement {
     componentOnReady(): Promise<this>;
     componentOnReady(done: (ele?: this) => void): void;
-  }
-}
 
+    forceUpdate(): void;
+  }
+
+  interface HTMLAttributes {}
+}
 
 
 import {
@@ -43,6 +50,7 @@ declare global {
       to?: string;
       token?: string;
       visible?: boolean;
+      
     }
   }
 }
@@ -81,6 +89,7 @@ declare global {
       popupTemplate?: string;
       uid?: string;
       url?: string;
+      onCobMapEsriLayerConfig?: (event: CustomEvent) => void;
     }
   }
 }
@@ -122,6 +131,7 @@ declare global {
       showLegend?: boolean;
       showZoomControl?: boolean;
       zoom?: number;
+      
     }
   }
 }
@@ -152,6 +162,7 @@ declare global {
   namespace JSXElements {
     export interface CobVizAttributes extends HTMLAttributes {
       config?: string;
+      
     }
   }
 }
