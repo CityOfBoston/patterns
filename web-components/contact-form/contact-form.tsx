@@ -255,7 +255,7 @@ export class ContactForm {
               <button
                 type="submit"
                 class="btn btn--700"
-                disabled={loading || missing}
+                disabled={!!(loading || missing || emailErrorMessage)}
               >
                 Send Message
               </button>

@@ -39,7 +39,7 @@ const MAP_CONFIG: VizConfig = {
       searchForAddress: true,
       zoomToAddress: true,
       placeholderText: 'Search for an address...',
-      showDataLayer: 'SomeRandomValue',
+      addressSearchPopupDataSourceUid: 'SomeRandomValue',
     },
   ],
 };

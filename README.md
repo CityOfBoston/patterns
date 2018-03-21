@@ -9,27 +9,49 @@ This is the pattern library for the City of Boston. It's currently a work in pro
 
 ## Installing
 
-We recommend using [`yarn`](https://yarnpkg.com/en/). Run `yarn` to install dependencies.
-
-## Running
-
-Once the repository has been cloned, you can build the components with:
-
-`npx gulp build`
-
-After building the components, you can run `npx fractal start --watch` to get a server running. You should be able to visit `http://localhost:3000` in your browser and view the pattern library.
+`npm install`
 
 ## Development
 
-The pattern library is built using Stylus. We're using PostCSS, Autoprefixer, and Rucksack as well. When Javascript is required, we're using plain javascript. All components should work without javascript as a default.
+The pattern library is built using Stylus. We’re using PostCSS, Autoprefixer,
+and Rucksack as well. When JavaScript is required for the CSS components, we’re
+using plain JavaScript. All components should work without JavaScript as a
+default.
+
+Web components are developed in TypeScript using the
+[Stencil](https://stenciljs.com/) tool for compilation, bundling, and polyfills.
 
 To develop against the pattern library, you can run:
 
 `npm run dev`
 
-This will build the components and watch for changes, and start up a Fractal server on localhost to show the library.
+This will build the components and watch for changes, and start up a Fractal
+server on https://localhost:3030/ to show the library.
 
-Fractal uses a self-signed SSL certificate that is not trusted by browsers. If you’re using Chrome, you can allow invalid local signatures from this config setting: chrome://flags/#allow-insecure-localhost
+Fractal uses a self-signed SSL certificate that is not trusted by browsers. If
+you’re using Chrome, you can allow invalid local signatures from this config
+setting: chrome://flags/#allow-insecure-localhost
+
+All new features and changes need to work with our [supported
+browsers](https://github.com/CityOfBoston/digital/wiki/Software-engineering-working-agreement#browsers-we-support).
+
+## Testing
+
+Fleet has 2 types of tests:
+ - Unit tests, using [Jest](https://facebook.github.io/jest/)
+ - Browser tests, using [TestCafe](https://testcafe.devexpress.com/)
+
+During development, you can run `npm run jest.dev` to have Jest watch files and
+re-run. 
+
+To run the browser tests, start up your Fractal server with `npm run dev` and
+then run `npm run testcafe.dev` to start up a remote TestCafe server. It will
+print a URL that you can open in a web browser, and stay open to re-run tests
+when they change. You can even open this URL in a VM or on another computer to
+do testing in different browsers.
+
+A prepush hook will run `npm run test`, which runs the Jest tests and also the
+TestCafe tests using a headless Chrome browser.
 
 ## Check-in / Deployment
 
@@ -42,16 +64,9 @@ patterns library. Look in the PR messages for a link.
 so you can see if there are any breaking changes in the deploy.
 
 In general, you should push to production immediately after merging the PR. To
-deploy:
-
- ```
-$ git fetch
-$ git co origin/develop
-$ git push origin HEAD:production
- ```
-
-If production hasn’t accidentally accrued changes (which it shouldn’t) this
-should be a clean fast-forward push.
+do a production push, open a new PR from develop -> production and merge it. If
+the change has significant visual changes, do visual browser testing before
+merging.
 
 The Travis job will automatically push to S3 and invalidate the CloudFront
 cache.
@@ -63,7 +78,7 @@ If you need to submit a bug report for the pattern library, please follow these 
 ### Prior to submitting a bug
 
  * Verify that you are able to reproduce it repeatedly. Try multiple browsers, devices, etc. Also, try clearing your cache.
- * Perform a quick search of our [existing issues](https://github.com/CityOfBoston/cob-patterns/issues) to see if it has been logged previously.
+ * Perform a quick search of our [existing issues](https://github.com/CityOfBoston/patterns/issues) to see if it has been logged previously.
 
 ### Submitting a bug
 

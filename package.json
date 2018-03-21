@@ -7,8 +7,13 @@
     "build": "stencil build && gulp build && fractal build",
     "heroku-postbuild": "npm run build",
     "lint": "eslint --ext .tsx,.ts,.js .",
-    "test": "jest --no-cache",
-    "test.watch": "jest --watch --no-cache",
+    "test": "npm run jest && npm run testcafe",
+    "test-ci": "npm run jest",
+    "jest": "jest --no-cache",
+    "jest.dev": "jest --watch --no-cache",
+    "testcafe": "npm run build && npm run testcafe.run",
+    "testcafe.run": "cross-env TEST_SERVER_URL=http://localhost:3035/ testcafe -a 'http-server -r public -p 3035' -c 3 chrome:headless components/**/*.testcafe.*",
+    "testcafe.dev": "testcafe-live remote components/**/*.testcafe.*",
     "precommit": "lint-staged",
     "prepush": "npm run test"
   },
@@ -62,17 +67,24 @@
     "templayed": "github:CityOfBoston/templayed.js"
   },
   "devDependencies": {
+    "@types/nock": "^9.1.2",
+    "cross-env": "^5.1.4",
     "escape-html": "^1.0.3",
     "eslint": "^4.17.0",
     "eslint-config-prettier": "^2.9.0",
     "eslint-plugin-import": "^2.8.0",
     "eslint-plugin-prettier": "^2.6.0",
+    "http-server": "^0.11.1",
     "husky": "^0.14.3",
     "jest": "^22.1.4",
     "lint-staged": "^6.1.0",
+    "nock": "^9.2.3",
     "prettier": "^1.10.2",
     "svgo": "^1.0.4",
+    "testcafe": "^0.19.1",
+    "testcafe-live": "^0.1.3",
     "typescript": "^2.7.1",
-    "typescript-eslint-parser": "^12.0.0"
+    "typescript-eslint-parser": "^12.0.0",
+    "web-server-cli": "^2.0.2"
   }
 }
