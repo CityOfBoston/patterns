@@ -39,7 +39,7 @@
   },
   "dependencies": {
     "@frctl/fractal": "^1.1.4",
-    "@stencil/core": "^0.7.5",
+    "@stencil/core": "^0.7.6",
     "@types/geojson": "^7946.0.1",
     "@types/jest": "^22.1.1",
     "@types/leaflet": "^1.2.5",
