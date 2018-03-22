@@ -45,11 +45,16 @@ fractal.web.set('server.syncOptions', {
   open: true,
   notify: true,
   https: true,
+  snippetOptions: {
+    blacklist: ['**/*?disable-browsersync'],
+  },
   middleware: function(req, res, next) {
     res.setHeader('Access-Control-Allow-Origin', '*');
     next();
   },
 });
+
+fractal.web.set('server.port', process.env.PORT || 3030);
 
 const hbs = require('@frctl/handlebars')({
   helpers: {
@@ -81,6 +86,10 @@ fractal.components.engine({
         // We only prerender for the preview frame. Otherwise the "HTML" shown in
         // the Fractal UI will be the prerendered rather than showing the
         // <web-component> usage.
+        //
+        // Side note that prerendering seems to be required for TestCafe. Otherwise
+        // the loader script tries to pull scripts in in a way that triggers CORS
+        // checks that fail.
         if (context._self.name === 'preview') {
           const stencilConfig = stencil.loadConfig(__dirname);
           const stencilRenderer = new stencil.Renderer(stencilConfig);

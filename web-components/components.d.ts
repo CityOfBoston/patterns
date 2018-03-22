@@ -3,15 +3,22 @@
  * It contains typing information for all components that exist in this project
  * and imports for stencil collections that might be configured in your stencil.config.js file
  */
-
-
 declare global {
+  namespace JSX {
+    interface Element {}
+    export interface IntrinsicElements {}
+  }
+  namespace JSXElements {}
+
   interface HTMLStencilElement extends HTMLElement {
     componentOnReady(): Promise<this>;
     componentOnReady(done: (ele?: this) => void): void;
-  }
-}
 
+    forceUpdate(): void;
+  }
+
+  interface HTMLAttributes {}
+}
 
 
 import {
@@ -26,23 +33,24 @@ declare global {
     new (): HTMLCobContactFormElement;
   };
   interface HTMLElementTagNameMap {
-    "cob-contact-form": HTMLCobContactFormElement;
+    'cob-contact-form': HTMLCobContactFormElement;
   }
   interface ElementTagNameMap {
-    "cob-contact-form": HTMLCobContactFormElement;
+    'cob-contact-form': HTMLCobContactFormElement;
   }
   namespace JSX {
     interface IntrinsicElements {
-      "cob-contact-form": JSXElements.CobContactFormAttributes;
+      'cob-contact-form': JSXElements.CobContactFormAttributes;
     }
   }
   namespace JSXElements {
     export interface CobContactFormAttributes extends HTMLAttributes {
-      action?: string;
-      defaultSubject?: string;
-      to?: string;
-      token?: string;
-      visible?: boolean;
+      'action'?: string;
+      'defaultSubject'?: string;
+      'to'?: string;
+      'token'?: string;
+      'visible'?: boolean;
+      
     }
   }
 }
@@ -60,27 +68,28 @@ declare global {
     new (): HTMLCobMapEsriLayerElement;
   };
   interface HTMLElementTagNameMap {
-    "cob-map-esri-layer": HTMLCobMapEsriLayerElement;
+    'cob-map-esri-layer': HTMLCobMapEsriLayerElement;
   }
   interface ElementTagNameMap {
-    "cob-map-esri-layer": HTMLCobMapEsriLayerElement;
+    'cob-map-esri-layer': HTMLCobMapEsriLayerElement;
   }
   namespace JSX {
     interface IntrinsicElements {
-      "cob-map-esri-layer": JSXElements.CobMapEsriLayerAttributes;
+      'cob-map-esri-layer': JSXElements.CobMapEsriLayerAttributes;
     }
   }
   namespace JSXElements {
     export interface CobMapEsriLayerAttributes extends HTMLAttributes {
-      clusterIcons?: boolean;
-      color?: string;
-      fill?: boolean;
-      hoverColor?: string;
-      iconSrc?: string;
-      label?: string;
-      popupTemplate?: string;
-      uid?: string;
-      url?: string;
+      'clusterIcons'?: boolean;
+      'color'?: string;
+      'fill'?: boolean;
+      'hoverColor'?: string;
+      'iconSrc'?: string;
+      'label'?: string;
+      'popupTemplate'?: string;
+      'uid'?: string;
+      'url'?: string;
+      'onCobMapEsriLayerConfig'?: (event: CustomEvent) => void;
     }
   }
 }
@@ -98,30 +107,31 @@ declare global {
     new (): HTMLCobMapElement;
   };
   interface HTMLElementTagNameMap {
-    "cob-map": HTMLCobMapElement;
+    'cob-map': HTMLCobMapElement;
   }
   interface ElementTagNameMap {
-    "cob-map": HTMLCobMapElement;
+    'cob-map': HTMLCobMapElement;
   }
   namespace JSX {
     interface IntrinsicElements {
-      "cob-map": JSXElements.CobMapAttributes;
+      'cob-map': JSXElements.CobMapAttributes;
     }
   }
   namespace JSXElements {
     export interface CobMapAttributes extends HTMLAttributes {
-      addressSearchHeading?: string;
-      addressSearchPlaceholder?: string;
-      addressSearchPopupLayerUid?: string | null;
-      basemapUrl?: string;
-      heading?: string;
-      latitude?: number;
-      longitude?: number;
-      openOverlay?: boolean;
-      showAddressSearch?: boolean;
-      showLegend?: boolean;
-      showZoomControl?: boolean;
-      zoom?: number;
+      'addressSearchHeading'?: string;
+      'addressSearchPlaceholder'?: string;
+      'addressSearchPopupLayerUid'?: string | null;
+      'basemapUrl'?: string;
+      'heading'?: string;
+      'latitude'?: number;
+      'longitude'?: number;
+      'openOverlay'?: boolean;
+      'showAddressSearch'?: boolean;
+      'showLegend'?: boolean;
+      'showZoomControl'?: boolean;
+      'zoom'?: number;
+      
     }
   }
 }
@@ -139,19 +149,20 @@ declare global {
     new (): HTMLCobVizElement;
   };
   interface HTMLElementTagNameMap {
-    "cob-viz": HTMLCobVizElement;
+    'cob-viz': HTMLCobVizElement;
   }
   interface ElementTagNameMap {
-    "cob-viz": HTMLCobVizElement;
+    'cob-viz': HTMLCobVizElement;
   }
   namespace JSX {
     interface IntrinsicElements {
-      "cob-viz": JSXElements.CobVizAttributes;
+      'cob-viz': JSXElements.CobVizAttributes;
     }
   }
   namespace JSXElements {
     export interface CobVizAttributes extends HTMLAttributes {
-      config?: string;
+      'config'?: string;
+      
     }
   }
 }

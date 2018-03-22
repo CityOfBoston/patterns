@@ -11,6 +11,7 @@ install:
 - npm install
 - gem install percy-cli
 script:
+- npm run test-ci
 - npm run build
 after_script:
 - bash ./travis/percy.sh
