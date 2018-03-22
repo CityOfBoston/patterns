@@ -5,7 +5,7 @@ This is the pattern library for the City of Boston. It's currently a work in pro
 **This project contains the marks and trade dress of the City of Boston's digital properties and should not be reused without the express permission of the City of Boston.**
 
 [![Build Status](https://travis-ci.org/CityOfBoston/patterns.svg?branch=develop)](https://travis-ci.org/CityOfBoston/patterns)
-[![BrowserStack Status](https://www.browserstack.com/automate/badge.svg?badge_key=TXFYNTRqUUFRZlBOQVFnYTFxS3N3TXNLcHoraGxOUGo3V2dOTVFVNHdaOD0tLVVWWGRsazlTYWd2SXUySStETHRFUFE9PQ%3D%3D--04e7df4c012928743a6290004e81944e34c93109)](https://www.browserstack.com/automate/public-build/TXFYNTRqUUFRZlBOQVFnYTFxS3N3TXNLcHoraGxOUGo3V2dOTVFVNHdaOD0tLVVWWGRsazlTYWd2SXUySStETHRFUFE9PQ==--04e7df4c012928743a6290004e81944e34c93109)
+[![BrowserStack Status](https://www.browserstack.com/automate/badge.svg?badge_key=Nlcwdm0xVlIzQ3dVWDQxbmltNEg1OWp4WEZoOXo5eHZlUHpKV3VuZldRVT0tLUxKWVhwckNLaVIzb29qQjFZQkVla0E9PQ%3D%3D--7770e74f86750ab3c3ceee0369fe44e871d60ef8)](https://www.browserstack.com/automate/public-build/Nlcwdm0xVlIzQ3dVWDQxbmltNEg1OWp4WEZoOXo5eHZlUHpKV3VuZldRVT0tLUxKWVhwckNLaVIzb29qQjFZQkVla0E9PQ==--7770e74f86750ab3c3ceee0369fe44e871d60ef8)
 
 ## Installing
 
