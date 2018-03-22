@@ -86,6 +86,9 @@ test('Changing <cob-map-esri-layer> dynamically changes layer color', async t =>
 });
 
 test('Clicking parking marker shows popup', async t => {
+  // Switch pages so that the overlay can't obscure clicking on the marker.
+  await t.navigateTo(componentPreviewUrl('map', 'no-overlay'));
+
   // The first point in the fixture is 100 Clarendon St.
   await t.click(map.markersByIcon(PARKING_ICON));
   await t.expect(map.leafletPopup.innerText).contains(

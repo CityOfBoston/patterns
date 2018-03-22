@@ -3,8 +3,8 @@
   latitude="42.347316"
   longitude="-71.065227"
   zoom="12"
-  show-zoom-control
-  show-legend{{#if
+  show-zoom-control{{#if show_legend}}
+  show-legend{{/if}}{{#if
   show_address_search}}
   show-address-search{{/if}}{{#if
   open_overlay}}
@@ -42,7 +42,7 @@
       </div>
     </script>
   </cob-map-esri-layer>
-  {{#unless show_address_search}}
+  {{#if show_instructions}}
   <div class="t--info"
     slot="instructions">
     <p class="m-t000">Hover over and click on your district to find your councilor, or search your address.</p>
@@ -51,4 +51,4 @@
         href="https://www.boston.gov/departments/city-council#city-council-members">City Council page.</a>
     </p>
   </div>
-  {{/unless}}</cob-map>
+  {{/if}}</cob-map>

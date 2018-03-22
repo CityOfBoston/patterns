@@ -1,6 +1,9 @@
 language: node_js
 node_js:
 - '8'
+cache:
+  directories:
+  - node_modules
 branches:
   only:
   - develop
@@ -10,9 +13,13 @@ before_install:
 install:
 - npm install
 - gem install percy-cli
+before_script:
+- export BROWSERSTACK_PROJECT_NAME=$TRAVIS_REPO_SLUG
+- export BROWSERSTACK_BUILD_ID=$TRAVIS_BUILD_NUMBER
 script:
-- npm run test-ci
 - npm run build
+- npm run jest.ci
+- npm run testcafe.ci
 after_script:
 - bash ./travis/percy.sh
 deploy:
