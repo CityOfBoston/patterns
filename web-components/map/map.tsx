@@ -34,6 +34,9 @@ declare function templayed(string): (Object) => string;
 const DEFAULT_BASEMAP_URL =
   'https://awsgeo.boston.gov/arcgis/rest/services/Basemaps/BostonCityBasemap_WM/MapServer';
 
+const DEFAULT_ICON_SRC =
+  'https://patterns.boston.gov/images/global/icons/mapping/waypoint-charles-blue.svg';
+
 const BOSTON_BOUNDS = LlatLngBounds(
   LlatLng(42.170274, -71.348648),
   LlatLng(42.456141, -70.818901)
@@ -389,15 +392,13 @@ export class CobMap {
       // Current types require this to be a function, even though the code
       // supports a hash. Let's not rock the boat and just use a function.
       style: () => this.makeFeatureStyle(config),
-      pointToLayer: config.iconSrc
-        ? (_, latlng) =>
-            new LeafletMarker(latlng, {
-              icon: new LeafletIcon({
-                iconUrl: config.iconSrc,
-                iconSize: [30, 30],
-              }),
-            })
-        : undefined,
+      pointToLayer: (_, latlng) =>
+        new LeafletMarker(latlng, {
+          icon: new LeafletIcon({
+            iconUrl: config.iconSrc || DEFAULT_ICON_SRC,
+            iconSize: [30, 30],
+          }),
+        }),
       onEachFeature: (_, featureLayer: LeafletLayer) => {
         featureLayer.on({
           mouseover: this.onFeatureMouseOver.bind(this, configElement),
@@ -589,40 +590,42 @@ export class CobMap {
   }
 
   renderLegendIcon({ fill, color, iconSrc }: LayerConfig) {
-    if (iconSrc) {
-      return <img src={iconSrc} width="50" height="50" />;
-    } else if (fill) {
-      return (
-        <div
-          style={{
-            margin: '4px',
-            border: '3px',
-            borderStyle: 'solid',
-            borderColor: color,
-          }}
-        >
+    if (color) {
+      if (fill) {
+        return (
           <div
             style={{
-              background: color,
-              opacity: '0.2',
-              width: '36px',
-              height: '36px',
+              margin: '4px',
+              border: '3px',
+              borderStyle: 'solid',
+              borderColor: color,
+            }}
+          >
+            <div
+              style={{
+                background: color,
+                opacity: '0.2',
+                width: '36px',
+                height: '36px',
+              }}
+            />
+          </div>
+        );
+      } else {
+        return (
+          <div
+            style={{
+              width: '50px',
+              height: '3px',
+              marginTop: '23px',
+              marginBottom: '24px',
+              backgroundColor: color,
             }}
           />
-        </div>
-      );
+        );
+      }
     } else {
-      return (
-        <div
-          style={{
-            width: '50px',
-            height: '3px',
-            marginTop: '23px',
-            marginBottom: '24px',
-            backgroundColor: color,
-          }}
-        />
-      );
+      return <img src={iconSrc || DEFAULT_ICON_SRC} width="50" height="50" />;
     }
   }
 }

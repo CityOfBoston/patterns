@@ -6,17 +6,17 @@ const MAP_CONFIG: VizConfig = {
   vizId: '123456',
   title: 'What is my title',
   description: 'This is a description',
-  data_sources: [
+  dataSources: [
     {
       uid: 'SomeRandomValue',
       type: 'cob-arcgis',
       icon:
         'https://patterns.boston.gov/images/global/icons/mapping/bathroom.svg',
-      cluster_icons: true,
-      polygon_style: {
+      clusterIcons: true,
+      polygonStyle: {
         name: 'default',
         color: '#0C2639',
-        hover_color: '#FB4D42',
+        hoverColor: '#FB4D42',
       },
       popover: '<p>I am a popover</p>',
       attributes: {
@@ -24,15 +24,15 @@ const MAP_CONFIG: VizConfig = {
           'https://services.arcgis.com/sFnw0xNflSi8J0uh/ArcGIS/rest/services/food_trucks_schedule/FeatureServer',
         layer: 0,
       },
-      legend_label: 'I am a legend!',
+      legendLabel: 'I am a legend!',
     },
   ],
   maps: [
     {
       uid: 'ZWVVViN3h1eZf0Ssnlsa8',
-      latitude: '42.347316',
-      longitude: '-71.065227',
-      zoom: '12',
+      latitude: 42.347316,
+      longitude: -71.065227,
+      zoom: 12,
       showZoomControl: true,
       showLegend: true,
       findUserLocation: true,
