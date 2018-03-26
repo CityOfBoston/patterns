@@ -7,23 +7,23 @@ context:
     - file: 311-circle.svg
     - file: 911-daily-dispatch-count.svg
     - file: abutters.svg
-    - file: accesible-parking.svg
+    - file: accessible-parking.svg
     - file: add.svg
     - file: adopted-budget-data.svg
-    - file: alchohol.svg
+    - file: alcohol.svg
     - file: animal-collar.svg
     - file: antenna.svg
     - file: archaeological-dig.svg
-    - file: baby-carage.svg
+    - file: baby-carriage.svg
     - file: baseball.svg
     - file: basketball-or-basketball-discount.svg
     - file: basketball.svg
     - file: bathroom.svg
     - file: baton.svg
-    - file: benfits.svg
-    - file: bike-helmit.svg
+    - file: benefits.svg
+    - file: bike-helmet.svg
     - file: bike.svg
-    - file: birth-cert.svg
+    - file: birth-certificate.svg
     - file: board-of-trustees.svg
     - file: board-trustees.svg
     - file: boat-mooring.svg
@@ -36,7 +36,7 @@ context:
     - file: building-mccormack.svg
     - file: building-state-house.svg
     - file: building-tip.svg
-    - file: bustops.svg
+    - file: bus-stop.svg
     - file: calendar-selected.svg
     - file: car.svg
     - file: census.svg
@@ -45,10 +45,9 @@ context:
     - file: chart-pie.svg
     - file: check-insert.svg
     - file: checkbook-explorer.svg
-    - file: city-council-enactlaws.svg
     - file: city-council-meeting.svg
-    - file: city-councle-districts.svg
-    - file: city-councle.svg
+    - file: city-council-districts.svg
+    - file: city-council.svg
     - file: city-of-boston-owned-property.svg
     - file: city-tv-.svg
     - file: cityscore.svg
@@ -64,11 +63,11 @@ context:
     - file: contrast.svg
     - file: cpr.svg
     - file: creative-objects.svg
-    - file: crime-incident-reportnew.svg
-    - file: crime-incident-reportold.svg
+    - file: crime-incident-reports-(new).svg
+    - file: crime-incident-reports-(old).svg
     - file: data-security-.svg
     - file: digital-print.svg
-    - file: disctricts.svg
+    - file: districts.svg
     - file: document.svg
     - file: documents-check.svg
     - file: documents.svg
@@ -79,21 +78,21 @@ context:
     - file: download2.svg
     - file: economic-indicators.svg
     - file: edward-w-brooke-courthouse.svg
-    - file: emdetial.svg
+    - file: ambulance.svg
     - file: emergency-kit.svg
     - file: ems.svg
     - file: end-a-domestic-partnership.svg
     - file: entertainment.svg
     - file: excise-tax.svg
-    - file: explore-our-colections.svg
+    - file: explore-our-collections.svg
     - file: explore-our-collection.svg
     - file: explore-our-collections.svg
     - file: feed-back.svg
-    - file: find-a-aprk.svg
+    - file: find-a-park.svg
     - file: find-a-career-center.svg
     - file: find-a-park.svg
     - file: find-car.svg
-    - file: find-out-if-you-need-a-wetlandpermit-.svg
+    - file: find-out-if-you-need-a-wetland-permit.svg
     - file: find-pet.svg
     - file: find-your-boston-school-transcript.svg
     - file: fire-box.svg
@@ -101,16 +100,16 @@ context:
     - file: fire-districts.svg
     - file: fire-operations.svg
     - file: fire-prevention.svg
-    - file: firearmrecovery.svg
+    - file: firearm-recovery.svg
     - file: food-assistance-.svg
     - file: food-truck.svg
     - file: foreclosure.svg
     - file: game-of-the-week.svg
-    - file: get-a-common-victualer-license-.svg
-    - file: get-a-common-victualer-license.svg
+    - file: get-a-common-victualler-license.svg
+    - file: get-a-common-victualler-license.svg
     - file: get-a-home-energy-assessment.svg
     - file: get-a-special-one-day-alcohol-license.svg
-    - file: get-rid-of-hazardouwaste.svg
+    - file: get-rid-of-hazardous-waste.svg
     - file: globe.svg
     - file: ground-water.svg
     - file: help-during-the-winter-heating-season.svg
@@ -119,15 +118,16 @@ context:
     - file: house-small.svg
     - file: house.svg
     - file: housing-questions.svg
+    - file: how-the-city-council-enacts-laws.svg
     - file: how-to-appeal-a-parking-ticket-.svg
     - file: how-to-apply-for-a-landmark-design-review.svg
     - file: how-to-file-for-a-property-tax-abatement.svg
     - file: how-to-get-emergency-alert.svg
     - file: how-to-get-emergency-alerts.svg
     - file: how-to-watch-a-city-council-hearing.svg
-    - file: howto-get-involved-.svg
+    - file: how-to-get-involved.svg
     - file: hurricane.svg
-    - file: hydrent.svg
+    - file: hydrant.svg
     - file: hydrography.svg
     - file: id-card.svg
     - file: important-winter-phone-numbers.svg
@@ -139,14 +139,14 @@ context:
     - file: license-plate.svg
     - file: link-related.svg
     - file: loading.svg
-    - file: look-up-towed-caronline.svg
+    - file: look-up-towed-car-online.svg
     - file: magnify-circle.svg
     - file: mail-dot.svg
     - file: mail.svg
     - file: main-streets.svg
     - file: map.svg
     - file: marriage-certificate.svg
-    - file: masvaule-pass.svg
+    - file: mass-value-pass.svg
     - file: mayor-for-your-event.svg
     - file: mayor-greeting-letter-.svg
     - file: mayor-proclamation-.svg
@@ -154,26 +154,25 @@ context:
     - file: meet-archaeologist.svg
     - file: megaphone.svg
     - file: money.svg
-    - file: neddle.svg
+    - file: needle.svg
     - file: neighborhoods.svg
-    - file: noparking-filming.svg
-    - file: noparking-moving.svg
+    - file: no-parking-filming.svg
+    - file: no-parking-moving.svg
     - file: obtain-divorce-records.svg
     - file: online-payments.svg
-    - file: online-reg.svg
     - file: open-and-protected-data.svg
     - file: open-data.svg
     - file: order-a-dvd.svg
     - file: overdose.svg
     - file: park-your-bike-.svg
     - file: park-your-bike.svg
-    - file: parkand-playgrounds.svg
+    - file: parks-and-playgrounds.svg
     - file: parking-meters.svg
     - file: parking-pass.svg
-    - file: parking-permitfor-personal-care-attendant.svg
-    - file: parking-permitfor-personal-care-attendants.svg
-    - file: pay-or-view-your-billonline.svg
-    - file: pay-your-real-estate-taxe.svg
+    - file: parking-permit-for-personal-care-attendant.svg
+    - file: parking-permit-for-personal-care-attendants.svg
+    - file: pay-or-view-your-bill-online.svg
+    - file: pay-your-real-estate-taxes.svg
     - file: pdf-doc.svg
     - file: pdf.svg
     - file: people-add.svg
@@ -192,14 +191,15 @@ context:
     - file: private-group-meeting.svg
     - file: property-violations.svg
     - file: public-hearing-(for-city-clerk).svg
-    - file: public-noticedark.svg
+    - file: public-notice-(dark).svg
     - file: public-notices.svg
-    - file: public-workdistricts.svg
+    - file: public-work-districts.svg
     - file: real-estate-taxes.svg
     - file: receive-housing-code-information-.svg
     - file: recycle-electronics.svg
     - file: register-for-towing-alert.svg
     - file: register-for-towing-alerts.svg
+    - file: register-online.svg
     - file: register-your-rental-unit.svg
     - file: related-content.svg
     - file: renew-an-accesible-parking.svg
@@ -212,15 +212,15 @@ context:
     - file: salt-truck.svg
     - file: scales.svg
     - file: schools.svg
-    - file: sea-level-rise-plu7-5-feet.svg
+    - file: sea-level-rise-plus-7-and-a-half-feet.svg
     - file: search-license.svg
-    - file: search-the-boston-food-truck-schedulesearch-the-boston-food-truck-schedule.svg
+    - file: search-the-boston-food-truck-schedule.svg
     - file: search-the-community-resource-directory.svg
     - file: search.svg
     - file: sign-shop.svg
     - file: smoke-detector.svg
     - file: snow-plow.svg
-    - file: snow-removal-rulein-boston.svg
+    - file: snow-removal-rules-in-boston.svg
     - file: snow-shovel.svg
     - file: sound.svg
     - file: spray-features.svg
@@ -229,7 +229,7 @@ context:
     - file: street-light-control.svg
     - file: street-light.svg
     - file: street-sweeping-lookup-and-alerts.svg
-    - file: surveilance.svg
+    - file: surveillance.svg
     - file: t-pass.svg
     - file: tax-deferral-program-for-seniors.svg
     - file: tax-deferral.svg
@@ -247,16 +247,16 @@ context:
     - file: traffic-signals.svg
     - file: transportation-districts.svg
     - file: trash-alerts.svg
-    - file: trash-downlaod.svg
+    - file: trash-download.svg
     - file: trash-location.svg
     - file: trash.svg
-    - file: trinity-chirch.svg
-    - file: tripple-decker.svg
+    - file: trinity-church.svg
+    - file: triple-decker.svg
     - file: truck.svg
     - file: trustees.svg
     - file: unemployment.svg
-    - file: veteran'benefit-verification.svg
-    - file: veteranservices.svg
+    - file: veterans-benefit-verification.svg
+    - file: veterans-services.svg
     - file: video-archives.svg
     - file: video-library.svg
     - file: view-leaf-and-yard-waste-schedule.svg
@@ -268,7 +268,7 @@ context:
     - file: what-to-do-with-your-car-when-it-snows.svg
     - file: what-to-do-with-your-trash-when-it-snows.svg
     - file: what-you-need-to-know-about-towing.svg
-    - file: who-imy-city-councilor.svg
+    - file: who-is- my-city-councilor.svg
     - file: wifi-connections.svg
     - file: wifi.svg
     - file: work-zones.svg
