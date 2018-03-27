@@ -8,8 +8,6 @@ branches:
   only:
   - develop
   - production
-before_install:
-- rvm install 2.4.0
 install:
 - npm install
 - gem install percy-cli

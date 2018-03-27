@@ -16,21 +16,24 @@ function layerUrl(locator, layer) {
 
 let arcGisScope: nock.Scope;
 
+async function nockSetup() {
+  arcGisScope = nock('https://services.arcgis.com')
+    .persist()
+    .get(layerUrl('SnowParking', 0))
+    .query(true)
+    .reply(200, SNOW_PARKING_JSON, CORS_ALLOW_HEADERS)
+    .get(layerUrl('City_Council_Districts', 0))
+    .query(true)
+    .reply(200, CITY_COUNCIL_JSON, CORS_ALLOW_HEADERS);
+}
+async function nockTeardown() {
+  arcGisScope.persist(false);
+}
+
 fixture('Map')
   .page(componentPreviewUrl('map', 'default'))
-  .before(async () => {
-    arcGisScope = nock('https://services.arcgis.com')
-      .persist()
-      .get(layerUrl('SnowParking', 0))
-      .query(true)
-      .reply(200, SNOW_PARKING_JSON, CORS_ALLOW_HEADERS)
-      .get(layerUrl('City_Council_Districts', 0))
-      .query(true)
-      .reply(200, CITY_COUNCIL_JSON, CORS_ALLOW_HEADERS);
-  })
-  .after(async () => {
-    arcGisScope.persist(false);
-  });
+  .before(nockSetup)
+  .after(nockTeardown);
 
 // We keep everything consistent as lowercase because IE11 forces lowercase.
 const DISTRICT_DEFAULT_COLOR = '#0c2639';
@@ -85,10 +88,14 @@ test('Changing <cob-map-esri-layer> dynamically changes layer color', async t =>
     .ok();
 });
 
-test('Clicking parking marker shows popup', async t => {
-  // Switch pages so that the overlay can't obscure clicking on the marker.
-  await t.navigateTo(componentPreviewUrl('map', 'no-overlay'));
+// We don't want an overlay so that we don't need to worry about it obscuring
+// the marker we're trying to click on.
+fixture('Map Popup')
+  .page(componentPreviewUrl('map', 'no-overlay'))
+  .before(nockSetup)
+  .after(nockTeardown);
 
+test('Clicking parking marker shows popup', async t => {
   // The first point in the fixture is 100 Clarendon St.
   await t.click(map.markersByIcon(PARKING_ICON));
   await t.expect(map.leafletPopup.innerText).contains(
