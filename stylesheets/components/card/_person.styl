@@ -21,6 +21,7 @@
   &-a
     line-height: $line-height-000
     width: 100%
+    align-self: flex-end
 
   &-t
     line-height: $line-height-100
@@ -31,6 +32,8 @@
     background-color: $grey-000
     text-align: left
     width: 100%
+    //height: -webkit-fill-available 
+    height: calc(100% - 50px);
 
     @media $media-large
       display: block
