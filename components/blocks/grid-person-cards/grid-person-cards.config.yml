@@ -9,7 +9,7 @@ context:
     title: City Government
     contact: false
   people:
-    - name: Mayor Martin J. Walsh
+    - name: Martin J. Walsh
       position: Mayor
       image: https://www.boston.gov/sites/default/files/mayor-walsh2.jpg
       contact: mailto:mayor@boston.gov
@@ -21,8 +21,8 @@ context:
       contact: mailto:mayor@boston.gov
       url: https://www.boston.gov/mayor
       grid: g--1 g--3--sl
-    - name: Mayor Martin J. Walsh
-      position: Mayor
+    - name: Martin J. Walsh
+      position: Mayor of the City of Boston in the Commonwealth of Massachusetts.
       image: https://www.boston.gov/sites/default/files/mayor-walsh2.jpg
       contact: mailto:mayor@boston.gov
       url: https://www.boston.gov/mayor
