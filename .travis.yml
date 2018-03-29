@@ -14,6 +14,9 @@ install:
 before_script:
 - export BROWSERSTACK_PROJECT_NAME=$TRAVIS_REPO_SLUG
 - export BROWSERSTACK_BUILD_ID=$TRAVIS_BUILD_NUMBER
+# Percy automatically uses branches from PRs. This is so for both develop and
+# production we don't make diffs against master, which is unused.
+- export PERCY_TARGET_BRANCH=$TRAVIS_BRANCH
 script:
 - npm run build
 - npm run jest.ci
