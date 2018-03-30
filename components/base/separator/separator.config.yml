@@ -1,0 +1,16 @@
+title: Separator
+handle: separator
+status: ready
+variants:
+  - name: vertical
+    context:
+      separator_classes: sep--v
+
+  - name: blue background
+    context:
+      container_classes: b--b
+      separator_classes: sep--w
+
+  - name: gray background
+    context:
+      container_classes: b--g

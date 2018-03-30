@@ -1,18 +1,26 @@
 language: node_js
 node_js:
 - '8'
+cache:
+  directories:
+  - node_modules
 branches:
   only:
   - develop
   - production
-before_install:
-- rvm install 2.4.0
 install:
 - npm install
 - gem install percy-cli
+before_script:
+- export BROWSERSTACK_PROJECT_NAME=$TRAVIS_REPO_SLUG
+- export BROWSERSTACK_BUILD_ID=$TRAVIS_BUILD_NUMBER
+# Percy automatically uses branches from PRs. This is so for both develop and
+# production we don't make diffs against master, which is unused.
+- export PERCY_TARGET_BRANCH=$TRAVIS_BRANCH
 script:
-- npm run test-ci
 - npm run build
+- npm run jest.ci
+- npm run testcafe.ci
 after_script:
 - bash ./travis/percy.sh
 deploy:

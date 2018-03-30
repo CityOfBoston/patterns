@@ -3,10 +3,19 @@ handle: map
 status: ready
 context:
   heading: Parking and city councilors
+  show_legend: true
+  show_instructions: true
 variants:
+  - name: No Overlay
+    context:
+      show_address_search: false
+      show_legend: false
+      show_instructions: false
+
   - name: Address Search
     context:
       show_address_search: true
+      show_instructions: false
       open_overlay: true
 
   - name: Cluster Icons

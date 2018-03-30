@@ -5,7 +5,7 @@ This is the pattern library for the City of Boston. It's currently a work in pro
 **This project contains the marks and trade dress of the City of Boston's digital properties and should not be reused without the express permission of the City of Boston.**
 
 [![Build Status](https://travis-ci.org/CityOfBoston/patterns.svg?branch=develop)](https://travis-ci.org/CityOfBoston/patterns)
-[![Greenkeeper badge](https://badges.greenkeeper.io/CityOfBoston/patterns.svg)](https://greenkeeper.io/)
+[![BrowserStack Status](https://www.browserstack.com/automate/badge.svg?badge_key=Nlcwdm0xVlIzQ3dVWDQxbmltNEg1OWp4WEZoOXo5eHZlUHpKV3VuZldRVT0tLUxKWVhwckNLaVIzb29qQjFZQkVla0E9PQ%3D%3D--7770e74f86750ab3c3ceee0369fe44e871d60ef8)](https://www.browserstack.com/automate/public-build/Nlcwdm0xVlIzQ3dVWDQxbmltNEg1OWp4WEZoOXo5eHZlUHpKV3VuZldRVT0tLUxKWVhwckNLaVIzb29qQjFZQkVla0E9PQ==--7770e74f86750ab3c3ceee0369fe44e871d60ef8)
 
 ## Installing
 
@@ -27,6 +27,8 @@ To develop against the pattern library, you can run:
 
 This will build the components and watch for changes, and start up a Fractal
 server on https://localhost:3030/ to show the library.
+
+**Node 8 is required for development**
 
 Fractal uses a self-signed SSL certificate that is not trusted by browsers. If
 you’re using Chrome, you can allow invalid local signatures from this config
