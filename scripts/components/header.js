@@ -24,12 +24,40 @@ var BostonHeader = (function () {
     header.appendChild(headerGuideTitle);
   }
 
+  function setupSearchIcon() {
+    if (!searchIcon.addEventListener || !document.querySelector) {
+      return;
+    }
+
+    searchIcon.addEventListener('click', function() {
+      var searchField = document.querySelector('.sf-i-f');
+
+      if (searchField) {
+        // setTimeout so that the search box appears via the CSS before we focus
+        // it.
+        window.setTimeout(function() {
+          searchField.focus();
+        }, 0);
+      }
+    })
+  }
+
   function start() {
     guideTitle = document.getElementById('topicTitle');
     header = document.getElementById('main-menu');
 
+    if (document.querySelector) {
+      // The search icon in the header is the label that controls this checkbox,
+      // which in turn makes the search field hide/show via CSS.
+      searchIcon = document.querySelector('label[for="s-tr"]');
+    }
+
     if (guideTitle) {
       setupGuideTitle();
+    }
+
+    if (searchIcon) {
+      setupSearchIcon();
     }
   }
 
