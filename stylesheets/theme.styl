@@ -51,10 +51,26 @@ a:hover
     text-transform: uppercase
     letter-spacing: -1px
 
+.Browser-notes
+  background: white
+
 .Prose
   font-family: 'Lora', serif
   font-size: 1.175rem
   line-height: 1.5
+
+  h1
+    // overrides a Mandelbrot style that puts bottom margin on all
+    // top-level elements in the markdown
+    margin: 0 0 $sizing-300 !important
+    font-family: $sans
+    font-size: responsive 45px 62px
+    font-range: 480px 1440px
+    font-weight: 700
+    padding-right: $sizing-300
+    line-height: 1
+    color: $charles-blue
+    text-transform: uppercase
 
   h2
     color: $charles-blue
@@ -64,6 +80,14 @@ a:hover
     font-weight: 700
     line-height: $line-height-000
     text-transform: uppercase
+    border-bottom: $border-300 solid $charles-blue
+    padding-bottom: $sizing-100
+    width: 100%
+    // overrides a Mandelbrot style that puts bottom margin on all
+    // top-level elements in the markdown
+    margin: $sizing-500 0 $sizing-300 !important
+    @media $media-large
+      border-bottom: $border-400 solid $charles-blue
 
   h3
     color: $charles-blue
@@ -73,6 +97,21 @@ a:hover
     font-weight: 300
     font-style: italic
     line-height: $line-height-000
+    // overrides a Mandelbrot style that puts bottom margin on all
+    // top-level elements in the markdown
+    margin: 0 !important
+
+  h4
+    color: $charles-blue
+    font-family: $serif
+    font-size: responsive 16px 20px
+    font-range: 480px 1440px
+    font-weight: 300
+    font-style: italic
+    line-height: $line-height-000
+    // overrides a Mandelbrot style that puts bottom margin on all
+    // top-level elements in the markdown
+    margin: $sizing-500 0 $sizing-300 !important
 
 .Header
   background-color: $charles-blue

@@ -1,7 +1,13 @@
 title: 'Web Components: Map'
 handle: map
 status: ready
-context:
+notes: |
+  {{stencil_readme "map"}}
+  ----------------------------------------------
+  {{stencil_readme "map-esri-layer"}}
+  ----------------------------------------------
+  {{stencil_readme "viz"}}
+context: 
   heading: Parking and city councilors
   show_legend: true
   show_instructions: true

@@ -95,18 +95,74 @@ export class CobMap {
 
   // Would call this "title" except that causes browsers to show a tooltip when
   // hovering over the map.
+  /**
+   * Title for the map. Shown on the collapse / expand header at mobile widths.
+   */
   @Prop() heading: string;
+
+  /**
+   * Position to center the map on to start. Will be updated as the map is moved
+   * by the user. Changes to this will move the map.
+   */
   @Prop() latitude: number = 42.357004;
+
+  /**
+   * Position to center the map on to start. Will be updated as the map is moved
+   * by the user. Changes to this will move the map.
+   */
   @Prop() longitude: number = -71.062309;
+
+  /**
+   * Zoom level for the map. Will be updated as the map is zoomed. Changes to
+   * this will zoom the map.
+   */
   @Prop() zoom: number = 14;
+
+  /**
+   * Boolean attribute for whether to show zoom buttons in the bottom right of
+   * the map.
+   */
   @Prop() showZoomControl: boolean = false;
+
+  /**
+   * Boolean attribute for whether to put a map legend in the overlay.
+   */
   @Prop() showLegend: boolean = false;
+
+  /**
+   * Boolean attribute for whether to put a search box for addresses in the
+   * overlay.
+   */
   @Prop() showAddressSearch: boolean = false;
+
+  /**
+   * Header to show above the address search box. Defaults to “Address search”
+   */
   @Prop() addressSearchHeading: string = 'Address search';
+
+  /**
+   * String to use as the placeholder in the address search box (if visible).
+   * Defaults to “Search for an address…”
+   */
   @Prop() addressSearchPlaceholder: string = 'Search for an address…';
+
+  /**
+   * If provided, clicking on the search result markers from an address search
+   * will open this layer’s popup. If there’s only one search result, the popup
+   * will be opened automatically.
+   */
   @Prop() addressSearchPopupLayerUid: string | null = null;
+
+  /**
+   * URL for an ArcGIS tiled layer basemap. Default to our custom City of Boston
+   * basemap, layered over a generic Esri basemap.
+   */
   @Prop() basemapUrl: string = DEFAULT_BASEMAP_URL;
 
+  /**
+   * Test attribute to make the overlay open automatically at mobile widths.
+   * Only used so that we can take Percy screenshots of the overlay.
+   */
   @Prop() openOverlay: boolean = false;
 
   // Used to keep our IDs distinct on the page
