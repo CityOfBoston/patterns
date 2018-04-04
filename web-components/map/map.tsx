@@ -104,19 +104,22 @@ export class CobMap {
    * Position to center the map on to start. Will be updated as the map is moved
    * by the user. Changes to this will move the map.
    */
-  @Prop() latitude: number = 42.357004;
+  @Prop({ mutable: true })
+  latitude: number = 42.357004;
 
   /**
    * Position to center the map on to start. Will be updated as the map is moved
    * by the user. Changes to this will move the map.
    */
-  @Prop() longitude: number = -71.062309;
+  @Prop({ mutable: true })
+  longitude: number = -71.062309;
 
   /**
    * Zoom level for the map. Will be updated as the map is zoomed. Changes to
    * this will zoom the map.
    */
-  @Prop() zoom: number = 14;
+  @Prop({ mutable: true })
+  zoom: number = 14;
 
   /**
    * Boolean attribute for whether to show zoom buttons in the bottom right of
@@ -163,7 +166,8 @@ export class CobMap {
    * Test attribute to make the overlay open automatically at mobile widths.
    * Only used so that we can take Percy screenshots of the overlay.
    */
-  @Prop() openOverlay: boolean = false;
+  @Prop({ mutable: true })
+  openOverlay: boolean = false;
 
   // Used to keep our IDs distinct on the page
   idSuffix = Math.random()
@@ -298,7 +302,7 @@ export class CobMap {
     if (data.results.length) {
       // If we're on mobile, the overlay was open to show the address search
       // field. We close it to keep it from obscuring the results.
-      this.el.openOverlay = false;
+      this.openOverlay = false;
     }
 
     this.addressSearchResultsFeatures.clearLayers();
@@ -529,18 +533,19 @@ export class CobMap {
 
   // Handler to keep our attributes up-to-date with map movements from the UI.
   handleMapPositionChangeEnd() {
+    // Keeps us from moving the map in response to these changes.
     this.mapMoveInProgress = true;
 
     const { lat, lng } = this.map.getCenter();
-    this.el.setAttribute('latitude', lat.toString());
-    this.el.setAttribute('longitude', lng.toString());
-    this.el.setAttribute('zoom', this.map.getZoom().toString());
+    this.latitude = lat;
+    this.longitude = lng;
+    this.zoom = this.map.getZoom();
 
     this.mapMoveInProgress = false;
   }
 
   handleLegendLabelMouseClick(ev: MouseEvent) {
-    this.el.openOverlay = !this.el.openOverlay;
+    this.openOverlay = !this.openOverlay;
     ev.stopPropagation();
     ev.preventDefault();
   }

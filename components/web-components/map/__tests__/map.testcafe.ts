@@ -103,3 +103,12 @@ test('Clicking parking marker shows popup', async t => {
     'You must show proof of your residency in the Back Bay, South End, or Bay Village.'
   );
 });
+
+test('Zooming changes the properties of the map', async t => {
+  // Changes to zoom and position should be reflected back out as properties
+  // (and potentially attributes). We test zoom because it's easiest (button
+  // click) but assume the code path for lat/lng is the same.
+  await t.expect(map.root.zoom).eql(12);
+  await t.click(map.zoomInButton);
+  await t.expect(map.root.zoom).eql(13);
+});
