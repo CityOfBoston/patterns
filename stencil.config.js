@@ -1,5 +1,5 @@
 exports.config = {
-  namespace: 'all',
+  namespace: 'FleetComponents',
   buildEs5: true,
 
   srcDir: 'web-components',
