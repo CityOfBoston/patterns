@@ -95,19 +95,79 @@ export class CobMap {
 
   // Would call this "title" except that causes browsers to show a tooltip when
   // hovering over the map.
+  /**
+   * Title for the map. Shown on the collapse / expand header at mobile widths.
+   */
   @Prop() heading: string;
-  @Prop() latitude: number = 42.357004;
-  @Prop() longitude: number = -71.062309;
-  @Prop() zoom: number = 14;
+
+  /**
+   * Position to center the map on to start. Will be updated as the map is moved
+   * by the user. Changes to this will move the map.
+   */
+  @Prop({ mutable: true })
+  latitude: number = 42.357004;
+
+  /**
+   * Position to center the map on to start. Will be updated as the map is moved
+   * by the user. Changes to this will move the map.
+   */
+  @Prop({ mutable: true })
+  longitude: number = -71.062309;
+
+  /**
+   * Zoom level for the map. Will be updated as the map is zoomed. Changes to
+   * this will zoom the map.
+   */
+  @Prop({ mutable: true })
+  zoom: number = 14;
+
+  /**
+   * Boolean attribute for whether to show zoom buttons in the bottom right of
+   * the map.
+   */
   @Prop() showZoomControl: boolean = false;
+
+  /**
+   * Boolean attribute for whether to put a map legend in the overlay.
+   */
   @Prop() showLegend: boolean = false;
+
+  /**
+   * Boolean attribute for whether to put a search box for addresses in the
+   * overlay.
+   */
   @Prop() showAddressSearch: boolean = false;
+
+  /**
+   * Header to show above the address search box. Defaults to “Address search”
+   */
   @Prop() addressSearchHeading: string = 'Address search';
+
+  /**
+   * String to use as the placeholder in the address search box (if visible).
+   * Defaults to “Search for an address…”
+   */
   @Prop() addressSearchPlaceholder: string = 'Search for an address…';
+
+  /**
+   * If provided, clicking on the search result markers from an address search
+   * will open this layer’s popup. If there’s only one search result, the popup
+   * will be opened automatically.
+   */
   @Prop() addressSearchPopupLayerUid: string | null = null;
+
+  /**
+   * URL for an ArcGIS tiled layer basemap. Default to our custom City of Boston
+   * basemap, layered over a generic Esri basemap.
+   */
   @Prop() basemapUrl: string = DEFAULT_BASEMAP_URL;
 
-  @Prop() openOverlay: boolean = false;
+  /**
+   * Test attribute to make the overlay open automatically at mobile widths.
+   * Only used so that we can take Percy screenshots of the overlay.
+   */
+  @Prop({ mutable: true })
+  openOverlay: boolean = false;
 
   // Used to keep our IDs distinct on the page
   idSuffix = Math.random()
@@ -242,7 +302,7 @@ export class CobMap {
     if (data.results.length) {
       // If we're on mobile, the overlay was open to show the address search
       // field. We close it to keep it from obscuring the results.
-      this.el.openOverlay = false;
+      this.openOverlay = false;
     }
 
     this.addressSearchResultsFeatures.clearLayers();
@@ -473,18 +533,19 @@ export class CobMap {
 
   // Handler to keep our attributes up-to-date with map movements from the UI.
   handleMapPositionChangeEnd() {
+    // Keeps us from moving the map in response to these changes.
     this.mapMoveInProgress = true;
 
     const { lat, lng } = this.map.getCenter();
-    this.el.setAttribute('latitude', lat.toString());
-    this.el.setAttribute('longitude', lng.toString());
-    this.el.setAttribute('zoom', this.map.getZoom().toString());
+    this.latitude = lat;
+    this.longitude = lng;
+    this.zoom = this.map.getZoom();
 
     this.mapMoveInProgress = false;
   }
 
   handleLegendLabelMouseClick(ev: MouseEvent) {
-    this.el.openOverlay = !this.el.openOverlay;
+    this.openOverlay = !this.openOverlay;
     ev.stopPropagation();
     ev.preventDefault();
   }

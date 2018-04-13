@@ -1,6 +1,9 @@
 'use strict';
 
+const path = require('path');
+const fs = require('fs');
 const stencil = require('@stencil/core/server');
+const Handlebars = require('handlebars');
 
 /*
  * Require the Fractal module
@@ -61,8 +64,36 @@ const hbs = require('@frctl/handlebars')({
     filename_to_string: function(str) {
       return str.replace(/-/g, ' ').replace('.svg', '');
     },
+    // Stencil helps us maintain docs in the source directories for the
+    // components. This helper is here so that the Fractal component "Notes" can
+    // import those README files so that they appear in the Fractal UI.
+    //
+    // For example, to pull in the documentation for <cob-viz>, use
+    // {{stencil_readme viz}}
+    stencil_readme: function(componentName) {
+      const relativeDocPath = path.join(
+        'web-components',
+        componentName,
+        'readme.md'
+      );
+
+      const docPath = path.join(__dirname, relativeDocPath);
+
+      if (fs.existsSync(docPath)) {
+        const readmeMd = fs.readFileSync(docPath, 'utf-8');
+
+        // SafeString keeps Handlebars from escaping HTML and
+        // particularly backticks (`). We want the readme.md to
+        // be inserted as-is so that it gets marked down correctly.
+        return new Handlebars.SafeString(readmeMd);
+      } else {
+        return `**stencil_readme:** _${relativeDocPath} not found_\n`;
+      }
+    },
   },
 });
+
+fractal.docs.engine(hbs);
 
 /*
   This code wraps the handlebars engine to include Stencil's web component

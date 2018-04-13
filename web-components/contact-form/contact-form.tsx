@@ -12,10 +12,33 @@ export class ContactForm {
   @Prop({ context: 'isServer' })
   private isServer: boolean;
 
-  @Prop() visible: boolean = false;
+  /**
+   * Whether or not the modal is shown. Defaults to hidden.
+   */
+  @Prop({ mutable: true, reflectToAttr: true })
+  visible: boolean = false;
+
+  /**
+   * Pre-fills the subject field in the form.
+   */
   @Prop() defaultSubject: string = '';
+
+  /**
+   * Defaults to `https://contactform.boston.gov/emails` but can be set for
+   * development testing.
+   */
   @Prop() action: string = 'https://contactform.boston.gov/emails';
+
+  /**
+   * HTTP Authorization header token. Needs to match an API token in the
+   * `contactform.boston.gov` database.
+   */
   @Prop() token: string = '';
+
+  /**
+   * Email address to send the form contents to. Defaults to
+   * **feedback@boston.gov**.
+   */
   @Prop() to: string = 'feedback@boston.gov';
 
   @State() name: string = '';
@@ -32,15 +55,21 @@ export class ContactForm {
     this.subject = this.defaultSubject;
   }
 
+  /**
+   * Show the modal.
+   */
   @Method()
   show() {
-    this.success = false;
-    this.el.visible = true;
+    this.visible = true;
   }
 
+  /**
+   * Hide the modal.
+   */
   @Method()
   hide() {
-    this.el.visible = false;
+    this.success = false;
+    this.visible = false;
   }
 
   handleNameInput(ev) {

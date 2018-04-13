@@ -46,6 +46,13 @@ export interface MapConfig {
 export class CobViz {
   @Element() el: HTMLElement;
 
+  /**
+   * A JSON string or equivalent object that defines the map and layers. The
+   * schema for this config comes from VizWiz, so it won’t be documented here.
+   *
+   * Any attributes prefixed with `map-` will be passed on to the generated
+   * `<cob-map>` component. _E.g._ `map-id` or `map-style`.
+   */
   @Prop() config: string = '';
 
   getConfig(): VizConfig | null {
