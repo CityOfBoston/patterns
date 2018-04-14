@@ -66,7 +66,7 @@ export class CobMapEsriLayer {
   }
 
   // This lifecycle event is the equivalent to @Watching all props
-  componentWillUpdate() {
+  componentDidUpdate() {
     this.emitConfig();
   }
 

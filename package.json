@@ -40,7 +40,7 @@
   },
   "dependencies": {
     "@frctl/fractal": "^1.1.4",
-    "@stencil/core": "^0.7.12",
+    "@stencil/core": "^0.7.24",
     "@types/geojson": "^7946.0.1",
     "@types/jest": "^22.1.1",
     "@types/leaflet": "^1.2.5",
@@ -58,6 +58,7 @@
     "laggard": "^0.1.0",
     "leaflet": "github:CityOfBoston/leaflet#dist",
     "leaflet.markercluster": "github:CityOfBoston/Leaflet.markercluster#dist",
+    "lodash": "^4.17.5",
     "lost": "^8.1.0",
     "postcss": "^6.0.17",
     "postcss-flexibility": "^1.1.0",

@@ -1,4 +1,4 @@
-import { render } from '@stencil/core/testing';
+import { TestWindow } from '@stencil/core/testing';
 const escapeHtml = require('escape-html');
 import { CobViz, VizConfig } from './viz';
 
@@ -49,7 +49,9 @@ function makeJsonAttribute(obj) {
 }
 
 it('configures from a JSON string attribute', async () => {
-  const vizEl = await render({
+  const window = new TestWindow();
+
+  const vizEl = await window.load({
     components: [CobViz],
     html: `<cob-viz config="${makeJsonAttribute(MAP_CONFIG)}"></cob-viz>`,
   });
@@ -62,7 +64,9 @@ it('configures from a JSON string attribute', async () => {
 });
 
 it('configures from an internal <script> tag', async () => {
-  const vizEl = await render({
+  const window = new TestWindow();
+
+  const vizEl = await window.load({
     components: [CobViz],
     html: `<cob-viz>
       <script slot="config" type="application/json">
@@ -79,7 +83,9 @@ it('configures from an internal <script> tag', async () => {
 });
 
 it('passes map-* attributes to the <cob-map> element', async () => {
-  const vizEl = await render({
+  const window = new TestWindow();
+
+  const vizEl = await window.load({
     components: [CobViz],
     html: `<cob-viz
       config="${makeJsonAttribute(MAP_CONFIG)}"
