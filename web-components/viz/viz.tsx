@@ -1,44 +1,10 @@
 import { Component, Element, Prop } from '@stencil/core';
 
-export interface VizConfig {
-  vizId: string;
-  title: string;
-  description: string;
-  dataSources: DataSourceConfig[];
-  maps: MapConfig[];
-}
+// Run `gulp schema:vizwiz` to regenerate these files.
+import { VizWizV00 } from '../types/viz-0.0.schema';
+import { VizWizV10 } from '../types/viz-1.0.schema';
 
-export interface DataSourceConfig {
-  uid: string;
-  type: 'cob-arcgis';
-  attributes: {
-    service: string;
-    layer: number;
-  };
-  icon: string;
-  clusterIcons: boolean;
-  polygonStyle: {
-    name: string;
-    color?: string | null;
-    hoverColor?: string | null;
-  };
-  legendLabel: string;
-  popover: string;
-}
-
-export interface MapConfig {
-  uid: string;
-  latitude?: number | null;
-  longitude?: number | null;
-  zoom?: number | null;
-  showZoomControl: boolean;
-  showLegend: boolean;
-  findUserLocation: boolean;
-  searchForAddress: boolean;
-  zoomToAddress: boolean;
-  placeholderText?: string | null;
-  addressSearchPopupDataSourceUid: string;
-}
+type VizConfig = VizWizV00 | VizWizV10;
 
 @Component({
   tag: 'cob-viz',
@@ -130,6 +96,11 @@ export class CobViz {
     return styleObj;
   }
 
+  isV1(config: VizConfig): config is VizWizV10 {
+    const version = (config as VizWizV10).version;
+    return version && version.startsWith('1.');
+  }
+
   render() {
     const config = this.getConfig();
     if (!config) {
@@ -137,53 +108,124 @@ export class CobViz {
     }
 
     try {
-      return (
-        <div>
-          {config.maps.map(map => (
-            <cob-map
-              heading={config.title}
-              showLegend={map.showLegend}
-              showZoomControl={map.showZoomControl}
-              showAddressSearch={map.searchForAddress}
-              addressSearchHeading=""
-              addressSearchPlaceholder={map.placeholderText}
-              addressSearchPopupLayerUid={map.addressSearchPopupDataSourceUid}
-              zoom={map.zoom}
-              {...this.getMapProps()}
-            >
-              {config.description && (
-                <div slot="instructions" innerHTML={config.description} />
-              )}
-
-              {config.dataSources.map(
-                ({
-                  attributes: { layer, service },
-                  icon,
-                  legendLabel,
-                  popover,
-                  polygonStyle,
-                  clusterIcons,
-                }) => (
-                  <cob-map-esri-layer
-                    url={`${service}/${layer}`}
-                    iconSrc={icon}
-                    clusterIcons={clusterIcons}
-                    popupTemplate={popover}
-                    label={legendLabel}
-                    color={polygonStyle.color}
-                    hoverColor={polygonStyle.hoverColor}
-                    fill
-                  />
-                )
-              )}
-            </cob-map>
-          ))}
-        </div>
-      );
+      if (this.isV1(config)) {
+        return this.renderV1(config);
+      } else {
+        return this.renderV0(config);
+      }
     } catch (e) {
       // eslint-disable-next-line no-console
       console.error('Error configuring <cob-viz>', e);
       return null;
     }
+  }
+
+  renderV0(config: VizWizV00) {
+    return (
+      <div>
+        {config.maps.map(map => (
+          <cob-map
+            heading={config.title}
+            showLegend={map.showLegend}
+            showZoomControl={map.showZoomControl}
+            showAddressSearch={map.searchForAddress}
+            addressSearchHeading=""
+            addressSearchPlaceholder={map.placeholderText}
+            addressSearchPopupLayerUid={map.addressSearchPopupDataSourceUid}
+            zoom={map.zoom}
+            {...this.getMapProps()}
+          >
+            {config.description && (
+              <div slot="instructions" innerHTML={config.description} />
+            )}
+
+            {config.dataSources.map(
+              ({
+                attributes: { layer, service },
+                icon,
+                legendLabel,
+                popover,
+                polygonStyle,
+                clusterIcons,
+              }) => (
+                <cob-map-esri-layer
+                  url={`${service}/${layer}`}
+                  iconSrc={icon}
+                  clusterIcons={clusterIcons}
+                  popupTemplate={popover}
+                  label={legendLabel}
+                  color={polygonStyle.color}
+                  hoverColor={polygonStyle.hoverColor}
+                  fill
+                />
+              )
+            )}
+          </cob-map>
+        ))}
+      </div>
+    );
+  }
+
+  renderV1(config: VizWizV10) {
+    return (
+      <div>
+        {config.maps.map(map => {
+          const { addressSearch } = map;
+          const addresSearchProps = addressSearch
+            ? {
+                showAddressSearch: true,
+                addressSearchHeading: addressSearch.title,
+                addressSearchPlaceholder: addressSearch.placeholder,
+                addressSearchPopupLayerUid:
+                  addressSearch.autoPopupDataSourceUid,
+              }
+            : {
+                showAddressSearch: false,
+              };
+          return (
+            <cob-map
+              heading={map.title}
+              showLegend={map.showLegend}
+              showZoomControl={map.showZoomControl}
+              zoom={map.zoom}
+              {...addresSearchProps}
+              {...this.getMapProps()}
+            >
+              {map.instructionsHtml && (
+                <div slot="instructions" innerHTML={map.instructionsHtml} />
+              )}
+
+              {config.dataSources.map(dataSource => {
+                const {
+                  data,
+                  icons,
+                  popupHtmlTemplate,
+                  legend,
+                  polygons,
+                } = dataSource;
+                switch (data.type) {
+                  // TODO(finh): change "default" once data.type is correctly
+                  // set. (See CityOfBoston/vizwiz#37)
+                  case 'arcgis':
+                  default:
+                    return (
+                      <cob-map-esri-layer
+                        url={`${data.service}/${data.layer}`}
+                        iconSrc={icons && icons.markerUrl}
+                        clusterIcons={icons && icons.cluster}
+                        popupTemplate={popupHtmlTemplate}
+                        label={legend && legend.label}
+                        color={polygons && polygons.color}
+                        hoverColor={polygons && polygons.hoverColor}
+                        fill={legend && legend.symbol === 'polygon'}
+                      />
+                    );
+                }
+              })}
+            </cob-map>
+          );
+        })}
+      </div>
+    );
   }
 }

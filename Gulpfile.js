@@ -1,15 +1,19 @@
 'use strict';
 
-let gulp = require('gulp');
-let util = require('gulp-util');
-let plugins = require('gulp-load-plugins')();
+const gulp = require('gulp');
+const util = require('gulp-util');
+const plugins = require('gulp-load-plugins')();
+const plumber = require('gulp-plumber');
+const download = require('gulp-download');
+
+const jsonSchemaToTypescript = require('./gulp-tasks/jsonSchemaToTypescript');
 
 // Set some plugins that aren't magically included
 plugins.poststylus = require('poststylus');
 plugins.autoprefixer = require('autoprefixer');
 
 // Set config options needed
-let options = {
+const options = {
   dest: './assets/',
 };
 
@@ -28,8 +32,21 @@ function getTask(task) {
   return require('./gulp-tasks/' + task)(gulp, plugins, options, util);
 }
 
+const VIZWIZ_SCHEMA_BASE_URL = 'https://cityofboston.github.io/vizwiz/schema';
+
 // Tasks!
 // -----------------------
+gulp.task('schema:vizwiz', () =>
+  plumber()
+    .pipe(
+      download([
+        `${VIZWIZ_SCHEMA_BASE_URL}/viz-0.0.schema.json`,
+        `${VIZWIZ_SCHEMA_BASE_URL}/viz-1.0.schema.json`,
+      ])
+    )
+    .pipe(jsonSchemaToTypescript({ style: require('./.prettierrc.json') }))
+    .pipe(gulp.dest('web-components/types'))
+);
 gulp.task('legacy', getTask('stylus_legacy'));
 gulp.task('fonts', getTask('fonts'));
 gulp.task('images', getTask('images'));
