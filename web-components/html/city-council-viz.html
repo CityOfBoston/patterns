@@ -29,10 +29,63 @@
       <h2 class="sh-title">City councilor map look-up</h2>
     </div>
 
+    <div class="m-v300">
+      <cob-viz map-style="height: 600px">
+        <script type="application/json"
+          slot="config">
+        {
+          "version": "1.0",
+          "uid": "~ltT9D7MbvC7Wv0O6yYQr",
+          "title": "City Councilor Look-Up",
+          "description": "<div class=\"t--info\"> <p>\n          Hover over and click on your district to find your councilor, or search your address.\n        </p>\n        <p>\n          To see all City Council members, including at-large councilors, visit the\n          <a href=\"https://www.boston.gov/departments/city-council#city-council-members\">City Council page</a>.\n        </p>\n </div>",
+          "dataSources": [
+              {
+                  "uid": "0QYJNIqaMzWBtanIvWles",
+                  "icons": {
+                      "markerUrl": "https://patterns.boston.gov/images/global/icons/mapping/waypoint-charles-blue.svg",
+                      "cluster": true
+                  },
+                  "polygons": {
+                      "style": "default",
+                      "color": "#0C2639",
+                      "hoverColor": "#FB4D42"
+                  },
+                  "type": "arcgis",
+                  "popupHtmlTemplate": "",
+                  "data": {
+                      "service": "https://services.arcgis.com/sFnw0xNflSi8J0uh/ArcGIS/rest/services/City_Council_Districts/FeatureServer",
+                      "layer": 0
+                  },
+                  "legend": ""
+              }
+          ],
+          "maps": [
+              {
+                  "uid": "yBHcvxTmQyrK4WhLBxe16",
+                  "title": "",
+                  "instructionsHtml": "",
+                  "latitude": 42.32,
+                  "longitude": -71.1284,
+                  "zoom": 12,
+                  "showZoomControl": true,
+                  "showLegend": true,
+                  "showUserLocation": false,
+                  "addressSearch": {
+                      "title": "",
+                      "placeholder": "Search for your address…",
+                      "zoomToResult": false
+                  }
+              }
+          ]
+      }
+    </script>
+      </cob-viz>
 
-    <cob-viz map-style="height: 600px">
-      <script type="application/json"
-        slot="config">
+    </div>
+    <div class="m-v300">
+      <cob-viz map-style="height: 600px">
+        <script type="application/json"
+          slot="config">
         {
           "vizId": "0PXs0K514dn917qVqw4Su",
           "title": "City Councilor Look-Up",
@@ -72,7 +125,8 @@
           ]
       }
       </script>
-    </cob-viz>
+      </cob-viz>
+    </div>
   </div>
 
   <script src="/web-components/fleetcomponents.js"></script>

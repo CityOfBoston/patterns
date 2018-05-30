@@ -23,6 +23,9 @@ import { basemapLayer, tiledMapLayer, query as esriQuery } from 'esri-leaflet';
 
 import { geosearch, GeosearchControl } from 'esri-leaflet-geocoder';
 
+import omit from 'lodash/omit';
+import isEqual from 'lodash/isEqual';
+
 // This is our fork of Leaflet/Leaflet.markercluster to fix for module-based
 // importing.
 import { MarkerClusterGroup } from 'leaflet.markercluster';
@@ -439,6 +442,14 @@ export class CobMap {
     const layerRecord = this.layerRecordsByConfigElement.get(configElement);
 
     if (layerRecord) {
+      // Short-circuit in the case of the config not changing so that we don't
+      // infinite loop, since the state change below will cause a re-render,
+      // which will cause the child config elements to "update" and re-broadcast
+      // their configs.
+      if (isEqual(omit(layerRecord.config, 'popupTemplateCompiled'), config)) {
+        return;
+      }
+
       layerRecord.mapLayer.remove();
     }
 
