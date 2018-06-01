@@ -33,6 +33,82 @@ variants:
   - name: Plain style
     context:
       theme: plain
+  - name: Grid
+    preview: '@grid'
+    context:
+      cards:
+        - index: 1
+          image:
+            url: https://amazon.boston.gov/static/marty.98f3382b.jpg
+            title: 'Martin J. Walsh'
+          href: #
+          title: 'Martin J. Walsh'
+          subtitle: 'City of Boston'
+          content: 'Mayor'
+        - index: 2
+          image:
+            url: https://amazon.boston.gov/static/arrigo.d2d17f6f.jpg
+            title: 'Brian M. Arrigo'
+          href: #
+          title: 'Brian M. Arrigo'
+          subtitle: 'City of Revere'
+          content: 'Mayor'
+        - index: 3
+          image:
+            url: https://amazon.boston.gov/static/anne.ed689eba.jpg
+            title: 'Ann Klee'
+          href: #
+          title: 'Ann Klee'
+          subtitle: 'General Electric'
+          content: 'VP, Environmental & Safety, head of Boston operations'
+        - index: 4
+          image:
+            url: https://amazon.boston.gov/static/fulp.c0b68d80.jpg
+            title: 'Carol Fulp'
+          href: #
+          title: 'Carol Fulp'
+          subtitle: 'The Partnership'
+          content: 'President and CFO'
+        - index: 5
+          image:
+            url: https://amazon.boston.gov/static/brown.67571305.jpg
+            title: 'Robert A. Brown'
+          href: #
+          title: 'Robert A. Brown'
+          subtitle: 'Boston University'
+          content: 'President'
+        - index: 6
+          image:
+            url: https://amazon.boston.gov/static/rinchett.bd518a68.jpg
+            title: 'Ritchy Rinchett'
+          href: #
+          title: 'Ritchy Rinchett'
+          subtitle: 'Jeremiah E. Burke High School'
+          content: 'Student'
+        - index: 7
+          image:
+            url: https://amazon.boston.gov/static/panos.0f60fd86.jpg
+            title: 'Panos Panay'
+          href: #
+          title: 'Panos Panay'
+          subtitle: 'Berklee College of Music'
+          content: 'Vice President for Innovation and Strategy'
+        - index: 8
+          image:
+            url: https://amazon.boston.gov/static/zorica.d295be82.jpg
+            title: 'Zorica Pantić'
+          href: #
+          title: 'Zorica Pantić'
+          subtitle: 'Wentworth Institute of Technology'
+          content: 'President'
+        - index: 9
+          image:
+            url: https://amazon.boston.gov/static/lee.05f0998b.jpg
+            title: 'Christine Lee'
+          href: #
+          title: 'Christine Lee'
+          subtitle: 'Northeastern University'
+          content: 'Student'
 context:
   cards:
     - index: 1
