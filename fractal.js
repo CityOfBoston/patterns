@@ -105,6 +105,9 @@ fractal.docs.engine(hbs);
   process is async. (Happily, Fractal handles returning a Promise from the
   render method.)
 */
+const stencilConfig = stencil.loadConfig(__dirname);
+const stencilRenderer = new stencil.Renderer(stencilConfig);
+
 fractal.components.engine({
   register(source, app) {
     const hbsAdapter = hbs.register(source, app);
@@ -114,23 +117,28 @@ fractal.components.engine({
       render(path, str, context, meta) {
         const hbsPromise = hbsRender(path, str, context, meta);
 
-        // We only prerender for the preview frame. Otherwise the "HTML" shown in
-        // the Fractal UI will be the prerendered rather than showing the
+        // We only prerender for the preview frame. Otherwise the "HTML" shown
+        // in the Fractal UI will be the prerendered rather than showing the
         // <web-component> usage.
         //
-        // Side note that prerendering seems to be required for TestCafe. Otherwise
-        // the loader script tries to pull scripts in in a way that triggers CORS
-        // checks that fail.
+        // We absoutely need the prerendering for TestCafe because it inlines
+        // the loader script. The result is that a "data-resources-url"
+        // attribute on the <script> tag points to an absolute path. Without
+        // that, a resourcesUrl is calculated that includes a hostname as well
+        // (which will be either the Fractal server or the static files server).
+        //
+        // When it’s just a path, component JavaScript (which is lazy-loaded)
+        // will get loaded through the TestCafe proxy. Going through the
+        // TestCafe proxy prevents the browser from stumbling over CORS and
+        // self-signed HTTPS certificates.
+        //
+        // This comes up in browsers that natively support "import" (Chrome and
+        // Safari as of this writing) since TestCafe’s Hammerhead library is
+        // unable to shim its proxy-rewrite into "import" the way it does for
+        // XHR.
         if (context._self.name === 'preview') {
-          const stencilConfig = stencil.loadConfig(__dirname);
-          const stencilRenderer = new stencil.Renderer(stencilConfig);
-
           return hbsPromise.then(str =>
-            stencilRenderer
-              .hydrate({
-                html: str,
-              })
-              .then(results => results.html)
+            stencilRenderer.hydrate({ html: str }).then(({ html }) => html)
           );
         } else {
           return hbsPromise;
@@ -150,3 +158,15 @@ const fleetTheme = mandelbrot({
 });
 
 fractal.web.theme(fleetTheme);
+
+// Hooks in to the fractal build behavior to shut down the stencilRenderer.
+// Otherwise its worker child processes keep this process alive.
+fractal.web.on('builder:created', builder => {
+  builder.on('end', () => {
+    stencilRenderer.destroy();
+  });
+
+  builder.on('error', () => {
+    stencilRenderer.destroy();
+  });
+});
