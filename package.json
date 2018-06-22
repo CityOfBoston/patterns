@@ -14,9 +14,9 @@
     "testcafe": "npm run build && npm run testcafe.local",
     "testcafe.local": "cross-env TEST_SERVER_URL=http://localhost:3035/ testcafe -a 'http-server -r public -p 3035' -c 3 chrome:headless components/**/*.testcafe.*",
     "testcafe.dev": "testcafe-live remote components/**/*.testcafe.*",
-    "testcafe.ci": "cross-env TEST_SERVER_URL=http://localhost:3035/ testcafe -a 'http-server -r public -p 3035' 'browserstack:edge,browserstack:ie@11.0,browserstack:safari,browserstack:chrome,browserstack:firefox' components/**/*.testcafe.*",
+    "testcafe.ci": "cross-env BROWSERSTACK_USE_AUTOMATE=1 TEST_SERVER_URL=http://localhost:3035/ testcafe -a 'http-server -r public -p 3035' 'browserstack:edge,browserstack:ie@11.0,browserstack:safari,browserstack:chrome,browserstack:firefox' components/**/*.testcafe.*",
     "precommit": "lint-staged",
-    "prepush": "npm run test"
+    "prepush": "jest --clearCache && npm run test"
   },
   "jest": {
     "transform": {
