@@ -50,7 +50,7 @@ test('Districts are drawn and hover', async t => {
   );
   const hoverPolygons = map.interactivePolygonsByColor(DISTRICT_HOVER_COLOR);
 
-  await defaultPolygons.exists;
+  await defaultPolygons();
   // There are 9 city council districts
   await t.expect(defaultPolygons.count).eql(9);
 
