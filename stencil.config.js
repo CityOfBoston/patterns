@@ -16,6 +16,10 @@ exports.config = {
       // out.
       serviceWorker: false,
     },
+    {
+      type: 'docs',
+      dir: 'web-components',
+    },
   ],
 
   // Because of https://github.com/ionic-team/stencil/issues/563 we don't use

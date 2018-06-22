@@ -10,6 +10,8 @@ import MapModel from './map-model';
 const SNOW_PARKING_JSON = require('./snow-parking.json');
 const CITY_COUNCIL_JSON = require('./city-council.json');
 
+// These need to match the URLs exactly, including case. Without that the
+// network requests will hang.
 function layerUrl(locator, layer) {
   return `/sFnw0xNflSi8J0uh/arcgis/rest/services/${locator}/FeatureServer/${layer}/query`;
 }
@@ -61,33 +63,6 @@ test('Districts are drawn and hover', async t => {
   await t.expect(hoverPolygons.count).eql(1);
 });
 
-test('Changing <cob-map-esri-layer> dynamically changes layer color', async t => {
-  const districtLayerConfig = map.esriLayerConfigByLabel(
-    'Boston City Council Districts'
-  );
-
-  await t
-    .expect(districtLayerConfig.getAttribute('color'))
-    .eql(DISTRICT_DEFAULT_COLOR);
-  await t
-    .expect(map.interactivePolygonsByColor(DISTRICT_GREEN_COLOR).exists)
-    .notOk();
-
-  await t.eval(
-    () => {
-      const councilDataSourceEl = districtLayerConfig() as any;
-      councilDataSourceEl.color = DISTRICT_GREEN_COLOR;
-    },
-    {
-      dependencies: { districtLayerConfig, DISTRICT_GREEN_COLOR },
-    }
-  );
-
-  await t
-    .expect(map.interactivePolygonsByColor(DISTRICT_GREEN_COLOR).exists)
-    .ok();
-});
-
 // We don't want an overlay so that we don't need to worry about it obscuring
 // the marker we're trying to click on.
 fixture('Map Popup')
@@ -102,13 +77,4 @@ test('Clicking parking marker shows popup', async t => {
     // This is special intro text for the 100 Clarendon garage.
     'You must show proof of your residency in the Back Bay, South End, or Bay Village.'
   );
-});
-
-test('Zooming changes the properties of the map', async t => {
-  // Changes to zoom and position should be reflected back out as properties
-  // (and potentially attributes). We test zoom because it's easiest (button
-  // click) but assume the code path for lat/lng is the same.
-  await t.expect(map.root.zoom).eql(12);
-  await t.click(map.zoomInButton);
-  await t.expect(map.root.zoom).eql(13);
 });

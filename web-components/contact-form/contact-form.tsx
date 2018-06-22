@@ -10,7 +10,7 @@ export class ContactForm {
   @Element() el: any;
 
   @Prop({ context: 'isServer' })
-  private isServer: boolean;
+  private isServer: boolean = false;
 
   /**
    * Whether or not the modal is shown. Defaults to hidden.
