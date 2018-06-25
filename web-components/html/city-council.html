@@ -21,7 +21,6 @@
 
 <body>
   <div class="b b-c">
-
     <div class="sh m-b500">
       <a name="councilor-look-up"
         data-text="Councilor look-up"
@@ -29,47 +28,57 @@
       <h2 class="sh-title">City councilor map look-up</h2>
     </div>
 
-    <cob-map id="map"
-      style="height: 600px"
-      latitude="42.31667"
-      longitude="-71.13441"
-      zoom="12"
-      show-zoom-control
-      show-legend
-      show-address-search
-      address-search-heading=""
-      address-search-placeholder="Search for your address…"
-      address-search-popup-layer-uid="city-council-districts"
-      heading="City Councilor Look-Up">
-      <div slot="instructions"
-        class="t--info">
-        <p>
-          Hover over and click on your district to find your councilor, or search your address.
-        </p>
-        <p>
-          To see all City Council members, including at-large councilors, visit the
-          <a href="https://www.boston.gov/departments/city-council#city-council-members">City Council page</a>.
-        </p>
-      </div>
-      <cob-map-esri-layer uid="city-council-districts"
-        url="https://services.arcgis.com/sFnw0xNflSi8J0uh/arcgis/rest/services/City_Council_Districts/FeatureServer/0"
-        color="#0C2639"
-        hover-color="#FB4D42"
-        label="Boston City Council Districts"
-        fill>
-        <script slot="popup"
-          type="text/mustache">
-          <img src="{{Image}}" class="cdp-i" alt="{{Councilor}}" style="margin-bottom: 1rem"/>
-          <div class="ta-c m-v300">
-            <div class="cdp-t t--sans t--upper m-t200">{{Councilor}}</div>
-            <div class="cdp-st t--subinfo t--g300">District {{DISTRICT}}</div>
-          </div>
-          <a href="{{Bio}}" class="btn btn--b btn--100 btn--sm">
-            Visit webpage<span class="a11y--h"> of {{Councillor}}</span>
-          </a>
+    <div class="m-v300">
+      <cob-map style="height: 600px">
+        <script type="application/json"
+          slot="config">
+{
+  "version": "1.0",
+  "uid": "~ltT9D7MbvC7Wv0O6yYQr",
+  "dataSources": [
+    {
+      "uid": "0QYJNIqaMzWBtanIvWles",
+      "icons": null,
+      "polygons": {
+        "style": "default",
+        "color": "#0C2639",
+        "hoverColor": "#FB4D42"
+      },
+      "popupHtmlTemplate": "<img src=\"{{Image}}\" class=\"cdp-i\" alt=\"{{Councilor}}\" style=\"margin-bottom: 1rem\"/>\n          <div class=\"ta-c m-v300\">\n            <div class=\"cdp-t t--sans t--upper m-t200\">{{Councilor}}</div>\n            <div class=\"cdp-st t--subinfo t--g300\">District {{DISTRICT}}</div>\n          </div>\n          <a href=\"{{Bio}}\" class=\"btn btn--b btn--100 btn--sm\">\n            Visit webpage<span class=\"a11y--h\"> of {{Councillor}}</span>\n          </a>",
+      "data": {
+        "type": "arcgis",
+        "service": "https://services.arcgis.com/sFnw0xNflSi8J0uh/ArcGIS/rest/services/City_Council_Districts/FeatureServer",
+        "layer": 0
+      },
+      "legend": {
+        "label": "City Council Districts",
+        "symbol": "polygon"
+      }
+    }
+  ],
+  "maps": [
+    {
+      "uid": "yBHcvxTmQyrK4WhLBxe16",
+      "title": "City Councilor Look-Up",
+      "instructionsHtml": "<div class=\"t--info\"> <p>\n          Hover over and click on your district to find your councilor, or search your address.\n        </p>\n        <p>\n          To see all City Council members, including at-large councilors, visit the\n          <a href=\"https://www.boston.gov/departments/city-council#city-council-members\">City Council page</a>.\n        </p>\n </div>",
+      "latitude": 42.32,
+      "longitude": -71.1284,
+      "zoom": 12,
+      "showZoomControl": true,
+      "showLegend": true,
+      "showUserLocation": false,
+      "addressSearch": {
+        "title": "",
+        "placeholder": "Search for your address…",
+        "autoPopupDataSourceUid": "0QYJNIqaMzWBtanIvWles",
+        "zoomToResult": false
+      }
+    }
+  ]
+}    
         </script>
-      </cob-map-esri-layer>
-    </cob-map>
+      </cob-viz>
+    </div>
   </div>
 
   <script src="/web-components/fleetcomponents.js"></script>

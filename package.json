@@ -2,9 +2,9 @@
   "name": "cob-patterns",
   "version": "0.0.1",
   "scripts": {
-    "dev": "concurrently \"gulp\" \"fractal start --watch\" \"stencil build --watch\"",
-    "dev-chrome": "concurrently \"gulp\" \"fractal start --watch\" \"stencil build --dev --watch\"",
-    "build": "stencil build && gulp build && fractal build",
+    "dev": "concurrently \"gulp\" \"fractal start --watch\" \"stencil build --docs --watch\"",
+    "dev-chrome": "concurrently \"gulp\" \"fractal start --watch\" \"stencil build --docs --dev --watch\"",
+    "build": "stencil build --docs && gulp build && fractal build",
     "heroku-postbuild": "npm run build",
     "lint": "eslint --ext .tsx,.ts,.js .",
     "test": "npm run jest && npm run testcafe",

@@ -1,72 +1,36 @@
 # cob-map
 
-Web component for a Leaflet map and data from Esri. Configured through a handful
-of nested components.
+Web component for a Leaflet map and data from Esri. It accepts the configuration
+block as an attribute or embedded `<script>` and generates a Leaflet map.
+
+This component typechecks against the [JSON-Schema
+files](https://cityofboston.github.io/vizwiz/#/jsonschema) from the vizwiz
+repository. To update the types, run `npx gulp schema:vizwiz`. You may also have
+to add to the list of URLs in the Gulpfile.
 
 ## Slots
 
-#### instructions
+#### config
 
-If included, placed in the overlay above address search and the legend.
+Alternate way to define the JSON configuration from the `config` attribute that
+avoids the need to HTML escape and put in the “config” attribute. Include a
+`<script slot="config" type="application/json">` element whose text contents are
+the JSON configuration. 
 
 <!-- Auto Generated Below -->
 
 
 ## Properties
 
-#### addressSearchHeading
+#### config
 
 string
 
-Header to show above the address search box. Defaults to “Address search”
+A JSON string or equivalent object that defines the map and layers. The
+schema for this config comes from VizWiz, so it won’t be documented here.
 
-
-#### addressSearchPlaceholder
-
-string
-
-String to use as the placeholder in the address search box (if visible).
-Defaults to “Search for an address…”
-
-
-#### addressSearchPopupLayerUid
-
-
-
-If provided, clicking on the search result markers from an address search
-will open this layer’s popup. If there’s only one search result, the popup
-will be opened automatically.
-
-
-#### basemapUrl
-
-string
-
-URL for an ArcGIS tiled layer basemap. Default to our custom City of Boston
-basemap, layered over a generic Esri basemap.
-
-
-#### heading
-
-string
-
-Title for the map. Shown on the collapse / expand header at mobile widths.
-
-
-#### latitude
-
-number
-
-Position to center the map on to start. Will be updated as the map is moved
-by the user. Changes to this will move the map.
-
-
-#### longitude
-
-number
-
-Position to center the map on to start. Will be updated as the map is moved
-by the user. Changes to this will move the map.
+Any attributes prefixed with `map-` will be passed on to the generated
+`<cob-map>` component. _E.g._ `map-id` or `map-style`.
 
 
 #### openOverlay
@@ -77,92 +41,17 @@ Test attribute to make the overlay open automatically at mobile widths.
 Only used so that we can take Percy screenshots of the overlay.
 
 
-#### showAddressSearch
-
-boolean
-
-Boolean attribute for whether to put a search box for addresses in the
-overlay.
-
-
-#### showLegend
-
-boolean
-
-Boolean attribute for whether to put a map legend in the overlay.
-
-
-#### showZoomControl
-
-boolean
-
-Boolean attribute for whether to show zoom buttons in the bottom right of
-the map.
-
-
-#### zoom
-
-number
-
-Zoom level for the map. Will be updated as the map is zoomed. Changes to
-this will zoom the map.
-
-
 ## Attributes
 
-#### address-search-heading
+#### config
 
 string
 
-Header to show above the address search box. Defaults to “Address search”
+A JSON string or equivalent object that defines the map and layers. The
+schema for this config comes from VizWiz, so it won’t be documented here.
 
-
-#### address-search-placeholder
-
-string
-
-String to use as the placeholder in the address search box (if visible).
-Defaults to “Search for an address…”
-
-
-#### address-search-popup-layer-uid
-
-
-
-If provided, clicking on the search result markers from an address search
-will open this layer’s popup. If there’s only one search result, the popup
-will be opened automatically.
-
-
-#### basemap-url
-
-string
-
-URL for an ArcGIS tiled layer basemap. Default to our custom City of Boston
-basemap, layered over a generic Esri basemap.
-
-
-#### heading
-
-string
-
-Title for the map. Shown on the collapse / expand header at mobile widths.
-
-
-#### latitude
-
-number
-
-Position to center the map on to start. Will be updated as the map is moved
-by the user. Changes to this will move the map.
-
-
-#### longitude
-
-number
-
-Position to center the map on to start. Will be updated as the map is moved
-by the user. Changes to this will move the map.
+Any attributes prefixed with `map-` will be passed on to the generated
+`<cob-map>` component. _E.g._ `map-id` or `map-style`.
 
 
 #### open-overlay
@@ -171,37 +60,6 @@ boolean
 
 Test attribute to make the overlay open automatically at mobile widths.
 Only used so that we can take Percy screenshots of the overlay.
-
-
-#### show-address-search
-
-boolean
-
-Boolean attribute for whether to put a search box for addresses in the
-overlay.
-
-
-#### show-legend
-
-boolean
-
-Boolean attribute for whether to put a map legend in the overlay.
-
-
-#### show-zoom-control
-
-boolean
-
-Boolean attribute for whether to show zoom buttons in the bottom right of
-the map.
-
-
-#### zoom
-
-number
-
-Zoom level for the map. Will be updated as the map is zoomed. Changes to
-this will zoom the map.
 
 
 
