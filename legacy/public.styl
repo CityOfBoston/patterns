@@ -1,3 +1,5 @@
+@require '../stylesheets/variables/_colors.styl';
+
 body {
     overflow-x: hidden
 }
@@ -150,33 +152,33 @@ svg:not(:root) {
     overflow: hidden
 }
 :link {
-    color: #288be4;
+    color: $optimistic-blue;
     text-decoration: none
 }
 .inverted,
 .inverted:link {
-    color: #fb4d42
+    color: $freedom-red
 }
 :visited {
-    color: #288be4
+    color: $optimistic-blue
 }
 .inverted:visited {
-    color: #fb4d42
+    color: $freedom-red
 }
 a:hover,
 a:focus {
-    color: #fb4d42
+    color: $freedom-red
 }
 a.inverted:hover,
 a.inverted:focus {
-    color: #288be4
+    color: $optimistic-blue
 }
 a:active {
-    color: #fb4d42;
+    color: $freedom-red;
     background-color: transparent
 }
 a.inverted:active {
-    color: #288be4
+    color: $optimistic-blue
 }
 a:active,
 a:hover {
@@ -216,7 +218,7 @@ a:hover {
 .download-link.sub-nav-trigger,
 .view-filters .download-link.drawer-trigger.mobile-only,
 .filter-wrapper .download-link.drawer-trigger.mobile-only {
-    background-color: #288be4;
+    background-color: $optimistic-blue;
     background-position: right 4px top 4px
 }
 .external-link a {
@@ -234,7 +236,7 @@ a:hover {
 .external-link.sub-nav-trigger,
 .view-filters .external-link.drawer-trigger.mobile-only,
 .filter-wrapper .external-link.drawer-trigger.mobile-only {
-    background-color: #288be4;
+    background-color: $optimistic-blue;
     background-position: right 4px top 4px
 }
 .external-link--inline a {
@@ -275,8 +277,8 @@ button,
     line-height: inherit;
     text-decoration: none;
     cursor: pointer;
-    color: #fff;
-    background-color: #288be4;
+    color: $white;
+    background-color: $optimistic-blue;
     font-family: "Montserrat", sans-serif;
     font-weight: 400;
     letter-spacing: 1px;
@@ -382,8 +384,8 @@ button:active,
 .view-filters .drawer-trigger.mobile-only:visited:active,
 .filter-wrapper .drawer-trigger.mobile-only:visited:active {
     text-decoration: none;
-    color: #fff;
-    background-color: #fb4d42
+    color: $white;
+    background-color: $freedom-red
 }
 .button[disabled],
 .paragraphs-item-3-column-w-image .column-wrapper .field-three-col-link .paragraphs-items-field-link .paragraphs-item-external-link a[disabled]:link,
@@ -403,7 +405,7 @@ button[disabled],
 .view-filters .drawer-trigger.mobile-only:visited[disabled],
 .filter-wrapper .drawer-trigger.mobile-only:visited[disabled] {
     cursor: default;
-    color: #828282;
+    color: $grey-300;
     background-color: #d2d2d2
 }
 .button[disabled]:hover,
@@ -457,7 +459,7 @@ button[disabled]:active,
 .sub-nav-trigger:visited[disabled]:active,
 .view-filters .drawer-trigger.mobile-only:visited[disabled]:active,
 .filter-wrapper .drawer-trigger.mobile-only:visited[disabled]:active {
-    color: #828282;
+    color: $grey-300;
     background-color: #d2d2d2
 }
 .button-sm {
@@ -470,12 +472,12 @@ button[disabled]:active,
     margin-bottom: .1rem
 }
 .button-inverted {
-    background-color: #fb4d42
+    background-color: $freedom-red
 }
 .button-inverted:hover,
 .button-inverted:focus,
 .button-inverted:active {
-    background-color: #288be4
+    background-color: $optimistic-blue
 }
 .button-icon {
     padding-right: 1.5em;
@@ -516,36 +518,36 @@ input::-moz-focus-inner {
     padding: 0
 }
 input {
-    color: #091f2f;
+    color: $charles-blue;
     border: 3px solid;
     padding: 5px 15px;
     height: 65px
 }
 input::-webkit-input-placeholder {
-    color: #828282;
+    color: $grey-300;
     font-style: italic;
     line-height: 1
 }
 input:-moz-placeholder {
-    color: #828282;
+    color: $grey-300;
     font-style: italic;
     line-height: 1
 }
 input::-moz-placeholder {
-    color: #828282;
+    color: $grey-300;
     font-style: italic;
     line-height: 1
 }
 input:-ms-input-placeholder {
-    color: #828282;
+    color: $grey-300;
     font-style: italic;
     line-height: 1
 }
 input.error {
-    border-color: #fb4d42
+    border-color: $freedom-red
 }
 .input-error-mssg {
-    color: #fb4d42
+    color: $freedom-red
 }
 html input[type="button"],
 [type="reset"],
@@ -588,7 +590,7 @@ input[type="radio"] {
     display: inline-block;
     width: 39px;
     height: 39px;
-    border: 3px solid #091f2f;
+    border: 3px solid $charles-blue;
     float: left;
     margin-right: 1em
 }
@@ -600,42 +602,42 @@ input[type="radio"] {
 .form-type-radio.error label:before,
 .form-type-checkbox.error label:before,
 .form-type-bef-checkbox.error label:before {
-    border-color: #fb4d42;
+    border-color: $freedom-red;
     background-color: transparent
 }
 .form-type-radio.disabled label:before,
 .form-type-checkbox.disabled label:before,
 .form-type-bef-checkbox.disabled label:before {
-    border-color: #828282;
-    background-color: #f3f3f3
+    border-color: $grey-300;
+    background-color: $grey-000
 }
 .form-type-radio label:before {
     border-radius: 100%
 }
 input[type=radio]:checked+label:before {
     content: "";
-    color: #288be4;
+    color: $optimistic-blue;
     background: url("../images/global/icons/radio_fill.png") no-repeat center center transparent
 }
 input[type=checkbox]:checked+label:before {
     content: "";
-    color: #288be4;
+    color: $optimistic-blue;
     background: url("/images/public/icons/check.svg") no-repeat center center transparent
 }
 input[type=radio].disabled+label:before,
 input[type=checkbox].disabled+label:before {
-    border-color: #828282;
-    background-color: #f3f3f3
+    border-color: $grey-300;
+    background-color: $grey-000
 }
 input[type=radio].error+label:before,
 input[type=checkbox].error+label:before {
-    border-color: #fb4d42;
+    border-color: $freedom-red;
     background-color: transparent
 }
 fieldset {
     padding: 13.65px 24.375px 25.35px;
     padding: 0.75833rem 1.35417rem 1.40833rem;
-    border: 1px solid #e0e0e0;
+    border: 1px solid $grey-100;
     margin: 0 2px
 }
 legend {
@@ -645,7 +647,7 @@ legend {
 }
 label {
     display: block;
-    color: #091f2f
+    color: $charles-blue
 }
 label {
     font-family: "Montserrat", sans-serif;
@@ -686,7 +688,7 @@ label {
     clear: both
 }
 .input-error-mssg {
-    color: #fb4d42
+    color: $freedom-red
 }
 .page .dropdown,
 .page .dropdown div,
@@ -707,8 +709,8 @@ label {
     width: 250px;
     cursor: pointer;
     font-weight: 200;
-    background: #fff;
-    border: 3px solid #091f2f;
+    background: $white;
+    border: 3px solid $charles-blue;
     padding: 5px 0;
     font-family: "Montserrat", sans-serif;
     -webkit-user-select: none;
@@ -720,7 +722,7 @@ label {
     z-index: 2
 }
 .page .dropdown:hover {
-    background: #fff
+    background: $white
 }
 .page .dropdown:after {
     content: '';
@@ -729,8 +731,8 @@ label {
     bottom: 0;
     top: 0;
     width: 45px;
-    background: #288be4;
-    border-left: 3px solid #091f2f;
+    background: $optimistic-blue;
+    border-left: 3px solid $charles-blue;
     text-align: center
 }
 .page .dropdown .carat,
@@ -749,13 +751,13 @@ label {
 .page .dropdown .carat:after {
     margin-top: -10px;
     right: -8px;
-    border-top-color: #288be4
+    border-top-color: $optimistic-blue
 }
 .page .dropdown.focus .carat {
-    border-top-color: #091f2f
+    border-top-color: $charles-blue
 }
 .page .dropdown.focus .carat:after {
-    border-top-color: #288be4
+    border-top-color: $optimistic-blue
 }
 .page .dropdown.open .carat {
     -ms-transform: rotate(180deg);
@@ -795,10 +797,10 @@ label {
 }
 .page .dropdown .selected {
     font-family: "Lora", serif;
-    color: #091f2f
+    color: $charles-blue
 }
 .page .dropdown .placeholder {
-    color: #828282;
+    color: $grey-300;
     font-style: italic
 }
 .page .dropdown .selected::after {
@@ -813,7 +815,7 @@ label {
 .page .dropdown .placeholder {
     font-family: "Lora", serif;
     font-style: italic;
-    color: #828282
+    color: $grey-300
 }
 .page .dropdown div {
     position: absolute;
@@ -821,10 +823,10 @@ label {
     left: 0;
     right: 0;
     top: 100%;
-    background: #fff;
+    background: $white;
     overflow: hidden;
     opacity: 0;
-    border: 3px solid #091f2f;
+    border: 3px solid $charles-blue;
     margin: -1px -3px 0px;
     margin: -0.05556rem -0.16667rem 0rem
 }
@@ -862,16 +864,16 @@ label {
     padding: 8px 12px;
     margin: 0px;
     margin: 0rem;
-    border-bottom: 3px solid #091f2f;
+    border-bottom: 3px solid $charles-blue;
     padding: 5px 15px;
-    color: #288be4;
+    color: $optimistic-blue;
     text-transform: uppercase;
     font-size: 14px;
     line-height: 58.5px;
     font-size: 0.77778rem;
     line-height: 3.25rem;
     line-height: inherit;
-    background-color: #fff;
+    background-color: $white;
     text-indent: 0
 }
 .page .dropdown li:last-child {
@@ -883,14 +885,14 @@ label {
     display: none
 }
 .page .dropdown li.focus {
-    background: #288be4;
+    background: $optimistic-blue;
     position: relative;
     z-index: 3;
-    color: #fff
+    color: $white
 }
 .page .dropdown li.active {
-    background: #288be4;
-    color: #fff
+    background: $optimistic-blue;
+    color: $white
 }
 textarea {
     overflow: auto
@@ -980,7 +982,7 @@ hr {
     margin: 39px 0px;
     margin: 2.16667rem 0rem;
     border: 0;
-    border-top: 1px solid #e0e0e0
+    border-top: 1px solid $grey-100
 }
 .divider>:first-child,
 hr>:first-child {
@@ -990,8 +992,8 @@ hr>:first-child {
 blockquote {
     margin: 39px 36px;
     margin: 2.16667rem 2rem;
-    color: #091f2f;
-    border-left: 3px solid #fb4d42;
+    color: $charles-blue;
+    border-left: 3px solid $freedom-red;
     font-style: italic;
     padding-left: 2em;
     font-size: 18px;
@@ -1078,7 +1080,7 @@ article ul {
 article ol {
     counter-reset: section;
     list-style-type: none;
-    color: #091f2f
+    color: $charles-blue
 }
 article ol li {
     margin: 0px 0px 18px 55px;
@@ -1114,7 +1116,7 @@ article .paragraphs-item-3-column-w-image ul li {
 }
 article ul.secondary-list li {
     text-transform: uppercase;
-    color: #091f2f;
+    color: $charles-blue;
     font-family: "Montserrat", sans-serif;
     font-weight: inherit;
     font-size: 14px;
@@ -1127,12 +1129,12 @@ article ul.secondary-list li {
 }
 article ul strong,
 article ul b {
-    color: #091f2f;
+    color: $charles-blue;
     font-weight: 700
 }
 article .paragraphs-item-3-column-w-image ul strong,
 article .paragraphs-item-3-column-w-image ul b {
-    color: #fff
+    color: $white
 }
 article ul.links-list li {
     margin-bottom: 0
@@ -1199,7 +1201,7 @@ address,
 .timeline-step-wrapper .step-title,
 h6 {
     font-family: "Montserrat", sans-serif;
-    color: #091f2f;
+    color: $charles-blue;
     text-transform: uppercase
 }
 h1.header-border-bottom,
@@ -1360,7 +1362,7 @@ body {
     color: #58585B;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    background: #fff
+    background: $white
 }
 abbr[title] {
     border-bottom: 1px dotted
@@ -2046,15 +2048,15 @@ section.contact-departments,
     padding-right: 15px
 }
 .component {
-    color: #fff;
-    background-color: #091f2f;
-    border-top: 10px solid #fcb61a
+    color: $white;
+    background-color: $charles-blue;
+    border-top: 10px solid $yellow
 }
 .component__header h2 {
     margin-top: 0
 }
 .component__header--yellow h2 {
-    color: #fcb61a
+    color: $yellow
 }
 .component__header--no-border {
     border: none
@@ -2087,7 +2089,7 @@ section.contact-departments,
     background-size: 26px 16px
 }
 .bos311__link a:hover {
-    color: #fcb61a
+    color: $yellow
 }
 @media (min-width: 768px) {
     .bos311__link {
@@ -2191,14 +2193,14 @@ html.js [dir="rtl"] input.is-throbbing.form-autocomplete {
     padding: 0
 }
 .autocomplete__list-item {
-    background: #fff;
+    background: $white;
     color: #58585B;
     cursor: default;
     white-space: pre
 }
 .autocomplete__list-item--is-selected {
-    background: #288be4;
-    color: #fff
+    background: $optimistic-blue;
+    color: $white
 }
 .collapsible-fieldset,
 .collapsible {
@@ -2257,7 +2259,7 @@ __summary.collapsible {
     min-width: 250px;
     font-family: 'Fenway', arial, sans-serif;
     background-color: #46695D;
-    color: #fff;
+    color: $white;
     margin-bottom: 50px;
     padding: 20px
 }
@@ -2289,7 +2291,7 @@ __summary.collapsible {
     margin-left: -2px;
     top: 0;
     bottom: 0;
-    background-color: #fff;
+    background-color: $white;
     z-index: 0
 }
 .cs--chart,
@@ -2316,7 +2318,7 @@ __summary.collapsible {
     height: 26px;
     width: 26px;
     border-radius: 100%;
-    background-color: #fff;
+    background-color: $white;
     color: #46695D;
     font-size: 80%
 }
@@ -2337,7 +2339,7 @@ __summary.collapsible {
     margin: 0;
     position: absolute;
     font-family: 'Lora', Georgia, serif;
-    color: #fff;
+    color: $white;
     font-size: 14px;
     line-height: 18px;
     font-style: italic;
@@ -2360,7 +2362,7 @@ __summary.collapsible {
     color: red
 }
 .cs--chartAmount {
-    background-color: #ffffff;
+    background-color: $white;
     position: absolute;
     left: 37px;
     right: 10px;
@@ -2379,7 +2381,7 @@ __summary.collapsible {
     height: 0;
     border-top: 10px solid transparent;
     border-bottom: 10px solid transparent;
-    border-right: 10px solid #ffffff;
+    border-right: 10px solid $white;
     top: 50%;
     -ms-transform: translateY(-50%);
     transform: translateY(-50%)
@@ -2387,7 +2389,7 @@ __summary.collapsible {
 .cs--chartAmount--label {
     font-family: 'Montserrat', sans-serif;
     font-size: 14px;
-    color: #091F2F;
+    color: $charles-blue;
     text-transform: uppercase;
     display: block;
     line-height: 1;
@@ -2455,7 +2457,7 @@ __summary.collapsible {
         left: 50%;
         width: 0;
         height: 0;
-        border-top: 42px solid #ffffff;
+        border-top: 42px solid $white;
         border-left: 20px solid transparent;
         border-bottom: 20px solid transparent;
         border-right: 20px solid transparent;
@@ -2480,7 +2482,7 @@ __summary.collapsible {
 .cs__table-header th {
     font-size: 100%;
     text-align: left;
-    border-bottom: 3px solid #fff;
+    border-bottom: 3px solid $white;
     display: none
 }
 .cs__table-row {
@@ -2504,7 +2506,7 @@ __summary.collapsible {
     border-bottom: none
 }
 .cs__table-row td.cs__table--centered:before {
-    color: #fff;
+    color: $white;
     float: left;
     text-align: left
 }
@@ -2587,7 +2589,7 @@ __summary.collapsible {
     border-bottom: 0;
     border-left: 0;
     border-style: dashed;
-    border-color: #e0e0e0
+    border-color: $grey-100
 }
 .paragraphs-item-cabinet .cabinet .node-person-profile {
     margin-top: 20px
@@ -2714,7 +2716,7 @@ __summary.collapsible {
 .paragraphs-item-daily-hours .sidebar-title {
     font-style: normal;
     text-transform: uppercase;
-    color: #091f2f;
+    color: $charles-blue;
     font-family: "Montserrat", sans-serif
 }
 @media (min-width: 980px) {
@@ -2763,10 +2765,10 @@ __summary.collapsible {
     text-align: center;
     top: 0;
     width: 100%;
-    color: #091f2f
+    color: $charles-blue
 }
 .circles_container .choice_text {
-    color: #091f2f;
+    color: $charles-blue;
     text-transform: uppercase;
     font-family: "Montserrat", sans-serif;
     font-size: 14px;
@@ -2785,17 +2787,17 @@ __summary.collapsible {
 }
 .paragraphs-item-feedback.component-section .poll-question,
 .node-advpoll .poll-question {
-    color: #091f2f
+    color: $charles-blue
 }
 .paragraphs-item-feedback.component-section .vote-button,
 .node-advpoll .vote-button {
     text-transform: uppercase
 }
 .paragraphs-item-grid-of-places {
-    background-color: #f3f3f3
+    background-color: $grey-000
 }
 .paragraphs-item-grid-of-programs-initiatives {
-    background-color: #f3f3f3
+    background-color: $grey-000
 }
 .paragraphs-item-grid-of-topics {
     left: 50%;
@@ -2803,7 +2805,7 @@ __summary.collapsible {
     -ms-transform: translate(-50%, 0);
     transform: translate(-50%, 0);
     width: 100vw;
-    background-color: #091f2f
+    background-color: $charles-blue
 }
 .paragraphs-item-grid-of-topics .component-section {
     padding: 50px 0;
@@ -2815,15 +2817,15 @@ __summary.collapsible {
     -ms-transform: translate(-50%, 0);
     transform: translate(-50%, 0);
     width: 100vw;
-    background-color: #f3f3f3
+    background-color: $grey-000
 }
 .paragraphs-item-grid-of-quotes .quote {
-    background: #fff;
+    background: $white;
     display: -ms-flexbox;
     display: flex;
     -ms-flex-wrap: wrap;
     flex-wrap: wrap;
-    border-bottom: 8px solid #fb4d42;
+    border-bottom: 8px solid $freedom-red;
     padding: 30px 30px 40px 30px
 }
 @media (min-width: 480px) {
@@ -2916,7 +2918,7 @@ __summary.collapsible {
     font-family: Lora;
     font-size: 16px;
     font-style: italic;
-    color: #828282;
+    color: $grey-300;
     line-height: 26px
 }
 .paragraphs-items-field-grid-of-quotes {
@@ -2935,7 +2937,7 @@ __summary.collapsible {
     -ms-transform: translate(-50%, 0);
     transform: translate(-50%, 0);
     width: 100vw;
-    background-color: #f3f3f3
+    background-color: $grey-000
 }
 .paragraphs-item-group-of-links-grid h5,
 .paragraphs-item-group-of-links-grid address,
@@ -2988,7 +2990,7 @@ __summary.collapsible {
 .timeline-step-wrapper .view-transactions-main-transactions .step-text .link-title,
 .view-transactions-main-transactions .timeline-step-wrapper .step-title .link-title,
 .timeline-step-wrapper .view-transactions-main-transactions .step-title .link-title {
-    color: #288be4
+    color: $optimistic-blue
 }
 .paragraphs-item-group-of-links-grid .link-item,
 .paragraphs-item-group-of-links-list .link-item,
@@ -3154,7 +3156,7 @@ __summary.collapsible {
 .view-transactions-main-transactions .view-transactions .view-content .paragraphs-item-gol-list-links,
 .view-transactions-main-transactions .view-transactions .view-content .node-transaction.view-mode-listing {
     position: relative;
-    background-color: #fff;
+    background-color: $white;
     transition: background-color .1s ease;
     text-align: left;
     margin-bottom: 1.5em
@@ -3195,7 +3197,7 @@ __summary.collapsible {
 .view-transactions-main-transactions .view-transactions .view-content .field-grid-links .link-wrapper,
 .view-transactions-main-transactions .view-transactions .view-content .paragraphs-item-gol-list-links .link-wrapper,
 .view-transactions-main-transactions .view-transactions .view-content .node-transaction.view-mode-listing .link-wrapper {
-    color: #288be4
+    color: $optimistic-blue
 }
 .paragraphs-item-group-of-links-grid .links-grid-field-grid-links .field-grid-links .link-icon-ribbon,
 .paragraphs-item-group-of-links-grid .links-grid-field-grid-links .paragraphs-item-gol-list-links .link-icon-ribbon,
@@ -3282,7 +3284,7 @@ __summary.collapsible {
 .view-transactions-main-transactions .view-transactions .view-content .node-transaction.view-mode-listing .list-link {
     font-style: italic;
     font-family: "Lora", serif;
-    color: #288be4;
+    color: $optimistic-blue;
     font-size: 22px;
     line-height: 35px;
     font-size: 1.22222rem;
@@ -3405,7 +3407,7 @@ __summary.collapsible {
 .view-transactions-main-transactions .view-transactions .view-content .field-grid-links:hover,
 .view-transactions-main-transactions .view-transactions .view-content .paragraphs-item-gol-list-links:hover,
 .view-transactions-main-transactions .view-transactions .view-content .node-transaction.view-mode-listing:hover {
-    background-color: #288be4
+    background-color: $optimistic-blue
 }
 .paragraphs-item-group-of-links-grid .links-grid-field-grid-links .field-grid-links:hover .field-name-field-short-description,
 .paragraphs-item-group-of-links-grid .links-grid-field-grid-links .paragraphs-item-gol-list-links:hover .field-name-field-short-description,
@@ -3443,7 +3445,7 @@ __summary.collapsible {
 .view-transactions-main-transactions .view-transactions .view-content .field-grid-links:hover .field-name-field-short-description,
 .view-transactions-main-transactions .view-transactions .view-content .paragraphs-item-gol-list-links:hover .field-name-field-short-description,
 .view-transactions-main-transactions .view-transactions .view-content .node-transaction.view-mode-listing:hover .field-name-field-short-description {
-    color: #fff
+    color: $white
 }
 .paragraphs-item-group-of-links-grid .links-grid-field-grid-links .field-grid-links:hover .link-item,
 .paragraphs-item-group-of-links-grid .links-grid-field-grid-links .field-grid-links:hover .link-wrapper a,
@@ -3661,7 +3663,7 @@ __summary.collapsible {
 .view-transactions-main-transactions .view-transactions .view-content .node-transaction.view-mode-listing:hover .link-title,
 .view-transactions-main-transactions .view-transactions .view-content .node-transaction.view-mode-listing:hover .link-title a,
 .view-transactions-main-transactions .view-transactions .view-content .node-transaction.view-mode-listing:hover .list-description {
-    color: #fff
+    color: $white
 }
 .paragraphs-item-group-of-links-grid .links-grid-field-grid-links .field-grid-links .list-description,
 .paragraphs-item-group-of-links-grid .links-grid-field-grid-links .paragraphs-item-gol-list-links .list-description,
@@ -3815,7 +3817,7 @@ __summary.collapsible {
 .view-transactions-main-transactions .view-transactions .view-content .field-grid-links .field-name-field-short-description,
 .view-transactions-main-transactions .view-transactions .view-content .paragraphs-item-gol-list-links .field-name-field-short-description,
 .view-transactions-main-transactions .view-transactions .view-content .node-transaction.view-mode-listing .field-name-field-short-description {
-    color: #828282;
+    color: $grey-300;
     font-size: 17px;
     line-height: 27px;
     font-size: 0.94444rem;
@@ -3910,7 +3912,7 @@ __summary.collapsible {
     font-size: 0.77778rem;
     line-height: 1.11111rem;
     text-transform: uppercase;
-    color: #288be4;
+    color: $optimistic-blue;
     font-family: "Montserrat", sans-serif;
     font-weight: bold
 }
@@ -3929,7 +3931,7 @@ __summary.collapsible {
     position: relative;
     height: 100px;
     padding: 0px 25px 25px 25px;
-    background-color: #f3f3f3;
+    background-color: $grey-000;
     margin-bottom: 1.5em
 }
 .paragraphs-item-group-of-links-mini-grid .field-grid-links .link-wrapper,
@@ -3939,7 +3941,7 @@ __summary.collapsible {
     font-size: 0.77778rem;
     line-height: 1.11111rem;
     text-transform: uppercase;
-    color: #288be4;
+    color: $optimistic-blue;
     font-family: "Montserrat", sans-serif;
     font-weight: inherit;
     margin-bottom: 0;
@@ -3952,11 +3954,11 @@ __summary.collapsible {
 }
 .paragraphs-item-group-of-links-mini-grid .field-grid-links:hover,
 .applications-grid-of-links .field-grid-links:hover {
-    background-color: #288be4
+    background-color: $optimistic-blue
 }
 .paragraphs-item-group-of-links-mini-grid .field-grid-links:hover .link-wrapper,
 .applications-grid-of-links .field-grid-links:hover .link-wrapper {
-    color: #fff
+    color: $white
 }
 .paragraphs-item-group-of-links-mini-grid .grid-link a,
 .applications-grid-of-links .grid-link a {
@@ -3986,7 +3988,7 @@ __summary.collapsible {
 }
 .applications-grid-of-links .grid-link a:hover,
 .applications-grid-of-links .grid-link a:active {
-    color: #fff
+    color: $white
 }
 .view-transactions-main-transactions .item-list {
     left: 50%;
@@ -3994,7 +3996,7 @@ __summary.collapsible {
     -ms-transform: translate(-50%, 0);
     transform: translate(-50%, 0);
     width: 100vw;
-    background-color: #f3f3f3
+    background-color: $grey-000
 }
 .view-transactions-main-transactions .item-list .pager {
     margin-top: 0;
@@ -4027,18 +4029,18 @@ __summary.collapsible {
     -ms-transform: translate(-50%, 0);
     transform: translate(-50%, 0);
     width: 100vw;
-    background-color: #fff;
+    background-color: $white;
     padding-bottom: 0
 }
 .view-transactions-main-transactions .view-display-id-sticky_transactions .view-content .node-transaction.view-mode-listing {
-    background-color: #f3f3f3
+    background-color: $grey-000
 }
 .view-transactions-main-transactions .view-display-id-sticky_transactions .view-content .list-description {
-    color: #091f2f
+    color: $charles-blue
 }
 .paragraphs-item-list.view-places-listing,
 .paragraphs-item-list.view-program-initiatives-listing {
-    background-color: #f3f3f3;
+    background-color: $grey-000;
     overflow: hidden
 }
 .paragraphs-item-news-announcements {
@@ -4047,7 +4049,7 @@ __summary.collapsible {
     -ms-transform: translate(-50%, 0);
     transform: translate(-50%, 0);
     width: 100vw;
-    background-color: #f3f3f3
+    background-color: $grey-000
 }
 .paragraphs-item-news-announcements .view-news-announcements {
     width: 100%
@@ -4059,8 +4061,8 @@ __summary.collapsible {
     margin-top: 0
 }
 .emergency-title {
-    background-color: #fb4d42;
-    color: #fff;
+    background-color: $freedom-red;
+    color: $white;
     max-width: 600px;
     margin-top: 10px;
     margin-bottom: 10px;
@@ -4068,7 +4070,7 @@ __summary.collapsible {
     padding-left: 20px
 }
 .date-label {
-    color: #fb4d42
+    color: $freedom-red
 }
 .date-day-holiday-subtitle {
     font-size: 14px;
@@ -4076,11 +4078,11 @@ __summary.collapsible {
     font-size: 0.77778rem;
     line-height: 1.66667rem;
     font-weight: 400;
-    color: #091f2f;
+    color: $charles-blue;
     display: block
 }
 .description.emergency {
-    color: #091f2f;
+    color: $charles-blue;
     display: block;
     max-width: 900px;
     width: 85%;
@@ -4111,7 +4113,7 @@ __summary.collapsible {
         content: " ";
         display: block;
         width: 100%;
-        border-top: 1px dashed #e0e0e0;
+        border-top: 1px dashed $grey-100;
         position: absolute;
         left: 0
     }
@@ -4126,7 +4128,7 @@ __summary.collapsible {
         content: " ";
         display: block;
         width: 100%;
-        border-top: 1px dashed #e0e0e0;
+        border-top: 1px dashed $grey-100;
         position: absolute;
         left: 0
     }
@@ -4136,7 +4138,7 @@ __summary.collapsible {
 }
 .status-item {
     position: relative;
-    border-top: 1px dashed #e0e0e0;
+    border-top: 1px dashed $grey-100;
     padding-top: 25px
 }
 @media (min-width: 768px) {
@@ -4170,7 +4172,7 @@ __summary.collapsible {
 }
 .last-updated.emergency {
     text-transform: uppercase;
-    color: #091f2f;
+    color: $charles-blue;
     font-family: "Montserrat", sans-serif;
     font-weight: inherit;
     font-size: 14px;
@@ -4189,7 +4191,7 @@ __summary.collapsible {
     }
 }
 .status-item.linked .status-message-title {
-    color: #288be4
+    color: $optimistic-blue
 }
 .status-item.linked:hover .status-message-title {
     text-decoration: underline
@@ -4258,10 +4260,10 @@ __summary.collapsible {
     background-image: none
 }
 .status-item.linked:hover svg .svg-fill-hover {
-    fill: #288be4
+    fill: $optimistic-blue
 }
 .status-item.linked:hover svg .svg-stroke-hover {
-    stroke: #288be4
+    stroke: $optimistic-blue
 }
 .paragraphs-item-text .entity-paragraphs-item,
 .dr-c .entity-paragraphs-item:not(:last-child) {
@@ -4391,8 +4393,8 @@ __summary.collapsible {
     }
 }
 .paragraphs-item-3-column-w-image {
-    color: #fff;
-    background-color: #091f2f
+    color: $white;
+    background-color: $charles-blue
 }
 .paragraphs-item-3-column-w-image a,
 .paragraphs-item-3-column-w-image a:link,
@@ -4400,12 +4402,12 @@ __summary.collapsible {
     color: #51Acff
 }
 .paragraphs-item-3-column-w-image a:hover {
-    color: #fb4d42
+    color: $freedom-red
 }
 .paragraphs-item-3-column-w-image .component-contact a,
 .paragraphs-item-3-column-w-image .component-contact a:link,
 .paragraphs-item-3-column-w-image .component-contact a:visited {
-    color: #fb4d42
+    color: $freedom-red
 }
 .paragraphs-item-3-column-w-image .component-contact a:hover {
     color: #51Acff
@@ -4458,14 +4460,14 @@ __summary.collapsible {
 .view-filters .paragraphs-item-3-column-w-image a.drawer-trigger.mobile-only:active,
 .paragraphs-item-3-column-w-image .filter-wrapper a.drawer-trigger.mobile-only:active,
 .filter-wrapper .paragraphs-item-3-column-w-image a.drawer-trigger.mobile-only:active {
-    color: #fff
+    color: $white
 }
 .paragraphs-item-3-column-w-image .cta-button .link-wrapper {
     margin-bottom: 0
 }
 .paragraphs-item-3-column-w-image .cta-button a {
     background-position-x: right;
-    color: #fff;
+    color: $white;
     display: block;
     padding-top: 4px;
     padding-bottom: 4px;
@@ -4481,14 +4483,14 @@ __summary.collapsible {
     overflow: hidden
 }
 .paragraphs-item-3-column-w-image h2 {
-    color: #fff
+    color: $white
 }
 .paragraphs-item-3-column-w-image .field-name-field-contact {
-    color: white
+    color: $white
 }
 .paragraphs-item-3-column-w-image .column-wrapper {
-    color: white;
-    background-color: #091f2f;
+    color: $white;
+    background-color: $charles-blue;
     padding-top: 50px;
     text-align: center;
     width: 100%;
@@ -4555,7 +4557,7 @@ __summary.collapsible {
     -ms-transform: translate(-50%, 0);
     transform: translate(-50%, 0);
     width: 100vw;
-    background-color: #f3f3f3
+    background-color: $grey-000
 }
 .view-topic-landing-page-page-1 .content {
     padding-top: 50px
@@ -4566,7 +4568,7 @@ __summary.collapsible {
     -ms-transform: translate(-50%, 0);
     transform: translate(-50%, 0);
     width: 100vw;
-    background-color: #f3f3f3
+    background-color: $grey-000
 }
 .paragraphs-item-upcoming-events .view-upcoming-events,
 .paragraphs-item-upcoming-events .view-related-events {
@@ -4579,7 +4581,7 @@ __summary.collapsible {
 .view-transactions-main-transactions .links-grid-left-rail .red.links-grid-field-subheader,
 p.red.big.intro-text,
 .no-margin-bottom.red {
-    color: #fb4d42
+    color: $freedom-red
 }
 .paragraphs-item-group-of-links-grid .links-grid-left-rail .red.links-grid-field-subheader,
 .paragraphs-item-group-of-links-list .links-grid-left-rail .red.links-grid-field-subheader,
@@ -4600,12 +4602,12 @@ p.no-margin-bottom.red.big.intro-text,
     margin-bottom: 0
 }
 .wysiwyg-photo-wrapper {
-    border: 3px solid #091f2f;
+    border: 3px solid $charles-blue;
     display: table;
     margin: 2.16667rem auto
 }
 .wysiwyg-photo-wrapper img {
-    border-bottom: 3px solid #091f2f;
+    border-bottom: 3px solid $charles-blue;
     width: 100%;
     height: auto
 }
@@ -4616,13 +4618,13 @@ p.no-margin-bottom.red.big.intro-text,
     display: table-caption;
     caption-side: bottom;
     padding: 15px 30px 30px;
-    color: #091f2f;
+    color: $charles-blue;
     font-style: italic;
     line-height: 1.75rem
 }
 .detail-item__label {
     text-transform: uppercase;
-    color: #091f2f;
+    color: $charles-blue;
     font-family: "Montserrat", sans-serif;
     font-weight: inherit;
     font-size: 16px;
@@ -4644,7 +4646,7 @@ p.no-margin-bottom.red.big.intro-text,
 }
 .detail-item__body--secondary {
     text-transform: uppercase;
-    color: #091f2f;
+    color: $charles-blue;
     font-family: "Montserrat", sans-serif;
     font-weight: inherit;
     font-size: 16px;
@@ -4706,7 +4708,7 @@ p.no-margin-bottom.red.big.intro-text,
     transform: rotate(180deg)
 }
 .drawer-trigger.active .title {
-    color: #fb4d42
+    color: $freedom-red
 }
 @media (min-width: 980px) {
     .view-public-notice-landing .view-filters .drawer-wrapper,
@@ -4741,7 +4743,7 @@ p.no-margin-bottom.red.big.intro-text,
 .view-public-notice-archive table,
 .view-metrolist-affordable-housing-page table {
     margin: 0;
-    border: 2px solid #091f2f
+    border: 2px solid $charles-blue
 }
 .view-public-notice-landing .pager,
 .view-public-notice-archive .pager,
@@ -4760,16 +4762,16 @@ p.no-margin-bottom.red.big.intro-text,
     z-index: -1
 }
 .slide-down-element .content {
-    background-color: #f3f3f3;
+    background-color: $grey-000;
     text-align: center;
-    color: #091f2f;
+    color: $charles-blue;
     padding: 85px 0 35px
 }
 .slide-down-element .search-close-button {
     position: absolute;
     top: 0;
     right: 0;
-    background-color: #fb4d42;
+    background-color: $freedom-red;
     transition: background-color 0.3s ease;
     background-image: url(../img/close-modal-icon.png);
     background-position: center center;
@@ -4779,7 +4781,7 @@ p.no-margin-bottom.red.big.intro-text,
     padding: 0
 }
 .slide-down-element .search-close-button:hover {
-    background-color: #288be4
+    background-color: $optimistic-blue
 }
 .slide-down-element .slide-down-body {
     position: relative;
@@ -4821,14 +4823,14 @@ p.no-margin-bottom.red.big.intro-text,
     }
 }
 .paragraphs-item-drawers {
-    background-color: #f3f3f3;
+    background-color: $grey-000;
     padding: 50px 0
 }
 .dr {
     margin-bottom: 7px
 }
 .dr__header {
-    background-color: #fff;
+    background-color: $white;
     padding: 1.5em;
     display: -ms-flexbox;
     display: flex;
@@ -4837,14 +4839,14 @@ p.no-margin-bottom.red.big.intro-text,
 }
 .dr__header:hover {
     cursor: pointer;
-    background-color: #288be4
+    background-color: $optimistic-blue
 }
 .dr__header:hover .st0 {
-    fill: #fff
+    fill: $white
 }
 .dr__header:hover .dr__title,
 .dr__header:hover .dr__subtitle {
-    color: #fff
+    color: $white
 }
 .dr__header svg {
     width: 18px;
@@ -4853,19 +4855,19 @@ p.no-margin-bottom.red.big.intro-text,
     margin-left: auto
 }
 .dr__header .st0 {
-    fill: #288be4
+    fill: $optimistic-blue
 }
 .dr__header--active,
 .dr__header--active:hover {
-    background-color: #091f2f
+    background-color: $charles-blue
 }
 .dr__header--active .dr__title,
 .dr__header--active:hover .dr__title {
-    color: #fff
+    color: $white
 }
 .dr__header--active .dr__subtitle,
 .dr__header--active:hover .dr__subtitle {
-    color: #288be4
+    color: $optimistic-blue
 }
 .dr__header--active svg,
 .dr__header--active:hover svg {
@@ -4874,13 +4876,13 @@ p.no-margin-bottom.red.big.intro-text,
 }
 .dr__header--active .st0,
 .dr__header--active:hover .st0 {
-    fill: #fff
+    fill: $white
 }
 .dr__buffer {
     padding-right: 0.75em
 }
 .dr__title {
-    color: #288be4;
+    color: $optimistic-blue;
     font-style: italic;
     line-height: 1;
     margin-bottom: 3px
@@ -4896,7 +4898,7 @@ p.no-margin-bottom.red.big.intro-text,
     letter-spacing: 1px
 }
 .dr__content {
-    background-color: #fff;
+    background-color: $white;
     padding: 1.5em
 }
 body.noscroll {
@@ -5169,12 +5171,12 @@ body.noscroll {
     padding-right: 300px
 }
 .modal-overlay .content {
-    background-color: #fff;
+    background-color: $white;
     position: relative;
     z-index: 900;
     padding: 70px;
     text-align: center;
-    color: #091f2f
+    color: $charles-blue
 }
 .modal-overlay p {
     font-style: italic
@@ -5196,7 +5198,7 @@ body.noscroll {
     position: absolute;
     top: 0;
     right: 0;
-    background-color: #fb4d42;
+    background-color: $freedom-red;
     transition: background-color 0.3s ease;
     background-image: url(../img/close-modal-icon.png);
     background-position: center center;
@@ -5206,7 +5208,7 @@ body.noscroll {
     padding: 0
 }
 .modal-overlay .close-button:hover {
-    background-color: #288be4
+    background-color: $optimistic-blue
 }
 .modal-overlay p {
     margin: 30px 0 15px
@@ -5233,9 +5235,9 @@ body.noscroll {
     font-size: inherit
 }
 .footer {
-    background: url("../images/global/icons/b-logo-light.svg") no-repeat 1.75em center #091f2f;
+    background: url("../images/global/icons/b-logo-light.svg") no-repeat 1.75em center $charles-blue;
     padding: 1.75em 0 1.75em 6em;
-    color: #fff
+    color: $white
 }
 @media (min-width: 768px) {
     .footer {
@@ -5342,7 +5344,7 @@ body.noscroll {
     }
 }
 .footer a {
-    color: #fff;
+    color: $white;
     font-family: "Montserrat", sans-serif;
     letter-spacing: 1px;
     text-transform: uppercase;
@@ -5356,7 +5358,7 @@ body.noscroll {
     color: #51Acff
 }
 .footer a:hover {
-    color: #fb4d42
+    color: $freedom-red
 }
 @media (min-width: 1300px) {
     .footer a {
@@ -5408,11 +5410,11 @@ body.noscroll {
 }
 .footer .icon-311-link:hover .icon-311-report,
 .footer .icon-311-link:hover .icon-311-reportbos {
-    color: #fff
+    color: $white
 }
 .footer .icon-311-link:hover .icon-311 {
-    background-color: #fcb61a;
-    color: #fff
+    background-color: $yellow;
+    color: $white
 }
 @media (min-width: 840px) {
     .footer .icon-311-link {
@@ -5420,7 +5422,7 @@ body.noscroll {
     }
 }
 .footer .icon-311-reportbos {
-    color: #fcb61a;
+    color: $yellow;
     display: inline
 }
 @media (min-width: 840px) {
@@ -5429,7 +5431,7 @@ body.noscroll {
     }
 }
 .footer .icon-311-report {
-    color: #fcb61a
+    color: $yellow
 }
 @media (min-width: 840px) {
     .footer .icon-311-report {
@@ -5446,9 +5448,9 @@ body.noscroll {
 }
 @media (min-width: 840px) {
     .footer .icon-311 {
-        background: #fff;
+        background: $white;
         border-radius: 25px;
-        color: #fcb61a;
+        color: $yellow;
         display: inline-block;
         font-weight: bold;
         height: 50px;
@@ -5472,7 +5474,7 @@ body.noscroll {
     margin: 2.16667rem 0rem
 }
 .form-item__required {
-    color: #fb4d42
+    color: $freedom-red
 }
 .form-item__description {
     font-size: 16px;
@@ -5494,7 +5496,7 @@ body.noscroll {
 }
 .form-item.is-error .form-item__widget,
 .form-item--is-error__widget {
-    border: 1px solid #fb4d42
+    border: 1px solid $freedom-red
 }
 .modal-form {
     text-align: left
@@ -5508,7 +5510,7 @@ body.noscroll {
     width: 100%
 }
 .modal-form textarea {
-    color: #091f2f;
+    color: $charles-blue;
     border: 3px solid;
     padding: 15px
 }
@@ -5516,14 +5518,14 @@ body.noscroll {
     position: fixed;
     visibility: hidden;
     margin-top: 0;
-    background-color: #fff
+    background-color: $white
 }
 .form-table__sticky-header.is-sticky,
 .form-table__sticky-header--is-sticky {
     visibility: visible
 }
 .form-table__header {
-    border-bottom: 3px solid #e0e0e0;
+    border-bottom: 3px solid $grey-100;
     padding-right: 1em;
     text-align: left
 }
@@ -5533,15 +5535,15 @@ body.noscroll {
     padding-right: 0
 }
 .form-table__body {
-    border-top: 1px solid #e0e0e0
+    border-top: 1px solid $grey-100
 }
 .form-table__row {
     padding: .1em .6em;
-    border-bottom: 1px solid #e0e0e0;
-    background-color: #f3f3f3
+    border-bottom: 1px solid $grey-100;
+    background-color: $grey-000
 }
 .form-table__row-even {
-    background-color: #fff
+    background-color: $white
 }
 .form-table__list {
     margin: 0
@@ -5555,7 +5557,7 @@ td.active {
     background-color: #e2e2e2
 }
 td.menu-disabled {
-    background: #e0e0e0
+    background: $grey-100
 }
 tr.selected td {
     background: #fffadb
@@ -5589,17 +5591,17 @@ section.contact-departments,
     display: block
 }
 .grid-card {
-    background-color: #fff
+    background-color: $white
 }
 .grid-card.no-flex {
     height: 420px;
     overflow-y: hidden
 }
 .grid-card:hover {
-    background-color: #288be4
+    background-color: $optimistic-blue
 }
 .grid-card:hover * {
-    color: white
+    color: $white
 }
 .grid-card:hover .grid-card__image:after {
     content: '';
@@ -5615,7 +5617,7 @@ section.contact-departments,
 }
 .grid-card__title {
     font-style: italic;
-    color: #288be4;
+    color: $optimistic-blue;
     margin: 0;
     font-size: 1.2rem
 }
@@ -5636,7 +5638,7 @@ section.contact-departments,
 }
 .grid-card__subtitle {
     text-transform: uppercase;
-    color: #091f2f;
+    color: $charles-blue;
     font-family: "Montserrat", sans-serif;
     font-weight: inherit;
     font-size: 14px;
@@ -5692,7 +5694,7 @@ section.contact-departments,
 .hb__inner::after {
     width: 27px;
     height: 4px;
-    background-color: #fff;
+    background-color: $white;
     border-radius: 0;
     position: absolute;
     transition-property: transform;
@@ -5775,7 +5777,7 @@ section.contact-departments,
 }
 .node-type-topic-page .hero-image {
     display: block;
-    border-bottom: 8px solid #091f2f
+    border-bottom: 8px solid $charles-blue
 }
 @media (min-width: 980px) {
     .node-type-topic-page .hero-image {
@@ -5878,7 +5880,7 @@ section.contact-departments,
 h1.title-with-hero,
 .timeline-step-wrapper .title-with-hero.timeline-number {
     width: 100%;
-    color: white;
+    color: $white;
     padding: 0;
     margin: 0 0 1rem;
     display: block
@@ -5908,7 +5910,7 @@ body:not(.node-type-tabbed-content) .timeline-step-wrapper .title-with-hero.time
 }
 .node-type-how-to .hero-image img,
 .node-type-tabbed-content .hero-image img {
-    background-color: #288be4;
+    background-color: $optimistic-blue;
     min-height: 100%;
     min-width: 100%;
     width: auto;
@@ -5947,7 +5949,7 @@ body:not(.node-type-tabbed-content) .timeline-step-wrapper .title-with-hero.time
 }
 .node-type-landing-page .landing-hero-intro-text {
     font-style: italic;
-    color: #fff;
+    color: $white;
     margin-bottom: -10px
 }
 @media (min-width: 768px) {
@@ -5967,7 +5969,7 @@ body:not(.node-type-tabbed-content) .timeline-step-wrapper .title-with-hero.time
     }
 }
 .node-type-landing-page .landing-hero-intro-text .intro-text {
-    color: #fff
+    color: $white
 }
 .node-type-landing-page .landing-hero-intro-text .supporting-text {
     padding-bottom: 0.25rem
@@ -6043,7 +6045,7 @@ body:not(.node-type-tabbed-content) .timeline-step-wrapper .title-with-hero.time
 .node-type-landing-page .landing-hero h1,
 .node-type-landing-page .landing-hero .timeline-step-wrapper .timeline-number,
 .timeline-step-wrapper .node-type-landing-page .landing-hero .timeline-number {
-    color: #fff;
+    color: $white;
     margin: 0 0 20px 0;
     padding: 0 20px;
     font-size: 36px;
@@ -6073,7 +6075,7 @@ body:not(.node-type-tabbed-content) .timeline-step-wrapper .title-with-hero.time
     }
 }
 .node-type-landing-page .landing-hero-subhead {
-    color: #fff;
+    color: $white;
     font-family: "Lora", serif;
     font-style: italic;
     margin-top: -1em;
@@ -6092,7 +6094,7 @@ body:not(.node-type-tabbed-content) .timeline-step-wrapper .title-with-hero.time
     margin-top: 2em
 }
 .node-type-landing-page .landing-hero-cta a {
-    background-color: #091f2f;
+    background-color: $charles-blue;
     font-size: 12px;
     line-height: 32px;
     font-size: 0.66667rem;
@@ -6109,7 +6111,7 @@ body:not(.node-type-tabbed-content) .timeline-step-wrapper .title-with-hero.time
 .node-type-landing-page .landing-hero-logo {
     width: 90px;
     height: 90px;
-    background: #091f2f;
+    background: $charles-blue;
     margin: 0 auto;
     position: absolute;
     bottom: 0;
@@ -6179,7 +6181,7 @@ body:not(.node-type-tabbed-content) .timeline-step-wrapper .title-with-hero.time
 .highlight-mark,
 .new,
 .update {
-    color: #fb4d42;
+    color: $freedom-red;
     background-color: transparent
 }
 .icon-common,
@@ -6328,12 +6330,12 @@ span.field-label+*>*:first-child,
     border-bottom: 0;
     border-left: 0;
     border-style: dashed;
-    border-color: #e0e0e0
+    border-color: $grey-100
 }
 .list-item {
     border-top: 0;
     border-right: 0;
-    border-bottom: 1px dashed #e0e0e0;
+    border-bottom: 1px dashed $grey-100;
     border-left: 0;
     padding: 0 0 20px;
     margin: 0 0 20px
@@ -6376,7 +6378,7 @@ span.field-label+*>*:first-child,
     min-width: 100%;
     left: 0;
     z-index: 1;
-    background-color: white
+    background-color: $white
 }
 #page,
 #page>.header,
@@ -6403,7 +6405,7 @@ span.field-label+*>*:first-child,
     margin: 2.16667rem 0rem;
     position: relative;
     padding: 10px 10px 10px 44px;
-    border: 1px solid #288be4
+    border: 1px solid $optimistic-blue
 }
 [dir="rtl"] .messages,
 [dir="rtl"] .messages--status,
@@ -6435,7 +6437,7 @@ __icon.messages--error {
 __icon.messages--status path,
 __icon.messages--warning path,
 __icon.messages--error path {
-    fill: #288be4
+    fill: $optimistic-blue
 }
 .messages__list,
 __list.messages--status,
@@ -6453,8 +6455,8 @@ __item.messages--error {
 --ok-color.messages--status,
 --ok-color.messages--warning,
 --ok-color.messages--error {
-    background-color: #fff;
-    color: #288be4
+    background-color: $white;
+    color: $optimistic-blue
 }
 .messages--warning-color,
 --warning-color.messages--status,
@@ -6467,8 +6469,8 @@ __item.messages--error {
 --error-color.messages--status,
 --error-color.messages--warning,
 --error-color.messages--error {
-    background-color: #fff;
-    color: #fb4d42
+    background-color: $white;
+    color: $freedom-red
 }
 .messages--warning,
 --warning.messages--status,
@@ -6486,13 +6488,13 @@ __item.messages--error {
 --error.messages--status,
 --error.messages--warning,
 --error.messages--error {
-    border-color: #fb4d42
+    border-color: $freedom-red
 }
 .messages--error path,
 --error.messages--status path,
 --error.messages--warning path,
 --error.messages--error path {
-    fill: #fb4d42
+    fill: $freedom-red
 }
 .messages--error__highlighted-text,
 --error__highlighted-text.messages--status,
@@ -6544,7 +6546,7 @@ __help-icon.more-help-link {
     border-bottom: 1px;
     border-left: 0;
     border-style: dashed;
-    border-color: #e0e0e0;
+    border-color: $grey-100;
     padding: 20px 0
 }
 .teaser.active {
@@ -6553,7 +6555,7 @@ __help-icon.more-help-link {
 .teaser .title {
     font-family: "Montserrat", sans-serif;
     text-transform: uppercase;
-    color: #288be4;
+    color: $optimistic-blue;
     line-height: 1.5rem;
     display: block
 }
@@ -6563,7 +6565,7 @@ __help-icon.more-help-link {
     }
 }
 .teaser .title:hover {
-    color: #fb4d42
+    color: $freedom-red
 }
 .teaser .title .live-stream-flag {
     display: none
@@ -6574,7 +6576,7 @@ __help-icon.more-help-link {
         font-size: 1rem;
         font-family: "Montserrat", sans-serif;
         text-transform: uppercase;
-        color: #fb4d42;
+        color: $freedom-red;
         font-weight: bold;
         display: inline;
         float: left;
@@ -6601,7 +6603,7 @@ __help-icon.more-help-link {
     font-size: 0.66667rem;
     font-family: "Montserrat", sans-serif;
     text-transform: none;
-    color: #fb4d42;
+    color: $freedom-red;
     font-weight: bold
 }
 @media (min-width: 980px) {
@@ -6610,7 +6612,7 @@ __help-icon.more-help-link {
     }
 }
 .event-details {
-    border: 20px solid #f3f3f3;
+    border: 20px solid $grey-000;
     padding: 35px
 }
 .event-details .intro-text {
@@ -6661,7 +6663,7 @@ __help-icon.more-help-link {
 }
 .paragraphs-item-header-text .intro-text {
     font-style: italic;
-    color: #091f2f
+    color: $charles-blue
 }
 .paragraphs-item-header-text .intro-text p:last-child {
     margin-bottom: 0
@@ -6684,7 +6686,7 @@ __help-icon.more-help-link {
     padding-top: 0;
     padding-bottom: 0;
     margin-bottom: 50px;
-    border: 20px solid #f3f3f3
+    border: 20px solid $grey-000
 }
 .paragraphs-item-featured-item h1.title.featured-title,
 .paragraphs-item-featured-item .timeline-step-wrapper .title.featured-title.timeline-number,
@@ -6703,23 +6705,23 @@ __help-icon.more-help-link {
     position: relative
 }
 .node-type-listing-page .post-featured-item-wrapper {
-    border: 20px solid #e0e0e0;
+    border: 20px solid $grey-100;
     overflow: hidden;
     position: relative
 }
 .event-featured-item-wrapper {
-    background: #fff;
+    background: $white;
     margin-bottom: 30px
 }
 .event-featured-item-wrapper .featured-item-date,
 .post-featured-item-wrapper .featured-item-date {
     width: 84px;
-    background-color: #288be4;
+    background-color: $optimistic-blue;
     background-image: url("../images/global/icons/ribbon-bottom-white.svg");
     background-repeat: no-repeat;
     background-position: center bottom -1px;
     text-align: center;
-    color: #fff;
+    color: $white;
     padding: 25px 10px 30px 10px;
     margin-top: 0;
     float: left;
@@ -6809,8 +6811,8 @@ __help-icon.more-help-link {
     line-height: 58.5px;
     font-size: 0.66667rem;
     line-height: 3.25rem;
-    background-color: #fb4d42;
-    color: #fff;
+    background-color: $freedom-red;
+    color: $white;
     font-family: "Montserrat", sans-serif;
     text-transform: uppercase;
     text-align: center;
@@ -6839,13 +6841,13 @@ __help-icon.more-help-link {
     z-index: 1
 }
 .post-featured-item-wrapper:hover {
-    background-color: #288be4
+    background-color: $optimistic-blue
 }
 .post-featured-item-wrapper:hover .feature-header h3,
 .post-featured-item-wrapper:hover .feature-header .view-transactions-main-transactions .view-header p,
 .view-transactions-main-transactions .view-header .post-featured-item-wrapper:hover .feature-header p,
 .post-featured-item-wrapper:hover .intro-text {
-    color: #fff
+    color: $white
 }
 .event-featured-item-wrapper .featured-thumb-wrapper {
     margin-top: 0;
@@ -6879,7 +6881,7 @@ __help-icon.more-help-link {
         display: block;
         width: 3px;
         height: calc(100% + 40px);
-        background-color: #e0e0e0;
+        background-color: $grey-100;
         position: absolute;
         margin-left: 60px
     }
@@ -6937,17 +6939,17 @@ __help-icon.more-help-link {
     line-height: 18px;
     font-size: 0.77778rem;
     line-height: 1rem;
-    border-color: #e0e0e0;
+    border-color: $grey-100;
     border-radius: 100%;
     text-align: center;
     position: relative;
     z-index: 1;
-    background-color: #fff
+    background-color: $white
 }
 .node-type-how-to .step-number,
 .node-type-tabbed-content .step-number {
     text-transform: uppercase;
-    color: #fb4d42;
+    color: $freedom-red;
     font-family: "Montserrat", sans-serif;
     font-weight: inherit;
     font-size: 20px;
@@ -7002,7 +7004,7 @@ __help-icon.more-help-link {
     font-style: italic
 }
 .listing-wrapper {
-    background-color: #fff;
+    background-color: $white;
     position: relative;
     overflow: hidden;
     margin-top: 1.5em;
@@ -7055,7 +7057,7 @@ __help-icon.more-help-link {
 }
 .listing-wrapper .listing-detail {
     text-transform: uppercase;
-    color: #091f2f;
+    color: $charles-blue;
     font-family: "Montserrat", sans-serif;
     font-weight: inherit;
     font-size: 14px;
@@ -7084,7 +7086,7 @@ __help-icon.more-help-link {
 }
 .node-type-post .news-tags a:after {
     content: ',';
-    color: #091f2f
+    color: $charles-blue
 }
 .node-type-post .news-tags a:last-child:after {
     content: ' '
@@ -7141,7 +7143,7 @@ a.item-link {
     }
 }
 .news-item-default-image {
-    background-color: #091f2f;
+    background-color: $charles-blue;
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -7218,7 +7220,7 @@ a.item-link {
         border-bottom: 0;
         border-left: 1px;
         border-style: dashed;
-        border-color: #e0e0e0
+        border-color: $grey-100
     }
 }
 .news-item .intro-text {
@@ -7336,7 +7338,7 @@ a.item-link {
 .news-item-wrapper,
 .post-featured-item-wrapper-wrapper,
 .featured-item-details-wrapper {
-    background-color: #fff
+    background-color: $white
 }
 .news-item h3.title,
 .news-item .view-transactions-main-transactions .view-header p.title,
@@ -7347,7 +7349,7 @@ a.item-link {
 .featured-item-details h3.title,
 .featured-item-details .view-transactions-main-transactions .view-header p.title,
 .view-transactions-main-transactions .view-header .featured-item-details p.title {
-    color: #288be4
+    color: $optimistic-blue
 }
 .news-item .department-title,
 .post-featured-item-wrapper .department-title,
@@ -7379,13 +7381,13 @@ a.item-link {
     font-weight: 700;
     text-transform: uppercase;
     line-height: 1;
-    color: #091f2f
+    color: $charles-blue
 }
 .news-item .date-flag--blue,
 .post-featured-item-wrapper .date-flag--blue,
 .featured-item-details .date-flag--blue {
     background-image: url("../images/global/icons/ribbon-charles.svg");
-    color: #fff
+    color: $white
 }
 .news-item .date-flag--left,
 .post-featured-item-wrapper .date-flag--left,
@@ -7396,7 +7398,7 @@ a.item-link {
 .news-item .news-right,
 .post-featured-item-wrapper .news-right,
 .featured-item-details .news-right {
-    border-color: #e0e0e0
+    border-color: $grey-100
 }
 @media (min-width: 980px) {
     .news-item .contact-wrapper .field-name-field-contact,
@@ -7418,14 +7420,14 @@ a.item-link {
     .news-item .contact-wrapper .department-icon a.popup-title:hover .tooltip-tail,
     .post-featured-item-wrapper .contact-wrapper .department-icon a.popup-title:hover .tooltip-tail,
     .featured-item-details .contact-wrapper .department-icon a.popup-title:hover .tooltip-tail {
-        background-color: #091f2f
+        background-color: $charles-blue
     }
     .news-item .contact-wrapper .department-icon a.popup-title[title]:hover:after,
     .post-featured-item-wrapper .contact-wrapper .department-icon a.popup-title[title]:hover:after,
     .featured-item-details .contact-wrapper .department-icon a.popup-title[title]:hover:after {
         content: attr(title);
-        color: #fff;
-        background-color: #091f2f;
+        color: $white;
+        background-color: $charles-blue;
         font-family: "Montserrat", sans-serif;
         text-transform: uppercase;
         font-size: 12px;
@@ -7436,7 +7438,7 @@ a.item-link {
 }
 .paragraphs-item-news-announcements .news-item:hover .news-item-wrapper,
 .paragraphs-item-upcoming-events .news-item:hover .news-item-wrapper {
-    background-color: #288be4
+    background-color: $optimistic-blue
 }
 .paragraphs-item-news-announcements .news-item:hover .news-item-wrapper h3.title,
 .paragraphs-item-news-announcements .news-item:hover .news-item-wrapper .view-transactions-main-transactions .view-header p.title,
@@ -7446,7 +7448,7 @@ a.item-link {
 .paragraphs-item-upcoming-events .news-item:hover .news-item-wrapper .view-transactions-main-transactions .view-header p.title,
 .view-transactions-main-transactions .view-header .paragraphs-item-upcoming-events .news-item:hover .news-item-wrapper p.title,
 .paragraphs-item-upcoming-events .news-item:hover .news-item-wrapper .department-title {
-    color: #fff
+    color: $white
 }
 .node-type-department-profile .post-featured-item-wrapper .department-title .department-title,
 .post-featured-item-wrapper .department-title .department-title {
@@ -7500,7 +7502,7 @@ a.item-link {
     border-bottom: 1px;
     border-left: 0;
     border-style: dashed;
-    border-color: #e0e0e0;
+    border-color: $grey-100;
     margin-bottom: 1.5em
 }
 .node-type-department-profile .post-featured-item-wrapper .feature-header:before,
@@ -7540,14 +7542,14 @@ a.item-link {
 }
 .paragraphs-item-news-announcements .post-featured-item-wrapper,
 .paragraphs-item-upcoming-events .post-featured-item-wrapper {
-    background-color: #fff;
+    background-color: $white;
     margin-bottom: 1.5em;
     position: relative
 }
 .paragraphs-item-news-announcements .post-featured-item-wrapper:hover,
 .paragraphs-item-upcoming-events .post-featured-item-wrapper:hover {
-    background-color: #288be4;
-    color: #fff
+    background-color: $optimistic-blue;
+    color: $white
 }
 .paragraphs-item-news-announcements .post-featured-item-wrapper:hover h3.title,
 .paragraphs-item-news-announcements .post-featured-item-wrapper:hover .view-transactions-main-transactions .view-header p.title,
@@ -7555,7 +7557,7 @@ a.item-link {
 .paragraphs-item-upcoming-events .post-featured-item-wrapper:hover h3.title,
 .paragraphs-item-upcoming-events .post-featured-item-wrapper:hover .view-transactions-main-transactions .view-header p.title,
 .view-transactions-main-transactions .view-header .paragraphs-item-upcoming-events .post-featured-item-wrapper:hover p.title {
-    color: #fff
+    color: $white
 }
 .paragraphs-item-news-announcements .post-featured-item-wrapper .desktop-2-col.thumb-column,
 .paragraphs-item-news-announcements .post-featured-item-wrapper .view-filters .views-widget-filter-field_published_date_value .views-widget>div.thumb-column,
@@ -7609,7 +7611,7 @@ a.item-link {
     background-repeat: no-repeat;
     background-size: auto;
     width: auto;
-    color: #288be4;
+    color: $optimistic-blue;
     text-align: left;
     position: relative;
     top: 20px;
@@ -7631,11 +7633,11 @@ a.item-link {
         font-weight: 700;
         text-transform: uppercase;
         line-height: 1;
-        color: #091f2f
+        color: $charles-blue
     }
     .featured-item-details .date-flag--blue {
         background-image: url("../images/global/icons/ribbon-charles.svg");
-        color: #fff
+        color: $white
     }
     .featured-item-details .date-flag--left {
         margin-left: 0;
@@ -7689,7 +7691,7 @@ a.item-link {
 }
 .topic-wrapper .topic-highlight-area .topic-listing-title {
     text-transform: uppercase;
-    color: #091f2f;
+    color: $charles-blue;
     font-family: "Montserrat", sans-serif;
     font-weight: 700;
     font-size: 20px;
@@ -7708,7 +7710,7 @@ a.item-link {
 .topic-wrapper .topic-highlight-area .grid-of-topics-label {
     font-style: italic;
     font-family: "Lora", serif;
-    color: #091f2f;
+    color: $charles-blue;
     font-size: 16px;
     line-height: 30px;
     font-size: 0.88889rem;
@@ -7726,10 +7728,10 @@ a.item-link {
     cursor: pointer
 }
 .topic-wrapper .topic-highlight-area:hover .topic-details {
-    background-color: #fb4d42
+    background-color: $freedom-red
 }
 .topic-wrapper .topic-highlight-area:hover .topic-listing-title {
-    color: #fff
+    color: $white
 }
 .topic-wrapper .topic-highlight-area:hover .topic-listing-title {
     text-transform: uppercase
@@ -7737,7 +7739,7 @@ a.item-link {
 .topic-wrapper .image-wrapper {
     position: relative;
     overflow: hidden;
-    border-bottom: 5px solid #091f2f;
+    border-bottom: 5px solid $charles-blue;
     height: 166px
 }
 .topic-wrapper .image-wrapper img {
@@ -7759,7 +7761,7 @@ a.item-link {
     overflow: hidden
 }
 .topic-wrapper .topic-details:hover .topic-listing-title {
-    color: #fff
+    color: $white
 }
 @media (min-width: 768px) {
     .topic-wrapper .topic-details {
@@ -7782,8 +7784,8 @@ a.item-link {
     border-bottom: 0;
     border-left: 0;
     border-style: dashed;
-    border-color: #e0e0e0;
-    background-color: #fff;
+    border-color: $grey-100;
+    background-color: $white;
     padding: 1.5em;
     line-height: 25px;
     width: 100%
@@ -7810,7 +7812,7 @@ a.item-link {
     line-height: 15px
 }
 article.view-mode-listing_long {
-    background-color: #fff;
+    background-color: $white;
     position: relative
 }
 article.view-mode-listing_long a.item-link {
@@ -7826,7 +7828,7 @@ article.view-mode-listing_long a.item-link {
 .paragraphs-item-grid-of-topics .topic-highlight-area {
     height: 125px;
     text-align: left;
-    background-color: #fff
+    background-color: $white
 }
 @media (min-width: 768px) {
     .paragraphs-item-grid-of-topics .topic-highlight-area {
@@ -7848,7 +7850,7 @@ article.view-mode-listing_long a.item-link {
 .paragraphs-item-grid-of-topics .topic-highlight-area .grid-of-topics-label {
     font-style: italic;
     font-family: "Lora", serif;
-    color: #091f2f
+    color: $charles-blue
 }
 .paragraphs-item-grid-of-topics .topic-highlight-area img {
     width: auto;
@@ -7881,11 +7883,11 @@ article.view-mode-listing_long a.item-link {
     }
 }
 .paragraphs-item-grid-of-topics .topic-highlight-area:hover {
-    background-color: #fb4d42;
+    background-color: $freedom-red;
     cursor: pointer
 }
 .paragraphs-item-grid-of-topics .topic-highlight-area:hover .topic-listing-title {
-    color: #fff
+    color: $white
 }
 .paragraphs-item-grid-of-topics .topic-highlight-area:hover .topic-listing-title {
     text-transform: uppercase
@@ -7949,7 +7951,7 @@ article.view-mode-listing_long a.item-link {
         display: block;
         width: 112px;
         height: 112px;
-        border: 3px solid #091f2f;
+        border: 3px solid $charles-blue;
         border-radius: 100%
     }
 }
@@ -7971,7 +7973,7 @@ article.view-mode-listing_long a.item-link {
     border-bottom: 1px;
     border-left: 0;
     border-style: dashed;
-    border-color: #e0e0e0;
+    border-color: $grey-100;
     padding-bottom: 10px;
     margin: 20px 0 20px
 }
@@ -7985,7 +7987,7 @@ article.view-mode-listing_long a.item-link {
     line-height: 1.5rem;
     font-family: "Montserrat", sans-serif;
     text-transform: uppercase;
-    color: #091f2f
+    color: $charles-blue
 }
 .detail-list-item.borderless {
     border-bottom: none;
@@ -8034,7 +8036,7 @@ article.view-mode-listing_long a.item-link {
     border-bottom: 1px;
     border-left: 0;
     border-style: dashed;
-    border-color: #e0e0e0
+    border-color: $grey-100
 }
 .published-by-detail .department-icon.left {
     width: 75px;
@@ -8047,7 +8049,7 @@ article.view-mode-listing_long a.item-link {
     height: auto
 }
 .published-by-detail .contact-info.right {
-    color: #091f2f;
+    color: $charles-blue;
     margin-left: 75px
 }
 .published-by-detail .contact-info.right p {
@@ -8115,7 +8117,7 @@ article.view-mode-listing_long a.item-link {
     font-size: 1.66667rem;
     line-height: 3.25rem;
     font-style: italic;
-    color: #091f2f;
+    color: $charles-blue;
     border-bottom: 3px solid;
     margin-bottom: 20px
 }
@@ -8143,7 +8145,7 @@ article.view-mode-listing_long a.item-link {
     font-size: 1rem;
     line-height: 3.25rem;
     font-style: italic;
-    color: #091f2f
+    color: $charles-blue
 }
 @media (min-width: 980px) {
     .node-person-profile .person-profile-position-title {
@@ -8191,8 +8193,8 @@ article.view-mode-listing_long a.item-link {
     display: inline-block;
     padding: 0;
     list-style-type: none;
-    background-color: #fff;
-    border-color: #091f2f;
+    background-color: $white;
+    border-color: $charles-blue;
     border-style: solid;
     border-width: 3px 0 3px 3px;
     height: 2.5em;
@@ -8245,8 +8247,8 @@ article.view-mode-listing_long a.item-link {
 .pager-current,
 .pager-previous,
 .pager-next {
-    background-color: #288be4;
-    color: #fff
+    background-color: $optimistic-blue;
+    color: $white
 }
 .pager a {
     display: block;
@@ -8256,7 +8258,7 @@ article.view-mode-listing_long a.item-link {
 }
 .pager-current,
 .pager-item a {
-    color: #091f2f
+    color: $charles-blue
 }
 .pager-first,
 .pager-previous,
@@ -8278,7 +8280,7 @@ article.view-mode-listing_long a.item-link {
 .pager-previous a,
 .pager-last a,
 .pager-next a {
-    color: #fff
+    color: $white
 }
 .pager-next,
 .pager-disabled.last {
@@ -8291,10 +8293,10 @@ article.view-mode-listing_long a.item-link {
 .pager-previous:hover,
 .pager-last:hover,
 .pager-next:hover {
-    background-color: #fb4d42
+    background-color: $freedom-red
 }
 .pager-disabled {
-    background-color: #f3f3f3;
+    background-color: $grey-000;
     color: #d2d2d2;
     border-color: #d2d2d2
 }
@@ -8302,7 +8304,7 @@ article.view-mode-listing_long a.item-link {
     color: #d2d2d2
 }
 .pager-disabled:hover {
-    background-color: #f3f3f3
+    background-color: $grey-000
 }
 .pager__current-item {
     font-weight: bold
@@ -8338,8 +8340,8 @@ article.view-mode-listing_long a.item-link {
 }
 .popover {
     position: absolute;
-    border: 1px solid #e0e0e0;
-    background-color: #fff;
+    border: 1px solid $grey-100;
+    background-color: $white;
     display: none
 }
 .popover:after,
@@ -8355,7 +8357,7 @@ article.view-mode-listing_long a.item-link {
 }
 .popover:after {
     border-color: rgba(255, 255, 255, 0);
-    border-bottom-color: #fff;
+    border-bottom-color: $white;
     border-width: 10px;
     margin-left: -10px
 }
@@ -8384,14 +8386,14 @@ article.view-mode-listing_long a.item-link {
 __bar.progress {
     border-radius: 3px;
     margin: 0 .2em;
-    border: 1px solid #828282;
-    background-color: #e0e0e0
+    border: 1px solid $grey-300;
+    background-color: $grey-100
 }
 .progress-bar__fill,
 __fill.progress {
     height: 1.5em;
     width: 5px;
-    background: #288be4 url("../images/global/icons/progress-bar.gif") repeat 0 0
+    background: $optimistic-blue url("../images/global/icons/progress-bar.gif") repeat 0 0
 }
 .progress-bar__percentage,
 __percentage.progress {
@@ -8439,7 +8441,7 @@ __message.ajax-progress {
     padding-left: 20px
 }
 .paragraphs-item-featured-topics {
-    background-color: #f3f3f3;
+    background-color: $grey-000;
     padding: 0;
     counter-reset: badge
 }
@@ -8461,7 +8463,7 @@ __message.ajax-progress {
 .paragraphs-item-featured-topics article.node {
     position: relative;
     cursor: pointer;
-    color: #091f2f;
+    color: $charles-blue;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -8479,15 +8481,15 @@ __message.ajax-progress {
     }
 }
 .paragraphs-item-featured-topics a:nth-child(odd) h2 {
-    color: #fff
+    color: $white
 }
 .paragraphs-item-featured-topics a:nth-child(even) h2 {
-    color: #288be4
+    color: $optimistic-blue
 }
 .paragraphs-item-featured-topics a:nth-child(2) .color-background-layer,
 .paragraphs-item-featured-topics a:nth-child(4) .color-background-layer {
-    background-color: #091f2f;
-    color: #fb4d42
+    background-color: $charles-blue;
+    color: $freedom-red
 }
 @media (min-width: 980px) {
     .paragraphs-item-featured-topics a:nth-child(2) .color-background-layer,
@@ -8505,77 +8507,77 @@ __message.ajax-progress {
 }
 .paragraphs-item-featured-topics a:nth-child(2) .badge,
 .paragraphs-item-featured-topics a:nth-child(4) .badge {
-    border-color: #fb4d42
+    border-color: $freedom-red
 }
 .paragraphs-item-featured-topics a:nth-child(5) h2 {
-    color: #fff
+    color: $white
 }
 @media (min-width: 980px) {
     .paragraphs-item-featured-topics a:nth-child(5) h2 {
-        color: #288be4
+        color: $optimistic-blue
     }
 }
 .paragraphs-item-featured-topics a:nth-child(5) .color-background-layer {
-    background-color: #288be4
+    background-color: $optimistic-blue
 }
 @media (min-width: 980px) {
     .paragraphs-item-featured-topics a:nth-child(5) .color-background-layer {
-        color: #fb4d42;
-        background-color: #091f2f
+        color: $freedom-red;
+        background-color: $charles-blue
     }
     .paragraphs-item-featured-topics a:nth-child(5) .badge {
-        color: #fb4d42;
-        border-color: #fb4d42
+        color: $freedom-red;
+        border-color: $freedom-red
     }
 }
 .paragraphs-item-featured-topics a:nth-child(6) h2 {
-    color: #288be4
+    color: $optimistic-blue
 }
 @media (min-width: 980px) {
     .paragraphs-item-featured-topics a:nth-child(6) h2 {
-        color: #fff
+        color: $white
     }
 }
 .paragraphs-item-featured-topics a:nth-child(6) .color-background-layer {
-    background-color: #091f2f;
-    color: #fb4d42
+    background-color: $charles-blue;
+    color: $freedom-red
 }
 .paragraphs-item-featured-topics a:nth-child(6) .badge {
-    border-color: #fb4d42
+    border-color: $freedom-red
 }
 @media (min-width: 980px) {
     .paragraphs-item-featured-topics a:nth-child(6) .color-background-layer {
-        color: #091f2f;
-        background-color: #288be4
+        color: $charles-blue;
+        background-color: $optimistic-blue
     }
     .paragraphs-item-featured-topics a:nth-child(6) .badge {
-        border-color: #091f2f;
-        color: #091f2f
+        border-color: $charles-blue;
+        color: $charles-blue
     }
 }
 .paragraphs-item-featured-topics a:nth-child(7) h2 {
-    color: #fff
+    color: $white
 }
 @media (min-width: 980px) {
     .paragraphs-item-featured-topics a:nth-child(7) h2 {
-        color: #288be4
+        color: $optimistic-blue
     }
 }
 .paragraphs-item-featured-topics a:nth-child(7) .color-background-layer {
-    background-color: #fb4d42
+    background-color: $freedom-red
 }
 @media (min-width: 980px) {
     .paragraphs-item-featured-topics a:nth-child(7) .color-background-layer {
-        color: #fb4d42;
-        background-color: #091f2f
+        color: $freedom-red;
+        background-color: $charles-blue
     }
     .paragraphs-item-featured-topics a:nth-child(7) .badge {
-        color: #fb4d42;
-        border-color: #fb4d42
+        color: $freedom-red;
+        border-color: $freedom-red
     }
 }
 .paragraphs-item-featured-topics a:nth-child(1) .color-background-layer {
-    background-color: #288be4
+    background-color: $optimistic-blue
 }
 @media (min-width: 980px) {
     .paragraphs-item-featured-topics a:nth-child(1) .color-background-layer {
@@ -8591,32 +8593,32 @@ __message.ajax-progress {
     }
 }
 .paragraphs-item-featured-topics a:nth-child(8) h2 {
-    color: #288be4
+    color: $optimistic-blue
 }
 @media (min-width: 980px) {
     .paragraphs-item-featured-topics a:nth-child(8) h2 {
-        color: #fff
+        color: $white
     }
 }
 .paragraphs-item-featured-topics a:nth-child(8) .color-background-layer {
-    background-color: #091f2f;
-    color: #fb4d42
+    background-color: $charles-blue;
+    color: $freedom-red
 }
 .paragraphs-item-featured-topics a:nth-child(8) .badge {
-    border-color: #fb4d42
+    border-color: $freedom-red
 }
 @media (min-width: 980px) {
     .paragraphs-item-featured-topics a:nth-child(8) .color-background-layer {
-        color: #091f2f;
-        background-color: #fb4d42
+        color: $charles-blue;
+        background-color: $freedom-red
     }
     .paragraphs-item-featured-topics a:nth-child(8) .badge {
-        border-color: #091f2f;
-        color: #091f2f
+        border-color: $charles-blue;
+        color: $charles-blue
     }
 }
 .paragraphs-item-featured-topics a:nth-child(3) .color-background-layer {
-    background-color: #fb4d42
+    background-color: $freedom-red
 }
 @media (min-width: 980px) {
     .paragraphs-item-featured-topics a:nth-child(3) .color-background-layer {
@@ -8634,7 +8636,7 @@ __message.ajax-progress {
 .paragraphs-item-featured-topics .badge {
     width: 55px;
     height: 55px;
-    border: 3px solid #091f2f;
+    border: 3px solid $charles-blue;
     border-radius: 100%;
     font-family: "Montserrat", sans-serif;
     text-align: center;
@@ -8701,8 +8703,8 @@ __message.ajax-progress {
     }
 }
 .paragraphs-item-featured-topics a article.node:hover * {
-    color: #fff;
-    border-color: #fff
+    color: $white;
+    border-color: $white
 }
 .paragraphs-item-featured-topics a .color-background-layer {
     width: 100%;
@@ -8806,8 +8808,8 @@ __message.ajax-progress {
     vertical-align: bottom
 }
 .resizable-textarea__grippie {
-    background: url("../images/global/icons/grippie.png") no-repeat center 2px #f3f3f3;
-    border: 1px solid #e0e0e0;
+    background: url("../images/global/icons/grippie.png") no-repeat center 2px $grey-000;
+    border: 1px solid $grey-100;
     border-top-width: 0;
     cursor: s-resize;
     height: 9px;
@@ -8873,7 +8875,7 @@ __embed.media-vimeo-preview-wrapper {
     font-weight: 400;
     font-style: italic;
     line-height: inherit;
-    color: #091f2f;
+    color: $charles-blue;
     padding-bottom: 1em;
     font-size: 18px;
     line-height: 30px;
@@ -8892,7 +8894,7 @@ __embed.media-vimeo-preview-wrapper {
     font-family: "Montserrat", sans-serif;
     font-style: normal;
     text-transform: uppercase;
-    color: #fb4d42;
+    color: $freedom-red;
     font-size: 18px;
     line-height: 24px;
     font-size: 1rem;
@@ -8928,7 +8930,7 @@ p.big.intro-text {
     line-height: 52px;
     font-size: 1.66667rem;
     line-height: 2.88889rem;
-    color: #091f2f
+    color: $charles-blue
 }
 .supporting-sm,
 .paragraphs-item-feedback.component-section .poll-question,
@@ -8947,7 +8949,7 @@ p.big.intro-text {
     line-height: 39px;
     font-size: 1rem;
     line-height: 2.16667rem;
-    color: #091f2f;
+    color: $charles-blue;
     padding: 0 0 0.25em;
     margin-bottom: 1.25em
 }
@@ -9048,7 +9050,7 @@ p.big.intro-text {
 .tabs__tab,
 __tab.tabs--secondary {
     margin: 0 3px;
-    background-color: #091f2f;
+    background-color: $charles-blue;
     display: inline-block;
     text-align: center
 }
@@ -9070,13 +9072,13 @@ __tab.tabs--secondary:hover {
 .tabs__tab:hover .tabs__tab-link,
 __tab.tabs--secondary:focus .tabs__tab-link,
 __tab.tabs--secondary:hover .tabs__tab-link {
-    color: #fb4d42
+    color: $freedom-red
 }
 .tabs__tab.is-active:focus .tabs__tab-link,
 .tabs__tab.is-active:hover .tabs__tab-link,
 __tab.is-active.tabs--secondary:focus .tabs__tab-link,
 __tab.is-active.tabs--secondary:hover .tabs__tab-link {
-    color: #091f2f
+    color: $charles-blue
 }
 .tabs__tab-link,
 __tab-link.tabs--secondary {
@@ -9086,7 +9088,7 @@ __tab-link.tabs--secondary {
 .tabs__tab-link--is-active,
 __tab-link.is-active.tabs--secondary,
 __tab-link--is-active.tabs--secondary {
-    color: #091f2f
+    color: $charles-blue
 }
 .tabs__tab.admin-menu-tab {
     width: auto
@@ -9096,7 +9098,7 @@ __tab-link--is-active.tabs--secondary {
 }
 .content-section-tabs .tabs__tab {
     text-transform: uppercase;
-    color: #fff;
+    color: $white;
     font-family: "Montserrat", sans-serif;
     font-weight: inherit;
     font-size: 14px;
@@ -9121,8 +9123,8 @@ __tab-link--is-active.tabs--secondary {
     }
 }
 .content-section-tabs .tabs__tab.is-active {
-    background-color: #fff;
-    border: 3px solid #e0e0e0
+    background-color: $white;
+    border: 3px solid $grey-100
 }
 @media (min-width: 980px) {
     .content-section-tabs .tabs__tab.is-active {
@@ -9156,9 +9158,9 @@ __tab-link--is-active.tabs--secondary {
 .tabs--secondary__tab-link {
     border-radius: 0.75em;
     transition: background-color 0.3s;
-    text-shadow: 1px 1px 0 false #fff;
-    color: #828282;
-    background-color: #fff;
+    text-shadow: 1px 1px 0 false $white;
+    color: $grey-300;
+    background-color: $white;
     padding: 0 .5em
 }
 .tabs--secondary__tab-link:focus,
@@ -9170,8 +9172,8 @@ __tab-link--is-active.tabs--secondary {
 .tabs--secondary__tab-link.is-active,
 .tabs--secondary__tab-link--is-active {
     text-shadow: 1px 1px 0 false #4f4f4f;
-    color: #fff;
-    background-color: #828282;
+    color: $white;
+    background-color: $grey-300;
     border-color: #1c1c1c
 }
 body.section-homepage .paragraphs-items .component-section:nth-child(3) .section-header {
@@ -9219,7 +9221,7 @@ section.timeline {
     line-height: 60px;
     font-size: 3.33333rem;
     line-height: 3.33333rem;
-    border-bottom: 3px solid #fb4d42;
+    border-bottom: 3px solid $freedom-red;
     margin: 0 0 20px 0;
     padding-bottom: 8px
 }
@@ -9237,7 +9239,7 @@ section.timeline {
     color: #d2d2d2
 }
 section.contact-departments {
-    background-color: #f3f3f3
+    background-color: $grey-000
 }
 section.contact-departments,
 .view-bos-department-listing {
@@ -9245,10 +9247,10 @@ section.contact-departments,
 }
 section.contact-departments .contact-wrapper,
 .view-bos-department-listing .contact-wrapper {
-    background-color: #fff;
+    background-color: $white;
     margin: 1em 0;
     height: 146px;
-    border: 2px solid #e0e0e0;
+    border: 2px solid $grey-100;
     color: #58585B
 }
 section.contact-departments .contact-wrapper .title,
@@ -9259,7 +9261,7 @@ section.contact-departments .contact-wrapper .title,
     margin-bottom: 0rem;
     font-family: "Montserrat", sans-serif;
     text-transform: uppercase;
-    color: #091f2f;
+    color: $charles-blue;
     font-size: 16px;
     line-height: 22px;
     font-size: 0.88889rem;
@@ -9307,19 +9309,19 @@ section.contact-departments .contact-wrapper .title,
 }
 section.contact-departments .contact-wrapper:hover,
 .view-bos-department-listing .contact-wrapper:hover {
-    background-color: #091f2f;
-    color: #fff;
-    border-color: #091f2f
+    background-color: $charles-blue;
+    color: $white;
+    border-color: $charles-blue
 }
 section.contact-departments .contact-wrapper:hover .title,
 .view-bos-department-listing .contact-wrapper:hover .title {
-    color: #fb4d42
+    color: $freedom-red
 }
 section.contact-departments .icon-container,
 .view-bos-department-listing .icon-container {
     height: 142px;
     width: 118px;
-    border-right: 2px solid #e0e0e0;
+    border-right: 2px solid $grey-100;
     display: -webkit-flex;
     -webkit-align-items: center;
     display: -ms-flexbox;
@@ -9328,11 +9330,11 @@ section.contact-departments .icon-container,
     align-items: center;
     padding: 0 30px;
     float: left;
-    background-color: #fff
+    background-color: $white
 }
 section.contact-departments .contact-wrapper:hover .icon-container,
 .view-bos-department-listing .contact-wrapper:hover .icon-container {
-    border-right: 2px solid #091f2f
+    border-right: 2px solid $charles-blue
 }
 section.contact-departments .icon-container img,
 .view-bos-department-listing .icon-container img {
@@ -9354,7 +9356,7 @@ section.contact-departments .contact-metadata,
 }
 section.contact-departments .contact-wrapper:hover .contact-metadata,
 .view-bos-department-listing .contact-wrapper:hover .contact-metadata {
-    color: #fff
+    color: $white
 }
 .node-type-topic-page .topic-hero-text-wrapper {
     margin-top: -270px
@@ -9411,7 +9413,7 @@ section.contact-departments .contact-wrapper:hover .contact-metadata,
     line-height: 40px;
     font-size: 2rem;
     line-height: 2.22222rem;
-    color: #fff;
+    color: $white;
     max-width: 80%;
     margin: 0 auto .25em
 }
@@ -9429,7 +9431,7 @@ section.contact-departments .contact-wrapper:hover .contact-metadata,
 }
 .node-type-topic-page .topic-title-prefix,
 .node-type-topic-page .topic-subhead {
-    color: #fff;
+    color: $white;
     font-style: italic;
     font-size: 20px;
     line-height: 24px
@@ -9443,7 +9445,7 @@ section.contact-departments .contact-wrapper:hover .contact-metadata,
 .node-type-topic-page .topic-title-prefix span {
     height: 3px;
     width: 20px;
-    background-color: #fff;
+    background-color: $white;
     display: inline-block;
     margin-bottom: 5px;
     margin-left: 5px;
@@ -9472,7 +9474,7 @@ section.contact-departments .contact-wrapper:hover .contact-metadata,
 }
 @media (min-width: 980px) {
     .node-type-topic-page .topic-intro-text-container {
-        background-color: #fff;
+        background-color: $white;
         width: 739px;
         margin-left: auto;
         margin-right: auto;
@@ -9495,11 +9497,11 @@ section.contact-departments .contact-wrapper:hover .contact-metadata,
 }
 @media (min-width: 980px) {
     .node-type-topic-page .intro-text-top {
-        background-color: #fff;
+        background-color: $white;
         height: 93px;
-        border-top: 8px solid #091f2f;
-        border-left: 8px solid #091f2f;
-        border-right: 8px solid #091f2f;
+        border-top: 8px solid $charles-blue;
+        border-left: 8px solid $charles-blue;
+        border-right: 8px solid $charles-blue;
         display: block;
         left: -1px;
         position: relative;
@@ -9510,7 +9512,7 @@ section.contact-departments .contact-wrapper:hover .contact-metadata,
     line-height: 1.75em;
     font-size: 19.998px;
     padding: 20px 60px 0;
-    color: #091f2f
+    color: $charles-blue
 }
 @media (min-width: 980px) {
     .node-type-topic-page .topic-intro-text-content {
@@ -9562,7 +9564,7 @@ section.contact-departments .contact-wrapper:hover .contact-metadata,
 .topic-nav {
     width: 100%;
     left: 0;
-    background-color: #fff;
+    background-color: $white;
     transition: background-color 0.25s ease;
     display: none;
     z-index: 10;
@@ -9582,7 +9584,7 @@ section.contact-departments .contact-wrapper:hover .contact-metadata,
     .topic-nav.topic-nav__left.sticky {
         position: fixed;
         top: 65px;
-        background-color: #091f2f;
+        background-color: $charles-blue;
         z-index: 12;
         padding: 0 0 2px;
         margin-top: 0;
@@ -9606,7 +9608,7 @@ section.contact-departments .contact-wrapper:hover .contact-metadata,
     margin-top: 4px
 }
 .sub-nav-chevron .icon-stroke {
-    fill: #fff
+    fill: $white
 }
 .active .sub-nav-chevron {
     -ms-transform: rotate(0);
@@ -9639,7 +9641,7 @@ section.contact-departments .contact-wrapper:hover .contact-metadata,
 .topic-nav.topic-nav__left.sticky li {
     border-style: solid;
     border-width: 1px 1px 0 1px;
-    border-color: #e0e0e0;
+    border-color: $grey-100;
     margin: 0;
     padding: 0;
     text-indent: 0;
@@ -9653,11 +9655,11 @@ section.contact-departments .contact-wrapper:hover .contact-metadata,
 }
 .topic-nav li:last-child,
 .topic-nav.topic-nav__left.sticky li:last-child {
-    border-bottom: 1px solid #e0e0e0
+    border-bottom: 1px solid $grey-100
 }
 .topic-nav li:hover,
 .topic-nav.topic-nav__left.sticky li:hover {
-    background-color: #288be4;
+    background-color: $optimistic-blue;
     cursor: pointer
 }
 .topic-nav li:hover a,
@@ -9670,7 +9672,7 @@ section.contact-departments .contact-wrapper:hover .contact-metadata,
 .topic-nav.topic-nav__left.sticky li:hover a:visited,
 .topic-nav.topic-nav__left.sticky li:hover a:hover,
 .topic-nav.topic-nav__left.sticky li:hover a:active {
-    color: #fff
+    color: $white
 }
 @media (min-width: 980px) {
     .topic-nav li:hover a,
@@ -9683,7 +9685,7 @@ section.contact-departments .contact-wrapper:hover .contact-metadata,
     .topic-nav.topic-nav__left.sticky li:hover a:visited,
     .topic-nav.topic-nav__left.sticky li:hover a:hover,
     .topic-nav.topic-nav__left.sticky li:hover a:active {
-        color: #fb4d42
+        color: $freedom-red
     }
 }
 .topic-nav li:before,
@@ -9703,7 +9705,7 @@ section.contact-departments .contact-wrapper:hover .contact-metadata,
     }
     .topic-nav li:hover,
     .topic-nav.topic-nav__left.sticky li:hover {
-        background-color: #fff
+        background-color: $white
     }
 }
 @media (min-width: 980px) {
@@ -9718,7 +9720,7 @@ section.contact-departments .contact-wrapper:hover .contact-metadata,
 }
 @media (min-width: 980px) {
     .topic-nav.sticky li:hover {
-        background-color: #091f2f
+        background-color: $charles-blue
     }
 }
 .topic-nav a {
@@ -9727,11 +9729,11 @@ section.contact-departments .contact-wrapper:hover .contact-metadata,
     font-weight: bold
 }
 .topic-nav a:hover {
-    color: #fff
+    color: $white
 }
 .topic-nav a:active,
 .topic-nav a:focus {
-    color: #fb4d42
+    color: $freedom-red
 }
 @media (min-width: 980px) {
     .topic-nav a {
@@ -9740,7 +9742,7 @@ section.contact-departments .contact-wrapper:hover .contact-metadata,
     .topic-nav a:hover,
     .topic-nav a:active,
     .topic-nav a:focus {
-        color: #fb4d42
+        color: $freedom-red
     }
 }
 .topic-nav.sticky a {
@@ -9750,16 +9752,16 @@ section.contact-departments .contact-wrapper:hover .contact-metadata,
 @media (min-width: 980px) {
     .topic-nav.sticky a.is-active:link,
     .topic-nav.sticky a.is-active:visited {
-        color: #fb4d42;
-        border-color: #fb4d42
+        color: $freedom-red;
+        border-color: $freedom-red
     }
     .topic-nav.sticky a:link,
     .topic-nav.sticky a:visited {
-        color: #fff
+        color: $white
     }
     .topic-nav.sticky a:hover,
     .topic-nav.sticky a:active .topic-nav.sticky a:focus {
-        color: #fb4d42
+        color: $freedom-red
     }
 }
 .subnav-anchor {
@@ -9803,7 +9805,7 @@ section.contact-departments .contact-wrapper:hover .contact-metadata,
 }
 .form__button--chevron {
     border: 3px solid black;
-    background-color: #288be4;
+    background-color: $optimistic-blue;
     background-image: url("../images/global/icons/chevron.svg");
     background-repeat: no-repeat;
     background-position: center;
@@ -9845,7 +9847,7 @@ section.contact-departments .contact-wrapper:hover .contact-metadata,
     left: 50%
 }
 .plyr--isPlaying {
-    background-color: #091f2f;
+    background-color: $charles-blue;
     background-image: none
 }
 .plyr--isPlaying .plyr__overlay,
@@ -9872,11 +9874,11 @@ section.contact-departments .contact-wrapper:hover .contact-metadata,
     top: 12%;
     left: 5%;
     right: 0;
-    color: #fff
+    color: $white
 }
 .plyr__title {
     position: static;
-    color: #fff;
+    color: $white;
     text-decoration: none;
     width: 90%;
     border: none;
@@ -9985,7 +9987,7 @@ section.contact-departments .contact-wrapper:hover .contact-metadata,
     margin-top: 20px
 }
 .view-filters .dr-h {
-    margin-top: 0       // du ticket #973
+    margin-top: 0       
 }
 @media (min-width: 980px) {
     .view-filters .drawer-trigger:first-child,
@@ -9996,19 +9998,15 @@ section.contact-departments .contact-wrapper:hover .contact-metadata,
 .view-filters .drawer-trigger .drawer-trigger-chevron,
 .filter-wrapper .drawer-trigger .drawer-trigger-chevron {
     height: 30px;
-    //margin-top: 9px
-    margin-top: 14px    // du ticket #973
+    margin-top: 14px
 }
 .view-filters .drawer-trigger.active .drawer-trigger-chevron,
 .filter-wrapper .drawer-trigger.active .drawer-trigger-chevron {
-    // du ticket #973
-    //    -ms-transform: rotate(90deg);
-    //    transform: rotate(90deg);
-    -ms-transform: rotate(180deg);    // du ticket #973
-    transform: rotate(180deg);        // du ticket #973
+    -ms-transform: rotate(180deg);    
+    transform: rotate(180deg);        
     height: 20px;
     margin-top: 20px
-    background-image: url(../images/global/icons/chevron-down.svg);               // du ticket #973
+    background-image: url(../images/global/icons/chevron-down.svg);               
 }
 .view-filters .drawer-trigger.mobile-only,
 .filter-wrapper .drawer-trigger.mobile-only {
@@ -10042,10 +10040,9 @@ section.contact-departments .contact-wrapper:hover .contact-metadata,
     max-width: 100%;
     z-index: 30;
     left: 0
-    margin-top: -3px;   // du ticket #973
+    margin-top: -3px;   
 }
 .view-filters .dr-c {
-    // du ticket #973
     min-width: inherit;
     max-width: inherit;
     left: initial;
@@ -10086,7 +10083,7 @@ section.contact-departments .contact-wrapper:hover .contact-metadata,
     margin-bottom: 75px
 }
 .view-filters.sidebar .drawer-trigger {
-    border: 3px solid #f3f3f3
+    border: 3px solid $grey-000
 }
 .view-filters.sidebar .drawer-trigger .drawer-trigger-chevron {
     margin-top: 9px
@@ -10102,7 +10099,7 @@ section.contact-departments .contact-wrapper:hover .contact-metadata,
 }
 .view-filters.sidebar .drawer {
     border-top: 0;
-    border-color: #091f2f
+    border-color: $charles-blue
 }
 .views-exposed-topbar .view-filters,
 .filter-wrapper {
@@ -10122,7 +10119,7 @@ section.contact-departments .contact-wrapper:hover .contact-metadata,
 }
 .views-exposed-topbar .view-filters .drawer,
 .filter-wrapper .drawer {
-    border-color: #091f2f
+    border-color: $charles-blue
 }
 @media (min-width: 980px) {
     .views-exposed-topbar .view-filters .drawer,
@@ -10131,8 +10128,7 @@ section.contact-departments .contact-wrapper:hover .contact-metadata,
     }
     .views-exposed-topbar .view-filters .dr-c,
       .filter-wrapper .dr-c {
-          // du ticket #973
-          position: initial
+          position: static
       }
     .views-exposed-topbar .view-filters .drawer.mobile-only,
     .filter-wrapper .drawer.mobile-only {
@@ -10200,18 +10196,13 @@ section.contact-departments .contact-wrapper:hover .contact-metadata,
 }
 .view-filters .drawer-trigger.active,
 .filter-wrapper .drawer-trigger.active {
-    color: #fff;
-    background-color: #091f2f;
-    border-color: #091f2f
-}
-.view-filters .drawer-trigger.active .drawer-trigger-chevron,
-.filter-wrapper .drawer-trigger.active .drawer-trigger-chevron {
-    // du ticket #973
-    // background-image: url(../img/chevron.svg)
+    color: $white;
+    background-color: $charles-blue;
+    border-color: $charles-blue
 }
 .view-filters .drawer-trigger.mobile-only,
 .filter-wrapper .drawer-trigger.mobile-only {
-    background-color: #288be4
+    background-color: $optimistic-blue
 }
 .view-filters .drawer-trigger.mobile-only .drawer-trigger-chevron,
 .filter-wrapper .drawer-trigger.mobile-only .drawer-trigger-chevron {
@@ -10219,29 +10210,27 @@ section.contact-departments .contact-wrapper:hover .contact-metadata,
 }
 .view-filters .drawer,
 .filter-wrapper .drawer {
-    background-color: white;
-    border-color: #e0e0e0
+    background-color: $white;
+    border-color: $grey-100
 }
 .view-filters .drawer-trigger {
-    background-color: white;
-    border-color: #e0e0e0;
-    color: #288be4
+    background-color: $white;
+    border-color: $grey-100;
+    color: $optimistic-blue
 
     &:not(.active):hover{
-        // du ticket #973
-        background-color: #288be4;
-        color: white;
+        background-color: $optimistic-blue;
+        color: $white;
     }
 }
 .view-filters button.drawer-trigger{
-    // du ticket #973
     width: 100%;
     text-align: left;
     font-weight: normal
 }
 
 .view-filters:hover {
-    color: #fb4d42
+    color: $freedom-red
 }
 .drawer-trigger.mobile-only {
     background-color: transparent
@@ -10250,14 +10239,14 @@ section.contact-departments .contact-wrapper:hover .contact-metadata,
     background-color: transparent
 }
 .views-exposed-widget.views-reset-button input[type="submit"] {
-    background-color: #091f2f;
+    background-color: $charles-blue;
     background-image: url(../images/global/icons/refresh.svg);
     background-repeat: no-repeat;
     background-position: center 13px;
     background-size: 24px
 }
 .views-exposed-widget.views-reset-button input[type="submit"]:hover {
-    background-color: #fb4d42
+    background-color: $freedom-red
 }
 .bef-checkboxes {
     display: -ms-flexbox;
@@ -10289,11 +10278,11 @@ section.contact-departments .contact-wrapper:hover .contact-metadata,
 .view-bos-news-landing .view-filters {
     position: relative;
     top: -50px;
-    background-color: #f3f3f3;
+    background-color: $grey-000;
     margin-top: 100px
 }
 .view-bos-news-landing {
-    background-color: #f3f3f3
+    background-color: $grey-000
 }
 .view-places {
     left: 50%;
@@ -10301,7 +10290,7 @@ section.contact-departments .contact-wrapper:hover .contact-metadata,
     -ms-transform: translate(-50%, 0);
     transform: translate(-50%, 0);
     width: 100vw;
-    background-color: #f3f3f3
+    background-color: $grey-000
 }
 .view-program-initiatives {
     left: 50%;
@@ -10309,14 +10298,14 @@ section.contact-departments .contact-wrapper:hover .contact-metadata,
     -ms-transform: translate(-50%, 0);
     transform: translate(-50%, 0);
     width: 100vw;
-    background-color: #f3f3f3
+    background-color: $grey-000
 }
 .watermark {
     display: block;
     height: 0;
     overflow: visible;
     background-color: transparent;
-    color: #f3f3f3;
+    color: $grey-000;
     font-size: 75px;
     line-height: 1;
     font-family: "Lora", serif;
@@ -10328,7 +10317,7 @@ section.contact-departments .contact-wrapper:hover .contact-metadata,
 }
 .err--403 {
     background-image: url("../images/global/icons/403.svg");
-    background-color: #091f2f;
+    background-color: $charles-blue;
     background-position: bottom;
     background-size: 102%;
     background-repeat: no-repeat;
@@ -10357,18 +10346,18 @@ section.contact-departments .contact-wrapper:hover .contact-metadata,
     }
 }
 .denied-text {
-    color: #fff;
-    text-shadow: 0 0 5px #091f2f
+    color: $white;
+    text-shadow: 0 0 5px $charles-blue
 }
 .denied-text h1,
 .denied-text .timeline-step-wrapper .timeline-number,
 .timeline-step-wrapper .denied-text .timeline-number {
-    color: #fff
+    color: $white
 }
 .notfound-text {
-    border-bottom: 0.3rem solid #091f2f;
-    color: #091f2f;
-    background-color: white
+    border-bottom: 0.3rem solid $charles-blue;
+    color: $charles-blue;
+    background-color: $white
 }
 .notfound-text p {
     font-size: 14px;
