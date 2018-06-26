@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html dir="ltr"
+  lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
+  <title>&lt;cob-map> JSON Editor</title>
+
+  <!--[if !IE]><!-->
+  <link rel="stylesheet"
+    type="text/css"
+    href="/css/public.css" />
+  <!--<![endif]-->
+  <!--[if lt IE 10]>
+    <link media="all" rel="stylesheet" href="/css/ie.css">
+  <![endif]-->
+</head>
+
+<body>
+  <div class="b b-c" style="padding-top: 1rem">
+    <div class="g">
+      <div class="g--4">
+
+        <textarea id="config" style="width: 100%; height: 40vh; font-family: Consolas, Courier New, monospace">
+{
+  "version": "1.0",
+  "uid": "~ltT9D7MbvC7Wv0O6yYQr",
+  "dataSources": [
+    {
+      "uid": "0QYJNIqaMzWBtanIvWles",
+      "icons": null,
+      "polygons": {
+        "style": "default",
+        "color": "#0C2639",
+        "hoverColor": "#FB4D42"
+      },
+      "popupHtmlTemplate": "<img src=\"{{Image}}\" class=\"cdp-i\" alt=\"{{Councilor}}\" style=\"margin-bottom: 1rem\"/>\n          <div class=\"ta-c m-v300\">\n            <div class=\"cdp-t t--sans t--upper m-t200\">{{Councilor}}</div>\n            <div class=\"cdp-st t--subinfo t--g300\">District {{DISTRICT}}</div>\n          </div>\n          <a href=\"{{Bio}}\" class=\"btn btn--b btn--100 btn--sm\">\n            Visit webpage<span class=\"a11y--h\"> of {{Councillor}}</span>\n          </a>",
+      "data": {
+        "type": "arcgis",
+        "service": "https://services.arcgis.com/sFnw0xNflSi8J0uh/ArcGIS/rest/services/City_Council_Districts/FeatureServer",
+        "layer": 0
+      },
+      "legend": {
+        "label": "City Council Districts",
+        "symbol": "polygon"
+      }
+    }
+  ],
+  "maps": [
+    {
+      "uid": "yBHcvxTmQyrK4WhLBxe16",
+      "title": "City Councilor Look-Up",
+      "instructionsHtml": "<div class=\"t--info\"> <p>\n          Hover over and click on your district to find your councilor, or search your address.\n        </p>\n        <p>\n          To see all City Council members, including at-large councilors, visit the\n          <a href=\"https://www.boston.gov/departments/city-council#city-council-members\">City Council page</a>.\n        </p>\n </div>",
+      "latitude": 42.32,
+      "longitude": -71.1284,
+      "zoom": 12,
+      "showZoomControl": true,
+      "showLegend": true,
+      "showUserLocation": false,
+      "addressSearch": {
+        "title": "",
+        "placeholder": "Search for your address…",
+        "autoPopupDataSourceUid": "0QYJNIqaMzWBtanIvWles",
+        "zoomToResult": false
+      }
+    }
+  ]
+}    
+        </textarea>
+
+        <div style="font-size: 16px; font-style: italic;">
+    Schema:
+    
+    <a href="https://cityofboston.github.io/vizwiz/vendor/docson/#../../schema/viz-1.0.schema.json" target="_blank">Docs</a> -
+    <a href="https://cityofboston.github.io/vizwiz/schema/viz-1.0.schema.json" target="_blank">JSON</a>
+
+        </div>
+
+        <h4 class="t--sans tt-u m-t500" style="font-weight: bold;">JSON Escape Helper</h4>
+        <textarea class="m-v200" style="display: block; width: 100%; height: 20vh" id="escape-in"></textarea>
+        <textarea class="m-v200" style="display: block; width: 100%; height: 20vh" id="escape-out"></textarea>
+      </div>
+      <cob-map class="g--8" style="height: 90vh" id="map" config="{}"></cob-viz> 
+    </div>
+
+  </div>
+
+  <script src="/web-components/fleetcomponents.js"></script>
+  <script src="https://unpkg.com/jsv/"></script>
+
+  <script type="text/javascript">
+    const configField = document.getElementById('config');
+
+    const savedConfig = window.localStorage.getItem('map-editor-config');
+    if (savedConfig) {
+      configField.value = savedConfig;
+    }
+
+    function updateMap() {
+      window.localStorage.setItem('map-editor-config', configField.value);
+      const map = document.getElementById('map');
+      const newMap = map.cloneNode();
+      newMap.config = configField.value;
+      map.parentElement.replaceChild(newMap, map);
+    }
+
+    configField.onchange = updateMap;
+
+    const map = document.getElementById('map');
+    map.componentOnReady().then(() => {
+      updateMap();
+    })
+
+    const jsonInField = document.getElementById('escape-in');
+    const jsonOutField = document.getElementById('escape-out');
+
+    jsonInField.onchange = function escapeJson() {
+      jsonOutField.value = JSON.stringify(jsonInField.value);
+    }
+
+    jsonOutField.onchange = function unescapeJson() {
+      jsonInField.value = JSON.parse(jsonOutField.value);
+    }
+  </script>
+</body>
+
+</html>
