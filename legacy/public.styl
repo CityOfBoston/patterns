@@ -9984,6 +9984,9 @@ section.contact-departments .contact-wrapper:hover .contact-metadata,
     padding: 0 5px 0 10px;
     margin-top: 20px
 }
+.view-filters .dr-h {
+    margin-top: 0       // du ticket #973
+}
 @media (min-width: 980px) {
     .view-filters .drawer-trigger:first-child,
     .filter-wrapper .drawer-trigger:first-child {
@@ -9993,14 +9996,19 @@ section.contact-departments .contact-wrapper:hover .contact-metadata,
 .view-filters .drawer-trigger .drawer-trigger-chevron,
 .filter-wrapper .drawer-trigger .drawer-trigger-chevron {
     height: 30px;
-    margin-top: 9px
+    //margin-top: 9px
+    margin-top: 14px    // du ticket #973
 }
 .view-filters .drawer-trigger.active .drawer-trigger-chevron,
 .filter-wrapper .drawer-trigger.active .drawer-trigger-chevron {
-    -ms-transform: rotate(90deg);
-    transform: rotate(90deg);
+    // du ticket #973
+    //    -ms-transform: rotate(90deg);
+    //    transform: rotate(90deg);
+    -ms-transform: rotate(180deg);    // du ticket #973
+    transform: rotate(180deg);        // du ticket #973
     height: 20px;
     margin-top: 20px
+    background-image: url(../images/global/icons/chevron-down.svg);               // du ticket #973
 }
 .view-filters .drawer-trigger.mobile-only,
 .filter-wrapper .drawer-trigger.mobile-only {
@@ -10034,6 +10042,13 @@ section.contact-departments .contact-wrapper:hover .contact-metadata,
     max-width: 100%;
     z-index: 30;
     left: 0
+    margin-top: -3px;   // du ticket #973
+}
+.view-filters .dr-c {
+    // du ticket #973
+    min-width: inherit;
+    max-width: inherit;
+    left: initial;
 }
 .view-filters label,
 .filter-wrapper label {
@@ -10114,6 +10129,11 @@ section.contact-departments .contact-wrapper:hover .contact-metadata,
     .filter-wrapper .drawer {
         position: absolute
     }
+    .views-exposed-topbar .view-filters .dr-c,
+      .filter-wrapper .dr-c {
+          // du ticket #973
+          position: initial
+      }
     .views-exposed-topbar .view-filters .drawer.mobile-only,
     .filter-wrapper .drawer.mobile-only {
         padding: 20px;
@@ -10186,7 +10206,8 @@ section.contact-departments .contact-wrapper:hover .contact-metadata,
 }
 .view-filters .drawer-trigger.active .drawer-trigger-chevron,
 .filter-wrapper .drawer-trigger.active .drawer-trigger-chevron {
-    background-image: url(../img/chevron.svg)
+    // du ticket #973
+    // background-image: url(../img/chevron.svg)
 }
 .view-filters .drawer-trigger.mobile-only,
 .filter-wrapper .drawer-trigger.mobile-only {
@@ -10205,7 +10226,20 @@ section.contact-departments .contact-wrapper:hover .contact-metadata,
     background-color: white;
     border-color: #e0e0e0;
     color: #288be4
+
+    &:not(.active):hover{
+        // du ticket #973
+        background-color: #288be4;
+        color: white;
+    }
 }
+.view-filters button.drawer-trigger{
+    // du ticket #973
+    width: 100%;
+    text-align: left;
+    font-weight: normal
+}
+
 .view-filters:hover {
     color: #fb4d42
 }
