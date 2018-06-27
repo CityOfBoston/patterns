@@ -1,6 +1,6 @@
 /* global: templayed */
 
-import { Component, Element, Listen, Prop, State, Watch } from '@stencil/core';
+import { Component, Element, Prop, State } from '@stencil/core';
 
 import { Feature, FeatureCollection } from 'geojson';
 
@@ -8,7 +8,6 @@ import {
   control as Lcontrol,
   latLng as LlatLng,
   latLngBounds as LlatLngBounds,
-  Control as LeafletControl,
   FeatureGroup as LeafletFeatureGroup,
   GeoJSON as LeafletGeoJSON,
   Icon as LeafletIcon,
@@ -17,14 +16,12 @@ import {
   Map as LeafletMap,
   Marker as LeafletMarker,
   Path as LeafletPath,
+  PathOptions,
+  LayerGroup,
 } from 'leaflet';
 
 import { basemapLayer, tiledMapLayer, query as esriQuery } from 'esri-leaflet';
-
-import { geosearch, GeosearchControl } from 'esri-leaflet-geocoder';
-
-import omit from 'lodash/omit';
-import isEqual from 'lodash/isEqual';
+import { geosearch } from 'esri-leaflet-geocoder';
 
 // This is our fork of Leaflet/Leaflet.markercluster to fix for module-based
 // importing.
@@ -33,6 +30,11 @@ import { MarkerClusterGroup } from 'leaflet.markercluster';
 // Has a global definition. Look, the code is 5 years old.
 import 'templayed';
 declare function templayed(string): (Object) => string;
+
+// Run `gulp schema:vizwiz` to regenerate these files.
+import { VizWizV10 } from '../types/viz-1.0.schema';
+
+export type VizConfig = VizWizV10;
 
 const DEFAULT_BASEMAP_URL =
   'https://awsgeo.boston.gov/arcgis/rest/services/Basemaps/BostonCityBasemap_WM/MapServer';
@@ -45,9 +47,15 @@ const BOSTON_BOUNDS = LlatLngBounds(
   LlatLng(42.456141, -70.818901)
 );
 
+const DEFAULT_LATITUDE = 42.357004;
+const DEFAULT_LONGITUDE = -71.062309;
+const DEFAULT_ZOOM = 14;
+
+const ADDRESS_FIELD_HOLDER_CLASS = 'cob-address-search-field-container';
+
 const WAYPOINT_ICON = new LeafletIcon({
   iconUrl: '/images/global/icons/mapping/waypoint-freedom-red.svg',
-  shadowUrl: null,
+  shadowUrl: undefined,
 
   iconSize: [35, 46], // size of the icon
   iconAnchor: [17, 46], // point of the icon which will correspond to marker's location
@@ -57,14 +65,15 @@ const WAYPOINT_ICON = new LeafletIcon({
 export interface LayerConfig {
   uid: string;
   url: string;
-  label: string;
-  color?: string;
-  hoverColor?: string;
-  fill?: boolean;
-  iconSrc?: string;
-  clusterIcons?: boolean;
-  popupTemplate?: string;
-  popupTemplateCompiled?: (Object) => string;
+  legendLabel: string;
+  legendSymbol: string | null;
+  color: string | null | undefined;
+  hoverColor: string | null | undefined;
+  fill: boolean;
+  iconSrc: string | null | undefined;
+  clusterIcons: boolean;
+  popupTemplate: string | null | undefined;
+  popupTemplateCompiled?: null | ((params: Object) => string);
 }
 
 interface LayerRecord {
@@ -94,76 +103,16 @@ export class CobMap {
   @Element() el;
 
   @Prop({ context: 'isServer' })
-  private isServer: boolean;
-
-  // Would call this "title" except that causes browsers to show a tooltip when
-  // hovering over the map.
-  /**
-   * Title for the map. Shown on the collapse / expand header at mobile widths.
-   */
-  @Prop() heading: string;
+  private isServer: boolean = false;
 
   /**
-   * Position to center the map on to start. Will be updated as the map is moved
-   * by the user. Changes to this will move the map.
+   * A JSON string or equivalent object that defines the map and layers. The
+   * schema for this config comes from VizWiz, so it won’t be documented here.
+   *
+   * Any attributes prefixed with `map-` will be passed on to the generated
+   * `<cob-map>` component. _E.g._ `map-id` or `map-style`.
    */
-  @Prop({ mutable: true })
-  latitude: number = 42.357004;
-
-  /**
-   * Position to center the map on to start. Will be updated as the map is moved
-   * by the user. Changes to this will move the map.
-   */
-  @Prop({ mutable: true })
-  longitude: number = -71.062309;
-
-  /**
-   * Zoom level for the map. Will be updated as the map is zoomed. Changes to
-   * this will zoom the map.
-   */
-  @Prop({ mutable: true })
-  zoom: number = 14;
-
-  /**
-   * Boolean attribute for whether to show zoom buttons in the bottom right of
-   * the map.
-   */
-  @Prop() showZoomControl: boolean = false;
-
-  /**
-   * Boolean attribute for whether to put a map legend in the overlay.
-   */
-  @Prop() showLegend: boolean = false;
-
-  /**
-   * Boolean attribute for whether to put a search box for addresses in the
-   * overlay.
-   */
-  @Prop() showAddressSearch: boolean = false;
-
-  /**
-   * Header to show above the address search box. Defaults to “Address search”
-   */
-  @Prop() addressSearchHeading: string = 'Address search';
-
-  /**
-   * String to use as the placeholder in the address search box (if visible).
-   * Defaults to “Search for an address…”
-   */
-  @Prop() addressSearchPlaceholder: string = 'Search for an address…';
-
-  /**
-   * If provided, clicking on the search result markers from an address search
-   * will open this layer’s popup. If there’s only one search result, the popup
-   * will be opened automatically.
-   */
-  @Prop() addressSearchPopupLayerUid: string | null = null;
-
-  /**
-   * URL for an ArcGIS tiled layer basemap. Default to our custom City of Boston
-   * basemap, layered over a generic Esri basemap.
-   */
-  @Prop() basemapUrl: string = DEFAULT_BASEMAP_URL;
+  @Prop() config: string = '';
 
   /**
    * Test attribute to make the overlay open automatically at mobile widths.
@@ -172,30 +121,33 @@ export class CobMap {
   @Prop({ mutable: true })
   openOverlay: boolean = false;
 
+  // Would call this "title" except that causes browsers to show a tooltip when
+  // hovering over the map.
+  /**
+   * Title for the map. Shown on the collapse / expand header at mobile widths.
+   */
+  heading: string = '';
+
   // Used to keep our IDs distinct on the page
   idSuffix = Math.random()
     .toString(36)
     .substring(2, 7);
 
-  map: LeafletMap;
-  zoomControl: LeafletControl;
-  addressSearchControl: GeosearchControl;
+  showAddressSearch: boolean = false;
+  showLegend: boolean = false;
+
+  map: LeafletMap | null = null;
   // We keep a reference to the DOM element for the search control because we
   // want to move it into our overlay, rather than have it as an Esri control.
-  addressSearchControlEl: HTMLElement | null;
-  addressSearchResultsFeatures: LeafletFeatureGroup;
+  addressSearchControlEl: HTMLElement | null = null;
+  addressSearchResultsFeatures: LeafletFeatureGroup | null = null;
+  addressSearchHeading: String = 'Address search';
+  addressSearchPopupLayerUid: String | null = null;
+  addressSearchZoomToResults: boolean = false;
 
-  // Used to distinguish between map moves that come from the UI and those that
-  // come from someone external changing our attributes. Keeps us from
-  // redundantly (and often mistakenly) updating the map when it's already
-  // updated.
-  mapMoveInProgress: boolean;
+  instructionsHtml: string = '';
 
-  // We keep track of element -> layer info in this map so that if a config
-  // child element's values update we can modify the layer.
-  layerRecordsByConfigElement: Map<HTMLElement, LayerRecord> = new Map();
-  // Configs are copied into this State to trigger re-rendering.
-  @State() layerConfigs: LayerConfig[] = [];
+  @State() layerRecords: LayerRecord[] = [];
 
   componentWillLoad() {
     if (this.isServer) {
@@ -204,6 +156,16 @@ export class CobMap {
       // up correctly when we hit the browser.
       return;
     }
+
+    const config = this.getConfig();
+    if (!config || !config.maps || config.maps.length === 0) {
+      return;
+    }
+
+    const mapConfig = config.maps[0];
+
+    this.heading = mapConfig.title || '';
+    this.instructionsHtml = mapConfig.instructionsHtml || '';
 
     this.map = new LeafletMap(this.el, {
       zoomControl: false,
@@ -214,74 +176,140 @@ export class CobMap {
       // zooming in any further, even though the Boston map supports it.
       maxZoom: 16,
     })
-      .setView([this.latitude, this.longitude], this.zoom)
+      .setView(
+        [
+          mapConfig.latitude != null ? mapConfig.latitude : DEFAULT_LATITUDE,
+          mapConfig.longitude != null ? mapConfig.longitude : DEFAULT_LONGITUDE,
+        ],
+        mapConfig.zoom || DEFAULT_ZOOM
+      )
       // Boston basemap only includes Boston, so we layer over Esri's "Gray"
       // basemap.
       .addLayer(basemapLayer('Gray'))
-      .addLayer(tiledMapLayer({ url: this.basemapUrl }));
+      .addLayer(tiledMapLayer({ url: DEFAULT_BASEMAP_URL }));
 
-    this.zoomControl = Lcontrol.zoom({
-      position: 'bottomright',
-    });
+    if (mapConfig.showZoomControl) {
+      const zoomControl = Lcontrol.zoom({
+        position: 'bottomright',
+      });
+      zoomControl.addTo(this.map);
+    }
 
-    this.addressSearchControl = geosearch({
-      expanded: true,
-      placeholder: this.addressSearchPlaceholder,
-      collapseAfterResult: false,
-      zoomToResult: false,
-      searchBounds: BOSTON_BOUNDS,
-    });
+    if (mapConfig.addressSearch) {
+      this.showAddressSearch = true;
+      this.addressSearchZoomToResults =
+        mapConfig.addressSearch.zoomToResult || false;
+      this.addressSearchPopupLayerUid =
+        mapConfig.addressSearch.autoPopupDataSourceUid || null;
 
-    (this.addressSearchControl as any).on(
-      'results',
-      this.onAddressSearchResults.bind(this)
-    );
+      if (mapConfig.addressSearch.title != null) {
+        this.addressSearchHeading = mapConfig.addressSearch.title;
+      }
 
-    this.addressSearchResultsFeatures = new LeafletFeatureGroup().addTo(
-      this.map
-    );
+      const addressSearchControl = geosearch({
+        expanded: true,
+        placeholder:
+          (mapConfig.addressSearch && mapConfig.addressSearch.placeholder) ||
+          'Search for an address…',
+        collapseAfterResult: false,
+        zoomToResult: false,
+        searchBounds: BOSTON_BOUNDS,
+      });
 
-    this.map.on({
-      moveend: this.handleMapPositionChangeEnd.bind(this),
-      zoomend: this.handleMapPositionChangeEnd.bind(this),
-    });
+      addressSearchControl.on(
+        'results',
+        this.onAddressSearchResults.bind(this)
+      );
 
-    this.updateControls();
+      this.addressSearchResultsFeatures = new LeafletFeatureGroup().addTo(
+        this.map
+      );
+
+      this.addressSearchControlEl = addressSearchControl.onAdd!(this.map);
+
+      // We massage the auto-generated DOM to match our Fleet classes
+      const inputEl = this.addressSearchControlEl.querySelector('input')!;
+      inputEl.setAttribute('id', this.getSearchFieldInputId());
+      inputEl.classList.add('sf-i-f');
+      inputEl.classList.remove('leaflet-bar');
+      inputEl.parentElement!.classList.add('sf-i');
+
+      const searchIconEl = document.createElement('div');
+      searchIconEl.classList.add('sf-i-b');
+      inputEl.parentElement!.insertBefore(searchIconEl, inputEl.nextSibling);
+    }
+
+    this.showLegend = !!mapConfig.showLegend;
   }
 
   componentDidLoad() {
-    this.map.invalidateSize();
+    this.map && this.map.invalidateSize();
+    this.maybeInsertAddressSearchControl();
+
+    const newLayerRecords: Array<LayerRecord> = [];
+
+    const config = this.getConfig();
+    ((config && config.dataSources) || []).map(
+      ({ data, uid, legend, polygons, icons, popupHtmlTemplate }) => {
+        if (!data) {
+          return;
+        }
+
+        if (data.type === 'arcgis') {
+          newLayerRecords.push(
+            this.addEsriLayerToMap({
+              uid: uid!,
+              url: `${data.service!}/${data.layer!}`,
+              legendLabel: (legend && legend.label) || '',
+              legendSymbol: (legend && legend.symbol) || null,
+              color: polygons ? polygons.color : null,
+              hoverColor: polygons ? polygons.hoverColor : null,
+              fill: true,
+              iconSrc: icons ? icons.markerUrl : null,
+              clusterIcons: (icons && icons.cluster) || false,
+              popupTemplate: popupHtmlTemplate,
+            })
+          );
+        }
+      }
+    );
+
+    this.layerRecords = newLayerRecords;
   }
 
   componentDidUnload() {
-    this.map.remove();
-    this.layerRecordsByConfigElement = new Map();
+    this.map && this.map.remove();
   }
 
   componentDidUpdate() {
-    // If we're showing the search control we need to add it again to the page
-    // after a re-render.
-    if (this.addressSearchControlEl) {
-      this.el
-        .querySelector('.cob-address-search-field-container')
-        .appendChild(this.addressSearchControlEl);
+    this.maybeInsertAddressSearchControl();
+  }
+
+  /**
+   * Takes JSON out of either a "config" prop or a <script> child. We support
+   * the former for integration with other components, and the latter for easier
+   * HTML building.
+   */
+  getConfig(): VizConfig | null {
+    const configScript = this.el.querySelector('script[slot="config"]');
+
+    try {
+      if (this.config) {
+        return JSON.parse(this.config);
+      } else if (configScript) {
+        return JSON.parse(configScript.innerHTML);
+      } else {
+        return null;
+      }
+    } catch (e) {
+      // eslint-disable-next-line no-console
+      console.error('Could not parse config JSON', e);
+      throw e;
     }
   }
 
-  @Listen('cobMapEsriLayerConfig')
-  onChildEsriDataConfig(ev) {
-    ev.stopPropagation();
-    this.addEsriLayer(ev.target, ev.detail);
-  }
-
-  onFeatureMouseOver(configElement: HTMLElement, ev: LeafletEvent) {
-    const layerRecord = this.layerRecordsByConfigElement.get(configElement);
-    if (!layerRecord) {
-      return;
-    }
-
+  onFeatureMouseOver(config: LayerConfig, ev: LeafletEvent) {
     const feature: LeafletLayer = ev.target;
-    const { config } = layerRecord;
 
     if (feature instanceof LeafletPath) {
       if (config.hoverColor) {
@@ -291,14 +319,23 @@ export class CobMap {
     }
   }
 
-  onFeatureMouseOut(configElement: HTMLElement, ev: LeafletEvent) {
-    const layerRecord = this.layerRecordsByConfigElement.get(configElement);
-    if (!layerRecord) {
-      return;
-    }
+  onFeatureMouseOut(config: LayerConfig, ev: LeafletEvent) {
+    const layerRecord = this.layerRecords.find(({ config: c }) => c === config);
 
-    const feature: LeafletLayer = ev.target;
-    layerRecord.featuresLayer.resetStyle(feature);
+    if (layerRecord) {
+      const feature: LeafletLayer = ev.target;
+      layerRecord.featuresLayer.resetStyle(feature);
+    }
+  }
+
+  maybeInsertAddressSearchControl() {
+    // If we're showing the search control we need to add it again to the page
+    // after a re-render.
+    if (this.addressSearchControlEl) {
+      this.el
+        .querySelector(`.${ADDRESS_FIELD_HOLDER_CLASS}`)
+        .appendChild(this.addressSearchControlEl);
+    }
   }
 
   onAddressSearchResults(data) {
@@ -306,6 +343,10 @@ export class CobMap {
       // If we're on mobile, the overlay was open to show the address search
       // field. We close it to keep it from obscuring the results.
       this.openOverlay = false;
+    }
+
+    if (!this.addressSearchResultsFeatures) {
+      return;
     }
 
     this.addressSearchResultsFeatures.clearLayers();
@@ -321,48 +362,43 @@ export class CobMap {
       this.addressSearchResultsFeatures.addLayer(marker);
     }
 
-    const popupLayerConfig =
+    const popupLayerRecord =
       this.addressSearchPopupLayerUid &&
-      this.layerConfigs.find(
-        ({ uid }) => uid === this.addressSearchPopupLayerUid
+      this.layerRecords.find(
+        ({ config: { uid } }) => uid === this.addressSearchPopupLayerUid
       );
 
-    if (popupLayerConfig) {
+    if (popupLayerRecord) {
       // We bind to each marker individually rather than binding to the
       // FeatureGroup as a whole so that we can call openPopup on the Marker
       // instance itself.
       markers.forEach(marker => {
-        marker.bindPopup(
-          this.handleAddressSearchMarkerPopup.bind(this, popupLayerConfig)
+        marker.bindPopup(() =>
+          this.handleAddressSearchMarkerPopup(popupLayerRecord.config, marker)
         );
       });
     } else {
       this.addressSearchResultsFeatures.unbindPopup();
     }
 
-    if (markers.length === 1 && popupLayerConfig) {
+    if (markers.length === 1 && popupLayerRecord) {
       // Opening the popup will bring it into view automatically.
       markers[0].openPopup();
-    } else if (markers.length > 0) {
-      this.map.fitBounds(this.addressSearchResultsFeatures.getBounds());
+    } else if (markers.length > 0 && this.addressSearchZoomToResults) {
+      this.map!.fitBounds(this.addressSearchResultsFeatures.getBounds());
     }
   }
 
   handleMapLayerPopup(
-    configElement: HTMLElement,
+    config: LayerConfig,
     featureLayer: GeoJSONFeatureLayer
   ): string | null {
-    const layerRecord = this.layerRecordsByConfigElement.get(configElement);
-    if (!layerRecord) {
-      return null;
-    }
-
     const { feature } = featureLayer;
     if (feature.type !== 'Feature') {
       return null;
     }
 
-    return this.renderPopupContent(layerRecord.config, feature.properties);
+    return this.renderPopupContent(config, feature.properties || {});
   }
 
   handleAddressSearchMarkerPopup(
@@ -388,10 +424,9 @@ export class CobMap {
         const feature = featureCollection.features[0];
 
         if (feature) {
-          marker
-            .getPopup()
+          marker.getPopup()!
             .setContent(
-              this.renderPopupContent(layerConfig, feature.properties)
+              this.renderPopupContent(layerConfig, feature.properties) || ''
             )
             .update();
         } else {
@@ -422,37 +457,23 @@ export class CobMap {
     return config.popupTemplateCompiled(trimmedProperties);
   }
 
-  makeFeatureStyle({ color, fill }: LayerConfig) {
+  makeFeatureStyle({ color, fill }: LayerConfig): PathOptions {
     return {
-      color,
+      color: color || undefined,
       fill,
       weight: 3,
     };
   }
 
-  makeFeatureHoverStyle({ color, hoverColor, fill }: LayerConfig) {
+  makeFeatureHoverStyle({ color, hoverColor, fill }: LayerConfig): PathOptions {
     return {
-      color: hoverColor || color,
+      color: hoverColor || color || undefined,
       fill,
       weight: 4,
     };
   }
 
-  addEsriLayer(configElement: HTMLElement, config: LayerConfig) {
-    const layerRecord = this.layerRecordsByConfigElement.get(configElement);
-
-    if (layerRecord) {
-      // Short-circuit in the case of the config not changing so that we don't
-      // infinite loop, since the state change below will cause a re-render,
-      // which will cause the child config elements to "update" and re-broadcast
-      // their configs.
-      if (isEqual(omit(layerRecord.config, 'popupTemplateCompiled'), config)) {
-        return;
-      }
-
-      layerRecord.mapLayer.remove();
-    }
-
+  addEsriLayerToMap(config: LayerConfig): LayerRecord {
     const layerOptions = {
       interactive: !!config.popupTemplate,
       // We set the style at the options level to create the default for new
@@ -472,17 +493,17 @@ export class CobMap {
         }),
       onEachFeature: (_, featureLayer: LeafletLayer) => {
         featureLayer.on({
-          mouseover: this.onFeatureMouseOver.bind(this, configElement),
-          mouseout: this.onFeatureMouseOut.bind(this, configElement),
+          mouseover: ev => this.onFeatureMouseOver(config, ev),
+          mouseout: ev => this.onFeatureMouseOut(config, ev),
         });
       },
     };
 
     // We create a blank GeoJSON layer just so we have it. Data will be added
     // after it’s loaded from Esri.
-    const featuresLayer = new LeafletGeoJSON(null, layerOptions);
+    const featuresLayer = new LeafletGeoJSON(undefined, layerOptions);
 
-    const mapLayer = (config.clusterIcons
+    const mapLayer: LayerGroup = (config.clusterIcons
       ? new MarkerClusterGroup().addLayer(featuresLayer)
       : featuresLayer
     ).addTo(this.map);
@@ -511,7 +532,8 @@ export class CobMap {
         if (mapLayer !== featuresLayer) {
           // MarkerClusterGroup only processes new icons on adding the layer.
           // There's no method to call to re-pull the child Markers from
-          // featuresLayer now that addData has created them.
+          // featuresLayer now that addData has created them, so we clear it all
+          // and add again.
           mapLayer.clearLayers();
           mapLayer.addLayer(featuresLayer);
         }
@@ -520,82 +542,25 @@ export class CobMap {
     if (config.popupTemplate) {
       config.popupTemplateCompiled = templayed(config.popupTemplate);
       // Since the MarkerClusterLayer works by pulling the layers out of their
-      // original parent, we need to bind to the map layer rather than the
-      // feature layer.
-      mapLayer.bindPopup(this.handleMapLayerPopup.bind(this, configElement));
+      // original parent (featureLayer) into itself (mapLayer), we need to bind
+      // to the map layer rather than the feature layer. For non-clustered
+      // icons, mapLayer and featureLayer are the same.
+      mapLayer.bindPopup(
+        layer =>
+          this.handleMapLayerPopup(config, layer as GeoJSONFeatureLayer) || ''
+      );
     } else {
       config.popupTemplateCompiled = null;
       mapLayer.unbindPopup();
     }
 
-    const newLayerRecord = { mapLayer, featuresLayer, config };
-
-    this.layerRecordsByConfigElement.set(configElement, newLayerRecord);
-    this.updateLayerConfigState();
-  }
-
-  updateLayerConfigState() {
-    const layerConfigs = [];
-    this.layerRecordsByConfigElement.forEach(({ config }) =>
-      layerConfigs.push(config)
-    );
-    this.layerConfigs = layerConfigs;
-  }
-
-  // Handler to keep our attributes up-to-date with map movements from the UI.
-  handleMapPositionChangeEnd() {
-    // Keeps us from moving the map in response to these changes.
-    this.mapMoveInProgress = true;
-
-    const { lat, lng } = this.map.getCenter();
-    this.latitude = lat;
-    this.longitude = lng;
-    this.zoom = this.map.getZoom();
-
-    this.mapMoveInProgress = false;
+    return { config, mapLayer, featuresLayer };
   }
 
   handleLegendLabelMouseClick(ev: MouseEvent) {
     this.openOverlay = !this.openOverlay;
     ev.stopPropagation();
     ev.preventDefault();
-  }
-
-  @Watch('longitude')
-  @Watch('latitude')
-  @Watch('zoom')
-  updatePosition() {
-    if (!this.mapMoveInProgress) {
-      this.map.setView([this.latitude, this.longitude], this.zoom);
-    }
-  }
-
-  @Watch('showZoomControl')
-  @Watch('showAddressSearch')
-  updateControls() {
-    if (this.showZoomControl) {
-      this.zoomControl.addTo(this.map);
-    } else {
-      this.zoomControl.remove();
-    }
-
-    if (this.showAddressSearch) {
-      this.addressSearchControlEl = this.addressSearchControl.onAdd(this.map);
-
-      // We massage the auto-generated DOM to match our Fleet classes
-      const inputEl = this.addressSearchControlEl.querySelector('input');
-      inputEl.setAttribute('id', this.getSearchFieldInputId());
-      inputEl.classList.add('sf-i-f');
-      inputEl.classList.remove('leaflet-bar');
-      inputEl.parentElement.classList.add('sf-i');
-
-      const searchIconEl = document.createElement('div');
-      searchIconEl.classList.add('sf-i-b');
-      inputEl.parentElement.insertBefore(searchIconEl, inputEl.nextSibling);
-    } else {
-      this.addressSearchControl.remove();
-      this.addressSearchControlEl = null;
-    }
   }
 
   getSearchFieldInputId() {
@@ -628,31 +593,36 @@ export class CobMap {
           </label>
 
           <div class="co-b b--w cob-overlay-content">
-            <slot name="instructions" />
+            {this.instructionsHtml && <div innerHTML={this.instructionsHtml} />}
 
             {this.showAddressSearch && (
               <div class="sf sf--md m-v500">
                 <label class="sf-l">{this.addressSearchHeading}</label>
-                <div class="cob-address-search-field-container m-v100" />
+                <div class={`${ADDRESS_FIELD_HOLDER_CLASS} m-v100`} />
               </div>
             )}
 
             {this.showLegend && (
               <div class="g cob-legend-table">
-                {this.layerConfigs.map(config => (
-                  <div
-                    class={`${
-                      this.layerConfigs.length === 1 ? 'g--12' : 'g--6'
-                    } cob-legend-table-row m-b200`}
-                  >
-                    <div class="cob-legend-table-icon">
-                      {this.renderLegendIcon(config)}
+                {this.layerRecords
+                  .filter(
+                    ({ config }) => config.legendSymbol && config.legendLabel
+                  )
+                  .map(({ config }) => (
+                    <div
+                      class={`${
+                        this.layerRecords.length === 1 ? 'g--12' : 'g--6'
+                      } cob-legend-table-row m-b200`}
+                    >
+                      <div class="cob-legend-table-icon">
+                        {this.renderLegendIcon(config)}
+                      </div>
+
+                      <div class="t--subinfo cob-legend-table-label">
+                        {config.legendLabel}
+                      </div>
                     </div>
-                    <div class="t--subinfo cob-legend-table-label">
-                      {config.label}
-                    </div>
-                  </div>
-                ))}
+                  ))}
               </div>
             )}
           </div>
@@ -661,21 +631,21 @@ export class CobMap {
     );
   }
 
-  renderLegendIcon({ fill, color, iconSrc }: LayerConfig) {
-    if (color) {
-      if (fill) {
+  renderLegendIcon({ color, iconSrc, legendSymbol }: LayerConfig) {
+    switch (legendSymbol) {
+      case 'polygon':
         return (
           <div
             style={{
               margin: '4px',
               border: '3px',
               borderStyle: 'solid',
-              borderColor: color,
+              borderColor: color!,
             }}
           >
             <div
               style={{
-                background: color,
+                background: color!,
                 opacity: '0.2',
                 width: '36px',
                 height: '36px',
@@ -683,7 +653,7 @@ export class CobMap {
             />
           </div>
         );
-      } else {
+      case 'line':
         return (
           <div
             style={{
@@ -691,13 +661,14 @@ export class CobMap {
               height: '3px',
               marginTop: '23px',
               marginBottom: '24px',
-              backgroundColor: color,
+              backgroundColor: color!,
             }}
           />
         );
-      }
-    } else {
-      return <img src={iconSrc || DEFAULT_ICON_SRC} width="50" height="50" />;
+      case 'icon':
+        return <img src={iconSrc || DEFAULT_ICON_SRC} width="50" height="50" />;
+      default:
+        return null;
     }
   }
 }
