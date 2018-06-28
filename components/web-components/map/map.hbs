@@ -1,4 +1,4 @@
-<cob-map style="height: 500px" {{#if open_overlay}}open-overlay{{/if}}>
+<cob-map {{#if modal}}{{else}}style="height: 500px"{{/if}} {{#if open_overlay}}open-overlay{{/if}} {{#if modal}}modal modal-visible{{/if}}>
   <script slot="config" type="application/json">
 {
   "version": "1.0",
