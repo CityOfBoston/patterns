@@ -30,7 +30,7 @@ export const readyComponentSelector = Selector(query => {
   } else if (!componentEl.__isReady) {
     // This might cause multiple listeners, but they're idempotent so that's not
     // worth guarding against.
-    componentEl.componentOnReady(() => {
+    componentEl.componentOnReady().then(() => {
       componentEl.__isReady = true;
     });
     return null;
