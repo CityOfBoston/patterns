@@ -5,6 +5,6 @@ module.exports = function(gulp) {
     var stream = gulp.watch(
       ['./legacy/**.styl'], ['legacy']
     );
-    return stream;
+    return stream; 
   };
 };
