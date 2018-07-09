@@ -33,6 +33,24 @@ Any attributes prefixed with `map-` will be passed on to the generated
 `<cob-map>` component. _E.g._ `map-id` or `map-style`.
 
 
+#### modal
+
+boolean
+
+If true, the map starts hidden and, when shown, appears in a full-screen
+modal dialog.
+
+Note: On the server, this may be the empty string when true, so we need to
+check against `!== false` to test it.
+
+
+#### modalVisible
+
+boolean
+
+Change to true to make the modal appear.
+
+
 #### openOverlay
 
 boolean
@@ -54,12 +72,47 @@ Any attributes prefixed with `map-` will be passed on to the generated
 `<cob-map>` component. _E.g._ `map-id` or `map-style`.
 
 
+#### modal
+
+boolean
+
+If true, the map starts hidden and, when shown, appears in a full-screen
+modal dialog.
+
+Note: On the server, this may be the empty string when true, so we need to
+check against `!== false` to test it.
+
+
+#### modal-visible
+
+boolean
+
+Change to true to make the modal appear.
+
+
 #### open-overlay
 
 boolean
 
 Test attribute to make the overlay open automatically at mobile widths.
 Only used so that we can take Percy screenshots of the overlay.
+
+
+## Methods
+
+#### hide()
+
+Hides the modal, if the map is in modal mode.
+
+
+#### show()
+
+Shows the modal, if the map is in modal mode.
+
+
+#### toggle()
+
+If the map is in modal mode, toggles whether or not it’s visible.
 
 
 
