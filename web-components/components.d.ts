@@ -118,6 +118,10 @@ declare global {
        */
       'hide': () => void;
       /**
+       * ID of the HTML element. Used to automatically open the map modal.
+       */
+      'id': string;
+      /**
        * If true, the map starts hidden and, when shown, appears in a full-screen modal dialog.  Note: On the server, this may be the empty string when true, so we need to check against `!== false` to test it.
        */
       'modal': boolean;
@@ -163,6 +167,10 @@ declare global {
        * A JSON string or equivalent object that defines the map and layers. The schema for this config comes from VizWiz, so it won’t be documented here.  Any attributes prefixed with `map-` will be passed on to the generated `<cob-map>` component. _E.g._ `map-id` or `map-style`.
        */
       'config'?: string;
+      /**
+       * ID of the HTML element. Used to automatically open the map modal.
+       */
+      'id'?: string;
       /**
        * If true, the map starts hidden and, when shown, appears in a full-screen modal dialog.  Note: On the server, this may be the empty string when true, so we need to check against `!== false` to test it.
        */

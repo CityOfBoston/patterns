@@ -1,5 +1,5 @@
 /* global fixture */
-import { Selector } from 'testcafe';
+import { Selector, ClientFunction } from 'testcafe';
 import {
   componentPreviewUrl,
   CORS_ALLOW_HEADERS,
@@ -40,7 +40,6 @@ fixture('Map')
 // We keep everything consistent as lowercase because IE11 forces lowercase.
 const DISTRICT_DEFAULT_COLOR = '#0c2639';
 const DISTRICT_HOVER_COLOR = '#fb4d42';
-const DISTRICT_GREEN_COLOR = '#00ff00';
 
 const PARKING_ICON = '/images/global/icons/mapping/parking.svg';
 
@@ -77,4 +76,35 @@ test('Clicking parking marker shows popup', async t => {
     // This is special intro text for the 100 Clarendon garage.
     'You must show proof of your residency in the Back Bay, South End, or Bay Village.'
   );
+});
+
+fixture('Map Modal')
+  .page(componentPreviewUrl('map', 'modal-toggle'))
+  .before(nockSetup)
+  .after(nockTeardown);
+
+test('Showing and hiding with buttons and window history', async t => {
+  const goBack = ClientFunction(() => window.history.back());
+  const goForward = ClientFunction(() => window.history.forward());
+
+  // Ensures that the page loads before we start messing with history. Otherwise
+  // Edge will click "back" right off of the page.
+  await map.root();
+
+  await t.click(Selector('a.btn'));
+  await t.expect(map.leafletMap.exists).ok();
+
+  await goBack();
+  await t.expect(map.leafletMap.exists).notOk();
+
+  await goForward();
+  await t.expect(map.leafletMap.exists).ok();
+
+  await t.click(map.modalCloseButton);
+  await t.expect(map.leafletMap.exists).notOk();
+
+  // Regression to ensure that the close button clears out the hash, otherwise
+  // pressing the button won't cause a hashchange event.
+  await t.click(Selector('a.btn'));
+  await t.expect(map.leafletMap.exists).ok();
 });
