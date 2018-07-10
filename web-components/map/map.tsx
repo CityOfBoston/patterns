@@ -672,7 +672,7 @@ export class CobMap {
           <div class="cob-map-modal-contents">
             <div class="cob-map-modal-title">
               <div class="sh sh--sm p-a300" style={{ borderBottom: 'none' }}>
-                <h3 class="sh-title">{this.heading}</h3>
+                <h2 class="sh-title">{this.heading}</h2>
               </div>
 
               {this.showAddressSearch && (
