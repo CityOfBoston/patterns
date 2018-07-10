@@ -1,6 +1,6 @@
 /* global: templayed */
 
-import { Component, Element, Prop, State } from '@stencil/core';
+import { Component, Element, Prop, State, Method } from '@stencil/core';
 
 import { Feature, FeatureCollection } from 'geojson';
 
@@ -47,8 +47,8 @@ const BOSTON_BOUNDS = LlatLngBounds(
   LlatLng(42.456141, -70.818901)
 );
 
-const DEFAULT_LATITUDE = 42.357004;
-const DEFAULT_LONGITUDE = -71.062309;
+const DEFAULT_LATITUDE = 42.3240812;
+const DEFAULT_LONGITUDE = -71.0844068;
 const DEFAULT_ZOOM = 14;
 
 const ADDRESS_FIELD_HOLDER_CLASS = 'cob-address-search-field-container';
@@ -121,6 +121,21 @@ export class CobMap {
   @Prop({ mutable: true })
   openOverlay: boolean = false;
 
+  /**
+   * If true, the map starts hidden and, when shown, appears in a full-screen
+   * modal dialog.
+   *
+   * Note: On the server, this may be the empty string when true, so we need to
+   * check against `!== false` to test it.
+   */
+  @Prop() modal: boolean = false;
+
+  /**
+   * Change to true to make the modal appear.
+   */
+  @Prop({ mutable: true })
+  modalVisible: boolean = false;
+
   // Would call this "title" except that causes browsers to show a tooltip when
   // hovering over the map.
   /**
@@ -144,6 +159,7 @@ export class CobMap {
   addressSearchHeading: String = 'Address search';
   addressSearchPopupLayerUid: String | null = null;
   addressSearchZoomToResults: boolean = false;
+  @State() addressSearchFocused: boolean = false;
 
   instructionsHtml: string = '';
 
@@ -167,7 +183,48 @@ export class CobMap {
     this.heading = mapConfig.title || '';
     this.instructionsHtml = mapConfig.instructionsHtml || '';
 
-    this.map = new LeafletMap(this.el, {
+    if (mapConfig.addressSearch) {
+      this.showAddressSearch = true;
+      this.addressSearchZoomToResults =
+        mapConfig.addressSearch.zoomToResult || false;
+      this.addressSearchPopupLayerUid =
+        mapConfig.addressSearch.autoPopupDataSourceUid || null;
+
+      if (mapConfig.addressSearch.title != null) {
+        this.addressSearchHeading = mapConfig.addressSearch.title;
+      }
+    }
+    this.showLegend = !!mapConfig.showLegend;
+  }
+
+  componentDidLoad() {
+    if (this.isServer) {
+      return;
+    }
+
+    // in IE 11, the DOM isn't available at the time that this method fires. So,
+    // we wait a tick so that we can find the .cob-map-leaflet-container in
+    // maybeMountMap below.
+    setTimeout(() => {
+      this.maybeMountMap();
+    }, 0);
+  }
+
+  maybeMountMap() {
+    if (this.map || (this.modal !== false && this.modalVisible === false)) {
+      return;
+    }
+
+    const config = this.getConfig();
+    if (!config || !config.maps || config.maps.length === 0) {
+      return;
+    }
+
+    const mapConfig = config.maps[0];
+    // Used in the modal version. The inline version just binds to ourselves.
+    const mapContainerEl = this.el.querySelector('.cob-map-leaflet-container');
+
+    this.map = new LeafletMap(mapContainerEl || this.el, {
       zoomControl: false,
       // 11 really shows the Greater Boston area well, no need to zoom to show
       // all of New England or the world.
@@ -195,17 +252,7 @@ export class CobMap {
       zoomControl.addTo(this.map);
     }
 
-    if (mapConfig.addressSearch) {
-      this.showAddressSearch = true;
-      this.addressSearchZoomToResults =
-        mapConfig.addressSearch.zoomToResult || false;
-      this.addressSearchPopupLayerUid =
-        mapConfig.addressSearch.autoPopupDataSourceUid || null;
-
-      if (mapConfig.addressSearch.title != null) {
-        this.addressSearchHeading = mapConfig.addressSearch.title;
-      }
-
+    if (this.showAddressSearch) {
       const addressSearchControl = geosearch({
         expanded: true,
         placeholder:
@@ -233,23 +280,23 @@ export class CobMap {
       inputEl.classList.add('sf-i-f');
       inputEl.classList.remove('leaflet-bar');
       inputEl.parentElement!.classList.add('sf-i');
+      inputEl.addEventListener(
+        'focus',
+        () => (this.addressSearchFocused = true)
+      );
+      inputEl.addEventListener(
+        'blur',
+        () => (this.addressSearchFocused = false)
+      );
 
       const searchIconEl = document.createElement('div');
       searchIconEl.classList.add('sf-i-b');
       inputEl.parentElement!.insertBefore(searchIconEl, inputEl.nextSibling);
     }
 
-    this.showLegend = !!mapConfig.showLegend;
-  }
-
-  componentDidLoad() {
-    this.map && this.map.invalidateSize();
-    this.maybeInsertAddressSearchControl();
-
     const newLayerRecords: Array<LayerRecord> = [];
 
-    const config = this.getConfig();
-    ((config && config.dataSources) || []).map(
+    (config.dataSources || []).map(
       ({ data, uid, legend, polygons, icons, popupHtmlTemplate }) => {
         if (!data) {
           return;
@@ -275,6 +322,8 @@ export class CobMap {
     );
 
     this.layerRecords = newLayerRecords;
+
+    this.maybeInsertAddressSearchControl();
   }
 
   componentDidUnload() {
@@ -282,6 +331,7 @@ export class CobMap {
   }
 
   componentDidUpdate() {
+    this.maybeMountMap();
     this.maybeInsertAddressSearchControl();
   }
 
@@ -308,6 +358,30 @@ export class CobMap {
     }
   }
 
+  /**
+   * Shows the modal, if the map is in modal mode.
+   */
+  @Method()
+  show() {
+    this.modalVisible = true;
+  }
+
+  /**
+   * Hides the modal, if the map is in modal mode.
+   */
+  @Method()
+  hide() {
+    this.modalVisible = false;
+  }
+
+  /**
+   * If the map is in modal mode, toggles whether or not it’s visible.
+   */
+  @Method()
+  toggle() {
+    this.modalVisible = !this.modalVisible;
+  }
+
   onFeatureMouseOver(config: LayerConfig, ev: LeafletEvent) {
     const feature: LeafletLayer = ev.target;
 
@@ -332,9 +406,16 @@ export class CobMap {
     // If we're showing the search control we need to add it again to the page
     // after a re-render.
     if (this.addressSearchControlEl) {
-      this.el
-        .querySelector(`.${ADDRESS_FIELD_HOLDER_CLASS}`)
-        .appendChild(this.addressSearchControlEl);
+      const addressFieldHolder = this.el.querySelector(
+        `.${ADDRESS_FIELD_HOLDER_CLASS}`
+      );
+
+      if (
+        addressFieldHolder &&
+        !addressFieldHolder.contains(this.addressSearchControlEl)
+      ) {
+        addressFieldHolder.appendChild(this.addressSearchControlEl);
+      }
     }
   }
 
@@ -424,10 +505,15 @@ export class CobMap {
         const feature = featureCollection.features[0];
 
         if (feature) {
+          // We stop scrolling, since the update call below will need to move
+          // the map, and it won’t do anything if the map already moving.
+          this.map!.stop();
+
           marker.getPopup()!
             .setContent(
               this.renderPopupContent(layerConfig, feature.properties) || ''
             )
+            // This brings the filled-out popup into view.
             .update();
         } else {
           marker.closePopup();
@@ -568,10 +654,62 @@ export class CobMap {
   }
 
   render() {
+    if (this.modal !== false) {
+      return this.renderModal();
+    } else {
+      return this.renderInline();
+    }
+  }
+
+  renderModal() {
+    if (this.modalVisible === false) {
+      return null;
+    }
+
+    return (
+      <div class="md md--fw">
+        <div class="md-c">
+          <div class="cob-map-modal-contents">
+            <div class="cob-map-modal-title">
+              <div class="sh sh--sm p-a300" style={{ borderBottom: 'none' }}>
+                <h3 class="sh-title">{this.heading}</h3>
+              </div>
+
+              {this.showAddressSearch && (
+                <div
+                  class="p-a300"
+                  style={{ paddingTop: '0', paddingBottom: '0' }}
+                >
+                  <div class="sf sf--md">
+                    <div
+                      class={`${ADDRESS_FIELD_HOLDER_CLASS} m-v100 ${
+                        this.addressSearchFocused ? 'focused' : ''
+                      }`}
+                    />
+                  </div>
+                </div>
+              )}
+
+              <button class="md-cb" type="button" onClick={() => this.hide()}>
+                Hide Map
+              </button>
+            </div>
+            <div class="cob-map-leaflet-container" />
+            <div class="cob-map-modal-controls">
+              {this.instructionsHtml && (
+                <div class="p-a300" innerHTML={this.instructionsHtml} />
+              )}
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  renderInline() {
     // During server rendering, boolean attributes start out as the empty string
     // rather than a true.
     const openOverlay = this.openOverlay !== false;
-
     const toggleInputId = `cob-map-overlay-collapsible-${this.idSuffix}`;
 
     return (

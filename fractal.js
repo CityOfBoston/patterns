@@ -100,13 +100,14 @@ fractal.docs.engine(hbs);
   prerendering. We do this so that Percy has real HTML to work from when it
   makes screenshots.
 
-  This has to be done in this way rather than with Handlebars helpers
-  because Handlebars does not support async helpers, and the prerendering
-  process is async. (Happily, Fractal handles returning a Promise from the
-  render method.)
+  This has to be done in this way rather than with Handlebars helpers because
+  Handlebars does not support async helpers, and the prerendering process is
+  async. (Happily, Fractal handles returning a Promise from the render method.)
+
+  We only use globalStencilRenderer when doing building exports. Otherwise we
+  make one renderer per request so that it picks up code changes.
 */
-const stencilConfig = stencil.loadConfig(__dirname);
-const stencilRenderer = new stencil.Renderer(stencilConfig);
+let globalStencilRenderer = null;
 
 fractal.components.engine({
   register(source, app) {
@@ -137,8 +138,22 @@ fractal.components.engine({
         // unable to shim its proxy-rewrite into "import" the way it does for
         // XHR.
         if (context._self.name === 'preview') {
+          let stencilRenderer;
+          if (globalStencilRenderer) {
+            stencilRenderer = globalStencilRenderer;
+          } else {
+            const stencilConfig = stencil.loadConfig(__dirname);
+            stencilRenderer = new stencil.Renderer(stencilConfig);
+          }
+
           return hbsPromise.then(str =>
-            stencilRenderer.hydrate({ html: str }).then(({ html }) => html)
+            stencilRenderer.hydrate({ html: str }).then(({ html }) => {
+              if (!globalStencilRenderer) {
+                stencilRenderer.destroy();
+              }
+
+              return html;
+            })
           );
         } else {
           return hbsPromise;
@@ -159,14 +174,17 @@ const fleetTheme = mandelbrot({
 
 fractal.web.theme(fleetTheme);
 
-// Hooks in to the fractal build behavior to shut down the stencilRenderer.
+// Hooks in to the fractal build behavior to shut down the globalStencilRenderer.
 // Otherwise its worker child processes keep this process alive.
 fractal.web.on('builder:created', builder => {
+  const stencilConfig = stencil.loadConfig(__dirname);
+  globalStencilRenderer = new stencil.Renderer(stencilConfig);
+
   builder.on('end', () => {
-    stencilRenderer.destroy();
+    globalStencilRenderer.destroy();
   });
 
   builder.on('error', () => {
-    stencilRenderer.destroy();
+    globalStencilRenderer.destroy();
   });
 });

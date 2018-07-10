@@ -16,7 +16,7 @@ export function componentPreviewUrl(component, variant = null) {
 }
 
 // Selector that takes a query for a Stencil web component and returns it when
-// it is up and running (based on the Stencil onComponentReady method).
+// it is up and running (based on the Stencil componentOnReady method).
 // Especially important on IE11, which takes a bit for the component to be
 // ready.
 //

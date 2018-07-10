@@ -31,3 +31,8 @@ variants:
   - name: Overlay Open
     context:
       open_overlay: true
+
+  - name: Modal
+    context:
+      modal: true
+      show_address_search: true
