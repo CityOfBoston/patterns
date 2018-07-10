@@ -1,6 +1,6 @@
 /* global: templayed */
 
-import { Component, Element, Prop, State, Method } from '@stencil/core';
+import { Component, Element, Prop, State, Method, Listen } from '@stencil/core';
 
 import { Feature, FeatureCollection } from 'geojson';
 
@@ -106,6 +106,11 @@ export class CobMap {
   private isServer: boolean = false;
 
   /**
+   * ID of the HTML element. Used to automatically open the map modal.
+   */
+  @Prop() id: string = '';
+
+  /**
    * A JSON string or equivalent object that defines the map and layers. The
    * schema for this config comes from VizWiz, so it won’t be documented here.
    *
@@ -173,6 +178,8 @@ export class CobMap {
       return;
     }
 
+    this.onHashChange();
+
     const config = this.getConfig();
     if (!config || !config.maps || config.maps.length === 0) {
       return;
@@ -211,7 +218,13 @@ export class CobMap {
   }
 
   maybeMountMap() {
-    if (this.map || (this.modal !== false && this.modalVisible === false)) {
+    const mapHidden = this.modal !== false && this.modalVisible === false;
+
+    if (this.map && mapHidden) {
+      this.map.remove();
+      this.map = null;
+      return;
+    } else if (this.map || mapHidden) {
       return;
     }
 
@@ -358,6 +371,17 @@ export class CobMap {
     }
   }
 
+  @Listen('window:hashchange')
+  onHashChange() {
+    if (this.id) {
+      if (window.location.hash === `#${this.id}`) {
+        this.show();
+      } else {
+        this.hide();
+      }
+    }
+  }
+
   /**
    * Shows the modal, if the map is in modal mode.
    */
@@ -372,6 +396,12 @@ export class CobMap {
   @Method()
   hide() {
     this.modalVisible = false;
+
+    // This clears out an existing hash if one exists. Otherwise we'd be closed
+    // but unable to get a hashchange event to re-open.
+    if (this.id && window.location.hash === `#${this.id}`) {
+      history.replaceState(null, undefined, ' ');
+    }
   }
 
   /**
