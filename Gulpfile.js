@@ -55,6 +55,7 @@ gulp.task('watch:scripts', getTask('scripts_watch'));
 gulp.task('stylus', getTask('stylus'));
 gulp.task('stylus:ie', getTask('stylus_IE'));
 gulp.task('watch:stylus', getTask('stylus_watch'));
+gulp.task('watch:legacy', getTask('legacy_watch'));
 gulp.task('build', [
   'fonts',
   'images',
@@ -72,4 +73,5 @@ gulp.task('default', [
   'stylus',
   'stylus:ie',
   'watch:stylus',
+  'watch:legacy',
 ]);
