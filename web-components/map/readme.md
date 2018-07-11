@@ -8,14 +8,6 @@ files](https://cityofboston.github.io/vizwiz/#/jsonschema) from the vizwiz
 repository. To update the types, run `npx gulp schema:vizwiz`. You may also have
 to add to the list of URLs in the Gulpfile.
 
-The map can operate in "modal" mode by setting the `modal` attribute. In this
-mode, the map is hidden by default and, when shown, appears in a full-screen
-modal dialog.
-
-To show or hide the map, you can use the `show()`, `hide()`, `toggle()` methods.
-The map will also listen to hash change events and, if its `id` comes up as the
-hash, it will automatically appear.
-
 ## Slots
 
 #### config
@@ -39,13 +31,6 @@ schema for this config comes from VizWiz, so it won’t be documented here.
 
 Any attributes prefixed with `map-` will be passed on to the generated
 `<cob-map>` component. _E.g._ `map-id` or `map-style`.
-
-
-#### id
-
-string
-
-ID of the HTML element. Used to automatically open the map modal.
 
 
 #### modal
@@ -85,13 +70,6 @@ schema for this config comes from VizWiz, so it won’t be documented here.
 
 Any attributes prefixed with `map-` will be passed on to the generated
 `<cob-map>` component. _E.g._ `map-id` or `map-style`.
-
-
-#### id
-
-string
-
-ID of the HTML element. Used to automatically open the map modal.
 
 
 #### modal
