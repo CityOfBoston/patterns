@@ -42,6 +42,9 @@ const DEFAULT_BASEMAP_URL =
 const DEFAULT_ICON_SRC =
   'https://patterns.boston.gov/images/global/icons/mapping/waypoint-charles-blue.svg';
 
+const DEFAULT_ADDRESS_SEARCH_WAYPOINT_ICON_SRC =
+  'https://patterns.boston.gov/images/global/icons/mapping/waypoint-freedom-red.svg';
+
 const BOSTON_BOUNDS = LlatLngBounds(
   LlatLng(42.170274, -71.348648),
   LlatLng(42.456141, -70.818901)
@@ -54,7 +57,7 @@ const DEFAULT_ZOOM = 14;
 const ADDRESS_FIELD_HOLDER_CLASS = 'cob-address-search-field-container';
 
 const WAYPOINT_ICON = new LeafletIcon({
-  iconUrl: '/images/global/icons/mapping/waypoint-freedom-red.svg',
+  iconUrl: DEFAULT_ADDRESS_SEARCH_WAYPOINT_ICON_SRC,
   shadowUrl: undefined,
 
   iconSize: [35, 46], // size of the icon
