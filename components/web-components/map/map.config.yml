@@ -35,12 +35,4 @@ variants:
   - name: Modal
     context:
       modal: true
-      modal_visible: true
       show_address_search: true
-
-  - name: Modal Toggle
-    context:
-      modal: true
-      modal_show_link: true
-      show_address_search: true
-

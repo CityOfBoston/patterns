@@ -1,4 +1,4 @@
-<cob-map id="map" {{#if modal}}{{else}}style="height: 500px"{{/if}} {{#if open_overlay}}open-overlay{{/if}} {{#if modal}}modal{{/if}} {{#if modal_visible}}modal-visible{{/if}}>
+<cob-map {{#if modal}}{{else}}style="height: 500px"{{/if}} {{#if open_overlay}}open-overlay{{/if}} {{#if modal}}modal modal-visible{{/if}}>
   <script slot="config" type="application/json">
 {
   "version": "1.0",
@@ -64,6 +64,3 @@
 }
   </script>
 </cob-map>
-{{#if modal_show_link}}
-<a href="#map" class="btn">Show Map</a>
-{{/if}}
