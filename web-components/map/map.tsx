@@ -178,7 +178,13 @@ export class CobMap {
       return;
     }
 
-    this.onHashChange();
+    // Support for opening the map automatically if it loads up on the right
+    // hash. Note we don’t do the inverse: if we’re not on the hash, we don’t
+    // change modalVisible at all, so that if it was set via an attribute it
+    // won’t get overridden.
+    if (this.id && window.location.hash === `#${this.id}`) {
+      this.modalVisible = true;
+    }
 
     const config = this.getConfig();
     if (!config || !config.maps || config.maps.length === 0) {
