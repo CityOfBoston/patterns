@@ -7,6 +7,7 @@ module.exports = function(gulp, plugins, options) {
         './stylesheets/public.styl',
         './stylesheets/hub.styl',
         './stylesheets/theme.styl',
+        './stylesheets/print.styl',
       ])
       .pipe(
         plugins.stylus({
