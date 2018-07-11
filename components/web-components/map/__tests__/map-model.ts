@@ -10,8 +10,10 @@ interface MapSelector extends Selector {
 /* PageModel class to encapsulate Map component functionality. */
 export default class MapModel {
   root = Selector(readyComponentSelector('cob-map')) as MapSelector;
+  leafletMap = this.root.find('.leaflet-container');
   leafletPopup = this.root.find('.leaflet-popup');
   zoomInButton = this.root.find('.leaflet-control-zoom-in');
+  modalCloseButton = this.root.find('.md-cb');
 
   interactivePolygonsByColor(color: string) {
     return this.root.find(
