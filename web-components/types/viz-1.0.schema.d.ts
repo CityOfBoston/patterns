@@ -77,6 +77,10 @@ export interface VectorStyle {
    * Hex color to use as the stroke color on features when the mouse is hovered over them. If a fill is applied, it will be this color at a semi-transparent opacity.
    */
   hoverColor?: string;
+  /**
+   * If true, fills the polygons with the color at partial opacity.
+   */
+  fill?: boolean;
 }
 export interface ArcGisFeatureService {
   /**
@@ -93,12 +97,6 @@ export interface ArcGisFeatureService {
   layer?: number;
 }
 export interface LegendStyle {
-  /**
-   * * `icon`: Shows the `markerUrl` icon from `icons`.
-   * * `line`: Renders a line with the `color` from the `polygons` configuration.
-   * * `polygon`: Renders a box with the `color` from the `polygons` configuration, with a semitransparent fill.
-   */
-  symbol?: 'icon' | 'line' | 'polygon';
   /**
    * The label to show in the legend for this layer.
    */

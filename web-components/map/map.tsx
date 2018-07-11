@@ -327,10 +327,14 @@ export class CobMap {
               uid: uid!,
               url: `${data.service!}/${data.layer!}`,
               legendLabel: (legend && legend.label) || '',
-              legendSymbol: (legend && legend.symbol) || null,
+              legendSymbol:
+                (icons && 'icon') ||
+                (polygons && polygons.fill && 'polygon') ||
+                (polygons && 'line') ||
+                null,
               color: polygons ? polygons.color : null,
               hoverColor: polygons ? polygons.hoverColor : null,
-              fill: true,
+              fill: (polygons && polygons.fill) || false,
               iconSrc: icons ? icons.markerUrl : null,
               clusterIcons: (icons && icons.cluster) || false,
               popupTemplate: popupHtmlTemplate,
