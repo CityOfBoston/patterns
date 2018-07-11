@@ -148,11 +148,6 @@ cob-map .cob-map-modal-controls {
   }
 }
 
-cob-map svg {
-  width: initial;
-  height: initial;
-}
-
 cob-map .geocoder-control-suggestions {
   width: 100%;
   position: absolute;
