@@ -2,6 +2,11 @@ cob-map {
   display: block;
 }
 
+cob-map h3 {
+  /* overriding the italics that Boston.gov puts on h3s */
+  font-style: inherit;
+}
+
 cob-map.leaflet-container a.leaflet-popup-close-button {
   /* By default this is too tight in the corner */
   top: 6px;
@@ -30,11 +35,11 @@ cob-map .cob-overlay {
 /* Causes the overlay element to expand to its children's vertical margin. */
 cob-map .cob-overlay-content:before {
   display: table;
-  content: " ";
+  content: ' ';
 }
 cob-map .cob-overlay-content:after {
   display: table;
-  content: " ";
+  content: ' ';
   clear: both;
 }
 
@@ -59,6 +64,95 @@ cob-map .cob-overlay-content > * {
   }
 }
 
+/* This element is just inside the modal dialog box. */
+cob-map .cob-map-modal-contents {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  height: 100%;
+}
+
+/**
+* Title bar for the modal, includes map title, address search, and close box.
+*
+* This is at the top of the dialog in desktop widths, and at the bottom on
+* mobile.
+*/
+cob-map .cob-map-modal-title {
+  display: flex;
+  align-items: center;
+  position: relative;
+  box-shadow: 0 1px 2px 1px rgba(0, 0, 0, 0.1);
+  /* We want this to be high enough so that our box shadow goes over map tiles. */
+  z-index: 501;
+}
+
+cob-map .cob-map-modal-title .sh {
+  flex-grow: 1;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+cob-map .cob-map-modal-title .sh-title {
+  margin-bottom: 0;
+}
+
+cob-map .cob-map-modal-title .md-cb {
+  align-items: flex-start;
+  border: none;
+  z-index: 1000;
+  position: relative;
+}
+
+cob-map .cob-map-modal-contents .cob-map-leaflet-container {
+  /* We need the map to take up all the space that the header / footer don't. */
+  flex-grow: 1;
+}
+
+/* Controls is the "footer" element */
+cob-map .cob-map-modal-controls {
+  display: flex;
+  align-items: center;
+  position: relative;
+  box-shadow: 0 -1px 2px 1px rgba(0, 0, 0, 0.1);
+  /* We want this to be high enough so that our box shadow goes over map tiles. */
+  z-index: 500;
+}
+
+@media screen and (max-width: 479px) {
+  cob-map .cob-map-modal-title {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 0.5rem 0;
+    box-shadow: 0 -1px 2px 1px rgba(0, 0, 0, 0.1);
+  }
+
+  cob-map .cob-map-modal-contents .md-cb {
+    position: fixed;
+  }
+
+  /* For mobile widths, we use order to put the map first in the flex column, so
+  that the title and controls come together at the bottom. */
+  cob-map .cob-map-modal-contents .cob-map-leaflet-container {
+    order: -1;
+  }
+
+  cob-map .cob-map-modal-controls {
+    box-shadow: none;
+  }
+
+  /* When the address search is focused, we use margin to grow it big enough
+  that the results are available above the keyboard. */
+  cob-map .cob-address-search-field-container.focused {
+    margin-bottom: 40%;
+  }
+}
+
+cob-map svg {
+  width: initial;
+  height: initial;
+}
+
 cob-map .geocoder-control-suggestions {
   width: 100%;
   position: absolute;
@@ -66,10 +160,9 @@ cob-map .geocoder-control-suggestions {
   left: 0;
   overflow: auto;
   display: none;
-  
-  /* ensures this stacks above any sub-1 opacity elements, such as appear in the
-  legend. */
-  z-index: 1;
+
+  /* Need to get above the modal header / footer */
+  z-index: 502;
 
   border: none !important;
   border-radius: 0;
@@ -86,6 +179,7 @@ cob-map .geocoder-control-list {
 cob-map .geocoder-control-suggestions .geocoder-control-suggestion {
   font-size: 18px;
   padding: 7px;
+  margin-bottom: 0;
   background: white;
   border-top: 1px solid #f1f1f1;
   white-space: nowrap;

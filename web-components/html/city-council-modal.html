@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html dir="ltr"
+  lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
+  <title>Boston City Council</title>
+
+  <!--[if !IE]><!-->
+  <link rel="stylesheet"
+    type="text/css"
+    href="/css/public.css" />
+  <!--<![endif]-->
+  <!--[if lt IE 10]>
+    <link media="all" rel="stylesheet" href="/css/ie.css">
+  <![endif]-->
+
+</head>
+
+<body>
+  <div class="b b-c">
+    <div class="m-v300">
+      <a href="#map" class="btn">Open Map</a>
+      <cob-map id="map" modal>
+        <script type="application/json"
+          slot="config">
+{
+  "version": "1.0",
+  "uid": "~ltT9D7MbvC7Wv0O6yYQr",
+  "dataSources": [
+    {
+      "uid": "0QYJNIqaMzWBtanIvWles",
+      "icons": null,
+      "polygons": {
+        "style": "default",
+        "color": "#0C2639",
+        "hoverColor": "#FB4D42"
+      },
+      "popupHtmlTemplate": "<img src=\"{{Image}}\" class=\"cdp-i\" alt=\"{{Councilor}}\" style=\"margin-bottom: 1rem\"/>\n          <div class=\"ta-c m-v300\">\n            <div class=\"cdp-t t--sans t--upper m-t200\">{{Councilor}}</div>\n            <div class=\"cdp-st t--subinfo t--g300\">District {{DISTRICT}}</div>\n          </div>\n          <a href=\"{{Bio}}\" class=\"btn btn--b btn--100 btn--sm\">\n            Visit webpage<span class=\"a11y--h\"> of {{Councillor}}</span>\n          </a>",
+      "data": {
+        "type": "arcgis",
+        "service": "https://services.arcgis.com/sFnw0xNflSi8J0uh/ArcGIS/rest/services/City_Council_Districts/FeatureServer",
+        "layer": 0
+      },
+      "legend": {
+        "label": "City Council Districts",
+        "symbol": "polygon"
+      }
+    }
+  ],
+  "maps": [
+    {
+      "uid": "yBHcvxTmQyrK4WhLBxe16",
+      "title": "City Councilor Look-Up",
+      "instructionsHtml": "<div class=\"t--info\">To see all City Council members, including at-large councilors, visit the\n          <a href=\"https://www.boston.gov/departments/city-council#city-council-members\">City Council page</a>.</div>",
+      "latitude": 42.3240812,
+      "longitude": -71.0844068,
+      "zoom": 12,
+      "showZoomControl": true,
+      "showLegend": true,
+      "showUserLocation": false,
+      "addressSearch": {
+        "title": "",
+        "placeholder": "Search for your address…",
+        "autoPopupDataSourceUid": "0QYJNIqaMzWBtanIvWles",
+        "zoomToResult": false
+      }
+    }
+  ]
+}    
+        </script>
+      </cob-viz>
+    </div>
+  </div>
+
+  <script src="/web-components/fleetcomponents.js"></script>
+</body>
+
+</html>

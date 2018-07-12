@@ -114,9 +114,33 @@ declare global {
        */
       'config': string;
       /**
+       * Hides the modal, if the map is in modal mode.
+       */
+      'hide': () => void;
+      /**
+       * ID of the HTML element. Used to automatically open the map modal.
+       */
+      'id': string;
+      /**
+       * If true, the map starts hidden and, when shown, appears in a full-screen modal dialog.  Note: On the server, this may be the empty string when true, so we need to check against `!== false` to test it.
+       */
+      'modal': boolean;
+      /**
+       * Change to true to make the modal appear.
+       */
+      'modalVisible': boolean;
+      /**
        * Test attribute to make the overlay open automatically at mobile widths. Only used so that we can take Percy screenshots of the overlay.
        */
       'openOverlay': boolean;
+      /**
+       * Shows the modal, if the map is in modal mode.
+       */
+      'show': () => void;
+      /**
+       * If the map is in modal mode, toggles whether or not it’s visible.
+       */
+      'toggle': () => void;
     }
   }
 
@@ -143,6 +167,18 @@ declare global {
        * A JSON string or equivalent object that defines the map and layers. The schema for this config comes from VizWiz, so it won’t be documented here.  Any attributes prefixed with `map-` will be passed on to the generated `<cob-map>` component. _E.g._ `map-id` or `map-style`.
        */
       'config'?: string;
+      /**
+       * ID of the HTML element. Used to automatically open the map modal.
+       */
+      'id'?: string;
+      /**
+       * If true, the map starts hidden and, when shown, appears in a full-screen modal dialog.  Note: On the server, this may be the empty string when true, so we need to check against `!== false` to test it.
+       */
+      'modal'?: boolean;
+      /**
+       * Change to true to make the modal appear.
+       */
+      'modalVisible'?: boolean;
       /**
        * Test attribute to make the overlay open automatically at mobile widths. Only used so that we can take Percy screenshots of the overlay.
        */
