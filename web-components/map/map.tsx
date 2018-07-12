@@ -462,11 +462,15 @@ export class CobMap {
     }
   }
 
+  closeMobileOverlay() {
+    // If we're on mobile, the overlay was open to show the address search
+    // field. We close it to keep it from obscuring the results.
+    this.openOverlay = false;
+  }
+
   onAddressSearchResults(data) {
     if (data.results.length) {
-      // If we're on mobile, the overlay was open to show the address search
-      // field. We close it to keep it from obscuring the results.
-      this.openOverlay = false;
+      this.closeMobileOverlay();
     }
 
     if (!this.addressSearchResultsFeatures) {
@@ -522,6 +526,8 @@ export class CobMap {
       return null;
     }
 
+    this.closeMobileOverlay();
+
     return this.renderPopupContent(config, feature.properties || {});
   }
 
@@ -529,6 +535,8 @@ export class CobMap {
     layerConfig: LayerConfig,
     marker: LeafletMarker
   ) {
+    this.closeMobileOverlay();
+
     // When a marker is placed on the map we don't have any feature information
     // for it, so we need to query Esri for the properties we need to render the
     // popup.
@@ -712,11 +720,27 @@ export class CobMap {
     return (
       <div class="md md--fw">
         <div class="md-c">
+          <input
+            type="checkbox"
+            class="cob-map-controls-checkbox"
+            id={`cob-map-controls-checkbox-${this.idSuffix}`}
+            aria-hidden
+            checked={this.openOverlay}
+            onChange={ev =>
+              (this.openOverlay = (ev.target as HTMLInputElement).checked)
+            }
+          />
           <div class="cob-map-modal-contents">
             <div class="cob-map-modal-title">
-              <div class="sh sh--sm p-a300" style={{ borderBottom: 'none' }}>
-                <h2 class="sh-title">{this.heading}</h2>
-              </div>
+              <label
+                class="cob-map-modal-header p-a300"
+                htmlFor={`cob-map-controls-checkbox-${this.idSuffix}`}
+              >
+                <div class="sh sh--sm">
+                  <h2 class="sh-title">{this.heading}</h2>
+                  {this.renderControlsToggle()}
+                </div>
+              </label>
 
               {this.showAddressSearch && (
                 <div
@@ -740,7 +764,33 @@ export class CobMap {
             <div class="cob-map-leaflet-container" />
             <div class="cob-map-modal-controls">
               {this.instructionsHtml && (
-                <div class="p-a300" innerHTML={this.instructionsHtml} />
+                <div
+                  class="cob-map-modal-instructions p-a300"
+                  innerHTML={this.instructionsHtml}
+                />
+              )}
+
+              {this.showLegend && (
+                <div class="cob-map-modal-legend">
+                  <div class="cob-map-modal-legend-cell-container">
+                    {this.layerRecords
+                      .filter(
+                        ({ config }) =>
+                          config.legendSymbol && config.legendLabel
+                      )
+                      .map(({ config }) => (
+                        <div class="cob-map-modal-legend-cell">
+                          <div class="cob-map-modal-legend-icon">
+                            {this.renderLegendIcon(config)}
+                          </div>
+
+                          <div class="cob-map-modal-legend-label">
+                            {config.legendLabel}
+                          </div>
+                        </div>
+                      ))}
+                  </div>
+                </div>
               )}
             </div>
           </div>
@@ -808,6 +858,20 @@ export class CobMap {
             )}
           </div>
         </div>
+      </div>
+    );
+  }
+
+  renderControlsToggle() {
+    return (
+      <div class="cob-map-controls-toggle">
+        {/* Our standard blue disclosure arrow. */}
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="-2 8.5 18 25">
+          <path
+            fill="#288be4"
+            d="M16 21L.5 33.2c-.6.5-1.5.4-2.2-.2-.5-.6-.4-1.6.2-2l12.6-10-12.6-10c-.6-.5-.7-1.5-.2-2s1.5-.7 2.2-.2L16 21z"
+          />
+        </svg>
       </div>
     );
   }
