@@ -31,10 +31,10 @@ import { MarkerClusterGroup } from 'leaflet.markercluster';
 import 'templayed';
 declare function templayed(string): (Object) => string;
 
-// Run `gulp schema:vizwiz` to regenerate these files.
-import { VizWizV10 } from '../types/viz-1.0.schema';
+// Run `gulp schema:map` to regenerate these files.
+import { CobMap10 } from './map-1.0.schema';
 
-export type VizConfig = VizWizV10;
+export type MapConfig = CobMap10;
 
 const DEFAULT_BASEMAP_URL =
   'https://awsgeo.boston.gov/arcgis/rest/services/Basemaps/BostonCityBasemap_WM/MapServer';
@@ -366,7 +366,7 @@ export class CobMap {
    * the former for integration with other components, and the latter for easier
    * HTML building.
    */
-  getConfig(): VizConfig | null {
+  getConfig(): MapConfig | null {
     const configScript = this.el.querySelector('script[slot="config"]');
 
     try {

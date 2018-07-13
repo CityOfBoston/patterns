@@ -5,11 +5,11 @@
  */
 
 /**
- * Configuration for a `<cob-viz>` web component to generate a map from a number of data sources.
+ * Configuration for a `<cob-map>` web component to generate a map from a number of data sources.
  */
-export interface VizWizV10 {
+export interface CobMap10 {
   /**
-   * Version of the VizWiz configuration format. For this schema, should be "1.0".
+   * Version of the configuration format. For this schema, should be "1.0".
    */
   version?: string;
   /**
