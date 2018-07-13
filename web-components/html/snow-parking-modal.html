@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html dir="ltr"
+  lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
+  <title>Snow Emergency Parking</title>
+
+  <!--[if !IE]><!-->
+  <link rel="stylesheet"
+    type="text/css"
+    href="/css/public.css" />
+  <!--<![endif]-->
+  <!--[if lt IE 10]>
+    <link media="all" rel="stylesheet" href="/css/ie.css">
+  <![endif]-->
+
+</head>
+
+<body>
+  <div class="b b-c">
+    <div class="m-v300">
+      <a href="#map" class="btn">Open Map</a>
+      <cob-map id="map" modal>
+        <script type="application/json"
+          slot="config">
+          {
+            "version": "1.0",
+            "uid": "~ltT9D7MbvC7Wv0O6yYQr",
+            "dataSources": [
+              {
+                "uid": "lots",
+                 "icons": {
+                    "markerUrl": "https://patterns.boston.gov/images/global/icons/mapping/parking.svg",
+                    "cluster": false
+                },
+                "polygons": {
+                  "style": "default",
+                  "color": "#0C2639",
+                  "hoverColor": "#FB4D42"
+                },
+                "popupHtmlTemplate": "<div style=\"min-width: 280px\">\n        <h3 class=\"h3 m-v300\">{{Address}}</h4>\n        <div class=\"m-v300\">\n          <ul class=\"dl dl--sm\">\n            <li class=\"dl-i\"><span class=\"dl-t\">Name:</span> <span class=\"dl-d\">{{Name}}</span></li>\n            <li class=\"dl-i\"><span class=\"dl-t\">Fee:</span> <span class=\"dl-d\">{{Fee}}</span></li>\n          </ul>\n        </div>\n        {{#Comments}}<div class=\"t--subinfo m-v300\">{{.}}</div>{{/Comments}}\n        {{#Phone}}<div class=\"t--subinfo m-v300\">Call ahead to find out the number of spaces available: <a href=\"tel:{{.}}\">{{.}}</a></div>{{/Phone}}\n      </div>",
+                "data": {
+                  "type": "arcgis",
+                  "service": "https://services.arcgis.com/sFnw0xNflSi8J0uh/arcgis/rest/services/SnowParking/FeatureServer",
+                  "layer": 0
+                },
+                "legend": {
+                  "label": "Emergency Lots"
+                }
+              },
+              {
+                "uid": "streets",
+                "icons": null,
+                "polygons": {
+                  "style": "default",
+                  "color": "#FB4D42",
+                  "hoverColor": "#FB4D42"
+                },
+                "popupHtmlTemplate": "",
+                "data": {
+                  "type": "arcgis",
+                  "service": "https://services.arcgis.com/sFnw0xNflSi8J0uh/arcgis/rest/services/Ownership/FeatureServer",
+                  "layer": 0
+                },
+                "legend": {
+                  "label": "No Parking"
+                }
+              }
+            ],
+            "maps": [
+              {
+                "uid": "yBHcvxTmQyrK4WhLBxe16",
+                "title": "Snow Emergency Parking Restrictions",
+                "instructionsHtml": "<div class=\"t--info\"><div class=\"m-b200\">You can begin parking at participating lots and garages two hours before a declared snow emergency.</div><div>You must remove your vehicle within two hours of the City lifting the emergency ban.</div></div>",
+                "latitude": 42.32,
+                "longitude": -71.1284,
+                "zoom": 12,
+                "showZoomControl": true,
+                "showLegend": true,
+                "showUserLocation": false,
+                "addressSearch": {
+                  "title": "",
+                  "placeholder": "Search for your address…",
+                  "autoPopupDataSourceUid": null,
+                  "zoomToResult": true
+                }
+              }
+            ]
+          }    
+        </script>
+      </cob-viz>
+    </div>
+  </div>
+
+  <script src="/web-components/fleetcomponents.js"></script>
+</body>
+
+</html>
