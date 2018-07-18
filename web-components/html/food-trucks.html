@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html dir="ltr"
+  lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
+  <title>Food Trucks</title>
+
+  <!--[if !IE]><!-->
+  <link rel="stylesheet"
+    type="text/css"
+    href="/css/public.css" />
+  <!--<![endif]-->
+  <!--[if lt IE 10]>
+    <link media="all" rel="stylesheet" href="/css/ie.css">
+  <![endif]-->
+
+</head>
+
+<body>
+  <div class="b b-c">
+    <div class="m-v300">
+      <a href="#map" class="btn">Open Map</a>
+      <cob-map id="map" modal>
+        <script type="application/json"
+          slot="config">
+          {
+            "version": "1.0",
+            "dataSources": [
+              {
+                "uid": "trucks",
+                 "icons": {
+                    "markerUrl": "https://patterns.boston.gov/images/global/icons/mapping/food-truck.svg",
+                    "cluster": true
+                },
+                "popupHtmlTemplate": "<div style=\"min-width: 280px\">\n        <h3 class=\"h3 m-v300\"><a href=\"{{Link}}\">{{Truck}}</a></h3>\n        <div class=\"m-v300\">\n          <ul class=\"dl dl--sm\">\n            <li class=\"dl-i\"><span class=\"dl-t\">{{Time}}:</span> <span class=\"dl-d\">{{Hours}}</span></li>\n            <li class=\"dl-i\"><span class=\"dl-t\">Day:</span> <span class=\"dl-d\">{{Day}}</span></li>\n          </ul>\n        </div>",
+                "data": {
+                  "type": "arcgis",
+                  "service": "https://services.arcgis.com/sFnw0xNflSi8J0uh/arcgis/rest/services/food_trucks_schedule/FeatureServer",
+                  "layer": 0
+                },
+                "legend": {
+                  "label": "Food Truck"
+                }
+              }
+            ],
+            "filters": [
+              {
+                "dataSourceUid": "trucks",
+                "title": "Day",
+                "type": "select",
+                "options": [
+                  {"title": "Any", "value": "Any", "query": "1=1"},
+                  "separator",
+                  {"title": "Monday", "value": "Monday"},
+                  {"title": "Tuesday", "value": "Tuesday"},
+                  {"title": "Wednesday", "value": "Wednesday"},
+                  {"title": "Thursday", "value": "Thursday"},
+                  {"title": "Friday", "value": "Friday"},
+                  {"title": "Saturday", "value": "Saturday"},
+                  {"title": "Sunday", "value": "Sunday"}
+                ],
+                "queryTemplate": "Day = '{{.}}'",
+                "default": [
+                  {"date": "day", "eq": 0, "value": "Sunday"},
+                  {"date": "day", "eq": 1, "value": "Monday"},
+                  {"date": "day", "eq": 2, "value": "Tuesday"},
+                  {"date": "day", "eq": 3, "value": "Wednesday"},
+                  {"date": "day", "eq": 4, "value": "Thursday"},
+                  {"date": "day", "eq": 5, "value": "Friday"},
+                  {"date": "day", "eq": 6, "value": "Saturday"}
+                ]
+              },
+              {
+                "dataSourceUid": "trucks",
+                "title": "Time",
+                "type": "select",
+                "options": [
+                  {"title": "Any", "value": "Any", "query": "1=1"},
+                  {"type": "separator"},
+                  {"title": "Breakfast", "value": "Breakfast"},
+                  {"title": "Lunch", "value": "Lunch"},
+                  {"title": "Dinner", "value": "Dinner"}
+                ],
+                "queryTemplate": "Time = '{{.}}'",
+                "default": [
+                  {"date": "24hTime", "gte": "0700", "lt": "1030", "value": "Breakfast"},
+                  {"date": "24hTime", "gte": "1030", "lt": "1500", "value": "Lunch"},
+                  {"date": "24hTime", "gte": "1500", "lt": "2000", "value": "Dinner"}
+                ]
+              }, {
+                "dataSourceUid": "trucks",
+                "title": "Truck",
+                "type": "select",
+                "options": [
+                  {"title": "All", "value": "All", "query": "1=1"},
+                  {"type": "separator"},
+                  {"type": "dynamic", "field": "Truck", "limitWithFilters": true}
+                ],
+                "queryTemplate": "Truck = '{{.}}'",
+                "default": "All"
+              }
+            ],
+            "maps": [
+              {
+                "uid": "yBHcvxTmQyrK4WhLBxe16",
+                "title": "Food Trucks",
+                "instructionsHtml": "",
+                "latitude": 42.32,
+                "longitude": -71.1284,
+                "zoom": 12,
+                "showZoomControl": true,
+                "showLegend": true,
+                "showUserLocation": false,
+                "addressSearch": {
+                  "title": "",
+                  "autoPopupDataSourceUid": null,
+                  "zoomToResult": true
+                }
+              }
+            ]
+          }    
+        </script>
+      </cob-viz>
+    </div>
+  </div>
+
+  <script src="/web-components/fleetcomponents.js"></script>
+</body>
+
+</html>

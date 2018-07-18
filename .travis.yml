@@ -12,6 +12,7 @@ install:
 - npm install
 - gem install percy-cli
 before_script:
+- export TZ=America/New_York
 - export BROWSERSTACK_PROJECT_NAME=$TRAVIS_REPO_SLUG
 - export BROWSERSTACK_BUILD_ID=$TRAVIS_BUILD_NUMBER
 # Percy automatically uses branches from PRs. This is so for both develop and
