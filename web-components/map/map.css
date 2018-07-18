@@ -122,10 +122,14 @@ cob-map .cob-map-controls-toggle svg {
   width: 20px;
   height: 24px;
   transform: rotate(-90deg);
-  transition: transform .25s;
+  transition: transform 0.25s;
 }
 
-cob-map .cob-map-controls-checkbox:checked~.cob-map-modal-contents .cob-map-controls-toggle svg {
+cob-map
+  .cob-map-controls-checkbox:checked
+  ~ .cob-map-modal-contents
+  .cob-map-controls-toggle
+  svg {
   transform: rotate(90deg);
 }
 
@@ -152,6 +156,14 @@ cob-map .cob-map-modal-controls {
   but it has to be lower than the title so that it doesn't cover address suggestions.
   */
   z-index: 500;
+}
+
+cob-map .cob-map-modal-filters {
+  display: flex;
+}
+
+cob-map .cob-map-modal-filter {
+  margin: 0 1rem 0 0;
 }
 
 cob-map .cob-map-modal-legend {
@@ -201,8 +213,11 @@ cob-map .cob-map-modal-legend-label {
   /** Little hack to cover the bottom part of the box-shadow that's overlapping
    * the controls element. We only do it when expanded, though, to prevent
    * adding content offscreen. */
-  cob-map .cob-map-controls-checkbox:checked~.cob-map-modal-contents .cob-map-modal-title:after {
-    content: " ";
+  cob-map
+    .cob-map-controls-checkbox:checked
+    ~ .cob-map-modal-contents
+    .cob-map-modal-title:after {
+    content: ' ';
     display: block;
     position: absolute;
     width: 100%;
@@ -232,7 +247,10 @@ cob-map .cob-map-modal-legend-label {
     margin-bottom: 1rem;
   }
 
-  cob-map .cob-map-controls-checkbox:checked~.cob-map-modal-contents .cob-address-search-field-container {
+  cob-map
+    .cob-map-controls-checkbox:checked
+    ~ .cob-map-modal-contents
+    .cob-address-search-field-container {
     /* The address search box is small enough that it's ok that we don't animate
     it the way we animate the bottom controls. */
     display: block;
@@ -249,12 +267,24 @@ cob-map .cob-map-modal-legend-label {
     overflow-y: auto;
   }
 
-  cob-map .cob-map-controls-checkbox:checked~.cob-map-modal-contents .cob-map-modal-controls {
+  cob-map
+    .cob-map-controls-checkbox:checked
+    ~ .cob-map-modal-contents
+    .cob-map-modal-controls {
     max-height: 60vh;
   }
 
   cob-map .cob-map-modal-instructions {
     padding-top: 0;
+  }
+
+  cob-map .cob-map-modal-filters {
+    flex-direction: column;
+    padding-top: 0;
+  }
+
+  cob-map .cob-map-modal-filter {
+    margin: 0 0 0.75rem;
   }
 
   cob-map .cob-map-modal-legend {
