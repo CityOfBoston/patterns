@@ -28,7 +28,10 @@ exports.config = {
   // we copy a different index.html file into web-components.
   //
   // It won't be pre-rendered, but that's fine.
-  copy: [{ src: 'html', dest: 'web-components' }],
+  copy: [
+    { src: 'html', dest: 'web-components' },
+    { src: '**/*.schema.json', dest: 'web-components' },
+  ],
 
   plugins: [
     // We use PostCSS with autoprefixer to let us use flexbox in component CSS
