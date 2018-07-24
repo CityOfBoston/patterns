@@ -5,21 +5,21 @@
  */
 
 /**
- * Configuration for a `<cob-viz>` web component to generate a map from a number of data sources.
+ * Configuration for a `<cob-map>` web component to generate a map from a number of data sources.
  */
-export interface VizWizV10 {
+export interface CobMap10 {
   /**
-   * Version of the VizWiz configuration format. For this schema, should be "1.0".
+   * Version of the configuration format. For this schema, should be "1.0".
    */
-  version?: string;
-  /**
-   * Unique ID for the visualization.
-   */
-  uid?: string;
+  version: string;
   /**
    * Definitions for the layers to include on the map.
    */
   dataSources?: DataSource[];
+  /**
+   * Filters to change what’s shown on the map.
+   */
+  filters?: Filter[];
   /**
    * Definition for the map to render. Defined as an array for future expansion, but currently only one map is rendered.
    */
@@ -86,21 +86,68 @@ export interface ArcGisFeatureService {
   /**
    * The type of data source. Currently only layers from Esri’s ArcGIS servers are supported.
    */
-  type?: 'arcgis';
+  type: 'arcgis';
   /**
    * URL for the feature service on the ArcGIS server. Should not end in a slash.
    */
-  service?: string;
+  service: string;
   /**
    * The number of the specific layer in the feature service to display.
    */
-  layer?: number;
+  layer: number;
 }
 export interface LegendStyle {
   /**
    * The label to show in the legend for this layer.
    */
-  label?: string;
+  label: string;
+}
+export interface Filter {
+  /**
+   * Data source that this filter applies to
+   */
+  dataSourceUid: string;
+  /**
+   * Label for the filter
+   */
+  title: string;
+  /**
+   * UI element to use as the filter
+   */
+  type: 'select';
+  /**
+   * ArcGIS query in Handlebars format, with the filter value as the current value
+   */
+  queryTemplate: string;
+  default?:
+    | string
+    | {
+        value: string;
+        /**
+         * Date part to check against
+         */
+        date?: string;
+        eq?: string | number;
+        lt?: string | number;
+        lte?: string | number;
+        gt?: string | number;
+        gte?: string | number;
+      }[];
+  options?: (
+    | {
+        type?: 'value';
+        title: string;
+        value: string;
+        query?: string;
+      }
+    | {
+        type: 'separator';
+      }
+    | {
+        type: 'dynamic';
+        field: string;
+        limitWithFilters?: boolean;
+      })[];
 }
 export interface Map {
   /**

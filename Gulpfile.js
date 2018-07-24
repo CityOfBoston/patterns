@@ -4,7 +4,6 @@ const gulp = require('gulp');
 const util = require('gulp-util');
 const plugins = require('gulp-load-plugins')();
 const plumber = require('gulp-plumber');
-const download = require('gulp-download');
 
 const jsonSchemaToTypescript = require('./gulp-tasks/jsonSchemaToTypescript');
 
@@ -25,6 +24,7 @@ options.paths = {
   script: options.dest + 'scripts',
   styles: options.dest + 'css',
   legacy: options.dest + 'legacy',
+  vendor: options.dest + 'vendor',
 };
 
 // This will get the task to allow us to use the configs above
@@ -32,20 +32,13 @@ function getTask(task) {
   return require('./gulp-tasks/' + task)(gulp, plugins, options, util);
 }
 
-const VIZWIZ_SCHEMA_BASE_URL = 'https://cityofboston.github.io/vizwiz/schema';
-
 // Tasks!
 // -----------------------
-gulp.task('schema:vizwiz', () =>
+gulp.task('schema:map', () =>
   plumber()
-    .pipe(
-      download([
-        `${VIZWIZ_SCHEMA_BASE_URL}/viz-0.0.schema.json`,
-        `${VIZWIZ_SCHEMA_BASE_URL}/viz-1.0.schema.json`,
-      ])
-    )
+    .pipe(gulp.src('web-components/map/*.schema.json'))
     .pipe(jsonSchemaToTypescript({ style: require('./.prettierrc.json') }))
-    .pipe(gulp.dest('web-components/types'))
+    .pipe(gulp.dest('web-components/map'))
 );
 gulp.task('legacy', getTask('stylus_legacy'));
 gulp.task('fonts', getTask('fonts'));
@@ -56,6 +49,9 @@ gulp.task('stylus', getTask('stylus'));
 gulp.task('stylus:ie', getTask('stylus_IE'));
 gulp.task('watch:stylus', getTask('stylus_watch'));
 gulp.task('watch:legacy', getTask('legacy_watch'));
+gulp.task('vendor', () =>
+  gulp.src('vendor/**').pipe(gulp.dest(options.paths.vendor))
+);
 gulp.task('build', [
   'fonts',
   'images',
@@ -63,12 +59,14 @@ gulp.task('build', [
   'stylus',
   'scripts',
   'stylus:ie',
+  'vendor',
 ]);
 gulp.task('default', [
   'fonts',
   'images',
   'legacy',
   'scripts',
+  'vendor',
   'watch:scripts',
   'stylus',
   'stylus:ie',

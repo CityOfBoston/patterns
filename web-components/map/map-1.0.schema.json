@@ -1,0 +1,500 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "https://cityofboston.github.io/vizwiz/schemas/viz-1.0.schema.json#",
+  "type": "object",
+  "title": "<cob-map> 1.0",
+  "description": "Configuration for a `<cob-map>` web component to generate a map from a number of data sources.",
+  "additionalProperties": false,
+  "required": [
+    "version"
+  ],
+  "properties": {
+    "version": {
+      "type": "string",
+      "description": "Version of the configuration format. For this schema, should be \"1.0\".",
+      "examples": [
+        "1.0"
+      ]
+    },
+    "dataSources": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/DataSource"
+      },
+      "description": "Definitions for the layers to include on the map."
+    },
+    "filters": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/Filter"
+      },
+      "description": "Filters to change what’s shown on the map."
+    },
+    "maps": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/Map"
+      },
+      "maxItems": 1,
+      "description": "Definition for the map to render. Defined as an array for future expansion, but currently only one map is rendered."
+    }
+  },
+  "definitions": {
+    "DataSource": {
+      "type": "object",
+      "description": "Configuration for a feed of geo data. E.g. a specific ArcGIS service layer.",
+      "additionalProperties": false,
+      "requried": [
+        "uid",
+        "data"
+      ],
+      "properties": {
+        "uid": {
+          "type": "string",
+          "description": "Unique ID for this data source",
+          "examples": [
+            "HzViXPtxfbDTmKxSXTHv6"
+          ]
+        },
+        "icons": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/definitions/IconStyle"
+            }
+          ],
+          "description": "Configuration for how point features are rendered. Set to `null` to keep these from rendering."
+        },
+        "polygons": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/definitions/VectorStyle"
+            }
+          ],
+          "description": "Configuration for how line and polygon features are rendered. Set to `null` to keep these from rendering."
+        },
+        "popupHtmlTemplate": {
+          "type": "string",
+          "description": "A mustache template for the HTML to render in the popup that appears when the user clicks on the feature. The feature’s ArcGIS attributes will be in scope for the template, and can be referenced with `{{…}}`."
+        },
+        "data": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/ArcGisFeatureService"
+            }
+          ],
+          "description": "Configuration for where to load the data source from."
+        },
+        "legend": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/definitions/LegendStyle"
+            }
+          ],
+          "description": "Options for how this layer is rendered in the legend. Set to `null` to keep the layer from appearing in the legend."
+        }
+      }
+    },
+    "Filter": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "dataSourceUid",
+        "title",
+        "type",
+        "queryTemplate"
+      ],
+      "properties": {
+        "dataSourceUid": {
+          "type": "string",
+          "description": "Data source that this filter applies to"
+        },
+        "title": {
+          "type": "string",
+          "description": "Label for the filter",
+          "examples": [
+            "Day"
+          ]
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "select"
+          ],
+          "description": "UI element to use as the filter"
+        },
+        "queryTemplate": {
+          "type": "string",
+          "description": "ArcGIS query in Handlebars format, with the filter value as the current value",
+          "examples": [
+            "Day = '{{.}}'"
+          ]
+        },
+        "default": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "value"
+                ],
+                "properties": {
+                  "value": {
+                    "type": "string"
+                  },
+                  "date": {
+                    "type": "string",
+                    "description": "Date part to check against",
+                    "examples": [
+                      "day",
+                      "24hTime"
+                    ]
+                  },
+                  "eq": {
+                    "anyOf": [
+                      {
+                        "type": "string"
+                      },
+                      {
+                        "type": "number"
+                      }
+                    ]
+                  },
+                  "lt": {
+                    "anyOf": [
+                      {
+                        "type": "string"
+                      },
+                      {
+                        "type": "number"
+                      }
+                    ]
+                  },
+                  "lte": {
+                    "anyOf": [
+                      {
+                        "type": "string"
+                      },
+                      {
+                        "type": "number"
+                      }
+                    ]
+                  },
+                  "gt": {
+                    "anyOf": [
+                      {
+                        "type": "string"
+                      },
+                      {
+                        "type": "number"
+                      }
+                    ]
+                  },
+                  "gte": {
+                    "anyOf": [
+                      {
+                        "type": "string"
+                      },
+                      {
+                        "type": "number"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          ]
+        },
+        "options": {
+          "type": "array",
+          "items": {
+            "anyOf": [
+              {
+                "type": "object",
+                "required": [
+                  "title",
+                  "value"
+                ],
+                "additionalProperties": false,
+                "properties": {
+                  "type": {
+                    "type": "string",
+                    "enum": [
+                      "value"
+                    ]
+                  },
+                  "title": {
+                    "type": "string"
+                  },
+                  "value": {
+                    "type": "string"
+                  },
+                  "query": {
+                    "type": "string"
+                  }
+                }
+              },
+              {
+                "type": "object",
+                "required": [
+                  "type"
+                ],
+                "additionalProperties": false,
+                "properties": {
+                  "type": {
+                    "type": "string",
+                    "enum": [
+                      "separator"
+                    ]
+                  }
+                }
+              },
+              {
+                "type": "object",
+                "required": [
+                  "type",
+                  "field"
+                ],
+                "additionalProperties": false,
+                "properties": {
+                  "type": {
+                    "type": "string",
+                    "enum": [
+                      "dynamic"
+                    ]
+                  },
+                  "field": {
+                    "type": "string"
+                  },
+                  "limitWithFilters": {
+                    "type": "boolean"
+                  }
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    "Map": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "uid": {
+          "type": "string",
+          "description": "Unique ID for the map.",
+          "examples": [
+            "OL~DGvQTVMyD00yr068SZ"
+          ]
+        },
+        "title": {
+          "type": "string",
+          "description": "Title for the map that appears as a label for the “overlay” dropdown on narrow breakpoints.",
+          "examples": [
+            "City Councilor Look-Up"
+          ]
+        },
+        "instructionsHtml": {
+          "type": "string",
+          "description": "HTML to be placed in the overlay to explain how to use the map."
+        },
+        "latitude": {
+          "type": "number",
+          "description": "Latitude for the center of the map",
+          "examples": [
+            42.34731
+          ]
+        },
+        "longitude": {
+          "type": "number",
+          "description": "Longitude for the center of the map",
+          "examples": [
+            -71.06522
+          ]
+        },
+        "zoom": {
+          "type": "integer",
+          "description": "Zoom level for the map",
+          "examples": [
+            12
+          ]
+        },
+        "showZoomControl": {
+          "type": "boolean",
+          "description": "Whether or not to show Leaflet’s +/- zoom buttons on the map."
+        },
+        "showLegend": {
+          "type": "boolean",
+          "description": "Whether or not to show a legend in the overlay box."
+        },
+        "showUserLocation": {
+          "type": "boolean",
+          "description": "Whether or not to get the user’s location with location services and display it on the map."
+        },
+        "addressSearch": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/definitions/AddressSearch"
+            }
+          ],
+          "description": "Configuration for adding an address search box to the overlay. Leave `null` to not show the box."
+        }
+      }
+    },
+    "IconStyle": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "markerUrl": {
+          "type": "string",
+          "description": "URL for an SVG image to place at the marker point.",
+          "format": "uri",
+          "examples": [
+            "https://patterns.boston.gov/images/global/icons/mapping/waypoint-charles-blue.svg"
+          ]
+        },
+        "cluster": {
+          "type": "boolean",
+          "description": "Whether icons that are close to each other should be collapsed together using the Leaflet.markerCluster plugin.",
+          "default": false,
+          "examples": [
+            true
+          ]
+        }
+      }
+    },
+    "VectorStyle": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "style": {
+          "type": "string",
+          "description": "The name of a preset in the VizWiz UI.",
+          "examples": [
+            "default"
+          ]
+        },
+        "color": {
+          "type": "string",
+          "pattern": "^#[a-fA-F0-9]{3,6}$",
+          "description": "Hex color to use as the stroke color on features. If a fill is applied, it will be this color at a semi-transparent opacity.",
+          "examples": [
+            "#0C2639"
+          ]
+        },
+        "hoverColor": {
+          "type": "string",
+          "pattern": "^#[a-fA-F0-9]{3,6}$",
+          "description": "Hex color to use as the stroke color on features when the mouse is hovered over them. If a fill is applied, it will be this color at a semi-transparent opacity.",
+          "examples": [
+            "#FB4D42"
+          ]
+        },
+        "fill": {
+          "type": "boolean",
+          "description": "If true, fills the polygons with the color at partial opacity."
+        }
+      }
+    },
+    "LegendStyle": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "label"
+      ],
+      "properties": {
+        "label": {
+          "type": "string",
+          "description": "The label to show in the legend for this layer.",
+          "examples": [
+            "Boston City Council Districts"
+          ]
+        }
+      }
+    },
+    "AddressSearch": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "title": {
+          "type": "string",
+          "description": "Title above the search box",
+          "examples": [
+            "Find an address"
+          ]
+        },
+        "placeholder": {
+          "type": "string",
+          "description": "Placeholder to go within the search box when it’s empty.",
+          "examples": [
+            "Search for your address..."
+          ]
+        },
+        "zoomToResult": {
+          "type": "boolean",
+          "description": "If true, the map will zoom in close to a search result after it’s found."
+        },
+        "autoPopupDataSourceUid": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "string"
+            }
+          ],
+          "description": "If not `null`, will open the popup for the specified layer when the search result is chosen."
+        }
+      }
+    },
+    "ArcGisFeatureService": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "type",
+        "service",
+        "layer"
+      ],
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "arcgis"
+          ],
+          "description": "The type of data source. Currently only layers from Esri’s ArcGIS servers are supported."
+        },
+        "service": {
+          "type": "string",
+          "format": "uri",
+          "description": "URL for the feature service on the ArcGIS server. Should not end in a slash.",
+          "examples": [
+            "https://services.arcgis.com/sFnw0xNflSi8J0uh/ArcGIS/rest/services/City_Council_Districts/FeatureServer"
+          ]
+        },
+        "layer": {
+          "type": "integer",
+          "description": "The number of the specific layer in the feature service to display.",
+          "examples": [
+            0
+          ]
+        }
+      }
+    }
+  }
+}

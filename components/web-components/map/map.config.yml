@@ -38,6 +38,15 @@ variants:
       modal_visible: true
       show_address_search: true
 
+  - name: Modal Overlay Open with Filters
+    context:
+      modal: true
+      modal_visible: true
+      show_address_search: true
+      open_overlay: true
+      show_filters: true
+      show_instructions: false
+
   - name: Modal Toggle
     context:
       modal: true

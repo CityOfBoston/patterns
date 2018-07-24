@@ -3,10 +3,10 @@
 Web component for a Leaflet map and data from Esri. It accepts the configuration
 block as an attribute or embedded `<script>` and generates a Leaflet map.
 
-This component typechecks against the [JSON-Schema
-files](https://cityofboston.github.io/vizwiz/#/jsonschema) from the vizwiz
-repository. To update the types, run `npx gulp schema:vizwiz`. You may also have
-to add to the list of URLs in the Gulpfile.
+The config format is defined by a JSON-Schema file. See the [documentation](/vendor/docson/#/web-components/map-1.0.schema.json) generated from that file.
+
+This component typechecks by converting the JSON-Schema to TypeScript. To update
+the type definitions, run `npx gulp schema:map`.
 
 The map can operate in "modal" mode by setting the `modal` attribute. In this
 mode, the map is hidden by default and, when shown, appears in a full-screen

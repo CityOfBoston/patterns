@@ -9,3 +9,6 @@
 
 # Auto-generated file
 /web-components/components.d.ts
+
+# Other folks' stuff
+/vendor
