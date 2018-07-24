@@ -90,6 +90,8 @@ cob-map .cob-map-modal-title {
 /* We have a wrapper we can put padding on without growing the bottom border */
 cob-map .cob-map-modal-header {
   flex-grow: 1;
+  /* overwrites boston.gov style */
+  margin: 0;
 }
 
 cob-map .cob-map-modal-header .sh {
@@ -133,12 +135,27 @@ cob-map
   transform: rotate(90deg);
 }
 
+/* When these are used in popups we want to tweak them to keep the titles from
+overlapping the content. */
+cob-map .leaflet-popup .dl-t {
+  width: auto;
+  min-width: 20%;
+  padding-right: 0.5em;
+}
+
+cob-map .leaflet-popup .dl-d {
+  width: auto;
+  max-width: 80%;
+}
+
 cob-map .cob-map-modal-title .md-cb {
   align-self: flex-start;
   border: none;
   z-index: 1000;
   position: relative;
   flex-shrink: 0;
+  /* Overwrites a Boston.gov style */
+  margin-top: 0;
 }
 
 cob-map .cob-map-modal-contents .cob-map-leaflet-container {
@@ -291,11 +308,6 @@ cob-map .cob-map-modal-legend-label {
     /* we undo how this was pushed to the right on desktop. */
     margin: 0;
   }
-}
-
-cob-map svg {
-  width: initial;
-  height: initial;
 }
 
 cob-map .geocoder-control-suggestions {
