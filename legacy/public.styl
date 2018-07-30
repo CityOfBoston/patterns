@@ -142,8 +142,7 @@ html.js .js-hide {
 img {
     border: 0
 }
-img,
-svg {
+.media img {
     max-width: 100%;
     width: auto;
     height: auto
@@ -4521,7 +4520,9 @@ __summary.collapsible {
     border-radius: 100%;
     margin-left: auto;
     margin-right: auto;
-    display: block
+    display: block;
+    max-width: 100%;
+    height: auto;
 }
 .paragraphs-item-3-column-w-image .column-wrapper .field-three-col-title {
     border-top: 0;
@@ -5801,7 +5802,9 @@ section.contact-departments,
     position: relative;
     left: 50%;
     -ms-transform: translate(-50%, 0);
-    transform: translate(-50%, 0)
+    transform: translate(-50%, 0);
+    width: auto;
+    height: auto;
 }
 @media (min-width: 2000px) {
     .hero-image img {
@@ -6171,7 +6174,9 @@ body:not(.node-type-tabbed-content) .timeline-step-wrapper .title-with-hero.time
     position: absolute;
     left: 50%;
     -ms-transform: translate(-50%, 0);
-    transform: translate(-50%, 0)
+    transform: translate(-50%, 0);
+    width: auto;
+    height: auto;
 }
 @media (min-width: 2000px) {
     .node-type-landing-page .landing-hero-image-wrapper img {
@@ -7036,6 +7041,7 @@ __help-icon.more-help-link {
     position: absolute;
     top: 50%;
     width: 100%
+    height: auto;
 }
 .listing-wrapper .listing-content-wrapper {
     margin: 30px
@@ -7181,6 +7187,8 @@ a.item-link {
 .news-item .thumb-wrapper img {
     min-width: 100%;
     max-height: 100%
+    width: auto
+    height: auto
 }
 .news-item h3.title,
 .news-item .view-transactions-main-transactions .view-header p.title,
@@ -7956,8 +7964,8 @@ article.view-mode-listing_long a.item-link {
     }
 }
 .node-type-department-profile .department-icon img {
-    height: 112px;
-    width: 112px;
+    max-height: 100%;
+    max-width: 100%;
     padding: 25px
 }
 .node-type-department-profile h5.contact-title,
@@ -8131,6 +8139,8 @@ article.view-mode-listing_long a.item-link {
 }
 .node-person-profile .person-profile-photo img {
     border-radius: 100%
+    max-width: 100%
+    height: auto
 }
 .node-person-profile .person-profile-bio.squiggle-border-top {
     margin-top: 20px;

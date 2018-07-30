@@ -67,6 +67,15 @@ const WAYPOINT_ICON = new LeafletIcon({
   popupAnchor: [0, -46], // point from which the popup should open relative to the iconAnchor
 });
 
+const CHARLES_BLUE_WAYPOINT_ICON = new LeafletIcon({
+  iconUrl: DEFAULT_ICON_SRC,
+  shadowUrl: undefined,
+
+  iconSize: [35, 46], // size of the icon
+  iconAnchor: [17, 46], // point of the icon which will correspond to marker's location
+  popupAnchor: [0, -46], // point from which the popup should open relative to the iconAnchor
+});
+
 export interface LayerConfig {
   uid: string;
   url: string;
@@ -250,6 +259,8 @@ export class CobMap {
    * ID and the field being loaded) to a list of values. */
   @State() filterDynamicOptions: { [key: string]: string[] } = {};
 
+  locationLayer: LeafletLayer | null = null;
+
   componentWillLoad() {
     if (this.isServer) {
       // We don't want to mount Leaflet on the server, even though it does
@@ -345,6 +356,17 @@ export class CobMap {
       // basemap.
       .addLayer(basemapLayer('Gray'))
       .addLayer(tiledMapLayer({ url: DEFAULT_BASEMAP_URL }));
+
+    this.map.on('zoom', () => {
+      if (this.map) {
+        this.updateVectorFeaturesForZoom(this.map.getZoom());
+      }
+    });
+
+    if (mapConfig.showUserLocation) {
+      this.map.on('locationfound', this.onLocationFound.bind(this));
+      this.map.locate();
+    }
 
     if (mapConfig.showZoomControl) {
       const zoomControl = Lcontrol.zoom({
@@ -510,7 +532,9 @@ export class CobMap {
 
     if (feature instanceof LeafletPath) {
       if (config.hoverColor) {
-        feature.setStyle(this.makeFeatureHoverStyle(config));
+        feature.setStyle(
+          this.makeFeatureHoverStyle(config, this.map!.getZoom())
+        );
         feature.bringToFront();
       }
     }
@@ -523,6 +547,21 @@ export class CobMap {
       const feature: LeafletLayer = ev.target;
       layerRecord.featuresLayer.resetStyle(feature);
     }
+  }
+
+  onLocationFound(location) {
+    if (!this.map) {
+      return;
+    }
+
+    if (this.locationLayer) {
+      this.locationLayer.remove();
+    }
+
+    this.locationLayer = new LeafletMarker(location.latlng, {
+      icon: CHARLES_BLUE_WAYPOINT_ICON,
+      interactive: false,
+    }).addTo(this.map);
   }
 
   maybeInsertAddressSearchControl() {
@@ -590,6 +629,9 @@ export class CobMap {
     }
 
     if (markers.length === 1 && popupLayerRecord) {
+      if (this.addressSearchZoomToResults) {
+        this.map!.setView(markers[0].getLatLng(), 13);
+      }
       // Opening the popup will bring it into view automatically.
       markers[0].openPopup();
     } else if (markers.length > 0 && this.addressSearchZoomToResults) {
@@ -674,19 +716,42 @@ export class CobMap {
     return config.popupTemplateCompiled(trimmedProperties);
   }
 
-  makeFeatureStyle({ color, fill }: LayerConfig): PathOptions {
+  updateVectorFeaturesForZoom(_zoom: number) {
+    if (!this.map) {
+      return;
+    }
+
+    this.layerRecords.forEach(({ featuresLayer, config }) => {
+      featuresLayer.eachLayer(layer => {
+        if (layer instanceof LeafletPath) {
+          if (config.color) {
+            layer.setStyle(this.makeFeatureStyle(config, this.map!.getZoom()));
+          }
+        }
+      });
+    });
+  }
+
+  makeFeatureStyle({ color, fill }: LayerConfig, zoom: number): PathOptions {
+    const zoomedIn = zoom >= 15;
+
     return {
       color: color || undefined,
       fill,
-      weight: 3,
+      weight: zoomedIn ? 5 : 3,
+      opacity: zoomedIn ? 0.35 : 1,
     };
   }
 
-  makeFeatureHoverStyle({ color, hoverColor, fill }: LayerConfig): PathOptions {
+  makeFeatureHoverStyle(
+    { color, hoverColor, fill }: LayerConfig,
+    _zoom: number
+  ): PathOptions {
     return {
       color: hoverColor || color || undefined,
       fill,
       weight: 4,
+      opacity: 1,
     };
   }
 
@@ -700,7 +765,7 @@ export class CobMap {
       //
       // Current types require this to be a function, even though the code
       // supports a hash. Let's not rock the boat and just use a function.
-      style: () => this.makeFeatureStyle(config),
+      style: () => this.makeFeatureStyle(config, this.map!.getZoom()),
       pointToLayer: (_, latlng) =>
         new LeafletMarker(latlng, {
           icon: new LeafletIcon({
