@@ -15,6 +15,7 @@
  */
 
 $select-arrow-box-width = 60px
+$select-arrow-box-thin-width = 42px
 
 .sel
   &-c
@@ -42,6 +43,13 @@ $select-arrow-box-width = 60px
       background-repeat: no-repeat
       background-position: center
       background-size: 20px
+
+    &--thin
+      &:after
+        width: $select-arrow-box-thin-width
+      
+      .sel-f
+        height: "calc(2 * %s + 2 * %s + %s * 1rem)" % ($sizing-100 $border-200 $line-height-300)
 
     &--err:after
       border-color: $freedom-red

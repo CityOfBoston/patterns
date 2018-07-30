@@ -13,7 +13,7 @@
         "hoverColor": "#fb4d42",
         "fill": true
       },
-      "popupHtmlTemplate": "<img src=\"\{{Image}}\" class=\"cdp-i\" alt=\"\{{Councilor}}\" style=\"margin-bottom: 1rem\"/>\n          <div class=\"ta-c m-v300\">\n            <div class=\"cdp-t t--sans t--upper m-t200\">\{{Councilor}}</div>\n            <div class=\"cdp-st t--subinfo t--g300\">District \{{DISTRICT}}</div>\n          </div>\n          <a href=\"\{{Bio}}\" class=\"btn btn--b btn--100 btn--sm\">\n            Visit webpage<span class=\"a11y--h\"> of \{{Councillor}}</span>\n          </a>",
+      "popupHtmlTemplate": "<img src=\"\{{Image}}\" class=\"cdp-i cdp-i--c\" alt=\"\{{Councilor}}\" style=\"margin-bottom: 1rem\"/>\n          <div class=\"ta-c m-v300\">\n            <div class=\"cdp-t t--sans t--upper m-t200\">\{{Councilor}}</div>\n            <div class=\"cdp-st t--subinfo t--g300\">District \{{DISTRICT}}</div>\n          </div>\n          <a href=\"\{{Bio}}\" class=\"btn btn--b btn--100 btn--sm\">\n            Visit webpage<span class=\"a11y--h\"> of \{{Councillor}}</span>\n          </a>",
       "data": {
         "type": "arcgis",
         "service": "https://services.arcgis.com/sFnw0xNflSi8J0uh/arcgis/rest/services/City_Council_Districts/FeatureServer",
@@ -38,16 +38,50 @@
         "layer": 0
       },
       "legend": {
-        "label": "Snow Emergency Parking Lots",
+        "label": "Parking Lots",
         "symbol": "icon"
       }
     }
   ],
+  {{#if show_filters}}
+  "filters": [
+    {
+      "dataSourceUid": "data1",
+      "title": "Day",
+      "type": "select",
+      "options": [
+        {"title": "Any", "value": "Any", "query": "1=1"},
+        "separator",
+        {"title": "Monday", "value": "Monday"},
+        {"title": "Tuesday", "value": "Tuesday"},
+        {"title": "Wednesday", "value": "Wednesday"},
+        {"title": "Thursday", "value": "Thursday"},
+        {"title": "Friday", "value": "Friday"},
+        {"title": "Saturday", "value": "Saturday"},
+        {"title": "Sunday", "value": "Sunday"}
+      ],
+      "queryTemplate": "Day = '{{.}}'"
+    },
+    {
+      "dataSourceUid": "data1",
+      "title": "Time",
+      "type": "select",
+      "options": [
+        {"title": "Any", "value": "Any", "query": "1=1"},
+        {"type": "separator"},
+        {"title": "Breakfast", "value": "Breakfast"},
+        {"title": "Lunch", "value": "Lunch"},
+        {"title": "Dinner", "value": "Dinner"}
+      ],
+      "queryTemplate": "Time = '{{.}}'"
+    } 
+  ],
+  {{/if}}
   "maps": [
     {
       "uid": "yBHcvxTmQyrK4WhLBxe16",
       "title": "{{heading}}",
-      "instructionsHtml": {{#if show_instructions}}"<div class=\"t--info\">\n    <p class=\"m-t000\">Hover over and click on your district to find your councilor, or search your address.</p>\n    <p>To see all City Council members, including at-large councilors, visit the\n      <a target=\"_blank\"\n        href=\"https://www.boston.gov/departments/city-council#city-council-members\">City Council page.</a>\n    </p>\n  </div>"{{else}}null{{/if}},
+      "instructionsHtml": {{#if show_instructions}}"<div class=\"t--info\"><p>To see all City Council members, including at-large councilors, visit the\n      <a target=\"_blank\"\n        href=\"https://www.boston.gov/departments/city-council#city-council-members\">City Council page.</a>\n    </p>\n  </div>"{{else}}null{{/if}},
       "latitude": 42.32,
       "longitude": -71.1284,
       "zoom": 12,

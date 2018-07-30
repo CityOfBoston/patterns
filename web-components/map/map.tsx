@@ -31,10 +31,10 @@ import { MarkerClusterGroup } from 'leaflet.markercluster';
 import 'templayed';
 declare function templayed(string): (Object) => string;
 
-// Run `gulp schema:vizwiz` to regenerate these files.
-import { VizWizV10 } from '../types/viz-1.0.schema';
+// Run `gulp schema:map` to regenerate these files.
+import { CobMap10, Filter } from './map-1.0.schema';
 
-export type VizConfig = VizWizV10;
+export type MapConfig = CobMap10;
 
 const DEFAULT_BASEMAP_URL =
   'https://awsgeo.boston.gov/arcgis/rest/services/Basemaps/BostonCityBasemap_WM/MapServer';
@@ -44,6 +44,8 @@ const DEFAULT_ICON_SRC =
 
 const DEFAULT_ADDRESS_SEARCH_WAYPOINT_ICON_SRC =
   'https://patterns.boston.gov/images/global/icons/mapping/waypoint-freedom-red.svg';
+
+const HORIZONTAL_LINE = '───────────';
 
 const BOSTON_BOUNDS = LlatLngBounds(
   LlatLng(42.170274, -71.348648),
@@ -58,6 +60,15 @@ const ADDRESS_FIELD_HOLDER_CLASS = 'cob-address-search-field-container';
 
 const WAYPOINT_ICON = new LeafletIcon({
   iconUrl: DEFAULT_ADDRESS_SEARCH_WAYPOINT_ICON_SRC,
+  shadowUrl: undefined,
+
+  iconSize: [35, 46], // size of the icon
+  iconAnchor: [17, 46], // point of the icon which will correspond to marker's location
+  popupAnchor: [0, -46], // point from which the popup should open relative to the iconAnchor
+});
+
+const CHARLES_BLUE_WAYPOINT_ICON = new LeafletIcon({
+  iconUrl: DEFAULT_ICON_SRC,
   shadowUrl: undefined,
 
   iconSize: [35, 46], // size of the icon
@@ -85,6 +96,9 @@ interface LayerRecord {
   mapLayer: LeafletGeoJSON | MarkerClusterGroup;
   featuresLayer: LeafletGeoJSON;
   config: LayerConfig;
+  // We keep track of what the filters were when we last requested the data for
+  // this layer, so we know whether or not we need to re-query.
+  lastFilterValues: { [id: string]: string };
 }
 
 // The Leaflet GeoJSON layer adds a "feature" property on to the layers that it
@@ -92,6 +106,71 @@ interface LayerRecord {
 // be instances of Path subclasses or Markers.
 interface GeoJSONFeatureLayer extends LeafletLayer {
   feature: Feature<any> | FeatureCollection<any>;
+}
+
+/**
+ * Given a Filter, finds the default value it should have when the page loads.
+ */
+export function findDefaultFilterValue(filter: Filter): string {
+  if (typeof filter.default === 'string') {
+    return filter.default;
+  }
+
+  if (filter.default) {
+    const now = new Date();
+
+    // We generate an array of information about the current date, which can be
+    // used to set time-based defaults.
+    const dateItems = {
+      day: now.getDay(),
+      '24hTime':
+        `${now.getHours() < 10 ? '0' : ''}${now.getHours()}` +
+        `${now.getMinutes() < 10 ? '0' : ''}${now.getMinutes()}`,
+    };
+
+    // The filtering ANDs together all defined predicates.
+    const matches = filter.default
+      .filter(
+        ({ date, eq }) =>
+          typeof eq === 'undefined' || !!(date && dateItems[date] === eq)
+      )
+      .filter(
+        ({ date, lt }) =>
+          typeof lt === 'undefined' || !!(date && dateItems[date] < lt)
+      )
+      .filter(
+        ({ date, lte }) =>
+          typeof lte === 'undefined' || !!(date && dateItems[date] <= lte)
+      )
+      .filter(
+        ({ date, gt }) =>
+          typeof gt === 'undefined' || !!(date && dateItems[date] > gt)
+      )
+      .filter(
+        ({ date, gte }) =>
+          typeof gte === 'undefined' || !!(date && dateItems[date] >= gte)
+      );
+
+    const match = matches[0];
+
+    if (match) {
+      return match.value;
+    }
+  }
+
+  // We fall through to here if none of the "default" cases match. We grab the
+  // first "value" entry in the options, if there is one.
+  if (filter.options) {
+    const option = filter.options.find(
+      opt => !opt.type || opt.type === 'value'
+    );
+
+    if (option && (!option.type || option.type === 'value')) {
+      return option.value;
+    }
+  }
+
+  return '';
 }
 
 @Component({
@@ -173,6 +252,15 @@ export class CobMap {
 
   @State() layerRecords: LayerRecord[] = [];
 
+  @State() filters: Filter[] = [];
+  /** This a map from the filter’s ID to its current value. */
+  @State() filterValues: { [id: string]: string } = {};
+  /** Map from the "key" of dynamic filter values (a combination of the filter
+   * ID and the field being loaded) to a list of values. */
+  @State() filterDynamicOptions: { [key: string]: string[] } = {};
+
+  locationLayer: LeafletLayer | null = null;
+
   componentWillLoad() {
     if (this.isServer) {
       // We don't want to mount Leaflet on the server, even though it does
@@ -198,6 +286,8 @@ export class CobMap {
 
     this.heading = mapConfig.title || '';
     this.instructionsHtml = mapConfig.instructionsHtml || '';
+
+    this.filters = config.filters || [];
 
     if (mapConfig.addressSearch) {
       this.showAddressSearch = true;
@@ -266,6 +356,17 @@ export class CobMap {
       // basemap.
       .addLayer(basemapLayer('Gray'))
       .addLayer(tiledMapLayer({ url: DEFAULT_BASEMAP_URL }));
+
+    this.map.on('zoom', () => {
+      if (this.map) {
+        this.updateVectorFeaturesForZoom(this.map.getZoom());
+      }
+    });
+
+    if (mapConfig.showUserLocation) {
+      this.map.on('locationfound', this.onLocationFound.bind(this));
+      this.map.locate();
+    }
 
     if (mapConfig.showZoomControl) {
       const zoomControl = Lcontrol.zoom({
@@ -359,6 +460,7 @@ export class CobMap {
   componentDidUpdate() {
     this.maybeMountMap();
     this.maybeInsertAddressSearchControl();
+    this.maybeUpdateLayers();
   }
 
   /**
@@ -366,7 +468,7 @@ export class CobMap {
    * the former for integration with other components, and the latter for easier
    * HTML building.
    */
-  getConfig(): VizConfig | null {
+  getConfig(): MapConfig | null {
     const configScript = this.el.querySelector('script[slot="config"]');
 
     try {
@@ -430,7 +532,9 @@ export class CobMap {
 
     if (feature instanceof LeafletPath) {
       if (config.hoverColor) {
-        feature.setStyle(this.makeFeatureHoverStyle(config));
+        feature.setStyle(
+          this.makeFeatureHoverStyle(config, this.map!.getZoom())
+        );
         feature.bringToFront();
       }
     }
@@ -443,6 +547,21 @@ export class CobMap {
       const feature: LeafletLayer = ev.target;
       layerRecord.featuresLayer.resetStyle(feature);
     }
+  }
+
+  onLocationFound(location) {
+    if (!this.map) {
+      return;
+    }
+
+    if (this.locationLayer) {
+      this.locationLayer.remove();
+    }
+
+    this.locationLayer = new LeafletMarker(location.latlng, {
+      icon: CHARLES_BLUE_WAYPOINT_ICON,
+      interactive: false,
+    }).addTo(this.map);
   }
 
   maybeInsertAddressSearchControl() {
@@ -462,11 +581,15 @@ export class CobMap {
     }
   }
 
+  closeMobileOverlay() {
+    // If we're on mobile, the overlay was open to show the address search
+    // field. We close it to keep it from obscuring the results.
+    this.openOverlay = false;
+  }
+
   onAddressSearchResults(data) {
     if (data.results.length) {
-      // If we're on mobile, the overlay was open to show the address search
-      // field. We close it to keep it from obscuring the results.
-      this.openOverlay = false;
+      this.closeMobileOverlay();
     }
 
     if (!this.addressSearchResultsFeatures) {
@@ -506,6 +629,9 @@ export class CobMap {
     }
 
     if (markers.length === 1 && popupLayerRecord) {
+      if (this.addressSearchZoomToResults) {
+        this.map!.setView(markers[0].getLatLng(), 13);
+      }
       // Opening the popup will bring it into view automatically.
       markers[0].openPopup();
     } else if (markers.length > 0 && this.addressSearchZoomToResults) {
@@ -522,6 +648,8 @@ export class CobMap {
       return null;
     }
 
+    this.closeMobileOverlay();
+
     return this.renderPopupContent(config, feature.properties || {});
   }
 
@@ -529,6 +657,8 @@ export class CobMap {
     layerConfig: LayerConfig,
     marker: LeafletMarker
   ) {
+    this.closeMobileOverlay();
+
     // When a marker is placed on the map we don't have any feature information
     // for it, so we need to query Esri for the properties we need to render the
     // popup.
@@ -586,19 +716,42 @@ export class CobMap {
     return config.popupTemplateCompiled(trimmedProperties);
   }
 
-  makeFeatureStyle({ color, fill }: LayerConfig): PathOptions {
+  updateVectorFeaturesForZoom(_zoom: number) {
+    if (!this.map) {
+      return;
+    }
+
+    this.layerRecords.forEach(({ featuresLayer, config }) => {
+      featuresLayer.eachLayer(layer => {
+        if (layer instanceof LeafletPath) {
+          if (config.color) {
+            layer.setStyle(this.makeFeatureStyle(config, this.map!.getZoom()));
+          }
+        }
+      });
+    });
+  }
+
+  makeFeatureStyle({ color, fill }: LayerConfig, zoom: number): PathOptions {
+    const zoomedIn = zoom >= 15;
+
     return {
       color: color || undefined,
       fill,
-      weight: 3,
+      weight: zoomedIn ? 5 : 3,
+      opacity: zoomedIn ? 0.35 : 1,
     };
   }
 
-  makeFeatureHoverStyle({ color, hoverColor, fill }: LayerConfig): PathOptions {
+  makeFeatureHoverStyle(
+    { color, hoverColor, fill }: LayerConfig,
+    _zoom: number
+  ): PathOptions {
     return {
       color: hoverColor || color || undefined,
       fill,
       weight: 4,
+      opacity: 1,
     };
   }
 
@@ -612,7 +765,7 @@ export class CobMap {
       //
       // Current types require this to be a function, even though the code
       // supports a hash. Let's not rock the boat and just use a function.
-      style: () => this.makeFeatureStyle(config),
+      style: () => this.makeFeatureStyle(config, this.map!.getZoom()),
       pointToLayer: (_, latlng) =>
         new LeafletMarker(latlng, {
           icon: new LeafletIcon({
@@ -637,37 +790,6 @@ export class CobMap {
       : featuresLayer
     ).addTo(this.map);
 
-    // We manually run an Esri Query rather than using the built-in
-    // FeatureLayer, which queries automatically. FeatureLayer has the advantage
-    // of only loading features that fit within the map’s current view, but the
-    // downside of not being immediately compatible with MarkerClusterGroup (due
-    // to how it adds layers). Since our geo data is all limited to the Boston
-    // metro area, querying just on the map location is not a useful
-    // optimization, so we use GeoJSON directly, which is compatible with
-    // MarkerClusterGroup.
-    //
-    // If limiting by the map’s view is valuable, it will require some massaging
-    // of the FeatureLayer implementation to add its layers to the
-    // MarkerClusterGroup rather than the map directly.
-    esriQuery({ url: config.url })
-      .where('1=1')
-      .run((err, featureCollection) => {
-        if (err) {
-          throw err;
-        }
-
-        featuresLayer.addData(featureCollection);
-
-        if (mapLayer !== featuresLayer) {
-          // MarkerClusterGroup only processes new icons on adding the layer.
-          // There's no method to call to re-pull the child Markers from
-          // featuresLayer now that addData has created them, so we clear it all
-          // and add again.
-          mapLayer.clearLayers();
-          mapLayer.addLayer(featuresLayer);
-        }
-      });
-
     if (config.popupTemplate) {
       config.popupTemplateCompiled = templayed(config.popupTemplate);
       // Since the MarkerClusterLayer works by pulling the layers out of their
@@ -683,7 +805,238 @@ export class CobMap {
       mapLayer.unbindPopup();
     }
 
-    return { config, mapLayer, featuresLayer };
+    const record: LayerRecord = {
+      config,
+      mapLayer,
+      featuresLayer,
+      // This can start as an empty object because loadEsriLayer will initialize
+      // it with the right default values.
+      lastFilterValues: {},
+    };
+
+    this.loadEsriLayer(record);
+
+    return record;
+  }
+
+  /**
+   * Returns an ID for the filter that’s unique on the page, so we can use it as
+   * an HTML ID attribute.
+   */
+  makeFilterInputId(title) {
+    return `cob-map-filter-${
+      this.idSuffix
+    }-${title!.toLocaleLowerCase().replace(/\s/g, '-')}`;
+  }
+
+  /**
+   * Reloads any layers whose filter values have changed.
+   */
+  maybeUpdateLayers() {
+    this.layerRecords.forEach(record => {
+      const layerFilters = this.filters.filter(
+        ({ dataSourceUid }) => dataSourceUid === record.config.uid
+      );
+
+      const firstChangedFilter = layerFilters.find(({ title }) => {
+        const id = this.makeFilterInputId(title);
+        return this.filterValues[id] !== record.lastFilterValues[id];
+      });
+
+      if (firstChangedFilter) {
+        this.loadEsriLayer(record);
+      }
+    });
+  }
+
+  /**
+   * Removes all content from the layers associated with the record, and closes
+   * any popups as well.
+   */
+  resetLayer({ featuresLayer, mapLayer }: LayerRecord) {
+    mapLayer.closePopup();
+    featuresLayer.clearLayers();
+
+    if (mapLayer !== featuresLayer) {
+      // MarkerClusterGroup only processes new icons on adding the layer.
+      // There's no method to call to re-pull the child Markers from
+      // featuresLayer now that addData has created them, so we clear it all
+      // and add again.
+      mapLayer.clearLayers();
+    }
+  }
+
+  loadEsriLayer(record: LayerRecord) {
+    const { config, featuresLayer, mapLayer } = record;
+    const allWhereClauses: string[] = [];
+    // We keep a map of what where clauses are associated with what filter IDs
+    // so that when we load dynamic field values we keep ourselves from
+    // filtering on the filter's own current value.
+    const whereClausesById: { [id: string]: string } = {};
+
+    // We track the new values we're filtering by so we can update the record.
+    const newFilterValues: { [id: string]: string } = {};
+
+    const layerFilters = this.filters.filter(
+      ({ dataSourceUid }) => dataSourceUid === config.uid
+    );
+
+    layerFilters.forEach(filter => {
+      const { title, options, queryTemplate } = filter;
+
+      const id = this.makeFilterInputId(title);
+      let value = this.filterValues[id];
+
+      if (!value) {
+        value = findDefaultFilterValue(filter);
+      }
+
+      let whereClause;
+
+      // Look up the element in the options array that matches our current
+      // value, so we can use its "query" attribute, if it has one.
+      const optionForValue = (options || []).find(
+        opt =>
+          !!(
+            (!opt.type || opt.type === 'value') &&
+            opt.value === value &&
+            opt.query
+          )
+      );
+
+      if (optionForValue) {
+        // the `find` filtered this down, so just use any to avoid having to
+        // repeat the type guards.
+        whereClause = (optionForValue as any).query;
+      }
+
+      // Either no built-in query or the filter didn’t have an "options"
+      // array.
+      if (!whereClause) {
+        // Passing value here makes it replace "{{.}}" in the template.
+        whereClause = templayed(queryTemplate)(value.replace(/'/g, "''"));
+      }
+
+      newFilterValues[id] = value;
+      allWhereClauses.push(whereClause);
+      whereClausesById[id] = whereClause;
+    });
+
+    // We do this here to reduce the chance of multiple unnecessary loads of a
+    // layer if componentDidUpdate gets called while a query is still
+    // outstanding.
+    record.lastFilterValues = newFilterValues;
+    this.filterValues = {
+      ...this.filterValues,
+      ...newFilterValues,
+    };
+
+    // Remove the layer we're about to load, as a way to show that something is
+    // happening while we wait for the ESRI response to come in.
+    this.resetLayer(record);
+
+    // We manually run an Esri Query rather than using the built-in
+    // FeatureLayer, which queries automatically. FeatureLayer has the advantage
+    // of only loading features that fit within the map’s current view, but the
+    // downside of not being immediately compatible with MarkerClusterGroup (due
+    // to how it adds layers). Since our geo data is all limited to the Boston
+    // metro area, querying just on the map location is not a useful
+    // optimization, so we use GeoJSON directly, which is compatible with
+    // MarkerClusterGroup.
+    //
+    // If limiting by the map’s view is valuable, it will require some massaging
+    // of the FeatureLayer implementation to add its layers to the
+    // MarkerClusterGroup rather than the map directly.
+    esriQuery({ url: config.url })
+      .where(allWhereClauses.length > 0 ? allWhereClauses.join(' AND ') : '1=1')
+      .run((err, featureCollection) => {
+        if (err) {
+          throw err;
+        }
+
+        // We clear a second time just before adding data in case there is an
+        // overlapping query or something that added points since the reset we
+        // did before the query.
+        this.resetLayer(record);
+
+        featuresLayer.addData(featureCollection);
+
+        if (mapLayer !== featuresLayer) {
+          mapLayer.addLayer(featuresLayer);
+        }
+
+        // We set this again to ensure that filterValues best reflects the state
+        // of the map. Things could get a little askew if the user changes the
+        // filters while a query is happening, if the queries come back
+        // out-of-order. This ensures correctness when the dust settles.
+        record.lastFilterValues = newFilterValues;
+
+        // Also update the UI to match what's being displayed. Ideally this will
+        // be a visual no-op.
+        this.filterValues = {
+          ...this.filterValues,
+          ...newFilterValues,
+        };
+      });
+
+    // Now we have to find each filter that is dynamically loading its options
+    // so that we can update its choices based on any new filter values.
+    layerFilters.forEach(filterObj => {
+      const id = this.makeFilterInputId(filterObj.title);
+
+      // Slightly inefficient because we'll make a request for each filter
+      // option individually, rather than collapsing queries. For now we assume
+      // that there won't be very many filters all pulling dynamically from the
+      // same layer.
+      (filterObj.options || []).forEach(opt => {
+        if (opt.type !== 'dynamic') {
+          return;
+        }
+
+        const { field, limitWithFilters } = opt;
+        const key = `${id}-${field}`;
+
+        // If we don't want to filter the dynamic options by the other filters,
+        // then only run the query if we don’t have a cached version.
+        if (this.filterDynamicOptions[key] && !limitWithFilters) {
+          return;
+        }
+
+        const whereClauses: string[] = [];
+
+        if (limitWithFilters) {
+          // We want to generate a list of query clauses for everything that's
+          // not this particular filter. "for-in" loop since we don't want to
+          // rely on an Object.values polyfill.
+          for (let clauseId in whereClausesById) {
+            if (clauseId !== id) {
+              whereClauses.push(whereClausesById[clauseId]);
+            }
+          }
+        }
+
+        esriQuery({ url: config.url })
+          .where(whereClauses.length > 0 ? whereClauses.join(' AND ') : '1=1')
+          .fields([field])
+          .distinct()
+          .run((err, featureCollection) => {
+            if (err) {
+              throw err;
+            }
+
+            const values: string[] = featureCollection.features.map(
+              ({ properties }) => properties[field]
+            );
+
+            values.sort();
+
+            this.filterDynamicOptions = {
+              ...this.filterDynamicOptions,
+              [key]: values,
+            };
+          });
+      });
+    });
   }
 
   handleLegendLabelMouseClick(ev: MouseEvent) {
@@ -712,11 +1065,27 @@ export class CobMap {
     return (
       <div class="md md--fw">
         <div class="md-c">
+          <input
+            type="checkbox"
+            class="cob-map-controls-checkbox"
+            id={`cob-map-controls-checkbox-${this.idSuffix}`}
+            aria-hidden
+            checked={this.openOverlay}
+            onChange={ev =>
+              (this.openOverlay = (ev.target as HTMLInputElement).checked)
+            }
+          />
           <div class="cob-map-modal-contents">
             <div class="cob-map-modal-title">
-              <div class="sh sh--sm p-a300" style={{ borderBottom: 'none' }}>
-                <h2 class="sh-title">{this.heading}</h2>
-              </div>
+              <label
+                class="cob-map-modal-header p-a300"
+                htmlFor={`cob-map-controls-checkbox-${this.idSuffix}`}
+              >
+                <div class="sh sh--sm">
+                  <h2 class="sh-title">{this.heading}</h2>
+                  {this.renderControlsToggle()}
+                </div>
+              </label>
 
               {this.showAddressSearch && (
                 <div
@@ -740,7 +1109,39 @@ export class CobMap {
             <div class="cob-map-leaflet-container" />
             <div class="cob-map-modal-controls">
               {this.instructionsHtml && (
-                <div class="p-a300" innerHTML={this.instructionsHtml} />
+                <div
+                  class="cob-map-modal-instructions p-a300"
+                  innerHTML={this.instructionsHtml}
+                />
+              )}
+
+              {this.filters.length > 0 && (
+                <div class="cob-map-modal-filters p-a300">
+                  {this.filters.map(filter => this.renderFilter(filter))}
+                </div>
+              )}
+
+              {this.showLegend && (
+                <div class="cob-map-modal-legend">
+                  <div class="cob-map-modal-legend-cell-container">
+                    {this.layerRecords
+                      .filter(
+                        ({ config }) =>
+                          config.legendSymbol && config.legendLabel
+                      )
+                      .map(({ config }) => (
+                        <div class="cob-map-modal-legend-cell">
+                          <div class="cob-map-modal-legend-icon">
+                            {this.renderLegendIcon(config)}
+                          </div>
+
+                          <div class="cob-map-modal-legend-label">
+                            {config.legendLabel}
+                          </div>
+                        </div>
+                      ))}
+                  </div>
+                </div>
               )}
             </div>
           </div>
@@ -812,6 +1213,20 @@ export class CobMap {
     );
   }
 
+  renderControlsToggle() {
+    return (
+      <div class="cob-map-controls-toggle">
+        {/* Our standard blue disclosure arrow. */}
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="-2 8.5 18 25">
+          <path
+            fill="#288be4"
+            d="M16 21L.5 33.2c-.6.5-1.5.4-2.2-.2-.5-.6-.4-1.6.2-2l12.6-10-12.6-10c-.6-.5-.7-1.5-.2-2s1.5-.7 2.2-.2L16 21z"
+          />
+        </svg>
+      </div>
+    );
+  }
+
   renderLegendIcon({ color, iconSrc, legendSymbol }: LayerConfig) {
     switch (legendSymbol) {
       case 'polygon':
@@ -848,6 +1263,93 @@ export class CobMap {
         );
       case 'icon':
         return <img src={iconSrc || DEFAULT_ICON_SRC} width="50" height="50" />;
+      default:
+        return null;
+    }
+  }
+
+  onFilterChange = ev => {
+    const el: HTMLSelectElement | HTMLInputElement = ev.target;
+
+    this.filterValues = {
+      ...this.filterValues,
+      [el.id]: el.value,
+    };
+  };
+
+  renderFilter({ title, type, options }: Filter) {
+    const id = this.makeFilterInputId(title);
+
+    switch (type) {
+      case 'select': {
+        // We keep track of whether we added an option that's selected. This
+        // handles the case where other filters remove a dynamic filter’s
+        // option. In that case we add it to the end of the select, but disable
+        // it.
+        let addedSelectedOption = false;
+
+        return (
+          <div class="sel cob-map-modal-filter">
+            <label htmlFor={id} class="sel-l sel-l--mt000">
+              {title}
+            </label>
+            <div class="sel-c sel-c--thin">
+              <select id={id} class="sel-f" onChange={this.onFilterChange}>
+                {(options || []).map(opt => {
+                  switch (opt.type) {
+                    case undefined:
+                    case 'value': {
+                      const { title, value } = opt;
+                      const selected = value === this.filterValues[id];
+
+                      if (selected) {
+                        addedSelectedOption = true;
+                      }
+
+                      return (
+                        <option value={value || ''} selected={selected}>
+                          {title}
+                        </option>
+                      );
+                    }
+
+                    case 'dynamic': {
+                      const { field } = opt;
+                      const key = `${id}-${field}`;
+
+                      return (this.filterDynamicOptions[key] || []).map(val => {
+                        const selected = val === this.filterValues[id];
+                        if (selected) {
+                          addedSelectedOption = true;
+                        }
+
+                        return (
+                          <option key={val} value={val} selected={selected}>
+                            {val}
+                          </option>
+                        );
+                      });
+                    }
+
+                    case 'separator':
+                      return <option disabled>{HORIZONTAL_LINE}</option>;
+
+                    default:
+                      return null;
+                  }
+                })}
+
+                {!addedSelectedOption && [
+                  <option disabled>{HORIZONTAL_LINE}</option>,
+                  <option selected disabled>
+                    {this.filterValues[id]}
+                  </option>,
+                ]}
+              </select>
+            </div>
+          </div>
+        );
+      }
       default:
         return null;
     }
