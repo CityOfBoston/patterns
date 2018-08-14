@@ -62,13 +62,6 @@ test('Districts are drawn and hover', async t => {
   await t.expect(hoverPolygons.count).eql(1);
 });
 
-// We don't want an overlay so that we don't need to worry about it obscuring
-// the marker we're trying to click on.
-fixture('Map Popup')
-  .page(componentPreviewUrl('map', 'no-overlay'))
-  .before(nockSetup)
-  .after(nockTeardown);
-
 test('Clicking parking marker shows popup', async t => {
   // The first point in the fixture is 100 Clarendon St.
   await t.click(map.markersByIcon(PARKING_ICON));
@@ -79,7 +72,7 @@ test('Clicking parking marker shows popup', async t => {
 });
 
 fixture('Map Modal')
-  .page(componentPreviewUrl('map', 'modal-toggle'))
+  .page(componentPreviewUrl('map', 'modal-closed'))
   .before(nockSetup)
   .after(nockTeardown);
 

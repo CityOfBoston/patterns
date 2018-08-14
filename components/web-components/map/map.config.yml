@@ -3,14 +3,12 @@ handle: map
 status: ready
 notes: |
   {{stencil_readme "map"}}
-  ----------------------------------------------
-  {{stencil_readme "map-esri-layer"}}
-  ----------------------------------------------
-  {{stencil_readme "viz"}}
 context: 
   heading: Parking and city councilors
   show_legend: true
   show_instructions: true
+  open_overlay: true
+
 variants:
   - name: No Overlay
     context:
@@ -22,34 +20,23 @@ variants:
     context:
       show_address_search: true
       show_instructions: false
-      open_overlay: true
+      show_legend: false
+
+  - name: Filters
+    context:
+      show_filters: true
+      show_instructions: false
 
   - name: Cluster Icons
     context:
       cluster_icons: true
+      open_overlay: false
 
-  - name: Overlay Open
-    context:
-      open_overlay: true
-
-  - name: Modal
-    context:
-      modal: true
-      modal_visible: true
-      show_address_search: true
-
-  - name: Modal Overlay Open with Filters
-    context:
-      modal: true
-      modal_visible: true
-      show_address_search: true
-      open_overlay: true
-      show_filters: true
-      show_instructions: false
-
-  - name: Modal Toggle
+  # This is here for the TestCafe tests in order to test opening the modal.
+  - name: Modal Closed
     context:
       modal: true
       modal_show_link: true
       show_address_search: true
+      modal_hidden: true
 

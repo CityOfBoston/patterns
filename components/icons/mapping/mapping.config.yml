@@ -9,5 +9,8 @@ context:
     - file: food-truck.svg
     - file: parking.svg
     - file: parking-nope.svg
+    - file: outdoor-pool.svg
+    - file: tot-spray.svg
+    - file: trash-recycling.svg
     - file: waypoint-charles-blue.svg
     - file: waypoint-freedom-red.svg

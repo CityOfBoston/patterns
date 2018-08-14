@@ -21,15 +21,9 @@
 
 <body>
   <div class="b b-c">
-    <div class="sh m-b500">
-      <a name="councilor-look-up"
-        data-text="Councilor look-up"
-        class="subnav-anchor createNavItem-processed"></a>
-      <h2 class="sh-title">City councilor map look-up</h2>
-    </div>
-
     <div class="m-v300">
-      <cob-map style="height: 600px">
+      <a href="#map" class="btn">Open Map</a>
+      <cob-map id="map" modal>
         <script type="application/json"
           slot="config">
 {
@@ -61,18 +55,18 @@
     {
       "uid": "yBHcvxTmQyrK4WhLBxe16",
       "title": "City Councilor Look-Up",
-      "instructionsHtml": "<div class=\"t--info\"> <p>\n          Hover over and click on your district to find your councilor, or search your address.\n        </p>\n        <p>\n          To see all City Council members, including at-large councilors, visit the\n          <a href=\"https://www.boston.gov/departments/city-council#city-council-members\">City Council page</a>.\n        </p>\n </div>",
-      "latitude": 42.32,
-      "longitude": -71.1284,
+      "instructionsHtml": "<div class=\"t--info\">To see all City Council members, including at-large councilors, visit the\n          <a href=\"https://www.boston.gov/departments/city-council#city-council-members\">City Council page</a>.</div>",
+      "latitude": 42.3240812,
+      "longitude": -71.0844068,
       "zoom": 12,
       "showZoomControl": true,
       "showLegend": true,
-      "showUserLocation": false,
+      "showUserLocation": true,
       "addressSearch": {
         "title": "",
         "placeholder": "Search for your address…",
         "autoPopupDataSourceUid": "0QYJNIqaMzWBtanIvWles",
-        "zoomToResult": false
+        "zoomToResult": true
       }
     }
   ]
