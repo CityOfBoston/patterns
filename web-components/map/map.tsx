@@ -57,6 +57,7 @@ const DEFAULT_LONGITUDE = -71.0844068;
 const DEFAULT_ZOOM = 14;
 
 const ADDRESS_FIELD_HOLDER_CLASS = 'cob-address-search-field-container';
+const LOCATION_MARKER_PANE = 'location';
 
 const WAYPOINT_ICON = new LeafletIcon({
   iconUrl: DEFAULT_ADDRESS_SEARCH_WAYPOINT_ICON_SRC,
@@ -209,15 +210,6 @@ export class CobMap {
   openOverlay: boolean = false;
 
   /**
-   * If true, the map starts hidden and, when shown, appears in a full-screen
-   * modal dialog.
-   *
-   * Note: On the server, this may be the empty string when true, so we need to
-   * check against `!== false` to test it.
-   */
-  @Prop() modal: boolean = false;
-
-  /**
    * Change to true to make the modal appear.
    */
   @Prop({ mutable: true })
@@ -317,7 +309,7 @@ export class CobMap {
   }
 
   maybeMountMap() {
-    const mapHidden = this.modal !== false && this.modalVisible === false;
+    const mapHidden = this.modalVisible === false;
 
     if (this.map && mapHidden) {
       this.map.remove();
@@ -364,6 +356,9 @@ export class CobMap {
     });
 
     if (mapConfig.showUserLocation) {
+      // We put the location marker in its own Leaflet pane so that it stays
+      // under all the other feature markers we might add.
+      this.map.createPane(LOCATION_MARKER_PANE);
       this.map.on('locationfound', this.onLocationFound.bind(this));
       this.map.locate();
     }
@@ -386,10 +381,7 @@ export class CobMap {
         searchBounds: BOSTON_BOUNDS,
       });
 
-      addressSearchControl.on(
-        'results',
-        this.onAddressSearchResults.bind(this)
-      );
+      addressSearchControl.on('results', this.onAddressSearchResults);
 
       this.addressSearchResultsFeatures = new LeafletFeatureGroup().addTo(
         this.map
@@ -461,6 +453,18 @@ export class CobMap {
     this.maybeMountMap();
     this.maybeInsertAddressSearchControl();
     this.maybeUpdateLayers();
+
+    // Re-rendering can change the size of the map, for example from the
+    // overlay hiding and showing. We wait 300ms so that any hide/show
+    // animations are done.
+    //
+    // We don't want to pan because the overlay should feel like it's sliding
+    // over the map.
+    setTimeout(() => {
+      if (this.map) {
+        this.map.invalidateSize({ pan: false } as any);
+      }
+    }, 300);
   }
 
   /**
@@ -561,6 +565,7 @@ export class CobMap {
     this.locationLayer = new LeafletMarker(location.latlng, {
       icon: CHARLES_BLUE_WAYPOINT_ICON,
       interactive: false,
+      pane: LOCATION_MARKER_PANE,
     }).addTo(this.map);
   }
 
@@ -587,7 +592,20 @@ export class CobMap {
     this.openOverlay = false;
   }
 
-  onAddressSearchResults(data) {
+  onOverlayChange = ev => {
+    this.openOverlay = (ev.target as HTMLInputElement).checked;
+  };
+
+  onFilterChange = ev => {
+    const el: HTMLSelectElement | HTMLInputElement = ev.target;
+
+    this.filterValues = {
+      ...this.filterValues,
+      [el.id]: el.value,
+    };
+  };
+
+  onAddressSearchResults = data => {
     if (data.results.length) {
       this.closeMobileOverlay();
     }
@@ -637,7 +655,7 @@ export class CobMap {
     } else if (markers.length > 0 && this.addressSearchZoomToResults) {
       this.map!.fitBounds(this.addressSearchResultsFeatures.getBounds());
     }
-  }
+  };
 
   handleMapLayerPopup(
     config: LayerConfig,
@@ -716,6 +734,9 @@ export class CobMap {
     return config.popupTemplateCompiled(trimmedProperties);
   }
 
+  // We change the style of the vectors as we zoom so that when they're close
+  // you can still see through to street names, but when they're far away
+  // they're opaque so you don't get weird dark spots where they overlap.
   updateVectorFeaturesForZoom(_zoom: number) {
     if (!this.map) {
       return;
@@ -1039,25 +1060,11 @@ export class CobMap {
     });
   }
 
-  handleLegendLabelMouseClick(ev: MouseEvent) {
-    this.openOverlay = !this.openOverlay;
-    ev.stopPropagation();
-    ev.preventDefault();
-  }
-
   getSearchFieldInputId() {
     return `cob-map-address-search-field-${this.idSuffix}`;
   }
 
   render() {
-    if (this.modal !== false) {
-      return this.renderModal();
-    } else {
-      return this.renderInline();
-    }
-  }
-
-  renderModal() {
     if (this.modalVisible === false) {
       return null;
     }
@@ -1071,9 +1078,7 @@ export class CobMap {
             id={`cob-map-controls-checkbox-${this.idSuffix}`}
             aria-hidden
             checked={this.openOverlay}
-            onChange={ev =>
-              (this.openOverlay = (ev.target as HTMLInputElement).checked)
-            }
+            onChange={this.onOverlayChange}
           />
           <div class="cob-map-modal-contents">
             <div class="cob-map-modal-title">
@@ -1108,6 +1113,12 @@ export class CobMap {
             </div>
             <div class="cob-map-leaflet-container" />
             <div class="cob-map-modal-controls">
+              {this.filters.length > 0 && (
+                <div class={`cob-map-modal-filters  p-a300`}>
+                  {this.filters.map(filter => this.renderFilter(filter))}
+                </div>
+              )}
+
               {this.instructionsHtml && (
                 <div
                   class="cob-map-modal-instructions p-a300"
@@ -1115,14 +1126,14 @@ export class CobMap {
                 />
               )}
 
-              {this.filters.length > 0 && (
-                <div class="cob-map-modal-filters p-a300">
-                  {this.filters.map(filter => this.renderFilter(filter))}
-                </div>
-              )}
-
               {this.showLegend && (
-                <div class="cob-map-modal-legend">
+                <div
+                  class={`cob-map-modal-legend ${
+                    !this.instructionsHtml && this.filters.length === 0
+                      ? 'cob-map-modal-legend-fill'
+                      : ''
+                  }`}
+                >
                   <div class="cob-map-modal-legend-cell-container">
                     {this.layerRecords
                       .filter(
@@ -1150,70 +1161,16 @@ export class CobMap {
     );
   }
 
-  renderInline() {
-    // During server rendering, boolean attributes start out as the empty string
-    // rather than a true.
-    const openOverlay = this.openOverlay !== false;
-    const toggleInputId = `cob-map-overlay-collapsible-${this.idSuffix}`;
-
-    return (
-      <div class="cob-overlay">
-        <div class="co">
-          <input
-            id={toggleInputId}
-            type="checkbox"
-            class="co-f d-n"
-            aria-hidden="true"
-            checked={openOverlay}
-          />
-          <label
-            htmlFor={toggleInputId}
-            class="co-t"
-            onClick={this.handleLegendLabelMouseClick.bind(this)}
-          >
-            {this.heading}
-          </label>
-
-          <div class="co-b b--w cob-overlay-content">
-            {this.instructionsHtml && <div innerHTML={this.instructionsHtml} />}
-
-            {this.showAddressSearch && (
-              <div class="sf sf--md m-v500">
-                <label class="sf-l">{this.addressSearchHeading}</label>
-                <div class={`${ADDRESS_FIELD_HOLDER_CLASS} m-v100`} />
-              </div>
-            )}
-
-            {this.showLegend && (
-              <div class="g cob-legend-table">
-                {this.layerRecords
-                  .filter(
-                    ({ config }) => config.legendSymbol && config.legendLabel
-                  )
-                  .map(({ config }) => (
-                    <div
-                      class={`${
-                        this.layerRecords.length === 1 ? 'g--12' : 'g--6'
-                      } cob-legend-table-row m-b200`}
-                    >
-                      <div class="cob-legend-table-icon">
-                        {this.renderLegendIcon(config)}
-                      </div>
-
-                      <div class="t--subinfo cob-legend-table-label">
-                        {config.legendLabel}
-                      </div>
-                    </div>
-                  ))}
-              </div>
-            )}
-          </div>
-        </div>
-      </div>
-    );
-  }
-
   renderControlsToggle() {
+    if (
+      !this.instructionsHtml &&
+      !this.showLegend &&
+      !this.showAddressSearch &&
+      this.filters.length === 0
+    ) {
+      return null;
+    }
+
     return (
       <div class="cob-map-controls-toggle">
         {/* Our standard blue disclosure arrow. */}
@@ -1267,15 +1224,6 @@ export class CobMap {
         return null;
     }
   }
-
-  onFilterChange = ev => {
-    const el: HTMLSelectElement | HTMLInputElement = ev.target;
-
-    this.filterValues = {
-      ...this.filterValues,
-      [el.id]: el.value,
-    };
-  };
 
   renderFilter({ title, type, options }: Filter) {
     const id = this.makeFilterInputId(title);

@@ -13,57 +13,6 @@ cob-map.leaflet-container a.leaflet-popup-close-button {
   right: 6px;
 }
 
-cob-map .cob-overlay {
-  cursor: default;
-
-  position: absolute;
-
-  top: 1rem;
-  left: 1rem;
-
-  /*
-    We give the legend a default width that can be overriden by classes or style
-    attributes by the external page.
-  */
-  width: 60%;
-  max-width: 500px;
-
-  /* to get above the ESRI map */
-  z-index: 500;
-}
-
-/* Causes the overlay element to expand to its children's vertical margin. */
-cob-map .cob-overlay-content:before {
-  display: table;
-  content: ' ';
-}
-cob-map .cob-overlay-content:after {
-  display: table;
-  content: ' ';
-  clear: both;
-}
-
-/* We set the inner margin of the contents rather than the padding so that it
-disappears automatically when there's no content. */
-cob-map .cob-overlay-content > * {
-  margin: 1rem 1.5rem;
-}
-
-@media screen and (max-width: 839px) {
-  cob-map .cob-overlay {
-    top: 0;
-    left: 0;
-
-    /*
-      The !importants here are to force that when we get narrow enough to do
-      collapse / expand UI we go to the full width. Prevents the need for the
-      width overrides for the hovering state to have their own media queries.
-    */
-    width: 100% !important;
-    max-width: 100% !important;
-  }
-}
-
 /* This element is just inside the modal dialog box. */
 cob-map .cob-map-modal-contents {
   display: flex;
@@ -196,6 +145,12 @@ cob-map .cob-map-modal-legend {
   justify-content: center;
 }
 
+cob-map .cob-map-modal-legend.cob-map-modal-legend-fill {
+  margin-left: 0;
+  flex-grow: 1;
+}
+
+
 /* inner container is here so we can vertically center all of the legend icons,
 but have their tops all align. */
 cob-map .cob-map-modal-legend-cell-container {
@@ -220,7 +175,11 @@ cob-map .cob-map-modal-legend-label {
   color: #abaaab;
 }
 
-@media screen and (max-width: 479px) {
+cob-map .cob-map-modal-legend-icon img {
+  display: block;
+}
+
+@media screen and (max-width: 767px) {
   cob-map .cob-map-modal-title {
     flex-direction: column;
     align-items: stretch;
@@ -361,11 +320,6 @@ cob-map .geocoder-control-suggestions .geocoder-control-suggestion:hover {
   border-color: #d2d2d2;
 }
 
-cob-map .cob-overlay-content .sf-i-b {
-  /* clicking the icon doesn't do a search, so don't make it look like it does */
-  cursor: default;
-}
-
 cob-map .cob-popup-loading {
   width: 100px;
   height: 100px;
@@ -374,23 +328,6 @@ cob-map .cob-popup-loading {
   background: url(https://patterns.boston.gov/images/global/icons/experiential/map.svg)
     center no-repeat;
   background-size: 200%;
-}
-
-cob-map .cob-legend-table-row {
-  display: flex;
-  align-items: center;
-}
-
-cob-map .cob-legend-table-icon img,
-cob-map .cob-map-modal-legend-icon img {
-  display: block;
-}
-
-cob-map .cob-legend-table-label {
-  flex: 1;
-  line-height: 1.2;
-  margin-top: -3px;
-  margin-left: 0.5rem;
 }
 
 cob-map .marker-cluster-small {
@@ -435,6 +372,6 @@ cob-map .marker-cluster div {
   color: white;
 }
 
-.marker-cluster span {
+cob-map .marker-cluster span {
   line-height: 30px;
 }

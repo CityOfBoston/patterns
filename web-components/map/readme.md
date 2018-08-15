@@ -48,17 +48,6 @@ string
 ID of the HTML element. Used to automatically open the map modal.
 
 
-#### modal
-
-boolean
-
-If true, the map starts hidden and, when shown, appears in a full-screen
-modal dialog.
-
-Note: On the server, this may be the empty string when true, so we need to
-check against `!== false` to test it.
-
-
 #### modalVisible
 
 boolean
@@ -92,17 +81,6 @@ Any attributes prefixed with `map-` will be passed on to the generated
 string
 
 ID of the HTML element. Used to automatically open the map modal.
-
-
-#### modal
-
-boolean
-
-If true, the map starts hidden and, when shown, appears in a full-screen
-modal dialog.
-
-Note: On the server, this may be the empty string when true, so we need to
-check against `!== false` to test it.
 
 
 #### modal-visible
