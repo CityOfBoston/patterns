@@ -122,10 +122,6 @@ declare global {
        */
       'id': string;
       /**
-       * If true, the map starts hidden and, when shown, appears in a full-screen modal dialog.  Note: On the server, this may be the empty string when true, so we need to check against `!== false` to test it.
-       */
-      'modal': boolean;
-      /**
        * Change to true to make the modal appear.
        */
       'modalVisible': boolean;
@@ -171,10 +167,6 @@ declare global {
        * ID of the HTML element. Used to automatically open the map modal.
        */
       'id'?: string;
-      /**
-       * If true, the map starts hidden and, when shown, appears in a full-screen modal dialog.  Note: On the server, this may be the empty string when true, so we need to check against `!== false` to test it.
-       */
-      'modal'?: boolean;
       /**
        * Change to true to make the modal appear.
        */

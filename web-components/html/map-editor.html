@@ -26,59 +26,115 @@
       line-height: 1 !important;
       font-size: 14px !important; 
     }
+
+    .md {
+      left: 38% !important;
+    }
   </style>
 </head>
 
 <body>
-  <div class="b b-c" style="padding-top: 1rem">
+  <div class="b b-c" style="margin: 0; padding: 1rem 1rem 0;">
     <div class="g">
       <div class="g--4">
 
         <textarea id="config" style="width: 100%; height: 40vh; font-family: Consolas, Courier New, monospace">
 {
-  "version": "1.0",
-  "uid": "~ltT9D7MbvC7Wv0O6yYQr",
-  "dataSources": [
-    {
-      "uid": "0QYJNIqaMzWBtanIvWles",
-      "icons": null,
-      "polygons": {
-        "style": "default",
-        "color": "#0C2639",
-        "hoverColor": "#FB4D42"
-      },
-      "popupHtmlTemplate": "<img src=\"{{Image}}\" class=\"cdp-i cdp-i--c\" alt=\"{{Councilor}}\" style=\"margin-bottom: 1rem\"/>\n          <div class=\"ta-c m-v300\">\n            <div class=\"cdp-t t--sans t--upper m-t200\">{{Councilor}}</div>\n            <div class=\"cdp-st t--subinfo t--g300\">District {{DISTRICT}}</div>\n          </div>\n          <a href=\"{{Bio}}\" class=\"btn btn--b btn--100 btn--sm\">\n            Visit webpage<span class=\"a11y--h\"> of {{Councillor}}</span>\n          </a>",
-      "data": {
-        "type": "arcgis",
-        "service": "https://services.arcgis.com/sFnw0xNflSi8J0uh/ArcGIS/rest/services/City_Council_Districts/FeatureServer",
-        "layer": 0
-      },
-      "legend": {
-        "label": "City Council Districts",
-        "symbol": "polygon"
-      }
-    }
-  ],
-  "maps": [
-    {
-      "uid": "yBHcvxTmQyrK4WhLBxe16",
-      "title": "City Councilor Look-Up",
-      "instructionsHtml": "<div class=\"t--info\"> <p>\n          Hover over and click on your district to find your councilor, or search your address.\n        </p>\n        <p>\n          To see all City Council members, including at-large councilors, visit the\n          <a href=\"https://www.boston.gov/departments/city-council#city-council-members\">City Council page</a>.\n        </p>\n </div>",
-      "latitude": 42.32,
-      "longitude": -71.1284,
-      "zoom": 12,
-      "showZoomControl": true,
-      "showLegend": true,
-      "showUserLocation": false,
-      "addressSearch": {
-        "title": "",
-        "placeholder": "Search for your address…",
-        "autoPopupDataSourceUid": "0QYJNIqaMzWBtanIvWles",
-        "zoomToResult": false
-      }
-    }
-  ]
-}    
+            "version": "1.0",
+            "dataSources": [
+              {
+                "uid": "trucks",
+                 "icons": {
+                    "markerUrl": "https://patterns.boston.gov/images/global/icons/mapping/food-truck.svg",
+                    "cluster": true
+                },
+                "popupHtmlTemplate": "<div style=\"min-width: 280px\">\n        <h3 class=\"h3 m-v300\"><a href=\"{{Link}}\">{{Truck}}</a></h3>\n        <div class=\"m-v300\">\n          <ul class=\"dl dl--sm\">\n            <li class=\"dl-i\"><span class=\"dl-t\">{{Time}}:</span> <span class=\"dl-d\">{{Hours}}</span></li>\n            <li class=\"dl-i\"><span class=\"dl-t\">Day:</span> <span class=\"dl-d\">{{Day}}</span></li>\n          </ul>\n        </div>",
+                "data": {
+                  "type": "arcgis",
+                  "service": "https://services.arcgis.com/sFnw0xNflSi8J0uh/arcgis/rest/services/food_trucks_schedule/FeatureServer",
+                  "layer": 0
+                },
+                "legend": {
+                  "label": "Food Truck"
+                }
+              }
+            ],
+            "filters": [
+              {
+                "dataSourceUid": "trucks",
+                "title": "Day",
+                "type": "select",
+                "options": [
+                  {"title": "Any", "value": "Any", "query": "1=1"},
+                  "separator",
+                  {"title": "Monday", "value": "Monday"},
+                  {"title": "Tuesday", "value": "Tuesday"},
+                  {"title": "Wednesday", "value": "Wednesday"},
+                  {"title": "Thursday", "value": "Thursday"},
+                  {"title": "Friday", "value": "Friday"},
+                  {"title": "Saturday", "value": "Saturday"},
+                  {"title": "Sunday", "value": "Sunday"}
+                ],
+                "queryTemplate": "Day = '{{.}}'",
+                "default": [
+                  {"date": "day", "eq": 0, "value": "Sunday"},
+                  {"date": "day", "eq": 1, "value": "Monday"},
+                  {"date": "day", "eq": 2, "value": "Tuesday"},
+                  {"date": "day", "eq": 3, "value": "Wednesday"},
+                  {"date": "day", "eq": 4, "value": "Thursday"},
+                  {"date": "day", "eq": 5, "value": "Friday"},
+                  {"date": "day", "eq": 6, "value": "Saturday"}
+                ]
+              },
+              {
+                "dataSourceUid": "trucks",
+                "title": "Time",
+                "type": "select",
+                "options": [
+                  {"title": "Any", "value": "Any", "query": "1=1"},
+                  {"type": "separator"},
+                  {"title": "Breakfast", "value": "Breakfast"},
+                  {"title": "Lunch", "value": "Lunch"},
+                  {"title": "Dinner", "value": "Dinner"}
+                ],
+                "queryTemplate": "Time = '{{.}}'",
+                "default": [
+                  {"date": "24hTime", "gte": "0700", "lt": "1030", "value": "Breakfast"},
+                  {"date": "24hTime", "gte": "1030", "lt": "1500", "value": "Lunch"},
+                  {"date": "24hTime", "gte": "1500", "lt": "2000", "value": "Dinner"}
+                ]
+              }, {
+                "dataSourceUid": "trucks",
+                "title": "Truck",
+                "type": "select",
+                "options": [
+                  {"title": "All", "value": "All", "query": "1=1"},
+                  {"type": "separator"},
+                  {"type": "dynamic", "field": "Truck", "limitWithFilters": true}
+                ],
+                "queryTemplate": "Truck = '{{.}}'",
+                "default": "All"
+              }
+            ],
+            "maps": [
+              {
+                "uid": "yBHcvxTmQyrK4WhLBxe16",
+                "title": "Food Trucks",
+                "instructionsHtml": "",
+                "latitude": 42.32,
+                "longitude": -71.1284,
+                "zoom": 12,
+                "showZoomControl": true,
+                "showLegend": true,
+                "showUserLocation": false,
+                "addressSearch": {
+                  "title": "",
+                  "autoPopupDataSourceUid": null,
+                  "zoomToResult": true
+                }
+              }
+            ]
+          }    
         </textarea>
 
         <div style="font-size: 16px; font-style: italic;">
@@ -93,7 +149,7 @@
         <textarea class="m-v200" style="display: block; width: 100%; height: 20vh" id="escape-in"></textarea>
         <textarea class="m-v200" style="display: block; width: 100%; height: 20vh" id="escape-out"></textarea>
       </div>
-      <cob-map class="g--8" style="height: 90vh" id="map" config="{}"></cob-viz> 
+      <cob-map class="g--8" style="height: 90vh" id="map" config="{}" modal-visible></cob-viz> 
     </div>
 
   </div>
