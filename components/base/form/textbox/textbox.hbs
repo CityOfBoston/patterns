@@ -2,7 +2,7 @@
   <div class="txt">
     <label for="{{id}}" class="txt-l{{#if error }} t--err{{/if}}">{{label}}</label>
     {{#if ../inputType }}
-      <input id="{{id}}" type="text" value="{{value}}" placeholder="{{placeholder}}" class="txt-f{{#if error }} txt-f--err{{/if}}{{#if classes}} {{classes}}{{/if}}"{{#if size }} size="{{ size }}"{{/if}}>
+      <input id="{{id}}" type="{{#if type}}{{type}}{{else}}text{{/if}}" value="{{value}}" placeholder="{{placeholder}}" class="txt-f{{#if error }} txt-f--err{{/if}}{{#if classes}} {{classes}}{{/if}}"{{#if size }} size="{{ size }}"{{/if}}>
     {{/if}}
     {{#if ../textareaType }}
       <textarea id="{{id}}" placeholder="{{placeholder}}" class="txt-f" rows="10">{{value}}</textarea>
