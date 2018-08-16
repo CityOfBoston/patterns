@@ -22,6 +22,10 @@ context:
       placeholder: Full name
       id: small-text-p
       classes: txt-f--sm
+    - label: Password
+      id: password
+      type: password
+      value: "password"
 variants:
   - name: Combo
     context:

@@ -1,6 +1,9 @@
 {{#each textboxes as |textbox|}}
+{{#if type}}
+{{else}}
   <label class="txt">
     <span class="txt-l">{{label}}</span>
     <textarea placeholder="{{placeholder}}" class="txt-f" rows="10">{{value}}</textarea>
   </label>
+{{/if}}
 {{/each}}
