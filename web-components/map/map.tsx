@@ -387,10 +387,12 @@ export class CobMap {
         this.map
       );
 
-      this.addressSearchControlEl = addressSearchControl.onAdd!(this.map);
+      const addressSearchControlEl = (this.addressSearchControlEl = addressSearchControl.onAdd!(
+        this.map
+      ));
 
       // We massage the auto-generated DOM to match our Fleet classes
-      const inputEl = this.addressSearchControlEl.querySelector('input')!;
+      const inputEl = addressSearchControlEl.querySelector('input')!;
       inputEl.setAttribute('id', this.getSearchFieldInputId());
       inputEl.classList.add('sf-i-f');
       inputEl.classList.remove('leaflet-bar');

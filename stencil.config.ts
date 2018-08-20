@@ -1,9 +1,10 @@
-exports.config = {
+import { Config } from '@stencil/core';
+
+export const config: Config = {
   namespace: 'FleetComponents',
   buildEs5: true,
 
   srcDir: 'web-components',
-
   outputTargets: [
     {
       type: 'www',
@@ -12,13 +13,10 @@ exports.config = {
       buildDir: 'web-components',
       empty: false,
 
-      // Re-enable after https://github.com/ionic-team/stencil/issues/468 is sorted
-      // out.
-      serviceWorker: false,
+      serviceWorker: null,
     },
     {
       type: 'docs',
-      dir: 'web-components',
     },
   ],
 
