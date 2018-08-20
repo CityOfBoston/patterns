@@ -7,7 +7,11 @@ cob-map h3 {
   font-style: inherit;
 }
 
-cob-map.leaflet-container a.leaflet-popup-close-button {
+cob-map .leaflet-container .leaflet-popup-content-wrapper {
+  border-radius: 0;
+}
+
+cob-map .leaflet-container a.leaflet-popup-close-button {
   /* By default this is too tight in the corner */
   top: 6px;
   right: 6px;
