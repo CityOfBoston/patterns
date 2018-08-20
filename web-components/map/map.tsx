@@ -45,6 +45,9 @@ const DEFAULT_ICON_SRC =
 const DEFAULT_ADDRESS_SEARCH_WAYPOINT_ICON_SRC =
   'https://patterns.boston.gov/images/global/icons/mapping/waypoint-freedom-red.svg';
 
+const DEFAULT_LOCATION_WAYPOINT_ICON_SRC =
+  'https://patterns.boston.gov/images/global/icons/mapping/waypoint-optimistic-blue.svg';
+
 const HORIZONTAL_LINE = '───────────';
 
 const BOSTON_BOUNDS = LlatLngBounds(
@@ -68,8 +71,8 @@ const WAYPOINT_ICON = new LeafletIcon({
   popupAnchor: [0, -46], // point from which the popup should open relative to the iconAnchor
 });
 
-const CHARLES_BLUE_WAYPOINT_ICON = new LeafletIcon({
-  iconUrl: DEFAULT_ICON_SRC,
+const LOCATION_WAYPOINT_ICON = new LeafletIcon({
+  iconUrl: DEFAULT_LOCATION_WAYPOINT_ICON_SRC,
   shadowUrl: undefined,
 
   iconSize: [35, 46], // size of the icon
@@ -565,7 +568,7 @@ export class CobMap {
     }
 
     this.locationLayer = new LeafletMarker(location.latlng, {
-      icon: CHARLES_BLUE_WAYPOINT_ICON,
+      icon: LOCATION_WAYPOINT_ICON,
       interactive: false,
       pane: LOCATION_MARKER_PANE,
     }).addTo(this.map);
