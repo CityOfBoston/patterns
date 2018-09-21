@@ -14,8 +14,9 @@
 
  */
 
+
+// modified 9/20 -jm
 .txt
-  align-items: center
   display: block
   margin: 0
   position: relative
@@ -24,66 +25,47 @@
     margin: 0 0 $sizing-300
 
   &-f
-    font-family: $serif
-    display: block
-    font-size: 1rem
-    
-    // Force this for IE, which doesn't pick up on the height needing to be
-    // based on the line-height
-    height: "%srem" % ($line-height-600)
-    line-height: $line-height-600
+    field-height = "calc(%srem + %s * 2)" % ($line-height-600 $border-200)
 
-    // We need the height and the line-height to match up for proper vertical
-    // centering in IE, so we use content-box so we don't need to worry about
-    // accommodating the border.
-    //
-    // We do this instead of using "calc" on the height because Chrome on
-    // Windows will clip descenders when the height is specified as a calc.
-    box-sizing: content-box
-    
+    font-family: $serif
+    font-size: 1rem
+
+    width: 100%
+    margin: 0
+
     color: $charles-blue
     border: $border-200 solid $charles-blue
-    // We get all of the height from height / line-height for the
-    // minimum amount of descender clipping in Firefox.
-    padding: 0 $sizing-300
-    margin: 0
-    // fixes Chrome 57 bug of not rendering left/right/bottom of the box shadow
-    position: relative
-      
+
+    height: field-height
+    line-height: field-height
+
+    padding-left: $sizing-300
+    padding-right: $sizing-300
+
+    &--sm
+      field-height-sm = "calc(%srem + %s * 2)" % ($line-height-400 $border-200)
+
+      padding-left: $sizing-200
+      padding-right: $sizing-200
+
+      height: field-height-sm
+      line-height: field-height-sm
+
     &::placeholder
       font-style: italic
       color: $grey-300
-      line-height: $line-height-600
 
     &--err
       border-color: $freedom-red
-
-    &--sm
-      padding-top: 1px
-      height: "%srem" % $line-height-400
-      line-height: $line-height-400
-
-      &::placeholder
-        line-height: $line-height-400
 
     input[type=email]&,
     input[type=tel]&,
     input[type=text]&,
     input[type=password]&,
     textarea&
-      // Since we're using content-box above, this needs to change to
-      // a calculation to keep the padding / border from going offscreen.
-      // (And we want a width of effectively 100% instead of the arbitrary
-      // size a browser will give an input field, despite it being display:
-      // block)
-      width: 90%
-      width: "calc(100% - 2 * %s - 2 * %s)" % ($sizing-300 $border-200)
-
       &.txt-f--combo
-        width: 85%
-        // Need to leave space for a .sel-f--sq element, and now a total of
-        // 3 border-200s (left, right, and separator between the elements)
-        width: "calc(100% - 2 * %s - 3 * %s - %s)" % ($sizing-300 $border-200 $select-arrow-box-width)
+        // Need to leave space for a .sel-f--sq element, and its borders
+        width: "calc(100% - %s - %s * 2)" % ($select-arrow-box-width $border-200)
 
     input[type=email]&--auto,
     input[type=tel]&--auto,
@@ -98,10 +80,10 @@
     textarea&
       height: auto
       line-height: $line-height-300
-      padding: $sizing-200 $sizing-300
+      padding-top: $sizing-200
 
-    textarea&::placeholder
-      line-height: $line-height-300
+      &--sm
+        padding-top: $sizing-100
 
     &::-ms-clear
       width: 1rem
