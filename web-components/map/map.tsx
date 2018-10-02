@@ -537,13 +537,16 @@ export class CobMap {
   }
 
   onFeatureMouseOver(config: LayerConfig, ev: LeafletEvent) {
+    const { map } = this;
+    if (!map) {
+      return;
+    }
+
     const feature: LeafletLayer = ev.target;
 
     if (feature instanceof LeafletPath) {
       if (config.hoverColor) {
-        feature.setStyle(
-          this.makeFeatureHoverStyle(config, this.map!.getZoom())
-        );
+        feature.setStyle(this.makeFeatureHoverStyle(config, map.getZoom()));
         feature.bringToFront();
       }
     }
@@ -651,14 +654,18 @@ export class CobMap {
       this.addressSearchResultsFeatures.unbindPopup();
     }
 
+    if (!this.map) {
+      return;
+    }
+
     if (markers.length === 1 && popupLayerRecord) {
       if (this.addressSearchZoomToResults) {
-        this.map!.setView(markers[0].getLatLng(), 13);
+        this.map.setView(markers[0].getLatLng(), 13);
       }
       // Opening the popup will bring it into view automatically.
       markers[0].openPopup();
     } else if (markers.length > 0 && this.addressSearchZoomToResults) {
-      this.map!.fitBounds(this.addressSearchResultsFeatures.getBounds());
+      this.map.fitBounds(this.addressSearchResultsFeatures.getBounds());
     }
   };
 
@@ -698,12 +705,16 @@ export class CobMap {
           return;
         }
 
+        if (!this.map) {
+          return;
+        }
+
         const feature = featureCollection.features[0];
 
         if (feature) {
           // We stop scrolling, since the update call below will need to move
           // the map, and it won’t do anything if the map already moving.
-          this.map!.stop();
+          this.map.stop();
 
           marker.getPopup()!
             .setContent(
@@ -743,7 +754,8 @@ export class CobMap {
   // you can still see through to street names, but when they're far away
   // they're opaque so you don't get weird dark spots where they overlap.
   updateVectorFeaturesForZoom(_zoom: number) {
-    if (!this.map) {
+    const { map } = this;
+    if (!map) {
       return;
     }
 
@@ -751,7 +763,7 @@ export class CobMap {
       featuresLayer.eachLayer(layer => {
         if (layer instanceof LeafletPath) {
           if (config.color) {
-            layer.setStyle(this.makeFeatureStyle(config, this.map!.getZoom()));
+            layer.setStyle(this.makeFeatureStyle(config, map.getZoom()));
           }
         }
       });
@@ -791,7 +803,8 @@ export class CobMap {
       //
       // Current types require this to be a function, even though the code
       // supports a hash. Let's not rock the boat and just use a function.
-      style: () => this.makeFeatureStyle(config, this.map!.getZoom()),
+      style: () =>
+        this.map ? this.makeFeatureStyle(config, this.map.getZoom()) : {},
       pointToLayer: (_, latlng) =>
         new LeafletMarker(latlng, {
           icon: new LeafletIcon({
