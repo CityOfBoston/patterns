@@ -24,6 +24,10 @@ declare global {
 
   namespace StencilComponents {
 
+    interface CobChart {
+      'config': any;
+    }
+
     interface CobContactForm {
       /**
        * Defaults to `https://contactform.boston.gov/emails` but can be set for development testing.
@@ -88,6 +92,14 @@ declare global {
   }
 
 
+    interface HTMLCobChartElement extends StencilComponents.CobChart, HTMLStencilElement {}
+
+    var HTMLCobChartElement: {
+      prototype: HTMLCobChartElement;
+      new (): HTMLCobChartElement;
+    };
+    
+
     interface HTMLCobContactFormElement extends StencilComponents.CobContactForm, HTMLStencilElement {}
 
     var HTMLCobContactFormElement: {
@@ -107,12 +119,17 @@ declare global {
   namespace JSX {
     interface Element {}
     export interface IntrinsicElements {
+    'cob-chart': JSXElements.CobChartAttributes;
     'cob-contact-form': JSXElements.CobContactFormAttributes;
     'cob-map': JSXElements.CobMapAttributes;
     }
   }
 
   namespace JSXElements {
+
+    export interface CobChartAttributes extends HTMLAttributes {
+      'config'?: any;
+    }
 
     export interface CobContactFormAttributes extends HTMLAttributes {
       /**
@@ -158,11 +175,13 @@ declare global {
   }
 
   interface HTMLElementTagNameMap {
+    'cob-chart': HTMLCobChartElement
     'cob-contact-form': HTMLCobContactFormElement
     'cob-map': HTMLCobMapElement
   }
 
   interface ElementTagNameMap {
+    'cob-chart': HTMLCobChartElement;
     'cob-contact-form': HTMLCobContactFormElement;
     'cob-map': HTMLCobMapElement;
   }

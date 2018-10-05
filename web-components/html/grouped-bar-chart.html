@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
+  <title>Chart</title>
+
+  <!--[if !IE]><!-->
+  <link rel="stylesheet" type="text/css" href="/css/public.css" />
+  <!--<![endif]-->
+  <!--[if lt IE 10]>
+    <link media="all" rel="stylesheet" href="/css/ie.css">
+  <![endif]-->
+
+</head>
+
+<body>
+  <cob-chart>
+    <script type="application/json" slot="config">
+      {
+        "$schema": "https://vega.github.io/schema/vega-lite/v2.json",
+        "boston": {
+          "minWidth": 450,
+          "chartID": "groupedBarChart1"
+        },
+        "title": {
+          "text": "City-wide Spending by Year",
+          "anchor": "start"
+        },
+        "description": "A simple bar chart with embedded data.",
+        "width": 50,
+        "height": 500,
+        "data": {
+            "name": "data",
+            "url": "https://gist.githubusercontent.com/paylakatel/dfbc33ad0c17486ca03b49903b0e565d/raw/194cf94a9d5dea0113876d71983daca4896bb2e5/test-budget-data.csv"
+          },
+        "mark": {
+          "type": "bar"
+          },
+        "encoding": {
+          "column": {
+            "field": "Attribute",
+            "type": "ordinal",
+            "title": "",
+            "header":{
+              "labelFontSize": 14,
+              "labelFont": "Lora"
+              }
+            },
+          "color": { 
+            "field": "Type", 
+            "type": "nominal",
+            "legend": {
+              "orient": "bottom",
+              "labelFont": "Lora",
+              "labelFontSize": 16,
+              "labelLimit": 500,
+              "titleFont": "Montserrat",
+              "title": ""
+              }
+            },
+          "y": {"field": "Value", "type": "quantitative", 
+              "axis": {"title": ""},
+              "scale": {"domain": [0,2000000000]}},
+          "x": {
+            "field": "Type", 
+            "type": "nominal",
+            "sort": ["Personnel Services", "Other Expenses", "Contractual Services", "Current Charges & Obligations", "Fixed Expenses", "Equipment", "Supplies & Materials"],
+            "axis": {
+              "title": "", 
+              "grid": false,
+              "labels": false,
+              "ticks": false
+              }
+            }
+        },
+        "config": {
+          "point": {"size": 60},
+          "numberFormat": "s",
+          "title": {
+            "font": "Montserrat",
+            "fontSize": 20
+          },
+          "axis": {
+            "labelFont": "Lora",
+            "labelFontSize": 16,
+            "labelLimit": 500,
+            "titleFont": "Montserrat",
+            "titleFontSize": 16,
+            "titleFontWeight": "normal",
+            "titlePadding": 15
+          }
+        }
+      }
+        </script>
+  </cob-chart>
+
+  <script src="/web-components/fleetcomponents.js"></script>
+</body>
+
+</html>

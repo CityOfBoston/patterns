@@ -1,0 +1,27 @@
+.cob-chart {
+  padding: 20px;
+  padding-bottom: 0px;
+}
+
+.cob-chart-wrapper {
+  overflow-x: scroll;
+}
+
+#vg-tooltip-element .value,
+h2 {
+  text-transform: uppercase;
+  font-family: 'Montserrat';
+  font-size: 14px;
+}
+
+#vg-tooltip-element h2 {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+#vg-tooltip-element .key {
+  font-family: 'Lora';
+  font-style: 'italic';
+  font-size: 16px;
+  border-radius: 0;
+}
