@@ -18,6 +18,11 @@
   display: flex
   align-items: center
 
+  label&
+    // needed to override legacy styles in production
+    letter-spacing: normal
+    text-transform: none
+
   &:not(:last-child)
     margin-bottom: $sizing-200
 
