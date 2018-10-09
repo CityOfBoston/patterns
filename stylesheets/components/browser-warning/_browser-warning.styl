@@ -1,0 +1,43 @@
+/*
+
+   BROWSER WARNING
+
+   Base:
+    bwarning
+
+   Elements:
+    cb = checkbox
+    b  = body
+    x  = close box
+ */
+
+.bwarning
+  &-cb
+    position: fixed
+    left: 0
+    top: -100px
+  
+  &-b
+    border: $border-200 solid $freedom-red
+    padding: $sizing-400
+    display: none
+    position: fixed
+    bottom: 0
+    width: 100%
+    z-index: 1000
+    background: white
+
+    // checkbox menu trick so that this works in <noscript> mode
+    input:checked ~ &
+      display: block
+
+  &-x
+    cursor: pointer
+    position: absolute
+    top: .75rem
+    right: .75rem
+    color: $freedom-red
+    font-size: 1.5rem
+    font-family: $sans
+    line-height: 0.6
+    
