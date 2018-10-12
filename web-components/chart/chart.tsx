@@ -16,7 +16,6 @@ export class CobChart {
   chartID: string = '';
   minWidth: number = 0;
   view: any;
-  compiledSpec: any;
   dataset: any;
   selectField: string = '';
   selectOptions: any;
@@ -46,9 +45,9 @@ export class CobChart {
       this.view.width(newWidth >= maxWidth ? maxWidth : newWidth).run();
     }
 
-    // We can't use "autosize" on facet charts in Vega, so if we're using columns
-    // we update the "child_width" and "child_height" signals to update
-    // the size of the chart.
+    // With facet charts, the width and height of the chart refers to the width/height
+    // of each facet, not the entire chart. As a result, if we're using columns, we
+    // update the "child_width" and "child_height" signals to update the size of the chart.
     if (
       this.vegaLite == true &&
       typeof this.config.encoding.column !== 'undefined'
@@ -60,34 +59,39 @@ export class CobChart {
         3. calculate the appropriate width for each column
       */
 
-      // We get number of columns in the chart by calucating the unique
-      // values in the field being used to group the data.
+      // We need the number of unique values in the field, so we map over
+      // the field in the dataset and put them into a Set which de-duplicates
+      // for us. We use the 'size' method to get the number of columns.
       const field = this.config.encoding.column.field;
-      const numColumns = [...new Set(this.dataset.map(item => item[field]))]
-        .length;
+      const numColumns = new Set(this.dataset.map(item => item[field])).size;
 
       // We get the width of the y-axis so we can make sure the new
       // width has enough room for it.
-      const yAxis = this.el.getElementsByClassName(
+      const yAxisElems = this.el.getElementsByClassName(
         'mark-group role-row-header row_header'
-      )[0];
-      const yAxisWidth = yAxis.getBoundingClientRect().width;
+      );
+      // If there is no yAxis, we set its width to 0.
+      const yAxisWidth =
+        yAxisElems.length > 0 ? yAxisElems[0].getBoundingClientRect().width : 0;
 
       // We get the width of the chart container to understand how much
       // room we have to work with.
-      const containerDivWidth = this.el.getBoundingClientRect().width;
+      const containerDivWidth = this.el.getBoundingClientRect().width - 40;
 
       // We calculate what the new width would be we also calculate what
       // what the smallest calculated width should be based on the minWidth
       // provided by the schema.
-      const calcWidth = containerDivWidth / numColumns - yAxisWidth;
-      const calcMinWidth = this.minWidth / numColumns - yAxisWidth;
+      // We multiply the number of columns by 15 to account for ~15px of padding
+      // between each column and add it to the amount we're subtracting to account
+      // for the y-axis.
+      const calcWidth =
+        (containerDivWidth - (yAxisWidth + numColumns * 15)) / numColumns;
+      const calcMinWidth =
+        (this.minWidth - (yAxisWidth + numColumns * 15)) / numColumns;
 
       // If the new calculated width is larger than the calculated min width,
       // we're good to go, if it is smaller, we use the calculated min width.
-      const newWidth = calcWidth > calcMinWidth ? calcWidth : calcMinWidth;
-
-      // We pass the new width to the chart's 'child_width' signal
+      const newWidth = Math.max(calcWidth, calcMinWidth);
       this.view.signal('child_width', newWidth);
 
       /* To make sure we have enough room for the legend at this new window size,
@@ -112,7 +116,7 @@ export class CobChart {
         3. setting the correct width of the chart svg
         4. updating the viewbox with our new numbers
       */
-      const chartSVG = this.el.children[1].children[0].children[0];
+      const chartSVG = this.el.querySelector('svg');
 
       const chartSvgHeight = chartSVG.getBoundingClientRect().height;
       // If we're using the min width, we also use it to set the new svg width. If we're using
@@ -120,7 +124,7 @@ export class CobChart {
       // 40px from it. We do this to account for 20px of padding we put around
       // the chart.
       const chartSvgWidth =
-        calcWidth > calcMinWidth ? containerDivWidth - 40 : this.minWidth;
+        calcWidth > calcMinWidth ? containerDivWidth : this.minWidth;
 
       // We set the width of the svg to our new width
       chartSVG.setAttribute('width', `${chartSvgWidth}`);
@@ -139,71 +143,71 @@ export class CobChart {
   async componentWillLoad() {
     // We grab the config and set variables we'll use later
     this.config = this.getConfig();
-    this.vegaLite = this.config.$schema.includes('vega-lite') ? true : false;
-    this.chartID = this.config.boston.chartID;
-    this.minWidth =
-      // minWidth is a custom variable we've added into the "boston"
-      // section of the vega schema, we set it to 0 if it wasn't provided
-      typeof this.config.boston.minWidth !== 'undefined'
-        ? this.config.boston.minWidth
-        : 0;
+    this.vegaLite = this.config.$schema.includes('vega-lite');
+    // minWidth is a custom variable we've added into the "boston"
+    // section of the vega schema. If it is not provided, we set it to 0.
+    this.minWidth = this.config.boston.minWidth || 0;
+    // We want to keep the ids for each chart unique so we add a suffix
+    // of random letters/numbers.
+    const idSuffix = Math.random()
+      .toString(36)
+      .substring(2, 7);
+    this.chartID = `cob-chart-${idSuffix}`;
+    let compiledSpec;
 
-    // We check to see if we're using vega or vega-lite because pie charts require
-    // the vega schema, while all other charts are built with vega-lite.
-    if (this.vegaLite == true) {
-      // If we are using vegaLite, we load the data from the provided url.
-      const data = await d3csv(this.config.data.url);
-      this.dataset = data;
+    // We load the data from the provided url - Vega stores the
+    // information about the data sources in an array, while VegaLite
+    // stores them in an object, so we access the two a little differently.
+    const data = this.vegaLite
+      ? await d3csv(this.config.data.url)
+      : await d3csv(this.config.data[0].url);
+    this.dataset = data;
+
+    if (this.vegaLite) {
       this.config.data.values = this.dataset;
       this.config.data.url = '';
+    } else {
+      this.config.data[0].values = this.dataset;
+      this.config.data[0].url = '';
+    }
 
-      // We check to see if this chart uses interactive selections.  If yes,
-      // we figure out the list of options and populate the dropdown menu.
-      if (typeof this.config.selection == 'undefined') {
-        // If we are not using them, we compile the given config to vega
-        // and create a vega view.
-        this.compiledSpec = VegaLite.compile(this.config);
-        this.view = new Vega.View(Vega.parse(this.compiledSpec.spec)).renderer(
-          'svg'
-        );
-      } else {
-        // If we are using a selection, we get an array of the unique values in the
-        // chosen field to use to populate the dropwdown menu.
-        this.selectField = this.config.selection.select.fields[0];
-        this.selectOptions = [
-          ...new Set(this.dataset.map(item => item[this.selectField])),
-        ].sort();
+    // We check to see if the chart uses interactive selections.  If yes,
+    // we figure out the list of options and populate the dropdown menu.
+    if (typeof this.config.selection === 'undefined') {
+      // Currently, we don't support selections on charts we build with
+      // Vega (pie charts), and we only compile the spec if we're using VegaLite.
+      compiledSpec = this.vegaLite
+        ? VegaLite.compile(this.config).spec
+        : this.config;
+    } else {
+      // If we are using a selection, we get an array of the unique values in the
+      // chosen field to use to populate the dropwdown menu.
+      this.selectField = this.config.selection.select.fields[0];
+      this.selectOptions = [
+        ...new Set(this.dataset.map(item => item[this.selectField])),
+      ].sort();
 
-        // We update the config to reflect the unique values we just found
-        this.config.selection.select.bind.options = this.selectOptions;
+      // We update the config to reflect the unique values we just found
+      this.config.selection.select.bind.options = this.selectOptions;
 
-        // After updating the config, we compile it to Vega and parse it
-        this.compiledSpec = VegaLite.compile(this.config);
+      // After updating the config, we compile it to Vega and parse it
+      compiledSpec = VegaLite.compile(this.config).spec;
 
-        /* By default Vega adds and event listener to our selection that 
+      /* By default Vega adds and event listener to our selection that
           fires when the chart is clicked. The click sets the selection
-          back to null, so the user's selection gets undone. 
+          back to null, so the user's selection gets undone.
 
-          To get around this, we remove the event listener configuration 
+          To get around this, we remove the event listener configuration
           from the compiled Vega spec.
         */
-        const selectSignal = this.compiledSpec.spec.signals.find(
-          elem => elem.name === `select_${this.selectField}`
-        );
-        delete selectSignal.on;
-
-        // After updating the spec and compiling it, we create a new Vega view
-        // for the chart.
-        this.view = new Vega.View(Vega.parse(this.compiledSpec.spec)).renderer(
-          'svg'
-        );
-      }
-    } else {
-      // If we aren't using vegaLite, we don't need to compile the config, so we set
-      // this.compiledSpec to be the same as this.config and create the view object.
-      this.compiledSpec = this.config;
-      this.view = new Vega.View(Vega.parse(this.compiledSpec)).renderer('svg');
+      const selectSignal = compiledSpec.signals.find(
+        elem => elem.name === `select_${this.selectField}`
+      );
+      delete selectSignal.on;
     }
+    // After updating the config and compiling if necessary, we initialize a
+    // Vega view object.
+    this.view = new Vega.View(Vega.parse(compiledSpec)).renderer('svg');
   }
 
   componentDidLoad() {
@@ -211,33 +215,32 @@ export class CobChart {
     this.view.initialize(`#${this.chartID}`);
     // Attach tooltips to the chart
     vegaTooltip(this.view);
-
     // If we are using selections, we build the dropdown.
     if (this.config.selection) {
       this.buildDropDownSelection();
     }
-
-    // We wrap the chart svg inside a div so we can control horizontal scrolling
-    // for just the chart and not any elements around or below.
+    // On load, Vega creates the chart svg and a div for any associated selections.
+    // We want to wrap just the chart svg it creates inside of a div so we can control
+    // horizontal scrolling for only the chart and not any elements around or below.
     const chartWrapper = document.createElement('div');
     chartWrapper.className = 'cob-chart-wrapper';
     // Get the chart svg element and its parent node
-    const chartSVG = this.el.children[1].children[0];
+    const chartSVG = this.el.querySelector('svg');
     const svgParent = chartSVG.parentNode;
     // Update the children of the parent node
     svgParent.replaceChild(chartWrapper, chartSVG);
     chartWrapper.appendChild(chartSVG);
-
-    // Lastly, we set that chart width on load so we can
+    // Lastly, we set the chart width on load so we can
     // make sure it fits nicely into the page.
     this.setChartWidth();
   }
 
-  // We custom build the dropdown selection to adhere to our styles and branding.
+  // We custom build the dropdown selection to adhere to our styles and branding by
+  // maniupulating the div Vega creates for selections.
   // This currently supports only one selection that is a dropdown/select element.
   buildDropDownSelection() {
     // We grab the div holding the chart and selection elements.
-    const selectDiv = this.el.children[1];
+    const selectDiv = this.el.querySelector('div');
 
     // We create a div for the blue drop down arrow and assign it the
     // proper classes from Fleet.
