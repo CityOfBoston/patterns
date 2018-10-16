@@ -41,11 +41,13 @@
   "dependencies": {
     "@frctl/fractal": "^1.1.4",
     "@stencil/core": "^0.11.4",
+    "@types/d3-fetch": "^1.1.2",
     "@types/geojson": "^7946.0.1",
     "@types/jest": "^22.1.1",
     "@types/leaflet": "^1.2.5",
     "autoprefixer": "^6.7.7",
     "concurrently": "^3.5.1",
+    "d3-fetch": "^1.1.2",
     "esri-leaflet": "^2.2.3",
     "esri-leaflet-geocoder": "^2.2.13",
     "gulp": "^3.9.1",
@@ -67,7 +69,10 @@
     "rucksack-css": "^0.9.1",
     "run-sequence": "^1.2.2",
     "serve-static": "^1.11.1",
-    "templayed": "github:CityOfBoston/templayed.js"
+    "templayed": "github:CityOfBoston/templayed.js",
+    "vega": "^4.2.0",
+    "vega-lite": "^3.0.0-rc5",
+    "vega-tooltip": "^0.13.0"
   },
   "devDependencies": {
     "@types/nock": "^9.1.2",

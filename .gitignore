@@ -4,3 +4,4 @@ node_modules
 /assets
 /public
 deploy_key
+.vscode/
