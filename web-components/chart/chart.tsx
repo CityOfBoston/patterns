@@ -240,7 +240,7 @@ export class CobChart {
   // This currently supports only one selection that is a dropdown/select element.
   buildDropDownSelection() {
     // We grab the div holding the chart and selection elements.
-    const selectDiv = this.el.querySelector('div');
+    const selectDiv = document.getElementById(this.chartID)!;
 
     // We create a div for the blue drop down arrow and assign it the
     // proper classes from Fleet.
@@ -248,7 +248,7 @@ export class CobChart {
     selectArrow.className = 'sel-c sel-c--fw';
 
     // We grab the parent element we'll append the arrow to and add it.
-    const selectParent = selectDiv.querySelector('.vega-bind');
+    const selectParent = selectDiv.querySelector('.vega-bind')!;
     selectParent.appendChild(selectArrow);
 
     // Vega creates a unique identifier for the select element by appending "select"
@@ -256,12 +256,12 @@ export class CobChart {
     const selectName = 'select_' + this.selectField;
 
     // Grab the select element and append it to the arrow div
-    const selectElem = selectDiv.querySelector('select');
+    const selectElem = selectDiv.querySelector('select')!;
     selectElem.className = 'sel-f';
     selectArrow.appendChild(selectElem);
 
     // Update the classes for the select label
-    const selectLabel = selectDiv.querySelector('.vega-bind-name');
+    const selectLabel = selectDiv.querySelector('.vega-bind-name')!;
     selectLabel.className = 'sel-l sel-l--mt000';
 
     // So that the chart loads with a selection set, we filter the data onload.
