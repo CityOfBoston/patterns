@@ -7,5 +7,13 @@ context:
       index: 0
     - label: Intergovernmental Relations
       index: 1
+      checked: true
     - label: Here is a really long label that will wrap at some point.
       index: 2
+    - label: This one’s an error
+      index: 3
+      error: true
+    - label: Also an error
+      index: 4
+      error: true
+      checked: true
