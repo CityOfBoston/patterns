@@ -1,7 +1,7 @@
 <div style="max-width: 400px; padding: 1em;">
 {{#each checkboxes as |checkbox|}}
   <label class="cb" for="checkbox-{{index}}">
-    <input id="checkbox-{{index}}" name="public_notices" type="checkbox" value="public_notices" class="cb-f">
+    <input id="checkbox-{{index}}" name="public_notices" type="checkbox" value="public_notices" class="cb-f {{#error}}cb-f--err{{/error}}" {{#checked}}checked{{/checked}}>
     <span class="cb-l">{{label}}</span>
   </label>
 {{/each}}
