@@ -65,6 +65,15 @@
       -moz-appearance: none
       -webkit-appearance: none
 
+    &--err:before
+      border-color: $freedom-red
+
+    // This is a separate block because it needs to be :checked:before, not
+    // :before:checked
+    &--err:checked
+      &:before
+        background: #ffffff $check_red no-repeat center
+
   &-l
     color: $charles-blue
     font-family: $serif

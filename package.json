@@ -14,7 +14,7 @@
     "testcafe": "npm run build && npm run testcafe.local",
     "testcafe.local": "cross-env TEST_SERVER_URL=http://localhost:3035/ testcafe -a 'http-server -r public -p 3035' -c 3 chrome:headless components/**/*.testcafe.*",
     "testcafe.dev": "testcafe-live remote components/**/*.testcafe.*",
-    "testcafe.ci": "cross-env BROWSERSTACK_USE_AUTOMATE=1 TEST_SERVER_URL=http://localhost:3035/ testcafe -a 'http-server -r public -p 3035' 'browserstack:edge@17,browserstack:ie@11.0,browserstack:safari,browserstack:chrome,browserstack:firefox' components/**/*.testcafe.*",
+    "testcafe.ci": "cross-env BROWSERSTACK_USE_AUTOMATE=1 TEST_SERVER_URL=http://localhost:3035/ testcafe -a 'http-server -r public -p 3035' 'browserstack:edge@17,browserstack:ie@11.0:Windows 8.1,browserstack:safari@11.1,browserstack:chrome:Windows 10,browserstack:firefox:Windows 10' components/**/*.testcafe.*",
     "precommit": "lint-staged",
     "prepush": "jest --clearCache && npm run test"
   },
@@ -41,11 +41,13 @@
   "dependencies": {
     "@frctl/fractal": "^1.1.4",
     "@stencil/core": "^0.11.4",
+    "@types/d3-fetch": "^1.1.2",
     "@types/geojson": "^7946.0.1",
     "@types/jest": "^22.1.1",
     "@types/leaflet": "^1.2.5",
     "autoprefixer": "^6.7.7",
     "concurrently": "^3.5.1",
+    "d3-fetch": "^1.1.2",
     "esri-leaflet": "^2.2.3",
     "esri-leaflet-geocoder": "^2.2.13",
     "gulp": "^3.9.1",
@@ -67,7 +69,10 @@
     "rucksack-css": "^0.9.1",
     "run-sequence": "^1.2.2",
     "serve-static": "^1.11.1",
-    "templayed": "github:CityOfBoston/templayed.js"
+    "templayed": "github:CityOfBoston/templayed.js",
+    "vega": "^4.2.0",
+    "vega-lite": "^3.0.0-rc5",
+    "vega-tooltip": "^0.13.0"
   },
   "devDependencies": {
     "@types/nock": "^9.1.2",
@@ -89,8 +94,8 @@
     "plugin-error": "^1.0.1",
     "prettier": "^1.10.2",
     "svgo": "^1.0.4",
-    "testcafe": "^0.20.3",
-    "testcafe-browser-provider-browserstack": "^1.4.0",
+    "testcafe": "^0.22.0",
+    "testcafe-browser-provider-browserstack": "^1.5.0",
     "testcafe-live": "^0.1.3",
     "through2": "^2.0.3",
     "typescript": "^2.8.1",
