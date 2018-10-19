@@ -100,9 +100,7 @@ export class CobChart {
         2. subtracting the legend height from the total height provided in the schema
         3. updating the 'child_height' signal with the new height
       */
-      const legend = this.el.getElementsByClassName(
-        'mark-group role-legend'
-      )[0];
+      const legend = this.el.querySelector('div .mark-group .role-legend');
       const legendHeight = legend.getBoundingClientRect().height;
       const calcHeight = this.config.height - legendHeight;
       this.view.signal('child_height', calcHeight);
@@ -183,9 +181,11 @@ export class CobChart {
       // If we are using a selection, we get an array of the unique values in the
       // chosen field to use to populate the dropwdown menu.
       this.selectField = this.config.selection.select.fields[0];
-      this.selectOptions = [
-        ...new Set(this.dataset.map(item => item[this.selectField])),
-      ].sort();
+      //const options = new Set(this.dataset.map(item => item[this.selectField]));
+
+      this.selectOptions = Array.from(
+        new Set(this.dataset.map(item => item[this.selectField]))
+      ).sort();
 
       // We update the config to reflect the unique values we just found
       this.config.selection.select.bind.options = this.selectOptions;
