@@ -11,6 +11,14 @@ svg {
   overflow-x: auto;
 }
 
+table {
+  margin: 0;
+}
+
+td {
+  line-height: normal;
+}
+
 #vg-tooltip-element .value,
 h2 {
   text-transform: uppercase;

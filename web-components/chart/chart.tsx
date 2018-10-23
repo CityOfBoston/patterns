@@ -260,6 +260,11 @@ export class CobChart {
     selectElem.className = 'sel-f';
     selectArrow.appendChild(selectElem);
 
+    // Set the default selection if set
+    this.config.boston.defaultSelection
+      ? (selectElem.value = this.config.boston.defaultSelection)
+      : (selectElem.value = this.selectOptions[0]);
+
     // Update the classes for the select label
     const selectLabel = selectDiv.querySelector('.vega-bind-name')!;
     selectLabel.className = 'sel-l sel-l--mt000';
