@@ -181,7 +181,6 @@ export class CobChart {
       // If we are using a selection, we get an array of the unique values in the
       // chosen field to use to populate the dropwdown menu.
       this.selectField = this.config.selection.select.fields[0];
-      //const options = new Set(this.dataset.map(item => item[this.selectField]));
 
       this.selectOptions = Array.from(
         new Set(this.dataset.map(item => item[this.selectField]))
@@ -260,10 +259,9 @@ export class CobChart {
     selectElem.className = 'sel-f';
     selectArrow.appendChild(selectElem);
 
-    // Set the default selection if set
-    this.config.boston.defaultSelection
-      ? (selectElem.value = this.config.boston.defaultSelection)
-      : (selectElem.value = this.selectOptions[0]);
+    // Set the default selection if given
+    selectElem.value =
+      this.config.boston.defaultSelection || this.selectOptions[0];
 
     // Update the classes for the select label
     const selectLabel = selectDiv.querySelector('.vega-bind-name')!;
