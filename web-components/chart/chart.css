@@ -1,9 +1,22 @@
+cob-chart svg {
+  display: block;
+  margin: auto;
+}
+
 .cob-chart {
   padding: 20px 20px 0;
 }
 
 .cob-chart-wrapper {
-  overflow-x: scroll;
+  overflow-x: auto;
+}
+
+#vg-tooltip-element table {
+  margin: 0;
+}
+
+#vg-tooltip-element td {
+  line-height: normal;
 }
 
 #vg-tooltip-element .value,
