@@ -14,3 +14,5 @@ context:
     - file: trash-recycling.svg
     - file: waypoint-charles-blue.svg
     - file: waypoint-freedom-red.svg
+    - file: waypoint-optimistic-blue.svg
+    - file: closed-roads.svg
