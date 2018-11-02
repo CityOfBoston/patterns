@@ -143,7 +143,7 @@ var BostonContact = (function () {
     var subjectField = document.getElementById('contact-subject');
     if (o_subject = extract(link.getAttribute('href'), "subject")) {
       subjectField.value = o_subject;
-      subjectField.type = "hidden"
+      subjectField.type = "hidden";
       subjectField.parentElement.classList.add("hidden");
     }
   }
