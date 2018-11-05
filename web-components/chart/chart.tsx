@@ -1,5 +1,5 @@
 import { Component, Prop, Listen, Element } from '@stencil/core';
-import * as Vega from 'vega';
+import * as Vega from 'vega-lib';
 import * as VegaLite from 'vega-lite';
 import vegaTooltip from 'vega-tooltip';
 import { csv as d3csv } from 'd3-fetch';

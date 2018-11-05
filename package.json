@@ -70,7 +70,7 @@
     "run-sequence": "^1.2.2",
     "serve-static": "^1.11.1",
     "templayed": "github:CityOfBoston/templayed.js",
-    "vega": "^4.2.0",
+    "vega-lib": "^4.2.0",
     "vega-lite": "^3.0.0-rc5",
     "vega-tooltip": "^0.13.0"
   },
