@@ -3,6 +3,8 @@
 // ---------------------------
 var BostonContact = (function () {
   var to_address;
+  var o_message = false;
+  var o_subject = false;
 
   function initEmailLink(emailLink) {
     // Handle the onclick event
@@ -37,6 +39,8 @@ var BostonContact = (function () {
       setBrowser(ev.target);
       setURL(ev.target);
       setToAddress(ev.target);
+      setBodyMessage(ev.target);
+      setSubject(ev.target);
     }
   }
 
@@ -110,6 +114,10 @@ var BostonContact = (function () {
       valid = false;
     }
 
+    if (o_subject && subject.value !== o_subject) {
+      valid = false;
+    }
+
     return valid;
   }
 
@@ -120,8 +128,52 @@ var BostonContact = (function () {
 
   function setToAddress(link) {
     var toField = document.getElementById('contactFormToAddress');
-    toField.value = link.getAttribute('href').replace('mailto:', '');
-    to_address = link.getAttribute('href').replace('mailto:', '');
+    to_address = extract(link.getAttribute('href'), "mailto");
+    toField.value = to_address;
+  }
+
+  function setBodyMessage(link) {
+    var messageField = document.getElementById('contact-message');
+    if (o_message = extract(link.getAttribute('href'), "body")) {
+      o_message = decodeURIComponent(o_message);
+      messageField.value = o_message;
+    }
+  }
+
+  function setSubject(link) {
+    var subjectField = document.getElementById('contact-subject');
+    if (o_subject = extract(link.getAttribute('href'), "subject")) {
+      o_subject = decodeURIComponent(o_subject);
+      subjectField.value = o_subject;
+      subjectField.type = "hidden";
+      subjectField.parentElement.classList.add("hidden");
+    }
+  }
+
+  function extract(mailtoLink, element) {
+    var result = false;
+    var linkParts = mailtoLink.split('?');
+
+    if (typeof linkParts[0] !== "undefined" && element.toLowerCase() == "mailto") {
+      result =  linkParts[0].replace('mailto:', '')
+    }
+
+    if (!result && linkParts.length > 1) {
+      var linkElements = linkParts[1].split('&');
+      for (var i = 0; i < linkElements.length; i++) {
+        var defaultField = linkElements[i].split("=");
+        if (typeof defaultField[0] !== "undefined" && defaultField[0] == element) {
+          if (typeof defaultField[1] !== undefined) {
+            result = defaultField[1];
+          } else {
+            result = true;
+          }
+          break;
+        }
+      }
+    }
+
+    return result;
   }
 
   function setURL(link) {
