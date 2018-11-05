@@ -135,6 +135,7 @@ var BostonContact = (function () {
   function setBodyMessage(link) {
     var messageField = document.getElementById('contact-message');
     if (o_message = extract(link.getAttribute('href'), "body")) {
+      o_message = decodeURIComponent(o_message);
       messageField.value = o_message;
     }
   }
@@ -142,6 +143,7 @@ var BostonContact = (function () {
   function setSubject(link) {
     var subjectField = document.getElementById('contact-subject');
     if (o_subject = extract(link.getAttribute('href'), "subject")) {
+      o_subject = decodeURIComponent(o_subject);
       subjectField.value = o_subject;
       subjectField.type = "hidden";
       subjectField.parentElement.classList.add("hidden");
