@@ -239,24 +239,26 @@ export class CobChart {
   // This currently supports only one selection that is a dropdown/select element.
   buildDropDownSelection() {
     // We grab the div holding the chart and selection elements.
-    const selectDiv = document.getElementById(this.chartID)!;
+    const chartDiv = document.getElementById(this.chartID)!;
 
     // We create a div for the blue drop down arrow and assign it the
     // proper classes from Fleet.
     const selectArrow = document.createElement('div');
-    selectArrow.className = 'sel-c sel-c--fw';
+    selectArrow.className = 'sel-c sel-c--thin';
 
     // We grab the parent element we'll append the arrow to and add it.
-    const selectParent = selectDiv.querySelector('.vega-bind')!;
+    const selectParent = chartDiv.querySelector('.vega-bind')!;
     selectParent.appendChild(selectArrow);
+    // Move the select element up above the chart
+    chartDiv.insertBefore(selectParent, chartDiv.firstChild);
 
     // Vega creates a unique identifier for the select element by appending "select"
     // and the name of the field used for the selection, so we do the same to access it.
     const selectName = 'select_' + this.selectField;
 
     // Grab the select element and append it to the arrow div
-    const selectElem = selectDiv.querySelector('select')!;
-    selectElem.className = 'sel-f';
+    const selectElem = chartDiv.querySelector('select')!;
+    selectElem.className = 'sel-f sel-f--thin';
     selectArrow.appendChild(selectElem);
 
     // Set the default selection if given
@@ -264,8 +266,8 @@ export class CobChart {
       this.config.boston.defaultSelection || this.selectOptions[0];
 
     // Update the classes for the select label
-    const selectLabel = selectDiv.querySelector('.vega-bind-name')!;
-    selectLabel.className = 'sel-l sel-l--mt000';
+    const selectLabel = chartDiv.querySelector('.vega-bind-name')!;
+    selectLabel.className = 'sel-l sel-l--thin';
 
     // So that the chart loads with a selection set, we filter the data onload.
     // Grab the option that is selected

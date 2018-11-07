@@ -4,11 +4,15 @@ cob-chart svg {
 }
 
 .cob-chart {
-  padding: 20px 20px 0;
+  padding: 0 20px;
 }
 
 .cob-chart-wrapper {
   overflow-x: auto;
+}
+
+.cob-chart .vega-bind {
+  margin-bottom: 1em;
 }
 
 #vg-tooltip-element table {
