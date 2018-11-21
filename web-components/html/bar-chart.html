@@ -18,46 +18,126 @@
 <body>
   <cob-chart>
     <script type="application/json" slot="config">
-        {
-          "$schema": "https://vega.github.io/schema/vega-lite/v2.json",
-          "boston": {
-            "chartID": "barChart",
-            "minWidth": 600
-          },
-          "title": {
-            "text": "FY19 Spending by Cabinet",
-            "anchor": "start"
-          },
-          "description": "A simple bar chart with embedded data.",
-          "height": 600,
-          "autosize": "fit",
-          "data": { "url": "https://gist.githubusercontent.com/paylakatel/03df34fe8d74e22c5ed3f1f178305423/raw/fe4a8ffa72098646b87eb041607c4e92be68c452/testData.csv"},
-          "mark": "bar",
-          "encoding": {
-            "color": { "value": "#45789C"},
-            "y": {"field": "cabinet", "type": "nominal", 
-                "sort": {"op": "sum", "field": "budget", "order": "descending"},
-                "axis": {"title": "" }},
-            "x": {"aggregate": "sum", "field": "budget", "type": "quantitative",
-              "axis": {"title": "FY19 Budget", "grid": true}}
-          },
-          "config": {
-            "numberFormat": "s",
-            "title": {
-              "font": "Montserrat",
-              "fontSize": 20
-            },
-            "axis": {
-              "labelFont": "Lora",
-              "labelFontSize": 16,
-              "labelLimit": 500,
-              "titleFont": "Montserrat",
-              "titleFontSize": 16,
-              "titleFontWeight": "normal",
-              "titlePadding": 15
+      {
+        "$schema": "https://vega.github.io/schema/vega-lite/v2.json",
+        "boston": {
+          "chartID": "barChart",
+          "minWidth": 600
+        },
+        "title": {
+          "text": "FY19 Spending by Cabinet",
+          "anchor": "start"
+        },
+        "description": "A simple bar chart with embedded data.",
+        "height": 600,
+        "width": 500,
+        "autosize": "fit",
+        "data": {
+          "url": "https://gist.githubusercontent.com/paylakatel/03df34fe8d74e22c5ed3f1f178305423/raw/fe4a8ffa72098646b87eb041607c4e92be68c452/testData.csv",
+          "name": "cabinetBudgets",
+          "format": {
+            "parse": {
+              "budget": "number"
             }
           }
+        },
+        "transform": [
+          {
+            "aggregate": [
+              {
+                "op": "sum",
+                "field": "budget",
+                "as": "budgetSum"
+              }
+            ],
+            "groupby": [
+              "cabinet"
+            ]
+          },
+          {
+            "calculate": "datum.budgetSum/1000000000",
+            "as": "budgetSumDivided"
+          }
+        ],
+        "encoding": {
+          "y": {
+            "field": "cabinet",
+            "type": "nominal",
+            "sort": {
+              "op": "sum",
+              "field": "budgetSumDivided",
+              "order": "descending"
+            },
+            "axis": {
+              "title": ""
+            }
+          },
+          "x": {
+            "aggregate": "sum",
+            "field": "budgetSumDivided",
+            "type": "quantitative",
+            "axis": {
+              "title": "FY19 Budget (dollars in billions)",
+              "grid": true
+            }
+          },
+          "tooltip": [
+            {
+              "field": "cabinet",
+              "type": "nominal",
+              "title": "Cabinet"
+            },
+            {
+              "field": "budgetSum",
+              "type": "quantitative",
+              "aggregate": "sum",
+              "format": "$,",
+              "title": "Budget (dollars in billions)"
+            }
+          ]
+        },
+        "layer": [
+          {
+            "mark": "bar",
+            "encoding": {
+              "color": {
+                "value": "#45789C"
+              }
+            }
+          },
+          {
+            "mark": {
+              "type": "text",
+              "align": "left",
+              "baseline": "middle",
+              "dx": 3
+            },
+            "encoding": {
+              "text": {
+                "field": "budgetSumDivided",
+                "type": "quantitative",
+                "format": "$.1f"
+              }
+            }
+          }
+        ],
+        "config": {
+          "numberFormat": ".1f",
+          "title": {
+            "font": "Montserrat",
+            "fontSize": 20
+          },
+          "axis": {
+            "labelFont": "Lora",
+            "labelFontSize": 16,
+            "labelLimit": 500,
+            "titleFont": "Lora",
+            "titleFontSize": 16,
+            "titleFontWeight": "normal",
+            "titlePadding": 15
+          }
         }
+      }
         </script>
   </cob-chart>
 
