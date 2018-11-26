@@ -2,7 +2,6 @@ import { Component, Prop, Listen, Element } from '@stencil/core';
 import * as Vega from 'vega-lib';
 import * as VegaLite from 'vega-lite';
 import vegaTooltip from 'vega-tooltip';
-import { csv as d3csv } from 'd3-fetch';
 
 @Component({
   tag: 'cob-chart',
@@ -20,6 +19,7 @@ export class CobChart {
   selectField: string = '';
   selectOptions: any;
   vegaLite: boolean = true;
+  chartDiv: any;
 
   // We listen for a window resize and adjust the width of the chart if it happens
   @Listen('window:resize')
@@ -153,24 +153,8 @@ export class CobChart {
     this.chartID = `cob-chart-${idSuffix}`;
     let compiledSpec;
 
-    // We load the data from the provided url - Vega stores the
-    // information about the data sources in an array, while VegaLite
-    // stores them in an object, so we access the two a little differently.
-    const data = this.vegaLite
-      ? await d3csv(this.config.data.url)
-      : await d3csv(this.config.data[0].url);
-    this.dataset = data;
-
-    if (this.vegaLite) {
-      this.config.data.values = this.dataset;
-      this.config.data.url = '';
-    } else {
-      this.config.data[0].values = this.dataset;
-      this.config.data[0].url = '';
-    }
-
     // We check to see if the chart uses interactive selections.  If yes,
-    // we figure out the list of options and populate the dropdown menu.
+    // we manipulate the config before compiling.
     if (typeof this.config.selection === 'undefined') {
       // Currently, we don't support selections on charts we build with
       // Vega (pie charts), and we only compile the spec if we're using VegaLite.
@@ -178,21 +162,18 @@ export class CobChart {
         ? VegaLite.compile(this.config).spec
         : this.config;
     } else {
-      // If we are using a selection, we get an array of the unique values in the
-      // chosen field to use to populate the dropwdown menu.
+      // If we are using a selection, we hold onto the field we're
+      // using for it so we can populate the select options later.
       this.selectField = this.config.selection.select.fields[0];
 
-      this.selectOptions = Array.from(
-        new Set(this.dataset.map(item => item[this.selectField]))
-      ).sort();
-
-      // We update the config to reflect the unique values we just found
-      this.config.selection.select.bind.options = this.selectOptions;
+      // We clear the location in the config where someone could pass
+      // select options as we'll build them ourselves using the data.
+      this.config.selection.select.bind.options = [];
 
       // After updating the config, we compile it to Vega and parse it
       compiledSpec = VegaLite.compile(this.config).spec;
 
-      /* By default Vega adds and event listener to our selection that
+      /* By default Vega adds an event listener to our selection that
           fires when the chart is clicked. The click sets the selection
           back to null, so the user's selection gets undone.
 
@@ -212,11 +193,56 @@ export class CobChart {
   componentDidLoad() {
     // Once the component loads, we initialize the view.
     this.view.initialize(`#${this.chartID}`);
-    // Attach tooltips to the chart
+
+    // Attach tooltips to the chart.
     vegaTooltip(this.view);
-    // If we are using selections, we build the dropdown.
+
+    // We grab the div the chart is sitting it and hold onto it as
+    // we'll use it in multiple places.
+    this.chartDiv = document.getElementById(this.chartID)!;
+
     if (this.config.selection) {
+      // If we are using selections, we build the dropdown.
       this.buildDropDownSelection();
+
+      // We set the view the run, but wait to populate specific pieces
+      // until after the data has loaded.
+      this.view.runAsync().then(() => {
+        // We grab the dataset we're charting. We do this here because
+        // it allows us to use Vega transforms then use the transformed data
+        // to populate our selections. It also means we don't have to
+        // fetch our data twice - Vega does it once and we leverage it.
+        this.dataset = this.view.data(this.config.data.name);
+        // We use the dataset to get our list of dropdown options.
+        this.selectOptions = Array.from(
+          new Set(this.dataset.map(item => item[this.selectField]))
+        ).sort();
+        // We populate the options in the select element using the list.
+        const selectElem = this.chartDiv.querySelector('select')!;
+        this.selectOptions.map(elem => {
+          const option = document.createElement('option');
+          option.text = elem;
+          option.value = elem;
+          selectElem.add(option);
+        });
+
+        // Everytime the selection changes, we want to make sure the the
+        // chart still fits nicely on the page and that the chart updates.
+        const selectionName = Object.keys(this.config.selection)[0];
+        const signalName = `${selectionName}_${this.selectField}`;
+        // We add an event listener to the select box that re-renders the
+        // chart with the new selection and updates the size.
+        selectElem.addEventListener('change', (e: any) => {
+          this.view.signal(signalName, e.target.value).run();
+          this.setChartWidth();
+        });
+
+        // Lastly, we update the chart on this first run with the currently
+        // selected value and set the chart width accordingly.
+        const selected = selectElem.selectedIndex;
+        this.view.signal(signalName, this.selectOptions[selected]).run();
+        this.setChartWidth();
+      });
     }
     // On load, Vega creates the chart svg and a div for any associated selections.
     // We want to wrap just the chart svg it creates inside of a div so we can control
@@ -238,26 +264,19 @@ export class CobChart {
   // maniupulating the div Vega creates for selections.
   // This currently supports only one selection that is a dropdown/select element.
   buildDropDownSelection() {
-    // We grab the div holding the chart and selection elements.
-    const chartDiv = document.getElementById(this.chartID)!;
-
     // We create a div for the blue drop down arrow and assign it the
     // proper classes from Fleet.
     const selectArrow = document.createElement('div');
     selectArrow.className = 'sel-c sel-c--thin';
 
     // We grab the parent element we'll append the arrow to and add it.
-    const selectParent = chartDiv.querySelector('.vega-bind')!;
+    const selectParent = this.chartDiv.querySelector('.vega-bind')!;
     selectParent.appendChild(selectArrow);
-    // Move the select element up above the chart
-    chartDiv.insertBefore(selectParent, chartDiv.firstChild);
+    // Move the select element up above the chart.
+    this.chartDiv.insertBefore(selectParent, this.chartDiv.firstChild);
 
-    // Vega creates a unique identifier for the select element by appending "select"
-    // and the name of the field used for the selection, so we do the same to access it.
-    const selectName = 'select_' + this.selectField;
-
-    // Grab the select element and append it to the arrow div
-    const selectElem = chartDiv.querySelector('select')!;
+    // Grab the select element and append it to the arrow div.
+    const selectElem = this.chartDiv.querySelector('select')!;
     selectElem.className = 'sel-f sel-f--thin';
     selectArrow.appendChild(selectElem);
 
@@ -266,21 +285,8 @@ export class CobChart {
       this.config.boston.defaultSelection || this.selectOptions[0];
 
     // Update the classes for the select label
-    const selectLabel = chartDiv.querySelector('.vega-bind-name')!;
+    const selectLabel = this.chartDiv.querySelector('.vega-bind-name')!;
     selectLabel.className = 'sel-l sel-l--thin';
-
-    // So that the chart loads with a selection set, we filter the data onload.
-    // Grab the option that is selected
-    const selected = selectElem.selectedIndex;
-
-    // Update the select signal and re-render the chart
-    this.view.signal(selectName, this.selectOptions[selected]).run();
-
-    // Everytime the selection changes, we want to make sure the the chart still fits
-    // nicely on the page.
-    selectElem.addEventListener('change', () => {
-      this.setChartWidth();
-    });
   }
 
   /**

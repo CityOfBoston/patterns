@@ -1,79 +1,136 @@
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0"
+    />
+    <title>Chart</title>
 
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
-  <title>Chart</title>
+    <!-- [if !IE]><! -->
+    <link rel="stylesheet" type="text/css" href="/css/public.css" />
+    <!-- <![endif] -->
+    <!--[if lt IE 10]>
+      <link media="all" rel="stylesheet" href="/css/ie.css" />
+    <![endif]-->
+  </head>
 
-  <!--[if !IE]><!-->
-  <link rel="stylesheet" type="text/css" href="/css/public.css" />
-  <!--<![endif]-->
-  <!--[if lt IE 10]>
-    <link media="all" rel="stylesheet" href="/css/ie.css">
-  <![endif]-->
-
-</head>
-
-<body>
-  <cob-chart>
-    <script type="application/json" slot="config">
+  <body>
+    <cob-chart>
+      <script type="application/json" slot="config">
         {
-            "$schema": "https://vega.github.io/schema/vega-lite/v2.json",
-            "boston": {
-              "minWidth": 500,
-              "chartID": "barChart1"
-            },
-            "width": 500,
-            "height": 500,
-            "autosize": "fit",
-            "selection": {
-              "select": {
-                "type": "single",
-                "fields": ["cabinet"],
-                "bind": {"input": "select", 
-                       "element": "#select", 
-                       "options": ["Kayla"],
-                       "name": "Select a cabinet: "}
-              }
-            },
-            "data": {
-                "name": "data",
-                "url": "https://gist.githubusercontent.com/paylakatel/03df34fe8d74e22c5ed3f1f178305423/raw/fe4a8ffa72098646b87eb041607c4e92be68c452/testData.csv"
-              },
-            "transform": [
-                {"filter": {"selection": "select"}}
+          "$schema": "https://vega.github.io/schema/vega-lite/v2.json",
+          "boston": {
+            "minWidth": 500,
+            "chartID": "barChart1",
+            "defaultSelection": "Fixed Cost"
+          },
+          "width": 500,
+          "height": 500,
+          "autosize": "fit",
+          "selection": {
+            "select": {
+              "type": "single",
+              "fields": [
+                "cabinet"
               ],
-            "mark": "bar",
-            "encoding": {
-              "color": { "value": "#45789C"},
-              "y": {"field": "dept", "type": "nominal", 
-                  "sort": {"op": "sum", "field": "budget", "order": "descending"},
-                  "axis": {"title": "" }},
-              "x": {"aggregate": "sum", "field": "budget", "type": "quantitative",
-                "axis": {"title": "FY19 Budget", "grid": true}}
-            },
-            "config": {
-              "numberFormat": "s",
-              "title": {
-                "font": "Montserrat",
-                "fontSize": 20
-              },
-              "axis": {
-                "labelFont": "Lora",
-                "labelFontSize": 16,
-                "labelLimit": 500,
-                "titleFont": "Montserrat",
-                "titleFontSize": 16,
-                "titleFontWeight": "normal",
-                "titlePadding": 15
+              "bind": {
+                "input": "select",
+                "element": "#select",
+                "options": [
+                  "Mayors Cabinet",
+                  "Other",
+                  "Streets"
+                ],
+                "name": "Select a cabinet: "
               }
             }
+          },
+          "data": {
+            "name": "cabinetBudgets",
+            "url": "https://gist.githubusercontent.com/paylakatel/03df34fe8d74e22c5ed3f1f178305423/raw/fe4a8ffa72098646b87eb041607c4e92be68c452/testData.csv",
+            "format": {
+              "parse": {
+                "budget": "number"
+              }
+            }
+          },
+          "transform": [
+            {
+              "filter": {
+                "selection": "select"
+              }
+            },
+            {
+              "aggregate": [
+                {
+                  "op": "sum",
+                  "field": "budget",
+                  "as": "budgetSum"
+                }
+              ],
+              "groupby": [
+                "cabinet",
+                "dept"
+              ]
+            },
+            {
+              "calculate": "datum.budgetSum/1000000000",
+              "as": "budgetSumDivided"
+            }
+          ],
+          "mark": "bar",
+          "encoding": {
+            "color": {
+              "value": "#45789C"
+            },
+            "y": {
+              "field": "dept",
+              "type": "nominal",
+              "sort": {
+                "op": "sum",
+                "field": "budgetSumDivided",
+                "order": "descending"
+              },
+              "axis": {
+                "title": ""
+              }
+            },
+            "x": {
+              "aggregate": "sum",
+              "field": "budgetSumDivided",
+              "type": "quantitative",
+              "axis": {
+                "title": "FY19 Budget",
+                "grid": true
+              }
+            },
+            "tooltip": [
+              {"field": "budgetSum", "type": "quantitative", "aggregate": "sum", "format": "$,r", "title": "Budget"},
+              {"field": "dept", "type": "nominal", "title": "Department"},
+              {"field": "cabinet", "type": "nominal", "title": "Cabinet"}
+            ]},
+          "config": {
+            "numberFormat": ".1f",
+            "title": {
+              "font": "Montserrat",
+              "fontSize": 20
+            },
+            "axis": {
+              "labelFont": "Lora",
+              "labelFontSize": 16,
+              "labelLimit": 500,
+              "titleFont": "Montserrat",
+              "titleFontSize": 16,
+              "titleFontWeight": "normal",
+              "titlePadding": 15
+            }
           }
-        </script>
-  </cob-chart>
+        }
+      </script>
+    </cob-chart>
 
-  <script src="/web-components/fleetcomponents.js"></script>
-</body>
-
+    <script src="/web-components/fleetcomponents.js"></script>
+  </body>
 </html>
