@@ -20,6 +20,8 @@ export class CobChart {
   selectOptions: any;
   vegaLite: boolean = true;
   chartDiv: any;
+  usingSelection: boolean = false;
+  vegaSignal: any = '';
 
   // We listen for a window resize and adjust the width of the chart if it happens
   @Listen('window:resize')
@@ -153,37 +155,69 @@ export class CobChart {
     this.chartID = `cob-chart-${idSuffix}`;
     let compiledSpec;
 
+    // We check to see if we are using selections.
+    // If we're using VegaLite, this is easy - we just
+    // see if the selection section of the config is not null.
+    if (this.vegaLite) {
+      this.usingSelection = this.config.selection ? true : false;
+    } else {
+      // Things get a little more complicated with Vega because
+      // signals can be more broadly used. We check to see if
+      // we're using signals, and in the array of singals we look
+      // for one we're binding to a select element.
+      if (this.config.signals) {
+        this.vegaSignal = this.config.signals.find(
+          signal => signal.bind.input === 'select'
+        );
+        this.usingSelection = this.vegaSignal ? true : false;
+      }
+    }
+
     // We check to see if the chart uses interactive selections.  If yes,
     // we manipulate the config before compiling.
-    if (typeof this.config.selection === 'undefined') {
-      // Currently, we don't support selections on charts we build with
-      // Vega (pie charts), and we only compile the spec if we're using VegaLite.
+    if (!this.usingSelection) {
+      // If we using VegaLite, we compile to VegaLite spec to Vega. It not,
+      // we leave the given config as is.
       compiledSpec = this.vegaLite
         ? VegaLite.compile(this.config).spec
         : this.config;
     } else {
       // If we are using a selection, we hold onto the field we're
       // using for it so we can populate the select options later.
-      this.selectField = this.config.selection.select.fields[0];
+      this.selectField = this.vegaLite
+        ? this.config.selection.select.fields[0]
+        : // Vega doesn't accept the name of a field as a parameter to the spec -
+          // instead we define that in the "expr" (expression) parameter accompanying
+          // the "filter" transform. So that we can populate the select options,
+          // we add it to the spec ourselves and more easily grab it here.
+          this.config.boston.selectField;
 
       // We clear the location in the config where someone could pass
       // select options as we'll build them ourselves using the data.
-      this.config.selection.select.bind.options = [];
+      if (this.vegaLite) {
+        this.config.selection.select.bind.options = [];
+      } else {
+        this.vegaSignal.bind.options = [];
+      }
 
       // After updating the config, we compile it to Vega and parse it
-      compiledSpec = VegaLite.compile(this.config).spec;
+      compiledSpec = this.vegaLite
+        ? VegaLite.compile(this.config).spec
+        : this.config;
 
-      /* By default Vega adds an event listener to our selection that
+      /* By default VegaLite adds an event listener to our selection that
           fires when the chart is clicked. The click sets the selection
           back to null, so the user's selection gets undone.
 
           To get around this, we remove the event listener configuration
           from the compiled Vega spec.
         */
-      const selectSignal = compiledSpec.signals.find(
-        elem => elem.name === `select_${this.selectField}`
-      );
-      delete selectSignal.on;
+      if (this.vegaLite) {
+        const selectSignal = compiledSpec.signals.find(
+          elem => elem.name === `select_${this.selectField}`
+        );
+        delete selectSignal.on;
+      }
     }
     // After updating the config and compiling if necessary, we initialize a
     // Vega view object.
@@ -201,7 +235,7 @@ export class CobChart {
     // we'll use it in multiple places.
     this.chartDiv = document.getElementById(this.chartID)!;
 
-    if (this.config.selection) {
+    if (this.usingSelection) {
       // If we are using selections, we build the dropdown.
       this.buildDropDownSelection();
 
@@ -212,7 +246,13 @@ export class CobChart {
         // it allows us to use Vega transforms then use the transformed data
         // to populate our selections. It also means we don't have to
         // fetch our data twice - Vega does it once and we leverage it.
-        this.dataset = this.view.data(this.config.data.name);
+        this.dataset = this.vegaLite
+          ? this.view.data(this.config.data.name)
+          : // We grab the first dataset in the Vega array. This means we
+            // currently only support using one dataset per chart when
+            // using Vega.
+            this.view.data(this.config.data[0].name);
+
         // We use the dataset to get our list of dropdown options.
         this.selectOptions = Array.from(
           new Set(this.dataset.map(item => item[this.selectField]))
@@ -228,8 +268,10 @@ export class CobChart {
 
         // Everytime the selection changes, we want to make sure the the
         // chart still fits nicely on the page and that the chart updates.
-        const selectionName = Object.keys(this.config.selection)[0];
-        const signalName = `${selectionName}_${this.selectField}`;
+        const signalName = this.vegaLite
+          ? `${Object.keys(this.config.selection)[0]}_${this.selectField}`
+          : this.vegaSignal.name;
+
         // We add an event listener to the select box that re-renders the
         // chart with the new selection and updates the size.
         selectElem.addEventListener('change', (e: any) => {

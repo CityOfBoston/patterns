@@ -22,7 +22,9 @@
         {
           "$schema": "https://vega.github.io/schema/vega/v4.json",
           "boston": {
-            "chartID": "pieChart"
+            "chartID": "pieChart",
+            "selectField": "Department",
+            "defaultSelection": "Election Department"
           },
           "width": 200,
           "height": 200,
@@ -34,14 +36,25 @@
           "data": [
             {
               "name": "table",
-              "url": "https://gist.githubusercontent.com/paylakatel/66015b8cc9e3f8f99509d84f5b60d66c/raw/bc9e03dea5532c3ee5c59e3d134e109541929201/expenditures-pie.csv",
+              "url": "https://gist.githubusercontent.com/paylakatel/aad8f66e3e6ae25f7e5bf64347b5b7f2/raw/1b2310bbb8c3a31a8de86972c563a9b3752f4a3f/stacked-by-department.csv",
               "format": {
-                "type": "csv"
+                "type": "csv",
+                "parse": {
+                  "Amount": "number"
+                }
               },
               "transform": [
                 {
+                  "type": "filter",
+                  "expr": "datum.Year === 'FY19 Adopted'"
+                },
+                {
+                  "type": "filter",
+                  "expr": "if(select === 'All', datum.Department, datum.Department === select)"
+                },
+                {
                   "type": "pie",
-                  "field": "percent",
+                  "field": "Amount",
                   "sort": true
                 }
               ]
@@ -51,8 +64,12 @@
             {
               "name": "color",
               "type": "ordinal",
+              "domain": {
+                "data": "table",
+                "field": "Expense Category"
+              },
               "range": {
-                "scheme": "tableau20"
+                "scheme": "tableau10"
               }
             }
           ],
@@ -66,6 +83,21 @@
               "offset": 5
             }
           ],
+          "signals": [
+            {
+              "name": "select",
+              "value": "All",
+              "bind": {
+                "input": "select",
+                "name": "Select a Department: ",
+                "options": [
+                  "Election Department",
+                  "Law Department",
+                  "Property Management Department"
+                ]
+              }
+            }
+          ],
           "marks": [
             {
               "type": "arc",
@@ -76,7 +108,7 @@
                 "enter": {
                   "fill": {
                     "scale": "color",
-                    "field": "expenditure"
+                    "field": "Expense Category"
                   },
                   "x": {
                     "signal": "width / 2"
@@ -85,7 +117,7 @@
                     "signal": "height / 2"
                   },
                   "tooltip": {
-                    "signal": "{title: datum.expenditure, 'Budget': format(datum.percent/100, '0.0p')}"
+                    "signal": "{title: datum.Source, 'Amount of Budget': format(datum.Amount,'$,'), 'Expense Category': datum['Expense Category'], 'Department': datum.Department}"
                   }
                 },
                 "update": {
@@ -97,7 +129,7 @@
                   },
                   "padAngle": 0,
                   "innerRadius": {
-                    "signal": "width/4"
+                    "signal": "width / 4"
                   },
                   "outerRadius": {
                     "signal": "width / 2"
