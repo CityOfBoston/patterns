@@ -73,7 +73,10 @@ adjust-for-menu()
   show-menu()
 
 .brg-tr:checked ~ .mn,
-.brg-tr:checked ~ .mn--full-ie
+.brg-tr:checked ~ .mn--full-ie,
+// Use this when you need a child of .mn to also move when the menu opens,
+// in particular when it’s fixed.
+.brg-tr:checked ~ .mn .mn-fixed-child
   adjust-for-menu()
 
 // :focus-within is here so the menu opens when you tab into its links. It's not
@@ -85,7 +88,8 @@ adjust-for-menu()
   show-menu()
 
 .nv-m:focus-within ~ .mn,
-.nv-m:focus-within ~ .mn--full-ie
+.nv-m:focus-within ~ .mn--full-ie,
+.nv-m:focus-within ~ .mn .mn-fixed-child
   adjust-for-menu()
 
 .brg
