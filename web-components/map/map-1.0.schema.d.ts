@@ -208,4 +208,8 @@ export interface AddressSearch {
    * If not `null`, will open the popup for the specified layer when the search result is chosen.
    */
   autoPopupDataSourceUid?: null | string;
+  /**
+   * Specify an ArcGIS GeocodeServer URL other than the default ESRI world one.
+   */
+  geocoderUrl?: null | string;
 }
