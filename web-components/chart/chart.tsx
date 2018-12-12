@@ -39,8 +39,8 @@ export class CobChart {
   @Listen('window:resize')
   setChartWidth() {
     // We use the chart div to set the width of the svg chart element and
-    // subtract 50px from it to account for padding.
-    const newWidth = this.el.getBoundingClientRect().width - 50;
+    // subtract 10px from it to account for padding.
+    const newWidth = this.el.getBoundingClientRect().width - 10;
 
     // We don't want our chart's width to be less than the minWidth,
     // so if the new wrapper div width is less than that, we set it
@@ -62,10 +62,7 @@ export class CobChart {
     // With facet charts, the width and height of the chart refers to the width/height
     // of each facet, not the entire chart. As a result, if we're using columns, we
     // update the "child_width" and "child_height" signals to update the size of the chart.
-    if (
-      this.vegaLite == true &&
-      typeof this.config.encoding.column !== 'undefined'
-    ) {
+    if (this.vegaLite == true && this.config.encoding.column) {
       /* The "width" in facet/grouped charts refers to the width of 
         each column in the chart, so we:
         1. calculate the number of columns in the chart
@@ -90,7 +87,7 @@ export class CobChart {
 
       // We get the width of the chart container to understand how much
       // room we have to work with.
-      const containerDivWidth = this.el.getBoundingClientRect().width - 40;
+      const containerDivWidth = this.el.getBoundingClientRect().width;
 
       // We calculate what the new width would be we also calculate what
       // what the smallest calculated width should be based on the minWidth
@@ -245,7 +242,16 @@ export class CobChart {
     // we'll use it in multiple places.
     this.chartDiv = document.getElementById(this.chartID)!;
 
-    if (this.usingSelection) {
+    // If we're building a grouped bar chart, we need the dataset so
+    // we know the number of columns when calculating the width of the chart.
+    // If we're using a selection, we don't need to worry about this because
+    // we'll grab the dataset for building the selection.
+    if (!this.usingSelection && this.config.encoding.column) {
+      this.view.runAsync().then(() => {
+        this.dataset = this.view.data(this.config.data.name);
+        this.setChartWidth();
+      });
+    } else if (this.usingSelection) {
       // If we are using selections, we build the dropdown.
       this.buildDropDownSelection();
 
@@ -267,6 +273,7 @@ export class CobChart {
         this.selectOptions = Array.from(
           new Set(this.dataset.map(item => item[this.selectField]))
         ).sort();
+
         // We populate the options in the select element using the list.
         const selectElem = this.chartDiv.querySelector('select')!;
         this.selectOptions.map(elem => {
@@ -287,6 +294,8 @@ export class CobChart {
 
         // Lastly, we update the chart on this first run with the currently
         // selected value and set the chart width accordingly.
+        selectElem.value =
+          this.config.boston.defaultSelection || this.selectOptions[0];
         const selected = selectElem.selectedIndex;
         this.view.signal(this.signalName, this.selectOptions[selected]).run();
         this.setChartWidth();
@@ -327,10 +336,6 @@ export class CobChart {
     const selectElem = this.chartDiv.querySelector('select')!;
     selectElem.className = 'sel-f sel-f--thin';
     selectArrow.appendChild(selectElem);
-
-    // Set the default selection if given
-    selectElem.value =
-      this.config.boston.defaultSelection || this.selectOptions[0];
 
     // Update the classes for the select label
     const selectLabel = this.chartDiv.querySelector('.vega-bind-name')!;
