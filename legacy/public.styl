@@ -4563,7 +4563,8 @@ __summary.collapsible {
 .view-topic-landing-page-page-1 .content {
     padding-top: 50px
 }
-.paragraphs-item-upcoming-events {
+.paragraphs-item-upcoming-events,
+.paragraphs-item-events-and-notices {
     left: 50%;
     position: relative;
     -ms-transform: translate(-50%, 0);
@@ -4572,7 +4573,8 @@ __summary.collapsible {
     background-color: $grey-000
 }
 .paragraphs-item-upcoming-events .view-upcoming-events,
-.paragraphs-item-upcoming-events .view-related-events {
+.paragraphs-item-upcoming-events .view-related-events,
+.paragraphs-item-events-and-notices .view-events-and-notices {
     width: 100%
 }
 .red,
@@ -7280,19 +7282,22 @@ a.item-link {
 }
 @media (min-width: 768px) {
     .paragraphs-item-news-announcements .news-item,
-    .paragraphs-item-upcoming-events .news-item {
+    .paragraphs-item-upcoming-events .news-item,
+    .paragraphs-item-events-and-notices .news-item {
         height: 190px
     }
 }
 @media (min-width: 980px) {
     .paragraphs-item-news-announcements .news-item,
-    .paragraphs-item-upcoming-events .news-item {
+    .paragraphs-item-upcoming-events .news-item,
+    .paragraphs-item-events-and-notices .news-item {
         height: 190px
     }
 }
 @media (min-width: 768px) {
     .paragraphs-item-news-announcements .news-item .thumb-wrapper,
-    .paragraphs-item-upcoming-events .news-item .thumb-wrapper {
+    .paragraphs-item-upcoming-events .news-item .thumb-wrapper,
+    .paragraphs-item-events-and-notices .news-item .thumb-wrapper {
         float: left;
         margin-right: 20px;
         margin-top: 0;
@@ -7302,7 +7307,8 @@ a.item-link {
 }
 @media (min-width: 768px) {
     .paragraphs-item-news-announcements .news-item .text-wrapper,
-    .paragraphs-item-upcoming-events .news-item .text-wrapper {
+    .paragraphs-item-upcoming-events .news-item .text-wrapper,
+    .paragraphs-item-events-and-notices .news-item .text-wrapper {
         margin-left: 170px;
         padding: 20px 20px 20px 0
     }
@@ -7311,8 +7317,11 @@ a.item-link {
 .paragraphs-item-news-announcements .news-item .view-transactions-main-transactions .view-header p.title,
 .view-transactions-main-transactions .view-header .paragraphs-item-news-announcements .news-item p.title,
 .paragraphs-item-upcoming-events .news-item h3.title,
+.paragraphs-item-events-and-notices .news-item h3.title,
 .paragraphs-item-upcoming-events .news-item .view-transactions-main-transactions .view-header p.title,
-.view-transactions-main-transactions .view-header .paragraphs-item-upcoming-events .news-item p.title {
+.paragraphs-item-events-and-notices .news-item .view-transactions-main-transactions .view-header p.title,
+.view-transactions-main-transactions .view-header .paragraphs-item-upcoming-events .news-item p.title,
+.view-transactions-main-transactions .view-header .paragraphs-item-events-and-notices .news-item p.title {
     margin: 15px 30px 10px 30px
 }
 @media (min-width: 768px) {
@@ -7320,25 +7329,31 @@ a.item-link {
     .paragraphs-item-news-announcements .news-item .view-transactions-main-transactions .view-header p.title,
     .view-transactions-main-transactions .view-header .paragraphs-item-news-announcements .news-item p.title,
     .paragraphs-item-upcoming-events .news-item h3.title,
+    .paragraphs-item-events-and-notices .news-item h3.title,
     .paragraphs-item-upcoming-events .news-item .view-transactions-main-transactions .view-header p.title,
-    .view-transactions-main-transactions .view-header .paragraphs-item-upcoming-events .news-item p.title {
+    .paragraphs-item-events-and-notices .news-item .view-transactions-main-transactions .view-header p.title,
+    .view-transactions-main-transactions .view-header .paragraphs-item-upcoming-events .news-item p.title,
+    .view-transactions-main-transactions .view-header .paragraphs-item-events-and-notices .news-item p.title {
         margin-top: 0;
         margin-bottom: 5px
     }
 }
 .paragraphs-item-news-announcements .news-item .department-title,
-.paragraphs-item-upcoming-events .news-item .department-title {
+.paragraphs-item-upcoming-events .news-item .department-title,
+.paragraphs-item-events-and-notices .news-item .department-title {
     margin: 0 30px 40px
 }
 @media (min-width: 980px) {
     .paragraphs-item-news-announcements .news-item .department-title,
-    .paragraphs-item-upcoming-events .news-item .department-title {
+    .paragraphs-item-upcoming-events .news-item .department-title,
+    .paragraphs-item-events-and-notices .news-item .department-title {
         display: block
     }
 }
 @media (min-width: 768px) {
     .paragraphs-item-news-announcements .news-item .contact-wrapper,
-    .paragraphs-item-upcoming-events .news-item .contact-wrapper {
+    .paragraphs-item-upcoming-events .news-item .contact-wrapper,
+    .paragraphs-item-events-and-notices .news-item .contact-wrapper {
         float: right;
         height: 190px;
         width: 56px;
@@ -7451,7 +7466,8 @@ a.item-link {
     }
 }
 .paragraphs-item-news-announcements .news-item:hover .news-item-wrapper,
-.paragraphs-item-upcoming-events .news-item:hover .news-item-wrapper {
+.paragraphs-item-upcoming-events .news-item:hover .news-item-wrapper,
+.paragraphs-item-events-and-notices .news-item:hover .news-item-wrapper {
     background-color: $optimistic-blue
 }
 .paragraphs-item-news-announcements .news-item:hover .news-item-wrapper h3.title,
@@ -7459,9 +7475,13 @@ a.item-link {
 .view-transactions-main-transactions .view-header .paragraphs-item-news-announcements .news-item:hover .news-item-wrapper p.title,
 .paragraphs-item-news-announcements .news-item:hover .news-item-wrapper .department-title,
 .paragraphs-item-upcoming-events .news-item:hover .news-item-wrapper h3.title,
+.paragraphs-item-events-and-notices .news-item:hover .news-item-wrapper h3.title,
 .paragraphs-item-upcoming-events .news-item:hover .news-item-wrapper .view-transactions-main-transactions .view-header p.title,
+.paragraphs-item-events-and-notices .news-item:hover .news-item-wrapper .view-transactions-main-transactions .view-header p.title,
 .view-transactions-main-transactions .view-header .paragraphs-item-upcoming-events .news-item:hover .news-item-wrapper p.title,
-.paragraphs-item-upcoming-events .news-item:hover .news-item-wrapper .department-title {
+.view-transactions-main-transactions .view-header .paragraphs-item-events-and-notices .news-item:hover .news-item-wrapper p.title,
+.paragraphs-item-upcoming-events .news-item:hover .news-item-wrapper .department-title,
+.paragraphs-item-events-and-notices .news-item:hover .news-item-wrapper .department-title {
     color: $white
 }
 .node-type-department-profile .post-featured-item-wrapper .department-title .department-title,
@@ -7555,13 +7575,15 @@ a.item-link {
     }
 }
 .paragraphs-item-news-announcements .post-featured-item-wrapper,
-.paragraphs-item-upcoming-events .post-featured-item-wrapper {
+.paragraphs-item-upcoming-events .post-featured-item-wrapper,
+.paragraphs-item-events-and-notices .post-featured-item-wrapper {
     background-color: $white;
     margin-bottom: 1.5em;
     position: relative
 }
 .paragraphs-item-news-announcements .post-featured-item-wrapper:hover,
-.paragraphs-item-upcoming-events .post-featured-item-wrapper:hover {
+.paragraphs-item-upcoming-events .post-featured-item-wrapper:hover,
+.paragraphs-item-events-and-notices .post-featured-item-wrapper:hover {
     background-color: $optimistic-blue;
     color: $white
 }
@@ -7569,8 +7591,11 @@ a.item-link {
 .paragraphs-item-news-announcements .post-featured-item-wrapper:hover .view-transactions-main-transactions .view-header p.title,
 .view-transactions-main-transactions .view-header .paragraphs-item-news-announcements .post-featured-item-wrapper:hover p.title,
 .paragraphs-item-upcoming-events .post-featured-item-wrapper:hover h3.title,
+.paragraphs-item-events-and-notices .post-featured-item-wrapper:hover h3.title,
 .paragraphs-item-upcoming-events .post-featured-item-wrapper:hover .view-transactions-main-transactions .view-header p.title,
-.view-transactions-main-transactions .view-header .paragraphs-item-upcoming-events .post-featured-item-wrapper:hover p.title {
+.paragraphs-item-events-and-notices .post-featured-item-wrapper:hover .view-transactions-main-transactions .view-header p.title,
+.view-transactions-main-transactions .view-header .paragraphs-item-upcoming-events .post-featured-item-wrapper:hover p.title,
+.view-transactions-main-transactions .view-header .paragraphs-item-events-and-notices .post-featured-item-wrapper:hover p.title {
     color: $white
 }
 .paragraphs-item-news-announcements .post-featured-item-wrapper .desktop-2-col.thumb-column,
@@ -7579,10 +7604,15 @@ a.item-link {
 .paragraphs-item-news-announcements .post-featured-item-wrapper .filter-wrapper .views-widget-filter-field_published_date_value .views-widget>div.thumb-column,
 .filter-wrapper .views-widget-filter-field_published_date_value .paragraphs-item-news-announcements .post-featured-item-wrapper .views-widget>div.thumb-column,
 .paragraphs-item-upcoming-events .post-featured-item-wrapper .desktop-2-col.thumb-column,
+.paragraphs-item-events-and-notices .post-featured-item-wrapper .desktop-2-col.thumb-column,
 .paragraphs-item-upcoming-events .post-featured-item-wrapper .view-filters .views-widget-filter-field_published_date_value .views-widget>div.thumb-column,
+.paragraphs-item-events-and-notices .post-featured-item-wrapper .view-filters .views-widget-filter-field_published_date_value .views-widget>div.thumb-column,
 .view-filters .views-widget-filter-field_published_date_value .paragraphs-item-upcoming-events .post-featured-item-wrapper .views-widget>div.thumb-column,
+.view-filters .views-widget-filter-field_published_date_value .paragraphs-item-events-and-notices .post-featured-item-wrapper .views-widget>div.thumb-column,
 .paragraphs-item-upcoming-events .post-featured-item-wrapper .filter-wrapper .views-widget-filter-field_published_date_value .views-widget>div.thumb-column,
-.filter-wrapper .views-widget-filter-field_published_date_value .paragraphs-item-upcoming-events .post-featured-item-wrapper .views-widget>div.thumb-column {
+.paragraphs-item-events-and-notices .post-featured-item-wrapper .filter-wrapper .views-widget-filter-field_published_date_value .views-widget>div.thumb-column,
+.filter-wrapper .views-widget-filter-field_published_date_value .paragraphs-item-upcoming-events .post-featured-item-wrapper .views-widget>div.thumb-column,
+.filter-wrapper .views-widget-filter-field_published_date_value .paragraphs-item-events-and-notices .post-featured-item-wrapper .views-widget>div.thumb-column {
     margin-bottom: 0
 }
 @media (min-width: 768px) {
