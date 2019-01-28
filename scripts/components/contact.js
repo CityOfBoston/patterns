@@ -114,7 +114,7 @@ var BostonContact = (function () {
       valid = false;
     }
 
-    if (o_subject && subject.value !== o_subject) {
+    if (o_subject && subject[0].value !== o_subject) {
       valid = false;
     }
 
