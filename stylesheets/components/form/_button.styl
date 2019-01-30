@@ -1,6 +1,6 @@
 /*
 
-   Checkboxes
+   Buttons. Use on both <button> and <a> tags.
 
    Base:
     btn
@@ -9,6 +9,9 @@
     c = charles blue
     sb = small block (becomes block on small screens)
 
+
+  We use ":not(:disabled)" in the rules below instead of ":enabled"
+  so that the rules trigger for <a> tags as well as <button>s.
  */
 
 .btn
@@ -38,17 +41,14 @@
   &:visited
     color: white
 
-  &:hover
+  &:hover:not(:disabled)
     background-color: $freedom-red
     color: white
 
   &:disabled
     cursor: default
     background-color: $grey-100
-
-    &:hover
-      background-color: $grey-100
-      color: white
+    color: $grey-300
 
   &--ib
     display: inline-block
@@ -57,6 +57,15 @@
     display: block
     text-align: center
     width: 100%
+
+  @media $media-large-max
+    // "block small" is a block at breakpoints < large. Use this in a grid
+    // to make the button take up full width when things collapse to a single
+    // column, but naturally-sized when there are columns.
+    &--b-sm
+      display: block
+      text-align: center
+      width: 100%
 
   // Button that fills the remaining space in a flex row
   &--row
@@ -70,13 +79,13 @@
   &--c
     background-color: $charles-blue
 
-    &:hover
+    &:hover:not(:disabled)
       background-color: $freedom-red
 
   &--y
     background-color: $yellow
 
-    &:hover
+    &:hover:not(:disabled)
       background-color: $yellow-hover
       color: white
 
@@ -84,17 +93,21 @@
     background-color: $white
     color: $optimistic-blue
 
-    &:hover
+    &:link
+    &:visited
+      color: $optimistic-blue
+
+    &:hover:not(:disabled)
       background-color: $optimistic-blue
       color: $white
 
   &--r-hov
-    &:hover
+    &:hover:not(:disabled)
       background-color: $freedom-red
       color: $white
 
   &--w-hov
-    &:hover
+    &:hover:not(:disabled)
       background-color: $white
       color: $freedom-red
 
@@ -103,6 +116,17 @@
 
     @media $media-xlarge
       margin-top: 0
+
+  // With a border
+  &--br
+    border: $border-200 solid $charles-blue
+
+    &:focus
+      outline: $border-200 solid $optimistic-blue
+      outline-offset: 1px
+
+    &:disabled
+      border-color: $grey-300
 
   &--sm
     font-weight: normal

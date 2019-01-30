@@ -21,7 +21,7 @@ import {
 } from 'leaflet';
 
 import { basemapLayer, tiledMapLayer, query as esriQuery } from 'esri-leaflet';
-import { geosearch } from 'esri-leaflet-geocoder';
+import { geosearch, geocodeServiceProvider } from 'esri-leaflet-geocoder';
 
 // This is our fork of Leaflet/Leaflet.markercluster to fix for module-based
 // importing.
@@ -375,6 +375,14 @@ export class CobMap {
 
     if (this.showAddressSearch) {
       const addressSearchControl = geosearch({
+        providers:
+          mapConfig.addressSearch && mapConfig.addressSearch.geocoderUrl
+            ? [
+                geocodeServiceProvider({
+                  url: mapConfig.addressSearch.geocoderUrl,
+                }),
+              ]
+            : undefined,
         expanded: true,
         placeholder:
           (mapConfig.addressSearch && mapConfig.addressSearch.placeholder) ||
@@ -524,7 +532,7 @@ export class CobMap {
     // This clears out an existing hash if one exists. Otherwise we'd be closed
     // but unable to get a hashchange event to re-open.
     if (this.id && window.location.hash === `#${this.id}`) {
-      history.replaceState(null, undefined, ' ');
+      history.replaceState(null, undefined as any, ' ');
     }
   }
 
