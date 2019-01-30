@@ -37,7 +37,7 @@ $select-arrow-box-thin-width = 42px
       bottom: $border-200
       right: $border-200
       border-left: $border-200 solid $charles-blue
-      background: $optimistic-blue
+      background: $optimistic-blue-dark
       width: $select-arrow-box-width
       background-image: url(../images/global/icons/chevron-down.svg)
       background-repeat: no-repeat
@@ -52,7 +52,7 @@ $select-arrow-box-thin-width = 42px
         height: "calc(2 * %s + 2 * %s + %s * 1rem)" % ($sizing-100 $border-200 $line-height-300)
 
     &--err:after
-      border-color: $freedom-red
+      border-color: $error-border-color
 
     &--sq:after
       content: 'Select'
@@ -108,11 +108,11 @@ $select-arrow-box-thin-width = 42px
       background: transparent
       
     &--err
-      border-color: $freedom-red
-      color: $freedom-red
+      border-color: $error-border-color
+      color: $error-text-color
 
     &:focus
-      box-shadow: 0 0 0 3px $optimistic-blue
+      box-shadow: 0 0 0 3px $focus-indicator-color
 
   &-l
     color: $charles-blue
@@ -143,4 +143,4 @@ $select-arrow-box-thin-width = 42px
       margin-top: 0
 
     &--err
-      color: $freedom-red
+      color: $error-text-color

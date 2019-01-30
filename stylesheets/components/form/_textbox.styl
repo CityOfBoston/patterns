@@ -35,6 +35,7 @@
 
     color: $charles-blue
     border: $border-200 solid $charles-blue
+    border-radius: 0 // Safari/iOS rounds input field corners by default
 
     height: field-height
     line-height: field-height
@@ -56,7 +57,7 @@
       color: $grey-300
 
     &--err
-      border-color: $freedom-red
+      border-color: $error-border-color
 
     input[type=email]&,
     input[type=tel]&,
@@ -90,7 +91,7 @@
       height: 1rem
 
     &:focus
-      box-shadow: 0 0 0 3px $optimistic-blue
+      box-shadow: 0 0 0 3px $focus-indicator-color
 
     &--combo
       border-right: 0
