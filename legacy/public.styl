@@ -1,11 +1,20 @@
 @require '../stylesheets/variables/_colors.styl';
 
+// 1/2019: Optimistic Blue and Freedom Red have each been split to have a -dark and -light variation. The original
+// values now exist as the -light variation; -dark was added to provide stronger contrast and readability when used as
+// text on a light background.
+
+// todo: Because this stylesheet has many instances of the old variables, and because text-on-light is the most common
+// situation, these backup variables reference the -dark variants. QA has reviewed these changes on staging as well. At
+// some point in the future, we can assess each usage and assign the most appropriate variation in each instance.
+$optimistic-blue  = $optimistic-blue-dark
+$freedom-red      = $freedom-red-dark
+
 body {
     overflow-x: hidden
 }
 html {
     font-size: 112.5%;
-    line-height: 2.16667em;
     line-height: 2.16667em;
     font-family: "Montserrat", sans-serif;
     -ms-text-size-adjust: 100%;
