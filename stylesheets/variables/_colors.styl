@@ -1,23 +1,46 @@
 $charles-blue     = #091f2f
-$freedom-red      = #fb4d42
-$optimistic-blue  = #288be4
+
+// 1/2019: $freedom-red has been renamed to $freedom-red-light; $optimistic-blue to $optimistic-blue-light.
+// -dark variations have been added to provide stronger contrast and readability as text on a light background.
+
+// -light should be used on Charles Blue or black; can also be used in decorative cases.
+$freedom-red-light = #fb4d42
+
+// -dark variant has stronger color contrast on a white background. Use for text and borders.
+$freedom-red-dark = #d22d23
+
+// -light variant should always be used for text links on a $charles-blue or black background.
+//
+// It’s also the preferred variant for some elements’ hover background color, and
+// can also be used in decorative cases.
+$optimistic-blue-light  = #288be4
+
+// -dark variant should always be used for text links on white.
+$optimistic-blue-dark = #1979cc
+
 $optimistic-blue-hover = #175182
+$body-text        = #58585b
 $yellow           = #fcb61a
 $yellow-hover     = darken($yellow, 20)
 $white            = #ffffff
+$black            = #000
 $grey-000         = #f3f3f3
 $grey-100         = #e0e0e0
 $grey-200         = #C8C8C8
 $grey-300         = #828282
 
+$focus-indicator-color = $optimistic-blue-light
+$error-border-color = $freedom-red-light
+$error-text-color = $freedom-red-dark
+
 // Component specific colors
 $seal-bg          = $white
-$hero-main        = $optimistic-blue
+$hero-main        = $optimistic-blue-light
 $hero-alt         = #2d82cf
 $nav-header       = $white
 $nav-header-text  = $charles-blue
-$blended-optimistic-blue = blend(rgba(#FFF, 0.35), $optimistic-blue)
+$blended-optimistic-blue = blend(rgba(#FFF, 0.35), $optimistic-blue-light)
 $header-background = $white
 $header-nav-color = $charles-blue
-$header-nav-hover = $freedom-red
-$header-search    = $freedom-red
+$header-nav-hover = $freedom-red-dark
+$header-search    = $freedom-red-light
