@@ -15,7 +15,7 @@
  */
 
 .btn
-  background-color: $optimistic-blue
+  background-color: $optimistic-blue-dark
   color: $white
   font-family: $sans
   font-size: responsive 14px 16px
@@ -42,7 +42,7 @@
     color: white
 
   &:hover:not(:disabled)
-    background-color: $freedom-red
+    background-color: $freedom-red-light
     color: white
 
   &:disabled
@@ -80,7 +80,7 @@
     background-color: $charles-blue
 
     &:hover:not(:disabled)
-      background-color: $freedom-red
+      background-color: $freedom-red-light
 
   &--y
     background-color: $yellow
@@ -91,25 +91,25 @@
 
   &--w
     background-color: $white
-    color: $optimistic-blue
+    color: $optimistic-blue-dark
 
     &:link
     &:visited
-      color: $optimistic-blue
+      color: $optimistic-blue-dark
 
     &:hover:not(:disabled)
-      background-color: $optimistic-blue
+      background-color: $optimistic-blue-light
       color: $white
 
   &--r-hov
     &:hover:not(:disabled)
-      background-color: $freedom-red
+      background-color: $freedom-red-light
       color: $white
 
   &--w-hov
     &:hover:not(:disabled)
       background-color: $white
-      color: $freedom-red
+      color: $freedom-red-light
 
   &--sb
     margin-top: 0.5rem
@@ -122,7 +122,7 @@
     border: $border-200 solid $charles-blue
 
     &:focus
-      outline: $border-200 solid $optimistic-blue
+      outline: $border-200 solid $focus-indicator-color
       outline-offset: 1px
 
     &:disabled
