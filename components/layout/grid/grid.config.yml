@@ -6,3 +6,6 @@ variants:
   - name: Reverse
     context:
       variant: g--r
+  - name: Reverse only on mobile viewports
+    context:
+      variant: g--mr
