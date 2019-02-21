@@ -39,6 +39,9 @@
     &:hover
       color: $freedom-red-light
 
+    @media $media-small-max
+      display:none
+
   &-i
     display: block
     margin-bottom: -4px
@@ -66,3 +69,11 @@
 
     @media screen and (min-width: 1054px)
       display: block
+
+  &-b
+    display:none
+
+    @media $media-small-max
+      display:block
+      margin-left: calc(-1rem - 2px)
+
