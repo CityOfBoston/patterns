@@ -40,7 +40,15 @@
       color: $freedom-red-light
 
     @media $media-small-max
-      display:none
+        background: #091f2f
+        margin-left:calc(-1rem - 2px)
+        width:65px
+        height:65px
+        
+        a
+          content:url(../images/b-light.svg)
+          width:20px
+          margin:0 auto
 
   &-i
     display: block
@@ -69,11 +77,3 @@
 
     @media screen and (min-width: 1054px)
       display: block
-
-  &-b
-    display:none
-
-    @media $media-small-max
-      display:block
-      margin-left: calc(-1rem - 2px)
-

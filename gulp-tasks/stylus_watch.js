@@ -3,7 +3,7 @@
 module.exports = function(gulp) {
   return function() {
     var stream = gulp.watch(
-      ['./stylesheets/**/**.styl'],
+      ['./stylesheets/**/**/**.styl'],
       ['stylus', 'stylus:ie']
     );
 
