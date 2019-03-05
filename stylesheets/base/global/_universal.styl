@@ -8,8 +8,34 @@ a
   color: $optimistic-blue-dark
   text-decoration: none
 
+// styled underline alternative - adds more space between baseline and underline
+.lnk, a:not(&[class])
+  $color-body-background = $white;
+
+  background-position: 0 0;
+  background-repeat: no-repeat;
+  background-image: linear-gradient(
+          to top,
+          $color-body-background,
+          $color-body-background 0.1em,
+          currentColor 0.1em,
+          currentColor calc(0.1em + 1px),
+          $color-body-background calc(0.1em + 1px),
+          $color-body-background 100%
+  );
+
+  text-shadow:
+          0.07em 0 $color-body-background,
+          -0.07em 0 $color-body-background,
+          0 0.05em $color-body-background,
+          0 -0.1em $color-body-background
+;
+
   &:hover
     color: $freedom-red-light
+
+  &::selection
+    text-shadow: unset
 
 .fl
   &--l
