@@ -1,0 +1,40 @@
+// Styled underline alternative - adds more space between baseline and underline.
+// Best used with Chrome or Safari; defaults to a standard underline in other cases.
+
+// Requires knowledge of the container background color.
+styled-underline(body-background-color)
+  $transparent = rgba(0, 0, 0, 0)
+
+  text-decoration: underline
+  background-color: $transparent
+
+  &:hover
+    text-decoration: none
+
+  @supports(-webkit-text-security: circle)
+
+    text-decoration: none
+    background-position: 0 0
+    background-repeat: no-repeat
+    background-image: linear-gradient(
+            to top,
+            $transparent,
+            $transparent 0.1em,
+            currentColor 0.1em,
+            currentColor calc(0.1em + 1px),
+            $transparent calc(0.1em + 1px),
+            $transparent 100%
+    );
+
+    text-shadow:
+            0.07em 0 body-background-color,
+            -0.07em 0 body-background-color,
+            0 0.05em body-background-color,
+            0 -0.1em body-background-color
+
+    &:hover
+      background: none
+      text-shadow: unset
+
+    &::selection
+      text-shadow: unset

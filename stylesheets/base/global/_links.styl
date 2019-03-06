@@ -1,5 +1,10 @@
+@require '../../mixins/styled-underline.styl';
+
 .lnk
   color: $optimistic-blue-dark
+
+  &:not(.lnk--white):not(.lnk--yellow)
+    styled-underline($white)
 
   button&
     font-family: inherit
@@ -14,9 +19,10 @@
     margin: 0
     cursor: pointer
 
-  &:link
-    color: $optimistic-blue-dark
+    &--white, &--yellow
+      background-color: rgba(0, 0, 0, 0)
 
+  &:link,
   &:visited
     color: $optimistic-blue-dark
 
@@ -26,9 +32,7 @@
   &--white
     color: $white
 
-    &:link
-      color: $white
-
+    &:link,
     &:visited
       color: $white
 
@@ -36,11 +40,9 @@
       color: $freedom-red-light
 
   &--yellow
-    color: $yellow !important
+    color: $yellow
 
-    &:link
-      color: $yellow
-
+    &:link,
     &:visited
       color: $yellow
 
