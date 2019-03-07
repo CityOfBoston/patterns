@@ -14,7 +14,8 @@ a
     color: $freedom-red-light
 
 // catch instances where style classes have not been applied to the <a> in body text
-p > a
+p a:not([class]):not(.button),
+span:not([class]) > a:not(.button)
   styled-underline $white
 
 .fl

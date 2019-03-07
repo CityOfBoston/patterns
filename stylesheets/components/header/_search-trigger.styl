@@ -14,6 +14,18 @@
     .h-s
       display: block
 
+    #searchIcon
+      &::before
+        display:block
+        position:absolute
+        top:-10px
+        content:'\00D7'
+        font-size: 2.8125rem
+        color:$freedom-red-light
+
+      svg
+        visibility:hidden
+
     .nv-h-l-a
       &-ic
         position: relative
