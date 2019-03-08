@@ -2,7 +2,6 @@ import { Config } from '@stencil/core';
 
 export const config: Config = {
   namespace: 'FleetComponents',
-  buildEs5: true,
 
   srcDir: 'web-components',
   outputTargets: [

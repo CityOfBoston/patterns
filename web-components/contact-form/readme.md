@@ -21,21 +21,36 @@ Will be hidden by default. Call the `show()` method to show it or add a
 
 ## Properties
 
-| Property         | Attribute         | Description                                                                                            | Type      |
-| ---------------- | ----------------- | ------------------------------------------------------------------------------------------------------ | --------- |
-| `action`         | `action`          | Defaults to `https://contactform.boston.gov/emails` but can be set for development testing.            | `string`  |
-| `defaultSubject` | `default-subject` | Pre-fills the subject field in the form.                                                               | `string`  |
-| `to`             | `to`              | Email address to send the form contents to. Defaults to **feedback@boston.gov**.                       | `string`  |
-| `token`          | `token`           | HTTP Authorization header token. Needs to match an API token in the `contactform.boston.gov` database. | `string`  |
-| `visible`        | `visible`         | Whether or not the modal is shown. Defaults to hidden.                                                 | `boolean` |
+| Property         | Attribute         | Description                                                                                            | Type      | Default                                   |
+| ---------------- | ----------------- | ------------------------------------------------------------------------------------------------------ | --------- | ----------------------------------------- |
+| `action`         | `action`          | Defaults to `https://contactform.boston.gov/emails` but can be set for development testing.            | `string`  | `'https://contactform.boston.gov/emails'` |
+| `defaultSubject` | `default-subject` | Pre-fills the subject field in the form.                                                               | `string`  | `''`                                      |
+| `to`             | `to`              | Email address to send the form contents to. Defaults to **feedback@boston.gov**.                       | `string`  | `'feedback@boston.gov'`                   |
+| `token`          | `token`           | HTTP Authorization header token. Needs to match an API token in the `contactform.boston.gov` database. | `string`  | `''`                                      |
+| `visible`        | `visible`         | Whether or not the modal is shown. Defaults to hidden.                                                 | `boolean` | `false`                                   |
 
 
 ## Methods
 
-| Method | Description     |
-| ------ | --------------- |
-| `hide` | Hide the modal. |
-| `show` | Show the modal. |
+### `hide() => void`
+
+Hide the modal.
+
+#### Returns
+
+Type: `void`
+
+
+
+### `show() => void`
+
+Show the modal.
+
+#### Returns
+
+Type: `void`
+
+
 
 
 ----------------------------------------------
