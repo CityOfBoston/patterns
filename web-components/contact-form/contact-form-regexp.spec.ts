@@ -1,4 +1,4 @@
-import { EMAIL_REGEXP } from './contact-form';
+import { EMAIL_REGEXP } from './contact-form-regexp';
 
 describe('email regexp', () => {
   it('matches a boston.gov address', () => {
