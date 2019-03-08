@@ -1,7 +1,13 @@
 @require '../mixins/styled-underline.styl';
 
-.paragraphs-item-3-column-w-image,
-.field.field-type-text-long,
-.detail-item__body div
-  p:not(.department-title) a:not([class]):not(.button)
-    styled-underline $charles-blue
+.paragraphs-item-3-column-w-image div:not(.button.cta-button) a:not([class]):not(.button)
+  styled-underline $charles-blue
+
+p.supporting-text > a:not([class]):not(.button)
+  styled-underline $white
+
+.field-item ol > li > a:not([class]):not(.button)
+  styled-underline $white
+
+div.detail-item__body:not(.detail-item__body--secondary) a:not([class]):not(.button)
+  styled-underline $white
