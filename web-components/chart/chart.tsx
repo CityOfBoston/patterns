@@ -328,7 +328,9 @@ export class CobChart {
 
   componentDidUnload() {
     // Once the component comes off the page, we clean up the view.
-    this.view.finalize();
+    if (this.view) {
+      this.view.finalize();
+    }
   }
 
   // We custom build the dropdown selection to adhere to our styles and branding by
