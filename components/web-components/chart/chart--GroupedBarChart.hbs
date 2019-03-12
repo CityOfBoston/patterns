@@ -1,0 +1,96 @@
+<p>Grouped Bar Chart - uses VegaLite schema</p>
+<cob-chart>
+    <script type="application/json" slot="config">
+        {
+            "$schema": "https://vega.github.io/schema/vega-lite/v2.json",
+            "boston": {
+                "chartID": "groupedBarSelect1",
+                "minWidth": 500,
+                "defaultSelection": "City Clerk"
+            },
+            "title": {
+                "text": "Fake data by budget year",
+                "anchor": "start"
+            },
+            "description": "A simple bar chart with embedded data.",
+            "height": 400,
+            "width": 10,
+            "data": {
+                "name": "data",
+                "url": "https://s3.amazonaws.com/public-budget-data/test-data/testData-BarCharts.csv"
+            },
+            "transform": [
+                {
+                "filter": "datum.dept == 'City Clerk'"
+                }
+            ],
+            "mark": {
+                "type": "bar"
+            },
+            "encoding": {
+                "column": {
+                "field": "year",
+                "type": "ordinal",
+                "title": "",
+                "header": {
+                    "labelFontSize": 14,
+                    "labelFont": "Lora"
+                }
+                },
+                "color": {
+                "field": "program",
+                "type": "nominal",
+                "legend": {
+                    "orient": "bottom",
+                    "labelFont": "Lora",
+                    "labelFontSize": 16,
+                    "labelLimit": 500,
+                    "titleFont": "Montserrat",
+                    "title": ""
+                }
+                },
+                "y": {
+                "field": "budget",
+                "type": "quantitative",
+                "axis": {
+                    "title": ""
+                }
+                },
+                "x": {
+                "field": "program",
+                "type": "nominal",
+                "sort": {
+                    "op": "sum",
+                    "field": "budget",
+                    "order": "descending"
+                },
+                "axis": {
+                    "title": "",
+                    "grid": false,
+                    "labels": false,
+                    "ticks": false
+                }
+                }
+            },
+            "config": {
+                "point": {
+                "size": 60
+                },
+                "numberFormat": "s",
+                "title": {
+                "font": "Montserrat",
+                "fontSize": 20
+                },
+                "axis": {
+                "labelFont": "Lora",
+                "labelFontSize": 16,
+                "labelLimit": 500,
+                "titleFont": "Montserrat",
+                "titleFontSize": 16,
+                "titleFontWeight": "normal",
+                "titlePadding": 15
+                }
+            }
+        }
+      </script>
+</cob-chart>
