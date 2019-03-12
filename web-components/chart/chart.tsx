@@ -10,6 +10,9 @@ import vegaTooltip from 'vega-tooltip';
 export class CobChart {
   @Element() el;
 
+  @Prop({ context: 'isServer' })
+  private isServer: boolean = false;
+
   @Prop({ mutable: true })
   config: any;
   chartDiv: any;
@@ -17,6 +20,7 @@ export class CobChart {
   minWidth: number = 0;
   view: any;
   dataset: any;
+  compiledSpec: any;
   selectField: string = '';
   selectOptions: any;
   // True if using VegaLite, false if using Vega.
@@ -162,7 +166,6 @@ export class CobChart {
       .toString(36)
       .substring(2, 7);
     this.chartID = `cob-chart-${idSuffix}`;
-    let compiledSpec;
 
     // We check to see if we are using selections.
     // If we're using VegaLite, this is easy - we just
@@ -210,7 +213,7 @@ export class CobChart {
     }
     // After updating the config if necessary, we compile if to Vega if we're
     // using VegaLite and leave it as is if we're using Vega.
-    compiledSpec = this.vegaLite
+    this.compiledSpec = this.vegaLite
       ? VegaLite.compile(this.config).spec
       : this.config;
 
@@ -220,18 +223,24 @@ export class CobChart {
 
     // To get around this, we remove the event listener configuration
     // from the compiled Vega spec.
-    (compiledSpec.signals || []).find(
+    (this.compiledSpec.signals || []).find(
       elem => elem.name === `${this.selectName}_${this.selectField}`
     );
     if (this.selectSignal) {
       delete this.selectSignal.on;
     }
-    // After updating the config and compiling if necessary, we initialize a
-    // Vega view object.
-    this.view = new Vega.View(Vega.parse(compiledSpec)).renderer('svg');
   }
 
   componentDidLoad() {
+    // We check to make sure we're not running componentDidLoad() on a server.
+    if (this.isServer) {
+      return;
+    }
+
+    // After updating the config and compiling if necessary, we initialize a
+    // Vega view object.
+    this.view = new Vega.View(Vega.parse(this.compiledSpec)).renderer('svg');
+
     // Once the component loads, we initialize the view.
     this.view.initialize(`#${this.chartID}`);
 
@@ -315,6 +324,13 @@ export class CobChart {
     // Lastly, we set the chart width on load so we can
     // make sure it fits nicely into the page.
     this.setChartWidth();
+  }
+
+  componentDidUnload() {
+    // Once the component comes off the page, we clean up the view.
+    if (this.view) {
+      this.view.finalize();
+    }
   }
 
   // We custom build the dropdown selection to adhere to our styles and branding by

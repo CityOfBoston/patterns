@@ -1,0 +1,30 @@
+title: 'Web Components: Chart'
+handle: chart
+status: ready
+notes: |
+  {{stencil_readme "chart"}}
+
+variants:
+  - name: default
+    label: Bar Chart
+
+  - name: BarChartSelect
+    label: Bar Chart with Selection
+
+  - name: LineChart
+    label: Line Chart
+
+  - name: LineChartSelect
+    label: Line Chart with Selection
+
+  - name: GroupedBarChart
+    label: Grouped Bar Chart
+
+  - name: GroupedBarChartSelect
+    label: Grouped Bar Chart with Selection
+
+  - name: PieChart
+    label: Pie Chart
+
+  - name: PieChartSelect
+    label: Pie Chart with Selection

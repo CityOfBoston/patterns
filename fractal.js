@@ -155,6 +155,13 @@ fractal.components.engine({
                 diagnostics.forEach(d => console.log(d.messageText));
 
                 if (!globalStencilRenderer) {
+                  const compilerCtx = stencilRenderer.ctx;
+
+                  if (compilerCtx.localPrerenderServer) {
+                    compilerCtx.localPrerenderServer.close();
+                    delete compilerCtx.localPrerenderServer;
+                  }
+
                   stencilRenderer.destroy();
                 }
 
