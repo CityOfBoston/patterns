@@ -30,21 +30,45 @@ the JSON configuration.
 
 ## Properties
 
-| Property       | Attribute       | Description                                                                                                                                                                                                                                                                      | Type      |
-| -------------- | --------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------- |
-| `config`       | `config`        | A JSON string or equivalent object that defines the map and layers. The schema for this config comes from VizWiz, so it won’t be documented here.  Any attributes prefixed with `map-` will be passed on to the generated `<cob-map>` component. _E.g._ `map-id` or `map-style`. | `string`  |
-| `id`           | `id`            | ID of the HTML element. Used to automatically open the map modal.                                                                                                                                                                                                                | `string`  |
-| `modalVisible` | `modal-visible` | Change to true to make the modal appear.                                                                                                                                                                                                                                         | `boolean` |
-| `openOverlay`  | `open-overlay`  | Test attribute to make the overlay open automatically at mobile widths. Only used so that we can take Percy screenshots of the overlay.                                                                                                                                          | `boolean` |
+| Property       | Attribute       | Description                                                                                                                                                                                                                                                                      | Type      | Default |
+| -------------- | --------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------- | ------- |
+| `config`       | `config`        | A JSON string or equivalent object that defines the map and layers. The schema for this config comes from VizWiz, so it won’t be documented here.  Any attributes prefixed with `map-` will be passed on to the generated `<cob-map>` component. _E.g._ `map-id` or `map-style`. | `string`  | `''`    |
+| `id`           | `id`            | ID of the HTML element. Used to automatically open the map modal.                                                                                                                                                                                                                | `string`  | `''`    |
+| `modalVisible` | `modal-visible` | Change to true to make the modal appear.                                                                                                                                                                                                                                         | `boolean` | `false` |
+| `openOverlay`  | `open-overlay`  | Test attribute to make the overlay open automatically at mobile widths. Only used so that we can take Percy screenshots of the overlay.                                                                                                                                          | `boolean` | `false` |
 
 
 ## Methods
 
-| Method   | Description                                                       |
-| -------- | ----------------------------------------------------------------- |
-| `hide`   | Hides the modal, if the map is in modal mode.                     |
-| `show`   | Shows the modal, if the map is in modal mode.                     |
-| `toggle` | If the map is in modal mode, toggles whether or not it’s visible. |
+### `hide() => void`
+
+Hides the modal, if the map is in modal mode.
+
+#### Returns
+
+Type: `void`
+
+
+
+### `show() => void`
+
+Shows the modal, if the map is in modal mode.
+
+#### Returns
+
+Type: `void`
+
+
+
+### `toggle() => void`
+
+If the map is in modal mode, toggles whether or not it’s visible.
+
+#### Returns
+
+Type: `void`
+
+
 
 
 ----------------------------------------------

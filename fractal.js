@@ -138,6 +138,7 @@ fractal.components.engine({
         // unable to shim its proxy-rewrite into "import" the way it does for
         // XHR.
         if (context._self.name === 'preview') {
+          /** @type stencil.Renderer */
           let stencilRenderer;
           if (globalStencilRenderer) {
             stencilRenderer = globalStencilRenderer;
@@ -147,13 +148,25 @@ fractal.components.engine({
           }
 
           return hbsPromise.then(str =>
-            stencilRenderer.hydrate({ html: str }).then(({ html }) => {
-              if (!globalStencilRenderer) {
-                stencilRenderer.destroy();
-              }
+            stencilRenderer
+              .hydrate({ html: str })
+              .then(({ html, diagnostics }) => {
+                // eslint-disable-next-line no-console
+                diagnostics.forEach(d => console.log(d.messageText));
 
-              return html;
-            })
+                if (!globalStencilRenderer) {
+                  const compilerCtx = stencilRenderer.ctx;
+
+                  if (compilerCtx.localPrerenderServer) {
+                    compilerCtx.localPrerenderServer.close();
+                    delete compilerCtx.localPrerenderServer;
+                  }
+
+                  stencilRenderer.destroy();
+                }
+
+                return html;
+              })
           );
         } else {
           return hbsPromise;

@@ -1,0 +1,122 @@
+<p>Simple Bar Chart - uses VegaLite schema</p>
+<cob-chart id="barChart">
+    <script type="application/json" slot="config">
+        {
+            "$schema": "https://vega.github.io/schema/vega-lite/v2.json",
+            "boston": {
+                "chartID": "barChart",
+                "minWidth": 600
+            },
+            "height": 600,
+            "width": 500,
+            "autosize": "fit",
+            "data": {
+                "url": "https://s3.amazonaws.com/public-budget-data/test-data/testData-BarCharts.csv",
+                "name": "cabinetBudgets",
+                "format": {
+                "parse": {
+                    "budget": "number"
+                }
+                }
+            },
+            "transform": [
+                {
+                "aggregate": [
+                    {
+                    "op": "sum",
+                    "field": "budget",
+                    "as": "budgetSum"
+                    }
+                ],
+                "groupby": [
+                    "cabinet"
+                ]
+                },
+                {
+                "calculate": "datum.budgetSum/1000000000",
+                "as": "budgetSumDivided"
+                }
+            ],
+            "encoding": {
+                "y": {
+                "field": "cabinet",
+                "type": "nominal",
+                "sort": {
+                    "op": "sum",
+                    "field": "budgetSumDivided",
+                    "order": "descending"
+                },
+                "axis": {
+                    "title": ""
+                }
+                },
+                "x": {
+                "aggregate": "sum",
+                "field": "budgetSumDivided",
+                "type": "quantitative",
+                "axis": {
+                    "title": "FY19 Budget (dollars in billions)",
+                    "grid": true
+                }
+                },
+                "tooltip": [
+                {
+                    "field": "cabinet",
+                    "type": "nominal",
+                    "title": "Cabinet"
+                },
+                {
+                    "field": "budgetSum",
+                    "type": "quantitative",
+                    "aggregate": "sum",
+                    "format": "$,",
+                    "title": "Budget (dollars in billions)"
+                }
+                ]
+            },
+            "layer": [
+                {
+                "mark": "bar",
+                "encoding": {
+                    "color": {
+                    "value": "#45789C"
+                    }
+                }
+                },
+                {
+                "mark": {
+                    "type": "text",
+                    "align": "left",
+                    "baseline": "middle",
+                    "dx": 3,
+                    "font": "Lora",
+                    "fontSize": 12
+                },
+                "encoding": {
+                    "text": {
+                    "field": "budgetSum",
+                    "type": "quantitative",
+                    "format": "$,r"
+                    }
+                }
+                }
+            ],
+            "config": {
+                "numberFormat": ".1f",
+                "title": {
+                "font": "Montserrat",
+                "fontSize": 20
+                },
+                "axis": {
+                "labelFont": "Lora",
+                "labelFontSize": 16,
+                "labelLimit": 500,
+                "titleFont": "Lora",
+                "titleFontSize": 16,
+                "titleFontWeight": "normal",
+                "titlePadding": 15
+                }
+            }
+        }
+    </script>
+</cob-chart>

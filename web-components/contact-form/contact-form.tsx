@@ -1,7 +1,5 @@
 import { Component, Element, Method, Prop, State } from '@stencil/core';
-
-// copied from base.js
-export const EMAIL_REGEXP = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+import { EMAIL_REGEXP } from './contact-form-regexp';
 
 @Component({
   tag: 'cob-contact-form',

@@ -1,7 +1,7 @@
 import * as MockDate from 'mockdate';
 
 import { Filter } from './map-1.0.schema';
-import { findDefaultFilterValue } from './map';
+import { findDefaultFilterValue } from './map-util';
 
 const DEFAULT_FILTER: Filter = {
   dataSourceUid: '1',
