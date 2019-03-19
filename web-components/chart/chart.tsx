@@ -1,3 +1,4 @@
+import 'core-js/es6/symbol';
 import { Component, Prop, Listen, Element } from '@stencil/core';
 import * as Vega from 'vega-lib';
 import * as VegaLite from 'vega-lite';
@@ -22,7 +23,7 @@ export class CobChart {
   dataset: any;
   compiledSpec: any;
   selectField: string = '';
-  selectOptions: any;
+  selectOptions: any[] = [];
   // True if using VegaLite, false if using Vega.
   vegaLite: boolean = true;
   // True if using a selection, false if not.
@@ -278,10 +279,16 @@ export class CobChart {
             // using Vega.
             this.view.data(this.config.data[0].name);
 
-        // We use the dataset to get our list of dropdown options.
-        this.selectOptions = Array.from(
-          new Set(this.dataset.map(item => item[this.selectField]))
-        ).sort();
+        // We make a Set out of the field we're using for selections
+        // to get an un-duplicated listed for dropdown options.
+        const optionsSet = new Set(
+          this.dataset.map(item => item[this.selectField])
+        );
+        // We use forEach and push as opposed to Array.from or the spread operator
+        // because both are supported in IE 11 without polyfills.
+        optionsSet.forEach(option => {
+          this.selectOptions.push(option);
+        });
 
         // We populate the options in the select element using the list.
         const selectElem = this.chartDiv.querySelector('select')!;
