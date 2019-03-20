@@ -2,10 +2,8 @@
   "name": "cob-patterns",
   "version": "0.0.1",
   "scripts": {
-    "dev":
-      "concurrently \"gulp\" \"fractal start --watch\" \"stencil build --docs --prerender --watch\"",
-    "dev-chrome":
-      "concurrently \"gulp\" \"fractal start --watch\" \"stencil build --docs --dev --prerender --watch\"",
+    "dev": "concurrently \"gulp\" \"fractal start --watch\" \"stencil build --docs --prerender --watch\"",
+    "dev-chrome": "concurrently \"gulp\" \"fractal start --watch\" \"stencil build --docs --dev --prerender --watch\"",
     "build": "stencil build --prerender --docs && gulp build && fractal build",
     "heroku-postbuild": "npm run build",
     "lint": "eslint --ext .tsx,.ts,.js .",
@@ -14,25 +12,31 @@
     "jest.ci": "jest",
     "jest.dev": "jest --watch",
     "testcafe": "npm run build && npm run testcafe.local",
-    "testcafe.local":
-      "cross-env TEST_SERVER_URL=http://localhost:3035/ testcafe -a 'http-server -r public -p 3035' -c 3 chrome:headless components/**/*.testcafe.*",
+    "testcafe.local": "cross-env TEST_SERVER_URL=http://localhost:3035/ testcafe -a 'http-server -r public -p 3035' -c 3 chrome:headless components/**/*.testcafe.*",
     "testcafe.dev": "testcafe -L remote components/**/*.testcafe.*",
-    "testcafe.ci":
-      "cross-env BROWSERSTACK_USE_AUTOMATE=1 TEST_SERVER_URL=http://localhost:3035/ testcafe -a 'http-server -r public -p 3035' 'browserstack:edge@18,browserstack:ie@11.0:Windows 8.1,browserstack:safari@12,browserstack:chrome:Windows 10,browserstack:firefox@64:Windows 10' components/**/*.testcafe.*",
+    "testcafe.ci": "cross-env BROWSERSTACK_USE_AUTOMATE=1 TEST_SERVER_URL=http://localhost:3035/ testcafe -a 'http-server -r public -p 3035' 'browserstack:edge@18,browserstack:ie@11.0:Windows 8.1,browserstack:safari@12,browserstack:chrome:Windows 10,browserstack:firefox@64:Windows 10' components/**/*.testcafe.*",
     "precommit": "lint-staged",
     "prepush": "jest --clearCache && npm run test"
   },
   "jest": {
     "transform": {
-      "\\/web-components\\/.+\\.(ts|tsx)$":
-        "<rootDir>/node_modules/@stencil/core/testing/jest.preprocessor.js"
+      "\\/web-components\\/.+\\.(ts|tsx)$": "<rootDir>/node_modules/@stencil/core/testing/jest.preprocessor.js"
     },
     "testRegex": "\\.spec\\.(tsx?|jsx?)$",
-    "moduleFileExtensions": ["ts", "tsx", "js", "json", "jsx"]
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "json",
+      "jsx"
+    ]
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": "eslint --quiet",
-    "*.svg": ["svgo --config svgo.yml", "git add"]
+    "*.svg": [
+      "svgo --config svgo.yml",
+      "git add"
+    ]
   },
   "dependencies": {
     "@frctl/fractal": "^1.1.4",
@@ -57,8 +61,7 @@
     "handlebars": "^4.0.11",
     "laggard": "^0.1.0",
     "leaflet": "^1.3.2",
-    "leaflet.markercluster":
-      "github:CityOfBoston/Leaflet.markercluster#160f1f0",
+    "leaflet.markercluster": "github:CityOfBoston/Leaflet.markercluster#160f1f0",
     "lodash": "^4.17.5",
     "lost": "^8.1.0",
     "postcss": "^6.0.17",
