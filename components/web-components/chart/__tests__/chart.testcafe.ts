@@ -32,7 +32,7 @@ const chart = new ChartModel();
 
 test('Correct number of bars are drawn', async t => {
   const bars = chart.getBars();
-  await bars;
+  await bars();
   // Check to make sure there are 16 bars.
   await t.expect(bars.count).eql(16);
 });
@@ -59,7 +59,7 @@ const chartSelect = new ChartModel();
 
 test('Select options are populated', async t => {
   const selectOptions = chartSelect.getSelectOptions();
-  await selectOptions;
+  await selectOptions();
 
   // Check to make sure there are 16 options
   await t.expect(selectOptions.count).eql(16);
@@ -71,7 +71,7 @@ test('Chart updates when an item in drop down is selected', async t => {
   // so we find and return the one 'select' element within cob-chart.
   const selectElem = Selector('select');
   const selectOptions = chartSelect.getSelectOptions();
-  await selectOptions;
+  await selectOptions();
 
   await t
     .click(selectElem)
@@ -82,7 +82,7 @@ test('Chart updates when an item in drop down is selected', async t => {
   // After selecting an item from the dropdown, we get the number of
   // bars on the chart again.
   const bars = chartSelect.getBars();
-  await bars;
+  await bars();
   // Check to make sure there are now 2 bars.
   await t.expect(bars.count).eql(2);
 });
