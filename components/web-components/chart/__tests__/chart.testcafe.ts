@@ -70,11 +70,12 @@ test('Chart updates when an item in drop down is selected', async t => {
   // Currently, our charts only support having one select option,
   // so we find and return the one 'select' element within cob-chart.
   const selectElem = Selector('select');
-  const optionElems = chart.getSelectOptions();
+  const selectOptions = chartSelect.getSelectOptions();
+  await selectOptions;
 
   await t
     .click(selectElem)
-    .click(optionElems.withText('Education'))
+    .click(selectOptions.withText('Education'))
     .expect(selectElem.value)
     .eql('Education');
 
