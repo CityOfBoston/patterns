@@ -25,8 +25,7 @@ async function nockTeardown() {
 // Use the default fractal chart (a bar chart) for our first fixture.
 fixture('Chart')
   .page(componentPreviewUrl('chart', 'default'))
-  .before(nockSetup)
-  .after(nockTeardown);
+  .before(nockSetup);
 
 const chart = new ChartModel();
 
@@ -52,8 +51,7 @@ test('Tooltip appears on hover', async t => {
 // We use a chart with a selection on it as our second fixture.
 fixture('Chart with Select')
   .page(componentPreviewUrl('chart', 'barchartselect'))
-  .before(nockSetup)
-  .after(nockTeardown);
+  .before(nockSetup);
 
 const chartSelect = new ChartModel();
 
