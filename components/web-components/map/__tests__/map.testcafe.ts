@@ -1,41 +1,32 @@
-/* global fixture */
-import { Selector, ClientFunction } from 'testcafe';
+import { Selector, ClientFunction, RequestMock } from 'testcafe';
+
 import {
   componentPreviewUrl,
   CORS_ALLOW_HEADERS,
+  matchWithAnyQuery,
 } from '../../../../lib/testcafe/helpers';
-import * as nock from 'nock';
+
 import MapModel from './map-model';
 
 const SNOW_PARKING_JSON = require('./snow-parking.json');
 const CITY_COUNCIL_JSON = require('./city-council.json');
 
-// These need to match the URLs exactly, including case. Without that the
-// network requests will hang.
-function layerUrl(locator, layer) {
-  return `/sFnw0xNflSi8J0uh/arcgis/rest/services/${locator}/FeatureServer/${layer}/query`;
+function layerMatcher(locator: string, layer: number) {
+  return matchWithAnyQuery(
+    `https://services.arcgis.com/sFnw0xNflSi8J0uh/arcgis/rest/services/${locator}/FeatureServer/${layer}/query`
+  );
 }
 
-let arcGisScope: nock.Scope;
-
-async function nockSetup() {
-  arcGisScope = nock('https://services.arcgis.com')
-    .persist()
-    .get(layerUrl('SnowParking', 0))
-    .query(true)
-    .reply(200, SNOW_PARKING_JSON, CORS_ALLOW_HEADERS)
-    .get(layerUrl('City_Council_Districts', 0))
-    .query(true)
-    .reply(200, CITY_COUNCIL_JSON, CORS_ALLOW_HEADERS);
-}
-async function nockTeardown() {
-  arcGisScope.persist(false);
-}
+// For testing purposes, we intercept calls to S3 the charts are
+const arcgisMock = RequestMock()
+  .onRequestTo(layerMatcher('SnowParking', 0))
+  .respond(SNOW_PARKING_JSON, 200, CORS_ALLOW_HEADERS)
+  .onRequestTo(layerMatcher('City_Council_Districts', 0))
+  .respond(CITY_COUNCIL_JSON, 200, CORS_ALLOW_HEADERS);
 
 fixture('Map')
   .page(componentPreviewUrl('map', 'default'))
-  .before(nockSetup)
-  .after(nockTeardown);
+  .requestHooks(arcgisMock);
 
 // We keep everything consistent as lowercase because IE11 forces lowercase.
 const DISTRICT_DEFAULT_COLOR = '#0c2639';
@@ -73,8 +64,7 @@ test('Clicking parking marker shows popup', async t => {
 
 fixture('Map Modal')
   .page(componentPreviewUrl('map', 'modal-closed'))
-  .before(nockSetup)
-  .after(nockTeardown);
+  .requestHooks(arcgisMock);
 
 test('Showing and hiding with buttons and window history', async t => {
   const goBack = ClientFunction(() => window.history.back());

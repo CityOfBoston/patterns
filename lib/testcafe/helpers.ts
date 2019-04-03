@@ -1,4 +1,5 @@
-import { ClientFunction, Selector } from 'testcafe';
+import { escapeRegExp } from 'lodash';
+import { Selector } from 'testcafe';
 
 // Generates a URL to the Fractal "preview" page, which is a rendering of just
 // the component. (This is the same page that we run through Percy.)
@@ -39,8 +40,14 @@ export const readyComponentSelector = Selector(query => {
   }
 });
 
-// Headers that allow CORS requests. Necessary for nock-mocking of things like
-// ArcGIS.
+// Headers that allow CORS requests. Necessary for mocking things like ArcGIS.
 export const CORS_ALLOW_HEADERS = {
   'Access-Control-Allow-Origin': '*',
 };
+
+/**
+ * Returns a RegExp that matches the URL with any query parameters (including none)
+ */
+export function matchWithAnyQuery(url: string) {
+  return new RegExp(`^${escapeRegExp(url)}(\\?.*)?$`);
+}
