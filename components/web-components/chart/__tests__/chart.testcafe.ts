@@ -1,31 +1,31 @@
-import * as nock from 'nock';
-import { componentPreviewUrl } from '../../../../lib/testcafe/helpers';
+import {
+  componentPreviewUrl,
+  CORS_ALLOW_HEADERS,
+} from '../../../../lib/testcafe/helpers';
 import ChartModel from './chart-model';
-import { Selector } from 'testcafe';
+import { Selector, RequestMock } from 'testcafe';
+import * as fs from 'fs';
+import * as path from 'path';
 
-let s3Scope: nock.Scope;
+const BAR_CHARTS_CSV = fs.readFileSync(
+  path.join(__dirname, '/testData-BarCharts.csv')
+);
 
 // For testing purposes, we intercept calls to S3 the charts are
 // going to make for data and instead return a static csv file.
-async function nockSetup() {
-  s3Scope = nock('https://s3.amazonaws.com')
-    .persist()
-    .get('/public-budget-data/test-data/testData-BarCharts.csv')
-    .query(true)
-    .replyWithFile(200, __dirname + '/testData-BarCharts.csv', {
-      'Content-Type': 'text/csv',
-      'Access-Control-Allow-Origin': '*',
-    });
-}
-
-async function nockTeardown() {
-  s3Scope.persist(false);
-}
+const barChartsCsvMock = RequestMock()
+  .onRequestTo(
+    'https://s3.amazonaws.com/public-budget-data/test-data/testData-BarCharts.csv'
+  )
+  .respond(BAR_CHARTS_CSV, 200, {
+    'Content-Type': 'text/csv',
+    ...CORS_ALLOW_HEADERS,
+  });
 
 // Use the default fractal chart (a bar chart) for our first fixture.
 fixture('Chart')
   .page(componentPreviewUrl('chart', 'default'))
-  .before(nockSetup);
+  .requestHooks(barChartsCsvMock);
 
 const chart = new ChartModel();
 
@@ -51,7 +51,7 @@ test('Tooltip appears on hover', async t => {
 // We use a chart with a selection on it as our second fixture.
 fixture('Chart with Select')
   .page(componentPreviewUrl('chart', 'barchartselect'))
-  .before(nockSetup);
+  .requestHooks(barChartsCsvMock);
 
 const chartSelect = new ChartModel();
 
