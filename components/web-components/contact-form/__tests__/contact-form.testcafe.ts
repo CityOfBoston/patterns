@@ -1,28 +1,20 @@
 /* global fixture */
-import { Selector } from 'testcafe';
+import { Selector, RequestMock } from 'testcafe';
 import {
   componentPreviewUrl,
   CORS_ALLOW_HEADERS,
 } from '../../../../lib/testcafe/helpers';
-import * as nock from 'nock';
 import ContactFormModel from './contact-form-model';
 
 const contactForm = new ContactFormModel();
 
-let contactFormScope: nock.Scope;
+const submitMock = RequestMock()
+  .onRequestTo('https://contactform.boston.gov/emails')
+  .respond('ok', 200, CORS_ALLOW_HEADERS);
 
 fixture('Contact Form')
   .page(componentPreviewUrl('contact_form'))
-  .before(async () => {
-    contactFormScope = nock('https://contactform.boston.gov')
-      .persist()
-      .post('/emails')
-      .query(true)
-      .reply(200, 'ok', CORS_ALLOW_HEADERS);
-  })
-  .after(async () => {
-    contactFormScope.persist(false);
-  });
+  .requestHooks(submitMock);
 
 test('Submitting form with content', async t => {
   await contactForm.expectSubmitButtonEnabled(false);

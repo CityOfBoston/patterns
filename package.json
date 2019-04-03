@@ -77,7 +77,6 @@
     "vega-tooltip": "^0.13.0"
   },
   "devDependencies": {
-    "@types/nock": "^9.1.2",
     "cross-env": "^5.1.4",
     "escape-html": "^1.0.3",
     "eslint": "^4.17.0",
@@ -92,7 +91,6 @@
     "json-schema-to-typescript": "^5.4.0",
     "lint-staged": "^6.1.0",
     "mockdate": "^2.0.2",
-    "nock": "^9.2.3",
     "plugin-error": "^1.0.1",
     "prettier": "^1.10.2",
     "svgo": "^1.0.4",
