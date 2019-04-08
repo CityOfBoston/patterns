@@ -224,7 +224,7 @@ export class CobChart {
 
     // To get around this, we remove the event listener configuration
     // from the compiled Vega spec.
-    (this.compiledSpec.signals || []).find(
+    this.selectSignal = (this.compiledSpec.signals || []).find(
       elem => elem.name === `${this.selectName}_${this.selectField}`
     );
     if (this.selectSignal) {
