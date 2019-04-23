@@ -117,15 +117,23 @@ export class CobChart {
         3. updating the 'child_height' signal with the new height
       */
       const legend = this.el.querySelector('div .mark-group .role-legend');
-      const legendHeight = legend.getBoundingClientRect().height;
+      // If there is no legend, we set its height to 0.
+      const legendHeight = legend ? legend.getBoundingClientRect().height : 0;
       // We get the 'offset', or distance in px of the legend from the chart from the config.
       // If there is no offset set, the default is 18 according to the Vega-Lite docs.
       const offset = this.config.encoding.color.legend.offset
         ? this.config.encoding.color.legend.offset
         : 18;
+
       // The height we want the columns to be is the height of the entire chart minus the
       // height of the legend and the legend's offset.
-      const calcHeight = this.config.height - legendHeight - offset;
+      // If the chart height wasn't set in the config, we use the size of the svg element.
+      const chartSVG = this.el.querySelector('svg');
+      const chartHeight = this.config.height
+        ? this.config.height
+        : chartSVG.getBoundingClientRect().height;
+
+      const calcHeight = chartHeight - legendHeight - offset;
       this.view.signal('child_height', calcHeight);
 
       /* Finally, we update the width and height of the svg element the chart is 
@@ -137,11 +145,10 @@ export class CobChart {
         3. setting the correct width of the chart svg
         4. updating the viewbox with our new numbers
       */
-      const chartSVG = this.el.querySelector('svg');
 
       // The new height of the entire chart is the height set in the config plus
       // 50px of padding.
-      const chartSvgHeight = this.config.height + 50;
+      const chartSvgHeight = chartHeight + 50;
 
       // If we're using the min width, we also use it to set the new svg width. If we're using
       // the calculated with, we use the width of the container div and subtract
