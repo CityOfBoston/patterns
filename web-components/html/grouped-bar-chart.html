@@ -26,16 +26,11 @@
             "minWidth": 500,
             "defaultSelection": "City Clerk"
           },
-          "title": {
-            "text": "Fake data by budget year",
-            "anchor": "start"
-          },
-          "description": "A simple bar chart with embedded data.",
           "height": 400,
           "width": 10,
           "data": {
               "name": "data",
-              "url": "https://gist.githubusercontent.com/paylakatel/03df34fe8d74e22c5ed3f1f178305423/raw/fe4a8ffa72098646b87eb041607c4e92be68c452/testData.csv"
+              "url": "https://s3.amazonaws.com/public-budget-data/test-data/testData-BarCharts.csv"
             },
           "transform": [
             {"filter": "datum.dept == 'City Clerk'"}
