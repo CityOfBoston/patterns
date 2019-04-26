@@ -1,144 +1,138 @@
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0"
-    />
-    <title>Chart</title>
 
-    <!-- [if !IE]><! -->
-    <link rel="stylesheet" type="text/css" href="/css/public.css" />
-    <!-- <![endif] -->
-    <!--[if lt IE 10]>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+  <title>Chart</title>
+
+  <!-- [if !IE]><! -->
+  <link rel="stylesheet" type="text/css" href="/css/public.css" />
+  <!-- <![endif] -->
+  <!--[if lt IE 10]>
       <link media="all" rel="stylesheet" href="/css/ie.css" />
     <![endif]-->
-  </head>
+</head>
 
-  <body>
-    <cob-chart>
-      <script type="application/json" slot="config">
-              {
-          "$schema": "https://vega.github.io/schema/vega-lite/v2.json",
-          "boston": {
-            "chartID": "barChart",
-            "minWidth": 600
-          },
-          "height": 600,
-          "width": 500,
-          "autosize": "fit",
-          "data": {
-            "url": "https://gist.githubusercontent.com/paylakatel/03df34fe8d74e22c5ed3f1f178305423/raw/fe4a8ffa72098646b87eb041607c4e92be68c452/testData.csv",
-            "name": "cabinetBudgets",
-            "format": {
-              "parse": {
-                "budget": "number"
-              }
-            }
-          },
-          "transform": [
-            {
-              "aggregate": [
-                {
-                  "op": "sum",
-                  "field": "budget",
-                  "as": "budgetSum"
-                }
-              ],
-              "groupby": [
-                "cabinet"
-              ]
-            },
-            {
-              "calculate": "datum.budgetSum/1000000000",
-              "as": "budgetSumDivided"
-            }
-          ],
-          "encoding": {
-            "y": {
-              "field": "cabinet",
-              "type": "nominal",
-              "sort": {
-                "op": "sum",
-                "field": "budgetSumDivided",
-                "order": "descending"
-              },
-              "axis": {
-                "title": ""
-              }
-            },
-            "x": {
-              "aggregate": "sum",
-              "field": "budgetSumDivided",
-              "type": "quantitative",
-              "axis": {
-                "title": "FY19 Budget (dollars in billions)",
-                "grid": true
-              }
-            },
-            "tooltip": [
-              {
-                "field": "cabinet",
-                "type": "nominal",
-                "title": "Cabinet"
-              },
-              {
-                "field": "budgetSum",
-                "type": "quantitative",
-                "aggregate": "sum",
-                "format": "$,",
-                "title": "Budget (dollars in billions)"
-              }
-            ]
-          },
-          "layer": [
-            {
-              "mark": "bar",
-              "encoding": {
-                "color": {
-                  "value": "#45789C"
-                }
-              }
-            },
-            {
-              "mark": {
-                "type": "text",
-                "align": "left",
-                "baseline": "middle",
-                "dx": 3,
-                "font": "Lora",
-                "fontSize": 12
-              },
-              "encoding": {
-                "text": {
-                  "field": "budgetSum",
-                  "type": "quantitative",
-                  "format": "$,r"
-                }
-              }
-            }
-          ],
-          "config": {
-            "numberFormat": ".1f",
-            "title": {
-              "font": "Montserrat",
-              "fontSize": 20
-            },
-            "axis": {
-              "labelFont": "Lora",
-              "labelFontSize": 16,
-              "labelLimit": 500,
-              "titleFont": "Lora",
-              "titleFontSize": 16,
-              "titleFontWeight": "normal",
-              "titlePadding": 15
+<body>
+  <cob-chart>
+    <script type="application/json" slot="config">
+      {
+        "$schema": "https://vega.github.io/schema/vega-lite/v2.json",
+        "boston": {
+          "chartID": "barChart",
+          "minWidth": 600
+        },
+        "height": 600,
+        "width": 500,
+        "autosize": "fit",
+        "data": {
+          "url": "https://gist.githubusercontent.com/paylakatel/03df34fe8d74e22c5ed3f1f178305423/raw/fe4a8ffa72098646b87eb041607c4e92be68c452/testData.csv",
+          "name": "cabinetBudgets",
+          "format": {
+            "parse": {
+              "budget": "number"
             }
           }
+        },
+        "transform": [{
+            "aggregate": [{
+              "op": "sum",
+              "field": "budget",
+              "as": "budgetSum"
+            }],
+            "groupby": [
+              "cabinet"
+            ]
+          },
+          {
+            "calculate": "datum.budgetSum/1000000000",
+            "as": "budgetSumDivided"
+          }
+        ],
+        "encoding": {
+          "y": {
+            "field": "cabinet",
+            "type": "nominal",
+            "sort": {
+              "op": "sum",
+              "field": "budgetSumDivided",
+              "order": "descending"
+            },
+            "axis": {
+              "title": ""
+            }
+          },
+          "x": {
+            "aggregate": "sum",
+            "field": "budgetSumDivided",
+            "type": "quantitative",
+            "axis": {
+              "title": "FY19 Budget (dollars in billions)",
+              "grid": true
+            }
+          },
+          "tooltip": [{
+              "field": "cabinet",
+              "type": "nominal",
+              "title": "Cabinet"
+            },
+            {
+              "field": "budgetSum",
+              "type": "quantitative",
+              "aggregate": "sum",
+              "format": "$,",
+              "title": "Budget (dollars in billions)"
+            }
+          ]
+        },
+        "layer": [{
+            "mark": "bar",
+            "encoding": {
+              "color": {
+                "value": "#45789C"
+              }
+            }
+          },
+          {
+            "mark": {
+              "type": "text",
+              "align": "left",
+              "baseline": "middle",
+              "dx": 3,
+              "font": "Lora",
+              "fontSize": 12
+            },
+            "encoding": {
+              "text": {
+                "field": "budgetSum",
+                "type": "quantitative",
+                "format": "$,r"
+              }
+            }
+          }
+        ],
+        "config": {
+          "numberFormat": ".1f",
+          "title": {
+            "font": "Montserrat",
+            "fontSize": 20
+          },
+          "axis": {
+            "labelFont": "Lora",
+            "labelFontSize": 16,
+            "labelLimit": 500,
+            "titleFont": "Lora",
+            "titleFontSize": 16,
+            "titleFontWeight": "normal",
+            "titlePadding": 15
+          }
         }
-      </script>
-    </cob-chart>
+      }
+    </script>
+  </cob-chart>
 
-    <script src="/web-components/fleetcomponents.js"></script>
-  </body>
+  <script src="/web-components/fleetcomponents.js"></script>
+</body>
+
 </html>

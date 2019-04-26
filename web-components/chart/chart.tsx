@@ -300,7 +300,7 @@ export class CobChart {
         // We make a Set out of the field we're using for selections
         // to get an un-duplicated listed for dropdown options.
         const optionsSet = new Set(
-          this.dataset.map(item => item[this.selectField])
+          this.dataset.map(item => item[this.selectField]).sort()
         );
         // We use forEach and push as opposed to Array.from or the spread operator
         // because both are supported in IE 11 without polyfills.
