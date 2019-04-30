@@ -117,8 +117,23 @@ export class CobChart {
         3. updating the 'child_height' signal with the new height
       */
       const legend = this.el.querySelector('div .mark-group .role-legend');
-      const legendHeight = legend.getBoundingClientRect().height;
-      const calcHeight = this.config.height - legendHeight;
+      // If there is no legend, we set its height to 0.
+      const legendHeight = legend ? legend.getBoundingClientRect().height : 0;
+      // We get the 'offset', or distance in px of the legend from the chart from the config.
+      // If there is no offset set, the default is 18 according to the Vega-Lite docs.
+      const offset = this.config.encoding.color.legend.offset
+        ? this.config.encoding.color.legend.offset
+        : 18;
+
+      // The height we want the columns to be is the height of the entire chart minus the
+      // height of the legend and the legend's offset.
+      // If the chart height wasn't set in the config, we use the size of the svg element.
+      const chartSVG = this.el.querySelector('svg');
+      const chartHeight = this.config.height
+        ? this.config.height
+        : chartSVG.getBoundingClientRect().height;
+
+      const calcHeight = chartHeight - legendHeight - offset;
       this.view.signal('child_height', calcHeight);
 
       /* Finally, we update the width and height of the svg element the chart is 
@@ -126,13 +141,15 @@ export class CobChart {
       sits nicely on the page.
       We do this by:
         1. getting the chart svg element
-        2. grabbing its height
+        2. setting the correct height of the chart svg
         3. setting the correct width of the chart svg
         4. updating the viewbox with our new numbers
       */
-      const chartSVG = this.el.querySelector('svg');
 
-      const chartSvgHeight = chartSVG.getBoundingClientRect().height;
+      // The new height of the entire chart is the height set in the config plus
+      // 50px of padding.
+      const chartSvgHeight = chartHeight + 50;
+
       // If we're using the min width, we also use it to set the new svg width. If we're using
       // the calculated with, we use the width of the container div and subtract
       // 40px from it. We do this to account for 20px of padding we put around
@@ -142,6 +159,7 @@ export class CobChart {
 
       // We set the width of the svg to our new width
       chartSVG.setAttribute('width', `${chartSvgWidth}`);
+      chartSVG.setAttribute('height', `${chartSvgHeight}`);
       // We update the viewbox attribute as well so the chart fits nicely into the
       // svg element.
       chartSVG.setAttribute(
@@ -282,7 +300,7 @@ export class CobChart {
         // We make a Set out of the field we're using for selections
         // to get an un-duplicated listed for dropdown options.
         const optionsSet = new Set(
-          this.dataset.map(item => item[this.selectField])
+          this.dataset.map(item => item[this.selectField]).sort()
         );
         // We use forEach and push as opposed to Array.from or the spread operator
         // because both are supported in IE 11 without polyfills.
@@ -316,6 +334,10 @@ export class CobChart {
         this.view.signal(this.signalName, this.selectOptions[selected]).run();
         this.setChartWidth();
       });
+    } else {
+      // If none of the above situations are true, we simply set the chart
+      // width so that it fits nicely on the page.
+      this.setChartWidth();
     }
     // On load, Vega creates the chart svg and a div for any associated selections.
     // We want to wrap just the chart svg it creates inside of a div so we can control
@@ -328,9 +350,6 @@ export class CobChart {
     // Update the children of the parent node
     svgParent.replaceChild(chartWrapper, chartSVG);
     chartWrapper.appendChild(chartSVG);
-    // Lastly, we set the chart width on load so we can
-    // make sure it fits nicely into the page.
-    this.setChartWidth();
   }
 
   componentDidUnload() {
