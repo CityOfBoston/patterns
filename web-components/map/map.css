@@ -25,6 +25,37 @@ cob-map .cob-map-modal-contents {
   height: 100%;
 }
 
+/* Invisible full-screen wrapper so we can vertical / horizontal center using flex */
+cob-map .cob-map-dialog {
+  position: absolute;
+  z-index: 1000;
+
+  width: 100%;
+  height: 100%;
+  padding: 1rem;
+
+  /* So it doesn’t prevent other interactions */
+  pointer-events: none;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+cob-map .cob-map-dialog-contents {
+  /* Override so we can click on buttons */
+  pointer-events: all;
+
+  background: white;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.65);
+
+  position: relative;
+  top: -2rem;
+  min-width: 60%;
+  max-width: 50rem;
+}
+
 /**
 * Title bar for the modal, includes map title, address search, and close box.
 *

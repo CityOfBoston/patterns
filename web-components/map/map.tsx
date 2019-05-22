@@ -178,6 +178,7 @@ export class CobMap {
   addressSearchPopupLayerUid: String | null = null;
   addressSearchZoomToResults: boolean = false;
   @State() addressSearchFocused: boolean = false;
+  @State() showAddressNotFound: boolean = false;
 
   instructionsHtml: string = '';
 
@@ -352,10 +353,10 @@ export class CobMap {
       inputEl.classList.add('sf-i-f');
       inputEl.classList.remove('leaflet-bar');
       inputEl.parentElement!.classList.add('sf-i');
-      inputEl.addEventListener(
-        'focus',
-        () => (this.addressSearchFocused = true)
-      );
+      inputEl.addEventListener('focus', () => {
+        this.addressSearchFocused = true;
+        this.showAddressNotFound = false;
+      });
       inputEl.addEventListener(
         'blur',
         () => (this.addressSearchFocused = false)
@@ -575,6 +576,15 @@ export class CobMap {
     }
 
     this.addressSearchResultsFeatures.clearLayers();
+
+    if (data.results.length === 0) {
+      this.showAddressNotFound = true;
+      return;
+    } else {
+      // It should have been cleared from before, but just in case let’s make
+      // sure it’s gone.
+      this.showAddressNotFound = false;
+    }
 
     const markers: LeafletMarker[] = [];
 
@@ -1081,7 +1091,29 @@ export class CobMap {
                 Hide Map
               </button>
             </div>
-            <div class="cob-map-leaflet-container" />
+
+            <div class="cob-map-leaflet-container">
+              {this.showAddressNotFound && (
+                <div class="cob-map-dialog">
+                  <div class="cob-map-dialog-contents p-a500 br br-t400">
+                    <h3 class="h3 tt-u">Couldn’t find address</h3>
+                    <p class="t--reset">
+                      Sorry, that search didn’t match any addresses in our
+                      database.
+                    </p>
+
+                    <div class="ta-r m-t300">
+                      <button
+                        class="btn btn--sm btn--200"
+                        onClick={() => (this.showAddressNotFound = false)}
+                      >
+                        Close
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              )}
+            </div>
             <div class="cob-map-modal-controls">
               {this.filters.length > 0 && (
                 <div class={`cob-map-modal-filters  p-a300`}>
