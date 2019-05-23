@@ -50,6 +50,7 @@
     "concurrently": "^3.5.1",
     "core-js": "^2.5.0",
     "d3-fetch": "^1.1.2",
+    "docson": "^2.1.0",
     "esri-leaflet": "^2.2.3",
     "esri-leaflet-geocoder": "^2.2.13",
     "gulp": "^3.9.1",

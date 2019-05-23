@@ -24,7 +24,7 @@ options.paths = {
   script: options.dest + 'scripts',
   styles: options.dest + 'css',
   legacy: options.dest + 'legacy',
-  vendor: options.dest + 'vendor',
+  docson: options.dest + 'vendor/docson',
 };
 
 // This will get the task to allow us to use the configs above
@@ -49,8 +49,10 @@ gulp.task('stylus', getTask('stylus'));
 gulp.task('stylus:ie', getTask('stylus_IE'));
 gulp.task('watch:stylus', getTask('stylus_watch'));
 gulp.task('watch:legacy', getTask('legacy_watch'));
-gulp.task('vendor', () =>
-  gulp.src('vendor/**').pipe(gulp.dest(options.paths.vendor))
+gulp.task('docson', () =>
+  gulp
+    .src('node_modules/docson/public/**')
+    .pipe(gulp.dest(options.paths.docson))
 );
 gulp.task('build', [
   'fonts',
@@ -59,14 +61,14 @@ gulp.task('build', [
   'stylus',
   'scripts',
   'stylus:ie',
-  'vendor',
+  'docson',
 ]);
 gulp.task('default', [
   'fonts',
   'images',
   'legacy',
   'scripts',
-  'vendor',
+  'docson',
   'watch:scripts',
   'stylus',
   'stylus:ie',

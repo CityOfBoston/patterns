@@ -4,6 +4,37 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
+export type FilterOption =
+  | {
+      type?: 'value';
+      /**
+       * Label for this value in the select box
+       */
+      title: string;
+      /**
+       * Value for this filter option. Will be passed to the filter’s queryTemplate to generate a clause.
+       */
+      value: string;
+      /**
+       * Override for the filter’s queryTemplate when this option is selected. Use this to make an 'All' option.
+       */
+      query?: string;
+    }
+  | {
+      type: 'separator';
+    }
+  | {
+      type: 'dynamic';
+      /**
+       * What field of the data source’s features should be displayed. These values are used as both menu item title and value.
+       */
+      field: string;
+      /**
+       * If true, this dropdown will only show values that apply given the other filters. (E.g. only listing the trucks that come by for breakfast.)
+       */
+      limitWithFilters?: boolean;
+    };
+
 /**
  * Configuration for a `<cob-map>` web component to generate a map from a number of data sources.
  */
@@ -13,15 +44,15 @@ export interface CobMap10 {
    */
   version: string;
   /**
-   * Definitions for the layers to include on the map.
+   * Definitions for the layers that are available to be displayed on maps.
    */
   dataSources?: DataSource[];
   /**
-   * Filters to change what’s shown on the map.
+   * Filters to affect what features from the DataSource layers are rendered.
    */
   filters?: Filter[];
   /**
-   * Definition for the map to render. Defined as an array for future expansion, but currently only one map is rendered.
+   * Definition for the map to render. Defined as an array for future expansion, but currently only the first map is rendered.
    */
   maps?: Map[];
 }
@@ -30,7 +61,7 @@ export interface CobMap10 {
  */
 export interface DataSource {
   /**
-   * Unique ID for this data source
+   * Unique ID for this data source. Can be anything that’s unique in this configuration. Will be referenced by Map and Filter definitions.
    */
   uid?: string;
   /**
@@ -42,7 +73,7 @@ export interface DataSource {
    */
   polygons?: null | VectorStyle;
   /**
-   * A mustache template for the HTML to render in the popup that appears when the user clicks on the feature. The feature’s ArcGIS attributes will be in scope for the template, and can be referenced with `{{…}}`.
+   * A mustache template for the HTML to render in the popup that appears when the user clicks on features from this layer. The feature’s ArcGIS attributes will be in scope for the template, and can be referenced with `{{…}}`.
    */
   popupHtmlTemplate?: string;
   /**
@@ -104,19 +135,19 @@ export interface LegendStyle {
 }
 export interface Filter {
   /**
-   * Data source that this filter applies to
+   * Uid value for the data source that this filter applies to
    */
   dataSourceUid: string;
   /**
-   * Label for the filter
+   * Label for the filter’s control
    */
   title: string;
   /**
-   * UI element to use as the filter
+   * UI element to use as the filter’s control
    */
   type: 'select';
   /**
-   * ArcGIS query in Handlebars format, with the filter value as the current value
+   * ArcGIS query in Mustache format. Will be called with the filter’s current value as its datum. All the queryTemplates for a dataSource will be ANDed together when querying for its features. Overridden by a value’s query property.
    */
   queryTemplate: string;
   default?:
@@ -124,7 +155,7 @@ export interface Filter {
     | {
         value: string;
         /**
-         * Date part to check against
+         * Part of a date that we’re comparing with. Currently either 'day' (day of the week in English with capitalized first letter) or '24htime' which is 4-digit time in the browser’s timezone.
          */
         date?: string;
         eq?: string | number;
@@ -133,21 +164,10 @@ export interface Filter {
         gt?: string | number;
         gte?: string | number;
       }[];
-  options?: (
-    | {
-        type?: 'value';
-        title: string;
-        value: string;
-        query?: string;
-      }
-    | {
-        type: 'separator';
-      }
-    | {
-        type: 'dynamic';
-        field: string;
-        limitWithFilters?: boolean;
-      })[];
+  /**
+   * The choices that will be rendered in the filter’s select box
+   */
+  options?: FilterOption[];
 }
 export interface Map {
   /**
@@ -193,7 +213,7 @@ export interface Map {
 }
 export interface AddressSearch {
   /**
-   * Title above the search box
+   * Title above the search box. Ignored in the current design.
    */
   title?: string;
   /**

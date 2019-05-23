@@ -6,7 +6,9 @@
 // Definitions: https://github.com/DefinitelyTyped/DefinitelyTyped
 // TypeScript Version: 2.4
 
-// Copied into patterns library by finh to remove the "L.esri" wrapper module.
+// Copied into patterns library by finh to remove the "L.esri" wrapper module
+// since we’re importing Leaflet as a module rather than <script>ing it on to
+// the page and letting it attach to L.esri.
 
 declare module 'esri-leaflet-geocoder' {
   import * as L from 'leaflet';
