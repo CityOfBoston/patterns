@@ -214,6 +214,10 @@ cob-map .cob-map-modal-legend-icon img {
   display: block;
 }
 
+/**
+ * The responsive version of the map. We move the title and address search to a
+ * togglable element at the bottom of the screen.
+ */
 @media screen and (max-width: 767px) {
   cob-map .cob-map-modal-title {
     flex-direction: column;
@@ -364,6 +368,8 @@ cob-map .cob-popup-loading {
     center no-repeat;
   background-size: 200%;
 }
+
+/* These colors are all overriding defaults from the marker-cluster codebase */
 
 cob-map .marker-cluster-small {
   background-color: rgba(40, 139, 228, 0.6);

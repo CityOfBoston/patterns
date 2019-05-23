@@ -74,11 +74,11 @@ export namespace Components {
 
   interface CobMap {
     /**
-    * A JSON string or equivalent object that defines the map and layers. The schema for this config comes from VizWiz, so it won’t be documented here.  Any attributes prefixed with `map-` will be passed on to the generated `<cob-map>` component. _E.g._ `map-id` or `map-style`.
+    * A JSON string or equivalent object that defines the map and layers.
     */
     'config': string;
     /**
-    * Hides the modal, if the map is in modal mode.
+    * Hides the map’s modal
     */
     'hide': () => void;
     /**
@@ -94,17 +94,17 @@ export namespace Components {
     */
     'openOverlay': boolean;
     /**
-    * Shows the modal, if the map is in modal mode.
+    * Shows the map in a full-window modal dialog. A better way to make the modal appear on a web page is to link to #<id>, which will cause the map to appear and leave a record in the browser history so that the back button will close the map (rather than take the user to the page before).
     */
     'show': () => void;
     /**
-    * If the map is in modal mode, toggles whether or not it’s visible.
+    * Toggles whether or not the map is visible.
     */
     'toggle': () => void;
   }
   interface CobMapAttributes extends StencilHTMLAttributes {
     /**
-    * A JSON string or equivalent object that defines the map and layers. The schema for this config comes from VizWiz, so it won’t be documented here.  Any attributes prefixed with `map-` will be passed on to the generated `<cob-map>` component. _E.g._ `map-id` or `map-style`.
+    * A JSON string or equivalent object that defines the map and layers.
     */
     'config'?: string;
     /**

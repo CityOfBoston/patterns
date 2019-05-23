@@ -6,7 +6,9 @@
 // Definitions: https://github.com/DefinitelyTyped/DefinitelyTyped
 // TypeScript Version: 2.3
 
-// Copied into patterns library by finh to remove the "L" wrapper module.
+// Copied into patterns library by finh to remove the "L" wrapper module
+// since we’re importing Leaflet as a module rather than <script>ing it on to
+// the page.
 
 declare module 'esri' {
   import * as L from 'leaflet';
