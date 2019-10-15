@@ -1,0 +1,121 @@
+/*
+
+   Normal List Items
+
+   Base:
+    n
+
+   Elements:
+    li
+
+   Modifier:
+    None Yet
+
+ */
+
+.n {
+  &-li {
+    background: $white;
+    text-decoration: none;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    &:not(:last-child) {
+      margin-bottom: $sizing-300;
+    }
+
+    // Some list items need to inverse on hover
+    &--in {
+      text-decoration: none;
+
+      &:hover {
+        background-color: $optimistic-blue-light;
+
+        .n-li {
+          &-t {
+            color: $white;
+          }
+
+          &-ty {
+            color: $charles-blue;
+          }
+        }
+      }
+    }
+
+    // Blocks inside the list item
+    &-b {
+      padding: $sizing-400;
+      display: flex;
+      flex-direction: column;
+
+      &--fw {
+        width: 100%;
+      }
+
+      &--r {
+        flex-direction: row;
+      }
+
+      &--c {
+        align-items: center;
+      }
+
+      @media #{$media-large} {
+        &--br {
+          border-right: 1px dotted $grey-000;
+        }
+      }
+    }
+    // List item title
+    &-t {
+      font-family: $serif;
+      font-style: italic;
+      font-size: responsive 18px 25px;
+      font-range: 480px 1440px;
+      line-height: $line-height-200;
+    }
+
+    // List item type
+    &-ty {
+      flex: 1;
+      font-family: $sans;
+      font-size: responsive 12px 16px;
+      font-range: 480px 1440px;
+      text-transform: uppercase;
+      color: $grey-300;
+      line-height: $line-height-200;
+
+      &--r {
+        text-align: right;
+      }
+    }
+
+    // List item icon container
+    &-ic {
+      display: none;
+
+      @media #{$media-large} {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    }
+
+    // List item alert
+    &-a {
+      color: $freedom-red-dark;
+      font-family: $sans;
+      font-size: responsive $font-100 $font-200;
+      font-range: 480px 1440px;
+      text-transform: uppercase;
+      line-height: $line-height-000;
+      margin-top: $sizing-200;
+
+      @media #{$media-large} {
+        margin-top: auto;
+      }
+    }
+  }
+}

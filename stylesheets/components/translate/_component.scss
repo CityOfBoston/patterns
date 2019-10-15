@@ -1,0 +1,94 @@
+/*
+
+   TRANSLATE
+
+   Base:
+    tr
+
+ */
+
+.tr {
+  position: relative;
+  display: none;
+
+  @media #{$media-small} {
+    &--visible {
+      display: block;
+    }
+  }
+
+  &-link,
+  &-dd-link {
+    font-family: $sans;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    display: block;
+    min-width: 45px;
+    text-align: center;
+    margin-left: 1.4em;
+    color: $optimistic-blue-dark;
+  }
+
+  &-dd {
+    display: none;
+    position: absolute;
+    margin: 3px 0 0;
+    list-style: none;
+    padding: 0;
+    background-color: $optimistic-blue-dark;
+    right: 0;
+    width: 250px;
+    z-index: 0;
+
+    &--visible {
+      display: block;
+    }
+
+    li {
+      padding: 0;
+      margin: 0;
+    }
+
+    &--loaded {
+      .tr-dd-link {
+        display: block;
+      }
+    }
+
+    &-link {
+      text-align: left;
+      margin-left: 0;
+      line-height: 1;
+      padding: 1em 1.4em;
+      color: $white;
+      display: none;
+      font-size: $font-100;
+      font-range: 480px 1440px;
+
+      &:link,
+      &:visited {
+        color: $white;
+      }
+
+      &:hover {
+        color: $charles-blue;
+      }
+
+      &--hidden {
+        display: none;
+      }
+
+      &--message {
+        display: block;
+
+        &:hover {
+          color: $white;
+        }
+      }
+    }
+  }
+}
+
+#WidgetFloaterPanels {
+  display: none !important;
+}

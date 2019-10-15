@@ -1,0 +1,90 @@
+/*
+   CARD
+
+   Base:
+    cd
+
+   Elements:
+    t = title
+    b = body
+
+   Modifier:
+    None Yet
+ */
+
+.cdd {
+  position: relative;
+  display: block;
+  line-height: $line-height-000;
+  background-color: $white;
+  border: $border-150 solid $grey-100;
+
+  &:hover {
+    border-color: $charles-blue;
+    background-color: $charles-blue;
+  }
+
+  .cdd {
+    &-ic {
+      border-color: $charles-blue;
+    }
+  }
+
+  .t--sans {
+    color: $freedom-red-light;
+  }
+
+  .t--subinfo {
+    color: $white;
+  }
+
+  &-c {
+    display: flex;
+  }
+
+  &-ic {
+    display: flex;
+    align-items: center;
+    padding: $sizing-200;
+    border-right: $border-150 solid $grey-100;
+    background-color: $white;
+
+    @media #{$media-medium} {
+      padding: $sizing-300;
+    }
+
+    img {
+      $value: 25px;
+
+      min-width: $value;
+      min-height: $value;
+      width: $value;
+      height: $value;
+
+      @media #{$media-medium} {
+        $value: 56px;
+
+        min-width: $value;
+        min-height: $value;
+        width: $value;
+        height: $value;
+      }
+    }
+  }
+
+  &-d {
+    position: relative;
+    display: flex;
+    align-items: center;
+    min-height: 100px;
+
+    @media #{$media-xxlarge} {
+      height: 120px;
+
+      &-i {
+        padding: $sizing-400 $sizing-300;
+        overflow: hidden;
+      }
+    }
+  }
+}

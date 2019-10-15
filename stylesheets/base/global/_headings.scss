@@ -1,0 +1,41 @@
+/*
+
+   HEADINGS
+
+    - Our headings should be free of styles, so that they can be
+      used semantically in the correct locations. Thanks @minamarkham.
+
+*/
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  font: {
+    weight: 300;
+    size: 1rem;
+  }
+}
+
+@mixin headings-common {
+  color: $charles-blue;
+  line-height: $line-height-000;
+  margin: 0;
+
+  font: {
+    family: $sans;
+    weight: 700;
+  }
+
+  font-range: 480px 1440px;
+}
+
+.h2 {
+  @include headings-common;
+
+  font-size: responsive 20px 45px;
+}
+
+.h3 {
+  @include headings-common;
+
+  font-size: responsive 16px 20px;
+}

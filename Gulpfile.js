@@ -1,7 +1,16 @@
 'use strict';
 
+// todo upgrade gulp
+// todo upgrade jest
+// todo remove gulp-util - https://github.com/gulpjs/gulp-util
+// todo is flexibility necessary?
+// todo is laggard necessary?
+// todo is lost necessary?
+// todo is rucksack used?
+// todo is lodash used by us?
+
+
 const gulp = require('gulp');
-const util = require('gulp-util');
 const plugins = require('gulp-load-plugins')();
 const plumber = require('gulp-plumber');
 
@@ -29,49 +38,39 @@ options.paths = {
 
 // This will get the task to allow us to use the configs above
 function getTask(task) {
-  return require('./gulp-tasks/' + task)(gulp, plugins, options, util);
+  return require('./gulp-tasks/' + task)(gulp, plugins, options);
 }
 
 // Tasks!
 // -----------------------
-gulp.task('schema:map', () =>
+const schemaMap = () =>
   plumber()
     .pipe(gulp.src('web-components/map/*.schema.json'))
     .pipe(jsonSchemaToTypescript({ style: require('./.prettierrc.json') }))
-    .pipe(gulp.dest('web-components/map'))
-);
-gulp.task('legacy', getTask('stylus_legacy'));
-gulp.task('fonts', getTask('fonts'));
-gulp.task('images', getTask('images'));
-gulp.task('scripts', getTask('scripts'));
-gulp.task('watch:scripts', getTask('scripts_watch'));
-gulp.task('stylus', getTask('stylus'));
-gulp.task('stylus:ie', getTask('stylus_IE'));
-gulp.task('watch:stylus', getTask('stylus_watch'));
-gulp.task('watch:legacy', getTask('legacy_watch'));
-gulp.task('docson', () =>
+    .pipe(gulp.dest('web-components/map'));
+const legacy = getTask('stylus_legacy');
+const fonts = getTask('fonts');
+const images = getTask('images');
+const scripts = getTask('scripts');
+const styles = getTask('styles');
+const stylus = getTask('stylus');
+const stylusIe = getTask('stylus_IE');
+
+const watchLegacy = () => gulp.watch(['./legacy/**.styl'], legacy);
+const watchScripts = () => gulp.watch(['./scripts/**/*.js'], scripts);
+const watchStylus = () => gulp.watch(['./stylesheets/**/**.styl'], gulp.series([stylus, stylusIe]));
+
+const docson = () =>
   gulp
     .src('node_modules/docson/public/**')
-    .pipe(gulp.dest(options.paths.docson))
+    .pipe(gulp.dest(options.paths.docson)
 );
-gulp.task('build', [
-  'fonts',
-  'images',
-  'legacy',
-  'stylus',
-  'scripts',
-  'stylus:ie',
-  'docson',
-]);
-gulp.task('default', [
-  'fonts',
-  'images',
-  'legacy',
-  'scripts',
-  'docson',
-  'watch:scripts',
-  'stylus',
-  'stylus:ie',
-  'watch:stylus',
-  'watch:legacy',
-]);
+
+const build = gulp.series(fonts, images, legacy, stylus, scripts, stylusIe, docson);
+const watchAll = gulp.parallel(watchLegacy, watchScripts, watchStylus);
+
+exports.build = build;
+exports.schemaMap = schemaMap;
+exports.styles = styles;
+exports.stylus = stylus;
+exports.default = gulp.series(build, watchAll);

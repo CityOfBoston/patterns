@@ -4,7 +4,7 @@
  */
 
 const path = require('path');
-const gutil = require('gulp-util');
+const Vinyl = require('vinyl');
 const PluginError = require('plugin-error');
 const through = require('through2');
 const {
@@ -14,7 +14,7 @@ const {
 const PLUGIN_NAME = 'jsonSchemaToTypescript';
 
 module.exports = ({ style }) =>
-  through.obj(function(file, enc, cb) {
+  through.obj(function (file, enc, cb) {
     if (file.isStream()) {
       this.emit(
         'error',
@@ -29,7 +29,7 @@ module.exports = ({ style }) =>
       style,
     }).then(typescript => {
       this.push(
-        new gutil.File({
+        new Vinyl({
           path: path.basename(file.path).replace('.json', '.d.ts'),
           contents: new Buffer(typescript, 'utf-8'),
         })

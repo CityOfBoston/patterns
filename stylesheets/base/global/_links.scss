@@ -1,0 +1,50 @@
+.lnk {
+  color: $optimistic-blue-dark;
+
+  button& {
+    display: inline;
+    overflow: visible;
+    margin: 0;
+    padding: 0;
+    height: auto;
+    line-height: inherit;
+
+    border: none;
+    background: transparent;
+    cursor: pointer;
+
+    font: {
+      family: inherit;
+      style: inherit;
+      size: inherit;
+    }
+  }
+
+  &:link, &:visited {
+    color: $optimistic-blue-dark;
+  }
+
+  &:hover {
+    color: $freedom-red-light;
+  }
+
+  &--white {
+    color: $white;
+
+    &:link, &:visited {
+      color: $white;
+    }
+  }
+
+  &--yellow {
+    color: $yellow !important;
+
+    &:link, &:visited {
+      color: $yellow;
+    }
+
+    &:hover {
+      color: $white;
+    }
+  }
+}

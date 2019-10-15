@@ -37,7 +37,7 @@ import { MarkerClusterGroup } from 'leaflet.markercluster';
 import 'templayed';
 declare function templayed(str: string): (data: Object) => string;
 
-// Run `gulp schema:map` to regenerate this .d.ts file from the JSON-schema
+// Run `gulp schemaMap` to regenerate this .d.ts file from the JSON-schema
 // definition.
 import { CobMap10, Filter } from './map-1.0.schema';
 

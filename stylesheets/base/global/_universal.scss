@@ -1,0 +1,83 @@
+* {
+  box-sizing: border-box;
+}
+
+img {
+  border: 0;
+}
+
+a {
+  color: $optimistic-blue-dark;
+  text-decoration: none;
+
+  &:hover {
+    color: $freedom-red-light;
+  }
+}
+
+.fl {
+  &--l {
+    float: left;
+  }
+}
+
+.d {
+  &-b {
+    display: block;
+  }
+}
+
+&-n {
+  display: none;
+}
+
+&-f {
+  display: flex;
+}
+
+.hr {
+  background: none;
+  border: none;
+  margin-top: $sizing-500;
+  margin-bottom: $sizing-500;
+
+  &--sq {
+    height: 7px;
+    background: url(../images/squiggle.svg) repeat-x center;
+    background-size: contain;
+  }
+
+  &--dash {
+    width: 100%;
+    border-bottom: 1px dashed $grey-100;
+  }
+}
+
+// Hide things only at tablet and above
+.tablet {
+  @media #{$media-medium} {
+    &--hidden {
+      display: none;
+    }
+  }
+}
+
+// Accessibility helpers
+.a11y {
+  &--h {
+    display: block;
+    height: 1px;
+    width: 1px;
+    position: absolute;
+    overflow: hidden;
+    top: -100px;
+  }
+
+  &--f:focus {
+    z-index: 20;
+    width: auto;
+    height: auto;
+    top: 0;
+    overflow: visible;
+  }
+}

@@ -1,0 +1,164 @@
+/*
+   Select Box
+
+   Base:
+     sel
+
+   Elements:
+    l = label
+    f = field
+
+   Modifier:
+    None Yet
+ */
+
+.sel {
+  &-c {
+    display: inline-block;
+    position: relative;
+  }
+
+  &--sq {
+    // Safari seems to calculate .sel-c’s width based on the content
+    // in the <option>s of the <select>, regardless of the <select>’s
+    // width. We force it down to just the size of the box.
+    width: 'calc(%s + 2 * %s)' % ($select-arrow-box-width $border-200);
+  }
+
+  &::after {
+    content: ' ';
+    position: absolute;
+    z-index: 1;
+    pointer-events: none;
+    top: $border-200;
+    bottom: $border-200;
+    right: $border-200;
+    border-left: $border-200 solid $charles-blue;
+    background: $optimistic-blue-dark;
+    width: $select-arrow-box-width;
+    background-image: url(../images/global/icons/chevron-down.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 20px;
+  }
+
+  &--thin {
+    &::after {
+      width: $select-arrow-box-thin-width;
+    }
+
+    .sel-f {
+      height: 'calc(2 * %s + 2 * %s + %s * 1rem)' %
+        ($sizing-100 $border-200 $line-height-300);
+    }
+  }
+
+  &--err::after {
+    border-color: $error-border-color;
+  }
+
+  &--sq::after {
+    content: 'Select';
+    font-family: $sans;
+    text-transform: uppercase;
+    color: white;
+    font-size: 0.8rem;
+    text-align: center;
+    padding-top: 8px;
+    background-position: center 30px;
+  }
+
+  &--fw {
+    width: 100%;
+  }
+
+  &-f {
+    background-color: $white;
+    border: $border-200 solid $charles-blue;
+    border-radius: 0;
+    display: inline-block;
+    font-family: $serif;
+    font-size: 1rem;
+    line-height: $line-height-400;
+    padding: 0 85px 0 $sizing-300;
+    width: 100%;
+    height: 'calc(2 * %s + 2 * %s + %s * 1rem)' %
+      ($sizing-300 $border-200 $line-height-300);
+
+    margin: 0;
+    box-sizing: border-box;
+    -moz-appearance: none;
+    appearance: none;
+
+    // hides the arrow box on IE10
+    &::-ms-expand {
+      display: none;
+    }
+
+    &--sm {
+      padding-top: $sizing-300;
+      padding-bottom: $sizing-300;
+      line-height: $line-height-200;
+    }
+
+    &--sq {
+      // IE10 doesn't support the pointer-events property used to make the
+      // arrow "click through" to the select box. When all you can see is
+      // the arrow, this presents a problem, so we have to position the select
+      // above the arrow, then make it hidden so just its focus ring appears.
+      position: relative;
+      z-index: 2;
+      width: 0;
+      padding-left: 0;
+      padding-right: $select-arrow-box-width;
+      overflow: hidden;
+      text-indent: -9999px;
+      background: transparent;
+    }
+
+    &--err {
+      border-color: $error-border-color;
+      color: $error-text-color;
+    }
+
+    &:focus {
+      box-shadow: 0 0 0 3px $focus-indicator-color;
+    }
+  }
+
+  &-l {
+    color: $charles-blue;
+    font-family: $sans;
+    font-size: responsive 14px 16px;
+    font-range: 480px 1440px;
+    font-weight: bold;
+    line-height: 1.4;
+    margin: $sizing-500 0 $sizing-100;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    display: block;
+
+    &--sm {
+      font-size: $font-100;
+      font-weight: normal;
+      margin-top: 0;
+    }
+
+    &--sq {
+      display: block;
+      height: 1px;
+      width: 1px;
+      position: absolute;
+      overflow: hidden;
+      top: -100px;
+    }
+
+    &--mt000 {
+      margin-top: 0;
+    }
+
+    &--err {
+      color: $error-text-color;
+    }
+  }
+}

@@ -1,0 +1,193 @@
+/*
+   Buttons. Use on both <button> and <a> tags.
+
+   Base:
+    btn
+
+   Modifier:
+    c = charles blue
+    sb = small block (becomes block on small screens)
+
+  We use ":not(:disabled)" in the rules below instead of ":enabled"
+  so that the rules trigger for <a> tags as well as <button>s.
+ */
+
+.btn {
+  cursor: pointer;
+
+  display: inline-block;
+  margin: 0;
+  padding: $sizing-400;
+  letter-spacing: 1px;
+  line-height: 1rem;
+  text-decoration: none;
+  text-transform: uppercase;
+  border: none;
+  background-color: $optimistic-blue-dark;
+  color: $white;
+  font: {
+    family: $sans;
+    weight: 700;
+    size: responsive 14px 16px;
+  }
+  font-range: 480px 1440px;
+
+  // compensates for the uppercase letters not being vertically-centered
+  &::after {
+    content: '';
+
+    display: block;
+    margin-top: -1px;
+  }
+
+  &:link,
+  &:visited {
+    color: white;
+  }
+
+  &:hover:not(:disabled) {
+    background-color: $freedom-red-light;
+    color: white;
+  }
+
+  &:disabled {
+    cursor: default;
+
+    background-color: $grey-100;
+    color: $grey-300;
+  }
+
+  &--ib {
+    display: inline-block;
+  }
+
+  &--b {
+    display: block;
+    width: 100%;
+    text-align: center;
+  }
+
+  @media #{$media-large-max} {
+    // "block small" is a block at breakpoints < large. Use this in a grid
+    // to make the button take up full width when things collapse to a single
+    // column, but naturally-sized when there are columns.
+    &--b-sm {
+      display: block;
+      width: 100%;
+      text-align: center;
+    }
+  }
+
+  // Button that fills the remaining space in a flex row
+  &--row {
+    flex: 1;
+    align-self: stretch;
+    // flex behavior should give us the space we need. Set a low
+    // minimum because fitting in with the UI is a higher priority
+    // than the above sizing-400
+    padding: $sizing-100;
+  }
+
+  &--c {
+    background-color: $charles-blue;
+
+    &:hover:not(:disabled) {
+      background-color: $freedom-red-light;
+    }
+  }
+  &--y {
+    background-color: $yellow;
+
+    &:hover:not(:disabled) {
+      background-color: $yellow-hover;
+      color: white;
+    }
+  }
+
+  &--w {
+    background-color: $white;
+    color: $optimistic-blue-dark;
+
+    &:link,
+    &:visited {
+      color: $optimistic-blue-dark;
+    }
+
+    &:hover:not(:disabled) {
+      background-color: $optimistic-blue-light;
+      color: $white;
+    }
+  }
+
+  &--r-hov {
+    &:hover:not(:disabled) {
+      background-color: $freedom-red-light;
+      color: $white;
+    }
+  }
+
+  &--w-hov {
+    &:hover:not(:disabled) {
+      background-color: $white;
+      color: $freedom-red-light;
+    }
+  }
+  &--sb {
+    margin-top: 0.5rem;
+
+    @media #{$media-xlarge} {
+      margin-top: 0;
+    }
+  }
+
+  // With a border
+  &--br {
+    border: $border-200 solid $charles-blue;
+
+    &:focus {
+      outline: $border-200 solid $focus-indicator-color;
+      outline-offset: 1px;
+    }
+
+    &:disabled {
+      border-color: $grey-300;
+    }
+  }
+
+  &--sm {
+    font: {
+      weight: normal;
+      // t--s100
+      size: responsive $font-100 $font-200;
+    }
+    font-range: 480px 1440px;
+  }
+
+  &--100 {
+    padding: $sizing-200 $sizing-300;
+  }
+
+  &--200 {
+    padding: $sizing-300;
+
+    &--m {
+      @media #{$media-medium} {
+        padding: $sizing-300;
+      }
+    }
+  }
+
+  &--300 {
+    padding: $sizing-400;
+
+    &--l {
+      @media #{$media-large} {
+        padding: $sizing-400;
+      }
+    }
+  }
+
+  &--700 {
+    padding: $sizing-400 $sizing-900;
+  }
+}

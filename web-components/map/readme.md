@@ -18,7 +18,7 @@ from that file. (Note: the map does not update if the config is changed
 dynamically.)
 
 This component typechecks by converting the JSON-Schema to TypeScript. To update
-the type definitions, run `npx gulp schema:map`.
+the type definitions, run `npx gulp schemaMap`.
 
 ## Slots
 

@@ -1,0 +1,19 @@
+/*
+   BLOCK THEMES
+
+   Base:
+    b--b
+ */
+
+.b {
+  &--r {
+    background-color: $freedom-red-light;
+    color: $white;
+  }
+
+  &.b--wt {
+    &::after {
+      border-top-color: $freedom-red-light;
+    }
+  }
+}

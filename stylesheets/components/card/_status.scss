@@ -1,0 +1,100 @@
+/*
+   CARD: PERSON
+
+   Base:
+    cd-p
+
+   Elements:
+    t = title
+    b = body
+
+   Modifier:
+    None Yet
+ */
+
+.cds {
+  &:not(:first-child) {
+    padding-top: $sizing-400;
+    border-top: 1px dotted $grey-200;
+
+    @media #{$media-large} {
+      border-top: none;
+      padding-top: 0;
+    }
+  }
+
+  &-ic {
+    position: relative;
+    display: inline-block;
+    height: 65px;
+    width: 65px;
+    margin-right: $sizing-300;
+
+    @media #{$media-large} {
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+
+  &-d {
+    p:last-child {
+      margin: 0;
+    }
+  }
+  &-c {
+    flex: 1;
+  }
+
+  &-ia {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    max-width: 28px;
+    max-height: 28px;
+  }
+
+  &-t {
+    font-size: responsive 14px 16px;
+    line-height: $line-height-100;
+  }
+
+  &-l {
+    display: flex;
+    flex: 1;
+    text-align: left;
+    background-color: rgb(255, 255, 255);
+
+    @media #{$media-large} {
+      display: block;
+      text-align: center;
+    }
+
+    &:hover {
+      color: $optimistic-blue-dark;
+
+      .cds-t {
+        text-decoration: underline;
+      }
+
+      .svg-stroke-hover {
+        stroke: $optimistic-blue-light;
+      }
+
+      .svg-fill-hover {
+        fill: $optimistic-blue-light;
+      }
+    }
+  }
+}
+/* Handle theme variations */
+.b--g {
+  .cdp {
+    &-l {
+      background-color: $white;
+
+      &:hover {
+        background-color: $optimistic-blue-light;
+      }
+    }
+  }
+}

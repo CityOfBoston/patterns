@@ -1,0 +1,35 @@
+/*
+
+   THE B
+
+   Base:
+    the-b
+
+   Modifier:
+    c = centered
+
+ */
+
+.the-b {
+  display: block;
+  background: $charles-blue;
+  width: 75px;
+  padding: 1rem 1.5rem;
+  position: relative;
+  z-index: 2;
+
+  &--c {
+    margin: 0 auto;
+  }
+
+  @media #{$media-large} {
+    padding: 1.5rem 2rem;
+    width: 120px;
+  }
+
+  &-i {
+    display: block;
+    width: 93%;
+    margin: 0 auto;
+  }
+}

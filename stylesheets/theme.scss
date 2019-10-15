@@ -1,0 +1,195 @@
+@import 'fonts/index';
+@import 'variables/index';
+
+html,
+body {
+  font-family: $sans;
+}
+
+a {
+  &:link,
+  &:visited {
+    color: $optimistic-blue-dark;
+  }
+
+  &:hover {
+    color: $freedom-red-light;
+  }
+}
+
+.intro {
+  color: $charles-blue;
+  line-height: $line-height-300;
+  font: {
+    family: $serif;
+    style: italic;
+    size: responsive 18px 30px;
+  }
+
+  font-range: 480px 1440px;
+}
+
+.Tree {
+  &-collectionLabel,
+  &-entityLink {
+    font: {
+      family: $sans;
+      weight: 300;
+    }
+  }
+
+  &-collectionLabel span::before {
+    top: 0.375rem;
+  }
+
+  &-title {
+    color: $charles-blue;
+    text-transform: uppercase;
+    letter-spacing: 0;
+
+    font: {
+      family: $sans;
+      weight: 700;
+      size: 1rem;
+    }
+  }
+}
+
+.Document {
+  &-header {
+    border: none;
+  }
+
+  &-title {
+    color: $charles-blue;
+    text-transform: uppercase;
+    line-height: $line-height-000;
+    letter-spacing: -1px;
+    font: {
+      family: $sans;
+      weight: 700;
+      size: responsive 45px 62px;
+    }
+    font-range: 480px 1440px;
+  }
+}
+
+.Browser-notes {
+  background: $white;
+}
+
+.Prose {
+  line-height: $line-height-300;
+
+  font: {
+    family: $sans;
+    size: 1.175rem;
+  }
+
+  @mixin headers-common {
+    color: $charles-blue;
+  }
+
+  @mixin headers-large {
+    @include headers-common;
+
+    text-transform: uppercase;
+    font: {
+      family: $sans;
+      weight: 700;
+    }
+  }
+
+  @mixin headers-small {
+    @include headers-common;
+
+    font: {
+      family: $serif;
+      weight: 300;
+      style: italic;
+    }
+  }
+
+  h1 {
+    @include headers-large;
+
+    // overrides a Mandelbrot style that puts bottom margin on all
+    // top-level elements in the markdown
+    margin: 0 0 $sizing-300 !important;
+    padding-right: $sizing-300;
+    line-height: 1;
+
+    font-size: responsive 45px 62px;
+    font-range: 480px 1440px;
+  }
+
+  h2 {
+    @include headers-large;
+
+    width: 100%;
+
+    // overrides a Mandelbrot style that puts bottom margin on all
+    // top-level elements in the markdown
+    margin: $sizing-500 0 $sizing-300 !important;
+    padding-bottom: $sizing-100;
+    line-height: $line-height-000;
+    border-bottom: $border-300 solid $charles-blue;
+
+    font-size: responsive 30px 45px;
+    font-range: 480px 1440px;
+
+
+    @media #{$media-large} {
+      border-bottom-width: $border-400;
+    }
+  }
+
+  h3 {
+    @include headers-small;
+
+    // overrides a Mandelbrot style that puts bottom margin on all
+    // top-level elements in the markdown
+    margin: 0 !important;
+    line-height: $line-height-000;
+
+    font-size: responsive 20px 30px;
+    font-range: 480px 1440px;
+
+  }
+
+  h4 {
+    @include headers-small;
+
+    // overrides a Mandelbrot style that puts bottom margin on all
+    // top-level elements in the markdown
+    margin: $sizing-500 0 $sizing-300 !important;
+    line-height: $line-height-000;
+
+    font-size: responsive 16px 20px;
+    font-range: 480px 1440px;
+  }
+}
+
+.Header {
+  background-color: $charles-blue;
+  box-shadow: none;
+
+  &-button {
+    background-color: $freedom-red-light;
+    border: none;
+
+    &:hover {
+      background-color: $optimistic-blue-light;
+    }
+  }
+
+  &-title {
+    text-transform: uppercase;
+    letter-spacing: 1px;
+
+    font: {
+      family: $sans;
+      weight: 900;
+    }
+  }
+}

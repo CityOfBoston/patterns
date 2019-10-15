@@ -1,0 +1,360 @@
+/*
+
+   Grid
+
+   Base:
+    g
+
+   Modifier:
+    {{ COLUMNS }} = how many columns of the 12 column grid it should take up
+    sl = At large break point, split the column 50 / 50
+
+   Notes:
+    At mobile sizes, all columns 100%
+ */
+
+@lost flexbox flex;
+@lost gutter 1.5rem;
+
+.g {
+  lost-flex-container: row;
+
+  &--top {
+    align-items: flex-start;
+  }
+
+  // Horizontally center blocks
+  &--hc {
+    justify-content: center;
+  }
+
+  // Vertically center blocks
+  &--vc {
+    align-items: center;
+  }
+
+  &--1 {
+    lost-column: 12/12;
+  }
+
+  &--2 {
+    lost-column: 12/12;
+  }
+
+  &--24 {
+    lost-column: 12/12 1;
+  }
+
+  &--3 {
+    lost-column: 12/12;
+  }
+
+  &--4 {
+    lost-column: 12/12;
+  }
+
+  &--5 {
+    lost-column: 12/12;
+  }
+
+  &--6 {
+    lost-column: 12/12;
+  }
+
+  &--7 {
+    lost-column: 12/12;
+  }
+
+  &--8 {
+    lost-column: 12/12;
+  }
+
+  &--9 {
+    lost-column: 12/12;
+  }
+
+  &--10 {
+    lost-column: 12/12;
+  }
+
+  &--11 {
+    lost-column: 12/12;
+  }
+
+  &--12 {
+    lost-column: 12/12;
+  }
+
+  @media #{$media-large-max} {
+    // Only reversed for mobile viewports; useful for maintaining logical source order
+    &.g--mr {
+      flex-direction: column-reverse;
+    }
+
+    @media #{$media-medium} {
+      &--3 {
+        &--m {
+          lost-column: 3/12 4;
+        }
+      }
+
+      &--6 {
+        &--m {
+          lost-column: 6/12 2;
+        }
+      }
+
+      &--9 {
+        &--m {
+          lost-column: 9/12;
+        }
+      }
+    }
+  }
+
+  @media #{$media-large} {
+    &.g--r {
+      flex-direction: row-reverse;
+    }
+
+    &--1 {
+      lost-column: 1/12 12;
+
+      .g--r &:first-child {
+        margin-right: 0;
+      }
+
+      .g--r &:last-child {
+        margin-right: 1.5rem;
+      }
+
+      &--sl {
+        lost-column: 6/12 2;
+      }
+    }
+
+    &--2 {
+      lost-column: 2/12 6;
+
+      .g--r &:first-child {
+        margin-right: 0;
+      }
+
+      .g--r &:last-child {
+        margin-right: 1.5rem;
+      }
+
+      &--l {
+        lost-column: 2/12 6;
+      }
+
+      &--sl {
+        lost-column: 6/12 2;
+      }
+    }
+
+    &--24 {
+      lost-column: 4/12 3;
+    }
+
+    &--3 {
+      lost-column: 3/12 4;
+
+      .g--r &:first-child {
+        margin-right: 0;
+      }
+
+      .g--r &:last-child {
+        margin-right: 1.5rem;
+      }
+
+      &--l {
+        lost-column: 3/12 4;
+      }
+
+      &--sl {
+        lost-column: 6/12 2;
+      }
+    }
+
+    &--4 {
+      lost-column: 4/12 3;
+
+      .g--r &:first-child {
+        margin-right: 0;
+      }
+
+      .g--r &:last-child {
+        margin-right: 1.5rem;
+      }
+
+      &--l {
+        lost-column: 4/12 3;
+      }
+
+      &--sl {
+        lost-column: 6/12 2;
+      }
+    }
+
+    &--5 {
+      lost-column: 5/12;
+
+      .g--r &:first-child {
+        margin-right: 0;
+      }
+
+      .g--r &:last-child {
+        margin-right: 1.5rem;
+      }
+    }
+
+    &--6 {
+      lost-column: 6/12 2;
+
+      .g--r &:first-child {
+        margin-right: 0;
+      }
+
+      .g--r &:last-child {
+        margin-right: 1.5rem;
+      }
+
+      &--l {
+        lost-column: 6/12 2;
+      }
+    }
+
+    &--7 {
+      lost-column: 7/12;
+
+      .g--r &:first-child {
+        margin-right: 0;
+      }
+
+      .g--r &:last-child {
+        margin-right: 1.5rem;
+      }
+    }
+
+    &--8 {
+      lost-column: 8/12;
+
+      .g--r &:first-child {
+        margin-right: 0;
+      }
+
+      .g--r &:last-child {
+        margin-right: 1.5rem;
+      }
+    }
+
+    &--9 {
+      lost-column: 9/12;
+
+      .g--r &:first-child {
+        margin-right: 0;
+      }
+
+      .g--r &:last-child {
+        margin-right: 1.5rem;
+      }
+    }
+
+    &--10 {
+      lost-column: 10/12;
+
+      .g--r &:first-child {
+        margin-right: 0;
+      }
+
+      .g--r &:last-child {
+        margin-right: 1.5rem;
+      }
+    }
+
+    &--11 {
+      lost-column: 11/12;
+
+      .g--r &:first-child {
+        margin-right: 0;
+      }
+
+      .g--r &:last-child {
+        margin-right: 1.5rem;
+      }
+    }
+
+    &--12 {
+      lost-column: 12/12;
+    }
+  }
+
+  @media #{$media-xlarge} {
+    &--1 {
+      &--sl {
+        lost-column: 1/12 12;
+      }
+    }
+
+    &--2 {
+      &--sl {
+        lost-column: 2/12 6;
+      }
+    }
+
+    &--3 {
+      &--sl {
+        lost-column: 3/12 4;
+      }
+    }
+
+    &--4 {
+      &--sl {
+        lost-column: 4/12 3;
+      }
+
+      &--xl {
+        lost-column: 4/12 3;
+      }
+    }
+
+    &--5 {
+      &--sl {
+        lost-column: 5/12;
+      }
+    }
+
+    &--6 {
+      &--sl {
+        lost-column: 6/12 2;
+      }
+    }
+
+    &--7 {
+      &--xl {
+        lost-column: 7/12;
+      }
+    }
+
+    &--8 {
+      &--xl {
+        lost-column: 8/12 3;
+      }
+    }
+  }
+
+  @media #{$media-xlarge} {
+    &--24 {
+      lost-column: 2.4/12 5;
+    }
+  }
+
+  @media #{$media-xxlarge} {
+    &--4 {
+      &--xxl {
+        lost-column: 4/12 3;
+      }
+    }
+  }
+}

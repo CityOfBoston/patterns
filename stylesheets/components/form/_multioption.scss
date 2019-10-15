@@ -1,0 +1,100 @@
+/*
+   Multi Option
+
+   This element is used when there are large lists to select from
+
+   Base:
+    mo
+
+   Modifier:
+    i = fields inline
+ */
+
+.mo {
+  position: relative;
+
+  @media #{$media-large} {
+    position: static;
+  }
+
+  &-tr {
+    &:checked {
+      & ~ .mo-t {
+        z-index: 2;
+        position: relative;
+        color: $white;
+        background-color: $charles-blue;
+
+        &::after {
+          transform: rotate(-180deg);
+          border-left: none;
+          border-right: $border-200 solid $charles-blue;
+        }
+      }
+
+      & ~ .mo-c {
+        z-index: 1;
+        display: block;
+        position: absolute;
+        right: 0;
+        left: 0;
+        max-height: 700px;
+        overflow-x: scroll;
+      }
+    }
+  }
+
+  &-t {
+    cursor: pointer;
+
+    position: relative;
+    display: block;
+    margin: 0;
+    padding: $sizing-400;
+    text-transform: uppercase;
+    line-height: 1;
+    background-color: $white;
+    color: $optimistic-blue-dark;
+    border: $border-200 solid $charles-blue;
+
+    font: {
+      family: $sans;
+      size: responsive 14px 16px;
+    }
+    font-range: 480px 1440px;
+
+    em {
+      font-family: $serif;
+      text-transform: none;
+      color: $charles-blue;
+    }
+
+    &::after {
+      z-index: 1;
+      pointer-events: none;
+
+      content: '';
+
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      width: 60px;
+      border-left: $border-200 solid $charles-blue;
+      background: {
+        color: $optimistic-blue-dark;
+        image: url(../images/global/icons/chevron-down.svg);
+        repeat: no-repeat;
+        position: center;
+        size: 20px;
+      }
+    }
+  }
+
+  &-c {
+    display: none;
+    width: 100%;
+    border: $border-200 solid $charles-blue;
+    background-color: $white;
+  }
+}

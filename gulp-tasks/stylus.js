@@ -1,8 +1,8 @@
 'use strict';
 
-module.exports = function(gulp, plugins, options) {
-  return function() {
-    var stream = gulp
+module.exports = function (gulp, plugins, options) {
+  return function stylus() {
+    return gulp
       .src([
         './stylesheets/public.styl',
         './stylesheets/hub.styl',
@@ -18,7 +18,6 @@ module.exports = function(gulp, plugins, options) {
                 browsers: ['safari <= 5', 'ie > 9'],
               }),
               'rucksack-css',
-              'laggard',
               require('postcss-flexibility'),
             ]),
           ],
@@ -26,7 +25,5 @@ module.exports = function(gulp, plugins, options) {
       )
       .pipe(plugins.cssnano())
       .pipe(gulp.dest(options.paths.styles));
-
-    return stream;
   };
 };

@@ -1,0 +1,116 @@
+/*
+   Checkboxes
+
+   Base:
+    cb
+
+   Elements:
+    l = label
+    f = field
+
+   Modifier:
+    None Yet
+ */
+
+.cb {
+  position: relative;
+  display: flex;
+  margin: 0;
+  align-items: center;
+
+  &:not(:last-child) {
+    margin: 0 0 $sizing-200;
+  }
+
+  &-f {
+    $sizes: (default: '35px', medium: '42px');
+
+    height: map-get($sizes, default);
+    width: map-get($sizes, default);
+    margin: 0;
+    padding: 0;
+    align-self: flex-start;
+
+    @media #{$media-medium} {
+      height: map-get($sizes, medium);
+      width: map-get($sizes, medium);
+    }
+
+    &::before {
+      box-sizing: border-box;
+
+      content: '';
+
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: map-get($sizes, default);
+      width: map-get($sizes, default);
+      border: 3px solid $charles-blue;
+      background-color: $white;
+    }
+
+    @media #{$media-medium} {
+      height: map-get($sizes, medium);
+      width: map-get($sizes, medium);
+    }
+
+    &:checked {
+      &::before {
+        background: $white $check no-repeat center;
+      }
+    }
+
+    &:focus {
+      &::before {
+        box-shadow: 0 0 0 3px $focus-indicator-color;
+      }
+    }
+
+    &[type='checkbox'] {
+      display: block;
+      // hides the button on iOS
+      background: none;
+      -moz-appearance: none;
+      -webkit-appearance: none;
+    }
+
+    &--err:before {
+      border-color: $error-border-color;
+    }
+
+    // This is a separate block because it needs to be :checked:before, not
+    // :before:checked
+    &--err:checked {
+      &::before {
+        background: $white $check_red no-repeat center;
+      }
+    }
+  }
+  &-l {
+    width: calc(100% - 42px);
+    margin-left: 7px;
+    line-height: $line-height-150;
+    text-transform: none;
+    color: $charles-blue;
+    font: {
+      family: $serif;
+      size: responsive 16px 20px;
+    }
+    font-range: 480px 1440px;
+
+    @media #{$media-medium} {
+      margin-left: 1rem;
+    }
+
+    &--sans {
+      text-transform: uppercase;
+      font: {
+        family: $sans;
+        weight: 700;
+        size: responsive 12px 14px;
+      }
+    }
+  }
+}

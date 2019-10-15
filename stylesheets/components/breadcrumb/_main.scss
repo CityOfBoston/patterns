@@ -1,0 +1,84 @@
+/*
+   BREADCRUMB
+
+   Base:
+    brc
+
+   Modifier:
+    wh = with hero
+
+   Element:
+    s = separator
+    t = title
+    lu = last updated
+    l = list
+    l-i = list item
+ */
+
+.brc {
+  display: none;
+  padding-bottom: $sizing-200;
+  padding-right: 28%;
+  line-height: $line-height-000;
+  border-bottom: 1px dashed $grey-100;
+
+  &--wh {
+    @media #{$media-large} {
+      position: relative;
+      margin: -3rem;
+      margin-top: -150px;
+      margin-bottom: -100px;
+      padding: 3rem 3rem 100px 3rem;
+      background-color: $white;
+    }
+  }
+
+  @media #{$media-large} {
+    display: block;
+  }
+
+  &-l {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    background: none;
+
+    &-i {
+      display: inline-block;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      background: none;
+      text-transform: uppercase;
+      color: $freedom-red-dark;
+      font: {
+        family: $sans;
+        size: responsive 12px 13px;
+      }
+      font-range: 1024px 1920px;
+    }
+  }
+
+  &-s {
+    margin-left: -4px;
+    padding: 0 $sizing-200;
+    color: $grey-200;
+    font-size: 16px;
+  }
+
+  &-lu {
+    display: none;
+    float: right;
+    margin-top: -37px;
+    font: {
+      size: responsive 14px 16px;
+      style: italic;
+    }
+    font-range: 1024px 1920px;
+
+    @media #{$media-large} {
+      display: block;
+      position: relative;
+    }
+  }
+}

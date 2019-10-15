@@ -1,0 +1,29 @@
+.lh {
+  &--000 {
+    line-height: $line-height-000;
+  }
+
+  &--100 {
+    line-height: $line-height-100;
+  }
+
+  &--200 {
+    line-height: $line-height-200;
+  }
+
+  &--300 {
+    line-height: $line-height-300;
+  }
+
+  &--400 {
+    line-height: $line-height-400;
+  }
+
+  &--500 {
+    line-height: $line-height-500;
+  }
+
+  &--600 {
+    line-height: $line-height-600;
+  }
+}

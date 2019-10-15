@@ -1,0 +1,92 @@
+/*
+
+   LINK WITH ICON
+
+   Base:
+    lwi
+
+   Modifier:
+    None Yet
+
+ */
+
+.lwi {
+  display: flex;
+  align-items: center;
+  padding: $sizing-300;
+  background-color: $white;
+  text-decoration: none;
+
+  // Image container
+  &-ic {
+    display: flex;
+    width: 25%;
+    padding-top: $sizing-000;
+    padding-bottom: $sizing-000;
+  }
+
+  // Icon
+  &-i {
+    display: block;
+    max-width: 85%;
+    max-height: 100%;
+  }
+
+  &-t {
+    font-style: italic;
+    font-size: responsive 18px 25px;
+    font-range: 480px 1440px;
+    line-height: $line-height-200;
+    margin-left: 3%;
+    width: 70%;
+  }
+
+  &:hover {
+    background-color: $optimistic-blue-light;
+    color: $white;
+  }
+
+  &--y {
+    color: $charles-blue;
+    background-color: $yellow;
+    padding: ($sizing-300 - $border-200);
+    border: $border-200 solid transparent;
+
+    &:hover {
+      background-color: $yellow;
+      border-color: $charles-blue;
+      color: $charles-blue;
+    }
+  }
+
+  @media #{$media-medium} {
+    display: block;
+    padding: $sizing-600;
+
+    // Containing link, image container, text
+    &-ic,
+    &-t {
+      display: block;
+      text-align: center;
+      width: 100%;
+    }
+
+    &-ic {
+      margin-bottom: $sizing-300;
+      height: 100px;
+    }
+
+    &-i {
+      margin: 0 auto;
+      max-height: 100px;
+    }
+
+    &-t {
+      font-style: italic;
+      font-size: $font-600;
+      line-height: $line-height-200;
+      margin-left: 0;
+      width: 100%;
+    }
+  }
+}

@@ -1,0 +1,133 @@
+/*
+   Textboxes
+
+   Base:
+     txt
+
+   Elements:
+    l = label
+    f = field
+
+   Modifier:
+    None Yet
+ */
+
+// modified 9/20 -jm
+.txt {
+  position: relative;
+  display: block;
+  margin: 0;
+
+  &:not(:last-child) {
+    margin: 0 0 $sizing-300;
+  }
+
+  &-f {
+    $field-height: 'calc(%srem + %s * 2)' % ($line-height-600 $border-200);
+
+    font-family: $serif;
+    font-size: 1rem;
+
+    width: 100%;
+    margin: 0;
+
+    color: $charles-blue;
+    border: $border-200 solid $charles-blue;
+    border-radius: 0; // Safari/iOS rounds input field corners by default
+
+    height: $field-height;
+    line-height: $field-height;
+
+    padding-left: $sizing-300;
+    padding-right: $sizing-300;
+
+    &--sm {
+      $field-height-sm: 'calc(%srem + %s * 2)' % ($line-height-400 $border-200);
+
+      height: $field-height-sm;
+      line-height: $field-height-sm;
+      padding-left: $sizing-200;
+      padding-right: $sizing-200;
+    }
+
+    &::placeholder {
+      font-style: italic;
+      color: $grey-300;
+    }
+
+    &--err {
+      border-color: $error-border-color;
+    }
+
+    input[type='email']&,
+    input[type='tel']&,
+    input[type='text']&,
+    input[type='password']&,
+    textarea& {
+      &.txt-f--combo {
+        // Need to leave space for a .sel-f--sq element, and its borders
+        width: 'calc(100% - %s - %s * 2)' %
+          ($select-arrow-box-width $border-200);
+      }
+    }
+
+    input[type='email']&--auto,
+    input[type='tel']&--auto,
+    input[type='text']&--auto,
+    input[type='password']&--auto,
+    textarea&--auto {
+      width: auto;
+
+      &.txt-f--combo {
+        width: auto;
+      }
+    }
+
+    textarea& {
+      height: auto;
+      line-height: $line-height-300;
+      padding-top: $sizing-200;
+
+      &--sm {
+        padding-top: $sizing-100;
+      }
+    }
+
+    &::-ms-clear {
+      width: 1rem;
+      height: 1rem;
+    }
+
+    &:focus {
+      box-shadow: 0 0 0 3px $focus-indicator-color;
+    }
+
+    &--combo {
+      border-right: 0;
+      float: left;
+    }
+  }
+
+  &-l {
+    color: $charles-blue;
+    font-family: $sans;
+    font-size: responsive 14px 16px;
+    font-range: 480px 1440px;
+    font-weight: bold;
+    line-height: 1.4;
+    margin: $sizing-500 0 $sizing-100;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    display: block;
+
+    &--sm {
+      font-size: $font-100;
+      font-weight: normal;
+      margin-top: 0;
+    }
+
+    &--mt000 {
+      margin-top: 0;
+    }
+  }
+}

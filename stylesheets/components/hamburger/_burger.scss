@@ -1,0 +1,222 @@
+/*!
+ * Hamburgers
+ * @description Tasty CSS-animated hamburgers
+ * @author Jonathan Suh @jonsuh
+ * @site https://jonsuh.com/hamburgers
+ * @link https://github.com/jonsuh/hamburgers
+ */
+// Settings
+// ==================================================
+$hamburger-padding-x: 0;
+$hamburger-padding-y: 0;
+$hamburger-layer-width: 27px;
+$hamburger-layer-height: 4px;
+$hamburger-layer-spacing: 4px;
+$hamburger-layer-color: white;
+$hamburger-layer-border-radius: 0;
+$hamburger-hover-opacity: 1;
+$hamburger-hover-transition-duration: 0.15s;
+$hamburger-hover-transition-timing-function: linear;
+// To use CSS filters as the hover effect instead of opacity,
+// set $hamburger-hover-use-filter as true and
+// change the value of $hamburger-hover-filter accordingly.
+$hamburger-hover-use-filter: false;
+$hamburger-hover-filter: opacity(50%);
+
+// These two groups of rules are factored out to support
+// separate :focus-within selectors below.
+%show-menu {
+  opacity: 1;
+  transition: opacity 0s;
+}
+
+%adjust-for-menu {
+  left: 256px;
+
+  @media #{$media-small} {
+    left: 300px;
+  }
+
+  .h,
+  .nv-s {
+    left: 256px;
+
+    @media #{$media-small} {
+      left: 300px;
+    }
+  }
+
+  .brg {
+    margin-top: 2px;
+
+    &-c {
+      &-i {
+        transform: translate3d(
+            0,
+            ($hamburger-layer-spacing + $hamburger-layer-height) * -1,
+            0
+          )
+          rotate(-45deg);
+        transition-delay: 0.32s;
+        transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+
+        &::after {
+          top: 0;
+          opacity: 0;
+          transition: top 0.3s cubic-bezier(0.33333, 0, 0.66667, 0.33333),
+            opacity 0.1s 0.27s linear;
+        }
+
+        &::before {
+          top: 0;
+          transform: rotate(-90deg);
+          transition: top 0.12s 0.18s cubic-bezier(0.33333, 0, 0.66667, 0.33333),
+            transform 0.15s 0.42s cubic-bezier(0.215, 0.61, 0.355, 1);
+        }
+      }
+    }
+
+    &-t {
+      display: none;
+    }
+  }
+}
+
+.brg-tr:focus ~ .mn,
+.brg-tr:focus ~ .mn--full-ie {
+  .brg-b {
+    outline: auto 5px -webkit-focus-ring-color;
+  }
+}
+
+.brg-tr:checked ~ .nv-m {
+  @extend %show-menu;
+}
+
+.brg-tr:checked ~ .mn,
+.brg-tr:checked ~ .mn--full-ie,
+// Use this when you need a child of .mn to also move when the menu opens,
+// in particular when it’s fixed.
+.brg-tr:checked ~ .mn .mn-fixed-child {
+  @extend %adjust-for-menu;
+}
+
+// :focus-within is here so the menu opens when you tab into its links. It's not
+// supported across browsers, so for IE 11 we need to split it into its own
+// selector rather than chain it with a comma off of the ".brg-tr:checked ~"
+// rules above. Otherwise, the browser will throw out the entire rule, not just
+// ignore the selector it doesn't understand.
+.nv-m:focus-within {
+  @extend %show-menu;
+}
+
+.nv-m:focus-within ~ .mn,
+.nv-m:focus-within ~ .mn--full-ie,
+.nv-m:focus-within ~ .mn .mn-fixed-child {
+  @extend %adjust-for-menu;
+}
+
+.brg {
+  top: 50%;
+  position: relative;
+  padding: $hamburger-padding-y $hamburger-padding-x;
+  display: inline-block;
+  cursor: pointer;
+  transition-property: margin, opacity, filter;
+  transition-duration: $hamburger-hover-transition-duration;
+  transition-timing-function: $hamburger-hover-transition-timing-function;
+  font: inherit;
+  color: inherit;
+  text-transform: none;
+  background-color: transparent;
+  border: 0;
+  margin: -3px 0 0;
+  overflow: visible;
+  outline: none;
+  transform: translateY(-50%);
+  height: 24px;
+  width: 27px;
+
+  &-b {
+    background: $freedom-red-light;
+    display: block;
+    width: 65px;
+    height: 65px;
+    text-align: center;
+    cursor: pointer;
+    margin: 0;
+  }
+
+  &:hover {
+    @if $hamburger-hover-use-filter == true {
+      filter: $hamburger-hover-filter;
+    } @else {
+      opacity: $hamburger-hover-opacity;
+    }
+  }
+
+  &-c {
+    width: $hamburger-layer-width;
+    height: ($hamburger-layer-height * 3 + $hamburger-layer-spacing * 2);
+    display: inline-block;
+    position: relative;
+
+    &-i {
+      display: block;
+      top: auto;
+      bottom: 0;
+      transition-timing-function: cubic-bezier(0.275, 0.00275, 0.3375, 0.095);
+      &,
+      &::before,
+      &::after {
+        width: $hamburger-layer-width;
+        height: $hamburger-layer-height;
+        background-color: $hamburger-layer-color;
+        border-radius: $hamburger-layer-border-radius;
+        position: absolute;
+        transition-property: transform;
+        transition-duration: 0.1s;
+        transition-timing-function: ease;
+      }
+      &::before,
+      &::after {
+        content: '';
+        display: block;
+      }
+      &::before {
+        top: (($hamburger-layer-spacing + $hamburger-layer-height) * -1);
+        transition: top 0.12s 0.3s cubic-bezier(0.33333, 0.66667, 0.66667, 1),
+          transform 0.15s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+      }
+      &::after {
+        bottom: (($hamburger-layer-spacing + $hamburger-layer-height) * -1);
+        top: (
+          ($hamburger-layer-spacing * 2 + $hamburger-layer-height * 2) * -1
+        );
+        transition: top 0.3s 0.3s cubic-bezier(0.33333, 0.66667, 0.66667, 1),
+          opacity 0.1s linear;
+      }
+    }
+  }
+
+  &-t {
+    position: absolute;
+    font-family: $sans;
+    font-size: 10px;
+    letter-spacing: 0;
+    line-height: 12px;
+    text-transform: uppercase;
+    font-weight: 700;
+    bottom: -10px;
+    left: -5px;
+    right: -5px;
+    text-align: center;
+    color: $white;
+  }
+
+  &-tr {
+    position: fixed;
+    top: -100px;
+    left: 0;
+  }
+}

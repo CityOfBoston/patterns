@@ -1,0 +1,99 @@
+/*
+   Detail List
+
+   Base:
+    dl
+
+   Elements:
+    i = item
+    t = title
+    d = description
+
+   Modifier:
+    b = block
+    sm = small (less vertical spacing)
+ */
+
+.dl {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  &-i {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    background: none;
+    clear: fix;
+
+    &:not(:first-child) {
+      padding-top: $sizing-300;
+    }
+
+    .dl--sm &:not(:first-child) {
+      padding-top: $sizing-100;
+    }
+
+    &:not(:last-child) {
+      border-bottom: 1px dashed $grey-100;
+      padding-bottom: $sizing-300;
+    }
+
+    .dl--sm &:not(:last-child) {
+      padding-bottom: $sizing-100;
+    }
+
+    &--b {
+      line-height: 1;
+
+      .dl-t {
+        float: none;
+        width: 100%;
+      }
+
+      .dl-d {
+        margin-top: $sizing-100;
+      }
+    }
+  }
+
+  &-t {
+    clear: both;
+    float: left;
+    width: 20%;
+    line-height: $line-height-200;
+    color: $grey-300;
+    font: {
+      family: $serif;
+      style: italic;
+      size: responsive $font-200 $font-300;
+    }
+
+    &--l {
+      width: 30%;
+    }
+  }
+
+  &-d {
+    float: left;
+    width: 80%;
+    font: {
+      family: $sans;
+      size: responsive $font-100 $font-200;
+    }
+    // Keeps the line-height relative to the responsive font-size, but
+    // compensates for the dl-t font size being bigger. Aims to preserve
+    // vertical centering.
+    line-height: 'calc(%s * 1.25)' % ($line-height-200);
+    text-transform: uppercase;
+    color: $charles-blue;
+
+    &--s {
+      width: 70%;
+    }
+
+    &--tt-n {
+      text-transform: none;
+    }
+  }
+}

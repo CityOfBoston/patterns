@@ -1,0 +1,240 @@
+// Text
+.t {
+  &--reset {
+    color: $body-text;
+    text-transform: none;
+    letter-spacing: 0;
+    font: {
+      family: $serif;
+      size: 16px;
+    }
+  }
+
+  &--intro {
+    color: $charles-blue;
+    line-height: $line-height-300;
+
+    font: {
+      family: $serif;
+      style: italic;
+      size: responsive 18px 30px;
+    }
+    font-range: 480px 1440px;
+
+    p {
+      margin: 0;
+    }
+  }
+
+  &--info {
+    color: $charles-blue;
+    line-height: $line-height-300;
+
+    font: {
+      family: $serif;
+      style: italic;
+      size: responsive 16px 20px;
+    }
+    font-range: 480px 1440px;
+  }
+
+  // starts smaller than --info but has responsive font sizing so it doesn't
+  // end up bigger on mobile.
+  &--subinfo {
+    color: $charles-blue;
+    line-height: $line-height-300;
+
+    font: {
+      family: $serif;
+      style: italic;
+      size: responsive 14px 16px;
+    }
+    font-range: 480px 1440px;
+  }
+  &--subtitle {
+    color: $charles-blue;
+    line-height: $line-height-200;
+    letter-spacing: 0.58px;
+
+    font: {
+      family: $sans;
+      style: normal;
+      size: responsive 12px 14px;
+    }
+    font-range: 480px 1440px;
+  }
+
+  &--number {
+    color: $charles-blue;
+
+    font: {
+      family: $sans;
+      style: normal;
+    }
+  }
+
+  &--sans {
+    font-family: $sans;
+  }
+
+  &--upper {
+    text-transform: uppercase;
+  }
+
+  &--ellipsis {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+
+  &--req {
+    color: $freedom-red-dark;
+    text-transform: none;
+    letter-spacing: 0;
+
+    font: {
+      family: serif;
+      style: italic;
+      weight: 300;
+    }
+  }
+
+  &--legal {
+    color: $grey-200;
+
+    font: {
+      family: $sans;
+      weight: 300;
+      size: responsive 12px 14px;
+    }
+    font-range: 480px 1440px;
+  }
+
+  // Text colors
+  &--err {
+    color: $error-text-color;
+  }
+
+  &--b {
+    color: $black;
+  }
+
+  &--cb {
+    color: $charles-blue;
+  }
+
+  &--h {
+    &:hover,
+    &:link:hover {
+      color: $charles-blue;
+    }
+  }
+
+  &--ob {
+    color: $optimistic-blue-dark;
+  }
+
+  &--h {
+    &:hover,
+    &:link:hover {
+      color: $optimistic-blue-light;
+    }
+  }
+
+  &--w {
+    color: $white;
+  }
+
+  &:link {
+    color: $white;
+  }
+
+  &--h {
+    &:hover {
+      color: $white;
+    }
+  }
+
+  &--g300 {
+    color: $grey-300;
+  }
+
+  // Text sizing
+  &--s100 {
+    font-size: responsive $font-100 $font-200;
+    font-range: 480px 1440px;
+  }
+
+  &--s300 {
+    font-size: responsive $font-200 $font-300;
+    font-range: 480px 1440px;
+  }
+
+  &--s400 {
+    font-size: responsive $font-300 $font-400;
+    font-range: 480px 1440px;
+  }
+
+  &--s500 {
+    font-size: responsive $font-400 $font-500;
+    font-range: 480px 1440px;
+  }
+
+  &--s60pct {
+    font-size: 60%;
+  }
+}
+
+// Text-alignment
+.ta {
+  &-c,
+  &--c {
+    text-align: center;
+
+    &--large {
+      @media #{$media-large} {
+        text-align: center;
+      }
+    }
+  }
+
+  &-l,
+  &--l {
+    text-align: left;
+  }
+
+  &-r,
+  &--r {
+    text-align: right;
+  }
+
+  &-l--large {
+    @media #{$media-large} {
+      text-align: left;
+    }
+  }
+
+  &-r--large {
+    @media #{$media-large} {
+      text-align: right;
+    }
+  }
+}
+
+// Text-transforms
+.tt {
+  &-u {
+    text-transform: uppercase;
+  }
+
+  &-n {
+    text-transform: none;
+  }
+}
+
+// Text-decorations
+.td {
+  &-str {
+    text-decoration: line-through;
+  }
+}

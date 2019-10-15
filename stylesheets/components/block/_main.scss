@@ -1,0 +1,201 @@
+/*
+   BLOCKS
+
+   Base:
+    b
+
+   Modifier:
+    fw = full-width
+    g = grey
+    b = blue
+
+   Element:
+    c = content
+    fv = filters (vertical)
+ */
+
+.b {
+  // Block content
+  &-c {
+    width: 100%;
+    max-width: 66.67rem;
+    margin-left: auto;
+    margin-right: auto;
+    padding: $sizing-700 10%;
+    position: relative;
+
+    &--mh {
+      min-height: 500px;
+    }
+
+    // Smaller vertical padding
+    &--smv {
+      padding-top: $sizing-500;
+      padding-bottom: $sizing-500;
+    }
+
+    // Xtra small vertical padding
+    &--xsmv {
+      padding-top: $sizing-300;
+      padding-bottom: $sizing-300;
+    }
+
+    // horizontally-small
+    &--hsm {
+      // without setting width, if this ends up in a flex container
+      // it will shrink to fit its contents, not go up to max-width
+      width: 100%;
+      max-width: 41.25rem;
+    }
+
+    &--ntp {
+      padding-top: 0;
+    }
+
+    &--nbp {
+      padding-bottom: 0;
+    }
+
+    &--wtb {
+      border-top: $border-100 dotted $grey-200;
+    }
+
+    &--wbb {
+      border-bottom: $border-100 dotted $grey-200;
+    }
+  }
+  // Flex fill
+  &-ff {
+    // Has to be just grow instead of the "flex" shorthand, otherwise
+    // IE won't grow the element to contain its children if they're
+    // taller than the size this is flexing to.
+    flex-grow: 1;
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+  }
+
+  // Block tab
+  &-t {
+    margin-bottom: $sizing-300;
+
+    @media #{$media-large} {
+      margin-bottom: 0;
+      max-width: 66.67rem;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      transform: translateY(-50%);
+      padding: $sizing-300;
+    }
+  }
+
+  // Vertical filters tab
+  &-fv {
+    max-width: 66.67rem;
+    margin: 0 auto;
+    padding: $sizing-300 10%;
+  }
+
+  // Contents centered
+  &--cc {
+    text-align: center;
+  }
+
+  &--fw {
+    left: 50%;
+    position: relative;
+    transform: translate(-50%, 0);
+    width: 100vw;
+  }
+
+  &--red {
+    background-color: $freedom-red-light;
+  }
+
+  &--by {
+    border-top: $border-400 solid $yellow;
+  }
+
+  // Block with grey background
+  &--g {
+    background-color: $grey-000;
+  }
+
+  // Block with white background
+  &--w {
+    background-color: $white;
+  }
+
+  // Blocks with padding
+  &--p300 {
+    padding: $sizing-300;
+  }
+
+  // Blocks with margin
+  &--mb300 {
+    margin-bottom: $sizing-300;
+  }
+
+  // With tail
+  &--wt {
+    position: relative;
+  }
+
+  &::after {
+    content: '';
+    top: 100%;
+    left: 50%;
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-top: 20px solid $white;
+    transform: translateX(-50%);
+  }
+
+  @media #{$media-large} {
+    &-c {
+      &--hsm {
+        // if we wait until the xxlarge breakpoint to remove the 10% left/right
+        // padding (see below) the horizontally-small variant's content is
+        // too narrow.
+        padding-left: 0;
+        padding-right: 0;
+      }
+    }
+  }
+
+  @media #{$media-xxlarge} {
+    &-c {
+      padding: $sizing-800 0;
+
+      // Smaller vertical padding
+      &--smv {
+        padding-top: $sizing-500;
+        padding-bottom: $sizing-500;
+      }
+
+      // Xtra small vertical padding
+      &--xsmv {
+        padding-top: $sizing-300;
+        padding-bottom: $sizing-300;
+      }
+
+      &--ntp {
+        padding-top: 0;
+      }
+
+      &--nbp {
+        padding-bottom: 0;
+      }
+
+      &-fv {
+        padding: $sizing-300;
+      }
+    }
+  }
+}

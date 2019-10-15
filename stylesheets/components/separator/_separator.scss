@@ -1,0 +1,54 @@
+.sep {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-grow: 1;
+
+  &--v {
+    @media #{$media-large} {
+      flex-direction: column;
+      margin: 0;
+
+      .sep-l {
+        width: 0;
+        margin: 0 auto;
+      }
+    }
+  }
+}
+
+.sep-l {
+  flex: 1;
+  border-style: solid;
+  border-width: $border-150 0 0 $border-150;
+  border-color: $grey-300;
+}
+
+.sep--w & {
+  border-color: $white;
+}
+
+.sep-c {
+  border-radius: 50%;
+  border-style: solid;
+  border-width: $border-150;
+  border-color: $grey-300;
+  width: $sizing-800;
+  height: $sizing-800;
+
+  color: $grey-300;
+
+  // This is the equivalent of t--info
+  font-family: $serif;
+  font-size: responsive 16px 20px;
+  font-range: 480px 1440px;
+  font-style: italic;
+  line-height: 'calc(%s * 0.87)' % ($sizing-800);
+  text-align: center;
+  vertical-align: baseline;
+
+  .sep--w & {
+    color: $white;
+    border-color: $white;
+  }
+}

@@ -1,8 +1,8 @@
 <img src="https://cloud.githubusercontent.com/assets/9234/19400090/8c20c53c-9222-11e6-937c-02bce55e5301.png" alt="City of Boston" width="150" />
 
-This is the pattern library for the City of Boston. It's currently a work in progress, but we're adding to it every day. 
+This is the pattern library for the City of Boston. It’s currently a work in progress, but we’re adding to it every day.
 
-**This project contains the marks and trade dress of the City of Boston's digital properties and should not be reused without the express permission of the City of Boston.**
+**This project contains the marks and trade dress of the City of Boston’s digital properties and should not be reused without the express permission of the City of Boston.**
 
 [![Build Status](https://travis-ci.org/CityOfBoston/patterns.svg?branch=develop)](https://travis-ci.org/CityOfBoston/patterns)
 [![BrowserStack Status](https://www.browserstack.com/automate/badge.svg?badge_key=Nlcwdm0xVlIzQ3dVWDQxbmltNEg1OWp4WEZoOXo5eHZlUHpKV3VuZldRVT0tLUxKWVhwckNLaVIzb29qQjFZQkVla0E9PQ%3D%3D--7770e74f86750ab3c3ceee0369fe44e871d60ef8)](https://www.browserstack.com/automate/public-build/Nlcwdm0xVlIzQ3dVWDQxbmltNEg1OWp4WEZoOXo5eHZlUHpKV3VuZldRVT0tLUxKWVhwckNLaVIzb29qQjFZQkVla0E9PQ==--7770e74f86750ab3c3ceee0369fe44e871d60ef8)
@@ -35,16 +35,17 @@ you’re using Chrome, you can allow invalid local signatures from this config
 setting: chrome://flags/#allow-insecure-localhost
 
 All new features and changes need to work with our [supported
-browsers](https://github.com/CityOfBoston/digital/wiki/Software-engineering-working-agreement#browsers-we-support).
+browsers](https://docs.boston.gov/digital/getting-started/life-on-the-digital-team/software-engineering-working-agreement#browsers-we-support).
 
 ## Testing
 
 Fleet has 2 types of tests:
- - Unit tests, using [Jest](https://facebook.github.io/jest/)
- - Browser tests, using [TestCafe](https://testcafe.devexpress.com/)
+
+* Unit tests, using [Jest](https://facebook.github.io/jest/)
+* Browser tests, using [TestCafe](https://testcafe.devexpress.com/)
 
 During development, you can run `npm run jest.dev` to have Jest watch files and
-re-run. 
+re-run.
 
 To run the browser tests, start up your Fractal server with `npm run dev` and
 then run `npm run testcafe.dev` to start up a remote TestCafe server. It will
@@ -79,17 +80,17 @@ If you need to submit a bug report for the pattern library, please follow these 
 
 ### Prior to submitting a bug
 
- * Verify that you are able to reproduce it repeatedly. Try multiple browsers, devices, etc. Also, try clearing your cache.
- * Perform a quick search of our [existing issues](https://github.com/CityOfBoston/patterns/issues) to see if it has been logged previously.
+* Verify that you are able to reproduce it repeatedly. Try multiple browsers, devices, etc. Also, try clearing your cache.
+* Perform a quick search of our [existing issues](https://github.com/CityOfBoston/patterns/issues) to see if it has been logged previously.
 
 ### Submitting a bug
 
- * Use a **clear and descriptive** title when creating your issue.
- * Include a bulleted list of steps to reproduce your issue.
- * Include the URL of the page that you're seeing the issue on.
- * Include screenshots if possible. Bonus points if you include an animated GIF of the issue.
- * Include details about your browser (which one, what version, using ad blockers?).
- * When filing your issue, assume that the recipient knows nothing about what you're talking about. There is no such thing as too many details when filing your issue.
+* Use a **clear and descriptive** title when creating your issue.
+* Include a bulleted list of steps to reproduce your issue.
+* Include the URL of the page that you’re seeing the issue on.
+* Include screenshots if possible. Bonus points if you include an animated GIF of the issue.
+* Include details about your browser (which one, what version, using ad blockers?).
+* When filing your issue, assume that the recipient knows nothing about what you’re talking about. There is no such thing as too many details when filing your issue.
 
 ### Bug report template
 
@@ -123,4 +124,4 @@ Ad blocker: [Ad blocker?]
 
 ## Code of Conduct
 
-This project adheres to the [Contributor Covenant code of conduct](https://github.com/CityOfBoston/boston.gov/blob/develop/guides/01-code-of-conduct.md). By participating, you are expected to uphold this code. Please report unacceptable behavior to <a href="mailto:digital@boston.gov">digital@boston.gov</a>.
+This project adheres to the [Contributor Covenant code of conduct](https://docs.boston.gov/digital/standards-and-best-practices/code-of-conduct). By participating, you are expected to uphold this code. Please report unacceptable behavior to <a href="mailto:digital@boston.gov">digital@boston.gov</a>.

@@ -1,0 +1,94 @@
+/*
+
+   Table
+
+   Base:
+    tbl
+
+   Elements:
+    None Yet
+
+   Modifier:
+    None Yet
+
+ */
+
+.responsive-table {
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+
+  thead {
+    display: none;
+    text-transform: uppercase;
+
+    @media (min-width: 768px) {
+      display: table-header-group;
+    }
+  }
+
+  th {
+    background-color: $charles-blue;
+    font-family: $sans;
+    font-weight: inherit;
+    line-height: $line-height-200;
+    text-transform: uppercase;
+    color: $white;
+    text-align: left;
+    padding: $sizing-300;
+
+    @media (min-width: 768px) {
+      display: table-cell;
+    }
+
+    &:not(:last-child) {
+      border-right-color: $white;
+    }
+  }
+
+  tbody {
+    tr {
+      display: block;
+      overflow: hidden;
+
+      @media (min-width: 768px) {
+        display: table-row;
+      }
+
+      &:nth-child(odd) {
+        background-color: #f2f2f2;
+      }
+
+      td {
+        border: none;
+        display: block;
+        float: left;
+        clear: left;
+        width: 100%;
+        text-align: right;
+        padding: $sizing-300;
+        line-height: $line-height-200;
+        vertical-align: top;
+
+        @media (min-width: 768px) {
+          width: inherit;
+          clear: none;
+          float: none;
+          display: table-cell;
+          text-align: left;
+        }
+
+        &:before {
+          content: attr(data-label);
+          float: left;
+          text-transform: uppercase;
+          font-weight: bold;
+
+          @media (min-width: 768px) {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+}

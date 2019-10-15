@@ -1,0 +1,17 @@
+/*
+   Checkboxes
+
+   Base:
+    bc
+
+   Modifier:
+    r = align right
+ */
+
+.bc {
+  margin-top: $sizing-200;
+
+  &--r {
+    text-align: right;
+  }
+}

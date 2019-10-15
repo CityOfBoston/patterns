@@ -1,0 +1,119 @@
+/*
+   CARD: PERSON
+
+   Base:
+    cd-p
+
+   Elements:
+    t = title
+    b = body
+
+   Modifier:
+    None Yet
+ */
+
+.cdp {
+  display: flex;
+  flex-direction: column;
+
+  &-a {
+    width: 100%;
+    line-height: $line-height-000;
+  }
+
+  &-t {
+    line-height: $line-height-100;
+  }
+
+  &-l {
+    display: flex;
+    width: 100%;
+    flex-grow: 1;
+    align-items: center;
+    text-align: left;
+    background-color: $grey-000;
+
+    @media #{$media-large} {
+      display: block;
+      text-align: center;
+    }
+
+    &:hover {
+      background-color: $optimistic-blue-light;
+      color: $white;
+    }
+
+    .cdp-t {
+      color: $charles-blue;
+    }
+
+    .cdp-st {
+      color: $white;
+    }
+  }
+
+  &-i {
+    $size: (
+      default: '110px',
+      large: '120px',
+      xlarge: '148px',
+      xxlarge: '173px',
+    );
+
+    display: block;
+    width: map-get($size, default);
+    height: map-get($size, default);
+    margin-right: $sizing-300;
+    object-fit: cover;
+    border-radius: 100%;
+
+    @media #{$media-large} {
+      width: map-get($size, large);
+      height: map-get($size, large);
+      margin: 0 auto $sizing-300;
+    }
+
+    @media #{$media-xlarge} {
+      width: map-get($size, xlarge);
+      height: map-get($size, xlarge);
+      margin: 0 auto $sizing-500;
+    }
+
+    @media #{$media-xxlarge} {
+      width: map-get($size, xxlarge);
+      height: map-get($size, xxlarge);
+    }
+  }
+
+  // Option for always centering, even on mobile breakpoints
+  &--c {
+    margin: 0 auto;
+  }
+}
+
+/* Handle theme variations */
+.b--g {
+  .cdp {
+    &-l {
+      background-color: $white;
+
+      &:hover {
+        background-color: $optimistic-blue-light;
+      }
+    }
+  }
+}
+
+.b--b {
+  .cdp {
+    &-a {
+      background-color: $optimistic-blue-dark;
+      border-top: $border-200 solid $charles-blue;
+
+      &:hover {
+        color: $white;
+        background-color: $freedom-red-light;
+      }
+    }
+  }
+}

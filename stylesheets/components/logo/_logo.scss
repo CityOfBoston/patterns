@@ -1,0 +1,80 @@
+/*
+
+   logo
+
+   Base:
+    lo
+
+   Elements:
+    i = icon
+    ic = icon container
+    tt = tooltip
+
+   Modifier:
+    None Yet
+
+ */
+
+.lo {
+  &--abs {
+    position: absolute;
+    left: 85px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  &-l {
+    align-items: center;
+    color: $charles-blue;
+    display: flex;
+    text-decoration: none;
+
+    a {
+      &:visited,
+      &:link {
+        color: $charles-blue;
+
+        &:hover {
+          color: $freedom-red-light;
+        }
+      }
+
+      &:hover {
+        color: $freedom-red-light;
+      }
+    }
+  }
+
+  &-i {
+    display: block;
+    margin-bottom: -4px;
+    width: 120px;
+
+    @media #{$media-large} {
+      min-width: $logo-width-l;
+      max-height: 25px;
+    }
+
+    @media #{$media-xlarge} {
+      min-width: $logo-width-xl;
+    }
+  }
+
+  &-t {
+    border-left: 1px solid $charles-blue;
+    color: $charles-blue;
+    display: none;
+    font-family: $serif;
+    font-size: responsive 14px 16px;
+    font-range: 480px 1440px;
+    font-style: italic;
+    line-height: 1;
+    margin-left: $sizing-300;
+    padding: $sizing-200 0 $sizing-200 $sizing-300;
+    text-decoration: none;
+
+    @media screen and (min-width: 1054px) {
+      display: block;
+    }
+  }
+}

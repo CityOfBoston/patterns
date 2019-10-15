@@ -1,0 +1,76 @@
+/*
+   Collapsible
+
+   Base:
+    co
+
+   Elements:
+    t = title
+    b = body
+
+   Modifier:
+    None Yet
+ */
+
+.co {
+  margin-bottom: $sizing-300;
+
+  &-f:checked {
+    ~ .co {
+      &-b {
+        display: block;
+        background: $white;
+      }
+    }
+  }
+
+  &-t {
+    &::after {
+      transform: translateY(-50%) rotate(90deg);
+    }
+  }
+
+  &-t {
+    position: relative;
+    display: block;
+    margin: 0;
+    padding: $sizing-500 $sizing-400;
+    text-transform: uppercase;
+    background-color: $optimistic-blue-dark;
+    color: $white;
+    font: {
+      family: $sans;
+      size: responsive 14px 16px;
+    }
+    font-range: 480px 1440px;
+
+    user-select: none;
+    cursor: pointer;
+
+    &::after {
+      content: '';
+
+      position: absolute;
+      right: $sizing-400;
+      top: 50%;
+      transform: translateY(-50%);
+      background: url(../images/global/icons/chevron.svg) no-repeat right center;
+      height: 20px;
+      width: 16px;
+
+      transition: 0.125s all;
+    }
+
+    @media #{$media-large} {
+      display: none;
+    }
+  }
+
+  &-b {
+    display: none;
+
+    @media #{$media-large} {
+      display: block;
+    }
+  }
+}
