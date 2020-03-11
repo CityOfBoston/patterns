@@ -5,3 +5,4 @@ node_modules
 /public
 deploy_key
 .vscode/
+stylesheets/**/*.css
