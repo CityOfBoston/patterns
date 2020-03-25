@@ -12,13 +12,6 @@ import '@stencil/core';
 
 export namespace Components {
 
-  interface CobChart {
-    'config': any;
-  }
-  interface CobChartAttributes extends StencilHTMLAttributes {
-    'config'?: any;
-  }
-
   interface CobContactForm {
     /**
     * Defaults to `https://contactform.boston.gov/emails` but can be set for development testing.
@@ -71,76 +64,17 @@ export namespace Components {
     */
     'visible'?: boolean;
   }
-
-  interface CobMap {
-    /**
-    * A JSON string or equivalent object that defines the map and layers.
-    */
-    'config': string;
-    /**
-    * Hides the map’s modal
-    */
-    'hide': () => void;
-    /**
-    * ID of the HTML element. Used to automatically open the map modal.
-    */
-    'id': string;
-    /**
-    * Change to true to make the modal appear.
-    */
-    'modalVisible': boolean;
-    /**
-    * Test attribute to make the overlay open automatically at mobile widths. Only used so that we can take Percy screenshots of the overlay.
-    */
-    'openOverlay': boolean;
-    /**
-    * Shows the map in a full-window modal dialog. A better way to make the modal appear on a web page is to link to #<id>, which will cause the map to appear and leave a record in the browser history so that the back button will close the map (rather than take the user to the page before).
-    */
-    'show': () => void;
-    /**
-    * Toggles whether or not the map is visible.
-    */
-    'toggle': () => void;
-  }
-  interface CobMapAttributes extends StencilHTMLAttributes {
-    /**
-    * A JSON string or equivalent object that defines the map and layers.
-    */
-    'config'?: string;
-    /**
-    * ID of the HTML element. Used to automatically open the map modal.
-    */
-    'id'?: string;
-    /**
-    * Change to true to make the modal appear.
-    */
-    'modalVisible'?: boolean;
-    /**
-    * Test attribute to make the overlay open automatically at mobile widths. Only used so that we can take Percy screenshots of the overlay.
-    */
-    'openOverlay'?: boolean;
-  }
 }
 
 declare global {
   interface StencilElementInterfaces {
-    'CobChart': Components.CobChart;
     'CobContactForm': Components.CobContactForm;
-    'CobMap': Components.CobMap;
   }
 
   interface StencilIntrinsicElements {
-    'cob-chart': Components.CobChartAttributes;
     'cob-contact-form': Components.CobContactFormAttributes;
-    'cob-map': Components.CobMapAttributes;
   }
 
-
-  interface HTMLCobChartElement extends Components.CobChart, HTMLStencilElement {}
-  var HTMLCobChartElement: {
-    prototype: HTMLCobChartElement;
-    new (): HTMLCobChartElement;
-  };
 
   interface HTMLCobContactFormElement extends Components.CobContactForm, HTMLStencilElement {}
   var HTMLCobContactFormElement: {
@@ -148,22 +82,12 @@ declare global {
     new (): HTMLCobContactFormElement;
   };
 
-  interface HTMLCobMapElement extends Components.CobMap, HTMLStencilElement {}
-  var HTMLCobMapElement: {
-    prototype: HTMLCobMapElement;
-    new (): HTMLCobMapElement;
-  };
-
   interface HTMLElementTagNameMap {
-    'cob-chart': HTMLCobChartElement
     'cob-contact-form': HTMLCobContactFormElement
-    'cob-map': HTMLCobMapElement
   }
 
   interface ElementTagNameMap {
-    'cob-chart': HTMLCobChartElement;
     'cob-contact-form': HTMLCobContactFormElement;
-    'cob-map': HTMLCobMapElement;
   }
 
 
