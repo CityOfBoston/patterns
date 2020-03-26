@@ -5,6 +5,8 @@
     "dev": "concurrently \"gulp\" \"fractal start --watch\" \"stencil build --docs --prerender --watch\"",
     "dev-chrome": "concurrently \"gulp\" \"fractal start --watch\" \"stencil build --docs --dev --prerender --watch\"",
     "build": "stencil build --prerender --docs && gulp build && fractal build",
+    "fractal-build": "fractal build",
+    "gulp-build": "gulp build",
     "heroku-postbuild": "npm run build",
     "lint": "eslint --ext .tsx,.ts,.js .",
     "test": "npm run jest && npm run testcafe",
@@ -16,7 +18,8 @@
     "testcafe.dev": "testcafe -L remote components/**/*.testcafe.*",
     "testcafe.ci": "cross-env BROWSERSTACK_USE_AUTOMATE=1 TEST_SERVER_URL=http://localhost:3035/ testcafe -a 'http-server -r public -p 3035' 'browserstack:edge@18,browserstack:ie@11.0:Windows 8.1,browserstack:safari@12,browserstack:chrome:Windows 10,browserstack:firefox@64:Windows 10' components/**/*.testcafe.*",
     "precommit": "lint-staged",
-    "prepush": "jest --clearCache && npm run test"
+    "prepush": "jest --clearCache && npm run test",
+    "preinstall": "npx npm-force-resolutions"
   },
   "jest": {
     "transform": {
@@ -39,21 +42,22 @@
     ]
   },
   "dependencies": {
-    "@frctl/fractal": "^1.1.4",
+    "@frctl/fractal": "1.1.4",
     "@stencil/core": "^0.18.0",
-    "@types/core-js": "^2.5.0",
-    "@types/d3-fetch": "^1.1.2",
-    "@types/geojson": "^7946.0.1",
-    "@types/jest": "^22.1.1",
-    "@types/leaflet": "^1.2.5",
+    "@types/core-js": "2.5.0",
+    "@types/d3-fetch": "1.1.2",
+    "@types/geojson": "7946.0.1",
+    "@types/jest": "22.1.1",
+    "@types/leaflet": "1.2.5",
     "autoprefixer": "^6.7.7",
     "concurrently": "^3.5.1",
     "core-js": "^2.5.0",
-    "d3-fetch": "^1.1.2",
+    "d3-fetch": "1.1.2",
     "docson": "^2.1.0",
-    "esri-leaflet": "^2.2.3",
-    "esri-leaflet-geocoder": "^2.2.13",
+    "esri-leaflet": "2.2.3",
+    "esri-leaflet-geocoder": "2.2.13",
     "gulp": "^3.9.1",
+    "graceful-fs": "4.2.2",
     "gulp-concat": "^2.6.1",
     "gulp-cssnano": "^2.1.2",
     "gulp-load-plugins": "^1.2.4",
@@ -61,7 +65,7 @@
     "gulp-uglify": "^3.0.0",
     "handlebars": "^4.0.11",
     "laggard": "^0.1.0",
-    "leaflet": "^1.3.2",
+    "leaflet": "1.3.2",
     "leaflet.markercluster": "github:CityOfBoston/Leaflet.markercluster#160f1f0",
     "lodash": "^4.17.5",
     "lost": "^8.1.0",
@@ -73,9 +77,9 @@
     "run-sequence": "^1.2.2",
     "serve-static": "^1.11.1",
     "templayed": "github:CityOfBoston/templayed.js",
-    "vega-lib": "^4.2.0",
-    "vega-lite": "^3.0.0-rc5",
-    "vega-tooltip": "^0.17.0"
+    "vega-lib": "4.2.0",
+    "vega-lite": "3.0.0-rc5",
+    "vega-tooltip": "0.17.0"
   },
   "devDependencies": {
     "cross-env": "^5.1.4",
@@ -101,5 +105,8 @@
     "typescript": "^2.8.1",
     "typescript-eslint-parser": "^12.0.0",
     "web-server-cli": "^2.0.2"
+  },
+  "resolutions": {
+    "graceful-fs": "4.2.3"
   }
 }
