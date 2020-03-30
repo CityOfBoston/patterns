@@ -13,7 +13,7 @@ context:
     - index: 1
       href: https://www.boston.gov/neighborhood/allston
       image:
-        url: https://www.boston.gov/sites/default/files/styles/grid_card_image/public/allston2.jpg?itok=jMsIfnJ6
+        url: https://patterns.boston.gov/assets/images/fleet/allston2.jpg
         title: 'Allston'
       title: 'Allston'
       subtitle: 'Neighborhood'
@@ -21,7 +21,7 @@ context:
     - index: 2
       href: https://www.boston.gov/neighborhood/allston
       image:
-        url: https://www.boston.gov/sites/default/files/styles/grid_card_image/public/allston2.jpg?itok=jMsIfnJ6
+        url: https://patterns.boston.gov/assets/images/fleet/allston2.jpg
         title: 'Allston'
       title: 'Allston'
       subtitle: 'Neighborhood'
@@ -29,7 +29,7 @@ context:
     - index: 3
       href: https://www.boston.gov/neighborhood/allston
       image:
-        url: https://www.boston.gov/sites/default/files/styles/grid_card_image/public/allston2.jpg?itok=jMsIfnJ6
+        url: https://patterns.boston.gov/assets/images/fleet/allston2.jpg
         title: 'Allston'
       title: 'Allston'
       subtitle: 'Neighborhood'
@@ -37,7 +37,7 @@ context:
     - index: 4
       href: https://www.boston.gov/neighborhood/allston
       image:
-        url: https://www.boston.gov/sites/default/files/styles/grid_card_image/public/allston2.jpg?itok=jMsIfnJ6
+        url: https://patterns.boston.gov/assets/images/fleet/allston2.jpg
         title: 'Allston'
       title: 'Allston'
       subtitle: 'Neighborhood'
