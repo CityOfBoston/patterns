@@ -17,7 +17,7 @@ variants:
       cards:
         - index: 1
           image:
-            url: https://www.boston.gov/sites/default/files/styles/grid_card_image/public/allston2.jpg?itok=jMsIfnJ6
+            url: https://patterns.boston.gov/assets/images/fleet/allston2.jpg
             title: 'Allston'
           href: https://www.boston.gov/neighborhood/allston
           title: 'Allston'
@@ -39,7 +39,7 @@ variants:
       cards:
         - index: 1
           image:
-            url: https://amazon.boston.gov/static/marty.98f3382b.jpg
+            url: https://patterns.boston.gov/assets/images/fleet/allston2.jpg
             title: 'Martin J. Walsh'
           href: #
           title: 'Martin J. Walsh'
@@ -47,7 +47,7 @@ variants:
           content: 'Mayor'
         - index: 2
           image:
-            url: https://amazon.boston.gov/static/arrigo.d2d17f6f.jpg
+            url: https://patterns.boston.gov/assets/images/fleet/allston2.jpg
             title: 'Brian M. Arrigo'
           href: #
           title: 'Brian M. Arrigo'
@@ -55,7 +55,7 @@ variants:
           content: 'Mayor'
         - index: 3
           image:
-            url: https://amazon.boston.gov/static/anne.ed689eba.jpg
+            url: https://patterns.boston.gov/assets/images/fleet/allston2.jpg
             title: 'Ann Klee'
           href: #
           title: 'Ann Klee'
@@ -63,7 +63,7 @@ variants:
           content: 'VP, Environmental & Safety, head of Boston operations'
         - index: 4
           image:
-            url: https://amazon.boston.gov/static/fulp.c0b68d80.jpg
+            url: https://patterns.boston.gov/assets/images/fleet/allston2.jpg
             title: 'Carol Fulp'
           href: #
           title: 'Carol Fulp'
@@ -71,7 +71,7 @@ variants:
           content: 'President and CFO'
         - index: 5
           image:
-            url: https://amazon.boston.gov/static/brown.67571305.jpg
+            url: https://patterns.boston.gov/assets/images/fleet/allston2.jpg
             title: 'Robert A. Brown'
           href: #
           title: 'Robert A. Brown'
@@ -79,7 +79,7 @@ variants:
           content: 'President'
         - index: 6
           image:
-            url: https://amazon.boston.gov/static/rinchett.bd518a68.jpg
+            url: https://patterns.boston.gov/assets/images/fleet/allston2.jpg
             title: 'Ritchy Rinchett'
           href: #
           title: 'Ritchy Rinchett'
@@ -87,7 +87,7 @@ variants:
           content: 'Student'
         - index: 7
           image:
-            url: https://amazon.boston.gov/static/panos.0f60fd86.jpg
+            url: https://patterns.boston.gov/assets/images/fleet/allston2.jpg
             title: 'Panos Panay'
           href: #
           title: 'Panos Panay'
@@ -95,7 +95,7 @@ variants:
           content: 'Vice President for Innovation and Strategy'
         - index: 8
           image:
-            url: https://amazon.boston.gov/static/zorica.d295be82.jpg
+            url: https://patterns.boston.gov/assets/images/fleet/allston2.jpg
             title: 'Zorica Pantić'
           href: #
           title: 'Zorica Pantić'
@@ -103,7 +103,7 @@ variants:
           content: 'President'
         - index: 9
           image:
-            url: https://amazon.boston.gov/static/lee.05f0998b.jpg
+            url: https://patterns.boston.gov/assets/images/fleet/allston2.jpg
             title: 'Christine Lee'
           href: #
           title: 'Christine Lee'
@@ -114,7 +114,7 @@ context:
     - index: 1
       href: https://www.boston.gov/neighborhood/allston
       image:
-        url: https://www.boston.gov/sites/default/files/styles/grid_card_image/public/allston2.jpg?itok=jMsIfnJ6
+        url: https://patterns.boston.gov/assets/images/fleet/allston2.jpg
         title: 'Allston'
       title: 'Allston'
       subtitle: 'Neighborhood'
