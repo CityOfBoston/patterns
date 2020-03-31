@@ -8,25 +8,25 @@ variants:
     context:
       cards:
         - index: 1
-          image: https://www.boston.gov/sites/default/files/department-icon-10-2016/department_icons_new_analytics.svg
+          image: /images/b-dark.svg
           href: https://www.boston.gov/departments/analytics-team
           title: Analytics
           grid: "g--4--xxl g--6 m-b300 m-b500--xxl"
           phone: 617-555-1212
         - index: 2
-          image: https://www.boston.gov/sites/default/files/department-icon-10-2016/department_icons_new_analytics.svg
+          image: /images/b-dark.svg
           href: https://www.boston.gov/departments/analytics-team
           title: Intergorvernmental Relations
           grid: "g--4--xxl g--6 m-b300 m-b500--xxl"
           phone: 617-555-1212
         - index: 3
-          image: https://www.boston.gov/sites/default/files/department-icon-10-2016/department_icons_new_analytics.svg
+          image: /images/b-dark.svg
           href: https://www.boston.gov/departments/analytics-team
           title: Boston Centers for Youth and Families
           grid: "g--4--xxl g--6 m-b300 m-b500--xxl"
           phone: 617-555-1212
         - index: 4
-          image: https://www.boston.gov/sites/default/files/department-icon-10-2016/department_icons_new_analytics.svg
+          image: /images/b-dark.svg
           href: https://www.boston.gov/departments/analytics-team
           title: Archives and Records Management
           grid: "g--4--xxl g--6 m-b300 m-b500--xxl"
@@ -34,7 +34,7 @@ variants:
 context:
   cards:
     - index: 1
-      image: https://www.boston.gov/sites/default/files/department-icon-10-2016/department_icons_new_analytics.svg
+      image: /images/b-dark.svg
       href: https://www.boston.gov/departments/analytics-team
       title: Analytics
       phone: 617-555-1212
