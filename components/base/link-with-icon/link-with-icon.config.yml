@@ -6,4 +6,4 @@ context:
   links:
     - name: Pay a parking ticket
       href: https://www.boston.gov/departments/parking-clerk/how-pay-parking-ticket
-      image: https://www.boston.gov/sites/default/files/experiential_icons_no_ticket.svg
+      image: /images/global/icons/experiential/bike.svg
