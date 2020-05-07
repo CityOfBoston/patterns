@@ -48,16 +48,18 @@ fractal.web.set('server.sync', true);
 fractal.web.set('server.syncOptions', {
   open: true,
   notify: true,
-  https: true,
+  https: false,
   snippetOptions: {
     blacklist: ['**/*?disable-browsersync'],
   },
   middleware: function(req, res, next) {
+    res.setHeader('Access-Control-Allow-Headers', '*');
     res.setHeader('Access-Control-Allow-Origin', '*');
     next();
   },
 });
 
+// fractal.web.set('server.port', process.env.PORT || 3030);
 fractal.web.set('server.port', process.env.PORT || 3030);
 
 const hbs = require('@frctl/handlebars')({
