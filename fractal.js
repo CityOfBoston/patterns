@@ -59,7 +59,6 @@ fractal.web.set('server.syncOptions', {
   },
 });
 
-// fractal.web.set('server.port', process.env.PORT || 3030);
 fractal.web.set('server.port', process.env.PORT || 3030);
 
 const hbs = require('@frctl/handlebars')({
