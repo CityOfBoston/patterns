@@ -23,17 +23,12 @@ fractal.web.set('builder.dest', __dirname + '/public');
 /*
  * Tell Fractal where to look for components.
  */
-fractal.set('components.path', 'components');
+fractal.set('components.path', __dirname + '/components');
 
 /*
  * Tell Fractal where to look for documentation pages.
  */
-fractal.set('docs.path', 'docs');
-
-/*
- * Tell the Fractal web preview plugin where to look for static assets.
- */
-fractal.web.set('static.path', __dirname + '/assets');
+fractal.set('docs.path', __dirname + '/docs');
 
 /*
  * Tell the Fractal web preview plugin to use this template for previews.
@@ -43,20 +38,28 @@ fractal.set('components.default.preview', '@preview');
 /*
  * Configure the server
  */
+
+/*
+ * Tell the Fractal web preview plugin where to look for static assets.
+ */
+fractal.web.set('static.path', __dirname + '/assets');
+
 fractal.web.set('server.sync', true);
 fractal.web.set('server.syncOptions', {
   open: true,
   notify: true,
-  https: true,
+  https: false,
   snippetOptions: {
     blacklist: ['**/*?disable-browsersync'],
   },
   middleware: function(req, res, next) {
+    res.setHeader('Access-Control-Allow-Headers', '*');
     res.setHeader('Access-Control-Allow-Origin', '*');
     next();
   },
 });
 
+// fractal.web.set('server.port', process.env.PORT || 3030);
 fractal.web.set('server.port', process.env.PORT || 3030);
 
 const hbs = require('@frctl/handlebars')({

@@ -5,16 +5,12 @@
         <a href="{{ link.href }}" title="{{ link.name }}" class="nv-h-l-a{{#if always_show}} nv-h-l-a--k{{/if}}">{{ link.name }}</a>
       </li>
     {{/each}}
-    <li class="tr nv-h-l-i tr--visible">
-      <a href="#translate" title="Translate" class="nv-h-l-a nv-h-l-a--k--s tr-link">Translate</a>
-      <ul class="tr-dd">
-        <li><span class="notranslate tr-dd-link tr-dd-link--message">Loading...</span></li>
-        <li><a href="#" class="notranslate tr-dd-link" data-ln="ht">Kreyòl Ayisyen</a></li>
-        <li><a href="#" class="notranslate tr-dd-link" data-ln="pt">Portugese</a></li>
-        <li><a href="#" class="notranslate tr-dd-link" data-ln="es">Español</a></li>
-        <li><a href="#" class="notranslate tr-dd-link" data-ln="vi">Tiếng Việt</a></li>
-        <li><a href="#" class="notranslate tr-dd-link tr-dd-link--hidden" data-ln="en">English</a></li>
-      </ul>
+    <li id="targetLanguage" class="nv-h-l-i translate-dropdown-menu">
+      <a id="cob_translate" href="#translate" title="Translate" class="nv-h-l-a nv-h-l-a--k translate-link">
+        Translate
+      </a>
+      <div id="overlay" class="translate-overlay"></div>
+      <div id="overlay-background" class="translate-overlay-background"></div>
     </li>
     <li class="nv-h-l-i">
       <label for="s-tr" title="Search" class="nv-h-l-a nv-h-l-a--k nv-h-l-a-ic" id="searchIcon">
