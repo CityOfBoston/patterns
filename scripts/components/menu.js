@@ -10,9 +10,21 @@ var BostonMenu = (function () {
   var burger;
   var placeholder;
   var nav;
+  var burgerIcon;
+  var navMainmenu;
+  var sticky;
 
   function handleBurgerChange(ev) {
     document.body.classList.toggle('no-s');
+
+  }
+
+  function mainMenuonScroll() {
+    if (window.pageYOffset > sticky) {
+      navMainmenu.classList.add("sticky")
+    } else {
+      navMainmenu.classList.remove("sticky");
+    }
   }
 
   function handleTrigger(ev, method) {
@@ -83,19 +95,29 @@ var BostonMenu = (function () {
   function start() {
     nav = document.querySelectorAll('.nv-m');
     burger = document.getElementById('brg-tr');
+    burgerIcon = document.querySelector('label[for="brg-tr"]');
     listItems = document.querySelectorAll('.nv-m-c-l-i');
     backTriggers = document.querySelectorAll('.nv-m-c-b');
     secondaryTriggers = document.querySelectorAll('.nolink');
     secondaryNavs = document.querySelectorAll('.nv-m-c-l-l');
     secondaryNavItems = document.querySelectorAll('.nv-m-c-a--s');
+    navMainmenu = document.getElementById("main-menu");
+    sticky = navMainmenu.offsetTop;
 
     var title = document.getElementById('nv-m-h-t');
     placeholder = title ? title.innerHTML : '';
 
     for (var i = 0; i < nav.length; i++) {
       nav[i].addEventListener('focusin', function() {
-        burger.checked = true;
+        burger.checked = true;     
       });
+      burgerIcon.addEventListener('keydown', function(e) {
+        e.stopImmediatePropagation();
+  
+        if (e.keyCode == 13) {
+          this.click();
+        }
+      })
     }
 
     // Set the secondary navigation menus to hidden
@@ -133,6 +155,13 @@ var BostonMenu = (function () {
     if (burger) {
       burger.addEventListener('change', handleBurgerChange);
     }
+
+    if (navMainmenu) {
+      window.onscroll = function() {
+        mainMenuonScroll()
+      };
+    }
+
   }
 
   return {
@@ -141,3 +170,4 @@ var BostonMenu = (function () {
 })()
 
 BostonMenu.start()
+
