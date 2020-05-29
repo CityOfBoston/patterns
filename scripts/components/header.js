@@ -40,6 +40,15 @@ var BostonHeader = (function () {
         }, 0);
       }
     })
+
+    searchIcon.addEventListener('keydown', function(e) {
+      e.stopImmediatePropagation();
+
+      if (e.keyCode == 13) {
+        this.click();
+      }
+    })
+
   }
 
   function start() {
@@ -68,3 +77,4 @@ var BostonHeader = (function () {
 })();
 
 BostonHeader.start();
+
