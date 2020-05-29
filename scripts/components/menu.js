@@ -19,9 +19,12 @@ var BostonMenu = (function () {
 
   }
 
+  // activate class for sticky menu
   function mainMenuonScroll() {
+    sticky = navMainmenu.offsetTop;
+
     if (window.pageYOffset > sticky) {
-      navMainmenu.classList.add("sticky")
+      navMainmenu.classList.add("sticky");
     } else {
       navMainmenu.classList.remove("sticky");
     }
@@ -102,7 +105,6 @@ var BostonMenu = (function () {
     secondaryNavs = document.querySelectorAll('.nv-m-c-l-l');
     secondaryNavItems = document.querySelectorAll('.nv-m-c-a--s');
     navMainmenu = document.getElementById("main-menu");
-    sticky = navMainmenu.offsetTop;
 
     var title = document.getElementById('nv-m-h-t');
     placeholder = title ? title.innerHTML : '';
