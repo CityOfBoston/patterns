@@ -10,7 +10,6 @@ var BostonMenu = (function () {
   var burger;
   var placeholder;
   var nav;
-  var burgerIcon;
   var navMainmenu;
   var sticky;
 
@@ -98,7 +97,6 @@ var BostonMenu = (function () {
   function start() {
     nav = document.querySelectorAll('.nv-m');
     burger = document.getElementById('brg-tr');
-    burgerIcon = document.querySelector('label[for="brg-tr"]');
     listItems = document.querySelectorAll('.nv-m-c-l-i');
     backTriggers = document.querySelectorAll('.nv-m-c-b');
     secondaryTriggers = document.querySelectorAll('.nolink');
@@ -113,13 +111,6 @@ var BostonMenu = (function () {
       nav[i].addEventListener('focusin', function() {
         burger.checked = true;     
       });
-      burgerIcon.addEventListener('keydown', function(e) {
-        e.stopImmediatePropagation();
-  
-        if (e.keyCode == 13) {
-          this.click();
-        }
-      })
     }
 
     // Set the secondary navigation menus to hidden

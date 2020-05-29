@@ -6,6 +6,7 @@ var BostonHeader = (function () {
   var headerGuideTitle;
   var header;
   var searchIcon;
+  var burgerIcon;
 
   function handleGuideTitleTrigger(show) {
     if (show) {
@@ -49,6 +50,15 @@ var BostonHeader = (function () {
       }
     })
 
+    // make close button clickable with keyboard
+    burgerIcon.addEventListener('keydown', function(e) {
+      e.stopImmediatePropagation();
+
+      if (e.keyCode == 13) {
+        this.click();
+      }
+    })
+
   }
 
   function start() {
@@ -59,6 +69,7 @@ var BostonHeader = (function () {
       // The search icon in the header is the label that controls this checkbox,
       // which in turn makes the search field hide/show via CSS.
       searchIcon = document.querySelector('label[for="s-tr"]');
+      burgerIcon = document.querySelector('label[for="brg-tr"]');
     }
 
     if (guideTitle) {
