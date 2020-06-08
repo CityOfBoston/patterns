@@ -13,6 +13,7 @@
 .ft
   background-color: $charles-blue
   padding: $sizing-500
+  padding-bottom: 0
 
   &-c
     min-height: 83px
@@ -36,12 +37,9 @@
     margin: 0
     padding: 0
 
-    &:not(:first-child)
-      margin-top: $sizing-300
-
     &-i
-      &:not(:first-child)
-        margin-top: $sizing-300
+      padding-right: 18px
+      padding-bottom: 8px
 
     &-a
       text-transform: uppercase
@@ -59,13 +57,6 @@
       &-i
         float: left
 
-        &:first-child
-          margin-left: 25px
-
-        &:not(:first-child)
-          margin-top: 0
-          margin-left: 18px
-
       &-311
         float: right
         margin-left: 18px
@@ -82,3 +73,32 @@
 
       &--r
         float: right
+  
+  &-ite
+    display: flex;
+    justify-content: space-between;
+
+    ul
+      &:first-child
+        padding-left: 20px
+
+        li
+          &:first-child
+            display: none
+
+        @media $media-table-to-desktop-portrait
+          padding-right: 18px
+          color: green
+
+        @media $media-medium-max
+          li
+            &:first-child
+              display: block
+
+    .ft-ite-311
+      min-width: 40%;
+      display: flex;
+      justify-content: flex-end;
+
+      @media $media-medium-max
+        display: none
