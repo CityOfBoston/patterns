@@ -124,4 +124,9 @@ Ad blocker: [Ad blocker?]
 ## Code of Conduct
 
 This project adheres to the [Contributor Covenant code of conduct](https://github.com/CityOfBoston/boston.gov/blob/develop/guides/01-code-of-conduct.md). By participating, you are expected to uphold this code. Please report unacceptable behavior to <a href="mailto:digital@boston.gov">digital@boston.gov</a>.
-.
+
+
+### DEPLOYS
+- [2020.06.08 - Staging] - Permit Finder - VPAT
+
+

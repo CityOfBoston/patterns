@@ -6373,10 +6373,10 @@ span.field-label+*>*:first-child,
     padding-top: 50px
 }
 .page {
-    padding-top: 6.6em
+    padding-top: 0
 }
 .page--wa {
-    padding-top: 3.5rem
+    padding-top: 0
 }
 .page--wa .main {
     margin-top: 2rem
@@ -8377,7 +8377,12 @@ article.view-mode-listing_long a.item-link {
 .pager-first:hover,
 .pager-previous:hover,
 .pager-last:hover,
-.pager-next:hover {
+.pager-next:hover,
+.pager-item a:focus,
+.pager-first a:focus,
+.pager-previous a:focus,
+.pager-last a:focus,
+.pager-next a:focus  {
     background-color: $freedom-red
 }
 .pager-disabled {
@@ -9674,6 +9679,9 @@ section.contact-departments .contact-wrapper:hover .contact-metadata,
         padding: 0 0 2px;
         margin-top: 0;
         margin-bottom: 0
+    }
+    #page #main-menu.sticky {
+        position: fixed;
     }
 }
 .sub-nav-trigger {

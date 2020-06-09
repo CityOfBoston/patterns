@@ -1,12 +1,18 @@
 <footer class="ft">
-  <div class="ft-c">
-    <ul class="ft-ll ft-ll--r">
-      <li class="ft-ll-i"><a href="http://www.cityofboston.gov/311/" class="ft-ll-a lnk--yellow"><span class="ft-ll-311">BOS:311</span><span class="tablet--hidden"> - </span>Report an issue</a></li>
-    </ul>
-    <ul class="ft-ll">
+  <div class="ft-c ft-ite">
+    <ul class="ft-ll ft-ite-links">
+      <li class="ft-ll-i">
+        <a href="http://www.cityofboston.gov/311/" class="ft-ll-a lnk--yellow">
+          BOS:311 - Report an issue
+        </a>
+      </li>
       {{#each links as |link|}}
         <li class="ft-ll-i"><a href="{{ link.href }}" class="ft-ll-a">{{ link.name }}</a></li>
       {{/each}}
+    </ul>
+
+    <ul class="ft-ll ft-ite-311">
+      <li class="ft-ll-i"><a href="http://www.cityofboston.gov/311/" class="ft-ll-a lnk--yellow"><span class="ft-ll-311">BOS:311</span><span class="tablet--hidden"> - </span>Report an issue</a></li>
     </ul>
   </div>
 </footer>
