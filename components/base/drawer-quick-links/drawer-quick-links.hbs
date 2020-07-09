@@ -1,0 +1,22 @@
+{{#each drawers as |drawer|}}
+  <div class="dr{{#if variant}} {{variant}}{{/if}} dr-ql b b--fw b--b">
+    {{#unless js}}<input type="checkbox" id="dr-tr{{ drawer.index }}" class="dr-tr a11y--h"{{#if drawer.open}} checked{{/if}}>{{/unless}}
+    <{{#if js}}button{{else}}label for="dr-tr{{ drawer.index }}"{{/if}} class="dr-h dr-ql-h">
+      <div class="str{{#if theme}} str--{{theme}}{{/if}}">
+        <div class="str-c">
+          <div class="str-t{{#if title}}{{#if date}} str-t--r m-b100{{/if}}{{/if}}">{{#if title}}{{ title }}{{else}}{{ date }}{{/if}}</div>
+          {{#if title}}{{#if date}}<div class="str-st">{{ date }}</div>{{/if}}{{/if}}
+        </div>
+      </div>
+    </{{#if js}}button{{else}}label{{/if}}>
+    <div class="dr-c dr-ql-c">
+      <div class="g">
+        {{#each links as |link|}}
+          <div class="g--6 m-b300">
+            <a href="{{ link.href }}" title="{{ link.name }}" class="lwa{{#if link.theme}} lwa--{{ link.theme }}{{/if}}">{{ link.name }}</a>
+          </div>
+        {{/each}}
+      </div>
+    </div>
+  </div>
+{{/each}}
