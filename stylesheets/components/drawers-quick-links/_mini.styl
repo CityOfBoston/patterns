@@ -1,0 +1,46 @@
+/*
+
+   Drawer
+
+   Base:
+    dr
+
+   Elements:
+    h = header
+    c = content
+    ic = icon
+    t = title
+    st = subtitle
+
+   Modifier:
+    sm = small
+
+   Use dr--open to force the drawer open. Useful for JavaScript cases where
+   you want control over the opening / closing rather than using checkboxes.
+ */
+
+.dr-ql
+  &--sm
+    border: $border-200 solid $grey-100
+
+    &:first-child
+      margin-top: 0
+
+    .dr-ql-h
+      padding: $sizing-400
+      padding-right: $sizing-400 * 2.25
+
+    .dr-ql-t
+      font-family: $serif
+      font-size: responsive 14px 18px
+      font-range: 480px 1440px
+
+    .dr-ql-ic
+      right: $sizing-300
+
+    .dr-ql-tr
+      &:checked ~ .dr--sm, ^[-1]--open .dr--sm
+        border-color: $charles-blue
+
+    .dr-ql-c
+      padding: $sizing-300

@@ -6,19 +6,25 @@ variants:
     preview: '@hub'
   - name: Mini
     context:
+      theme: 'w'
       drawers:
         - title: 'Filter by title'
-          variant: 'dr--sm'
+          variant: 'dr-ql--sm'
           links:
             - name: Pay a parking ticket
+              theme: w
             - name: Pay a parking ticket
+              theme: w
             - name: Pay a parking ticket
+              theme: w
   - name: JS Controlled
     context:
       drawers:
         - title: 'November 8, 2016: General Election'
+          subtitle: 'Last updated: 2/2017'
           js: true
         - title: 'November 8, 20 16: General Election'
+          subtitle: 'Last updated: 2/2017'
           js: true
           variant: 'dr--open'
           links:
@@ -28,8 +34,8 @@ context:
   drawers:
     - index: 1
       title: 'November 8, 2016: General Election'
-      variant: 'dr--open'
+      subtitle: 'Last updated: 2/2017'
       date: false
-      theme: 'b'
       links:
         - name: Pay a parking ticket
+          theme: w
