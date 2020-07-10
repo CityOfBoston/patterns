@@ -6,10 +6,10 @@ variants:
     preview: '@hub'
   - name: Mini
     context:
-      theme: 'w'
       drawers:
         - title: 'Filter by title'
           variant: 'dr-ql--sm'
+          theme: b
           links:
             - name: Pay a parking ticket
               theme: w
@@ -27,6 +27,7 @@ variants:
           subtitle: 'Last updated: 2/2017'
           js: true
           variant: 'dr-ql--open'
+          theme: b
           links:
             - name: Pay a parking ticket
               theme: w
