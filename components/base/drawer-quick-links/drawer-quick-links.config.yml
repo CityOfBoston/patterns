@@ -2,15 +2,28 @@ title: Drawer Quick Links
 handle: drawer_quick_links
 status: ready
 variants:
-  - name: Hub
-    preview: '@hub'
-  - name: Mini
+  - name: default open
+    status: 'ready'
     context:
       drawers:
-        - title: 'Filter by title'
-          variant: 'dr-ql--sm'
-          theme: b
+        - index: 1
+          title: 'November 8, 2016: General Election'
           links:
+            - name: Pay a parking ticket
+              theme: w
+            - name: Pay a parking ticket
+              theme: w
+            - name: Pay a parking ticket
+              theme: w
+            - name: Pay a parking ticket
+              theme: w
+          open: true
+        - index: 2
+          title: 'November 8, 2016: General Election'
+          subtitle: 'Last updated: 2/2017'
+          links:
+            - name: Pay a parking ticket
+              theme: w
             - name: Pay a parking ticket
               theme: w
             - name: Pay a parking ticket
@@ -20,14 +33,10 @@ variants:
   - name: JS Controlled
     context:
       drawers:
-        - title: 'November 8, 2016: General Election'
-          subtitle: 'Last updated: 2/2017'
-          js: true
         - title: 'November 8, 20 16: General Election'
           subtitle: 'Last updated: 2/2017'
           js: true
           variant: 'dr-ql--open'
-          theme: b
           links:
             - name: Pay a parking ticket
               theme: w
@@ -37,6 +46,13 @@ context:
       title: 'November 8, 2016: General Election'
       subtitle: 'Last updated: 2/2017'
       date: false
+      open: true
       links:
+        - name: Pay a parking ticket
+          theme: w
+        - name: Pay a parking ticket
+          theme: w
+        - name: Pay a parking ticket
+          theme: w
         - name: Pay a parking ticket
           theme: w
