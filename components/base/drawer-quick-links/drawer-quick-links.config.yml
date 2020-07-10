@@ -2,7 +2,7 @@ title: Drawer Quick Links
 handle: drawer_quick_links
 status: ready
 variants:
-  - name: default open
+  - name: drawer close
     status: 'ready'
     context:
       drawers:
@@ -17,7 +17,6 @@ variants:
               theme: w
             - name: Pay a parking ticket
               theme: w
-          open: true
         - index: 2
           title: 'November 8, 2016: General Election'
           subtitle: 'Last updated: 2/2017'
@@ -36,15 +35,14 @@ variants:
         - title: 'November 8, 20 16: General Election'
           subtitle: 'Last updated: 2/2017'
           js: true
-          variant: 'dr-ql--open'
+          variant: 'dr-ql--open dr-ql-r'
           links:
             - name: Pay a parking ticket
               theme: w
 context:
   drawers:
     - index: 1
-      title: 'November 8, 2016: General Election'
-      subtitle: 'Last updated: 2/2017'
+      title: 'Quick Links Related to Coronavirus'
       date: false
       open: true
       links:
