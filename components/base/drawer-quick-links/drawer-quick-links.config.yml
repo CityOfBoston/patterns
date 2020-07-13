@@ -35,7 +35,14 @@ variants:
         - title: 'November 8, 20 16: General Election'
           subtitle: 'Last updated: 2/2017'
           js: true
-          variant: 'dr-ql--open dr-ql-r'
+          variant: 'dr-ql--open dr-ql--r dr-ql-str--b'
+          links:
+            - name: Pay a parking ticket
+              theme: w
+        - title: 'November 8, 20 16: General Election'
+          subtitle: 'Last updated: 2/2017'
+          js: true
+          variant: 'dr-ql--close dr-ql--r dr-ql-str--b'
           links:
             - name: Pay a parking ticket
               theme: w
