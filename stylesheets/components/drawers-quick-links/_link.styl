@@ -13,7 +13,7 @@
 .dr-ql-lwa
   display: flex
   align-items: center
-  background-image: url(../images/global/icons/chevron.svg)
+  /*background-image: url(../images/global/icons/chevron.svg)*/
   background-position: center right
   background-repeat: no-repeat
   background-size: 10px
@@ -25,6 +25,24 @@
   padding-left: 0
   text-transform: uppercase
   border-bottom: 1px dashed #355973
+  position: relative
+
+  &-ic
+    height: 14px
+    width: 20px
+    position: absolute
+    right: $sizing-000
+    top: 50%
+    margin-top: -8px
+
+    svg
+      max-height: 100%
+      max-width: 100%
+      transform: rotate(0deg)
+      transition: transform 250ms
+
+  &-i
+    fill: $white
 
   &--w
     color: $white
@@ -35,3 +53,6 @@
 
     &:hover
       color: $optimistic-blue-dark
+
+      .dr-ql-lwa-i
+        fill: $optimistic-blue-light
