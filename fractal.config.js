@@ -8,32 +8,32 @@ const Handlebars = require('handlebars');
 /*
  * Require the Fractal module
  */
-const fractal = (module.exports = require('@frctl/fractal').create());
+const fractalConfig = (module.exports = require('@frctl/fractal').create());
 
 /*
  * Give your project a title.
  */
-fractal.set('project.title', 'Fleet');
+fractalConfig.set('project.title', 'Fleet');
 
 /*
  * A place to build the project to
  */
-fractal.web.set('builder.dest', __dirname + '/public');
+fractalConfig.web.set('builder.dest', __dirname + '/public');
 
 /*
  * Tell Fractal where to look for components.
  */
-fractal.set('components.path', __dirname + '/components');
+fractalConfig.set('components.path', __dirname + '/components');
 
 /*
  * Tell Fractal where to look for documentation pages.
  */
-fractal.set('docs.path', __dirname + '/docs');
+fractalConfig.set('docs.path', __dirname + '/docs');
 
 /*
  * Tell the Fractal web preview plugin to use this template for previews.
  */
-fractal.set('components.default.preview', '@preview');
+fractalConfig.set('components.default.preview', '@preview');
 
 /*
  * Configure the server
@@ -42,10 +42,10 @@ fractal.set('components.default.preview', '@preview');
 /*
  * Tell the Fractal web preview plugin where to look for static assets.
  */
-fractal.web.set('static.path', __dirname + '/assets');
+fractalConfig.web.set('static.path', __dirname + '/assets');
 
-fractal.web.set('server.sync', true);
-fractal.web.set('server.syncOptions', {
+fractalConfig.web.set('server.sync', true);
+fractalConfig.web.set('server.syncOptions', {
   open: true,
   notify: true,
   https: false,
@@ -60,7 +60,7 @@ fractal.web.set('server.syncOptions', {
 });
 
 // fractal.web.set('server.port', process.env.PORT || 3030);
-fractal.web.set('server.port', process.env.PORT || 3030);
+fractalConfig.web.set('server.port', process.env.PORT || 3030);
 
 const hbs = require('@frctl/handlebars')({
   helpers: {
@@ -96,7 +96,7 @@ const hbs = require('@frctl/handlebars')({
   },
 });
 
-fractal.docs.engine(hbs);
+fractalConfig.docs.engine(hbs);
 
 /*
   This code wraps the handlebars engine to include Stencil's web component
@@ -112,7 +112,7 @@ fractal.docs.engine(hbs);
 */
 let globalStencilRenderer = null;
 
-fractal.components.engine({
+fractalConfig.components.engine({
   register(source, app) {
     const hbsAdapter = hbs.register(source, app);
     const hbsRender = hbsAdapter.render.bind(hbsAdapter);
@@ -188,11 +188,11 @@ const fleetTheme = mandelbrot({
   styles: ['default', '/css/theme.css'],
 });
 
-fractal.web.theme(fleetTheme);
+fractalConfig.web.theme(fleetTheme);
 
 // Hooks in to the fractal build behavior to shut down the globalStencilRenderer.
 // Otherwise its worker child processes keep this process alive.
-fractal.web.on('builder:created', builder => {
+fractalConfig.web.on('builder:created', builder => {
   const stencilConfig = stencil.loadConfig(__dirname);
   globalStencilRenderer = new stencil.Renderer(stencilConfig);
 
