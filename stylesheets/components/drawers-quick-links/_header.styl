@@ -1,0 +1,96 @@
+/*
+
+   Drawer Quick Links STRIKETHROUGH
+
+   Base:
+    dr-dl-str
+
+   Modifier:
+    g = green
+    r = red
+    b = blue
+
+ */
+
+
+.dr-ql-str
+  line-height: $line-height-000
+  text-align: center
+  width: 70%
+  position: relative
+  margin: 0 auto
+
+  &:before
+    content: ''
+    position: absolute
+    top: 50%
+    transform: translateY(-50%)
+    border-top: $border-200 solid $freedom-red-dark
+    left: 0
+    right: 0
+
+    @media $media-small
+      border-width: $border-300
+
+    @media $media-large
+      border-width: $border-400
+
+  &-c
+    background: $charles-blue
+    display: inline-block
+    margin-left: $sizing-300
+    margin-right: $sizing-300
+    padding-left: 1%
+    padding-right: 1%
+    position: relative
+
+  &-t
+    font-size: responsive 20px 28px
+    font-range: 480px 1440px
+    font-weight: 700
+    line-height: $line-height-000
+    color: $white
+    text-transform: uppercase
+    font-family: $sans
+
+    &--r
+      color: $white
+
+  &-st
+    font-size: responsive 12px 14px
+    font-range: 480px 1440px
+    line-height: $line-height-000
+    color: $white
+    text-transform: uppercase
+    font-family: $sans
+
+  &--b
+    &:before
+      border-color: $freedom-red-light
+
+    .dr-ql-str
+      &-c
+        background-color: $freedom-red-dark
+
+      &-t
+      &-st
+        color: $white
+
+  &--r
+    .dr-ql-str
+      &-c
+        background-color: $freedom-red-light
+
+      &-t
+      &-st
+        color: $white
+
+  &--b
+    background-color: $freedom-red-dark
+    .dr-ql-str
+      &:before
+        border-color: $charles-blue
+
+    .dr-ql-str
+      &-c
+        background-color: $freedom-red-dark
