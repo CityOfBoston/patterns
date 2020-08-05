@@ -54,7 +54,7 @@ gulp.task('docson', () =>
     .src('node_modules/docson/public/**')
     .pipe(gulp.dest(options.paths.docson))
 );
-gulp.task('build', [
+ gulp.task('build', gulp.parallel(
   'fonts',
   'images',
   'legacy',
@@ -62,8 +62,8 @@ gulp.task('build', [
   'scripts',
   'stylus:ie',
   'docson',
-]);
-gulp.task('default', [
+ ));
+gulp.task('default', gulp.parallel(
   'fonts',
   'images',
   'legacy',
@@ -74,4 +74,4 @@ gulp.task('default', [
   'stylus:ie',
   'watch:stylus',
   'watch:legacy',
-]);
+));
