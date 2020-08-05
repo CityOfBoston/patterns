@@ -1,0 +1,27 @@
+{{#each drawers as |drawer|}}
+  <div class="dr-ql{{#if variant}} {{variant}}{{/if}} b b--fw b--b">
+    {{#unless js}}<input type="checkbox" id="dr-ql-tr{{ drawer.index }}" class="dr-ql-tr a11y--h"{{#if drawer.open}} checked{{/if}}>{{/unless}}
+    <{{#if js}}button{{else}}label for="dr-ql-tr{{ drawer.index }}"{{/if}} class="dr-ql-h">
+      <div class="dr-ql-ic"><svg xmlns="http://www.w3.org/2000/svg" viewBox="-2 8.5 18 25"><path class="dr-ql-i" d="M16 21L.5 33.2c-.6.5-1.5.4-2.2-.2-.5-.6-.4-1.6.2-2l12.6-10-12.6-10c-.6-.5-.7-1.5-.2-2s1.5-.7 2.2-.2L16 21z"/></svg></div>
+      <div class="dr-ql-str{{#if theme}} dr-ql-str--{{theme}}{{/if}}">
+        <div class="dr-ql-str-c">
+          <div class="dr-ql-str-t{{#if title}}{{#if subtitle}} dr-ql-str-t--r m-b100{{/if}}{{/if}}">{{#if title}}{{ title }}{{else}}{{ date }}{{/if}}</div>
+          {{#if drawer.subtitle}}<div class="dr-ql-str-st">{{ drawer.subtitle }}</div>{{/if}}
+          {{#if title}}{{#if date}}<div class="dr-ql-str-st">{{ date }}</div>{{/if}}{{/if}}
+        </div>
+      </div>
+    </{{#if js}}button{{else}}label{{/if}}>
+    <div class="dr-ql-c">
+      <div class="g">
+        {{#each links as |link|}}
+          <div class="g--6 m-b300">
+            <a href="{{ link.href }}" title="{{ link.name }}" class="dr-ql-lwa{{#if link.theme}} dr-ql-lwa--{{ link.theme }}{{/if}}">
+              {{ link.name }}
+              <div class="dr-ql-lwa-ic{{#if link.theme}} dr-ql-lwa--{{ link.theme }}{{/if}}"><svg xmlns="http://www.w3.org/2000/svg" viewBox="-2 8.5 18 25"><path class="dr-ql-lwa-i" d="M16 21L.5 33.2c-.6.5-1.5.4-2.2-.2-.5-.6-.4-1.6.2-2l12.6-10-12.6-10c-.6-.5-.7-1.5-.2-2s1.5-.7 2.2-.2L16 21z"/></svg></div>
+            </a>
+          </div>
+        {{/each}}
+      </div>
+    </div>
+  </div>
+{{/each}}
