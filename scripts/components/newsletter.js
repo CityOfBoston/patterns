@@ -38,7 +38,8 @@ var BostonNewsletter = (function () {
     });
   }
 
-  function handleError() {
+  function handleError(form) {
+    resetForm(form);
   }
 
   function validateForm(form) {
@@ -70,6 +71,7 @@ var BostonNewsletter = (function () {
 
     for (var i = 0; i < errors.length; i++) {
       errors[i].remove();
+      i--;
     }
   }
 
