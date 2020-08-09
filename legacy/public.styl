@@ -7393,6 +7393,11 @@ a.item-link {
 .featured-item-details-wrapper {
     background-color: $white
 }
+.news-item-wrapper:focus,
+.post-featured-item-wrapper-wrapper:focus,
+.featured-item-details-wrapper:focus {
+    background-color: #378EA5
+}
 .news-item h3.title,
 .news-item .view-transactions-main-transactions .view-header p.title,
 .view-transactions-main-transactions .view-header .news-item p.title,
@@ -7495,6 +7500,12 @@ a.item-link {
 .paragraphs-item-events-and-notices .news-item:hover .news-item-wrapper {
     background-color: $optimistic-blue
 }
+.paragraphs-item-news-announcements .news-item:focus .news-item-wrapper,
+.paragraphs-item-news-and-announcements .news-item:focus .news-item-wrapper,
+.paragraphs-item-upcoming-events .news-item:focus .news-item-wrapper,
+.paragraphs-item-events-and-notices .news-item:focus .news-item-wrapper {
+    background-color: $optimistic-blue
+}
 .paragraphs-item-news-announcements .news-item:hover .news-item-wrapper h3.title,
 .paragraphs-item-news-and-announcements .news-item:hover .news-item-wrapper h3.title,
 .paragraphs-item-news-announcements .news-item:hover .news-item-wrapper .view-transactions-main-transactions .view-header p.title,
@@ -7511,6 +7522,24 @@ a.item-link {
 .view-transactions-main-transactions .view-header .paragraphs-item-events-and-notices .news-item:hover .news-item-wrapper p.title,
 .paragraphs-item-upcoming-events .news-item:hover .news-item-wrapper .department-title,
 .paragraphs-item-events-and-notices .news-item:hover .news-item-wrapper .department-title {
+    color: $white
+}
+.paragraphs-item-news-announcements .news-item:focus .news-item-wrapper h3.title,
+.paragraphs-item-news-and-announcements .news-item:focus .news-item-wrapper h3.title,
+.paragraphs-item-news-announcements .news-item:focus .news-item-wrapper .view-transactions-main-transactions .view-header p.title,
+.paragraphs-item-news-and-announcements .news-item:focus .news-item-wrapper .view-transactions-main-transactions .view-header p.title,
+.view-transactions-main-transactions .view-header .paragraphs-item-news-announcements .news-item:focus .news-item-wrapper p.title,
+.view-transactions-main-transactions .view-header .paragraphs-item-news-and-announcements .news-item:focus .news-item-wrapper p.title,
+.paragraphs-item-news-announcements .news-item:focus .news-item-wrapper .department-title,
+.paragraphs-item-news-and-announcements .news-item:focus .news-item-wrapper .department-title,
+.paragraphs-item-upcoming-events .news-item:focus .news-item-wrapper h3.title,
+.paragraphs-item-events-and-notices .news-item:focus .news-item-wrapper h3.title,
+.paragraphs-item-upcoming-events .news-item:focus .news-item-wrapper .view-transactions-main-transactions .view-header p.title,
+.paragraphs-item-events-and-notices .news-item:focus .news-item-wrapper .view-transactions-main-transactions .view-header p.title,
+.view-transactions-main-transactions .view-header .paragraphs-item-upcoming-events .news-item:focus .news-item-wrapper p.title,
+.view-transactions-main-transactions .view-header .paragraphs-item-events-and-notices .news-item:focus .news-item-wrapper p.title,
+.paragraphs-item-upcoming-events .news-item:focus .news-item-wrapper .department-title,
+.paragraphs-item-events-and-notices .news-item:focus .news-item-wrapper .department-title {
     color: $white
 }
 .node-type-department-profile .post-featured-item-wrapper .department-title .department-title,
@@ -7614,7 +7643,11 @@ a.item-link {
 .paragraphs-item-news-announcements .post-featured-item-wrapper:hover,
 .paragraphs-item-news-and-announcements .post-featured-item-wrapper:hover,
 .paragraphs-item-upcoming-events .post-featured-item-wrapper:hover,
-.paragraphs-item-events-and-notices .post-featured-item-wrapper:hover {
+.paragraphs-item-events-and-notices .post-featured-item-wrapper:hover,
+.paragraphs-item-news-announcements .post-featured-item-wrapper:focus,
+.paragraphs-item-news-and-announcements .post-featured-item-wrapper:focus,
+.paragraphs-item-upcoming-events .post-featured-item-wrapper:focus,
+.paragraphs-item-events-and-notices .post-featured-item-wrapper:focus{
     background-color: $optimistic-blue;
     color: $white
 }

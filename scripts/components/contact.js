@@ -54,6 +54,8 @@ var BostonContact = (function () {
     ev.preventDefault();
 
     var form = document.getElementById('contactForm');
+    // Reset the form
+    resetForm(form);
     var isValid = validateForm(form);
     var formData = new FormData(form);
 
@@ -181,7 +183,17 @@ var BostonContact = (function () {
     urlField.value = window.location.href;
   }
 
+  function resetForm(form) {
+    var errors = Boston.childByEl(form, 't--err');
+
+    for (var i = 0; i < errors.length; i++) {
+      errors[i].remove();
+      i--;
+    }
+  }
+
   function start() {
+
     // The page needs to include a template with id of contactMessage
     if (document.getElementById('contactFormTemplate')) {
       var emailLinks = document.querySelectorAll('a[href^=mailto]:not(.hide-form)');

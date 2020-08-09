@@ -8220,6 +8220,11 @@ a.item-link {
 .featured-item-details-wrapper {
     background-color: #fff
 }
+.news-item-wrapper:focus,
+.post-featured-item-wrapper-wrapper:focus,
+.featured-item-details-wrapper:focus {
+    background-color: #378EA5
+}
 .news-item h3.title,
 .news-item .view-transactions-main-transactions .view-header p.title,
 .view-transactions-main-transactions .view-header .news-item p.title,
@@ -8318,6 +8323,10 @@ a.item-link {
 }
 .paragraphs-item-news-announcements .news-item:hover .news-item-wrapper,
 .paragraphs-item-upcoming-events .news-item:hover .news-item-wrapper {
+    background-color: #378EA5
+}
+.paragraphs-item-news-announcements .news-item:focus .news-item-wrapper,
+.paragraphs-item-upcoming-events .news-item:focus .news-item-wrapper {
     background-color: #378EA5
 }
 .paragraphs-item-news-announcements .news-item:hover .news-item-wrapper h3.title,
@@ -8427,7 +8436,9 @@ a.item-link {
     position: relative
 }
 .paragraphs-item-news-announcements .post-featured-item-wrapper:hover,
-.paragraphs-item-upcoming-events .post-featured-item-wrapper:hover {
+.paragraphs-item-upcoming-events .post-featured-item-wrapper:hover,
+.paragraphs-item-news-announcements .post-featured-item-wrapper:focus,
+.paragraphs-item-upcoming-events .post-featured-item-wrapper:focus{
     background-color: #378EA5;
     color: #fff
 }
