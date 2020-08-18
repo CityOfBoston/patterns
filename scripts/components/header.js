@@ -88,4 +88,3 @@ var BostonHeader = (function () {
 })();
 
 BostonHeader.start();
-
