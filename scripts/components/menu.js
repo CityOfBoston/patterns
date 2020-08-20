@@ -13,11 +13,6 @@ var BostonMenu = (function () {
   var navMainmenu;
   var sticky;
 
-  function handleBurgerChange(ev) {
-    document.body.classList.toggle('no-s');
-
-  }
-
   // activate class for sticky menu
   function mainMenuonScroll() {
     sticky = navMainmenu.offsetTop;
@@ -143,10 +138,6 @@ var BostonMenu = (function () {
     for (var i = 0; i < secondaryNavItems.length; i++) {
       secondaryNavItems[i].classList.remove('nv-m-c-a--s');
       secondaryNavItems[i].classList.add('nv-m-c-a--p');
-    }
-
-    if (burger) {
-      burger.addEventListener('change', handleBurgerChange);
     }
 
     if (navMainmenu) {
