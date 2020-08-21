@@ -154,4 +154,3 @@ var BostonMenu = (function () {
 })()
 
 BostonMenu.start()
-
