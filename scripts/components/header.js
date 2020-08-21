@@ -54,7 +54,7 @@ var BostonHeader = (function () {
     burgerIcon.addEventListener('keydown', function(e) {
       e.stopImmediatePropagation();
 
-      if (e.keyCode == 13) {
+      if (e.keyCode == 13 || e.keyCode == 9) {
         this.click();
       }
     })
@@ -88,4 +88,3 @@ var BostonHeader = (function () {
 })();
 
 BostonHeader.start();
-
