@@ -53,6 +53,17 @@ var BostonTable = (function () {
     }
   }
 
+  //Add scope to all table header by default
+  function headerScope (){
+    var tableHeaders = document.getElementsByTagName("th");
+
+    for (var i = 0; i < tableHeaders.length; i++) {
+      if (tableHeaders[i].hasAttribute('scope') == false) {
+        tableHeaders[i].setAttribute("scope", "col");
+      }
+    }
+  }
+
   function start() {
     // Check for vertical tables.
     var tables = document.querySelectorAll('.responsive-table--vertical');
@@ -73,6 +84,7 @@ var BostonTable = (function () {
     };
     window.onresize = onResizing;
     window.onload = onResizing;
+    headerScope();
   }
   return {
     start: start

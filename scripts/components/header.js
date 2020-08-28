@@ -7,6 +7,8 @@ var BostonHeader = (function () {
   var header;
   var searchIcon;
   var burgerIcon;
+  var burgerckbx;
+  var searchckbx;
 
   function handleGuideTitleTrigger(show) {
     if (show) {
@@ -64,12 +66,22 @@ var BostonHeader = (function () {
   function start() {
     guideTitle = document.getElementById('topicTitle');
     header = document.getElementById('main-menu');
+    burgerckbx = document.querySelector('label[for="brg-tr"]');
+    searchckbx = document.querySelector('label[for="s-tr"]');
 
     if (document.querySelector) {
       // The search icon in the header is the label that controls this checkbox,
       // which in turn makes the search field hide/show via CSS.
       searchIcon = document.querySelector('label[for="s-tr"]');
       burgerIcon = document.querySelector('label[for="brg-tr"]');
+    }
+
+    if (burgerckbx) {
+      burgerckbx.setAttribute("tabIndex", "0");
+    }
+
+    if (searchckbx) {
+      searchckbx.setAttribute("tabIndex", "0");
     }
 
     if (guideTitle) {
