@@ -24,7 +24,7 @@ var BostonNewsletter = (function () {
             var response = JSON.parse(response.response);
 
             if (response.subscriber) {
-              form.parentElement.innerHTML = "<div class='t--info'>Great. You'll get your first email soon.</div>";
+              form.parentElement.innerHTML = "<div class='t--info'>If this is the first time you've subscribed to a City of Boston newsletter, you'll see a confirmation email in your inbox to confirm your subscription. If you don't see that email, be sure to check your spam and junk folders.</div>";
             } else {
               handleError();
             }
