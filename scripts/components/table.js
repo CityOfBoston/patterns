@@ -54,7 +54,7 @@ var BostonTable = (function () {
   }
 
   //Add scope to all table header by default
-  function headerScope (){
+  function headerScope(){
     var tableHeaders = document.getElementsByTagName("th");
 
     for (var i = 0; i < tableHeaders.length; i++) {
