@@ -29,6 +29,11 @@ var BostonContact = (function () {
         document.getElementById('contactMessage').innerHTML = ev.target.title;
       }
 
+      var btn = document.getElementById("contactFormModal");
+      // Setting new role attributes
+      btn.setAttribute("role", "dialog");
+
+
       var close = Boston.childByEl(container, 'md-cb');
       close[0].addEventListener('click', handleEmailClose);
 
