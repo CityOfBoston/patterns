@@ -3,7 +3,7 @@
 module.exports = function(gulp) {
   return function() {
     var stream = gulp.watch(
-      ['./legacy/**.styl'], ['legacy']
+      ['./legacy/**.styl'], gulp.series('legacy')
     );
     return stream; 
   };

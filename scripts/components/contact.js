@@ -29,6 +29,11 @@ var BostonContact = (function () {
         document.getElementById('contactMessage').innerHTML = ev.target.title;
       }
 
+      var btn = document.getElementById("contactFormModal");
+      // Setting new role attributes
+      btn.setAttribute("role", "dialog");
+
+
       var close = Boston.childByEl(container, 'md-cb');
       close[0].addEventListener('click', handleEmailClose);
 
@@ -54,6 +59,8 @@ var BostonContact = (function () {
     ev.preventDefault();
 
     var form = document.getElementById('contactForm');
+    // Reset the form
+    resetForm(form);
     var isValid = validateForm(form);
     var formData = new FormData(form);
 
@@ -181,7 +188,17 @@ var BostonContact = (function () {
     urlField.value = window.location.href;
   }
 
+  function resetForm(form) {
+    var errors = Boston.childByEl(form, 't--err');
+
+    for (var i = 0; i < errors.length; i++) {
+      errors[i].remove();
+      i--;
+    }
+  }
+
   function start() {
+
     // The page needs to include a template with id of contactMessage
     if (document.getElementById('contactFormTemplate')) {
       var emailLinks = document.querySelectorAll('a[href^=mailto]:not(.hide-form)');

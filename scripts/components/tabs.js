@@ -3,6 +3,7 @@
 // ---------------------------
 var BostonTabs = (function () {
   var tabs;
+  var tab;
   var menuToggle;
 
   function listenToTabs(tabs) {
@@ -28,6 +29,22 @@ var BostonTabs = (function () {
     }
   }
 
+  function addTabIndex() {
+    for (var i = 0; i < tabs.length; i++) {
+      if (tabs[i].hasAttribute('tabIndex') == false) {
+        tabs[i].setAttribute("tabIndex", "0");
+
+        tabs[i].addEventListener('keydown', function(e) {
+          e.stopImmediatePropagation();
+
+          if (e.keyCode == 13) {
+            this.click();
+          }
+        })
+      }
+    }
+  }
+
   function hideCloseButton() {
     var closeButton = document.querySelectorAll('.tab-li-close');
     closeButton[0].style.display = "none";
@@ -42,10 +59,12 @@ var BostonTabs = (function () {
       listenToTabs(tabs);
       hideCloseButton();
       checkForHash();
+      addTabIndex();
 
       // Set the menu
       menuToggle = document.getElementById('tabMenuCTRL');
     }
+
   }
 
   return {
