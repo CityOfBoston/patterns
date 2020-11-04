@@ -73,6 +73,9 @@ merging.
 The Travis job will automatically push to S3 and invalidate the CloudFront
 cache.
 
+**Nov 2020: Migrated CI to travis-ci.com.**
+*Build history can be found at: https://travis-ci.org/github/CityOfBoston/patterns/branches*
+
 ## Reporting bugs
 
 If you need to submit a bug report for the pattern library, please follow these guidelines. Following these guidelines helps us and the community better understand your report, reproduce the bug, and find related issues.
