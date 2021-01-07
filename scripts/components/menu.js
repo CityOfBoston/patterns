@@ -101,13 +101,13 @@ var BostonMenu = (function () {
     var title = document.getElementById('nv-m-h-t');
     placeholder = title ? title.innerHTML : '';
 
-    // Set the nav to display none when tabbing and block if buger is clicked
+    // Set the nav to display none when tabbing and block if buger is clicked.
     document.addEventListener('keydown', function(e) {
-      burger.addEventListener('change', function(e) {
-        if (burger.checked) {
+      if (burger) {
+        burger.addEventListener('change', function (e) {
           document.querySelector('.nv-m').classList.remove("hidden");
-        }
-      });
+        })
+      }
       if (!burger.checked) {
         if (e.keyCode === 9) {
           document.querySelector('.nv-m').classList.add("hidden");
