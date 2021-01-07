@@ -90,7 +90,6 @@ var BostonMenu = (function () {
   }
 
   function start() {
-    nav = document.querySelectorAll('.nv-m');
     burger = document.getElementById('brg-tr');
     listItems = document.querySelectorAll('.nv-m-c-l-i');
     backTriggers = document.querySelectorAll('.nv-m-c-b');
@@ -102,11 +101,17 @@ var BostonMenu = (function () {
     var title = document.getElementById('nv-m-h-t');
     placeholder = title ? title.innerHTML : '';
 
-    for (var i = 0; i < nav.length; i++) {
-      nav[i].addEventListener('focusin', function() {
-        burger.checked = true;     
+    document.addEventListener('keydown', function(e) {
+      burger.addEventListener('change', function(e) {
+        if (burger.checked) {
+          document.querySelector('.nv-m').classList.remove("hidden");
+        }
       });
-    }
+
+      if (e.keyCode === 9) {
+        document.querySelector('.nv-m').classList.add("hidden");
+      }
+    })
 
     // Set the secondary navigation menus to hidden
     for (var i = 0; i < secondaryNavs.length; i++) {
