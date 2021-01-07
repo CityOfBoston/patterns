@@ -107,9 +107,10 @@ var BostonMenu = (function () {
           document.querySelector('.nv-m').classList.remove("hidden");
         }
       });
-
-      if (e.keyCode === 9) {
-        document.querySelector('.nv-m').classList.add("hidden");
+      if (!burger.checked) {
+        if (e.keyCode === 9) {
+          document.querySelector('.nv-m').classList.add("hidden");
+        }
       }
     })
 
