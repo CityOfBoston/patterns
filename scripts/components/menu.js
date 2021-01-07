@@ -101,6 +101,7 @@ var BostonMenu = (function () {
     var title = document.getElementById('nv-m-h-t');
     placeholder = title ? title.innerHTML : '';
 
+    // Set the nav to display none when tabbing and block if buger is clicked
     document.addEventListener('keydown', function(e) {
       burger.addEventListener('change', function(e) {
         if (burger.checked) {
