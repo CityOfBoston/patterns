@@ -87,6 +87,11 @@ adjust-for-menu()
 .nv-m:focus-within
   show-menu()
 
+.nv-m:focus-within ~ .mn,
+.nv-m:focus-within ~ .mn--full-ie,
+.nv-m:focus-within ~ .mn .mn-fixed-child
+  adjust-for-menu()
+
 .brg
   top: 50%
   position: relative
