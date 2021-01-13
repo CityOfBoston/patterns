@@ -9,9 +9,10 @@ var BostonMenu = (function () {
   var backTriggers;
   var burger;
   var placeholder;
-  var nav;
   var navMainmenu;
   var sticky;
+  var navLogo;
+  var navFirstItem;
 
   // activate class for sticky menu
   function mainMenuonScroll() {
@@ -91,29 +92,40 @@ var BostonMenu = (function () {
 
   function start() {
     burger = document.getElementById('brg-tr');
+    navLogo = document.getElementById('logoImg');
     listItems = document.querySelectorAll('.nv-m-c-l-i');
     backTriggers = document.querySelectorAll('.nv-m-c-b');
     secondaryTriggers = document.querySelectorAll('.nolink');
     secondaryNavs = document.querySelectorAll('.nv-m-c-l-l');
     secondaryNavItems = document.querySelectorAll('.nv-m-c-a--s');
     navMainmenu = document.getElementById("main-menu");
+    navFirstItem = document.querySelector('.nv-m-h-i');
 
     var title = document.getElementById('nv-m-h-t');
     placeholder = title ? title.innerHTML : '';
 
-    // Set the nav to display none when tabbing and block if buger is clicked.
+    // Set the nav to display none when tabbing and block if buger is clicked
     document.addEventListener('keydown', function(e) {
       if (burger) {
         burger.addEventListener('change', function (e) {
           document.querySelector('.nv-m').classList.remove("hidden");
+          if (navFirstItem) {
+            navFirstItem.setAttribute("tabIndex", "0");
+          }
+          navFirstItem.focus();
         })
         if (!burger.checked) {
+          e.stopImmediatePropagation();
           if (e.keyCode === 9) {
             document.querySelector('.nv-m').classList.add("hidden");
           }
         }
       }
     })
+
+    navLogo.addEventListener('focusout', function (e) {
+      burger.checked = false;
+    });
 
     // Set the secondary navigation menus to hidden
     for (var i = 0; i < secondaryNavs.length; i++) {
