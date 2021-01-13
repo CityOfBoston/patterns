@@ -107,25 +107,25 @@ var BostonMenu = (function () {
     // Set the nav to display none when tabbing and block if buger is clicked
     document.addEventListener('keydown', function(e) {
       if (burger) {
-        burger.addEventListener('change', function (e) {
+        burger.addEventListener('change', function () {
           document.querySelector('.nv-m').classList.remove("hidden");
           if (navFirstItem) {
             navFirstItem.setAttribute("tabIndex", "0");
+            navFirstItem.focus();
           }
-          navFirstItem.focus();
+          navFirstItem.blur();
         })
         if (!burger.checked) {
-          e.stopImmediatePropagation();
+          //e.stopImmediatePropagation();
           if (e.keyCode === 9) {
             document.querySelector('.nv-m').classList.add("hidden");
           }
         }
+        navLogo.addEventListener('focusout', function (e) {
+          burger.checked = false;
+        });
       }
     })
-
-    navLogo.addEventListener('focusout', function (e) {
-      burger.checked = false;
-    });
 
     // Set the secondary navigation menus to hidden
     for (var i = 0; i < secondaryNavs.length; i++) {
