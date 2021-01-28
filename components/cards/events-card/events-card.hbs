@@ -1,0 +1,9 @@
+{{#each cards as |card|}}
+  <a href="{{ card.href }}" class="evt {{#if card.grid}} m-t500 {{card.grid}}{{/if}} {{#../theme}} evt--{{this}}{{/../theme}}">
+    <div class="evt-c">
+      <div class="evt-t">{{ card.title }}</div>
+    </div>
+    <div class="date-flag {{#if card.grid}} evt-date-flag{{/if}}">Nov 20</div>
+  </a>
+{{/each}}
+ 

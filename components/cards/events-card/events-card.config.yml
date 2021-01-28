@@ -1,0 +1,53 @@
+title: Events Card
+handle: event-card
+status: ready
+preview: '@centered-grey'
+variants:
+  - name: Hub
+    preview: '@centered-hub'
+  - name: Grid
+    preview: '@grid-grey'
+    context:
+      cards:
+        - index: 1
+          href: https://www.boston.gov/neighborhood/allston
+          title: 'Event at Flaherty pool without a detail page link'
+          grid: g--4
+        - index: 2
+          href: https://www.boston.gov/neighborhood/allston
+          title: 'covid-19 testing site now available at strand theatre in uphams corner'
+          grid: g--4
+        - index: 3
+          href: https://www.boston.gov/neighborhood/allston
+          title: 'Event at Flaherty pool without a detail page link'
+          grid: g--4
+        - index: 4
+          href: https://www.boston.gov/neighborhood/allston
+          title: 'COVID-19 TESTING SITE NOW AVAILABLE AT STRAND THEATRE IN UPHAMS CORNER'
+          grid: g--4
+        - index: 5
+          href: https://www.boston.gov/neighborhood/allston
+          title: 'Event at Flaherty pool without a detail page link'
+          grid: g--4
+        - index: 6
+          href: https://www.boston.gov/neighborhood/allston
+          title: 'COVID-19 TESTING SITE NOW AVAILABLE AT STRAND THEATRE IN UPHAMS CORNER'
+          grid: g--4
+        - index: 7
+          href: https://www.boston.gov/neighborhood/allston
+          title: 'Event at Flaherty pool without a detail page link'
+          grid: g--4
+        - index: 8
+          href: https://www.boston.gov/neighborhood/allston
+          title: 'Event at Flaherty pool without a detail page link'
+          grid: g--4
+        - index: 9
+          href: https://www.boston.gov/neighborhood/allston
+          title: 'Event at Flaherty pool without a detail page link'
+          grid: g--4
+context:
+  cards:
+    - index: 1
+      href: https://www.boston.gov/neighborhood/allston
+      title: 'Event at Flaherty pool without a detail page link'
+      default: evt
