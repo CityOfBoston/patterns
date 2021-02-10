@@ -1,0 +1,16 @@
+<div class="g--6 b--w" style="margin-right: 0;">
+  <div class="p-a800" style="padding-top: 0;">
+    <ul class="dl{{#if small}} dl--sm{{/if}}">
+      <li class="dl-i evt-dl-i">{{ render '@event-card' }}</li>
+      {{#each events as |event|}}
+        <li class="dl-i evt-dl-i">
+          <span class="dl-t">{{ event.name }}</span>
+          <span class="dl-d">{{ event.description }}</span>
+        </li>
+      {{/each}}
+    </ul>
+    <div class="m-v400">
+        <button class="btn">See Events Details</button>
+    </div>
+  </div>
+</div>

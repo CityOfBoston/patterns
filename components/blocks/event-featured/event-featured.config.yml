@@ -1,0 +1,11 @@
+title: Event Featured
+handle: event_featured
+status: ready
+context:
+  feature:
+    image:
+      url: https://www.boston.gov/sites/default/files/img/topic/intro_images/2017/06/housing1.jpg
+variants:
+  - name: Small
+    context:
+      small: true

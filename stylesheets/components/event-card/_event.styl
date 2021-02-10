@@ -1,0 +1,152 @@
+/*
+
+   EVENT
+
+   Base:
+    evt
+
+   Elements:
+    t = title
+    b = body
+
+   Modifier:
+    evt-dl-i = table or data content
+
+ */
+
+.evt
+  display: block
+  background-color: $white
+  text-decoration: none
+  font-family: $serif
+  position: relative
+
+  &:hover, &:focus
+
+    .evt-t
+    .evt-st
+    .evt-d
+      color: $body-text
+
+    .evt-ic
+      background-color: $blended-optimistic-blue
+      background-blend-mode: multiply
+
+  &-ic
+    background-color: $optimistic-blue-light
+    background-position: center
+    background-size: cover
+
+  &-t
+    color: $optimistic-blue-dark
+    font-style: italic
+    font-size: responsive 18px 25px
+    font-range: 480px 1440px
+    line-height: $line-height-200
+    margin: 0
+    padding-top: $sizing-700
+    padding-bottom: $sizing-700
+    max-width: 80%
+
+  &-d
+    color: $grey-300
+    font-size: responsive 15px 18px
+    font-range: 480px 1440px
+    line-height: $line-height-300
+    margin-top: $sizing-300
+
+    &--mt0
+      margin-top: 0
+
+    p
+      margin: 0 0 1rem
+
+      &:last-child
+        margin: 0
+
+  &--plain
+    &:hover, &:focus
+      background-color: $white
+      .evt-t
+        color: $charles-blue
+      .evt-st
+        color: inherit
+      .evt-d
+        color: $grey-300
+
+    .evt-t
+      color: $charles-blue
+
+  &--e[href*="//"]:not([href*="www.boston.gov"])
+    position: relative
+
+    &:after
+      content: ''
+      border-right: 20px solid $charles-blue
+      border-left: 20px solid $charles-blue
+      border-bottom: 10px solid transparent
+      height: 40px
+      position: absolute
+      top: 0
+      right: 1rem
+      z-index: 1
+
+    &:before
+      content: ''
+      background-repeat: no-repeat
+      background-image: url(../images/global/icons/external-link-white.svg)
+      position: absolute
+      top: 0
+      right: 1rem
+      transform: translate(-8px, 11px)
+      z-index: 2
+      height: 20px
+      width: 20px
+
+// Handle white theme variation
+.b--w
+  .evt
+
+    &:hover, &:focus
+      border-color: $optimistic-blue-light
+
+      .evt-c
+        border-color: $optimistic-blue-light
+
+// Handle featured content only
+.g--4
+  .evt
+    &-c, &-default
+      padding-right: $sizing-700
+      padding-left: $sizing-700
+
+.evt-dl-i:nth-child(2)
+  border-top: 3px solid #000000
+
+.evt-dl-i:first-child
+  border-bottom: none
+
+// date flag ribbon
+.evt 
+  .date-flag
+    position: absolute
+    top: 0
+    width: 65px
+    padding: 20px 15px 35px
+    z-index: 1
+    background-image: url("../images/global/icons/ribbon-charles.svg")
+    background-repeat: no-repeat
+    background-size: cover
+    text-align: center
+    font-family: "Montserrat", sans-serif
+    font-weight: 700
+    text-transform: uppercase
+    line-height: 1
+    color: $white
+    right: 0
+
+  .evt-date-flag
+    right: 15px
+
+
+
