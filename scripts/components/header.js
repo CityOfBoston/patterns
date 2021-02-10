@@ -52,7 +52,7 @@ var BostonHeader = (function () {
       }
     })
 
-    // make close button clickable with keyboard
+    // make close button clickable with keyboard keys
     burgerIcon.addEventListener('keydown', function(e) {
       e.stopImmediatePropagation();
 
