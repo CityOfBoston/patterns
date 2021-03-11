@@ -1,0 +1,19 @@
+<div class="b b--g b--fw">
+  <div class="b-c">
+    <div class="g">
+    {{ render '@events_list_details' }}
+
+    <div class="g--6" style="margin-left: 0;">
+      {{#if feature.image}}
+        <picture>
+          <source srcset="{{ feature.image.url }}" media="(min-width: 600px)">
+          <img src="{{ feature.image.url }}" alt="MDN" style="width: 100%; height: 100%; object-fit: cover;">
+        </picture>
+      {{/if}}
+    </div>
+    </div>
+    <div class="m-v400">
+      <button class="btn">Show More</button>
+    </div>
+  </div>
+</div>

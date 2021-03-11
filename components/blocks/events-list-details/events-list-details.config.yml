@@ -1,0 +1,28 @@
+title: Events List Details
+handle: events_list_details
+status: ready
+context:
+  events:
+    - icon: false
+      name: When
+      description: April 15, 2015 4:00PM - 6:00PM
+    - icon: false
+      name: Where
+      description: Meet in the pool
+    - icon: false
+      name: Contact
+      description: Grantley Payne
+    - icon: false
+      name: Phone
+      description: 617-545-0026
+    - icon: false
+      name: Audience
+      description: All Ages
+    - icon: false
+      name: Price
+      description: FREE
+
+variants:
+  - name: Small
+    context:
+      small: true
