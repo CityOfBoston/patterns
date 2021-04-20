@@ -153,3 +153,39 @@
     .cdfg
       &-t
         color: $white
+
+// handle hover interference with focus
+.cdfg.focus-active:hover
+  pointer-events: none
+
+  &:before
+    background-color: $charles-blue
+
+.cdfg--ob.focus-active:hover
+  .cdfg
+    &-t
+      color: $white
+
+.cdfg--cb.focus-active:hover
+  &:before
+    background-color: $charles-blue
+
+  .cdfg.focus-active:hover
+    &-i
+    &-d
+      color: $freedom-red-light
+      border-color: $freedom-red-light
+
+    &-t
+      color: $optimistic-blue-light !important
+
+.cdfg--r.focus-active:hover
+  &:before
+    background-color: $freedom-red-light
+
+  .cdfg
+    &-t
+      color: $white
+
+.cdfg.focus-active:hover:before
+  background-color: $optimistic-blue

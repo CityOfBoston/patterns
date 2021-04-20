@@ -82,3 +82,16 @@
 
       &:hover, &:focus
         background-color: $optimistic-blue-light
+
+// handle hover interference with focus
+.cds.focus-active:hover
+  pointer-events: none
+  color: #FB4D42
+
+.cds-l.focus-active:hover .svg-stroke-hover
+    color: #FB4D42
+    stroke: #FB4D42
+    pointer-events: none 
+
+.cds-l.focus-active:hover .svg-fill-hover
+  fill: #FB4D42

@@ -174,6 +174,13 @@ svg:not(:root) {
 .inverted:visited {
     color: $freedom-red
 }
+a.focus-active:hover {
+    pointer-events: none;
+    color: $optimistic-blue
+}
+a.focus-active:focus {
+    color: $freedom-red
+}
 a:hover,
 a:focus {
     color: $freedom-red
@@ -3381,6 +3388,7 @@ __summary.collapsible {
     overflow: hidden
 }
 .paragraphs-item-group-of-links-grid .links-grid-field-grid-links .field-grid-links:hover,
+.paragraphs-item-group-of-links-grid .links-grid-field-grid-links .field-grid-links:focus-within,
 .paragraphs-item-group-of-links-grid .links-grid-field-grid-links .paragraphs-item-gol-list-links:hover,
 .paragraphs-item-group-of-links-grid .links-grid-field-grid-links .node-transaction.view-mode-listing:hover,
 .paragraphs-item-group-of-links-grid .links-grid-field-list-links .field-grid-links:hover,
@@ -3418,7 +3426,26 @@ __summary.collapsible {
 .view-transactions-main-transactions .view-transactions .view-content .node-transaction.view-mode-listing:hover {
     background-color: $optimistic-blue
 }
+
+.paragraphs-item-group-of-links-grid .links-grid-field-grid-links .field-grid-links.focus-active:hover {
+    pointer-events: none;
+    background-color: $white;
+}
+.paragraphs-item-group-of-links-grid .links-grid-field-grid-links .field-grid-links.focus-active:hover .field-name-field-extra-info {    
+    color: $charles-blue;
+}
+.paragraphs-item-group-of-links-grid .links-grid-field-grid-links .field-grid-links.focus-active:hover .field-name-field-short-description {
+    color: $grey-300;
+}
+.paragraphs-item-group-of-links-grid .links-grid-field-grid-links .field-grid-links.focus-active:hover .link-item,
+.paragraphs-item-group-of-links-grid .links-grid-field-grid-links .field-grid-links.focus-active:hover .link-wrapper {
+    color: $optimistic-blue;
+    pointer-events: none;
+    
+}
+
 .paragraphs-item-group-of-links-grid .links-grid-field-grid-links .field-grid-links:hover .field-name-field-short-description,
+.paragraphs-item-group-of-links-grid .links-grid-field-grid-links .field-grid-links:focus-within .field-name-field-short-description,
 .paragraphs-item-group-of-links-grid .links-grid-field-grid-links .paragraphs-item-gol-list-links:hover .field-name-field-short-description,
 .paragraphs-item-group-of-links-grid .links-grid-field-grid-links .node-transaction.view-mode-listing:hover .field-name-field-short-description,
 .paragraphs-item-group-of-links-grid .links-grid-field-list-links .field-grid-links:hover .field-name-field-short-description,
@@ -3462,6 +3489,12 @@ __summary.collapsible {
 .paragraphs-item-group-of-links-grid .links-grid-field-grid-links .field-grid-links:hover .link-title,
 .paragraphs-item-group-of-links-grid .links-grid-field-grid-links .field-grid-links:hover .link-title a,
 .paragraphs-item-group-of-links-grid .links-grid-field-grid-links .field-grid-links:hover .list-description,
+.paragraphs-item-group-of-links-grid .links-grid-field-grid-links .field-grid-links:focus-within .link-item,
+.paragraphs-item-group-of-links-grid .links-grid-field-grid-links .field-grid-links:focus-within .link-wrapper a,
+.paragraphs-item-group-of-links-grid .links-grid-field-grid-links .field-grid-links:focus-within .link-wrapper,
+.paragraphs-item-group-of-links-grid .links-grid-field-grid-links .field-grid-links:focus-within .link-title,
+.paragraphs-item-group-of-links-grid .links-grid-field-grid-links .field-grid-links:focus-within .link-title a,
+.paragraphs-item-group-of-links-grid .links-grid-field-grid-links .field-grid-links:focus-within .list-description,
 .paragraphs-item-group-of-links-grid .links-grid-field-grid-links .paragraphs-item-gol-list-links:hover .link-item,
 .paragraphs-item-group-of-links-grid .links-grid-field-grid-links .paragraphs-item-gol-list-links:hover .link-wrapper a,
 .paragraphs-item-group-of-links-grid .links-grid-field-grid-links .paragraphs-item-gol-list-links:hover .link-wrapper,
@@ -3935,13 +3968,22 @@ __summary.collapsible {
 .applications-grid-of-links .links-grid-field-grid-links {
     padding-top: 10px
 }
+.paragraphs-item-group-of-links-mini-grid .field-grid-links.focus-active:hover,
+.paragraphs-item-group-of-links-mini-grid .field-grid-links.focus-active a:hover,
+.paragraphs-item-group-of-links-mini-grid .field-grid-links.focus-active .separated-link a:hover {
+  pointer-events: none;
+  background-color: $grey-000;
+  color: $optimistic-blue;
+  text-indent: 0; 
+  overflow: visible;
+}
 .paragraphs-item-group-of-links-mini-grid .field-grid-links,
 .applications-grid-of-links .field-grid-links {
     position: relative;
     height: 100px;
     padding: 0px 25px 25px 25px;
     background-color: $grey-000;
-    margin-bottom: 1.5em
+    margin-bottom: 1.5em;
 }
 .paragraphs-item-group-of-links-mini-grid .field-grid-links .link-wrapper,
 .applications-grid-of-links .field-grid-links .link-wrapper {
@@ -3962,10 +4004,12 @@ __summary.collapsible {
     padding-right: 35px
 }
 .paragraphs-item-group-of-links-mini-grid .field-grid-links:hover,
+.paragraphs-item-group-of-links-mini-grid .field-grid-links:focus-within,
 .applications-grid-of-links .field-grid-links:hover {
     background-color: $optimistic-blue
 }
 .paragraphs-item-group-of-links-mini-grid .field-grid-links:hover .link-wrapper,
+.paragraphs-item-group-of-links-mini-grid .field-grid-links:focus-within .link-wrapper,
 .applications-grid-of-links .field-grid-links:hover .link-wrapper {
     color: $white
 }
@@ -7499,6 +7543,23 @@ a.item-link {
         line-height: 2.16667rem
     }
 }
+
+/* handle hover interference with focus */
+
+.paragraphs-item-news-announcements .focus-active.news-item:hover .news-item-wrapper,
+.paragraphs-item-news-and-announcements .focus-active.news-item:hover .news-item-wrapper,
+.paragraphs-item-upcoming-events .focus-active.news-item:hover .news-item-wrapper,
+.paragraphs-item-events-and-notices .focus-active.news-item:hover .news-item-wrapper {
+    background-color: $white;
+    pointer-events: none
+}
+.paragraphs-item-news-and-announcements .focus-active.news-item:hover .news-item-wrapper h3.title {
+    color: $optimistic-blue;
+}
+.paragraphs-item-news-and-announcements .focus-active.news-item:hover .news-item-wrapper .department-title {
+    color: #d2d2d2;
+}
+
 .paragraphs-item-news-announcements .news-item:hover .news-item-wrapper,
 .paragraphs-item-news-and-announcements .news-item:hover .news-item-wrapper,
 .paragraphs-item-upcoming-events .news-item:hover .news-item-wrapper,

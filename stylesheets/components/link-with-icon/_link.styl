@@ -78,3 +78,12 @@
       line-height: $line-height-200
       margin-left: 0
       width: 100%
+
+// handle hover interference with focus
+.lwi.focus-active:hover
+  pointer-events: none
+  background-color: $white
+  color: $charles-blue
+
+a.lwi.focus-active:focus
+  color: $white
