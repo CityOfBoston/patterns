@@ -46,6 +46,7 @@ var BostonContact = (function () {
       setToAddress(ev.target);
       setBodyMessage(ev.target);
       setSubject(ev.target);
+      setToken(ev.target);
     }
   }
 
@@ -157,6 +158,26 @@ var BostonContact = (function () {
     }
   }
 
+  // Request unique session token ID via Drupal endpoint
+  function setToken() {
+    Boston.request({
+        url: '/rest/email_token/create',
+        method: 'POST',
+        success: function (response) {
+          if (response.status === 200) {
+            var token = JSON.parse(response.response).token_session;
+            document.getElementById('contact-token').value = token;            
+          } else {
+            console.log("token response error");
+          }
+        },
+        error: function() {
+          console.log("token request error");
+        }
+    });
+
+  }
+
   function extract(mailtoLink, element) {
     var result = false;
     var linkParts = mailtoLink.split('?');
@@ -197,6 +218,8 @@ var BostonContact = (function () {
     }
   }
 
+  
+
   function start() {
 
     // The page needs to include a template with id of contactMessage
@@ -208,6 +231,7 @@ var BostonContact = (function () {
           initEmailLink(emailLinks[i]);
         }
       }
+
     }
   }
 
