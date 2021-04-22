@@ -102,3 +102,13 @@
 
       @media $media-medium-max
         display: none
+
+// handle hover interference with focus
+.ft-ll-a.focus-active:hover
+  pointer-events: none
+
+.focus-active:hover .ft-ll-311
+  background-position: 0 100%
+
+.focus-active:focus .ft-ll-311
+  background-position: 0 0

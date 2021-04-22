@@ -36,3 +36,12 @@
     &:hover
     &:focus
       color: $yellow
+
+// handle hover interference with focus
+a.focus-active.lwa.lwa--w:hover 
+  pointer-events: none
+  color: $white
+
+a.lwa.lwa--w.focus-active:focus 
+  color: $yellow
+

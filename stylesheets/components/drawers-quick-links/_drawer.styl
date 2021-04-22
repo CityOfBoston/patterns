@@ -140,3 +140,19 @@
     &:checked ~ .dr-ql, ^[-1]--r .dr-ql
       &-h
         background-color: $freedom-red-dark
+
+// handle hover interference with focus
+.dr-ql.focus-active:hover
+  pointer-events: none
+  background-color: $white
+  color: $optimistic-blue-light
+
+  .dr-t
+  .dr-st
+    color: $optimistic-blue-light
+
+  .dr-i
+    fill: $optimistic-blue-light
+
+.dr-ql .dr-h.focus-active:hover
+  background-color: $white

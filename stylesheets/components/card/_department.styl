@@ -72,3 +72,20 @@
     &-i
       padding: $sizing-400 $sizing-300
       overflow: hidden
+
+// handle hover interference with focus
+.cdd.focus-active:hover
+  pointer-events: none
+  border-color: $grey-100
+  background-color: $white
+
+  .cdd
+    &-ic
+      border-color: $grey-100
+
+  .t--sans
+    color: $charles-blue
+
+  .t--subinfo
+    color: $charles-blue
+

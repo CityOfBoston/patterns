@@ -157,3 +157,9 @@
 .evt-dl-i .dl-d
   width: 75%
 
+// handle hover interference with focus
+.evt.focus-active:hover
+  pointer-events: none
+
+.evt.focus-active:hover .evt-t
+    color: $optimistic-blue-light
