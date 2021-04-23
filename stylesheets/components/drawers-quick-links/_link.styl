@@ -56,3 +56,11 @@
 
       .dr-ql-lwa-i
         fill: $optimistic-blue-light
+
+// handle hover interference with focus
+a.focus-active.dr-ql-lwa.dr-ql-lwa--w:hover 
+  pointer-events: none
+  color: $white
+
+a.dr-ql-lwa.dr-ql-lwa--w.focus-active:focus 
+  color: $optimistic-blue-light
