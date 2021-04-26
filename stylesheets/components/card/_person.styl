@@ -93,14 +93,22 @@
         background-color: $freedom-red-light
 
 // handle hover interference with focus
-.cd.focus-active:hover
+.cdp.focus-active:hover
   pointer-events: none
   background-color: $white
 
 .b--g .cdp-l.focus-active:hover
   pointer-events: none
   background-color: $white
+  color: $optimistic-blue-dark
 
 .b--g .cdp-a.focus-active:hover
   pointer-events: none
   color: $white
+
+.b--g .cdp-l.focus-active:hover .cdp-st
+  pointer-events: none
+  color: $grey-300
+
+.b--g .cdp-a.focus-active:focus
+  background-color: $optimistic-blue-light
