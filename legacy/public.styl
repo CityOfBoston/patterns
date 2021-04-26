@@ -176,7 +176,8 @@ svg:not(:root) {
 }
 a.focus-active:hover {
     pointer-events: none;
-    color: $optimistic-blue
+    color: $optimistic-blue;
+    text-decoration: none
 }
 a.focus-active:focus {
     color: $freedom-red
@@ -7591,6 +7592,12 @@ a.item-link {
 .paragraphs-item-news-and-announcements .news-item a.item-link:focus~.news-item-wrapper,
 .paragraphs-item-upcoming-events .news-item a.item-link:focus~.news-item-wrapper,
 .paragraphs-item-events-and-notices .news-item a.item-link:focus~.news-item-wrapper {
+    background-color: $optimistic-blue
+}
+.paragraphs-item-news-announcements .news-item a.item-link:focus-within .news-item-wrapper,
+.paragraphs-item-news-and-announcements .news-item a.item-link:focus-within .news-item-wrapper,
+.paragraphs-item-upcoming-events .news-item a.item-link:focus-within .news-item-wrapper,
+.paragraphs-item-events-and-notices .news-item a.item-link:focus-within .news-item-wrapper {
     background-color: $optimistic-blue
 }
 .paragraphs-item-news-announcements .news-item:hover .news-item-wrapper h3.title,
