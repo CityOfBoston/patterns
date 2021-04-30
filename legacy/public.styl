@@ -356,7 +356,7 @@ button:hover,
 .sub-nav-trigger:hover,
 .view-filters .drawer-trigger.mobile-only:hover,
 .filter-wrapper .drawer-trigger.mobile-only:hover,
-.button:focus,
+.button:focus-within,
 .paragraphs-item-3-column-w-image .column-wrapper .field-three-col-link .paragraphs-items-field-link .paragraphs-item-external-link a:focus:link,
 .paragraphs-item-3-column-w-image .column-wrapper .field-three-col-link .paragraphs-items-field-link .paragraphs-item-external-link a:focus:visited,
 .node-type-landing-page .landing-hero-cta a:focus,
@@ -7951,17 +7951,22 @@ a.item-link {
         line-height: 2.22222rem
     }
 }
-.topic-wrapper .topic-highlight-area:hover {
+.topic-highlight-area:hover, .topic-highlight-area:focus-within {
     cursor: pointer
 }
-.topic-wrapper .topic-highlight-area:hover .topic-details {
+.topic-highlight-area:hover .topic-details, .topic-highlight-area:focus-within .topic-details {
     background-color: $optimistic-blue-light
 }
-.topic-wrapper .topic-highlight-area:hover .topic-listing-title {
-    color: $white
-}
-.topic-wrapper .topic-highlight-area:hover .topic-listing-title {
+.topic-highlight-area:hover .topic-listing-title, .topic-highlight-area:focus-within .topic-listing-title {
+    color: $white;
     text-transform: uppercase
+}
+.topic-highlight-area.focus-active:hover .topic-details {
+    background-color: $white;
+    pointer-events: none
+}
+.topic-highlight-area.focus-active:hover .topic-listing-title {
+    color: $charles-blue;
 }
 .topic-wrapper .image-wrapper {
     position: relative;
@@ -8108,16 +8113,6 @@ article.view-mode-listing_long a.item-link {
         font-size: 1.66667rem;
         line-height: 1.94444rem
     }
-}
-.paragraphs-item-grid-of-topics .topic-highlight-area:hover {
-    background-color: $freedom-red;
-    cursor: pointer
-}
-.paragraphs-item-grid-of-topics .topic-highlight-area:hover .topic-listing-title {
-    color: $white
-}
-.paragraphs-item-grid-of-topics .topic-highlight-area:hover .topic-listing-title {
-    text-transform: uppercase
 }
 .node-type-article .contact-info,
 .node-type-how-to .contact-info {
@@ -8517,17 +8512,27 @@ article.view-mode-listing_long a.item-link {
     margin-left: -4px;
     z-index: 0
 }
-.pager-item:hover,
-.pager-first:hover,
-.pager-previous:hover,
-.pager-last:hover,
-.pager-next:hover,
-.pager-item a:focus,
-.pager-first a:focus,
-.pager-previous a:focus,
-.pager-last a:focus,
-.pager-next a:focus  {
-    background-color: $freedom-red
+.pager-item:hover a,
+.pager-first:hover a,
+.pager-previous:hover a,
+.pager-last:hover a,
+.pager-next:hover a,
+.pager-item:focus-within a,
+.pager-first:focus-within a,
+.pager-previous:focus-within a,
+.pager-last:focus-within a,
+.pager-next:focus-within a {
+    background-color: $freedom-red;
+    color: $white
+}
+.pager-item:hover a.focus-active,
+.pager-first:hover a.focus-active,
+.pager-previous:hover a.focus-active,
+.pager-last:hover a.focus-active,
+.pager-next:hover a.focus-active {
+    pointer-events: none;
+    background-color: $white;
+    color: $charles-blue
 }
 .pager-disabled {
     background-color: $grey-000;
@@ -10431,6 +10436,8 @@ section.contact-departments .contact-wrapper:hover .contact-metadata,
     font-size: 0.66667rem;
     line-height: 3.25rem
 }
+.view-filters .drawer-trigger.focus,
+.filter-wrapper .drawer-trigger.focus,
 .view-filters .drawer-trigger.active,
 .filter-wrapper .drawer-trigger.active {
     color: $white;
@@ -10455,10 +10462,16 @@ section.contact-departments .contact-wrapper:hover .contact-metadata,
     border-color: $grey-100;
     color: $optimistic-blue
 
-    &:not(.active):hover{
+    &:not(.active):hover, &:not(.active):focus{
         background-color: $optimistic-blue;
         color: $white;
     }
+}
+.view-filters .drawer-trigger.focus-active:hover {
+    background-color: $white;
+    border-color: $grey-100;
+    color: $optimistic-blue;
+    pointer-events: none
 }
 .view-filters button.drawer-trigger{
     width: 100%;
@@ -10483,6 +10496,10 @@ section.contact-departments .contact-wrapper:hover .contact-metadata,
     background-size: 24px
 }
 .views-exposed-widget.views-reset-button input[type="submit"]:hover {
+    background-color: $freedom-red
+}
+.views-exposed-widget.views-reset-button input[type="submit"]:hover,
+.views-exposed-widget.views-reset-button input[type="submit"]:focus {
     background-color: $freedom-red
 }
 .bef-checkboxes {
