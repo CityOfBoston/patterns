@@ -2266,7 +2266,7 @@ __legend.collapsible {
 }
 .collapsible-fieldset__summary,
 __summary.collapsible {
-    color: #d2d2d2;
+    color: $body-text;
     font-size: .9em;
     margin-left: .5em
 }
@@ -3879,7 +3879,7 @@ __summary.collapsible {
 .view-transactions-main-transactions .view-transactions .view-content .field-grid-links .field-name-field-short-description,
 .view-transactions-main-transactions .view-transactions .view-content .paragraphs-item-gol-list-links .field-name-field-short-description,
 .view-transactions-main-transactions .view-transactions .view-content .node-transaction.view-mode-listing .field-name-field-short-description {
-    color: $grey-300;
+    color: $body-text;
     font-size: 17px;
     line-height: 27px;
     font-size: 0.94444rem;
@@ -7027,7 +7027,7 @@ __help-icon.more-help-link {
 .node-type-how-to .step-label-wrapper,
 .node-type-tabbed-content .step-label-wrapper {
     text-transform: uppercase;
-    color: #d2d2d2;
+    color: $body-text;
     font-family: "Montserrat", sans-serif;
     font-weight: inherit;
     font-size: 14px;
@@ -7482,7 +7482,7 @@ a.item-link {
 .post-featured-item-wrapper .department-title,
 .featured-item-details .department-title {
     text-transform: uppercase;
-    color: #d2d2d2;
+    color: $body-text;
     font-family: "Montserrat", sans-serif;
     font-weight: inherit;
     font-size: 16px;
@@ -7577,7 +7577,7 @@ a.item-link {
     color: $optimistic-blue;
 }
 .paragraphs-item-news-and-announcements .focus-active.news-item:hover .news-item-wrapper .department-title {
-    color: #d2d2d2;
+    color: $body-text;
 }
 
 .paragraphs-item-news-announcements .news-item:hover .news-item-wrapper,
@@ -7952,8 +7952,19 @@ a.item-link {
 .topic-highlight-area:hover, .topic-highlight-area:focus-within {
     cursor: pointer
 }
-.topic-highlight-area:hover .topic-details, .topic-highlight-area:focus-within .topic-details {
+.paragraphs-item-grid-of-topics .topic-highlight-area:hover,
+.paragraphs-item-grid-of-topics .topic-highlight-area:focus-within,
+.topic-highlight-area:hover .topic-details, 
+.topic-highlight-area:focus-within .topic-details {
     background-color: $optimistic-blue-light
+}
+.paragraphs-item-grid-of-topics .focus-active:focus .topic-highlight-area,
+.paragraphs-item-grid-of-topics .focus-active:hover:focus .topic-highlight-area,
+.focus-active:focus .topic-highlight-area .topic-listing-title,
+.focus-active:hover:focus .topic-highlight-area .topic-listing-title,
+.focus-active:hover:focus .topic-highlight-area:hover:focus .topic-details {
+    background-color: $optimistic-blue-light;
+    color: $white
 }
 .topic-highlight-area:hover .topic-listing-title, .topic-highlight-area:focus-within .topic-listing-title {
     color: $white;
@@ -8534,11 +8545,11 @@ article.view-mode-listing_long a.item-link {
 }
 .pager-disabled {
     background-color: $grey-000;
-    color: #d2d2d2;
+    color: $body-text;
     border-color: #d2d2d2
 }
 .pager-disabled a {
-    color: #d2d2d2
+    color: $body-text
 }
 .pager-disabled:hover {
     background-color: $grey-000
@@ -9450,7 +9461,7 @@ section.timeline {
     }
 }
 .timeline-step-wrapper .step-text {
-    color: #d2d2d2;
+    color: $body-text;
     margin: 0 0 10px 0
 }
 .timeline-step-wrapper .timeline-number {
@@ -9466,14 +9477,14 @@ section.timeline {
     background: url("/images/public/icons/check.svg") no-repeat right 42px transparent
 }
 .timeline-step-wrapper .pending .timeline-number {
-    color: #d2d2d2;
+    color: $body-text;
     border-color: #d2d2d2
 }
 .timeline-step-wrapper .step-title {
     margin: 0 0 10px 0
 }
 .timeline-step-wrapper .pending .step-title {
-    color: #d2d2d2
+    color: $body-text
 }
 section.contact-departments {
     background-color: $grey-000
