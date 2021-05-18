@@ -67,3 +67,11 @@
           fill: $header-search
           width: 100%
           height: 100%
+
+// handle hover interference with focus
+.nv-h-l-a.focus-active:hover
+  pointer-events: none
+  color: $charles-blue
+
+.nv-h-l-a.focus-active:focus
+  color: $header-nav-hover
