@@ -140,3 +140,14 @@
 
       .cd-c
         border-color: #e0e0e0
+
+.cd.focus-active:focus-within
+  pointer-events: auto
+  background-color: $optimistic-blue-light
+
+  .cd-t, .cd-d
+    color: $white
+
+  .cd-ic
+    background-color: $blended-optimistic-blue
+    background-blend-mode: multiply
