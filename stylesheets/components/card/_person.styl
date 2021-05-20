@@ -97,12 +97,17 @@
   pointer-events: none
   background-color: $white
 
-.b--g .cdp-l.focus-active:hover, .b--b .cdp-l.focus-active:hover, .cdp-l.focus-active:hover
+.b--g .cdp-l.focus-active:hover, .b--b .cdp-l.focus-active:hover
   pointer-events: none
   background-color: $white
   color: $optimistic-blue-dark
 
-.b--g .cdp-a.focus-active:hover, .b--b .cdp-a.focus-active:hover, .cdp-a.focus-active:hover
+.b--b .cdp-a.focus-active:hover
+  pointer-events: none
+  color: $white
+  background-color: $optimistic-blue-dark
+
+.b--g .cdp-a.focus-active:hover, .b--w .cdp-a.focus-active:hover
   pointer-events: none
   color: $white
   background-color: $charles-blue
@@ -111,8 +116,13 @@
   pointer-events: none
   color: $body-text
 
-.b--g .cdp-l.focus-active:focus, .b--b .cdp-l.focus-active:focus, .cdp-l.focus-active:focus
-  background-color: $optimistic-blue-light
+.b--g .cdp-a.focus-active:focus, .b--w .cdp-a.focus-active:focus
+  pointer-events: auto
+  color: $optimistic-blue-light
+
+.b--b .cdp-a.focus-active:focus
+  pointer-events: auto
+  background-color: $freedom-red-light
   color: $white
 
 .cdp-l.focus-active:hover:focus .cdp-st
