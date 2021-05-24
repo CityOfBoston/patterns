@@ -73,8 +73,7 @@
       background-color: $optimistic-blue-light
       color: $white
 
-      .dr-t
-      .dr-st
+      .dr-t, .dr-st
         color: $white
 
       .dr-i
@@ -142,8 +141,7 @@
   background-color: $white
   color: $optimistic-blue-light
 
-  .dr-t
-  .dr-st
+  .dr-t, .dr-st
     color: $optimistic-blue-light
 
   .dr-i
@@ -151,3 +149,23 @@
 
 .dr-h.focus-active:hover
   background-color: $white
+
+.dr.focus-active:focus
+  pointer-events: auto
+  background-color: $optimistic-blue-light
+  color: $white
+
+  .dr-t, .dr-st
+    color: $white
+
+  .dr-i
+    fill: $white
+
+.dr-h.focus-active:focus-within
+  background-color: $optimistic-blue-light
+  color: $white
+
+  .dr-t, .dr-ic, .dr-i
+    color: $white
+    fill: $white
+

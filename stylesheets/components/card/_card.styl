@@ -50,7 +50,7 @@
     margin: 0
 
   &-d
-    color: $grey-300
+    color: $body-text
     font-size: responsive 15px 18px
     font-range: 480px 1440px
     line-height: $line-height-300
@@ -73,7 +73,7 @@
       .cd-st
         color: inherit
       .cd-d
-        color: $grey-300
+        color: $body-text
 
     .cd-t
       color: $charles-blue
@@ -127,7 +127,7 @@
     color: $optimistic-blue-dark
 
   .cd-d
-    color: $grey-300
+    color: $body-text
 
   .cd-ic
     background-color: $optimistic-blue-light
@@ -140,3 +140,14 @@
 
       .cd-c
         border-color: #e0e0e0
+
+.cd.focus-active:focus-within
+  pointer-events: auto
+  background-color: $optimistic-blue-light
+
+  .cd-t, .cd-d
+    color: $white
+
+  .cd-ic
+    background-color: $blended-optimistic-blue
+    background-blend-mode: multiply
