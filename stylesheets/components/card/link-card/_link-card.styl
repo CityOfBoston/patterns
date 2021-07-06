@@ -1,0 +1,161 @@
+/*
+
+   LINK CARD
+
+   Base:
+    lcd
+
+   Elements:
+    t = title
+    b = body
+
+   Modifier:
+    None Yet
+
+ */
+
+.lcd
+  display: block
+  background-color: $white
+  text-decoration: none
+  font-family: $serif
+
+  &:hover, &:focus-within
+    background-color: $optimistic-blue-light
+
+    .lcd-t
+    .lcd-st
+      color: $white
+
+    .lcd-ic
+      background-color: $blended-optimistic-blue
+      background-blend-mode: multiply
+
+  &-ic
+    padding-bottom: 35%
+    background-color: $optimistic-blue-light
+    background-position: center
+    background-size: cover
+
+  &-c
+    padding: $sizing-700
+
+  &-t
+    color: $optimistic-blue-dark
+    font-family: Montserrat,sans-serif;
+    font-weight: 700
+    font-size: responsive 15px 18px
+    font-range: 480px 1440px
+    line-height: $line-height-200
+    margin: 0
+    text-transform: uppercase
+
+  &-st
+    font-size: responsive 15px 18px
+    font-range: 480px 1440px
+    margin-top: $sizing-200
+
+  &-d
+    color: $body-text
+    font-family: Montserrat,sans-serif;
+    font-size: responsive 15px 18px
+    font-range: 480px 1440px
+    line-height: $line-height-300
+    margin-top: $sizing-900 * 2
+    text-transform: uppercase
+
+    &--mt0
+      margin-top: 0
+
+    p
+      margin: 0 0 1rem
+
+      &:last-child
+        margin: 0
+
+  &--plain
+    &:hover, &:focus-within
+      background-color: $white
+      .lcd-t
+        color: $charles-blue
+      .lcd-st
+        color: inherit
+      .lcd-d
+        color: $body-text
+
+    .lcd-t
+      color: $charles-blue
+
+  &--e[href*="//"]:not([href*="www.boston.gov"])
+    position: relative
+
+    &:after
+      content: ''
+      border-right: 20px solid $charles-blue;
+      border-left: 20px solid $charles-blue;
+      border-bottom: 10px solid transparent;
+      height: 40px
+      position: absolute
+      top: 0
+      right: 1rem
+      z-index: 1
+
+    &:before
+      content: ''
+      background-repeat: no-repeat
+      background-image: url(../images/global/icons/external-link-white.svg)
+      position: absolute
+      top: 0
+      right: 1rem
+      transform: translate(-8px, 11px)
+      z-index: 2
+      height: 20px
+      width: 20px
+
+// Handle white theme variation
+.b--w
+  .lcd
+    border: 2px solid #e0e0e0
+
+    &:hover, &:focus-within
+      border-color: $optimistic-blue-light
+
+      .lcd-c
+        border-color: $optimistic-blue-light
+
+    &-c
+      border-top: 2px solid #e0e0e0
+
+// handle hover interference with focus
+.lcd.focus-active:hover
+  pointer-events: none
+  background-color: $white
+
+  .lcd-t
+    color: $optimistic-blue-dark
+
+  .lcd-d
+    color: $body-text
+
+  .lcd-ic
+    background-color: $optimistic-blue-light
+
+.b--w
+  .lcd.focus-active
+
+    &:hover
+      border-color: #e0e0e0
+
+      .lcd-c
+        border-color: #e0e0e0
+
+.lcd.focus-active:focus-within
+  pointer-events: auto
+  background-color: $optimistic-blue-light
+
+  .lcd-t, .lcd-d
+    color: $white
+
+  .lcd-ic
+    background-color: $blended-optimistic-blue
+    background-blend-mode: multiply
