@@ -1,0 +1,33 @@
+{{#each tabs as |tab|}}
+<div class="ht-tab{{#if variant}} {{variant}}{{/if}}">
+  {{#unless js}}<input type="checkbox" id="ht-tab-tr{{ tab.index }}" class="ht-tab-tr a11y--h" {{#if tab.open}}
+    checked{{/if}}>{{/unless}}
+  <{{#if js}}button{{else}}label for="ht-tab-tr{{ drawer.index }}" {{/if}} class="ht-tab-h">
+
+    <div class="ht-tab-ic">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path class="ht-tab-i open" d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z" />
+        <path class="ht-tab-i closed" d="M0 10h24v4h-24z" />
+      </svg>
+      <div class="t--subinfo">
+        <div class="open ht-tab-subinfo">show</div>
+        <div class="closed ht-tab-subinfo">hide</div>
+      </div>
+    </div>
+
+    <div class="ht-tab-ic">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path class="ht-tab-i closed" d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z"> </path>
+        <path class="ht-tab-i open" d="M0 10h24v4h-24z"> </path>
+      </svg>
+    </div>
+
+    <div class="ht-tab-t">{{ tab.title }}</div>
+    {{#if drawer.subtitle}}<div class="dr-st">{{ drawer.subtitle }}</div>{{/if}}
+  </{{#if js}}button{{else}}label{{/if}}>
+  <div class="ht-tab-c">
+    {{{ tab.content }}}
+  </div>
+</div>
+{{/each}}
+
