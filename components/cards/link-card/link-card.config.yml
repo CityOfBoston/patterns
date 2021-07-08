@@ -3,7 +3,7 @@ handle: link-card
 status: ready
 preview: '@centered-grey'
 variants:
-  - name: document
+  - name: Document
     context:
       cards:
         - index: 1
@@ -11,7 +11,7 @@ variants:
           title: 'Test Link - Document'
           subtitle: 'Test link with document'
           content: '123-456-7890'
-  - name: external
+  - name: External
     context:
       cards:
         - index: 1
@@ -19,7 +19,7 @@ variants:
           title: 'Test Link - External'
           subtitle: 'Test link with external link'
           content: 'Test@Boston.gov'
-  - name: internal
+  - name: Internal
     context:
       cards:
         - index: 1
