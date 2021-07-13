@@ -3,12 +3,10 @@
    LINK CARD
 
    Base:
-    lcd
+    lcd--mini
 
    Elements:
     t = title
-    st = subtitle
-    d = detail
     im = image
 
    Modifier:
@@ -16,7 +14,7 @@
 
  */
 
-.lcd
+.lcd--mini
   display: block
   height: 100%
   background-color: $white
@@ -26,15 +24,15 @@
   &:hover, &:focus-within
     background-color: $optimistic-blue-dark
 
-    .lcd-t
-    .lcd-st
+    .lcd--mini-t
+    .lcd--mini-st
       color: $white
 
   &-c
     position: relative
     padding: $sizing-600
-    min-height: 100px
-    height: 300px
+    min-height: 50px
+    height: 100px
     word-break: normal
 
     
@@ -42,8 +40,7 @@
     position: absolute
     width: 10%
     right: 15px
-    top: 15px
-    padding-bottom: 15px
+    padding-bottom: 18px
     background-position: right
     background-size: contain
     background-repeat: no-repeat
@@ -51,77 +48,44 @@
   &-t
     color: $optimistic-blue-dark
     font-family: Montserrat,sans-serif;
-    font-weight: 700
     font-size: responsive 12px 15px
     font-range: 480px 1440px
     line-height: $line-height-200
     margin: 0
     text-transform: uppercase
 
-  &-st
-    font-size: responsive 15px 18px
-    font-range: 480px 1440px
-    margin-top: $sizing-200
-    word-break: normal
-
-  #bottom
-    position: absolute
-    bottom: 0
-    left: 0
-
-  &-d
-    padding: $sizing-600
-    color: $black
-    font-family: Montserrat,sans-serif
-    font-size: responsive 12px 15px
-    font-range: 480px 1440px
-    line-height: $line-height-300
-    text-transform: uppercase
-    
-    &--mt0
-      margin-top: 0
-
-    p
-      margin: 0 0 1rem
-
-      &:last-child
-        margin: 0
-
   &--plain
     &:hover, &:focus-within
       background-color: $white
-      .lcd-t
+      .lcd--mini-t
         color: $charles-blue
-      .lcd-st
+      .lcd--mini-st
         color: inherit
-      .lcd-d
+      .lcd--mini-d
         color: $black
 
-    .lcd-t
+    .lcd--mini-t
       color: $charles-blue
 
 
 // handle hover interference with focus
-.lcd.focus-active:hover
+.lcd--mini.focus-active:hover
   pointer-events: none
   background-color: $white
 
-  .lcd-t
+  .lcd--mini-t
     color: $optimistic-blue-dark
 
-  .lcd-d
-    color: $black
-
-  .lcd-ic
+  .lcd--mini-ic
     background-color: $optimistic-blue-dark
 
-.lcd.focus-active:focus-within
+.lcd--mini.focus-active:focus-within
   pointer-events: auto
   background-color: $optimistic-blue-dark
 
-  .lcd-t, .lcd-d
+  .lcd--mini-t
     color: $white
 
-  .lcd-ic
+  .lcd--mini-ic
     background-color: $blended-optimistic-blue
     background-blend-mode: multiply

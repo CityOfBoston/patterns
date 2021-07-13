@@ -1,5 +1,5 @@
-title: Link Card
-handle: link-card
+title: Link Card Mini
+handle: link-card-mini
 status: ready
 preview: '@centered-grey'
 variants:
@@ -20,7 +20,7 @@ variants:
         - index: 1
           image: 
             url: /images/global/icons/external-link.svg
-            title: 'Document Link'
+            title: 'External Link'
           href: https://www.google.com/
           title: 'Test Link - External'
           subtitle: 'Test link with external link'

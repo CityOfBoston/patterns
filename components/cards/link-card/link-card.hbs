@@ -2,12 +2,14 @@
   <a href="{{ card.href }}" class="lcd m-t500 g--4 g--4--sl{{#../theme}} lcd--{{this}}{{/../theme}}">
     <div class="lcd-c">
       {{#if card.image}}
-      <div class="lcd-ic" style="background-image: url({{ card.image.url }})"></div>
+      <div class="lcd-im" style="background-image: url({{ card.image.url }})"></div>
       {{/if}}
       <div class="lcd-t">{{ card.title }}</div>
       {{#if card.subtitle}}
         <div class="lcd-st t--subinfo t--g300">{{ card.subtitle }}</div>
       {{/if}}
-      <div class="lcd-d" id="bottom"> {{ card.content }}</div>
+      {{#if card.content}}
+        <div class="lcd-d" id="bottom"> {{ card.content }}</div>
+      {{/if}}
     </div>
 {{/each}}
