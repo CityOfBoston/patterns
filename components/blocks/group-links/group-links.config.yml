@@ -12,11 +12,17 @@ variants:
           link: https://d8-uat.boston.gov/departments/digital-team
       cards:
         - index: 1
+          image: 
+            url: /images/global/icons/icon-document.svg
+            title: 'Document Link'
           href: https://d8-uat.boston.gov/sites/default/files/linked/file/document_files/2017/03/pdf_for_website_testing_0.pdf
           title: 'Test Link - Document'
           subtitle: 'Test link with document'
           content: '123-456-7890'
         - index: 2
+          image: 
+            url: /images/global/icons/external-link.svg
+            title: 'External Link'
           href: https://www.google.com/
           title: 'Test Link - External'
           subtitle: 'Test link with external link'
@@ -35,13 +41,21 @@ variants:
     context:
       header:
         title: Test Group of Links - Grid With Description
-        contact: https://d8-uat.boston.gov/departments/digital-team
+        contact: 
+          title: Boston Team
+          link: https://d8-uat.boston.gov/departments/digital-team
       cards:
         - index: 1
+          image: 
+            url: /images/global/icons/icon-document.svg
+            title: 'Document Link'
           title: 'Test Link - Document'
           subtitle: 'Test link with document'
           content: '123-456-7890'
         - index: 2
+          image: 
+            url: /images/global/icons/external-link.svg
+            title: 'External Link'
           href: https://www.google.com/
           title: 'Test Link - External'
           subtitle: 'Test link with external link'
@@ -54,7 +68,9 @@ variants:
 context:
   header:
     title: Test Group of Links - Grid Without Description
-    contact: https://d8-uat.boston.gov/departments/digital-team
+    contact: 
+          title: Boston Team
+          link: https://d8-uat.boston.gov/departments/digital-team
   cards:
     - index: 1
       href: https://d8-uat.boston.gov/sites/default/files/linked/file/document_files/2017/03/pdf_for_website_testing_0.pdf
