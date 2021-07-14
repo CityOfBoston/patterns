@@ -1,7 +1,7 @@
 title: Link Card Mini
 handle: link-card-mini
 status: ready
-preview: '@centered-grey'
+preview: '@centered'
 variants:
   - name: Document
     context:
