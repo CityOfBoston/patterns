@@ -447,6 +447,12 @@ export class CobMap {
         this.addressSearchFocused = false;
       });
 
+      const searchLabelEl = document.createElement('label');
+      searchLabelEl.classList.add('sf-i-l', 'sr-only');
+      const searchLabelTxt = document.createTextNode('Search');
+      searchLabelEl.appendChild(searchLabelTxt);
+      inputEl.parentElement!.insertBefore(searchLabelEl, inputEl.nextSibling);
+
       const searchIconEl = document.createElement('div');
       searchIconEl.classList.add('sf-i-b');
       inputEl.parentElement!.insertBefore(searchIconEl, inputEl.nextSibling);
