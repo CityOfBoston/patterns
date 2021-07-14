@@ -1,7 +1,6 @@
 title: Group of Links Mini
 handle: group_links_mini
 status: ready
-preview: '@centered'
 variants:
   - name: Group of Links Mini
     context:
