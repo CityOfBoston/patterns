@@ -1,0 +1,8 @@
+title: Date flag
+handle: date-flag 
+status: ready 
+preview: '@centered-grey'
+context: 
+  flag:
+    month: Nov  
+    day: 20
