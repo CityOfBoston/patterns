@@ -1,0 +1,19 @@
+{{#each new as |news|}}
+<a href="{{ news.href }}"
+    class="n--a {{#if news.grid}} m-t500 g--4 g--4-sl {{news.grid}}{{/if}} {{#../theme}} n--a--{{this}}{{/../theme}}">
+    <div class="n--a-c">        
+        <img src="{{ news.image.url }}" alt="{{ news.name }}" style="wdith=160px; height: 160px; float: left">
+        <svg class="svg-date-flag {{#if card.grid}} n--a-date-flag{{/if}}" style="width:60px;" id="Layer_1"
+            data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 34.08 44.31">
+            <path d="M32.26,42.16l-15.3-7-15.3,7v-40h30.6Z" fill="#ffffff" stroke="#C8C8C8" stroke-miterlimit="10" />
+            <text x="50%" y="50%" text-anchor="middle">
+                {{news.month}}
+                <tspan x="50" dy="15">{{news.day}}</tspan>
+            </text>
+        </svg>
+       <div class="n--a-t">{{ news.name }}</div>
+        <div class="n--a-st t--upper t--subtitle">{{ news.position }}</div>
+    </div>
+
+</a>
+{{/each}}

@@ -1,0 +1,13 @@
+title: News
+handle: news 
+status: ready 
+preview: '@centered-grey'
+context: 
+  new: 
+    - name: City of Boston Kicks off free Summer Fitness Series
+      month: Jun
+      day: 3
+      href: https://d8-uat.boston.gov/news/city-boston-kicks-free-summer-fitness-series 
+      image: 
+        url: https://www.thebostoncalendar.com/system/events/photos/000/349/108/large/190346639_10159301409197929_545550673722616510_n.png?1622551716 
+      position: Parks and Recreation 
