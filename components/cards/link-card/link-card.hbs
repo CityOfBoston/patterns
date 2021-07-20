@@ -1,10 +1,10 @@
 {{#each cards as |card|}}
-  <a href="{{ card.href }}" class="lcd m-t500 g--4 g--4--sl{{#../theme}} lcd--{{this}}{{/../theme}}">
-    <div class="lcd-c">
+  <a href="{{ card.href }}" class="lcd {{#if small}} lcd--mini{{/if}} m-t500 g--4 g--4--sl{{#../theme}} lcd--{{this}}{{/../theme}}">
+    <div class="lcd-c {{#if small}} lcd--mini-c{{/if}}">
       {{#if card.image}}
-        <div class="lcd-im" style="background-image: url({{ card.image.url }})"></div>
+        <div class="lcd-im {{#if small}} lcd--mini-im{{/if}}" style="background-image: url({{ card.image.url }})"></div>
       {{/if}}
-      <div class="lcd-t">{{ card.title }}</div>
+      <div class="lcd-t {{#if small}} lcd--mini-t{{/if}}">{{ card.title }}</div>
       {{#if card.subtitle}}
         <div class="lcd-st t--subinfo t--g300">{{ card.subtitle }}</div>
       {{/if}}

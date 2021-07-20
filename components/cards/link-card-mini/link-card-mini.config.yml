@@ -29,9 +29,7 @@ variants:
     context:
       cards:
         - index: 1
-          image: 
-            url: 
-            title: 'Internal Link'
+          image: false
           href: https://d8-uat.boston.gov/departments/digital-team
           title: 'Test Link - Internal'
           subtitle: 'Test link with internal link'
@@ -39,9 +37,7 @@ variants:
 context:
   cards:
     - index: 1
-      image: 
-        url: 
-        title: 'Link'
+      image: false
       href: https://d8-uat.boston.gov/departments/digital-team
       title: 'Test Link'
       subtitle: 'Test link with link'
