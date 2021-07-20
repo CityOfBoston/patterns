@@ -88,6 +88,7 @@
     "vega-tooltip": "0.17.0"
   },
   "devDependencies": {
+    "canvas": "^2.8.0",
     "cross-env": "^5.1.4",
     "escape-html": "^1.0.3",
     "eslint": "^4.17.0",
