@@ -1,0 +1,30 @@
+{{#unless menu_no_checkbox}}<input type="checkbox" id="brg-tr" class="brg-tr" aria-hidden="true" checked>{{/unless}}
+<nav class="nv-m">
+  <div class="nv-m-h">
+    <div class="nv-m-h-ic">
+      <img src="/images/b-dark.svg" title="B" aria-hidden="true" class="nv-m-h-i" />
+    </div>
+    <div id="nv-m-h-t" class="nv-m-h-t">&nbsp;</div>
+  </div>
+  <div class="nv-m-c">
+    <ul class="nv-m-c-l">
+      {{#each menu_links as |link|}}
+        <li class="nv-m-c-l-i{{#if link.has_kids}} nv-m-c-l-i--k{{/if}}">
+          <a href="{{ link.href }}" class="nv-m-c-a nv-m-c-a--{{#if link.theme}}{{link.theme}}{{else}}p{{/if}}{{#if link.has_kids}} nolink{{/if}}">{{ link.name }}</a>
+          {{#if link.has_kids}}
+            <ul class="nv-m-c-l-l">
+              {{#if link.has_kids}}
+                <li class="nv-m-c-bc nv-m-c-b--h"><button class="nv-m-c-b">Back</button></li>
+              {{/if}}
+              {{#each link.links as |child|}}
+                <li class="nv-m-c-l-l-i">
+                  <a href="{{ child.href }}" class="nv-m-c-a nv-m-c-a--s">{{ child.name }}</a>
+                </li>
+              {{/each}}
+            </ul>
+          {{/if}}
+        </li>
+      {{/each}}
+    </ul>
+  </div>
+</nav>
