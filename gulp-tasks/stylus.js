@@ -8,6 +8,7 @@ module.exports = function(gulp, plugins, options) {
         './stylesheets/hub.styl',
         './stylesheets/theme.styl',
         './stylesheets/print.styl',
+        './stylesheets/cob-theme.styl',
       ])
       .pipe(
         plugins.stylus({
