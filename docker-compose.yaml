@@ -1,0 +1,19 @@
+version: '3.6'
+
+x-build-args: &build_args
+  INSTALL_NODE_VERSION: 10.24.0
+
+
+services:
+  cob-patterns:
+    build:
+      context: .
+      target: development
+      args:
+        <<: *build_args
+    command: "npm run dev"
+    ports:
+      - '3030:3030'
+    image: "cob_web-patterns"
+    volumes:
+      - ./:/app
