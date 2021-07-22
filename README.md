@@ -1,6 +1,6 @@
 <img src="https://cloud.githubusercontent.com/assets/9234/19400090/8c20c53c-9222-11e6-937c-02bce55e5301.png" alt="City of Boston" width="150" />
 
-This is the pattern library for the City of Boston. It's currently a work in progress, but we're adding to it every day. 
+This is the pattern library for the City of Boston. It's currently a work in progress, but we're adding to it every day.
 
 **This project contains the marks and trade dress of the City of Boston's digital properties and should not be reused without the express permission of the City of Boston.**
 
@@ -26,7 +26,7 @@ To develop against the pattern library, you can run:
 `npm run dev`
 
 This will build the components and watch for changes, and start up a Fractal
-server on https://localhost:3030/ to show the library.
+server on <https://localhost:3030/> to show the library.
 
 **Node 8 is required for development**
 
@@ -40,11 +40,12 @@ browsers](https://github.com/CityOfBoston/digital/wiki/Software-engineering-work
 ## Testing
 
 Fleet has 2 types of tests:
- - Unit tests, using [Jest](https://facebook.github.io/jest/)
- - Browser tests, using [TestCafe](https://testcafe.devexpress.com/)
+
+- Unit tests, using [Jest](https://facebook.github.io/jest/)
+- Browser tests, using [TestCafe](https://testcafe.devexpress.com/)
 
 During development, you can run `npm run jest.dev` to have Jest watch files and
-re-run. 
+re-run.
 
 To run the browser tests, start up your Fractal server with `npm run dev` and
 then run `npm run testcafe.dev` to start up a remote TestCafe server. It will
@@ -74,7 +75,7 @@ The Travis job will automatically push to S3 and invalidate the CloudFront
 cache.
 
 **Nov 2020: Migrated CI to travis-ci.com.**
-*Build history can be found at: https://travis-ci.org/github/CityOfBoston/patterns/branches*
+*Build history can be found at: <https://travis-ci.org/github/CityOfBoston/patterns/branches>*
 
 ## Reporting bugs
 
@@ -82,21 +83,22 @@ If you need to submit a bug report for the pattern library, please follow these 
 
 ### Prior to submitting a bug
 
- * Verify that you are able to reproduce it repeatedly. Try multiple browsers, devices, etc. Also, try clearing your cache.
- * Perform a quick search of our [existing issues](https://github.com/CityOfBoston/patterns/issues) to see if it has been logged previously.
+- Verify that you are able to reproduce it repeatedly. Try multiple browsers, devices, etc. Also, try clearing your cache.
+- Perform a quick search of our [existing issues](https://github.com/CityOfBoston/patterns/issues) to see if it has been logged previously.
 
 ### Submitting a bug
 
- * Use a **clear and descriptive** title when creating your issue.
- * Include a bulleted list of steps to reproduce your issue.
- * Include the URL of the page that you're seeing the issue on.
- * Include screenshots if possible. Bonus points if you include an animated GIF of the issue.
- * Include details about your browser (which one, what version, using ad blockers?).
- * When filing your issue, assume that the recipient knows nothing about what you're talking about. There is no such thing as too many details when filing your issue.
+- Use a **clear and descriptive** title when creating your issue.
+
+- Include a bulleted list of steps to reproduce your issue.
+- Include the URL of the page that you're seeing the issue on.
+- Include screenshots if possible. Bonus points if you include an animated GIF of the issue.
+- Include details about your browser (which one, what version, using ad blockers?).
+- When filing your issue, assume that the recipient knows nothing about what you're talking about. There is no such thing as too many details when filing your issue.
 
 ### Bug report template
 
-```
+```bash
 ## Basic details
 
 URL: [URL]
@@ -128,8 +130,10 @@ Ad blocker: [Ad blocker?]
 
 This project adheres to the [Contributor Covenant code of conduct](https://github.com/CityOfBoston/boston.gov/blob/develop/guides/01-code-of-conduct.md). By participating, you are expected to uphold this code. Please report unacceptable behavior to <a href="mailto:digital@boston.gov">digital@boston.gov</a>
 
+### Changes/Updates
+
+- 2021.07 - Development and testing should be done on Node 10 (10.24.0)
 
 ### DEPLOYS
+
 - [2020.06.08 - Staging] - Permit Finder - VPAT
-
-
