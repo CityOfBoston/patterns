@@ -25,6 +25,9 @@ export function findDefaultFilterValue(filter: Filter): string {
   if (filter.default) {
     const now = new Date();
 
+    // TODO: (PhillipK) Rework test/method to use/convert to UTC,
+    // these test currently fail on different timezones
+
     // We generate an array of information about the current date, which can be
     // used to set time-based defaults.
     const dateItems = {
