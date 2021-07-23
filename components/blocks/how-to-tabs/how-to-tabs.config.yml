@@ -1,45 +1,35 @@
-title: Tabs
-handle: tabs
+title: How-To Tabs
+handle: how-to tabs
 status: ready
 variants:
-  - name: hub
-    status: 'ready'
-    preview: '@hub'
   - name: default open
     status: 'ready'
     context:
       tabs:
         - index: 1
-          title: 'November 8, 2016: General Election'
-          subtitle: 'Last updated: 2/2017'
+          title: 'Option 1'
           content: '<p>Here is some test content.</p><p>Here is some test content.</p><p>Here is some test content.</p><p>Here is some test content.</p>'
           open: true
         - index: 2
-          title: 'November 8, 2016: General Election'
-          subtitle: 'Last updated: 2/2017'
+          title: 'Option 2'
           content: '<p>Here is some test content.</p><p>Here is some test content.</p><p>Here is some test content.</p><p>Here is some test content.</p>'
 context:
   header:
-    title: Election Results
+    title: How-To Tabs
     contact: false
   tabs:
     - index: 1
-      title: 'November 8, 2016: General Election'
-      subtitle: 'Last updated: 2/2017'
+      title: 'Option 1'
       content: '<p>Here is some test content.</p><p>Here is some test content.</p><p>Here is some test content.</p><p>Here is some test content.</p>'
     - index: 2
-      title: 'November 8, 2016: General Election'
-      subtitle: 'Last updated: 2/2017'
+      title: 'Option 2'
       content: '<p>Here is some test content.</p><p>Here is some test content.</p><p>Here is some test content.</p><p>Here is some test content.</p>'
     - index: 3
-      title: 'November 8, 2016: General Election'
-      subtitle: 'Last updated: 2/2017'
+      title: 'Option 3'
       content: '<p>Here is some test content.</p><p>Here is some test content.</p><p>Here is some test content.</p><p>Here is some test content.</p>'
     - index: 4
-      title: 'November 8, 2016: General Election'
-      subtitle: 'Last updated: 2/2017'
+      title: 'Option 4'
       content: '<p>Here is some test content.</p><p>Here is some test content.</p><p>Here is some test content.</p><p>Here is some test content.</p>'
     - index: 5
-      title: 'November 8, 2016: General Election'
-      subtitle: 'Last updated: 2/2017'
+      title: 'Option 5'
       content: '<p>Here is some test content.</p><p>Here is some test content.</p><p>Here is some test content.</p><p>Here is some test content.</p>'

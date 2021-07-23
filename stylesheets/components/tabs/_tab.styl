@@ -1,9 +1,9 @@
 /*
 
-   Drawer
+   How-To Tabs
 
    Base:
-    tb
+    ht-tab
 
    Elements:
     h = header
@@ -15,12 +15,12 @@
    Modifier:
     sm = small
 
-   Use tb--open to force the drawer open. Useful for JavaScript cases where
+   Use ht-tab--open to force the how-to tab open. Useful for JavaScript cases where
    you want control over the opening / closing rather than using checkboxes.
  */
 
-.tb
-  background: $white
+.ht-tab
+  background: $grey-000
 
   &:first-child
     margin-top: $sizing-500
@@ -29,26 +29,24 @@
     margin-top: $sizing-200
 
   &-tr
-    &:checked ~ .tb, ^[-1]--open .tb
+    &:checked ~ .ht-tab, ^[-1]--open .ht-tab
       &-h
         background-color: $charles-blue
 
-        .tb-t
+        .ht-tab-t
           color: $white
 
-        .tb-st
-          color: $optimistic-blue-light
-
-        .tb-ic
+        .ht-tab-ic
           margin-top: -9px
           
           svg
-            transform: rotate(-90deg)
+          visibility:hidden
+          d: "M0 10h24v4h-24z"
 
-        .tb-i
+        .ht-tab-i
           fill: $white
 
-    &:checked ~ .tb
+    &:checked ~ .ht-tab
       &-c
         display: block
 
@@ -73,10 +71,10 @@
       background-color: $optimistic-blue-light
       color: $white
 
-      .tb-t, .tb-st
+      .ht-tab-t
         color: $white
 
-      .tb-i
+      .ht-tab-i
         fill: $white
 
   &-c
@@ -113,8 +111,6 @@
     svg
       max-height: 100%
       max-width: 100%
-      transform: rotate(90deg)
-      transition: transform 250ms
 
   &-i
     fill: $optimistic-blue-light
@@ -127,45 +123,37 @@
     font-style: italic
     line-height: $line-height-100
 
-  &-st
-    color: $charles-blue
-    font-family: $serif
-    font-size: responsive 14px 18px
-    font-range: 480px 1440px
-    line-height: $line-height-100
-    margin-top: $sizing-100
-
 // handle hover interference with focus
-.tb.focus-active:hover
+.ht-tab.focus-active:hover
   pointer-events: none
   background-color: $white
-  color: $optimistic-blue-light
+  color: $optimistic-blue-dark
 
-  .tb-t, .tb-st
+  .ht-tab-t
     color: $optimistic-blue-light
 
-  .tb-i
+  .ht-tab-i
     fill: $optimistic-blue-light
 
-.tb-h.focus-active:hover
+.ht-tab-h.focus-active:hover
   background-color: $white
 
-.tb.focus-active:focus
+.ht-tab.focus-active:focus
   pointer-events: auto
   background-color: $optimistic-blue-light
   color: $white
 
-  .tb-t, .tb-st
+  .ht-tab-t
     color: $white
 
-  .tb-i
+  .ht-tab-i
     fill: $white
 
-.tb-h.focus-active:focus-within
+.ht-tab-h.focus-active:focus-within
   background-color: $optimistic-blue-light
   color: $white
 
-  .tb-t, .tb-ic, .tb-i
+  .ht-tab-t, .ht-tab-ic, .ht-tab-i
     color: $white
     fill: $white
 
