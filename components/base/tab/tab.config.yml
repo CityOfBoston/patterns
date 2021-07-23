@@ -1,0 +1,27 @@
+title: Tab
+handle: tab
+status: ready
+variants:
+  - name: Hub
+    preview: '@hub'
+  - name: Mini
+    context:
+      tabs:
+        - title: 'Filter by title'
+          variant: 'tb--sm'
+  - name: JS Controlled
+    context:
+      tabs:
+        - title: 'November 8, 2016: General Election'
+          subtitle: 'Last updated: 2/2017'
+          js: true
+        - title: 'November 8, 2016: General Election'
+          subtitle: 'Last updated: 2/2017'
+          js: true
+          variant: 'tb--open'
+context:
+  tabs:
+    - index: 1
+      title: 'November 8, 2016: General Election'
+      subtitle: 'Last updated: 2/2017'
+      content: '<p>Here is some test content.</p><p>Here is some test content.</p><p>Here is some test content.</p><p>Here is some test content.</p>'

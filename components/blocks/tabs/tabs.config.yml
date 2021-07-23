@@ -1,5 +1,5 @@
-title: Drawers
-handle: drawers
+title: Tabs
+handle: tabs
 status: ready
 variants:
   - name: hub
@@ -8,7 +8,7 @@ variants:
   - name: default open
     status: 'ready'
     context:
-      drawers:
+      tabs:
         - index: 1
           title: 'November 8, 2016: General Election'
           subtitle: 'Last updated: 2/2017'
@@ -22,7 +22,7 @@ context:
   header:
     title: Election Results
     contact: false
-  drawers:
+  tabs:
     - index: 1
       title: 'November 8, 2016: General Election'
       subtitle: 'Last updated: 2/2017'
