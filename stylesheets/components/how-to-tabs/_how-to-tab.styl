@@ -36,25 +36,23 @@
         .ht-tab-t
           color: $white
 
-        .ht-tab-ic
-          margin-top: -9px
+  &-ic
+    margin-top: -9px
+    height: 20px
+    width: 26px
+    position: absolute
+    right: $sizing-800 * 3
+    top: 50%
 
-        .ht-tab-ic .closed
-          display: none
+    svg
+      max-height: 100%
+      max-width: 100%
 
-        .ht-tab-ic:hover .open
-          display: none
-
-        .icon-expand-link:hover .closed
-          display: block
-          
-
-        .ht-tab-i
-          fill: $white
-
-    &:checked ~ .ht-tab
-      &-c
-        display: block
+    .closed
+      display: none
+  
+    &:hover .open
+      display: block
 
   &-h
     display: block
@@ -80,9 +78,6 @@
       .ht-tab-t
         color: $white
 
-      .ht-tab-i
-        fill: $white
-
   &-c
     display: none
     background: $white
@@ -106,20 +101,6 @@
           border: 1px solid black
           word-wrap: break-word;
           word-break: break-word;
-  &-ic
-    height: 20px
-    width: 26px
-    position: absolute
-    right: $sizing-500
-    top: 50%
-    margin-top: -8px
-
-    svg
-      max-height: 100%
-      max-width: 100%
-
-  &-i
-    fill: $optimistic-blue-light
 
   &-t
     color: $optimistic-blue-dark
@@ -128,6 +109,13 @@
     font-range: 480px 1440px
     font-style: italic
     line-height: $line-height-100
+    
+
+.t--subinfo .closed
+  display: none
+
+.t--subinfo:hover .open
+  display: block
 
 // handle hover interference with focus
 .ht-tab.focus-active:hover
@@ -137,9 +125,6 @@
 
   .ht-tab-t
     color: $optimistic-blue-light
-
-  .ht-tab-i
-    fill: $optimistic-blue-light
 
 .ht-tab-h.focus-active:hover
   background-color: $white
