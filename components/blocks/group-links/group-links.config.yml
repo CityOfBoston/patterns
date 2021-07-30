@@ -3,6 +3,7 @@ handle: group_links
 status: ready
 variants:
   - name: Grid Without Description
+    preview: '@centered-grey'
     context:
       header:
         title: Test Group of Links - Grid Without Description
@@ -33,6 +34,7 @@ variants:
           subtitle: 'Test link with internal link'
           content: '123-456-7890' 
   - name: Grid With Description
+    preview: '@centered-grey'
     context:
       header:
         title: Test Group of Links - Grid With Description

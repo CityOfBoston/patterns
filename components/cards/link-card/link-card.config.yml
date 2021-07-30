@@ -36,6 +36,7 @@ variants:
           subtitle: 'Test link with internal link'
           content: '123-456-7890'
   - name: Mini Document
+    preview: '@centered'
     context:
       cards:
         - index: 1
@@ -47,6 +48,7 @@ variants:
           href: https://d8-uat.boston.gov/sites/default/files/linked/file/document_files/2017/03/pdf_for_website_testing_0.pdf
           title: 'Test Link - Document'
   - name: Mini External
+    preview: '@centered'
     context:
       cards:
         - index: 1
@@ -57,6 +59,7 @@ variants:
           href: https://www.google.com/
           title: 'Test Link - External'
   - name: Mini Internal
+    preview: '@centered'
     context:
       cards:
         - index: 1
