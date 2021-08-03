@@ -67,7 +67,6 @@ variants:
           image: false
           href: https://d8-uat.boston.gov/departments/digital-team
           title: 'Test Link - Internal'
-              
 context:
   cards:
     - index: 1
@@ -78,4 +77,3 @@ context:
       title: 'Test Link'
       subtitle: 'Test link with link'
       content: 'Test@Boston.gov'
-
