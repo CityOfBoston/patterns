@@ -1,0 +1,13 @@
+<nav class="ssm-s{{#if theme}} ssm-s--{{theme}}{{/if}}">
+  <input type="checkbox" id="ssm-s-tr" class="ssm-s-tr" aria-hidden="true">
+
+  <ul class="ssm-s-l">
+    <li class="ssm-s-l-i">
+      <label for="ssm-s-tr" class="ssm-s-l-b" type="button">Navigation</label>
+    </li>
+
+    {{#each links as |link|}}
+      <li class="ssm-s-l-i"><a href="{{ link.href }}" title="{{ link.name }}" class="ssm-s-l-a{{#if link.active}} ssm-s-l-a--active{{/if}}">{{ link.name }}</a></li>
+    {{/each}}
+  </ul>
+</nav>
