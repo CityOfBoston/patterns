@@ -2,7 +2,9 @@
 
 
 body {
-    overflow-x: hidden
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale
 }
 html {
     font-size: 112.5%;
@@ -18,11 +20,7 @@ html {
         font-size: 12pt
     }
 }
-body {
-    margin: 0;
-    padding: 0;
-    overflow-x: hidden
-}
+
 * {
     box-sizing: border-box
 }
@@ -224,13 +222,6 @@ table {
 td,
 th {
     padding: 0
-}
-body {
-    font-family: "Lora", serif;
-    color: #58585B;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    background: $white
 }
 abbr[title] {
     border-bottom: 1px dotted
