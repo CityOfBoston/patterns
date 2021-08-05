@@ -294,7 +294,6 @@ sub {
     }
 }
 .component-section {
-    padding: 50px 0;
     position: relative
 }
 @media (min-width: 768px) {
@@ -555,4 +554,60 @@ h1, h2, h3, h4, h5, h6 {
         padding-bottom: .75rem
     }
 }
-
+.visually-hidden,
+.views-widget-filter-field_event_type_target_id>label,
+.views-widget-filter-field_neighborhood_target_id>label,
+.views-widget-filter-field_contact_target_id>label,
+.views-widget-filter-field_published_date_value>label,
+.visually-hidden--focusable,
+.element-invisible,
+.component-short-title,
+.paragraphs-item-feedback.component-section .form-type-radios,
+.paragraphs-item-feedback.component-section .form-submit,
+.node-advpoll .form-type-radios,
+.node-advpoll .form-submit,
+.node-type-landing-page .page-title,
+.node-type-how-to h1.page-title,
+.node-type-how-to .timeline-step-wrapper .page-title.timeline-number,
+.timeline-step-wrapper .node-type-how-to .page-title.timeline-number,
+.node-type-tabbed-content h1.page-title,
+.node-type-tabbed-content .timeline-step-wrapper .page-title.timeline-number,
+.timeline-step-wrapper .node-type-tabbed-content .page-title.timeline-number,
+.node-type-department-profile h1.page-title,
+.node-type-department-profile .timeline-step-wrapper .page-title.timeline-number,
+.timeline-step-wrapper .node-type-department-profile .page-title.timeline-number,
+.node-type-article h1.page-title,
+.node-type-article .timeline-step-wrapper .page-title.timeline-number,
+.timeline-step-wrapper .node-type-article .page-title.timeline-number,
+.node-type-post h1.page-title,
+.node-type-post .timeline-step-wrapper .page-title.timeline-number,
+.timeline-step-wrapper .node-type-post .page-title.timeline-number,
+.node-type-event h1.page-title,
+.node-type-event .timeline-step-wrapper .page-title.timeline-number,
+.timeline-step-wrapper .node-type-event .page-title.timeline-number,
+.node-type-public-notice h1.page-title,
+.node-type-public-notice .timeline-step-wrapper .page-title.timeline-number,
+.timeline-step-wrapper .node-type-public-notice .page-title.timeline-number,
+.node-type-topic-page .page-title {
+    position: absolute !important;
+    height: 1px;
+    width: 1px;
+    overflow: hidden;
+    clip: rect(1px, 1px, 1px, 1px)
+}
+.visually-hidden--off,
+--off.visually-hidden--focusable,
+--off.element-invisible,
+--off.component-short-title,
+.paragraphs-item-feedback.component-section --off.form-type-radios,
+.paragraphs-item-feedback.component-section --off.form-submit,
+.node-advpoll --off.form-type-radios,
+.node-advpoll --off.form-submit,
+.node-type-landing-page --off.page-title,
+.node-type-topic-page --off.page-title {
+    position: static !important;
+    clip: auto;
+    height: auto;
+    width: auto;
+    overflow: auto
+}
