@@ -1,6 +1,6 @@
 /*
 
-   SECONDARY NAV
+   STICKY SUBMENU
 
    Base:
     ssm-s
@@ -12,7 +12,7 @@
   &-s
     line-height: $line-height-000
     transition: left 0.2s
-    background-color: $charles-blue
+    background-color: white
 
     &-tr
       display: none
@@ -28,7 +28,7 @@
       margin: 0
       padding: 0
       align-items: center
-      justify-content: flex-end
+      justify-content: flex-start
 
       @media $media-large
         display: flex
@@ -37,12 +37,15 @@
       &-i
         margin: 0
         padding: 0
+        
+
 
       &-a
-      &-b
+      &-b 
         position: relative
         font-family: $sans
-        font-size: $font-200
+        font-size: $font-100
+        font-weight: 600
         letter-spacing: 1.4px
         padding: $sizing-400 0 $sizing-400 $sizing-400
         text-decoration: none
@@ -57,7 +60,7 @@
         @media $media-large
           display: block
           background-color: transparent
-          color: white
+          color: $optimistic-blue-dark
           border: none
 
         &--active
@@ -82,9 +85,6 @@
 
         @media $media-large
           display: none
-
-    &--c &-l
-      justify-content: center
 
     // Top position is here to line up with the height of header
     &--sticky

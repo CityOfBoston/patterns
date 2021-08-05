@@ -1,7 +1,10 @@
-title: Secondary Nav
-handle: secondary-nav
+title: Sticky Submenu
+handle: sticky-submenu
 status: ready
 variants:
+  # - name: centered
+  #   context:
+  #     theme: c
   # - name: yellow
   #   context:
   #     theme: y
@@ -9,7 +12,7 @@ context:
   links:
     - name: Report a Problem
       href: https://311.boston.gov/
-      active: true
+      # active: true
     - name: Case Look Up
       href: https://311.boston.gov/lookup
     - name: 311 on the Go
