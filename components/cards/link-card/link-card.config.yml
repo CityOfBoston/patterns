@@ -1,0 +1,79 @@
+title: Link Card
+handle: link-card
+status: ready
+preview: '@centered-grey'
+variants:
+  - name: Document
+    context:
+      cards:
+        - index: 1
+          image:
+            url: /images/global/icons/icon-document.svg
+          href: https://d8-uat.boston.gov/sites/default/files/linked/file/document_files/2017/03/pdf_for_website_testing_0.pdf
+          title: 'Test Link - Document'
+          subtitle: 'Test link with document'
+          content: '123-456-7890'
+  - name: External
+    context:
+      cards:
+        - index: 1
+          image: 
+            url: /images/global/icons/external-link.svg
+            title: 'Document Link'
+          href: https://www.google.com/
+          title: 'Test Link - External'
+          subtitle: 'Test link with external link'
+          content: 'Test@Boston.gov'
+  - name: Internal
+    context:
+      cards:
+        - index: 1
+          image: 
+            url: 
+            title: 'Internal Link'
+          href: https://d8-uat.boston.gov/departments/digital-team
+          title: 'Test Link - Internal'
+          subtitle: 'Test link with internal link'
+          content: '123-456-7890'
+  - name: Mini Document
+    preview: '@centered'
+    context:
+      cards:
+        - index: 1
+          small: true
+          variant: 'lcd--mini'
+          image: 
+            url: /images/global/icons/icon-document.svg
+            title: 'Document Link'
+          href: https://d8-uat.boston.gov/sites/default/files/linked/file/document_files/2017/03/pdf_for_website_testing_0.pdf
+          title: 'Test Link - Document'
+  - name: Mini External
+    preview: '@centered'
+    context:
+      cards:
+        - index: 1
+          small: true
+          image: 
+            url: /images/global/icons/external-link.svg
+            title: 'External Link'
+          href: https://www.google.com/
+          title: 'Test Link - External'
+  - name: Mini Internal
+    preview: '@centered'
+    context:
+      cards:
+        - index: 1
+          small: true
+          image: false
+          href: https://d8-uat.boston.gov/departments/digital-team
+          title: 'Test Link - Internal'
+context:
+  cards:
+    - index: 1
+      image: 
+        url: 
+        title: 'Link'
+      href: https://d8-uat.boston.gov/departments/digital-team
+      title: 'Test Link'
+      subtitle: 'Test link with link'
+      content: 'Test@Boston.gov'

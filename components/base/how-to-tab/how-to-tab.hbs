@@ -1,0 +1,24 @@
+{{#each tabs as |tab|}}
+<div class="ht-tab{{#if variant}} {{variant}}{{/if}}">
+  {{#unless js}}<input type="checkbox" id="ht-tab-tr{{ tab.index }}" class="ht-tab-tr a11y--h" {{#if tab.open}}
+    checked{{/if}}>{{/unless}}
+  <label for="ht-tab-tr{{ tab.index }}" class="ht-tab-h">
+
+    <div class="ht-tab-ic g--3">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path class="closed" d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z"> </path>
+        <path class="open" d="M0 10h24v4h-24z"> </path>
+      </svg>
+      <div class = "t--subinfo">
+        <span class="closed">show</span>
+        <span class="open ">hide</span>
+      </div>
+    </div>
+
+    <div class="ht-tab-t">{{ tab.title }}</div>
+  </label>
+  <div class="ht-tab-c">
+    {{{ tab.content }}}
+  </div>
+</div>
+{{/each}}
