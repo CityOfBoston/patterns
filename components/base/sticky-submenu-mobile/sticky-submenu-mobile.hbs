@@ -1,0 +1,43 @@
+{{#each submenu as |submenu|}}
+  <div class="ssm-m{{#if variant}} {{variant}}{{/if}}">
+    {{#unless js}}<input type="checkbox" id="ssm-m-tr{{ submenu.index }}" class="ssm-m-tr a11y--h"{{#if submenu.open}} checked{{/if}}>{{/unless}}
+    <{{#if js}}button{{else}}label for="ssm-m-tr{{ submenu.index }}"{{/if}} class="ssm-m-h">
+      <div class="ssm-m-ic"><svg xmlns="http://www.w3.org/2000/svg" viewBox="-2 8.5 18 25"><path class="ssm-m-i" d="M16 21L.5 33.2c-.6.5-1.5.4-2.2-.2-.5-.6-.4-1.6.2-2l12.6-10-12.6-10c-.6-.5-.7-1.5-.2-2s1.5-.7 2.2-.2L16 21z"/></svg></div>
+      <div class="ssm-m-t">{{ submenu.title }}</div>
+    </{{#if js}}button{{else}}label{{/if}}>
+    <div class="ssm-m-c">
+      <div class="g">
+        {{> @link_with_arrow }}
+      </div>
+      {{!-- {{ submenu.content }} --}}
+    </div>
+  </div>
+{{/each}}
+{{!-- 
+<div class="ssm-m">
+<input type="checkbox" id="ssm-m-tr1" class="ssm-m-tr a11y--h">
+<div class="sub-nav-trigger submenu-trigger open" tabindex="0">
+  <div class="sub-nav-chevron">
+    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+      viewBox="0 0 26 18" style="enable-background:new 0 0 26 18;" xml:space="preserve">
+      <title>Toggle</title>
+      <path class="st0 icon-stroke" d="M13,17.7L0.5,2.7C0,2.1,0.1,1.2,0.7,0.6c0.6-0.5,1.6-0.4,2.1,0.2L13,13L23.2,0.8c0.5-0.6,1.5-0.7,2.1-0.2
+	c0.6,0.5,0.7,1.5,0.2,2.1L13,17.7z"></path>
+    </svg>
+  </div>
+  Page Sections
+</div>
+
+<nav class="topic-nav topic-nav__left" style="top: initial; display: block;">
+  <a id="section-nav" title="Section Nav" class="sr-only sr-only-focusable">Section Nav</a>
+  <ul>
+    <li><a href="#three-column" class="scroll-link-js">Three column</a></li>
+    <li><a href="#cabinet-component" class="scroll-link-js">Cabinet component</a></li>
+    <li><a href="#bos311" class="scroll-link-js">BOS:311</a></li>
+    <li><a href="#submenus" class="scroll-link-js">submenus</a></li>
+    <li><a href="#quick-links" class="scroll-link-js">Quick Links</a></li>
+    <li><a href="#group-of-links---grid-desc" class="scroll-link-js">Group of Links - Grid Desc.</a></li>
+    <li><a href="#grid-of-guides" class="scroll-link-js">Grid of Guides</a></li>
+  </ul>
+</nav>
+</div> --}}

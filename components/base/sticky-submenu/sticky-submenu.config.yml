@@ -10,12 +10,14 @@ variants:
   #     theme: y
 context:
   links:
-    - name: Report a Problem
+    - name: Transition Report
       href: https://311.boston.gov/
       # active: true
-    - name: Case Look Up
+    - name: Ending Racism
       href: https://311.boston.gov/lookup
-    - name: 311 on the Go
+    - name: Recognition
       href: https://311.boston.gov/onthego
-    - name: FAQ
+    - name: Major Reports
+      href: https://311.boston.gov/faq
+    - name: Initiatives
       href: https://311.boston.gov/faq
