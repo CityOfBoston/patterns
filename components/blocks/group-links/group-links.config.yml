@@ -12,9 +12,8 @@ variants:
           link: https://d8-uat.boston.gov/departments/digital-team
       cards:
         - index: 1
-          # image: 
-          #   url: /images/global/icons/icon-document.svg
-          #   title: 'Document Link'
+          image: 
+            url: /images/global/icons/icon-document.svg
           href: https://d8-uat.boston.gov/sites/default/files/linked/file/document_files/2017/03/pdf_for_website_testing_0.pdf
           title: 'Test Link - Document'
           subtitle: 'Test link with document'
