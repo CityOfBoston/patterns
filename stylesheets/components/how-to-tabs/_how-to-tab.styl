@@ -43,14 +43,14 @@
           display: none
 
         .ht-tab-ic:hover .open
-          display: none
+          display: block
 
         .icon-expand-link:hover .closed
           display: block
-          
 
-        .ht-tab-i
-          fill: $white
+        .ht-tab-ic
+          svg
+            fill: $white
 
     &:checked ~ .ht-tab
       &-c
@@ -80,8 +80,9 @@
       .ht-tab-t
         color: $white
 
-      .ht-tab-i
-        fill: $white
+      .ht-tab-ic
+        svg
+          fill: $white
 
   &-c
     display: none
@@ -110,13 +111,14 @@
     height: 20px
     width: 26px
     position: absolute
-    right: $sizing-500
+    right: $sizing-500 * 5
     top: 50%
     margin-top: -8px
 
     svg
       max-height: 100%
       max-width: 100%
+      fill: $optimistic-blue-light
 
   &-i
     fill: $optimistic-blue-light
@@ -138,11 +140,16 @@
   .ht-tab-t
     color: $optimistic-blue-light
 
-  .ht-tab-i
-    fill: $optimistic-blue-light
+  .ht-tab-ic
+    svg
+      fill: $white
 
 .ht-tab-h.focus-active:hover
   background-color: $white
+
+  .ht-tab-ic
+    svg
+      fill: $white
 
 .ht-tab.focus-active:focus
   pointer-events: auto
@@ -152,8 +159,9 @@
   .ht-tab-t
     color: $white
 
-  .ht-tab-i
-    fill: $white
+  .ht-tab-ic
+    svg
+      fill: $white
 
 .ht-tab-h.focus-active:focus-within
   background-color: $optimistic-blue-light
@@ -162,4 +170,3 @@
   .ht-tab-t, .ht-tab-ic, .ht-tab-i
     color: $white
     fill: $white
-
