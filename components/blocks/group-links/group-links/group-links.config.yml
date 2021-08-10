@@ -36,6 +36,10 @@ variants:
         contact: 
           title: Boston Team
           link: https://d8-uat.boston.gov/departments/digital-team
+      subheader:
+        title: 'Subheader text'
+        description: 'Testing group of links - grid with description and with a CTA as document'
+        button: 'CTA as document'
       cards:
         - index: 1
           variant: document
