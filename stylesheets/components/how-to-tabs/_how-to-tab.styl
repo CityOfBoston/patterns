@@ -52,6 +52,9 @@
           svg
             fill: $white
 
+        .ht-tab-subinfo span
+          visibility: hidden
+
     &:checked ~ .ht-tab
       &-c
         display: block
@@ -159,7 +162,6 @@
 .ht-tab.focus-active:focus
   pointer-events: auto
   background-color: $optimistic-blue-light
-  color: $white
 
   .ht-tab-t
     color: $white
