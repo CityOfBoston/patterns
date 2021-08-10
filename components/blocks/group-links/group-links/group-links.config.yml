@@ -1,9 +1,9 @@
 title: Group of Links
 handle: group_links
 status: ready
+preview: '@centered-grey'
 variants:
   - name: Grid Without Description
-    preview: '@centered-grey'
     context:
       header:
         title: Test Group of Links - Grid Without Description
@@ -12,27 +12,24 @@ variants:
           link: https://d8-uat.boston.gov/departments/digital-team
       cards:
         - index: 1
-          image: 
-            url: /images/global/icons/icon-document.svg
+          variant: document
           href: https://d8-uat.boston.gov/sites/default/files/linked/file/document_files/2017/03/pdf_for_website_testing_0.pdf
           title: 'Test Link - Document'
           subtitle: 'Test link with document'
           content: '123-456-7890'
         - index: 2
-          image: 
-            url: /images/global/icons/external-link.svg
+          variant: external
           href: https://www.google.com/
           title: 'Test Link - External'
           subtitle: 'Test link with external link'
           content: 'Test@Boston.gov'
         - index: 3
-          image: false
+          variant: false
           href: https://d8-uat.boston.gov/departments/digital-team
           title: 'Test Link - Internal'
           subtitle: 'Test link with internal link'
           content: '123-456-7890' 
   - name: Grid With Description
-    preview: '@centered-grey'
     context:
       header:
         title: Test Group of Links - Grid With Description
@@ -41,24 +38,45 @@ variants:
           link: https://d8-uat.boston.gov/departments/digital-team
       cards:
         - index: 1
-          # image: 
-          #   url: /images/global/icons/icon-document.svg
-          #   title: 'Document Link'
+          variant: document
           href: https://d8-uat.boston.gov/sites/default/files/linked/file/document_files/2017/03/pdf_for_website_testing_0.pdf
           title: 'Test Link - Document'
           subtitle: 'Test link with document'
           content: '123-456-7890'
         - index: 2
-          # image: 
-          #   url: /images/global/icons/external-link.svg
-          #   title: 'External Link'
+          variant: external
           href: https://www.google.com/
           title: 'Test Link - External'
           subtitle: 'Test link with external link'
           content: 'Test@Boston.gov'
         - index: 3
-          # image: false
+          variant: false
           href: https://d8-uat.boston.gov/departments/digital-team
           title: 'Test Link - Internal'
           subtitle: 'Test link with internal link'
-          content: '123-456-7890' 
+          content: '123-456-7890'
+context:
+  header:
+    title: Test Group of Links - Grid Without Description
+    contact: 
+      title: Boston Team
+      link: https://d8-uat.boston.gov/departments/digital-team
+  cards:
+    - index: 1
+      variant: document
+      href: https://d8-uat.boston.gov/sites/default/files/linked/file/document_files/2017/03/pdf_for_website_testing_0.pdf
+      title: 'Test Link - Document'
+      subtitle: 'Test link with document'
+      content: '123-456-7890'
+    - index: 2
+      variant: external
+      href: https://www.google.com/
+      title: 'Test Link - External'
+      subtitle: 'Test link with external link'
+      content: 'Test@Boston.gov'
+    - index: 3
+      variant: false
+      href: https://d8-uat.boston.gov/departments/digital-team
+      title: 'Test Link - Internal'
+      subtitle: 'Test link with internal link'
+      content: '123-456-7890'
