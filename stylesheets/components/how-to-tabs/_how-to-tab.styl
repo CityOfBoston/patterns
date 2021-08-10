@@ -107,21 +107,6 @@
           border: 1px solid black
           word-wrap: break-word;
           word-break: break-word;
-  &-ic
-    height: 20px
-    width: 26px
-    position: absolute
-    right: $sizing-500 * 5
-    top: 50%
-    margin-top: -8px
-
-    svg
-      max-height: 100%
-      max-width: 100%
-      fill: $optimistic-blue-light
-
-  &-i
-    fill: $optimistic-blue-light
 
   &-t
     color: $optimistic-blue-dark
@@ -130,6 +115,26 @@
     font-range: 480px 1440px
     font-style: italic
     line-height: $line-height-100
+
+
+  &-ic
+    height: 20px
+    width: 26px
+    position: absolute
+    right: $sizing-500 * 4
+    top: 50%
+    margin-top: -8px  
+
+    svg
+      max-height: 100%
+      max-width: 100%
+      fill: $optimistic-blue-light
+
+.t--subinfo
+  float: right
+  right: $sizing-500 
+  top: 50%
+  margin-top: -8px   
 
 // handle hover interference with focus
 .ht-tab.focus-active:hover
