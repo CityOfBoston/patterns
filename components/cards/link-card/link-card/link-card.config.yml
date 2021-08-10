@@ -7,8 +7,7 @@ variants:
     context:
       cards:
         - index: 1
-          image:
-            url: /images/global/icons/icon-document.svg
+          variant: 'document'
           href: https://d8-uat.boston.gov/sites/default/files/linked/file/document_files/2017/03/pdf_for_website_testing_0.pdf
           title: 'Test Link - Document'
           subtitle: 'Test link with document'
@@ -17,8 +16,7 @@ variants:
     context:
       cards:
         - index: 1
-          image: 
-            url: /images/global/icons/external-link.svg
+          variant: 'external'
           href: https://www.google.com/
           title: 'Test Link - External'
           subtitle: 'Test link with external link'
@@ -27,7 +25,7 @@ variants:
     context:
       cards:
         - index: 1
-          image: false
+          variant: false
           href: https://d8-uat.boston.gov/departments/digital-team
           title: 'Test Link - Internal'
           subtitle: 'Test link with internal link'
@@ -35,9 +33,7 @@ variants:
 context:
   cards:
     - index: 1
-      # image: 
-      #   url: 
-      #   title: 'Link'
+      variant: false
       href: https://d8-uat.boston.gov/departments/digital-team
       title: 'Test Link'
       subtitle: 'Test link with link'

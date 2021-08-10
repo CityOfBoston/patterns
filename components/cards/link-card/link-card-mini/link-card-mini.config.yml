@@ -7,9 +7,7 @@ variants:
     context:
       cards:
         - index: 1
-          variant: 'lcd--mini'
-          image: 
-            url: /images/global/icons/icon-document.svg
+          variant: 'document'
           href: https://d8-uat.boston.gov/sites/default/files/linked/file/document_files/2017/03/pdf_for_website_testing_0.pdf
           title: 'Test Link - Document'
   - name: Mini External
@@ -17,9 +15,7 @@ variants:
     context:
       cards:
         - index: 1
-          # image: 
-          #   url: /images/global/icons/external-link.svg
-          #   title: 'External Link'
+          variant: 'external'
           href: https://www.google.com/
           title: 'Test Link - External'
   - name: Mini Internal
@@ -27,15 +23,13 @@ variants:
     context:
       cards:
         - index: 1
-          # image: false
+          variant: false
           href: https://d8-uat.boston.gov/departments/digital-team
           title: 'Test Link - Internal'
 context:
   cards:
     - index: 1
-      # image: 
-      #   url: 
-      #   title: 'Link'
+      variant: false
       href: https://d8-uat.boston.gov/departments/digital-team
       title: 'Test Link'
       subtitle: 'Test link with link'
