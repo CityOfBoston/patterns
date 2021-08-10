@@ -3,15 +3,18 @@
    LINK CARD MINI
 
    Base:
-    lcd-mini
+    lcd--sm
 
    Elements:
     t = title
     im = image
 
+   Variants:
+    sm = small
+
  */
 
-.lcd--mini
+.lcd--sm
   display: block
   height: 100%
   background-color: $grey-000 
@@ -21,7 +24,7 @@
   &:hover, &:focus-within
     background-color: $optimistic-blue-dark
 
-    .lcd--mini-t
+    .lcd--sm-t
       color: $white
 
   &-c
@@ -31,7 +34,6 @@
     height: 100px
     word-break: normal
 
-    
   &-im
     position: absolute
     width: 10%
@@ -57,23 +59,23 @@
     text-transform: uppercase
 
 // handle hover interference with focus
-.lcd--mini.focus-active:hover
+.lcd--sm.focus-active:hover
   pointer-events: none
   background-color: $white
 
-  .lcd--mini-t
+  .lcd--sm-t
     color: $optimistic-blue-dark
 
-  .lcd--mini-im
+  .lcd--sm-im
     background-color: $optimistic-blue-dark
 
-.lcd--mini.focus-active:focus-within
+.lcd--sm.focus-active:focus-within
   pointer-events: auto
   background-color: $optimistic-blue-dark
 
-  .lcd--mini-t
+  .lcd--sm-t
     color: $white
 
-  .lcd--mini-im
+  .lcd--sm-im
     background-color: $blended-optimistic-blue
     background-blend-mode: multiply
