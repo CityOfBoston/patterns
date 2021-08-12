@@ -262,7 +262,8 @@ sub {
 }
 .container,
 .component__content,
-.component__header {
+.component__header,
+.content {
     max-width: 66.667rem;
     margin-left: auto;
     margin-right: auto;
@@ -271,7 +272,8 @@ sub {
 }
 .container:after,
 .component__content:after,
-.component__header:after {
+.component__header:after,
+.content {
     content: " ";
     display: block;
     clear: both
@@ -279,10 +281,14 @@ sub {
 @media (min-width: 1300px) {
     .container,
     .component__content,
-    .component__header {
+    .component__header,
+    .content {
         padding-left: 0;
         padding-right: 0
     }
+}
+.component {
+    position: relative;
 }
 .component-section {
     position: relative
@@ -602,3 +608,7 @@ h1, h2, h3, h4, h5, h6 {
     width: auto;
     overflow: auto
 }
+
+
+
+
