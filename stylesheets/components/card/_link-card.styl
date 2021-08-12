@@ -117,7 +117,23 @@
 .flex-container
   display: flex
 
+  @media $media-small-max
+    flex-direction: column    
+
+
+.description
+  line-height: 2em
+
 .subheader
-  width: 25%
-  padding-right: $sizing-600
-  padding-top: $sizing-600
+  padding-top: 2rem
+
+  @media $media-small-max
+    width: 100%
+
+  @media $media-small
+    width: 100%
+    padding-right: 2rem
+
+  @media $media-medium
+    width: 25%
+    padding-right: 2rem
