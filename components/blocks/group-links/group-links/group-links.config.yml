@@ -39,7 +39,9 @@ variants:
       subheader:
         title: 'Subheader text'
         description: 'Testing group of links - grid with description and with a CTA as document'
-        button: 'CTA as document'
+        button: 
+          name: 'CTA as document'
+          href: https://d8-uat.boston.gov/sites/default/files/linked/file/document_files/2017/03/pdf_for_website_testing_0.pdf
       cards:
         - index: 1
           variant: document
