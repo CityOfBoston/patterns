@@ -45,15 +45,19 @@
         .ht-tab-ic:hover .open
           display: block
 
-        .icon-expand-link:hover .closed
-          display: block
-
         .ht-tab-ic
           svg
             fill: $white
 
-        .ht-tab-subinfo span
-          visibility: hidden
+        .ht-tab-subinfo
+          color: transparent
+
+          &:after
+            position: absolute
+            top: 0
+            color: $white
+            content: "hide"
+            visibility: visibile
 
     &:checked ~ .ht-tab
       &-c
@@ -78,14 +82,16 @@
     &:hover, &:focus
       cursor: pointer
       background-color: $optimistic-blue-light
-      color: $white
 
-      .ht-tab-t, .ht-tab-subinfo
+      .ht-tab-t
         color: $white
 
       .ht-tab-ic
         svg
           fill: $white
+
+      .ht-tab-subinfo
+        color: $white
 
   &-c
     display: none
@@ -125,6 +131,9 @@
     font-size: calc(14px + 2 * ((100vw - 480px) / 960));
     font-style: italic;
     line-height: 1.5;
+    position: absolute
+    top: 0
+    left: 50px
 
   &-ic
     height: 20px
@@ -138,54 +147,3 @@
       max-height: 100%
       max-width: 100%
       fill: $optimistic-blue-light 
-
-// handle hover interference with focus
-.ht-tab.focus-active:hover
-  pointer-events: none
-  background-color: $white
-  color: $optimistic-blue-dark
-
-  .ht-tab-t
-    color: $optimistic-blue-light
-
-  .ht-tab-ic
-    svg
-      fill: $white
-
-.ht-tab-h.focus-active:hover
-  background-color: $white
-
-  .ht-tab-ic
-    svg
-      fill: $white
-
-.ht-tab.focus-active:focus
-  pointer-events: auto
-  background-color: $optimistic-blue-light
-
-  .ht-tab-t
-    color: $white
-
-  .ht-tab-ic
-    svg
-      fill: $white
-
-.ht-tab-h.focus-active:focus-within
-  background-color: $optimistic-blue-light
-  color: $white
-
-  .ht-tab-t, .ht-tab-ic
-    color: $white
-    fill: $white
-
-.ht-tab-subinfo span
-  position: absolute
-  top: 0
-  left: 50px
-
-.ht-tab-subinfo:after 
-  color: $white
-  position: absolute
-  top: 0
-  left: 50px
-  content: "hide"
