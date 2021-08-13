@@ -17,53 +17,268 @@
 
  */
 
+:link {
+    color: $optimistic-blue-dark;
+    text-decoration: none
+}
+.inverted,
+.inverted:link {
+    color: $freedom-red-dark
+}
+:visited {
+    color: $optimistic-blue-dark
+}
+.inverted:visited {
+    color: $freedom-red-dark
+}
+a:hover,
+a:focus {
+    color: $freedom-red-dark
+}
+a.inverted:hover,
+a.inverted:focus {
+    color: $optimistic-blue-dark;
+}
+a:active {
+    color: $freedom-red-dark;
+    background-color: transparent
+}
+a.inverted:active {
+    color: $optimistic-blue-dark
+}
+a:active,
+a:hover {
+    outline: 0
+}
+@media print {
+    :link,
+    :visited {
+        text-decoration: underline
+    }
+    a[href]:after {
+        content: " (" attr(href) ")";
+        font-weight: normal;
+        font-size: 18px;
+        text-decoration: none
+    }
+    a[href^='javascript:']:after,
+    a[href^='#']:after {
+        content: ''
+    }
+}
+.topic-nav {
+    width: 100%;
+    left: 0;
+    background-color: $white;
+    transition: background-color 0.25s ease;
+    display: none;
+    z-index: 10;
+    margin-bottom: 42px
+}
+@media (min-width: 980px) {
+    .topic-nav {
+        display: block;
+        position: relative;
+        top: 0;
+        margin-bottom: 45px;
+        margin-top: 20px
+    }
+}
+@media (min-width: 980px) {
+    .topic-nav.sticky,
+    .topic-nav.topic-nav__left.sticky {
+        position: fixed;
+        top: 65px;
+        background-color: $charles-blue;
+        z-index: 12;
+        padding: 0 0 2px;
+        margin-top: 0;
+        margin-bottom: 0
+    }
+    #page #main-menu.sticky {
+        position: fixed;
+    }
+}
+.sub-nav-trigger {
+    display: block
+}
+@media (min-width: 980px) {
+    .sub-nav-trigger {
+        display: none
+    }
+}
+.sub-nav-chevron {
+    height: 12px;
+    width: 18px;
+    float: right;
+    -ms-transform: rotate(-90deg);
+    transform: rotate(-90deg);
+    margin-top: 4px
+}
+.sub-nav-chevron .icon-stroke {
+    fill: $white
+}
+.active .sub-nav-chevron {
+    -ms-transform: rotate(0);
+    transform: rotate(0)
+}
+.topic-nav ul,
+.topic-nav.topic-nav__left.sticky ul {
+    width: 100%;
+    margin: 0 auto
+}
+@media (min-width: 980px) {
+    .topic-nav ul,
+    .topic-nav.topic-nav__left.sticky ul {
+        width: 100%;
+        text-align: center;
+        max-width: none
+    }
+}
+@media (min-width: 980px) {
+    .topic-nav.topic-nav__left ul {
+        text-align: left
+    }
+}
+@media (min-width: 980px) {
+    .topic-nav.topic-nav__left li {
+        margin: 0 2em 0 0
+    }
+}
+.topic-nav li,
+.topic-nav.topic-nav__left.sticky li {
+    border-style: solid;
+    border-width: 1px 1px 0 1px;
+    border-color: $grey-100;
+    margin: 0;
+    padding: 0;
+    text-indent: 0;
+    font-family: "Montserrat", sans-serif;
+    text-align: center;
+    background-image: none;
+    font-size: 12px;
+    line-height: 46px;
+    font-size: 0.66667rem;
+    line-height: 2.55556rem
+}
+.topic-nav li:last-child,
+.topic-nav.topic-nav__left.sticky li:last-child {
+    border-bottom: 1px solid $grey-100
+}
+.topic-nav li:hover,
+.topic-nav.topic-nav__left.sticky li:hover {
+    background-color: $optimistic-blue-dark;
+    cursor: pointer
+}
+.topic-nav li:hover a,
+.topic-nav li:hover a:link,
+.topic-nav li:hover a:visited,
+.topic-nav li:hover a:hover,
+.topic-nav li:hover a:active,
+.topic-nav.topic-nav__left.sticky li:hover a,
+.topic-nav.topic-nav__left.sticky li:hover a:link,
+.topic-nav.topic-nav__left.sticky li:hover a:visited,
+.topic-nav.topic-nav__left.sticky li:hover a:hover,
+.topic-nav.topic-nav__left.sticky li:hover a:active {
+    color: $white
+}
+@media (min-width: 980px) {
+    .topic-nav li:hover a,
+    .topic-nav li:hover a:link,
+    .topic-nav li:hover a:visited,
+    .topic-nav li:hover a:hover,
+    .topic-nav li:hover a:active,
+    .topic-nav.topic-nav__left.sticky li:hover a,
+    .topic-nav.topic-nav__left.sticky li:hover a:link,
+    .topic-nav.topic-nav__left.sticky li:hover a:visited,
+    .topic-nav.topic-nav__left.sticky li:hover a:hover,
+    .topic-nav.topic-nav__left.sticky li:hover a:active {
+        color: $freedom-red-dark
+    }
+}
+.topic-nav li:before,
+.topic-nav.topic-nav__left.sticky li:before {
+    content: none
+}
+@media (min-width: 980px) {
+    .topic-nav li,
+    .topic-nav.topic-nav__left.sticky li {
+        display: inline-block;
+        margin: 0 1em;
+        border: none
+    }
+    .topic-nav li:last-child,
+    .topic-nav.topic-nav__left.sticky li:last-child {
+        border-bottom: none
+    }
+    .topic-nav li:hover,
+    .topic-nav.topic-nav__left.sticky li:hover {
+        background-color: $white
+    }
+}
+@media (min-width: 980px) {
+    .topic-nav.topic-nav__left.sticky li:hover {
+        background-color: transparent
+    }
+}
+@media (min-width: 980px) {
+    .topic-nav.topic-nav__left.sticky li:hover {
+        background-color: transparent
+    }
+}
+@media (min-width: 980px) {
+    .topic-nav.sticky li:hover {
+        background-color: $charles-blue
+    }
+}
+.topic-nav a {
+    display: block;
+    text-transform: uppercase;
+    font-weight: bold
+}
+.topic-nav a:hover {
+    color: $white
+}
+.topic-nav a:active,
+.topic-nav a:focus {
+    color: $freedom-red-dark
+}
+@media (min-width: 980px) {
+    .topic-nav a {
+        display: inline
+    }
+    .topic-nav a:hover,
+    .topic-nav a:active,
+    .topic-nav a:focus {
+        color: $freedom-red-dark
+    }
+}
+.topic-nav.sticky a {
+    border-bottom: 2px solid transparent;
+    font-weight: normal
+}
+@media (min-width: 980px) {
+    .topic-nav.sticky a.is-active:link,
+    .topic-nav.sticky a.is-active:visited {
+        color: $freedom-red-dark;
+        border-color: $freedom-red-dark
+    }
+    .topic-nav.sticky a:link,
+    .topic-nav.sticky a:visited {
+        color: $white
+    }
+    .topic-nav.sticky a:hover,
+    .topic-nav.sticky a:active .topic-nav.sticky a:focus {
+        color: $freedom-red-dark
+    }
+}
+.subnav-anchor {
+    position: absolute;
+    margin-top: -100px
+}
 
-/*
-.topic-nav
-  width: 100%
-  left: 0
-  background-color: #fff
-  transition: background-color .25s ease
-  display: none
-  z-index: 10
-  margin-bottom: 42px
 
-.sr-only 
-  position: absolute
-  left: -10000px
-  top: auto
-  width: 1px
-  height: 1px
-  overflow: hidden
-
-ul
-  display: block
-  list-style-type: disc
-  margin-block-start: 1em
-  margin-block-end: 1em
-  margin-inline-start: 0px
-  margin-inline-end: 0px
-  padding-inline-start: 40px
-
-.topic-nav.topic-nav__left.sticky li, .topic-nav li
-  border-style: solid;
-  border-width: 1px 1px 0;
-  border-color: #e0e0e0;
-  margin: 0;
-  padding: 0;
-  text-indent: 0;
-  font-family: Montserrat,sans-serif;
-  text-align: center;
-  background-image: none;
-  font-size: .66667rem;
-  line-height: 2.55556rem;
-
-li 
-  display: list-item
-*/
-
-
-.ssm-m
+/*.ssm-m
   background: $white
   font-family: $sans
   letter-spacing: 1px
@@ -191,3 +406,4 @@ li
     color: $white
     fill: $white
 
+*/

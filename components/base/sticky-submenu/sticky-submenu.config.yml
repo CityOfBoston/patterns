@@ -3,20 +3,20 @@ handle: sticky-submenu
 status: ready
 variants:
   - name: Sticky Submenu
-    sticky:
-      - class: 'sticky'
-    links:
-      - name: Transition Report
-        href: https://311.boston.gov/
-        active: true
-      - name: Ending Racism
-        href: https://311.boston.gov/lookup
-      - name: Recognition
-        href: https://311.boston.gov/onthego
-      - name: Major Reports
-        href: https://311.boston.gov/faq
-      - name: Initiatives
-        href: https://311.boston.gov/faq
+    context:
+      stickysubmenu: sticky
+      links:
+        - name: Transition Report
+          href: https://311.boston.gov/
+          active: true
+        - name: Ending Racism
+          href: https://311.boston.gov/lookup
+        - name: Recognition
+          href: https://311.boston.gov/onthego
+        - name: Major Reports
+          href: https://311.boston.gov/faq
+        - name: Initiatives
+          href: https://311.boston.gov/faq  
 context:
   links:
     - name: Transition Report
@@ -27,6 +27,5 @@ context:
       href: https://311.boston.gov/onthego
     - name: Major Reports
       href: https://311.boston.gov/faq
-      active: true
     - name: Initiatives
       href: https://311.boston.gov/faq
