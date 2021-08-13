@@ -1,13 +1,17 @@
-<nav class="ssm-s{{#if theme}} ssm-s--{{theme}}{{/if}}">
-  <input type="checkbox" id="ssm-s-tr" class="ssm-s-tr" aria-hidden="true">
+<div class="sub-nav-trigger drawer-trigger">
+    <div class="sub-nav-chevron">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="-2 8.5 18 25"><path class="ssm-m-i" d="M16 21L.5 33.2c-.6.5-1.5.4-2.2-.2-.5-.6-.4-1.6.2-2l12.6-10-12.6-10c-.6-.5-.7-1.5-.2-2s1.5-.7 2.2-.2L16 21z"/></svg>
+    </div>
+    Page Sections
+</div>
+<nav class="topic-nav topic-nav__left {{#if class}}{{class}}{{/if}}">
+  <a id="section-nav" title="Section Nav" class="sr-only sr-only-focusable">Section Nav</a>
 
-  <ul class="ssm-s-l">
-    <li class="ssm-s-l-i">
-      <label for="ssm-s-tr" class="ssm-s-l-b" type="button">Navigation</label>
-    </li>
-
+  <ul>
     {{#each links as |link|}}
-      <li class="ssm-s-l-i"><a href="{{ link.href }}" title="{{ link.name }}" class="ssm-s-l-a{{#if link.active}} ssm-s-l-a--active{{/if}}">{{ link.name }}</a></li>
+      <li><a href="{{ link.href }}" title="{{ link.name }}" class="{{#if link.active}} is-active {{/if}}">{{ link.name }}</a></li>
     {{/each}}
   </ul>
 </nav>
+
+
