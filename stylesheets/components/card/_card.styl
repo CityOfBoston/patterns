@@ -152,3 +152,19 @@
   .cd-ic
     background-color: $blended-optimistic-blue
     background-blend-mode: multiply
+
+
+// removes hover state for resource-2 card
+#no-hover--cdr
+  padding: $sizing-700
+  
+  &:hover, &:focus-within
+    background-color: $grey-000
+
+    .cd-t
+    .cd-st
+    .cd-d
+      color: $black
+
+#no-hover--cdp
+  color: $body-text
