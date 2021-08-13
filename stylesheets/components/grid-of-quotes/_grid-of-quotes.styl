@@ -2,9 +2,11 @@
     display: block
     background-color: $white
     border-bottom: 8px solid #d22d23 
-    padding: 30px 30px 40px
+    padding: 30px 2% 40px
     flex-wrap: wrap
-
+    min-height: 380px
+    width: 23%
+    
     &-quote-text
         font-family: $lora
         font-style: italic
@@ -26,3 +28,38 @@
         font-style: italic
         color: #828282
         line-height: 26px
+    
+    &-quote-details
+        display: flex 
+        width: 100%
+        -ms-flex-item-align: end
+        align-self: flex-end
+        width: 100%
+        margin-top: auto
+        display: -ms-flexbox
+        display: flex;
+        -ms-flex-direction: row
+        flex-direction: row
+
+    &-quote-person-details 
+        display: -ms-flexbox
+        display: flex;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        -ms-flex-pack: start;
+        justify-content: flex-start;
+        margin: 10px 0px 0px 15px
+
+@media (min-width: 840px) {
+    .paragraphs-item-grid-of-quotes .quote-details {
+        -ms-flex-direction: column;
+        flex-direction: column
+    }
+}
+    
+
+@media (min-width: 840px) {
+    .paragraphs-item-grid-of-quotes .quote-person-details {
+        margin: 0
+    }
+}
