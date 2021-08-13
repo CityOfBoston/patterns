@@ -1,0 +1,44 @@
+title: Grid of Icon Cards
+handle: grid_icon_cards
+status: ready
+variants:
+  - name: hub
+    status: 'ready'
+    preview: '@hub'
+context:
+  header:
+    title: Starting Transactions
+    contact: false
+  cards:
+    - index: 1
+      href: https://www.boston.gov/neighborhood/allston
+      icon:
+        url: https://patterns.boston.gov/assets/images/fleet/allston2.jpg
+        title: 'Allston'
+      title: 'Allston'
+      subtitle: 'Neighborhood'
+      content: 'Learn more about one of Boston’s most diverse and active neighborhoods.'
+    - index: 2
+      href: https://www.boston.gov/neighborhood/allston
+      icon:
+        url: https://patterns.boston.gov/assets/images/fleet/allston2.jpg
+        title: 'Allston'
+      title: 'Allston'
+      subtitle: 'Neighborhood'
+      content: 'Learn more about one of Boston’s most diverse and active neighborhoods.'
+    - index: 3
+      href: https://www.boston.gov/neighborhood/allston
+      icon:
+        url: https://patterns.boston.gov/assets/images/fleet/allston2.jpg
+        title: 'Allston'
+      title: 'Allston'
+      subtitle: 'Neighborhood'
+      content: 'Learn more about one of Boston’s most diverse and active neighborhoods.'
+    - index: 4
+      href: https://www.boston.gov/neighborhood/allston
+      icon:
+        url: https://patterns.boston.gov/assets/images/fleet/allston2.jpg
+        title: 'Allston'
+      title: 'Allston'
+      subtitle: 'Neighborhood'
+      content: 'Learn more about one of Boston’s most diverse and active neighborhoods.'

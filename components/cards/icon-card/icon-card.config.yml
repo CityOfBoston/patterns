@@ -1,0 +1,12 @@
+title: Icon Card
+handle: icon-card
+status: ready
+preview: '@centered'
+context:
+  cards:
+    - index: 1
+      href: https://www.boston.gov/neighborhood/allston
+      icon:
+        url: /images/global/icons/experiential/private-group-meeting-.svg
+      title: 'Representation'
+      content: 'Your representation and voting information'

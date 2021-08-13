@@ -4,7 +4,7 @@
    CARD
 
    Base:
-    cd
+    icd
 
    Elements:
     t = title
@@ -15,47 +15,46 @@
 
  */
 
-.cd
+.icd
   display: block
   background-color: $white
   text-decoration: none
   font-family: $serif
 
   &:hover, &:focus-within
-    background-color: $optimistic-blue-light
+    .icd-d
+      color: $body-text
 
-    .cd-t
-    .cd-st
-    .cd-d
-      color: $white
+    .icd-ic
+      background-color: $optimistic-blue-light
 
-    .cd-ic
-      background-color: $blended-optimistic-blue
-      background-blend-mode: multiply
+    .icd-c
+      background-color: $grey-100
 
   &-ic
-    padding-bottom: 35%
-    background-color: $optimistic-blue-light
+    padding: $sizing-700 
     background-position: center
     background-size: cover
 
   &-c
     padding: $sizing-700
+    background-color: $optimistic-blue-light
 
   &-t
-    color: $optimistic-blue-dark
-    font-style: italic
-    font-size: responsive 18px 25px
-    font-range: 480px 1440px
-    line-height: $line-height-200
-    margin: 0
+    font-family: Montserrat,Arial,sans-serif
+    font-weight: 700
+    text-transform: uppercase
+    color: #091f2f
+    font-size: 1rem
+    letter-spacing: 0
 
   &-d
-    color: $body-text
+    color: $white
     font-size: responsive 15px 18px
     font-range: 480px 1440px
     line-height: $line-height-300
-    margin-top: $sizing-300
+    margin-top: $sizing-100
+    margin-bottom: $sizing-500
 
     &--mt0
       margin-top: 0
@@ -69,14 +68,12 @@
   &--plain
     &:hover, &:focus-within
       background-color: $white
-      .cd-t
+      .icd-t
         color: $charles-blue
-      .cd-st
-        color: inherit
-      .cd-d
+      .icd-d
         color: $body-text
 
-    .cd-t
+    .icd-t
       color: $charles-blue
 
   &--e[href*="//"]:not([href*="www.boston.gov"])
@@ -105,50 +102,36 @@
       height: 20px
       width: 20px
 
-// Handle white theme variation
-.b--w
-  .cd
-    border: 2px solid #e0e0e0
-
-    &:hover, &:focus-within
-      border-color: $optimistic-blue-light
-
-      .cd-c
-        border-color: $optimistic-blue-light
-
-    &-c
-      border-top: 2px solid #e0e0e0
-
 // handle hover interference with focus
-.cd.focus-active:hover
+.icd.focus-active:hover
   pointer-events: none
   background-color: $white
 
-  .cd-t
+  .icd-t
     color: $optimistic-blue-dark
 
-  .cd-d
+  .icd-d
     color: $body-text
 
-  .cd-ic
+  .icd-ic
     background-color: $optimistic-blue-light
 
 .b--w
-  .cd.focus-active
+  .icd.focus-active
 
     &:hover
       border-color: #e0e0e0
 
-      .cd-c
+      .icd-c
         border-color: #e0e0e0
 
-.cd.focus-active:focus-within
+.icd.focus-active:focus-within
   pointer-events: auto
   background-color: $optimistic-blue-light
 
-  .cd-t, .cd-d
+  .icd-t, .icd-d
     color: $white
 
-  .cd-ic
+  .icd-ic
     background-color: $blended-optimistic-blue
     background-blend-mode: multiply
