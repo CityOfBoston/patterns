@@ -1,0 +1,16 @@
+title: Grid of Bar Cards
+handle: grid_bar_cards
+status: ready
+context:
+  header:
+    title: Grid of Bar Cards
+    contact: false
+  cards:
+    - index: 1
+      description: 'Your Mayor'
+      name: Kim Janey
+      position: Mayor
+      image: https://d8-uat.boston.gov/sites/default/files/linked/styles/150_embedded_ckeditor/public/img/library/photos/2021/03/janey-headshot2.jpg?itok=IPskEHvW
+      url: https://www.boston.gov/mayor
+
+

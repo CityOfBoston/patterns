@@ -1,10 +1,10 @@
 /*
 /*
 
-   CARD
+   RESOURCE CARD: ICON
 
    Base:
-    icd
+    cd-i
 
    Elements:
     t = title
@@ -15,23 +15,23 @@
 
  */
 
-.icd
+.cdi
   display: block
-  background-color: $white
+  background-color: $optimistic-blue-light
   text-decoration: none
   font-family: $serif
-  min-height: 300px
-  height: 450px
+  min-height: 200px
+  height: 350px
 
   &:hover, &:focus-within
-    .icd-d
-      color: $body-text
+    .cdi-d
+      color: $white
 
-    .icd-ic
+    .cdi-ic
+      background-color: $white
+
+    .cdi-c
       background-color: $optimistic-blue-light
-
-    .icd-c
-      background-color: $grey-100
 
   &-ic
     height: 50%
@@ -43,18 +43,18 @@
   &-c
     height: 50%
     padding: $sizing-700
-    background-color: $optimistic-blue-light
+    background-color: $grey-000
 
   &-t
     font-family: Montserrat,Arial,sans-serif
     font-weight: 700
     text-transform: uppercase
-    color: #091f2f
+    color: $black
     font-size: 1rem
     letter-spacing: 0
 
   &-d
-    color: $white
+    color: $body-text
     font-size: responsive 15px 18px
     font-range: 480px 1440px
     line-height: $line-height-300
@@ -73,12 +73,12 @@
   &--plain
     &:hover, &:focus-within
       background-color: $white
-      .icd-t
+      .cdi-t
         color: $charles-blue
-      .icd-d
+      .cdi-d
         color: $body-text
 
-    .icd-t
+    .cdi-t
       color: $charles-blue
 
   &--e[href*="//"]:not([href*="www.boston.gov"])
@@ -108,35 +108,35 @@
       width: 20px
 
 // handle hover interference with focus
-.icd.focus-active:hover
+.cdi.focus-active:hover
   pointer-events: none
   background-color: $white
 
-  .icd-t
+  .cdi-t
     color: $optimistic-blue-dark
 
-  .icd-d
+  .cdi-d
     color: $body-text
 
-  .icd-ic
+  .cdi-ic
     background-color: $optimistic-blue-light
 
 .b--w
-  .icd.focus-active
+  .cdi.focus-active
 
     &:hover
       border-color: #e0e0e0
 
-      .icd-c
+      .cdi-c
         border-color: #e0e0e0
 
-.icd.focus-active:focus-within
+.cdi.focus-active:focus-within
   pointer-events: auto
   background-color: $optimistic-blue-light
 
-  .icd-t, .icd-d
+  .cdi-t, .cdi-d
     color: $white
 
-  .icd-ic
+  .cdi-ic
     background-color: $blended-optimistic-blue
     background-blend-mode: multiply

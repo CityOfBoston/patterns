@@ -1,0 +1,12 @@
+{{#each cards as |card|}}
+<div class="cdb g--4 g--4--sl{{#if card.grid}} m-t500 {{card.grid}}{{/if}}">
+  <div class="bg--cb cdb-a ta-c">{{card.description}}</div>
+  <div class="cdb-l d-b p-a300">
+    <img src="{{ card.image }}" alt="{{ card.name }}" class="cdb-i" />
+    <div>
+      <div class="cdb-t">{{ card.name }}</div>
+      <div class="cdb-st t--g300">{{ card.position }}</div>
+    </div>
+  </div>
+</div>
+{{/each}}

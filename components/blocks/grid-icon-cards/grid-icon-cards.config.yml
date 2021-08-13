@@ -1,6 +1,7 @@
 title: Grid of Icon Cards
 handle: grid_icon_cards
 status: ready
+preview: '@centered'
 context:
   header:
     title: Grid of Icon Cards
