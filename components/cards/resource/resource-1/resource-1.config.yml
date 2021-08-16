@@ -1,16 +1,11 @@
 title: Resource Card 1
 handle: resource-1
-status: ready1
+status: ready
 preview: '@centered'
 context:
   cards:
-  - description: Your Mayor
-    href: https://www.boston.gov
-    image: https://www.boston.gov/sites/default/files/styles/person_profile_card_173x173_/public/img/library/photos/2021/03/new-janey-headshot.jpg
-    name: Kim Janey
-    row1: Mayor
-    row2: Learn more about
-    link:
-      href: https://www.boston.gov/
-      text: Boston's Mayor
-    row2-cont: '.'
+  - description: Your Polling Information
+    image: https://assets.boston.gov/icons/experiential_icons/voting_ballot.svg
+    ward: 3
+    precinct: 6
+    
