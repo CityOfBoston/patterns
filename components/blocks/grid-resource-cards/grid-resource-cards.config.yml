@@ -61,4 +61,15 @@ context:
       image: https://assets.boston.gov/icons/experiential_icons/voting_ballot.svg
       ward: 3
       precinct: 6
-      
+  resource-4-cards:
+    - description: State and Federal Representatives
+      image: https://patterns.boston.gov/images/global/icons/experiential/meet-archaeologist.svg
+      text1: For more information on your State and Federal representatives, visit the 
+      link1:
+        href: https://malegislature.gov/search/findmylegislator
+        text: Find My Legislator tool
+      text2: 'on'
+      link2:
+        href: https://www.mass.gov
+        text: Mass.gov
+      text3: '.'
