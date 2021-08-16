@@ -17,55 +17,134 @@
 
  */
 
-:link {
-    color: $optimistic-blue-dark;
-    text-decoration: none
-}
-.inverted,
-.inverted:link {
-    color: $freedom-red-dark
-}
-:visited {
-    color: $optimistic-blue-dark
-}
-.inverted:visited {
-    color: $freedom-red-dark
-}
-a:hover,
-a:focus {
-    color: $freedom-red-dark
-}
-a.inverted:hover,
-a.inverted:focus {
-    color: $optimistic-blue-dark;
-}
-a:active {
-    color: $freedom-red-dark;
-    background-color: transparent
-}
-a.inverted:active {
-    color: $optimistic-blue-dark
-}
-a:active,
-a:hover {
-    outline: 0
-}
-@media print {
-    :link,
-    :visited {
-        text-decoration: underline
-    }
-    a[href]:after {
-        content: " (" attr(href) ")";
-        font-weight: normal;
-        font-size: 18px;
-        text-decoration: none
-    }
-    a[href^='javascript:']:after,
-    a[href^='#']:after {
-        content: ''
-    }
-}
+.ssm-m
+  background: $white
+  font-family: $sans
+  letter-spacing: 1px
+  border: 0
+  text-transform: uppercase
+  font-size: .77778rem
+  line-height: 1rem
+
+  &-tr
+    &:checked ~ .ssm-m, ^[-1]--open .ssm-m
+      &-h
+        background-color: red
+
+        .ssm-m-t
+          color: $white
+          
+        .ssm-m-ic
+          margin-top: -9px
+
+        .ssm-m-i
+          fill: $white
+
+    &:checked ~ .ssm-m
+      &-c
+        display: block
+
+  &-h
+    display: block
+    margin: 0
+    position: relative
+    user-select: none
+    padding: 1.275em 1.5em
+    font-weight: 700
+
+    // these override <button> default styles
+    background: $optimistic-blue-dark
+    width: 100%
+    border: none
+    text-align: left
+
+    &:hover, &:focus
+      cursor: pointer
+      background-color: red
+      color: $white
+
+      .ssm-m-t
+        color: $white
+
+      .ssm-m-i
+        fill: $white
+
+  &-c
+    display: none
+    background: $white
+    padding: $sizing-500
+
+    p:first-child
+    ul:first-child
+      margin-top: 0
+
+    p:last-child
+    ul:last-child
+      margin-bottom: 0
+
+    @media $media-small-max
+      .paragraphs-item-text-one-column .content
+        padding-left: 0
+        padding-right: 0
+
+        .responsive-table
+          font-size: 4.5vw
+          border: 1px solid black
+          word-wrap: break-word;
+          word-break: break-word;
+  &-ic
+    height: 20px
+    width: 26px
+    position: absolute
+    right: $sizing-500
+    top: 50%
+    margin-top: -8px
+
+    svg
+      max-height: 100%
+      max-width: 100%
+
+  &-i
+    fill: $white
+
+  &-t
+    color: $white
+    
+
+// handle hover interference with focus
+.ssm-m.focus-active:hover
+  pointer-events: none
+  background-color: $white
+  color: $optimistic-blue-light
+
+  .ssm-m-t
+    color: $optimistic-blue-light
+
+  .ssm-m-i
+    fill: $optimistic-blue-light
+
+.ssm-m-h.focus-active:hover
+  background-color: $white
+
+.ssm-m.focus-active:focus
+  pointer-events: auto
+  background-color: $optimistic-blue-light
+  color: $white
+
+  .ssm-m-t
+    color: $white
+
+  .ssm-m-i
+    fill: $white
+
+.ssm-m-h.focus-active:focus-within
+  background-color: $optimistic-blue-light
+  color: $white
+
+  .ssm-m-t, .ssm-m-ic, .ssm-m-i
+    color: $white
+    fill: $white
+
 .topic-nav {
     width: 100%;
     left: 0;
@@ -317,202 +396,3 @@ a:hover {
     color: $white;
     background-color: $freedom-red-dark
 }
-
-dl,
-ol,
-ul {
-    margin: 8.97px 0px 39px;
-    margin: 0.49833rem 0rem 2.16667rem
-}
-ol ol,
-ol ul,
-ul ol,
-ul ul {
-    margin: 0
-}
-dd {
-    margin: 0 0 0 36px
-}
-[dir="rtl"] dd {
-    margin: 0 36px 0 0
-}
-ol,
-ul {
-    padding: 0 0 0 0;
-    list-style-position: inside
-}
-[dir="rtl"] menu,
-[dir="rtl"] ol,
-[dir="rtl"] ul {
-    padding: 0 0 0 0
-}
-ol {
-    counter-reset: section;
-    list-style-type: none;
-    color: $charles-blue
-}
-ol li {
-    margin: 0px 0px 18px 55px;
-    margin: 0rem 0rem 1rem 3.05556rem
-}
-ol>li:before {
-    border: 3px solid;
-    border-radius: 100%;
-    counter-increment: section;
-    content: counters(section, ".") " ";
-    display: inline-block;
-    height: 40px;
-    line-height: 40px;
-    margin: 9.75px 0px 0px 0px;
-    margin: 0.54167rem 0rem 0rem 0rem;
-    text-align: center;
-    width: 40px;
-    font-family: "Montserrat", sans-serif;
-    text-indent: 0;
-    margin-left: -55px;
-    margin-right: 5px
-}
-ul li {
-    list-style: none;
-    padding-left: 1.25em;
-    background: url("../images/global/icons/ul-bullet.svg") no-repeat left 14px transparent;
-    background-size: 10px;
-    margin: 0px 0px 29.25px 0px;
-    margin: 0rem 0rem 1.625rem 0rem
-}
-ul strong,
-ul b {
-    color: $charles-blue;
-    font-weight: 700
-}
-
-
-/*.ssm-m
-  background: $white
-  font-family: $sans
-  letter-spacing: 1px
-  border: 0
-  text-transform: uppercase
-  font-size: .77778rem
-  line-height: 1rem
-
-  &-tr
-    &:checked ~ .ssm-m, ^[-1]--open .ssm-m
-      &-h
-        background-color: red
-
-        .ssm-m-t
-          color: $white
-          
-        .ssm-m-ic
-          margin-top: -9px
-
-        .ssm-m-i
-          fill: $white
-
-    &:checked ~ .ssm-m
-      &-c
-        display: block
-
-  &-h
-    display: block
-    margin: 0
-    position: relative
-    user-select: none
-    padding: 1.275em 1.5em
-    font-weight: 700
-
-    // these override <button> default styles
-    background: $optimistic-blue-dark
-    width: 100%
-    border: none
-    text-align: left
-
-    &:hover, &:focus
-      cursor: pointer
-      background-color: red
-      color: $white
-
-      .ssm-m-t
-        color: $white
-
-      .ssm-m-i
-        fill: $white
-
-  &-c
-    display: none
-    background: $white
-    padding: $sizing-500
-
-    p:first-child
-    ul:first-child
-      margin-top: 0
-
-    p:last-child
-    ul:last-child
-      margin-bottom: 0
-
-    @media $media-small-max
-      .paragraphs-item-text-one-column .content
-        padding-left: 0
-        padding-right: 0
-
-        .responsive-table
-          font-size: 4.5vw
-          border: 1px solid black
-          word-wrap: break-word;
-          word-break: break-word;
-  &-ic
-    height: 20px
-    width: 26px
-    position: absolute
-    right: $sizing-500
-    top: 50%
-    margin-top: -8px
-
-    svg
-      max-height: 100%
-      max-width: 100%
-
-  &-i
-    fill: $white
-
-  &-t
-    color: $white
-    
-
-// handle hover interference with focus
-.ssm-m.focus-active:hover
-  pointer-events: none
-  background-color: $white
-  color: $optimistic-blue-light
-
-  .ssm-m-t
-    color: $optimistic-blue-light
-
-  .ssm-m-i
-    fill: $optimistic-blue-light
-
-.ssm-m-h.focus-active:hover
-  background-color: $white
-
-.ssm-m.focus-active:focus
-  pointer-events: auto
-  background-color: $optimistic-blue-light
-  color: $white
-
-  .ssm-m-t
-    color: $white
-
-  .ssm-m-i
-    fill: $white
-
-.ssm-m-h.focus-active:focus-within
-  background-color: $optimistic-blue-light
-  color: $white
-
-  .ssm-m-t, .ssm-m-ic, .ssm-m-i
-    color: $white
-    fill: $white
-
-*/
