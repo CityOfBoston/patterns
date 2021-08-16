@@ -277,6 +277,115 @@ a:hover {
     margin-top: -100px
 }
 
+.sub-nav-trigger {
+  line-height: inherit;
+  text-decoration: none;
+  cursor: pointer;
+  color: $white;
+  background-color: $optimistic-blue-dark;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+  letter-spacing: 1px;
+  border: 0;
+  text-transform: uppercase;
+  padding: 1.275em 1.5em;
+  font-size: 14px;
+  line-height: 18px;
+  font-size: 0.77778rem;
+  line-height: 1rem;
+  font-weight: bold;
+  margin-top: 10px
+}
+
+@media (min-width: 768px) {
+    .sub-nav-trigger,
+    .sub-nav-trigger:visited {
+        margin-top: 0
+    }
+}
+.sub-nav-trigger:hover,
+.sub-nav-trigger:visited:hover {
+    cursor: pointer
+}
+.sub-nav-trigger:hover,
+.sub-nav-trigger:focus,
+.sub-nav-trigger:active,
+.sub-nav-trigger:visited:hover,
+.sub-nav-trigger:visited:focus,
+.sub-nav-trigger:visited:active {
+    text-decoration: none;
+    color: $white;
+    background-color: $freedom-red-dark
+}
+
+dl,
+ol,
+ul {
+    margin: 8.97px 0px 39px;
+    margin: 0.49833rem 0rem 2.16667rem
+}
+ol ol,
+ol ul,
+ul ol,
+ul ul {
+    margin: 0
+}
+dd {
+    margin: 0 0 0 36px
+}
+[dir="rtl"] dd {
+    margin: 0 36px 0 0
+}
+ol,
+ul {
+    padding: 0 0 0 0;
+    list-style-position: inside
+}
+[dir="rtl"] menu,
+[dir="rtl"] ol,
+[dir="rtl"] ul {
+    padding: 0 0 0 0
+}
+ol {
+    counter-reset: section;
+    list-style-type: none;
+    color: $charles-blue
+}
+ol li {
+    margin: 0px 0px 18px 55px;
+    margin: 0rem 0rem 1rem 3.05556rem
+}
+ol>li:before {
+    border: 3px solid;
+    border-radius: 100%;
+    counter-increment: section;
+    content: counters(section, ".") " ";
+    display: inline-block;
+    height: 40px;
+    line-height: 40px;
+    margin: 9.75px 0px 0px 0px;
+    margin: 0.54167rem 0rem 0rem 0rem;
+    text-align: center;
+    width: 40px;
+    font-family: "Montserrat", sans-serif;
+    text-indent: 0;
+    margin-left: -55px;
+    margin-right: 5px
+}
+ul li {
+    list-style: none;
+    padding-left: 1.25em;
+    background: url("../images/global/icons/ul-bullet.svg") no-repeat left 14px transparent;
+    background-size: 10px;
+    margin: 0px 0px 29.25px 0px;
+    margin: 0rem 0rem 1.625rem 0rem
+}
+ul strong,
+ul b {
+    color: $charles-blue;
+    font-weight: 700
+}
+
 
 /*.ssm-m
   background: $white
