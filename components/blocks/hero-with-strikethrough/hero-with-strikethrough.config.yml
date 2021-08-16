@@ -6,6 +6,8 @@ context:
   intro: guide
   title: Winter in Boston
   subheader: 'Last updated: 1/22/21'
+  intro-text: Take a look through some of our services and resources so that you’re prepared for this winter. Because, in Boston, winter is always coming.
+  supporting-text: '(Photo by: Dirk Ahlgrim)'
   image:
     wide1x: https://www.boston.gov/sites/default/files/styles/intro_image_large_1x/public/img/unk/intro_images/TOPIC-HERO-WINTER_10.jpg?itok=fALuVUVP
     desktop1x: https://www.boston.gov/sites/default/files/styles/intro_image_desktop_1x/public/img/unk/intro_images/TOPIC-HERO-WINTER_10.jpg?itok=6hseBF7x
