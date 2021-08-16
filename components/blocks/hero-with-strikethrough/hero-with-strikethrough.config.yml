@@ -5,9 +5,9 @@ context:
   home: true
   intro: guide
   title: Winter in Boston
-  subheader: Mayor Martin J. Walsh
+  subheader: Last updated: 1/22/21
   image:
-    wide1x: https://patterns.boston.gov/assets/images/fleet/boston-header3.jpg
-    desktop1x: https://patterns.boston.gov/assets/images/fleet/boston-header3.jpg
-    tablet1x: https://patterns.boston.gov/assets/images/fleet/boston-header3.jpg
-    mobile1x: https://patterns.boston.gov/assets/images/fleet/boston-header3.jpg
+    wide1x: https://www.boston.gov/sites/default/files/styles/intro_image_large_1x/public/img/unk/intro_images/TOPIC-HERO-WINTER_10.jpg?itok=fALuVUVP
+    desktop1x: https://www.boston.gov/sites/default/files/styles/intro_image_desktop_1x/public/img/unk/intro_images/TOPIC-HERO-WINTER_10.jpg?itok=6hseBF7x
+    tablet1x: https://www.boston.gov/sites/default/files/styles/intro_image_tablet_1x/public/img/unk/intro_images/TOPIC-HERO-WINTER_10.jpg?itok=7lsO-4Cp
+    mobile1x: https://www.boston.gov/sites/default/files/styles/intro_image_mobile_1x/public/img/unk/intro_images/TOPIC-HERO-WINTER_10.jpg?itok=mICd2sMr
