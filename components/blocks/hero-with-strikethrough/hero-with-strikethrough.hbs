@@ -30,12 +30,8 @@
     <div class="hros-i{{#if home}} hros-i--l{{/if}}"><span></span>{{intro}}<span></span></div>
     {{/if}}
     <h1 class="hros-t{{#if home}} hros-t--l{{/if}}">{{title}}</h1>
-    {{#if cta}}
-    <a href="{{cta.link}}" class="btn btn--c btn--ib">{{cta.text}}</a>
-    {{else}}
     {{#if subheader}}
-    <div class="hros-st{{#if home}} hros-st--l{{/if}}{{#if image}} hros-st--w{{/if}}">{{subheader}}</div>
-    {{/if}}
+    <div class="hros-i{{#if home}} hros-i--l{{/if}}{{#if image}} hros-st--w{{/if}}">{{subheader}}</div>
     {{/if}}
   </div>
   {{#if b}}

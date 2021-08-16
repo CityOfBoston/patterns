@@ -6,7 +6,6 @@ context:
   intro: guide
   title: Winter in Boston
   subheader: Mayor Martin J. Walsh
-  cta: false
   image:
     wide1x: https://patterns.boston.gov/assets/images/fleet/boston-header3.jpg
     desktop1x: https://patterns.boston.gov/assets/images/fleet/boston-header3.jpg
