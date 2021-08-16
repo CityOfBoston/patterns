@@ -153,12 +153,14 @@
     background-color: $blended-optimistic-blue
     background-blend-mode: multiply
 
+.t--bold
+  font-weight: bold
 
 // removes hover state for resource-2 card
 #no-hover--cdr
   padding: $sizing-700
   
-  &:hover, &:focus-within
+  &:focus, &:focus-within
     background-color: $grey-000
 
     .cd-t
@@ -168,3 +170,17 @@
 
 #no-hover--cdp
   color: $body-text
+
+.divider 
+    content: ""
+    padding: 1px 0
+    margin: 5px 0 15px 0
+    background-color: #d2d2d2
+    width: 100%
+    display: inline-block
+
+#link_underline 
+    border-top: 1px solid #000
+    text-decoration: underline
+    display: block
+    padding: 20px 0

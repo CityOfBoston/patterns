@@ -1,6 +1,6 @@
-title: Resource Card 2
-handle: resource-2
-status: ready
+title: Resource Card 1
+handle: resource-1
+status: ready1
 preview: '@centered'
 context:
   cards:

@@ -1,0 +1,27 @@
+{{#each cards as |card|}}
+<div class="section cd g--4 g--4--sl m-t500 cdp-l center-mnl">
+  <div class="d-b bg--cb cdp-a ta-c p-a200 t--upper t--sans t--w t--ob--h t--s100">{{card.description}}</div>
+  <div class="cd-ic bg--cb" style="padding: 20px 0px 0px;"><img src="https://assets.boston.gov/icons/experiential_icons/voting_ballot.svg" style="max-height: 150px;"></div>
+<div class="cd-c">
+  <div class="mnl-c-group">
+    <div class="cd-st t--upper t--subtitle">Ward</div>
+    <div class="cdp-st">3</div>
+    {{!-- <div id="divider"> </div> --}}
+  </div>
+  <div class="mnl-c-group">
+    <div class="cd-st t--upper t--subtitle">Precinct</div>
+    <div class="cdp-st">06</div>
+    ::after
+  </div>
+  <div class="mnl-c-group">
+    <div class="cdp-st">
+      <div>Find out if you are <a href="https://www.sec.state.ma.us/VoterRegistrationSearch/MyVoterRegStatus.aspx"
+          target="_blank" rel="noreferrer" class="mnl-link">registered to vote</a> and <a
+          href="http://www.sec.state.ma.us/wheredoivotema//bal/myelectioninfo.aspx" target="_blank" rel="noreferrer"
+          class="mnl-link">where your polling location is.</a></div>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+{{/each}}
