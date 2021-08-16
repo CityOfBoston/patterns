@@ -1,0 +1,101 @@
+{{#if image}}
+<style>
+  .hros {
+    background-image: url({{image.mobile1x}});
+  }
+
+  @media screen and (min-width: 768px) {
+    .hros {
+      background-image: url({{image.tablet1x}});
+    }
+  }
+
+  @media screen and (min-width: 1024px) {
+    .hros {
+      background-image: url({{image.desktop1x}});
+    }
+  }
+
+  @media screen and (min-width: 1200px) {
+    .hros {
+      background-image: url({{image.wide1x}});
+    }
+  }
+</style>
+{{/if}}
+
+<div class="hros{{#if image}}{{#if title}} hros--t{{else}} hros--b{{/if}}{{else}} hros--d{{/if}}">
+  <div class="hros-c">
+    {{#if intro}}
+    <div class="hros-i{{#if home}} hros-i--l{{/if}}"><span></span>{{intro}}<span></span></div>
+    {{/if}}
+    <h1 class="hros-t{{#if home}} hros-t--l{{/if}}">{{title}}</h1>
+    {{#if cta}}
+    <a href="{{cta.link}}" class="btn btn--c btn--ib">{{cta.text}}</a>
+    {{else}}
+    {{#if subheader}}
+    <div class="hros-st{{#if home}} hros-st--l{{/if}}{{#if image}} hros-st--w{{/if}}">{{subheader}}</div>
+    {{/if}}
+    {{/if}}
+  </div>
+  {{#if b}}
+  <div class="the-b the-b--c">
+    <img src="/images/b-light.svg" alt="B Logo" class="the-b-i">
+  </div>
+  {{/if}}
+</div>
+
+
+{{!-- <div class="intro-container fullwidth">
+
+  <div class="intro-title">
+    <div class="intro-title-wrapper">
+
+      <div class="topic-title-prefix">
+        <span></span>guide<span></span>
+      </div>
+
+
+
+      <h1 id="topicTitle">Winter in Boston</h1>
+
+      <div class="topic-subhead">
+        Last updated: <time datetime="2021-01-22T17:37:09Z">1/22/21</time>
+
+
+      </div>
+
+    </div>
+  </div>
+  <div class="intro-content">
+    <div class="topic-intro-text-container">
+      <div class="intro-text-top">
+        <div data-block-plugin-id="system_breadcrumb_block">
+          <div id="breadcrumb" data-swiftype-index="false">
+            <nav class="brc" role="navigation" aria-labelledby="system-breadcrumb">
+              <div class="a11y--h"><span class="brc-t">You are here</span></div>
+              <ul class="brc-l">
+                <li class="brc-l-i">
+                  <a href="/">Home</a>
+                  <span class="brc-s"> › </span>
+                </li>
+                <li class="brc-l-i">
+                  Winter in Boston
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </div>
+      <div class="topic-intro-text-content">
+        <div
+          class="intro-text supporting-text squiggle-border-bottom field field-name-field-intro-text field-type-text-long intro-text supporting-text squiggle-border-bottom">
+          <p>Take a look throsugh some of our services and resources so that you’re prepared for this winter. Because, in
+            Boston, winter is always coming.</p>
+          <div style="font-size:12px; color:#666666; font-style:italic; margin-bottom:10px;">(Photo by: Dirk Ahlgrim)
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> --}}

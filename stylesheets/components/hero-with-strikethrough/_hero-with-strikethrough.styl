@@ -1,0 +1,127 @@
+/*
+
+   HERO WITH STRIKETHROUGH TEXT
+
+   Base:
+    hro-s
+
+   Elements:
+    t = title
+    i = intro
+    sh = subheader
+
+   Modifier:
+    d = default
+    b = blank
+    t = image with title
+    wh = with header (adds top padding to account for fixed position headers)
+    mh = min-height
+    pb = padding-bottom
+    hm = hide on mobile
+ */
+
+.hros
+  text-align: center
+  background-repeat: no-repeat
+  background-size: cover
+  background-position: center
+  position: relative
+
+  &--pt
+    padding-top: 3.5rem // The height of Boston.gov header
+
+  &--pb
+    background-position: top center
+    padding-bottom: 50%
+    max-height: 400px
+
+    @media $media-medium
+      padding-bottom: 33.33%
+      background-position: center
+
+    @media $media-xlarge
+      padding-bottom: 25%
+
+  &--wh
+    padding-top: $sizing-700
+
+  &--d
+    background: repeating-linear-gradient(-45deg, $hero-alt, $hero-alt 3px, $hero-main 3px, $hero-main 30px)
+    background-size: 42px 42px
+
+  &--t
+    &:after
+      content: ''
+      position: absolute
+      top: 0
+      right: 0
+      bottom: 0
+      left: 0
+      background-color: alpha($optimistic-blue-light, 0.6)
+      z-index: 1
+
+  &-c
+    padding: 12% 0 10%
+    position: relative
+    z-index: 2
+
+    @media $media-xlarge
+      padding: 5% 0 3%
+
+  &-i
+    color: $white
+    font-family: $serif
+    font-size: responsive 22px 30px
+    font-range: 480px 1440px
+    font-style: italic
+    line-height: $line-height-000
+    padding-bottom: 1%
+
+    @media $media-xlarge
+      padding-bottom: 0.5%
+
+    &--l
+      color: $white
+      font-style: italic
+      font-size: 20px
+
+    span
+      height: 3px
+      width: 20px
+      background-color: $white
+      display: inline-block
+      margin-bottom: 5px
+      margin-left: 5px
+      margin-right: 5px
+
+  &-t
+    color: $white
+    font-family: $sans
+    font-size: responsive 40px 75px
+    font-range: 480px 1440px
+    font-weight: 700
+    line-height: $line-height-000
+    margin: 0
+    text-transform: uppercase
+    padding-bottom: 1.75%
+
+    @media $media-xlarge
+      padding-bottom: 1.25%
+
+      &--l
+        font-size: responsive 45px 90px
+
+  &-st
+    color: $charles-blue
+    font-family: $serif
+    font-size: responsive 18px 30px
+    font-range: 480px 1440px
+    font-style: italic
+    line-height: $line-height-200
+    margin-bottom: $sizing-700
+
+    &--l
+      font-size: responsive 18px 35px
+
+    &--w
+      color: #ffffff
