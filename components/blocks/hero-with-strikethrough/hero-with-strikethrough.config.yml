@@ -5,7 +5,7 @@ context:
   home: true
   intro: guide
   title: Winter in Boston
-  subheader: Last updated: 1/22/21
+  subheader: 'Last updated: 1/22/21'
   image:
     wide1x: https://www.boston.gov/sites/default/files/styles/intro_image_large_1x/public/img/unk/intro_images/TOPIC-HERO-WINTER_10.jpg?itok=fALuVUVP
     desktop1x: https://www.boston.gov/sites/default/files/styles/intro_image_desktop_1x/public/img/unk/intro_images/TOPIC-HERO-WINTER_10.jpg?itok=6hseBF7x
