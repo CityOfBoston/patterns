@@ -8,60 +8,37 @@
  */
  
 .ssm
-    width: 100%
-    left: 0
-    background-color: $white
-    transition: background-color 0.25s ease
-    display: none
-    z-index: 10
-    margin-bottom: 42px
+  width: 100%
+  left: 0
+  background-color: $white
+  transition: background-color 0.25s ease
+  display: none
+  z-index: 10
+  margin-bottom: 42px
 
 @media (min-width: 980px) 
-    .ssm 
-        display: block
-        position: relative
-        top: 0
-        margin-bottom: 45px
-        margin-top: 20px
-    
-
-@media (min-width: 980px) 
-    .ssm.sticky,
-    .ssm.ssm__left.sticky 
-        position: fixed
-        top: 65px
-        background-color: $charles-blue
-        z-index: 12
-        padding: 0 0 2px
-        margin-top: 0
-        margin-bottom: 0
-    
-    #main-menu.sticky 
-        position: fixed
-    
-
-.ssm-trigger 
+  .ssm 
     display: block
-
-@media (min-width: 980px) 
-    .ssm-trigger 
-        display: none
+    position: relative
+    top: 0
+    margin-bottom: 45px
+    margin-top: 20px
     
 
-.ssm-chevron 
-    height: 12px
-    width: 18px
-    float: right
-    -ms-transform: rotate(-90deg)
-    transform: rotate(-90deg)
-    margin-top: 4px
-
-.ssm-chevron .icon-stroke 
-    fill: $white
-
-.active .ssm-chevron 
-    -ms-transform: rotate(0)
-    transform: rotate(0)
+@media (min-width: 980px) 
+  .ssm.sticky,
+  .ssm.ssm__left.sticky 
+    position: fixed
+    top: 65px
+    background-color: $charles-blue
+    z-index: 12
+    padding: 0 0 2px
+    margin-top: 0
+    margin-bottom: 0
+    
+  #main-menu.sticky 
+    position: fixed
+    
 
 .ssm ul,
 .ssm.ssm__left.sticky ul 
@@ -217,6 +194,13 @@
     position: absolute
     margin-top: -100px
 
+.ssm-trigger 
+    display: block
+
+@media (min-width: 980px) 
+    .ssm-trigger 
+        display: none
+    
 
 .ssm-trigger 
   line-height: inherit
@@ -243,6 +227,21 @@
     .ssm-trigger:visited 
         margin-top: 0
     
+
+.ssm-chevron 
+  height: 12px
+  width: 18px
+  float: right
+  -ms-transform: rotate(-90deg)
+  transform: rotate(-90deg)
+  margin-top: 4px
+
+.ssm-chevron .icon-stroke 
+  fill: $white
+
+.active .ssm-chevron 
+  -ms-transform: rotate(0)
+  transform: rotate(0)
 
 .ssm-trigger:hover,
 .ssm-trigger:visited:hover 
