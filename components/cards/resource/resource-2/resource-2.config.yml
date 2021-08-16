@@ -3,7 +3,7 @@ handle: resource-2
 status: ready
 preview: '@centered'
 context:
-  cards:
+  resource-2-cards:
   - description: Your Mayor
     href: https://www.boston.gov
     image: https://www.boston.gov/sites/default/files/styles/person_profile_card_173x173_/public/img/library/photos/2021/03/new-janey-headshot.jpg
