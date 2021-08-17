@@ -45,7 +45,7 @@
       border-top: 2px solid $charles-blue
       border-bottom: 2px solid $charles-blue
       border-left: 2px solid $charles-blue
-      color: $charles-blue
+      //color: $charles-blue
       display: block
       padding: $sizing-300 15px
       text-transform: uppercase
@@ -67,7 +67,7 @@
 
         &:hover, &:focus
           background-color: $freedom-red-light
-          color: $white !important
+          color: $white
 
         &:visited
           color: $charles-blue
@@ -90,7 +90,13 @@
         @media $media-medium
           display: inline
 
-.pager-disabled 
+#pager-disabled 
   background-color: $grey-000
-  color: $grey-400
-  border-color: $grey-200
+  color: #58585b
+  border-color: $grey-300
+
+  &:hover, &:focus
+    color: #58585b
+
+#first
+  content: "First ›"
