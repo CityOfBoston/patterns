@@ -1,6 +1,7 @@
 title: Grid of Resource Cards
 handle: grid_resource_cards
 status: ready
+preview: '@centered'
 context:
   header:
     title: Grid of Resource Cards

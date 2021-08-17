@@ -153,26 +153,40 @@
     background-color: $blended-optimistic-blue
     background-blend-mode: multiply
 
+.cdr-description
+  background-color: $charles-blue
+  line-height: 1
+  width: 100%
+  display: block
+  text-align: center
+  color: $white
+  text-transform: uppercase
+  font-family: Montserrat,Arial,sans-serif
+  padding: .5em
+  font-size: .875rem
+
 .t--bold
   font-weight: bold
 
 #align-left
   text-align: left
 
-// removes hover state for resource-2 card
-#no-hover--cdr
-  padding: $sizing-700
-  
-  &:focus, &:focus-within
-    background-color: $grey-000
+#align-center
+  text-align: center
 
-    .cd-t
-    .cd-st
-    .cd-d
-      color: $black
+// style for resource card
+.cd-r
+  display: flex
+  flex-grow: 1
+  background-color: $grey-000
+  width: 100%
 
-#no-hover--cdp
-  color: $body-text
+  @media $media-large
+    display: block
+
+.cd-r-im
+  padding: 20px 0px 0px
+  text-align: center
 
 .cd-divider 
   content: ""

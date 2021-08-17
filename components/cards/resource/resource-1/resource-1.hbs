@@ -1,7 +1,7 @@
 {{#each resource-1-cards as |card|}}
-<div class="section g--4 g--4--sl m-t500 cdp-l">
-  <div class="d-b bg--cb cdp-a ta-c p-a200 t--upper t--sans t--w t--ob--h t--s100">{{card.description}}</div>
-  <div class="cd-ic bg--cb" style="padding: 20px 0px 0px;"><img src="{{card.image}}" style="max-height: 150px;"></div>
+<div class="section g--4 g--4--sl m-t500 cd-r">
+  <div class="cdr-description">{{card.description}}</div>
+  <div class="cd-ic bg--cb cd-r-im"><img src="{{card.image}}" style="max-height: 150px;"></div>
 <div class="cd-c" id="align-left">
   <div class="mnl-c-group">
     <div class="cd-st t--upper t--bold t--subtitle">Ward</div>
@@ -21,7 +21,6 @@
           class="mnl-link">where your polling location is.</a></div>
     </div>
   </div>
-</div>
 </div>
 </div>
 {{/each}}
