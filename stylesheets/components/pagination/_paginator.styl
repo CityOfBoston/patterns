@@ -34,6 +34,9 @@
       .pg-li-i--link
         @media $media-medium-max
           display: none;
+        
+        background-color: $optimistic-blue-dark
+        color: $white
 
     &:last-child
       border-right: 2px solid $charles-blue
@@ -44,12 +47,12 @@
       border-left: 2px solid $charles-blue
       color: $charles-blue
       display: block
-      font-family: $sans
       padding: $sizing-300 15px
       text-transform: uppercase
-      font-weight: 700
       opacity: 0.5
       white-space: nowrap
+      font-family: Montserrat,sans-serif
+      letter-spacing: 1px
 
       @media $media-medium
         padding: $sizing-300
@@ -63,7 +66,8 @@
           text-decoration: none
 
         &:hover, &:focus
-          color: $freedom-red-light
+          background-color: $freedom-red-light
+          color: $white !important
 
         &:visited
           color: $charles-blue
@@ -85,3 +89,8 @@
 
         @media $media-medium
           display: inline
+
+.pager-disabled 
+  background-color: $grey-000
+  color: $grey-400
+  border-color: $grey-200
