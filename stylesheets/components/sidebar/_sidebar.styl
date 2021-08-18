@@ -8,6 +8,7 @@
    Elements:
     i = item
     ic = icon
+    t = title
     d = description
 
    Modifier:
@@ -26,16 +27,9 @@
     padding: 0
     list-style: none
     background: none
-
     border-bottom: 1px dashed $grey-100
     padding-bottom: $sizing-300
-
-    &:not(:first-child)
-      padding-top: $sizing-300
-
-    &:not(:last-child)
-      border-bottom: 1px dashed $grey-100
-      padding-bottom: $sizing-300
+    padding-top: $sizing-300
 
     &--b
       line-height: 1
@@ -58,6 +52,17 @@
     &--l
       width: 30%
 
+  &-t
+    clear: both
+    color: $body-text
+    float: left
+    font-family: $serif
+    font-size: responsive $font-200 $font-300
+    font-style: italic
+    line-height: $line-height-200
+    width: 20%
+    margin-top: 4px
+
   &-d
     color: $charles-blue
     float: left
@@ -70,7 +75,9 @@
     margin-top: 4px
     
     &--s
+      margin-top: 4px
       width: 70%
+      padding-left: 50px
 
     &--tt-n
       text-transform: none

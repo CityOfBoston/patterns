@@ -21,59 +21,55 @@
   </div>
   <div class="contact-title">Contact</div>
   <ul class="sb">
-    <li class=""></li>
-    {{#each events as |event|}}
+    {{#each icon-items as |item|}}
     <li class="sb-i evt-sb-i">
-      <img class="sb-ic" src="{{ event.icon }}"></img>
-      <span class="sb-d"> {{#if event.description.href}} <a href="{{event.description.href}}">{{
-          event.description.text}}</a> {{else}} {{ event.description.text}} {{/if}}</span>
-      <div class="sb-b"> {{#if event.body}} {{event.body}} {{/if}} </div>
+      {{#if item.icon}}<img class="sb-ic" src="{{ item.icon }}"></img> {{/if}}
+      <span class="sb-d"> {{#if item.description.href}} <a href="{{item.description.href}}">{{
+          item.description.text}}</a> {{else}} {{ item.description.text}} {{/if}}</span>
+      <div class="sb-b"> {{#if item.body}} {{item.body}} {{/if}} </div>
+    </li>
+    {{/each}}
+    {{#each title-items as |item|}}
+    <li class="sb-i evt-sb-i">
+      {{#if item.title}}<div class="sb-t"> {{item.title}}</div> {{/if}}
+      <span class="sb-d--s"> {{#if item.description.href}} <a href="{{item.description.href}}">{{
+          item.description.text}}</a> {{else}} {{ item.description.text}} {{/if}}</span>
+      <div class="sb-b"> {{#if item.body}} {{item.body}} {{/if}} </div>
     </li>
     {{/each}}
   </ul>
+  {{#if social-icons}}
   <div class="list-item">
     <div class="detail-item" bos_context_type="Social Media Links">
       <div class="detail-item__content">
-        <div class="detail-item__body ">
-
-          <a href="https://twitter.com/bostonlandmarks" class="icon-twitter icon-social"
-            target="_blank" bos_context_type="Social Networking">
+        <div class="detail-item__body">
+          {{#if social-icons.twitter}}
+          <a href="https://twitter.com/bostonlandmarks" class="icon-twitter icon-social" target="_blank"
+            bos_context_type="Social Networking">
             icon-twitter
           </a>
-          <a href="https://www.facebook.com/BostonLandmarks"
-            class="icon-facebook icon-social" target="_blank"
+          {{/if}}
+          {{#if social-icons.facebook}}
+          <a href="https://www.facebook.com/BostonLandmarks" class="icon-facebook icon-social" target="_blank"
             bos_context_type="Social Networking">
             icon-facebook
           </a>
-
-          <a href="https://www.instagram.com/bostonlandmarks/"
-            class="icon-instagram icon-social" target="_blank"
+          {{/if}}
+          {{#if social-icons.instagram}}
+          <a href="https://www.instagram.com/bostonlandmarks/" class="icon-instagram icon-social" target="_blank"
             bos_context_type="Social Networking">
             icon-instagram
           </a>
-
-          <a href="https://www.flickr.com/photos/bostonlandmarkscommission/"
-            class="icon-flickr icon-social" target="_blank"
-            bos_context_type="Social Networking">
+          {{/if}}
+          {{#if social-icons.flickr}}
+          <a href="https://www.flickr.com/photos/bostonlandmarkscommission/" class="icon-flickr icon-social"
+            target="_blank" bos_context_type="Social Networking">
             icon-flickr
           </a>
+          {{/if}}
         </div>
       </div>
     </div>
   </div>
-  <div class="list-item">
-    <div class="detail-item " bos_context_type="Sidebar Item">
-      <div class="detail-item__content">
-        <div class="detail-item__label ">
-        </div>
-        <div class="detail-item__body ">
-        </div>
-      </div>
-
-    </div>
-
-  </div>
-
-
-
+  {{/if}}
 </div>

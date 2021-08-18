@@ -1,27 +1,67 @@
 title: Content Right Sidebar
 handle: sidebar
 status: ready
+variants:
+  - name: Date
+    context:
+      icon-items:
+        - icon: https://patterns.boston.gov/images/global/icons/icon-time.svg
+          description: 
+            text: 05:00PM
+            href: false
+          body: false
+        - icon: https://patterns.boston.gov/images/global/icons/icon-location.svg
+          description: 
+            text: Virtual please see notice Boston, MA 02201
+            href: false
+          body: false
+        - icon: https://patterns.boston.gov/images/global/icons/icon-email.svg
+          description: 
+            text: elizabeth.a.stifel@boston.gov
+            href: mailto:elizabeth.a.stifel@boston.gov
+          body: false
+        - icon: https://patterns.boston.gov/images/global/icons/icon-phone.svg
+          description: 
+            text: 617-918-4436
+            href: 'tel:617-918-4436'
+      title-items:
+        - title: 'Contact:'
+          description: 
+            text: Elizabeth Stifel
+            href: false
+        - title: 'Neighborhoods:'
+          description: 
+            text: Downtown
+            href: false
+        - title: 'Posted:'
+          description: 
+            text: 07/15/2021 - 1:30PM
+            href: false
+      social-icons: false 
 context:
-  events:
+  icon-items:
     - icon: https://patterns.boston.gov/images/global/icons/icon-phone.svg
       description: 
         text: 617-635-3850
-        href: tel:617-635-3850
-      # body: false
+        href: 'tel:617-635-3850'
+      body: false
     - icon: https://patterns.boston.gov/images/global/icons/icon-email.svg 
       description: 
         text: blc@boston.gov
         href: mailto:BLC@boston.gov
-      # body: false
+      body: false
     - icon: https://patterns.boston.gov/images/global/icons/icon-location.svg
       description: 
         text: 1 City Hall Square ROOM 709 ENVIRONMENT DEPT. BOSTON, MA 02201
         href: false
-      # body: false
+      body: false
     - icon: https://patterns.boston.gov/images/global/icons/icon-time.svg
       description: 
         text: Temporary Covid Hours
         href: false
       body: City Hall is only open to the public on Tuesdays, Thursdays, and Fridays, from 9 a.m. - 5 p.m.
-            
-      
+  social-icons:
+    twitter: true
+    facebook: true
+    instagram: true
+    flickr: true 
