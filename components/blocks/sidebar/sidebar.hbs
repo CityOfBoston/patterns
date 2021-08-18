@@ -1,4 +1,5 @@
 <div class="column mobile-100 desktop-33-right">
+  {{#if icon-header}}
   <div class="department-icon">
     <div width="100" height="100" typeof="foaf:Image">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 137 130">
@@ -20,7 +21,13 @@
     </div>
   </div>
   <div class="contact-title">Contact</div>
+  {{/if}}
+
+  {{#if text-header}}
+  <div class="date-title t--intro">{{text-header}}</div>
+  {{/if}}
   <ul class="sb">
+
     {{#each icon-items as |item|}}
     <li class="sb-i evt-sb-i">
       {{#if item.icon}}<img class="sb-ic" src="{{ item.icon }}"></img> {{/if}}
@@ -29,15 +36,31 @@
       <div class="sb-b"> {{#if item.body}} {{item.body}} {{/if}} </div>
     </li>
     {{/each}}
-    {{#each title-items as |item|}}
+
+    {{!-- {{#each title-items as |item|}}
     <li class="sb-i evt-sb-i">
       {{#if item.title}}<div class="sb-t"> {{item.title}}</div> {{/if}}
       <span class="sb-d--s"> {{#if item.description.href}} <a href="{{item.description.href}}">{{
           item.description.text}}</a> {{else}} {{ item.description.text}} {{/if}}</span>
       <div class="sb-b"> {{#if item.body}} {{item.body}} {{/if}} </div>
     </li>
+    {{/each}} --}}
+
+    {{#each title-items as |item|}}
+    <li class="sb-i evt-sb-i">
+      {{#if item.title}}<div class="sb-t"> {{item.title}}</div> {{/if}}
+      {{> @detail_list}}
+    </li>
+    {{/each}}
+
+    {{#each list-items as |item|}}
+    <li class="sb-i evt-sb-i">
+      {{#if item.title}}<div class="sb-h"> {{item.title}}</div> {{/if}}
+      {{> @list }}
+    </li>
     {{/each}}
   </ul>
+
   {{#if social-icons}}
   <div class="list-item">
     <div class="detail-item" bos_context_type="Social Media Links">
@@ -72,4 +95,5 @@
     </div>
   </div>
   {{/if}}
+
 </div>
