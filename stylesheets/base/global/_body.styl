@@ -1,3 +1,9 @@
+/*
+
+   GLOBAL BODY
+
+ */
+
 html, body
   background: white
   margin: 0
@@ -10,127 +16,126 @@ html, body
   overflow: hidden
 
 .sr-only
-    position:absolute
-    left:-10000px
-    top:auto
-    width:1px
-    height:1px
-    overflow:hidden
+  position:absolute
+  left:-10000px
+  top:auto
+  width:1px
+  height:1px
+  overflow:hidden
 
-:link {
-    color: $optimistic-blue-dark;
-    text-decoration: none
-}
+:link
+  color: $optimistic-blue-dark
+  text-decoration: none
+
 .inverted,
-.inverted:link {
-    color: $freedom-red-dark
-}
-:visited {
-    color: $optimistic-blue-dark
-}
-.inverted:visited {
-    color: $freedom-red-dark
-}
+.inverted:link
+  color: $freedom-red-dark
+
+:visited
+  color: $optimistic-blue-dark
+
+.inverted:visited
+  color: $freedom-red-dark
+
 a:hover,
-a:focus {
-    color: $freedom-red-dark
-}
+a:focus
+  color: $freedom-red-dark
+
 a.inverted:hover,
-a.inverted:focus {
-    color: $optimistic-blue-dark;
-}
-a:active {
-    color: $freedom-red-dark;
-    background-color: transparent
-}
-a.inverted:active {
-    color: $optimistic-blue-dark
-}
+a.inverted:focus
+  color: $optimistic-blue-dark
+
+a:active
+  color: $freedom-red-dark
+  background-color: transparent
+
+a.inverted:active
+  color: $optimistic-blue-dark
+
 a:active,
-a:hover {
-    outline: 0
-}
-@media print {
-    :link,
-    :visited {
-        text-decoration: underline
-    }
-    a[href]:after {
-        content: " (" attr(href) ")";
-        font-weight: normal;
-        font-size: 18px;
-        text-decoration: none
-    }
-    a[href^='javascript:']:after,
-    a[href^='#']:after {
-        content: ''
-    }
-}
+a:hover
+  outline: 0
+
+@media print
+  :link,
+  :visited
+    text-decoration: underline
+  
+  a[href]:after
+    content: " (" attr(href) ")"
+    font-weight: normal
+    font-size: 18px
+    text-decoration: none
+    
+  a[href^='javascript:']:after,
+  a[href^='#']:after
+    content: ''
+    
 
 dl,
 ol,
-ul {
-    margin: 8.97px 0px 39px;
-    margin: 0.49833rem 0rem 2.16667rem
-}
+ul
+  margin: 8.97px 0px 39px
+  margin: 0.49833rem 0rem 2.16667rem
+
 ol ol,
 ol ul,
 ul ol,
-ul ul {
-    margin: 0
-}
-dd {
-    margin: 0 0 0 36px
-}
-[dir="rtl"] dd {
-    margin: 0 36px 0 0
-}
+ul ul
+  margin: 0
+
+dd
+  margin: 0 0 0 36px
+
+[dir="rtl"] dd
+  margin: 0 36px 0 0
+
 ol,
-ul {
-    padding: 0 0 0 0;
-    list-style-position: inside
-}
+ul
+  padding: 0 0 0 0
+  list-style-position: inside
+
 [dir="rtl"] menu,
 [dir="rtl"] ol,
-[dir="rtl"] ul {
-    padding: 0 0 0 0
-}
-ol {
-    counter-reset: section;
-    list-style-type: none;
-    color: $charles-blue
-}
-ol li {
-    margin: 0px 0px 18px 55px;
-    margin: 0rem 0rem 1rem 3.05556rem
-}
-ol>li:before {
-    border: 3px solid;
-    border-radius: 100%;
-    counter-increment: section;
-    content: counters(section, ".") " ";
-    display: inline-block;
-    height: 40px;
-    line-height: 40px;
-    margin: 9.75px 0px 0px 0px;
-    margin: 0.54167rem 0rem 0rem 0rem;
-    text-align: center;
-    width: 40px;
-    font-family: "Montserrat", sans-serif;
-    text-indent: 0;
-    margin-left: -55px;
-    margin-right: 5px
-}
-ul li {
-    list-style: none;
-    padding-left: 1.25em;
-    background: url("../images/global/icons/ul-bullet.svg") no-repeat left 14px transparent;
-    background-size: 10px;
-    margin: 0px 0px 29.25px 0px;
-    margin: 0rem 0rem 1.625rem 0rem
-}
+[dir="rtl"] ul 
+  padding: 0 0 0 0
+
+ol
+  counter-reset: section
+  list-style-type: none
+  color: $charles-blue
+
+ol li
+  margin: 0px 0px 18px 55px
+  margin: 0rem 0rem 1rem 3.05556rem
+
+ol>li:before
+  border: 3px solid
+  border-radius: 100%
+  counter-increment: section
+  content: counters(section, ".") " "
+  display: inline-block
+  height: 40px
+  line-height: 40px
+  margin: 9.75px 0px 0px 0px
+  margin: 0.54167rem 0rem 0rem 0rem
+  text-align: center
+  width: 40px
+  font-family: "Montserrat", sans-serif
+  text-indent: 0
+  margin-left: -55px
+  margin-right: 5px
+
+ul li
+  list-style: none
+  padding-left: 1.25em
+  background: url("../images/global/icons/ul-bullet.svg") no-repeat left 14px transparent
+  background-size: 10px
+  margin: 0px 0px 29.25px 0px
+  margin: 0rem 0rem 1.625rem 0rem
+
 ul strong,
-ul b {
-    color: $charles-blue;
-    font-weight: 700
-}
+ul b
+  color: $charles-blue
+  font-weight: 700
+
