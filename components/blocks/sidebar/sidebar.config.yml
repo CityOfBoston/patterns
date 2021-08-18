@@ -1,0 +1,16 @@
+title: Content Right Sidebar
+handle: sidebar
+status: ready
+context:
+  events:
+    - icon: https://patterns.boston.gov/images/global/icons/icon-phone.svg
+      description: 617-635-3850
+      href: false
+    - icon: https://patterns.boston.gov/images/global/icons/icon-email.svg 
+      description: blc@boston.gov
+      href: mailto:BLC@boston.gov
+    - icon: https://patterns.boston.gov/images/global/icons/icon-location.svg
+      description: 1 City Hall Square ROOM 709 ENVIRONMENT DEPT. BOSTON, MA 02201
+      href: false
+    - icon: https://patterns.boston.gov/images/global/icons/icon-time.svg
+      description: Temporary Covid Hours
