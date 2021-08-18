@@ -3,8 +3,8 @@ handle: footer
 status: ready
 context:
   links:
-    - name: Mayor Martin J Walsh
-      href: https://www.boston.gov/departments/mayors-office/martin-j-walsh
+    - name: Mayor Kim Janey
+      href: https://www.boston.gov/departments/mayors-office/kim-janey
     - name: Privacy Policy
       href: https://www.boston.gov/copyright/privacyandsecurity.asp
     - name: Careers
