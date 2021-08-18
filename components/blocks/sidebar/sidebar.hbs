@@ -25,7 +25,7 @@
     {{#each events as |event|}}
     <li class="sb-i evt-sb-i">
       <img class="sb-ic" src="{{ event.icon }}"></img>
-      <span class="sb-d">{{#if href}} <a href="{{event.description.href}}">{{ event.description.text}}</a> {{else}} {{event.description.text }}{{/if}}</span>
+      <span class="sb-d"> {{#if event.description.href}} <a href="{{event.description.href}}">{{ event.description.text}}</a> {{else}} {{ event.description.text}} {{/if}}</span>
     </li>
     {{/each}}
   </ul>
