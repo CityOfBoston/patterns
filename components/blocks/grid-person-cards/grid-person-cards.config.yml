@@ -1,6 +1,3 @@
-includes:
-  - ../../variables.yml
-localvariable: Full Name
 title: Grid of People
 handle: grid_person_cards
 status: ready
@@ -12,7 +9,7 @@ context:
     title: City Government
     contact: false
   people:
-    - name: {fullname}
+    - name: Mayor Kim Janey
       position: Mayor
       image: https://www.boston.gov/sites/default/files/styles/person_photo_profile_large_360x360_/public/img/library/photos/2021/03/new-janey-headshot.jpg
       contact: mailto:mayor@boston.gov
@@ -24,7 +21,7 @@ context:
       contact: mailto:mayor@boston.gov
       url: https://www.boston.gov/mayor
       grid: g--1 g--3--sl
-    - name: Kim Janey
+    - name: Mayor Kim Janey
       position: Mayor of the City of Boston in the Commonwealth of Massachusetts.
       image: https://www.boston.gov/sites/default/files/styles/person_photo_profile_large_360x360_/public/img/library/photos/2021/03/new-janey-headshot.jpg
       contact: mailto:mayor@boston.gov

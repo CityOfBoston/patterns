@@ -3,9 +3,18 @@ handle: footer
 status: ready
 context:
   links:
-    - name: Mayor Kim Janey
-      href: https://www.boston.gov/departments/mayors-office/kim-janey
     - name: Privacy Policy
-      href: https://www.boston.gov/copyright/privacyandsecurity.asp
+      href: https://www.boston.gov/departments/innovation-and-technology/terms-use-and-privacy-policy
+    - name: Contact Us
+      href: https://www.boston.gov/departments/mayors-office/contact-boston-city-hall
     - name: Careers
       href: https://www.boston.gov/departments/human-resources/career-center
+    - name: Jobs and Careers
+      href: https://www.boston.gov/career-center
+    - name: Alerts
+      href: https://www.boston.gov/departments/emergency-management/city-boston-alerts-and-notifications
+    - name: Public Records
+      href: https://bostonma.govqa.us/WEBAPP/_rs/(S(den310hnrpqz2rzh5lgbgsby))/SupportHome.aspx
+  bos311:
+    name: Bos:312
+    slogan: Report and Issue

@@ -3,7 +3,7 @@
     <ul class="ft-ll ft-ite-links">
       <li class="ft-ll-i">
         <a href="http://www.cityofboston.gov/311/" class="ft-ll-a lnk--yellow">
-          BOS:311 - Report an issue
+          {{ bos311.name }} - {{ bos311.slogan }}
         </a>
       </li>
       {{#each links as |link|}}
@@ -12,7 +12,13 @@
     </ul>
 
     <ul class="ft-ll ft-ite-311">
-      <li class="ft-ll-i"><a href="http://www.cityofboston.gov/311/" class="ft-ll-a lnk--yellow"><span class="ft-ll-311">BOS:311</span><span class="tablet--hidden"> - </span>Report an issue</a></li>
+      <li class="ft-ll-i">
+        <a href="http://www.cityofboston.gov/311/" class="ft-ll-a lnk--yellow">
+          <span class="ft-ll-311">{{ bos311.name }}</span>
+          <span class="tablet--hidden"> - </span>
+          {{ bos311.slogan }}
+        </a>
+      </li>
     </ul>
   </div>
 </footer>
