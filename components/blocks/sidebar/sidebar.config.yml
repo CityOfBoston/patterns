@@ -22,6 +22,6 @@ context:
       description: 
         text: Temporary Covid Hours
         href: false
-      # body: City Hall is only open to the public on Tuesdays, Thursdays, and Fridays, from 9 a.m. - 5 p.m.
+      body: City Hall is only open to the public on Tuesdays, Thursdays, and Fridays, from 9 a.m. - 5 p.m.
             
       

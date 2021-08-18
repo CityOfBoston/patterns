@@ -25,35 +25,35 @@
     {{#each events as |event|}}
     <li class="sb-i evt-sb-i">
       <img class="sb-ic" src="{{ event.icon }}"></img>
-      <span class="sb-d"> {{#if event.description.href}} <a href="{{event.description.href}}">{{ event.description.text}}</a> {{else}} {{ event.description.text}} {{/if}}</span>
+      <span class="sb-d"> {{#if event.description.href}} <a href="{{event.description.href}}">{{
+          event.description.text}}</a> {{else}} {{ event.description.text}} {{/if}}</span>
+      <div class="sb-b"> {{#if event.body}} {{event.body}} {{/if}} </div>
     </li>
     {{/each}}
   </ul>
   <div class="list-item">
-    <div class="detail-item " bos_context_type="Social Media Links">
+    <div class="detail-item" bos_context_type="Social Media Links">
       <div class="detail-item__content">
         <div class="detail-item__body ">
 
-          <a href="https://twitter.com/bostonlandmarks" class="icon-twitter icon-common icon-social sidebar-social-icon"
+          <a href="https://twitter.com/bostonlandmarks" class="icon-twitter icon-social"
             target="_blank" bos_context_type="Social Networking">
             icon-twitter
           </a>
           <a href="https://www.facebook.com/BostonLandmarks"
-            class="icon-facebook icon-common icon-social sidebar-social-icon" target="_blank"
+            class="icon-facebook icon-social" target="_blank"
             bos_context_type="Social Networking">
             icon-facebook
           </a>
 
-
           <a href="https://www.instagram.com/bostonlandmarks/"
-            class="icon-instagram icon-common icon-social sidebar-social-icon" target="_blank"
+            class="icon-instagram icon-social" target="_blank"
             bos_context_type="Social Networking">
             icon-instagram
           </a>
 
-
           <a href="https://www.flickr.com/photos/bostonlandmarkscommission/"
-            class="icon-flickr icon-common icon-social sidebar-social-icon" target="_blank"
+            class="icon-flickr icon-social" target="_blank"
             bos_context_type="Social Networking">
             icon-flickr
           </a>

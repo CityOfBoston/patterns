@@ -27,6 +27,9 @@
     list-style: none
     background: none
 
+    border-bottom: 1px dashed $grey-100
+    padding-bottom: $sizing-300
+
     &:not(:first-child)
       padding-top: $sizing-300
 
@@ -72,6 +75,13 @@
     &--tt-n
       text-transform: none
 
+  &-b
+    padding-left: 35px
+    float: left
+    line-height: "calc(%s * 1.25)" % ($line-height-200)
+    width: 80%
+    line-height: 2
+
 .desktop-33-right 
   margin-left: 3%
   float: right
@@ -109,3 +119,38 @@
   letter-spacing: 1px
   font-family: Montserrat,sans-serif
   color: $charles-blue
+
+.detail-item__body
+  :first-child 
+    margin-top: 0
+
+.detail-item__content
+  padding-top: 20px
+  word-wrap: breakword
+  width: 100%
+  display: table-cell
+  vertical-align: top
+
+.icon-social 
+  display: block
+  height: 56px
+  width: 56px
+  text-indent: -9999px
+  float: left
+  background-position: 0
+  background-size: 56px
+  background-repeat: no-repeat
+  margin-right: 4px
+
+.icon-twitter 
+  background-image: url(../images/global/icons/social-media/icon-twitter.svg)
+
+.icon-facebook 
+  background-image: url(../images/global/icons/social-media/icon-facebook.svg)
+
+.icon-instagram 
+  background-image: url(../images/global/icons/social-media/icon-instagram.svg)
+
+.icon-flickr 
+  background-image: url(../images/global/icons/social-media/icon-flickr.svg)
+
