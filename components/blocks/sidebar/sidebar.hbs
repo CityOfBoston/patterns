@@ -46,12 +46,14 @@
     </li>
     {{/each}} --}}
 
-    {{#each title-items as |item|}}
-    <li class="sb-i evt-sb-i">
-      {{#if item.title}}<div class="sb-t"> {{item.title}}</div> {{/if}}
-      {{> @detail_list}}
-    </li>
-    {{/each}}
+    {{#if title-items}}
+      {{#each title-items as |detail|}}
+        <li class="dl-i">
+          <span class="dl-t">{{ detail.name }}</span>
+          <span class="dl-d" style="padding-left: 70px;">{{ detail.description }}</span>
+        </li>
+  {{/each}}
+    {{/if}}
 
     {{#each list-items as |item|}}
     <li class="sb-i evt-sb-i">

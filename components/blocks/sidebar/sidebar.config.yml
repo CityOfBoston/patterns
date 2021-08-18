@@ -27,27 +27,12 @@ variants:
             text: 617-918-4436
             href: 'tel:617-918-4436'
       title-items:
-        # - title: 'Contact:'
-        #   description: 
-        #     text: Elizabeth Stifel
-        #     href: false
-        # - title: 'Neighborhoods:'
-        #   description: 
-        #     text: Downtown
-        #     href: false
-        # - title: 'Posted:'
-        #   description: 
-        #     text: 07/15/2021 - 1:30PM
-        #     href: false
-        - icon: false
-          name: When
-          description: April 15, 2015 4:00PM - 6:00PM
-        - icon: false
-          name: Posted
-          description: 11/27/2016 - 10:45AM
-        - icon: false
-          name: Updated
-          description: 11/27/2016 - 10:45AM
+        - name: Contact
+          description: Elizabeth Stifel
+        - name: Neighborhoods
+          description: Downtown
+        - name: Posted
+          description: 07/15/2021 - 1:30PM
 
       list-items: 
         - title: 'Numbers'
