@@ -4,13 +4,24 @@ status: ready
 context:
   events:
     - icon: https://patterns.boston.gov/images/global/icons/icon-phone.svg
-      description: 617-635-3850
-      href: false
+      description: 
+        text: 617-635-3850
+        href: tel:617-635-3850
+      # body: false
     - icon: https://patterns.boston.gov/images/global/icons/icon-email.svg 
-      description: blc@boston.gov
-      href: mailto:BLC@boston.gov
+      description: 
+        text: blc@boston.gov
+        href: mailto:BLC@boston.gov
+      # body: false
     - icon: https://patterns.boston.gov/images/global/icons/icon-location.svg
-      description: 1 City Hall Square ROOM 709 ENVIRONMENT DEPT. BOSTON, MA 02201
-      href: false
+      description: 
+        text: 1 City Hall Square ROOM 709 ENVIRONMENT DEPT. BOSTON, MA 02201
+        href: false
+      # body: false
     - icon: https://patterns.boston.gov/images/global/icons/icon-time.svg
-      description: Temporary Covid Hours
+      description: 
+        text: Temporary Covid Hours
+        href: false
+      # body: City Hall is only open to the public on Tuesdays, Thursdays, and Fridays, from 9 a.m. - 5 p.m.
+            
+      

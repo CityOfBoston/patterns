@@ -20,15 +20,15 @@
     </div>
   </div>
   <div class="contact-title">Contact</div>
-      <ul class="sb">
-        <li class=""></li>
-        {{#each events as |event|}}
-        <li class="sb-i evt-sb-i">
-          <img class="sb-ic" src="{{ event.icon }}"></img>
-          <span class="sb-d">{{#if href}} <a href="{{event.href}}">{{ event.description }}</a> {{else}} {{ event.description }} {{/if}}</span>
-        </li>
-        {{/each}}
-      </ul>
+  <ul class="sb">
+    <li class=""></li>
+    {{#each events as |event|}}
+    <li class="sb-i evt-sb-i">
+      <img class="sb-ic" src="{{ event.icon }}"></img>
+      <span class="sb-d">{{#if href}} <a href="{{event.description.href}}">{{ event.description.text}}</a> {{else}} {{event.description.text }}{{/if}}</span>
+    </li>
+    {{/each}}
+  </ul>
   <div class="list-item">
     <div class="detail-item " bos_context_type="Social Media Links">
       <div class="detail-item__content">
