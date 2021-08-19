@@ -1,17 +1,20 @@
 .goq
-    display: block
-    background-color: $white
-    border-bottom: 8px solid #d22d23 
-    padding: 30px 2% 40px
+    background: $white
+    display: -ms-flexbox
+    display: flex
+    -ms-flex-wrap: wrap
     flex-wrap: wrap
+    border-bottom: 8px solid #d22d23
+    padding: 30px 30px 40px 30px
     min-height: 380px
-    width: 23%
-    
+    width: 300px
+  
+
     &-quote-text
         font-family: $lora
         font-style: italic
-        color: #000
-        margin-bottom: 34px 
+        color: $black
+        margin-bottom: 30px 
         font-size: 18px
     
     &-quote-name
@@ -26,7 +29,7 @@
         font-family: $lora
         font-size: 16px
         font-style: italic
-        color: #828282
+        color: $grey-300
         line-height: 26px
     
     &-quote-details
@@ -37,29 +40,25 @@
         width: 100%
         margin-top: auto
         display: -ms-flexbox
-        display: flex;
+        display: flex
         -ms-flex-direction: row
         flex-direction: row
+        -ms-flex-direction: column
+        flex-direction: column
 
     &-quote-person-details 
         display: -ms-flexbox
-        display: flex;
-        -ms-flex-direction: column;
-        flex-direction: column;
-        -ms-flex-pack: start;
-        justify-content: flex-start;
-        margin: 10px 0px 0px 15px
-
-@media (min-width: 840px) {
-    .paragraphs-item-grid-of-quotes .quote-details {
-        -ms-flex-direction: column;
+        display: flex
+        -ms-flex-pack: start
+        justify-content: flex-start
+        margin: 10px 0px 0px 15px 
+        -ms-flex-direction: column
         flex-direction: column
-    }
-}
-    
-
-@media (min-width: 840px) {
-    .paragraphs-item-grid-of-quotes .quote-person-details {
         margin: 0
-    }
-}
+
+    &-quote-photo img
+        width: 56px
+        height: 56px
+        border-radius: 100%
+
+
