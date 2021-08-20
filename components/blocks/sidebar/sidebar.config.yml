@@ -35,16 +35,17 @@ variants:
           description: 07/15/2021 - 1:30PM
 
       list-items: 
-        - title: 'Numbers'
-          items:
-            - content: Speed limit sign needed
-              class: t--intro
-            - content: Excessive noise
-              class: t--info
-            - content: Request a speedbump
-              class: t--sans tt-u
-            - content: Request a<br/>traffic study
-              class: t--sans tt-u
+        - title: 'Phone Numbers'
+        - href: 'tel: 617-635-4601'
+          text: 617-635-4601
+          detail: (City Clerk's Office services)
+        - href: 'tel: 617-635-4601'
+          text: 617-635-4601
+          detail: (City Clerk's Office services)
+
+      resource-items:
+        - title: Resources
+
       social-icons: false 
 context:
   icon-header: true

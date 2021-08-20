@@ -47,15 +47,26 @@
     {{/each}} --}}
 
     {{#if title-items}}
-      {{#each title-items as |detail|}}
-        <li class="dl-i">
-          <span class="dl-t">{{ detail.name }}</span>
-          <span class="dl-d" style="padding-left: 70px;">{{ detail.description }}</span>
-        </li>
-  {{/each}}
+    {{#each title-items as |detail|}}
+    <li class="dl-i">
+      <span class="dl-t">{{ detail.name }}</span>
+      <span class="dl-d" style="padding-left: 70px;">{{ detail.description }}</span>
+    </li>
+    {{/each}}
     {{/if}}
 
-    {{#each list-items as |item|}}
+    {{#if list-items}}
+    <li class="sb-i evt-sb-i">
+      {{#each list-items as |item|}}
+      {{#if item.title}}<div class="sb-h"> {{item.title}}</div> {{/if}}
+      <ul class="ul">
+        <li class="t--info"><a href="{{item.href}}">{{item.text}}</a> {{item.detail}}</li>
+      </ul>
+      {{/each}}
+    </li>
+    {{/if}}
+
+    {{#each resource-items as |item|}}
     <li class="sb-i evt-sb-i">
       {{#if item.title}}<div class="sb-h"> {{item.title}}</div> {{/if}}
       {{> @list }}
