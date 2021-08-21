@@ -50,7 +50,16 @@ variants:
         - href: 'https://www.boston.gov/'
           text: Official Revised Filed Posting
 
-      social-icons: false 
+      bold-items:
+        - icon: https://patterns.boston.gov/images/global/icons/icon-location.svg
+          href: 'https://www.boston.gov/'
+          text: All City Clerk Services
+
+      social-icons:
+        twitter: true
+        facebook: false
+        instagram: true
+        flickr: false 
 context:
   icon-header: true
   icon-items:

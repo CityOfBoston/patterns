@@ -59,15 +59,26 @@
     </li>
     {{/if}}
 
+    {{#if resource-items}}
     <li class="sb-i evt-sb-i">
       {{#if resource-items-title}}<div class="sb-h"> {{resource-items-title}}</div> {{/if}}
       {{#each resource-items as |item|}}
       <div class="flexbox">
-      <a href="{{item.href}}" class="sb-h sb-l" style="width:auto;"> {{item.text}}</a>
-      <div class="resource-item"> </div>
+        <a href="{{item.href}}" class="sb-h sb-l resource-text"> {{item.text}}</a>
+        <div class="resource-im"> </div>
       </div>
       {{/each}}
     </li>
+    {{/if}}
+
+    {{#if bold-items}}
+    <li class="sb-i evt-sb-i">
+      {{#each bold-items as |item|}}
+      {{#if item.icon}}<img class="sb-ic" src="{{ item.icon }}"></img> {{/if}}
+      <span class="sb-d sb-h sb-l" style="font-weight: 800;"> <a href="{{item.href}}">{{item.text}}</a></span>
+      {{/each}}
+    </li>
+    {{/if}}
   </ul>
 
   {{#if social-icons}}
