@@ -11,6 +11,7 @@
     t = title
     d = description
     h = header
+    l = link
 
    Modifier:
     b = block
@@ -89,6 +90,9 @@
     line-height: "calc(%s * 1.25)" % ($line-height-200)
     width: 80%
     line-height: 2
+  
+  &-l
+    color: $optimistic-blue-dark
 
 .desktop-33-right 
   margin-left: 3%
@@ -147,6 +151,10 @@
   width: 100%
   display: table-cell
   vertical-align: top
+
+.list-item
+  padding-bottom: 20px
+  line-height: 2
 
 .icon-social 
   display: block

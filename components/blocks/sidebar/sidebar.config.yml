@@ -34,17 +34,18 @@ variants:
         - name: Posted
           description: 07/15/2021 - 1:30PM
 
+      list-items-title: 'Phone Numbers'
       list-items: 
-        - title: 'Phone Numbers'
         - href: 'tel: 617-635-4601'
           text: 617-635-4601
           detail: (City Clerk's Office services)
-        - href: 'tel: 617-635-4601'
-          text: 617-635-4601
-          detail: (City Clerk's Office services)
+        - href: 'tel: 617-635-4175'
+          text: 617-635-4175
+          detail: (Birth, Death, Marriage Certificates and Marriage Licenses)
 
+      resource-items-title: Resources
       resource-items:
-        - title: Resources
+        - 
 
       social-icons: false 
 context:

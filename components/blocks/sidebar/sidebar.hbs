@@ -37,15 +37,6 @@
     </li>
     {{/each}}
 
-    {{!-- {{#each title-items as |item|}}
-    <li class="sb-i evt-sb-i">
-      {{#if item.title}}<div class="sb-t"> {{item.title}}</div> {{/if}}
-      <span class="sb-d--s"> {{#if item.description.href}} <a href="{{item.description.href}}">{{
-          item.description.text}}</a> {{else}} {{ item.description.text}} {{/if}}</span>
-      <div class="sb-b"> {{#if item.body}} {{item.body}} {{/if}} </div>
-    </li>
-    {{/each}} --}}
-
     {{#if title-items}}
     {{#each title-items as |detail|}}
     <li class="dl-i">
@@ -57,21 +48,23 @@
 
     {{#if list-items}}
     <li class="sb-i evt-sb-i">
+      {{#if list-items-title}}<div class="sb-h"> {{list-items-title}}</div> {{/if}}
       {{#each list-items as |item|}}
-      {{#if item.title}}<div class="sb-h"> {{item.title}}</div> {{/if}}
-      <ul class="ul">
-        <li class="t--info"><a href="{{item.href}}">{{item.text}}</a> {{item.detail}}</li>
+      <ul class="ul list-item">
+        <li><a href="{{item.href}}" class="t--info sb-l">{{item.text}}</a>
+          {{item.detail}}
+        </li>
       </ul>
       {{/each}}
     </li>
     {{/if}}
 
-    {{#each resource-items as |item|}}
     <li class="sb-i evt-sb-i">
-      {{#if item.title}}<div class="sb-h"> {{item.title}}</div> {{/if}}
+      {{#if resource-items-title}}<div class="sb-h"> {{resource-items-title}}</div> {{/if}}
+      {{#each resource-items as |item|}}
       {{> @list }}
+      {{/each}}
     </li>
-    {{/each}}
   </ul>
 
   {{#if social-icons}}
