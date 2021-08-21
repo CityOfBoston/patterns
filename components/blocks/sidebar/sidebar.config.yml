@@ -45,7 +45,10 @@ variants:
 
       resource-items-title: Resources
       resource-items:
-        - 
+        - href: 'https://www.boston.gov/'
+          text: Official Filed Posting
+        - href: 'https://www.boston.gov/'
+          text: Official Revised Filed Posting
 
       social-icons: false 
 context:

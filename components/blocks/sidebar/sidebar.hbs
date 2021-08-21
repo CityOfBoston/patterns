@@ -51,7 +51,7 @@
       {{#if list-items-title}}<div class="sb-h"> {{list-items-title}}</div> {{/if}}
       {{#each list-items as |item|}}
       <ul class="ul list-item">
-        <li><a href="{{item.href}}" class="t--info sb-l">{{item.text}}</a>
+        <li><a href="{{item.href}}" class="t--info {{#if item.href}} sb-l {{/if}}">{{item.text}}</a>
           {{item.detail}}
         </li>
       </ul>
@@ -62,7 +62,10 @@
     <li class="sb-i evt-sb-i">
       {{#if resource-items-title}}<div class="sb-h"> {{resource-items-title}}</div> {{/if}}
       {{#each resource-items as |item|}}
-      {{> @list }}
+      <div class="flexbox">
+      <a href="{{item.href}}" class="sb-h sb-l" style="width:auto;"> {{item.text}}</a>
+      <div class="resource-item"> </div>
+      </div>
       {{/each}}
     </li>
   </ul>
