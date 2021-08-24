@@ -54,24 +54,32 @@ gulp.task('docson', () =>
     .src('node_modules/docson/public/**')
     .pipe(gulp.dest(options.paths.docson))
 );
- gulp.task('build', gulp.parallel(
-  'fonts',
-  'images',
-  'legacy',
-  'stylus',
-  'scripts',
-  'stylus:ie',
-  'docson',
- ));
-gulp.task('default', gulp.parallel(
-  'fonts',
-  'images',
-  'legacy',
-  'scripts',
-  'docson',
-  'watch:scripts',
-  'stylus',
-  'stylus:ie',
-  'watch:stylus',
-  'watch:legacy',
-));
+
+gulp.task(
+  'build',
+  gulp.parallel(
+    'fonts',
+    'images',
+    'legacy',
+    'stylus',
+    'scripts',
+    'stylus:ie',
+    'docson'
+  )
+);
+
+gulp.task(
+  'default',
+  gulp.parallel(
+    'fonts',
+    'images',
+    'legacy',
+    'scripts',
+    'docson',
+    'watch:scripts',
+    'stylus',
+    'stylus:ie',
+    'watch:stylus',
+    'watch:legacy'
+  )
+);
