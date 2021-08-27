@@ -64,6 +64,13 @@ fractalConfig.web.set('server.port', process.env.PORT || 3030);
 
 const hbs = require('@frctl/handlebars')({
   helpers: {
+    replace_special_chars: function(str) {
+      return str.replace(/[^a-zA-Z0-9]/g, '');
+    },
+    filename_to_title_format: function(str) {
+      const regex = /[-!$%^&*()_+|~=`{}[:;<>?,.@#\]]/g;
+      return str.replace('.svg', '').replace(regex, ' ');
+    },
     filename_to_string: function(str) {
       return str.replace(/-/g, ' ').replace('.svg', '');
     },
