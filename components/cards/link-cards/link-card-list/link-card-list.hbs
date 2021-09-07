@@ -1,16 +1,19 @@
 {{#each cards as |card|}}
-  <a href="{{ card.href }}" class="lcd m-t500 g--12 g--12--sl">
-    <div class="lcd-c">
-      {{#if variant}}
-        <div class="lcd-im" id="{{card.variant}}"></div>
-      {{/if}}
-      <div class="lcd-t">{{ card.title }}</div>
-      {{#if card.subtitle}}
-        <div class="lcd-st t--subinfo t--g300">{{ card.subtitle }}</div>
-      {{/if}}
-      {{#if card.content}}
-        <div class="lcd-d" id="bottom"> {{ card.content }}</div>
-      {{/if}} 
+  <a href="{{ card.href }}" class="lcdl m-t500 g--12">
+    <div class="lcdl-c">
+        {{#if variant}}
+          <div class="lcdl-im {{card.variant}}"></div>
+        {{/if}}
+        <div class="g">
+          <div class="g--4">
+            <div class="lcdl-t">{{ card.title }}</div>
+          </div>
+          <div class="g--8">
+            {{#if card.content}}
+              <div class="lcdl-d"> {{ card.content }}</div>
+            {{/if}} 
+          </div>
+        </div>
     </div>
   </a>
 {{/each}}

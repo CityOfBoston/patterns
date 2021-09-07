@@ -15,20 +15,17 @@ variants:
           variant: document
           href: https://d8-uat.boston.gov/sites/default/files/linked/file/document_files/2017/03/pdf_for_website_testing_0.pdf
           title: 'Test Link - Document'
-          subtitle: 'Test link with document'
-          content: '123-456-7890'
+          content: 'Description for a document goes here. Description for a document goes here. Description for a document goes here. Description...'
         - index: 2
           variant: external
           href: https://www.google.com/
           title: 'Test Link - External'
-          subtitle: 'Test link with external link'
-          content: 'Test@Boston.gov'
+          content: 'Description for a document goes here. Description for a document goes here. Description for a document goes here. Description...'
         - index: 3
           variant: false
           href: https://d8-uat.boston.gov/departments/digital-team
           title: 'Test Link - Internal'
-          subtitle: 'Test link with internal link'
-          content: '123-456-7890' 
+          content: 'Description for a document goes here. Description for a document goes here. Description for a document goes here. Description...' 
   - name: List With Description
     context:
       header:
@@ -47,20 +44,17 @@ variants:
           variant: document
           href: https://d8-uat.boston.gov/sites/default/files/linked/file/document_files/2017/03/pdf_for_website_testing_0.pdf
           title: 'Test Link - Document'
-          subtitle: 'Test link with document'
-          content: '123-456-7890'
+          content: 'Description for a document goes here. Description for a document goes here. Description for a document goes here. Description...'
         - index: 2
           variant: external
           href: https://www.google.com/
           title: 'Test Link - External'
-          subtitle: 'Test link with external link'
-          content: 'Test@Boston.gov'
+          content: 'Description for a document goes here. Description for a document goes here. Description for a document goes here. Description...'
         - index: 3
           variant: false
           href: https://d8-uat.boston.gov/departments/digital-team
           title: 'Test Link - Internal'
-          subtitle: 'Test link with internal link'
-          content: '123-456-7890'
+          content: 'Description for a document goes here. Description for a document goes here. Description for a document goes here. Description...'
 context:
   header:
     title: Test Group of Links - List Without Description
@@ -72,17 +66,14 @@ context:
       variant: document
       href: https://d8-uat.boston.gov/sites/default/files/linked/file/document_files/2017/03/pdf_for_website_testing_0.pdf
       title: 'Test Link - Document'
-      subtitle: 'Test link with document'
-      content: '123-456-7890'
+      content: 'Description for a document goes here. Description for a document goes here. Description for a document goes here. Description...'
     - index: 2
       variant: external
       href: https://www.google.com/
       title: 'Test Link - External'
-      subtitle: 'Test link with external link'
-      content: 'Test@Boston.gov'
+      content: 'Description for a document goes here. Description for a document goes here. Description for a document goes here. Description...'
     - index: 3
       variant: false
       href: https://d8-uat.boston.gov/departments/digital-team
       title: 'Test Link - Internal'
-      subtitle: 'Test link with internal link'
-      content: '123-456-7890'
+      content: 'Description for a document goes here. Description for a document goes here. Description for a document goes here. Description...'
