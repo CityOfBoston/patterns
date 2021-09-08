@@ -15,11 +15,13 @@ variants:
           variant: document
           href: https://d8-uat.boston.gov/sites/default/files/linked/file/document_files/2017/03/pdf_for_website_testing_0.pdf
           title: 'Test Link - Document'
+          url: '/images/global/icons/icon-document.svg'
           content: 'Description for a document goes here. Description for a document goes here. Description for a document goes here. Description...'
         - index: 2
           variant: external
           href: https://www.google.com/
           title: 'Test Link - External'
+          url: '/images/global/icons/external-link.svg'
           content: 'Description for a document goes here. Description for a document goes here. Description for a document goes here. Description...'
         - index: 3
           variant: false
@@ -44,11 +46,13 @@ variants:
           variant: document
           href: https://d8-uat.boston.gov/sites/default/files/linked/file/document_files/2017/03/pdf_for_website_testing_0.pdf
           title: 'Test Link - Document'
+          url: '/images/global/icons/icon-document.svg'
           content: 'Description for a document goes here. Description for a document goes here. Description for a document goes here. Description...'
         - index: 2
           variant: external
           href: https://www.google.com/
           title: 'Test Link - External'
+          url: '/images/global/icons/external-link.svg'
           content: 'Description for a document goes here. Description for a document goes here. Description for a document goes here. Description...'
         - index: 3
           variant: false
@@ -66,11 +70,13 @@ context:
       variant: document
       href: https://d8-uat.boston.gov/sites/default/files/linked/file/document_files/2017/03/pdf_for_website_testing_0.pdf
       title: 'Test Link - Document'
+      url: '/images/global/icons/icon-document.svg'
       content: 'Description for a document goes here. Description for a document goes here. Description for a document goes here. Description...'
     - index: 2
       variant: external
       href: https://www.google.com/
       title: 'Test Link - External'
+      url: '/images/global/icons/external-link.svg'
       content: 'Description for a document goes here. Description for a document goes here. Description for a document goes here. Description...'
     - index: 3
       variant: false
