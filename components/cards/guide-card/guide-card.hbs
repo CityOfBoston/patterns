@@ -1,14 +1,24 @@
 {{#each cards as |card|}}
-  <a href="{{ card.href }}" class="cd m-t500 g--4 g--4--sl{{#../theme}} cd--{{this}}{{/../theme}}">
-    {{#if card.image}}
-      <div class="cd-ic" style="background-image: url({{ card.image.url }})"></div>
-    {{/if}}
-    <div class="cd-c">
-      <div class="cd-t">{{ card.title }}</div>
-      {{#if card.subtitle}}
-        <div class="cd-st t--upper t--subtitle">{{ card.subtitle }}</div>
+  <div class="m-t500 g--4 g--4--sl{{#../theme}} gcd--{{this}}{{/../theme}}">
+    <a href="{{ card.href }}" class="gcd">
+      {{#if card.image}}
+        <div class="gcd-ic" style="background-image: url({{ card.image.url }})"></div>
       {{/if}}
-      <div class="cd-d">{{ card.content }}</div>
-    </div>
-  </a>
+      <div class="gcd-c">
+        {{#if card.subtitle}}
+          <div class="gcd-st">{{ card.subtitle }}:</div>
+        {{/if}}
+        <div class="gcd-t">{{ card.title }}</div>
+      </div>
+    </a>
+  {{#if card.items}}
+  <div class="gcd-lst">
+    <ul class="ul">
+      {{#each card.items as |item|}}
+        <li class="{{ item.class }}"><a href="javascript:void(0)">{{{ item.content }}}</a></li>
+      {{/each}}
+    </ul>
+  </div>
+  {{/if}}
+  </div>
 {{/each}}

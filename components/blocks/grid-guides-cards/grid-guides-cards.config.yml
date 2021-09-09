@@ -7,38 +7,70 @@ variants:
     preview: '@hub'
 context:
   header:
-    title: Starting Transactions
+    title: City Guides
     contact: false
   cards:
     - index: 1
       href: https://www.boston.gov/neighborhood/allston
       image:
         url: https://patterns.boston.gov/assets/images/fleet/allston2.jpg
-        title: 'Allston'
-      title: 'Allston'
-      subtitle: 'Neighborhood'
-      content: 'Learn more about one of Boston’s most diverse and active neighborhoods.'
+        title: 'Affordable housing in Boston'
+      title: 'Affordable housing in Boston'
+      subtitle: 'Guide'
+      items:
+        - content: Speed limit sign needed
+          class: t--sans tt-u
+        - content: Excessive noise
+          class: t--sans tt-u
+        - content: Request a speedbump
+          class: t--sans tt-u
+        - content: Request a<br/>traffic study
+          class: t--sans tt-u
     - index: 2
       href: https://www.boston.gov/neighborhood/allston
       image:
         url: https://patterns.boston.gov/assets/images/fleet/allston2.jpg
-        title: 'Allston'
-      title: 'Allston'
-      subtitle: 'Neighborhood'
-      content: 'Learn more about one of Boston’s most diverse and active neighborhoods.'
+        title: 'Buying and owning a home'
+      title: 'Buying and owning a home'
+      subtitle: 'Guide'
+      items:
+        - content: Speed limit sign needed
+          class: t--sans tt-u
+        - content: Excessive noise
+          class: t--sans tt-u
+        - content: Request a speedbump
+          class: t--sans tt-u
+        - content: Request a<br/>traffic study
+          class: t--sans tt-u
     - index: 3
       href: https://www.boston.gov/neighborhood/allston
       image:
         url: https://patterns.boston.gov/assets/images/fleet/allston2.jpg
-        title: 'Allston'
-      title: 'Allston'
-      subtitle: 'Neighborhood'
-      content: 'Learn more about one of Boston’s most diverse and active neighborhoods.'
+        title: 'Contracting with the City'
+      title: 'Contracting with the City'
+      subtitle: 'Guide'
+      items:
+        - content: Speed limit sign needed
+          class: t--sans tt-u
+        - content: Excessive noise
+          class: t--sans tt-u
+        - content: Request a speedbump
+          class: t--sans tt-u
+        - content: Request a<br/>traffic study
+          class: t--sans tt-u
     - index: 4
       href: https://www.boston.gov/neighborhood/allston
       image:
         url: https://patterns.boston.gov/assets/images/fleet/allston2.jpg
-        title: 'Allston'
-      title: 'Allston'
-      subtitle: 'Neighborhood'
-      content: 'Learn more about one of Boston’s most diverse and active neighborhoods.'
+        title: 'Dealing with natural disasters'
+      title: 'Dealing with natural disasters'
+      subtitle: 'Guide'
+      items:
+        - content: Speed limit sign needed
+          class: t--sans tt-u
+        - content: Excessive noise
+          class: t--sans tt-u
+        - content: Request a speedbump
+          class: t--sans tt-u
+        - content: Request a<br/>traffic study
+          class: t--sans tt-u
