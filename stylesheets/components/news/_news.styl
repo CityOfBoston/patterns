@@ -11,46 +11,48 @@
 */ 
 
 .n--a
-    position: absolute 
+    position: relative 
     background-color: $white
     text-decoration: none
     font-family: $serif 
+    height: 450px
 
-    &:hover, &:focus
-        background-color: $optimistic-blue-light
-        text-color: $white
+    @media $media-large
+        display: block
+        height: 190px
         
     &-news-item-wrapper
         padding: 0
-        height: 100%
         position: relative
-        margin-left: 1px
         background-color: #fff
+        height: 100%
+
+        &:hover, &:focus
+            background-color: $optimistic-blue-light
+            color: $white
+
+            .n--a-department-title, .n--a-title
+                color: $white
     
     &-thumb-wrapper
-        float: left
-        margin-right: 20px
         margin-top: 0
-        width: 190px
+        width: 100%
         height: 190px
     
     &-text-wrapper
-        margin-left: 170px
-        padding: 20px 20px 20px 0
+        padding: 20px 10px 20px 0
 
     &-department-title
         text-transform: uppercase
         color: #58585b
         font-family: $sans
-        font-weight: inherit
         font-size: .88889rem
         line-height: 1.08333rem
-        margin: 20px 30px 40px
+        margin: 20px 5px 40px
 
     &-title
-        padding: 15px 30px 10px
+        padding: 15px 5px 10px
         color: #1871bd
-        font-family: $serif
         font-weight: 400
         font-style: italic
         text-transform: none
@@ -61,3 +63,10 @@
 
     &-date-flag-text
         left: 20px
+
+.n--a img
+    min-width: 100%
+    max-height: 100%
+    width: auto
+    height: auto
+
