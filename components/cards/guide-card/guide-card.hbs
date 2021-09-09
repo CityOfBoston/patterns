@@ -1,0 +1,14 @@
+{{#each cards as |card|}}
+  <a href="{{ card.href }}" class="cd m-t500 g--4 g--4--sl{{#../theme}} cd--{{this}}{{/../theme}}">
+    {{#if card.image}}
+      <div class="cd-ic" style="background-image: url({{ card.image.url }})"></div>
+    {{/if}}
+    <div class="cd-c">
+      <div class="cd-t">{{ card.title }}</div>
+      {{#if card.subtitle}}
+        <div class="cd-st t--upper t--subtitle">{{ card.subtitle }}</div>
+      {{/if}}
+      <div class="cd-d">{{ card.content }}</div>
+    </div>
+  </a>
+{{/each}}

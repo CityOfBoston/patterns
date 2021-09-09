@@ -1,0 +1,121 @@
+title: Card
+handle: card
+status: ready
+preview: '@centered-grey'
+variants:
+  - name: Hub
+    preview: '@centered-hub'
+  - name: No subtitle
+    context:
+      cards:
+        - index: 1
+          href: https://www.boston.gov/neighborhood/allston
+          title: 'Allston'
+          content: 'Learn more about one of Boston’s most diverse and active neighborhoods.'
+  - name: No subtitle with image
+    context:
+      cards:
+        - index: 1
+          image:
+            url: https://patterns.boston.gov/assets/images/fleet/allston2.jpg
+            title: 'Allston'
+          href: https://www.boston.gov/neighborhood/allston
+          title: 'Allston'
+          content: 'Learn more about one of Boston’s most diverse and active neighborhoods.'
+  - name: No image
+    context:
+      cards:
+        - index: 1
+          href: https://www.boston.gov/neighborhood/allston
+          title: 'Allston'
+          subtitle: 'Neighborhood'
+          content: 'Learn more about one of Boston’s most diverse and active neighborhoods.'
+  - name: Plain style
+    context:
+      theme: plain
+  - name: Grid
+    preview: '@grid'
+    context:
+      cards:
+        - index: 1
+          image:
+            url: https://patterns.boston.gov/assets/images/fleet/allston2.jpg
+            title: 'Martin J. Walsh'
+          href: #
+          title: 'Martin J. Walsh'
+          subtitle: 'City of Boston'
+          content: 'Mayor'
+        - index: 2
+          image:
+            url: https://patterns.boston.gov/assets/images/fleet/allston2.jpg
+            title: 'Brian M. Arrigo'
+          href: #
+          title: 'Brian M. Arrigo'
+          subtitle: 'City of Revere'
+          content: 'Mayor'
+        - index: 3
+          image:
+            url: https://patterns.boston.gov/assets/images/fleet/allston2.jpg
+            title: 'Ann Klee'
+          href: #
+          title: 'Ann Klee'
+          subtitle: 'General Electric'
+          content: 'VP, Environmental & Safety, head of Boston operations'
+        - index: 4
+          image:
+            url: https://patterns.boston.gov/assets/images/fleet/allston2.jpg
+            title: 'Carol Fulp'
+          href: #
+          title: 'Carol Fulp'
+          subtitle: 'The Partnership'
+          content: 'President and CFO'
+        - index: 5
+          image:
+            url: https://patterns.boston.gov/assets/images/fleet/allston2.jpg
+            title: 'Robert A. Brown'
+          href: #
+          title: 'Robert A. Brown'
+          subtitle: 'Boston University'
+          content: 'President'
+        - index: 6
+          image:
+            url: https://patterns.boston.gov/assets/images/fleet/allston2.jpg
+            title: 'Ritchy Rinchett'
+          href: #
+          title: 'Ritchy Rinchett'
+          subtitle: 'Jeremiah E. Burke High School'
+          content: 'Student'
+        - index: 7
+          image:
+            url: https://patterns.boston.gov/assets/images/fleet/allston2.jpg
+            title: 'Panos Panay'
+          href: #
+          title: 'Panos Panay'
+          subtitle: 'Berklee College of Music'
+          content: 'Vice President for Innovation and Strategy'
+        - index: 8
+          image:
+            url: https://patterns.boston.gov/assets/images/fleet/allston2.jpg
+            title: 'Zorica Pantić'
+          href: #
+          title: 'Zorica Pantić'
+          subtitle: 'Wentworth Institute of Technology'
+          content: 'President'
+        - index: 9
+          image:
+            url: https://patterns.boston.gov/assets/images/fleet/allston2.jpg
+            title: 'Christine Lee'
+          href: #
+          title: 'Christine Lee'
+          subtitle: 'Northeastern University'
+          content: 'Student'
+context:
+  cards:
+    - index: 1
+      href: https://www.boston.gov/neighborhood/allston
+      image:
+        url: https://patterns.boston.gov/assets/images/fleet/allston2.jpg
+        title: 'Allston'
+      title: 'Allston'
+      subtitle: 'Neighborhood'
+      content: 'Learn more about one of Boston’s most diverse and active neighborhoods.'
