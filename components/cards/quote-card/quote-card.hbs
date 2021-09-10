@@ -1,0 +1,14 @@
+{{#each quotes as |quote|}}
+  <a href="{{ quote.href }}" class="cd m-t500 g--4 g--4--sl{{#../theme}} cd--{{this}}{{/../theme}}">
+    {{#if quote.image}}
+      <div class="cd-ic" style="background-image: url({{ quote.image.url }})"></div>
+    {{/if}}
+    <div class="cd-c">
+      <div class="cd-t">{{ quote.title }}</div>
+      {{#if quote.subtitle}}
+        <div class="cd-st t--upper t--subtitle">{{ quote.subtitle }}</div>
+      {{/if}}
+      <div class="cd-d">{{ quote.content }}</div>
+    </div>
+  </a>
+{{/each}}

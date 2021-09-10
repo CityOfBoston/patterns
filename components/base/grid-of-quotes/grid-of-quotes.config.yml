@@ -2,3 +2,41 @@ title: Grid of Quotes
 handle: grid-of-quotes
 preview: '@centered-grey'
 status: ready
+context:
+  people:
+    - index: 1
+      name: First Last name
+      quote: Small impacts are key, because there’s 18,000 of us making small impacts every day.
+      image: https://www.boston.gov/sites/default/files/mayor-walsh2.jpg
+      quotation_image: https://patterns.boston.gov/images/global/icons/quote.svg
+      url: https://www.boston.gov/mayor
+      location: Boston, MA
+      link_text: First Place
+      grid: "g--6"
+    - index: 2
+      name: Second Last name
+      quote: Small impacts are key, because there’s 18,000 of us making small impacts every day.
+      image: https://www.boston.gov/sites/default/files/mayor-walsh2.jpg
+      quotation_image: https://patterns.boston.gov/images/global/icons/quote.svg
+      url: https://www.boston.gov/mayor
+      location: Boston, MA
+      link_text: Second Place
+      grid: "g--6"
+    - index: 3
+      name: Third Last name
+      quote: Small impacts are key, because there’s 18,000 of us making small impacts every day.
+      image: https://www.boston.gov/sites/default/files/mayor-walsh2.jpg
+      quotation_image: https://patterns.boston.gov/images/global/icons/quote.svg
+      url: https://www.boston.gov/mayor
+      location: Boston, MA
+      link_text: Third Place
+      grid: "g--6"
+    - index: 4
+      name: Fourth Last name
+      quote: Small impacts are key, because there’s 18,000 of us making small impacts every day.
+      image: https://www.boston.gov/sites/default/files/mayor-walsh2.jpg
+      quotation_image: https://patterns.boston.gov/images/global/icons/quote.svg
+      url: https://www.boston.gov/mayor
+      location: Boston, MA
+      link_text: Fourth Place
+      grid: "g--6"
