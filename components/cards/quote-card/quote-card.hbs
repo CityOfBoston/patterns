@@ -1,14 +1,22 @@
 {{#each quotes as |quote|}}
-  <a href="{{ quote.href }}" class="cd m-t500 g--4 g--4--sl{{#../theme}} cd--{{this}}{{/../theme}}">
-    {{#if quote.image}}
-      <div class="cd-ic" style="background-image: url({{ quote.image.url }})"></div>
-    {{/if}}
-    <div class="cd-c">
-      <div class="cd-t">{{ quote.title }}</div>
-      {{#if quote.subtitle}}
-        <div class="cd-st t--upper t--subtitle">{{ quote.subtitle }}</div>
+  <div class="goq g--3 g--3--sl m-t500 m-b300">
+    <div class="goq-quote-text">" {{ quote.content }} "</div>
+    <div class="goq-quote-details">
+      <div class="goq-quote-photo">
+      {{#if quote.href.url}}
+        <a href="{{ quote.href.url }}" hreflang="und">{{ quote.href.title }}</a>
+      {{else}}
+      {{#if quote.image.url}}
+        <img src="{{ quote.image.url }}" alt="No picture available">
       {{/if}}
-      <div class="cd-d">{{ quote.content }}</div>
+      {{/if}}
+      </div>
+      <div class="goq-quote-person-details">
+        <div class="goq-quote-name">{{ quote.title }}</div>
+        {{#if quote.location}}
+          <div class="goq-quote-location">{{ quote.location }}</div>
+        {{/if}}
+      </div>
     </div>
-  </a>
-{{/each}}
+  </div>
+ {{/each}}

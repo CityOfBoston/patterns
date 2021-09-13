@@ -1,5 +1,5 @@
-title: Quote
-handle: quote
+title: Quote Card
+handle: quote-card
 status: ready
 preview: '@centered-grey'
 variants:
@@ -9,70 +9,82 @@ variants:
     context:
       quotes:
         - index: 1
-          href: https://www.boston.gov/neighborhood/allston
-          title: 'Allston'
-          content: 'Learn more about one of Boston’s most diverse and active neighborhoods.'
+          image:
+            url: https://d8-uat.boston.gov/sites/default/files/linked/styles/person_photo_profile_large_360x360_/public/img/person_profile/photos/2017/10/jeanathe-headshot.jpg
+            title: 'Jeanethe'
+          title: 'Jeanethe'
+          location: 'Fenway/Kenmore'
+          content: 'I’ve received many opportunities to gain more skills and also further my education.'
   - name: With text
     context:
       quotes:
         - index: 1
-          image:
-            url: https://patterns.boston.gov/assets/images/fleet/allston2.jpg
-            title: 'Allston'
-          href: https://www.boston.gov/neighborhood/allston
-          title: 'Allston'
-          content: 'Learn more about one of Boston’s most diverse and active neighborhoods.'
+          href: 
+            url: https://www.boston.gov/neighborhood/allston
+            title: 'third space'
+          title: 'Jeanethe'
+          location: 'Fenway/Kenmore'
+          content: 'I’ve received many opportunities to gain more skills and also further my education.'
   - name: with Quotes
     context:
       quotes:
         - index: 1
-          href: https://www.boston.gov/neighborhood/allston
-          title: 'Allston'
-          subtitle: 'Neighborhood'
-          content: 'Learn more about one of Boston’s most diverse and active neighborhoods.'
+          image:
+            url: https://patterns.boston.gov/images/global/icons/quote.svg
+            title: 'Jeanethe'
+          title: 'Jeanethe'
+          location: 'Fenway/Kenmore'
+          content: 'I’ve received many opportunities to gain more skills and also further my education.'
   - name: Grid
     preview: '@grid'
     context:
       quotes:
         - index: 1
+          href: 
+            url: https://www.boston.gov/neighborhood/allston
+            title: 'third space'
           image:
-            url: https://patterns.boston.gov/assets/images/fleet/allston2.jpg
-            title: 'Martin J. Walsh'
-          href: #
-          title: 'Martin J. Walsh'
-          subtitle: 'City of Boston'
-          content: 'Mayor'
+            url: https://patterns.boston.gov/images/global/icons/quote.svg
+            title: 'Jeanethe'
+          title: 'Jeanethe'
+          location: 'Fenway/Kenmore'
+          content: 'I’ve received many opportunities to gain more skills and also further my education.'
         - index: 2
+          href: 
+            url: https://www.boston.gov/neighborhood/allston
+            title: 'third space'
           image:
-            url: https://patterns.boston.gov/assets/images/fleet/allston2.jpg
-            title: 'Brian M. Arrigo'
-          href: #
-          title: 'Brian M. Arrigo'
-          subtitle: 'City of Revere'
-          content: 'Mayor'
+            url: https://patterns.boston.gov/images/global/icons/quote.svg
+            title: 'Jeanethe'
+          title: 'Jeanethe'
+          location: 'Fenway/Kenmore'
+          content: 'I’ve received many opportunities to gain more skills and also further my education.'
         - index: 3
+          href: 
+            url: https://www.boston.gov/neighborhood/allston
+            title: 'third space'
           image:
-            url: https://patterns.boston.gov/assets/images/fleet/allston2.jpg
-            title: 'Ann Klee'
-          href: #
-          title: 'Ann Klee'
-          subtitle: 'General Electric'
-          content: 'VP, Environmental & Safety, head of Boston operations'
+            url: https://patterns.boston.gov/images/global/icons/quote.svg
+            title: 'Jeanethe'
+          title: 'Jeanethe'
+          location: 'Fenway/Kenmore'
+          content: 'I’ve received many opportunities to gain more skills and also further my education.'
         - index: 4
+          href: 
+            url: https://www.boston.gov/neighborhood/allston
+            title: 'third space'
           image:
-            url: https://patterns.boston.gov/assets/images/fleet/allston2.jpg
-            title: 'Carol Fulp'
-          href: #
-          title: 'Carol Fulp'
-          subtitle: 'The Partnership'
-          content: 'President and CFO'
+            url: https://patterns.boston.gov/images/global/icons/quote.svg
+            title: 'Jeanethe'
+          title: 'Jeanethe'
+          location: 'Fenway/Kenmore'
+          content: 'I’ve received many opportunities to gain more skills and also further my education.'
 context:
   quotes:
     - index: 1
-      href: https://www.boston.gov/neighborhood/allston
       image:
-        url: https://patterns.boston.gov/assets/images/fleet/allston2.jpg
-        title: 'Allston'
-      title: 'Allston'
-      subtitle: 'Neighborhood'
-      content: 'Learn more about one of Boston’s most diverse and active neighborhoods.'
+        url: https://patterns.boston.gov/images/global/icons/quote.svg
+        title: 'Jeanethe'
+      title: 'Jeanethe'
+      location: 'Fenway/Kenmore'
+      content: 'I’ve received many opportunities to gain more skills and also further my education.'
