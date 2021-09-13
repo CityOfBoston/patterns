@@ -1,10 +1,9 @@
 title: Grid of Quotes
 handle: grid-of-quotes
-preview: '@centered-grey'
 status: ready
 variants:
   - name: Hub
-    preview: '@centered-hub'
+    preview: '@hub'
 context:
   header:
     title: Hear From Employees
