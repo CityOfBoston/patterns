@@ -36,23 +36,17 @@ variants:
           location: 'Fenway/Kenmore'
           content: 'I’ve received many opportunities to gain more skills and also further my education.'
   - name: Grid
-    preview: '@grid'
+    preview: '@grid-grey'
     context:
       quotes:
         - index: 1
           href: 
             url: https://www.boston.gov/neighborhood/allston
             title: 'third space'
-          image:
-            url: https://patterns.boston.gov/images/global/icons/quote.svg
-            title: 'Jeanethe'
           title: 'Jeanethe'
           location: 'Fenway/Kenmore'
           content: 'I’ve received many opportunities to gain more skills and also further my education.'
         - index: 2
-          href: 
-            url: https://www.boston.gov/neighborhood/allston
-            title: 'third space'
           image:
             url: https://patterns.boston.gov/images/global/icons/quote.svg
             title: 'Jeanethe'
@@ -63,16 +57,10 @@ variants:
           href: 
             url: https://www.boston.gov/neighborhood/allston
             title: 'third space'
-          image:
-            url: https://patterns.boston.gov/images/global/icons/quote.svg
-            title: 'Jeanethe'
           title: 'Jeanethe'
           location: 'Fenway/Kenmore'
           content: 'I’ve received many opportunities to gain more skills and also further my education.'
         - index: 4
-          href: 
-            url: https://www.boston.gov/neighborhood/allston
-            title: 'third space'
           image:
             url: https://patterns.boston.gov/images/global/icons/quote.svg
             title: 'Jeanethe'
