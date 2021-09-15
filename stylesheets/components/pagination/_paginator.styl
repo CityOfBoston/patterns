@@ -23,6 +23,7 @@
   padding: 0
   padding-top: $sizing-400
   margin: 0
+  letter-spacing: 1
 
   &-li
     list-style: none
@@ -33,23 +34,25 @@
     &:last-of-type
       .pg-li-i--link
         @media $media-medium-max
-          display: none;
+          display: none
+        
+        background-color: $optimistic-blue-dark
+        color: $white
 
     &:last-child
-      border-right: 2px solid $charles-blue
+      border-right: 3px solid $charles-blue
 
     &-i
-      border-top: 2px solid $charles-blue
-      border-bottom: 2px solid $charles-blue
-      border-left: 2px solid $charles-blue
-      color: $charles-blue
+      border-top: 3px solid $charles-blue
+      border-bottom: 3px solid $charles-blue
+      border-left: 3px solid $charles-blue
       display: block
-      font-family: $sans
       padding: $sizing-300 15px
       text-transform: uppercase
-      font-weight: 700
       opacity: 0.5
       white-space: nowrap
+      font-family: Montserrat,sans-serif
+      letter-spacing: 1px
 
       @media $media-medium
         padding: $sizing-300
@@ -63,7 +66,8 @@
           text-decoration: none
 
         &:hover, &:focus
-          color: $freedom-red-light
+          background-color: $freedom-red-dark
+          color: $white
 
         &:visited
           color: $charles-blue
@@ -85,3 +89,45 @@
 
         @media $media-medium
           display: inline
+        
+  &-previous, &-next
+    &:first-of-type, &:last-of-type
+      .pg-li-i--link
+        background-color: $optimistic-blue-dark
+        color: $white
+
+        &:hover, &:focus
+          background-color: $freedom-red-dark
+          color: $white
+
+  &-ellipsis
+    .pg-li-i
+      border-top: 3px solid $charles-blue
+      border-bottom: 3px solid $charles-blue
+      border-left: 3px solid $charles-blue
+      background-color: $white
+      color: $charles-blue
+      opacity: 1
+
+  &-disabled 
+    background-color: $grey-100
+    color: $grey-300
+    border-color: $grey-300
+
+.pg-disabled.pg-last
+  &:last-child
+    border-right: 3px solid $grey-300
+
+  .pg-li-i
+    border-left: 3px solid $charles-blue
+    border-top: 3px solid $grey-300
+    border-bottom: 3px solid $grey-300
+    opacity: 1
+
+.pg-disabled.pg-first
+  .pg-li-i
+    border-top: 3px solid $grey-300
+    border-bottom: 3px solid $grey-300
+    border-left: 3px solid $grey-300
+    opacity: 1
+
