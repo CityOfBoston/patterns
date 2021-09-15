@@ -1,0 +1,83 @@
+title: Guide Card
+handle: guide_card
+status: ready
+preview: '@centered-grey'
+variants:
+  - name: Hub
+    preview: '@centered-hub'
+  - name: Grid
+    preview: '@grid'
+    context:
+      cards:
+        - index: 1
+          image:
+            url: https://patterns.boston.gov/assets/images/fleet/allston2.jpg
+            title: 'Martin J. Walsh'
+          href: #
+          title: 'Martin J. Walsh'
+          subtitle: 'City of Boston'
+        - index: 2
+          image:
+            url: https://patterns.boston.gov/assets/images/fleet/allston2.jpg
+            title: 'Brian M. Arrigo'
+          href: #
+          title: 'Brian M. Arrigo'
+          subtitle: 'City of Revere'
+        - index: 3
+          image:
+            url: https://patterns.boston.gov/assets/images/fleet/allston2.jpg
+            title: 'Affordable housing in Boston'
+          href: #
+          title: 'Affordable housing in Boston'
+          subtitle: 'Guide'
+        - index: 4
+          image:
+            url: https://patterns.boston.gov/assets/images/fleet/allston2.jpg
+            title: 'Affordable housing in Boston'
+          href: #
+          title: 'Affordable housing in Boston'
+          subtitle: 'Guide'
+        - index: 5
+          image:
+            url: https://patterns.boston.gov/assets/images/fleet/allston2.jpg
+            title: 'Affordable housing in Boston'
+          href: #
+          title: 'Affordable housing in Boston'
+          subtitle: 'Guide'
+        - index: 6
+          image:
+            url: https://patterns.boston.gov/assets/images/fleet/allston2.jpg
+            title: 'Affordable housing in Boston'
+          href: #
+          title: 'Affordable housing in Boston'
+          subtitle: 'Guide'
+        - index: 7
+          image:
+            url: https://patterns.boston.gov/assets/images/fleet/allston2.jpg
+            title: 'Affordable housing in Boston'
+          href: #
+          title: 'Affordable housing in Boston'
+          subtitle: 'Guide'
+        - index: 8
+          image:
+            url: https://patterns.boston.gov/assets/images/fleet/allston2.jpg
+            title: 'Affordable housing in Boston'
+          href: #
+          title: 'Affordable housing in Boston'
+          subtitle: 'Guide'
+        - index: 9
+          image:
+            url: https://patterns.boston.gov/assets/images/fleet/allston2.jpg
+            title: 'Affordable housing in Boston'
+          href: #
+          title: 'Affordable housing in Boston'
+          subtitle: 'Guide'
+context:
+  cards:
+    - index: 1
+      href: https://www.boston.gov/neighborhood/allston
+      image:
+        url: https://patterns.boston.gov/assets/images/fleet/allston2.jpg
+        title: 'Affordable housing in Boston'
+      title: 'Affordable housing in Boston'
+      subtitle: 'Guide'
