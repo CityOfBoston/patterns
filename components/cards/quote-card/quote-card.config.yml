@@ -33,7 +33,6 @@ variants:
             url: https://patterns.boston.gov/images/global/icons/quote.svg
             title: 'Jeanethe'
           title: 'Jeanethe'
-          location: 'Fenway/Kenmore'
           content: 'I’ve received many opportunities to gain more skills and also further my education.'
   - name: Grid
     preview: '@grid-grey'
@@ -51,7 +50,6 @@ variants:
             url: https://patterns.boston.gov/images/global/icons/quote.svg
             title: 'Jeanethe'
           title: 'Jeanethe'
-          location: 'Fenway/Kenmore'
           content: 'I’ve received many opportunities to gain more skills and also further my education.'
         - index: 3
           href: 
@@ -65,7 +63,6 @@ variants:
             url: https://patterns.boston.gov/images/global/icons/quote.svg
             title: 'Jeanethe'
           title: 'Jeanethe'
-          location: 'Fenway/Kenmore'
           content: 'I’ve received many opportunities to gain more skills and also further my education.'
 context:
   quotes:
@@ -74,5 +71,4 @@ context:
         url: https://patterns.boston.gov/images/global/icons/quote.svg
         title: 'Jeanethe'
       title: 'Jeanethe'
-      location: 'Fenway/Kenmore'
       content: 'I’ve received many opportunities to gain more skills and also further my education.'
