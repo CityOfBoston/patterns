@@ -1,0 +1,60 @@
+{{#if backgroundTheme}}
+<div class="b {{backgroundTheme}} b--fw">
+  <div class="b-c">
+    {{> @section_header }}
+    <div class="g m-t500">
+      <div class="g--4">
+        <h3 class="t--intro br br--st-das br-b200">{{ cabinet.title }}</h3>
+        <p class="t--s500 lh--300">{{ cabinet.purpose }}</p>
+        <a href="https://d8-uat.boston.gov/departments/innovation-and-technology" class="btn">Internal link</a>
+      </div>
+      <div class="g--4">
+        <h4 class="t--sans t--upper m-b300">Departments, Boards, and Agencies</h4>
+        <ul class="ul">
+          {{#each divisions as |division|}}
+            <li class="t--sans tt-u"><a href="{{ division.url }}">{{ division.name }}</a></li>
+          {{/each}}
+        </ul>
+      </div>
+      <div class="g--4">
+        <h3 class="t--intro">{{ cabinet.title }}</h3>
+        <p class="t--s500 lh--300">{{ cabinet.purpose }}</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+{{else}}
+
+<div class="b b--b b--fw">
+  <div class="b-c">
+    <div class="sh sh--w cl">
+      <h2 class="sh-title">{{ header.title }}</h2>
+      {{#if header.contact}}
+        <div class="sh-contact">Contact: <a href="{{ header.contact.link }}" title="{{ header.contact.title }}">{{ header.contact.title }}</a></div>
+      {{/if}}
+    </div>
+    <div class="g m-t500">
+      <div class="g--4">
+        <h3 class="t--intro t--w br br--st-das br--w br-b200">{{ cabinet.title }}</h3>
+        <p class="t--s500 lh--300">{{ cabinet.purpose }}</p>
+        <a href="https://www.boston.gov/sites/default/files/file/document_files/2017/03/pdf_for_website_testing.pdf" class="btn">Testing a doc PDF</a>
+      </div>
+      <div class="g--4">
+        <h3 class="t--intro t--w br br--w br-b200">{{ cabinet.title }}</h3>
+        <p class="t--s500 lh--300">{{ cabinet.purpose }}</p>
+        <div class="b">
+          <div class="m-v400 m-h200">
+            <a href="https://www.google.com" class="btn" target="_blank">External Link</a>
+          </div>
+        </div>
+      </div>
+      <div class="g--4">
+        <h3 class="t--intro t--w br br--st-dot br--w br-b200">{{ cabinet.title }}</h3>
+        <p class="t--s500 lh--300">{{ cabinet.purpose }}</p>
+        <a href="https://d8-uat.boston.gov/departments/innovation-and-technology" class="btn">Internal link</a>
+      </div>
+    </div>
+  </div>
+</div>
+{{/if}}
