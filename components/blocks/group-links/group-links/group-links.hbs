@@ -1,0 +1,18 @@
+<div class="b b--fw">
+  <div class="b-c">
+    {{> @section_header }}
+    <div class="flex-container">
+      {{#if subheader}}
+      <div class="subheader">
+        {{#if subheader.title}} <h3 class="t--intro">{{subheader.title}}</h3>{{/if}}
+        {{#if subheader.description}}<p class="description">{{subheader.description}}</p>{{/if}}
+        {{#if subheader.button}}<div class="b"> <a class="btn" href="{{subheader.button.href}}"
+            target="_blank">{{subheader.button.name}}</a></div>{{/if}}
+      </div>
+      {{/if}}
+      <div class="g">
+        {{> @link-card }}
+      </div>
+    </div>
+  </div>
+</div>

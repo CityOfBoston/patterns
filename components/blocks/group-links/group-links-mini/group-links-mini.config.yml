@@ -1,0 +1,22 @@
+title: Group of Links Mini
+handle: group_links_mini
+status: ready
+context:
+  header:
+    title: Test Group of Links - Mini Grid Without Description
+    contact: 
+      title: Boston Team
+      link: https://d8-uat.boston.gov/departments/digital-team
+  cards:
+  - index: 1
+    variant: document
+    href: https://d8-uat.boston.gov/sites/default/files/linked/file/document_files/2017/03/pdf_for_website_testing_0.pdf
+    title: 'Test Link - Document'
+  - index: 2
+    variant: external
+    href: https://www.google.com/
+    title: 'Test Link - External'
+  - index: 3
+    variant: false
+    href: https://d8-uat.boston.gov/departments/digital-team
+    title: 'Test Link - Internal'
