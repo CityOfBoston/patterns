@@ -1,0 +1,90 @@
+title: Content Right Sidebar
+handle: sidebar
+status: ready
+variants:
+  - name: Date
+    context:
+      icon-header: false
+      text-header: July 21, 2021
+      icon-items:
+        - icon: https://patterns.boston.gov/images/global/icons/icon-time.svg
+          description: 
+            text: 05:00PM
+            href: false
+          body: false
+        - icon: https://patterns.boston.gov/images/global/icons/icon-location.svg
+          description: 
+            text: Virtual please see notice Boston, MA 02201
+            href: false
+          body: false
+        - icon: https://patterns.boston.gov/images/global/icons/icon-email.svg
+          description: 
+            text: elizabeth.a.stifel@boston.gov
+            href: mailto:elizabeth.a.stifel@boston.gov
+          body: false
+        - icon: https://patterns.boston.gov/images/global/icons/icon-phone.svg
+          description: 
+            text: 617-918-4436
+            href: 'tel:617-918-4436'
+      title-items:
+        - name: Contact
+          description: Elizabeth Stifel
+        - name: Neighborhoods
+          description: Downtown
+        - name: Posted
+          description: 07/15/2021 - 1:30PM
+
+      list-items-title: 'Phone Numbers'
+      list-items: 
+        - href: 'tel: 617-635-4601'
+          text: 617-635-4601
+          detail: (City Clerk's Office services)
+        - href: 'tel: 617-635-4175'
+          text: 617-635-4175
+          detail: (Birth, Death, Marriage Certificates and Marriage Licenses)
+
+      resource-items-title: Resources
+      resource-items:
+        - href: 'https://www.boston.gov/'
+          text: Official Filed Posting
+        - href: 'https://www.boston.gov/'
+          text: Official Revised Filed Posting
+
+      bold-items:
+        - icon: https://patterns.boston.gov/images/global/icons/icon-location.svg
+          href: 'https://www.boston.gov/'
+          text: All City Clerk Services
+
+      social-icons:
+        twitter: true
+        facebook: false
+        instagram: true
+        flickr: false 
+context:
+  icon-header: true
+  icon-items:
+    - icon: https://patterns.boston.gov/images/global/icons/icon-phone.svg
+      description: 
+        text: 617-635-3850
+        href: 'tel:617-635-3850'
+      body: false
+    - icon: https://patterns.boston.gov/images/global/icons/icon-email.svg 
+      description: 
+        text: blc@boston.gov
+        href: mailto:BLC@boston.gov
+      body: false
+    - icon: https://patterns.boston.gov/images/global/icons/icon-location.svg
+      description: 
+        text: 1 City Hall Square ROOM 709 ENVIRONMENT DEPT. BOSTON, MA 02201
+        href: false
+      body: false
+    - icon: https://patterns.boston.gov/images/global/icons/icon-time.svg
+      description: 
+        text: Temporary Covid Hours
+        href: false
+      body: City Hall is only open to the public on Tuesdays, Thursdays, and Fridays, from 9 a.m. - 5 p.m.
+  social-icons:
+    twitter: true
+    facebook: true
+    instagram: true
+    flickr: true 

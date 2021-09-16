@@ -1,0 +1,198 @@
+/*
+
+   Detail List
+
+   Base:
+    sb
+
+   Elements:
+    i = item
+    ic = icon
+    t = title
+    d = description
+    h = header
+    l = link
+
+   Modifier:
+    b = block
+
+ */
+
+.sb
+  list-style: none
+  margin: 0
+  padding: 0
+
+  &-i
+    clear: fix
+    margin: 0
+    padding: 0
+    list-style: none
+    background: none
+    border-bottom: 1px dashed $grey-100
+    padding-bottom: $sizing-300
+    padding-top: $sizing-300
+
+    &--b
+      line-height: 1
+
+      .sb-ic
+        float: none
+        width: 100%
+      
+      .sb-d
+        margin-top: $sizing-100
+
+  &-ic
+    border: 3px solid
+    border-radius: 50%
+    width: 35px
+    height: 35px
+    clear: both
+    float: left
+    
+    &--l
+      width: 30%
+
+  &-t
+    clear: both
+    color: $body-text
+    float: left
+    font-family: $serif
+    font-size: responsive $font-200 $font-300
+    font-style: italic
+    line-height: $line-height-200
+    width: 20%
+    margin-top: 4px
+
+  &-h
+    color: $charles-blue
+    font-family: $sans
+    font-size: responsive $font-100 $font-200
+    line-height: "calc(%s * 1.25)" % ($line-height-200)
+    text-transform: uppercase
+    width: 100%
+
+  &-d
+    color: $charles-blue
+    float: left
+    font-family: $sans
+    font-size: responsive $font-100 $font-200
+    line-height: "calc(%s * 1.25)" % ($line-height-200)
+    text-transform: uppercase
+    width: 80%
+    padding-left: 35px
+    margin-top: 4px
+    word-break: break-word
+
+  &-b
+    padding-left: 35px
+    float: left
+    line-height: "calc(%s * 1.25)" % ($line-height-200)
+    width: 80%
+    line-height: 2
+  
+  &-l
+    color: $optimistic-blue-dark
+
+.desktop-33-right 
+  margin-left: 3%
+  float: right
+  width: 30%
+
+.mobile-100 
+  margin-bottom: 1.5em
+  margin-right: 0
+
+.department-icon
+  padding: 13px 0 0 15px
+  display: block
+  width: 112px
+  height: 112px
+  border: 3px solid $charles-blue
+  border-radius: 100%
+  margin-top: 39px
+
+  svg
+    height: 76px
+    width: 76px
+
+.contact-title
+  border-top: 0
+  border-right: 0
+  border-bottom: 1px
+  border-left: 0
+  border-style: dashed
+  border-color: #e0e0e0
+  padding-bottom: 10px
+  margin-top: 20px
+  text-transform: uppercase
+  font-weight: 400
+  letter-spacing: 1px
+  font-family: Montserrat,sans-serif
+  color: $charles-blue
+
+.date-title
+  border-top: 0
+  border-right: 0
+  border-bottom: solid 4px $charles-blue
+  border-left: 0
+  border-color: $charles-blue
+  padding-bottom: 10px
+  margin-top: 20px
+  font-size: responsive $font-600 $font-700
+
+.detail-item__body
+  :first-child 
+    margin-top: 0
+
+.detail-item__content
+  padding-top: 20px
+  word-wrap: breakword
+  width: 100%
+  display: table-cell
+  vertical-align: top
+
+.list-item
+  padding-bottom: 20px
+  line-height: 2
+
+.resource-text
+  width:auto
+  line-height: 2
+  padding-right: 20px
+
+.resource-im
+  background-image: url(/images/global/icons/icon-document.svg)
+  background-position: 20%
+  background-size: 20px 20px
+  background-repeat: no-repeat
+  width: 20px
+
+.flexbox
+  display: flex
+  flex-direction: row
+
+.icon-social 
+  display: block
+  height: 56px
+  width: 56px
+  text-indent: -9999px
+  float: left
+  background-position: 0
+  background-size: 56px
+  background-repeat: no-repeat
+  margin-right: 4px
+
+.icon-twitter 
+  background-image: url(../images/global/icons/social-media/icon-twitter.svg)
+
+.icon-facebook 
+  background-image: url(../images/global/icons/social-media/icon-facebook.svg)
+
+.icon-instagram 
+  background-image: url(../images/global/icons/social-media/icon-instagram.svg)
+
+.icon-flickr 
+  background-image: url(../images/global/icons/social-media/icon-flickr.svg)
+
