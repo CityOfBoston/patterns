@@ -1,0 +1,10 @@
+title: Resource Card 1
+handle: resource-1
+status: ready
+preview: '@centered'
+context:
+  resource-1-cards:
+  - description: Your Polling Information
+    image: https://assets.boston.gov/icons/experiential_icons/voting_ballot.svg
+    ward: 3
+    precinct: 6

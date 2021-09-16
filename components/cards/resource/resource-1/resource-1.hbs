@@ -1,0 +1,26 @@
+{{#each resource-1-cards as |card|}}
+<div class="section g--4 g--4--sl m-t500 cd-r">
+  <div class="cdr-description">{{card.description}}</div>
+  <div class="cd-ic bg--cb cd-r-im"><img src="{{card.image}}" style="max-height: 150px;"></div>
+<div class="cd-c" id="align-left">
+  <div class="mnl-c-group">
+    <div class="cd-st t--upper t--bold t--subtitle">Ward</div>
+    <div class="cdp-st">{{card.ward}}</div>
+  </div>
+  <div class="cd-divider"></div>
+  <div class="mnl-c-group">
+    <div class="cd-st t--upper t--bold t--subtitle">Precinct</div>
+    <div class="cdp-st">{{card.precinct}}</div>
+  </div>
+  <div class="cd-divider"></div>
+  <div class="mnl-c-group">
+    <div class="cdp-st">
+      <div>Find out if you are <a href="https://www.sec.state.ma.us/VoterRegistrationSearch/MyVoterRegStatus.aspx"
+          target="_blank" rel="noreferrer" class="mnl-link">registered to vote</a> and <a
+          href="http://www.sec.state.ma.us/wheredoivotema//bal/myelectioninfo.aspx" target="_blank" rel="noreferrer"
+          class="mnl-link">where your polling location is.</a></div>
+    </div>
+  </div>
+</div>
+</div>
+{{/each}}
