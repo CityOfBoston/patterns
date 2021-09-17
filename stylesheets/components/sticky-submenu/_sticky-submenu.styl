@@ -1,0 +1,258 @@
+/*
+
+   STICKY SUBMENU
+
+   Base:
+    ssm
+
+ */
+ 
+.ssm
+  width: 100%
+  left: 0
+  background-color: $white
+  transition: background-color 0.25s ease
+  display: none
+  z-index: 10
+  margin-bottom: 42px
+
+@media (min-width: 980px) 
+  .ssm 
+    display: block
+    position: relative
+    top: 0
+    margin-bottom: 45px
+    margin-top: 20px
+    
+
+@media (min-width: 980px) 
+  .ssm.sticky,
+  .ssm.ssm__left.sticky 
+    position: fixed
+    top: 65px
+    background-color: $charles-blue
+    z-index: 12
+    padding: 0 0 2px
+    margin-top: 0
+    margin-bottom: 0
+    
+  #main-menu.sticky 
+    position: fixed
+    
+
+.ssm ul,
+.ssm.ssm__left.sticky ul 
+  width: 100%
+  margin: 0 auto
+
+@media (min-width: 980px) 
+  .ssm ul,
+  .ssm.ssm__left.sticky ul 
+    width: 100%
+    text-align: center
+    max-width: none
+    
+
+@media (min-width: 980px) 
+    .ssm.ssm__left ul 
+      text-align: left
+    
+
+@media (min-width: 980px) 
+    .ssm.ssm__left li 
+      margin: 0 2em 0 0
+    
+
+.ssm li,
+.ssm-nav.ssm__left.sticky li 
+  border-style: solid
+  border-width: 1px 1px 0 1px
+  border-color: $grey-100
+  margin: 0
+  padding: 0
+  text-indent: 0
+  font-family: "Montserrat", sans-serif
+  text-align: center
+  background-image: none
+  font-size: 12px
+  line-height: 46px
+  font-size: 0.66667rem
+
+.ssm li:last-child,
+.ssm.ssm__left.sticky li:last-child 
+  border-bottom: 1px solid $grey-100
+
+.ssm li:hover,
+.ssm.ssm__left.sticky li:hover 
+  background-color: $optimistic-blue-dark
+  cursor: pointer
+
+.ssm li:hover a,
+.ssm li:hover a:link,
+.ssm li:hover a:visited,
+.ssm li:hover a:hover,
+.ssm li:hover a:active,
+.ssm.ssm__left.sticky li:hover a,
+.ssm.ssm__left.sticky li:hover a:link,
+.ssm.ssm__left.sticky li:hover a:visited,
+.ssm.ssm__left.sticky li:hover a:hover,
+.ssm.ssm__left.sticky li:hover a:active 
+  color: $white
+
+@media (min-width: 980px) 
+    .ssm li:hover a,
+    .ssm li:hover a:link,
+    .ssm li:hover a:visited,
+    .ssm li:hover a:hover,
+    .ssm li:hover a:active,
+    .ssm.ssm__left.sticky li:hover a,
+    .ssm.ssm__left.sticky li:hover a:link,
+    .ssm.ssm__left.sticky li:hover a:visited,
+    .ssm.ssm__left.sticky li:hover a:hover,
+    .ssm.ssm__left.sticky li:hover a:active 
+      color: $freedom-red-dark
+    
+
+.ssm li:before,
+.ssm.ssm__left.sticky li:before 
+  content: none
+
+@media (min-width: 980px) 
+  .ssm li,
+  .ssm.ssm__left.sticky li 
+    display: inline-block
+    margin: 0 1em
+    border: none
+
+  .ssm li:last-child,
+  .ssm.ssm__left.sticky li:last-child 
+    border-bottom: none
+
+    .ssm li:hover,
+    .ssm.ssm__left.sticky li:hover 
+      background-color: $white
+    
+
+@media (min-width: 980px) 
+  .ssm.ssm__left.sticky li:hover 
+    background-color: transparent
+    
+
+@media (min-width: 980px) 
+  .ssm.ssm__left.sticky li:hover 
+    background-color: transparent
+    
+
+@media (min-width: 980px) 
+  .ssm.sticky li:hover 
+    background-color: $charles-blue
+    
+
+.ssm a 
+  display: block
+  text-transform: uppercase
+  font-weight: bold
+
+.ssm a:hover 
+  color: $white
+
+.ssm a:active,
+.ssm a:focus 
+  color: $freedom-red-dark
+
+@media (min-width: 980px) 
+  .ssm a 
+    display: inline
+    
+  .ssm a:hover,
+  .ssm a:active,
+  .ssm a:focus 
+    color: $freedom-red-dark
+    
+
+.ssm.sticky a 
+  border-bottom: 2px solid transparent
+  font-weight: normal
+
+@media (min-width: 980px) 
+  .ssm.sticky a.is-active:link,
+  .ssm.sticky a.is-active:visited 
+    color: $freedom-red-dark
+    border-color: $freedom-red-dark
+    
+  .ssm.sticky a:link,
+  .ssm.sticky a:visited 
+    color: $white
+    
+  .ssm.sticky a:hover,
+  .ssm.sticky a:active .ssm.sticky a:focus 
+    color: $freedom-red-dark
+    
+
+.ssm-anchor 
+  position: absolute
+  margin-top: -100px
+
+.ssm-trigger 
+  display: block
+
+@media (min-width: 980px) 
+  .ssm-trigger 
+    display: none
+    
+
+.ssm-trigger 
+  line-height: inherit
+  text-decoration: none
+  cursor: pointer
+  color: $white
+  background-color: $optimistic-blue-dark
+  font-family: "Montserrat", sans-serif
+  font-weight: 400
+  letter-spacing: 1px
+  border: 0
+  text-transform: uppercase
+  padding: 1.275em 1.5em
+  font-size: 14px
+  line-height: 18px
+  font-size: 0.77778rem
+  line-height: 1rem
+  font-weight: bold
+  margin-top: 10px
+
+
+@media (min-width: 768px) 
+  .ssm-trigger,
+  .ssm-trigger:visited 
+    margin-top: 0
+    
+
+.ssm-chevron 
+  height: 12px
+  width: 18px
+  float: right
+  -ms-transform: rotate(-90deg)
+  transform: rotate(-90deg)
+  margin-top: 4px
+
+.ssm-chevron .icon-stroke 
+  fill: $white
+
+.active .ssm-chevron 
+  -ms-transform: rotate(0)
+  transform: rotate(0)
+
+.ssm-trigger:hover,
+.ssm-trigger:visited:hover 
+  cursor: pointer
+
+.ssm-trigger:hover,
+.ssm-trigger:focus,
+.ssm-trigger:active,
+.ssm-trigger:visited:hover,
+.ssm-trigger:visited:focus,
+.ssm-trigger:visited:active 
+  text-decoration: none
+  color: $white
+  background-color: $freedom-red-dark
+

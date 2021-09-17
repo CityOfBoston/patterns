@@ -1,0 +1,38 @@
+title: Three Column With Image
+handle: three_column_with_image
+status: ready
+variants:
+  - name: White Background Color
+    context:
+      backgroundTheme: b--w
+      header:
+        title: White Background Color
+  - name: Dark Blue Background Color
+    context:
+      backgroundTheme: ""
+      header:
+        title: Dark Blue Background Color
+      cabinet:
+        title: DoIT Office
+        purpose: The agencies reporting to the Mayor's Office represent the Mayor and the City in legal matters, public relations, and elections. The Mayor's vision for the future of the City is reflected in the policies and directions carried forward by the staff of these offices.
+context:
+  backgroundTheme: b--g
+  header:
+    title: Grey Background Color
+    contact:
+      title: Public Works
+      link: https://www.boston.gov/departments/public-works
+  cabinet:
+    title: Mayor's Office
+    purpose: The agencies reporting to the Mayor's Office represent the Mayor and the City in legal matters, public relations, and elections. The Mayor's vision for the future of the City is reflected in the policies and directions carried forward by the staff of these offices.
+  divisions:
+    - name: Mayor's Office
+      url: https://www.boston.gov/contact/mayors-office
+    - name: Elections
+      url: https://www.boston.gov/contact/elections
+    - name: Law
+      url: https://www.boston.gov/contact/law
+    - name: Press Office
+      url: https://www.boston.gov/contact/press-office
+    - name: Women's Advancement
+      url: https://www.boston.gov/contact/womens-advancement

@@ -1,0 +1,22 @@
+{{#each quotes as |quote|}}
+  <div class="goq g--3 g--3--sl m-t500 m-b300">
+    <div class="goq-quote-text">" {{ quote.content }} "</div>
+    <div class="goq-quote-details">
+      <div class="goq-quote-photo">
+      {{#if quote.href.url}}
+        <a href="{{ quote.href.url }}" hreflang="und">{{ quote.href.title }}</a>
+      {{else}}
+      {{#if quote.image.url}}
+        <img src="{{ quote.image.url }}" alt="No picture available">
+      {{/if}}
+      {{/if}}
+      </div>
+      <div class="goq-quote-person-details">
+        <div class="goq-quote-name">{{ quote.title }}</div>
+        {{#if quote.location}}
+          <div class="goq-quote-location">{{ quote.location }}</div>
+        {{/if}}
+      </div>
+    </div>
+  </div>
+ {{/each}}

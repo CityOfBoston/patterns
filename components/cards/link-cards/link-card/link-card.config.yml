@@ -1,0 +1,40 @@
+title: Link Card
+handle: link-card
+status: ready
+preview: '@centered-grey'
+variants:
+  - name: Document
+    context:
+      cards:
+        - index: 1
+          variant: 'document'
+          href: https://d8-uat.boston.gov/sites/default/files/linked/file/document_files/2017/03/pdf_for_website_testing_0.pdf
+          title: 'Test Link - Document'
+          subtitle: 'Test link with document'
+          content: '123-456-7890'
+  - name: External
+    context:
+      cards:
+        - index: 1
+          variant: 'external'
+          href: https://www.google.com/
+          title: 'Test Link - External'
+          subtitle: 'Test link with external link'
+          content: 'Test@Boston.gov'
+  - name: Internal
+    context:
+      cards:
+        - index: 1
+          variant: false
+          href: https://d8-uat.boston.gov/departments/digital-team
+          title: 'Test Link - Internal'
+          subtitle: 'Test link with internal link'
+          content: '123-456-7890'
+context:
+  cards:
+    - index: 1
+      variant: false
+      href: https://d8-uat.boston.gov/departments/digital-team
+      title: 'Test Link'
+      subtitle: 'Test link with link'
+      content: 'Test@Boston.gov'

@@ -1,0 +1,150 @@
+/*
+
+   How-To Tabs
+
+   Base:
+    ht-tab
+
+   Elements:
+    h = header
+    c = content
+    ic = icon
+    t = title
+    st = subtitle
+
+   Modifier:
+    sm = small
+
+   Use ht-tab--open to force the how-to tab open. Useful for JavaScript cases where
+   you want control over the opening / closing rather than using checkboxes.
+ */
+
+.ht-tab
+  background: $grey-000
+
+  &:first-child
+    margin-top: $sizing-500
+
+  &:not(:first-child)
+    margin-top: $sizing-200
+
+  &-tr
+    &:checked ~ .ht-tab, ^[-1]--open .ht-tab
+      &-h
+        background-color: $charles-blue
+
+        .ht-tab-t
+          color: $white
+
+        .ht-tab-ic
+          margin-top: -9px
+
+        .ht-tab-ic .closed
+          display: none
+
+        .ht-tab-ic:hover .open
+          display: block
+
+        .ht-tab-ic
+          svg
+            fill: $white
+
+        .ht-tab-subinfo
+          color: transparent
+
+          &:after
+            position: absolute
+            top: 0
+            right: 10px
+            color: $white
+            content: "hide"
+            visibility: visibile
+
+    &:checked ~ .ht-tab
+      &-c
+        display: block
+
+  &-h
+    display: block
+    letter-spacing: 0
+    margin: 0
+    padding: $sizing-500
+    padding-right: $sizing-500 * 2.25
+    position: relative
+    text-transform: none
+    user-select: none
+
+    // these override <button> default styles
+    background: transparent
+    width: 100%
+    border: none
+    text-align: left
+
+    &:hover, &:focus
+      cursor: pointer
+      background-color: $optimistic-blue-light
+
+      .ht-tab-t
+        color: $white
+
+      .ht-tab-ic
+        svg
+          fill: $white
+
+      .ht-tab-subinfo
+        color: $white
+
+  &-c
+    display: none
+    background: $white
+    padding: $sizing-500
+
+    p:first-child
+    ul:first-child
+      margin-top: 0
+
+    p:last-child
+    ul:last-child
+      margin-bottom: 0
+
+    @media $media-small-max
+      .paragraphs-item-text-one-column .content
+        padding-left: 0
+        padding-right: 0
+
+        .responsive-table
+          font-size: 4.5vw
+          border: 1px solid black
+          word-wrap: break-word;
+          word-break: break-word;
+
+  &-t
+    color: $optimistic-blue-dark
+    font-family: $serif
+    font-size: responsive 16px 25px
+    font-range: 480px 1440px
+    font-style: italic
+    line-height: $line-height-100
+
+  &-subinfo
+    color: $optimistic-blue-dark
+    font-family: Lora,Georgia,serif;
+    font-size: calc(14px + 2 * ((100vw - 480px) / 960));
+    font-style: italic;
+    line-height: 1.5;
+    position: absolute
+    top: 0
+    left: 50px
+
+  &-ic
+    height: 20px
+    width: 26px
+    position: absolute
+    right: $sizing-800 * 2
+    top: 50%
+    margin-top: -8px  
+
+    svg
+      max-height: 100%
+      max-width: 100%
+      fill: $optimistic-blue-light 
