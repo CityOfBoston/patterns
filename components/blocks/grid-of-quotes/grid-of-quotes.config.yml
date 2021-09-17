@@ -1,0 +1,39 @@
+title: Grid of Quotes
+handle: grid-of-quotes
+status: ready
+variants:
+  - name: Hub
+    preview: '@hub'
+context:
+  header:
+    title: Hear From Employees
+    contact: false
+  quotes:
+    - index: 1
+      image:
+        url: https://d8-uat.boston.gov/sites/default/files/linked/styles/person_photo_profile_large_360x360_/public/img/person_profile/photos/2017/10/jeanathe-headshot.jpg
+        title: 'Jeanethe'
+      title: 'Jeanethe'
+      location: 'Fenway/Kenmore'
+      content: 'I’ve received many opportunities to gain more skills and also further my education.'
+    - index: 2
+      href: 
+        url: https://www.boston.gov/neighborhood/allston
+        title: 'third space'
+      title: 'Jeanethe'
+      location: 'Fenway/Kenmore'
+      content: 'I’ve received many opportunities to gain more skills and also further my education.'
+    - index: 3
+      image:
+        url: https://patterns.boston.gov/images/global/icons/quote.svg
+        title: 'Jeanethe'
+      title: 'Jeanethe'
+      location: 'Fenway/Kenmore'
+      content: 'I’ve received many opportunities to gain more skills and also further my education.'
+    - index: 4
+      href: 
+        url: https://www.boston.gov/neighborhood/allston
+        title: 'third space'
+      title: 'Jeanethe'
+      location: 'Fenway/Kenmore'
+      content: 'I’ve received many opportunities to gain more skills and also further my education.'
