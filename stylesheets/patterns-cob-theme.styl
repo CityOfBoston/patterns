@@ -185,7 +185,9 @@ blockquote footer:before {
 address {
     font-style: normal;
     line-height: 1.3em;
-    text-indent: 0
+    text-indent: 0;
+    text-transform: uppercase;
+    font-family: "Montserrat", sans-serif
 }
 figure {
     margin: 0px 0px 39px;
@@ -476,7 +478,7 @@ h4 {
     margin-bottom: 1.625rem;
     letter-spacing: 1px
 }
-h5 {
+h5, address {
     font-size: 16px;
     line-height: 22px;
     font-size: 0.88889rem;
@@ -503,6 +505,23 @@ h1, h2, h3, h4, h5, h6 {
     color: $charles-blue;
     text-transform: uppercase;
     font-weight: 700;
+}
+.field-three-col-title h5 {
+    color:$white;
+    font-weight: 400;
+    border-bottom: 1px dashed #fff;
+    padding-bottom: 12px;
+    border-color: #45789c;
+    text-transform: uppercase;
+    font-size: 16px;
+}
+.field-three-col-description .field-three-col-title {
+    border-bottom: 1px dashed #fff;
+    padding-bottom: 4px;
+    border-color: #45789c;
+    text-transform: uppercase;
+    font-size: 16px;
+    font-family: "Montserrat", sans-serif;
 }
 .a11y--hidden {
     display: block;
@@ -578,7 +597,44 @@ h1, h2, h3, h4, h5, h6 {
     width: auto;
     overflow: auto
 }
-
-
-
+@media (min-width: 980px) {
+    .topic-nav.sticky,
+    .topic-nav.topic-nav__left.sticky {
+        position: fixed;
+        top: 65px;
+        background-color: $charles-blue;
+        z-index: 12;
+        padding: 0 0 2px;
+        margin-top: 0;
+        margin-bottom: 0
+    }
+    #page #main-menu.sticky {
+        position: fixed;
+    }
+}
+#page {
+    position: relative;
+    min-height: 100%;
+    min-width: 100%;
+    left: 0;
+    z-index: 1;
+    background-color: $white
+}
+#page,
+#page>.header,
+#page .topic-nav.sticky {
+    transition: left 0.2s
+}
+.brg-tr:checked ~ #page,
+.brg-tr:checked ~ #page .header,
+.brg-tr:checked ~ #page .topic-nav.sticky {
+    left: 256px
+}
+@media (min-width: 480px) {
+    .brg-tr:checked ~ #page,
+    .brg-tr:checked ~ #page .header,
+    .brg-tr:checked ~ #page .topic-nav.sticky {
+        left: 300px
+    }
+}
 
