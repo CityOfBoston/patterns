@@ -24,16 +24,16 @@
     &-news-item-wrapper
         padding: 0
         position: relative
-        background-color: #fff
+        background-color: $white
         height: 100%
 
-        &:hover, &:focus
+        &:hover, &:focus, &:focus-visible
             background-color: $optimistic-blue-dark
             color: $white
 
             .n--a-department-title, .n--a-title
                 color: $white
-    
+
     &-thumb-wrapper
         margin-top: 0
         width: 100%
@@ -41,6 +41,9 @@
     
     &-text-wrapper
         padding: 20px 10px 20px 0
+
+        @media $media-large-max
+            padding: 20px
 
     &-department-title
         text-transform: uppercase
@@ -50,12 +53,19 @@
         line-height: 1.08333rem
         margin: 20px 5px 40px
 
+        @media $media-large-max
+            margin: 20px 0 40px 
+
     &-title
-        padding: 15px 5px 10px
         color: #1871bd
         font-weight: 400
         font-style: italic
         text-transform: none
+        margin: 5px 0px 5px
+        font-size: 1.2222rem
+        letter-spacing: .4px
+        line-height: 1.5552rem
+        font-family: "Lora", serif
 
     &-date-flag
         left: 0
@@ -70,3 +80,22 @@
     width: auto
     height: auto
 
+// handle hover interference with focus
+.n--a.focus-active:hover,
+.n--a.focus-active:hover .n--a-news-item-wrapper
+    pointer-events: none
+    background-color: $white
+
+    .n--a-department-title
+        color: $body-text
+
+    .n--a-title
+        color: $optimistic-blue-dark
+
+.n--a.focus-active:focus .n--a-news-item-wrapper
+    pointer-events: auto
+    background-color: $optimistic-blue-dark
+    color: $white
+
+    .n--a-department-title, .n--a-title
+        color: $white

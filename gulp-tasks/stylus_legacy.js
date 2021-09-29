@@ -3,7 +3,7 @@
 module.exports = function(gulp, plugins, options) {
   return function() {
     var stream = gulp
-      .src(['./legacy/public.styl', './legacy/hub.styl'])
+      .src(['./legacy/hub.styl'])
       .pipe(
         plugins.stylus({
           use: [
