@@ -3,7 +3,16 @@ handle: date-flag
 status: ready 
 preview: '@centered'
 context:
-  flag:
-    date: Nov 20
-    themes:
-      - theme: c
+  flags:
+    default:
+      date: Nov 13
+      themes:
+        - theme: c
+    pdf:
+      date: Nov 20
+      themes:
+        - theme: c
+    external:
+      date: Nov 30
+      themes:
+        - theme: c
