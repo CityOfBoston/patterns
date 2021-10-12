@@ -391,6 +391,7 @@ label {
     line-height: inherit;
     color: $charles-blue;
     padding-bottom: 1em;
+    padding-top: 1em;
     font-size: 18px;
     line-height: 30px;
     font-size: 1rem;
@@ -640,4 +641,112 @@ h1, h2, h3, h4, h5, h6 {
         left: 300px
     }
 }
-
+.node-type-event .dl-d, .node-place-profile .dl-d {
+    padding-left: 70px    
+}
+.step-label-wrapper {
+    height: 60px;
+    width: 60px;
+    padding: 10px 0;
+    border: 3px solid
+}
+@media (min-width: 980px) {
+    .step-label-wrapper {
+        float: left;
+        margin-top: 40px;
+        height: 122px;
+        width: 122px;
+        padding: 18px 0
+    }
+}
+@media (min-width: 980px) {
+    .step-content {
+        margin-left: 150px;
+        top: -122px;
+        position: relative
+    }
+}
+.step-label-wrapper {
+    text-transform: uppercase;
+    color: $body-text;
+    font-family: "Montserrat", sans-serif;
+    font-weight: inherit;
+    font-size: 14px;
+    line-height: 18px;
+    font-size: 0.77778rem;
+    line-height: 1rem;
+    border-color: $grey-100;
+    border-radius: 100%;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+    background-color: $white
+}
+.step-number {
+    text-transform: uppercase;
+    color: $freedom-red-dark;
+    font-family: "Montserrat", sans-serif;
+    font-weight: inherit;
+    font-size: 20px;
+    line-height: 18px;
+    font-size: 1.11111rem;
+    line-height: 1rem;
+    font-weight: 700
+}
+@media (min-width: 980px) {
+    .step-number {
+        font-size: 60px;
+        line-height: 58.5px;
+        font-size: 3.33333rem;
+        line-height: 3.25rem
+    }
+}
+.post-contact .department-icon.sb-ic {
+    border: none;
+    padding: 0;
+    width: 35px;
+    height: 35px;
+    border-radius: 0;
+    margin-top: 0
+}
+.post-no-icon-sidebar .sb-b, .post-no-icon-sidebar .sb-d {
+    padding-left: 0
+}
+.sb-b:last-child.sb-b:first-child {
+    padding-top: 0    
+}
+.sb .sb-i:last-child {
+    border-bottom: none    
+}
+.sb-d:empty {
+  background-color: tomato;
+}
+.paragraphs-item-text .entity-paragraphs-item:last-child {
+    background-image: none;
+    border-bottom: none;
+}
+.si-list-item ~ .si-list-item {
+    border-bottom: 1px dashed $grey-100; 
+}
+.node-person-profile .person-profile-photo img {
+    border-radius: 100%;
+    max-width: 100%;
+    height: auto;
+}
+.node-person-profile .person-profile-position-title {
+    font-size: 18px;
+    line-height: 58.5px;
+    font-size: 1rem;
+    line-height: 3.25rem;
+    font-style: italic;
+}
+@media (min-width: 980px) {
+    .node-person-profile .person-profile-position-title {
+        font-size: 30px;
+        font-size: 1.66667rem;
+    }
+}
+.node-person-profile .person-profile-bio.squiggle-border-top {
+    margin-top: 20px;
+    padding-top: 20px;
+}
