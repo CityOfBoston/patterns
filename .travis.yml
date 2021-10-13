@@ -10,7 +10,6 @@ branches:
     - integration-branch/legacy-css
     - production
 install:
-  - npm audit fix
   - npm install
   - gem install percy-cli
 before_script:
