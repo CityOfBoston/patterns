@@ -8,7 +8,7 @@ variants:
       home: true
       intro: welcome to the new
       title: Boston.gov
-      subheader: Mayor Martin J. Walsh
+      subheader: Mayor Kim Janey
       cta:
         text: View Mayor's profile
         link: https://boston.gov/mayor
@@ -54,7 +54,7 @@ context:
   home: true
   intro: Welcome to the new
   title: Boston.gov
-  subheader: Mayor Martin J. Walsh
+  subheader: Mayor Kim Janey
   cta: false
   image:
     wide1x: https://patterns.boston.gov/assets/images/fleet/boston-header3.jpg
