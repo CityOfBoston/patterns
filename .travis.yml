@@ -52,7 +52,7 @@ deploy:
     secret_access_key: "$AWS_SECRET_ACCESS_KEY"
     bucket: patterns-uat.boston.gov
     acl: public_read
-    region: "$AWS_DEFAULT_REGION"
+    region: "us-east-1"
     local_dir: public
     on:
       branch: "integration-branch/legacy-css"
