@@ -10,6 +10,7 @@ branches:
     - integration-branch/legacy-css
     - production
 install:
+  - npm audit fix
   - npm install
   - gem install percy-cli
 before_script:
@@ -55,7 +56,7 @@ deploy:
     region: "$AWS_DEFAULT_REGION"
     local_dir: public
     on:
-      branch: "integration-branch/legacy-css"      
+      branch: "integration-branch/legacy-css"
 after_deploy:
   - bash ./travis/invalidate_cache.sh
 env:
