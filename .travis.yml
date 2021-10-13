@@ -7,6 +7,7 @@ cache:
 branches:
   only:
     - develop
+    - stella-legacy-css-removal
     - production
 install:
   - npm install
@@ -45,6 +46,16 @@ deploy:
     local_dir: public
     on:
       branch: develop
+  - provider: s3
+    skip_cleanup: true
+    access_key_id: "$AWS_ACCESS_KEY_ID"
+    secret_access_key: "$AWS_SECRET_ACCESS_KEY"
+    bucket: patterns-uat.boston.gov
+    acl: public_read
+    region: "$AWS_DEFAULT_REGION"
+    local_dir: public
+    on:
+      branch: "stella-legacy-css-removal"
 after_deploy:
   - bash ./travis/invalidate_cache.sh
 env:
