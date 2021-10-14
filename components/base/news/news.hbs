@@ -1,0 +1,60 @@
+<div class="b b--fw">
+	<div class="b-c">
+		{{> @section_header }}
+		<div class="g">
+			{{#each news as |new|}}
+			<div class="g--12 m-b300 m-t500">
+				<div class="news--card">
+          <div class="g">
+            <div class="g--3">
+              <svg
+                class="svg-date-flag n--a-date-flag"
+                id="Layer_1"
+                data-name="Layer 1"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 34.08 44.31"
+              >
+                <title>{{new.date}}</title>
+                <path
+                  d="M32.26,42.16l-15.3-7-15.3,7v-40h30.6Z"
+                  fill="#ffffff"
+                  stroke="#ECECEC"
+                  stroke-miterlimit="10"
+                />
+              </svg>
+
+              <p
+                class="svg-date-flag n--a-date-flag-text date-flag-text"
+              >
+                {{new.date}}
+              </p>
+
+              <div class="g--12">
+                <div class="news--card-thumb-wrapper">
+                  <img
+                    src="{{new.image.url}}"
+                    alt="{{new.title}}"
+                    typeof="foaf:Image"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div class="g--9">
+              <div class="g">
+                <div class="g--6">
+                  {{new.title}}
+                </div>
+
+                <div class="g--6">
+                  {{new.description}}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+			</div>
+			{{/each}}
+		</div>
+	</div>
+</div>
