@@ -1,30 +1,21 @@
-{{#if image}}
-  <style>
-    .hro {
-      background-image: url({{image.mobile1x}});
-    }
+<div
+  class="hro{{#if image}}{{#if title}} hro--t{{else}} hro--b{{/if}}{{else}} hro--d{{/if}}"
+>
+  {{#if image}}
+    <img
+      srcset="
+        {{image.mobile1x}} 480w,
+        {{image.tablet1x}} 768w,
+        {{image.desktop1x}} 1024w,
+        {{image.wide1x}} 1200w,
+      "
+      sizes="(max-width: 600px) 480px, 768px, 1024px, 1200px"
+      src="{{image.mobile1x}}"
+      alt="{{title}}"
+      class="hro--img"
+    />
+  {{/if}}
 
-    @media screen and (min-width: 768px) {
-      .hro {
-        background-image: url({{image.tablet1x}});
-      }
-    }
-
-    @media screen and (min-width: 1024px) {
-      .hro {
-        background-image: url({{image.desktop1x}});
-      }
-    }
-
-    @media screen and (min-width: 1200px) {
-      .hro {
-        background-image: url({{image.wide1x}});
-      }
-    }
-  </style>
-{{/if}}
-
-<div class="hro{{#if image}}{{#if title}} hro--t{{else}} hro--b{{/if}}{{else}} hro--d{{/if}}">
   <div class="hro-c">
     {{#if intro}}
       <div class="hro-i{{#if home}} hro-i--l{{/if}}">{{intro}}</div>
@@ -38,6 +29,7 @@
       {{/if}}
     {{/if}}
   </div>
+
   {{#if b}}
     <div class="the-b the-b--c">
       <img src="/images/b-light.svg" alt="B Logo" class="the-b-i">
