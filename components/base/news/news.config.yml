@@ -3,9 +3,6 @@ handle: news
 status: ready
 preview: '@centered-grey'
 context:
-  header:
-    title: News (Landing Page)
-    contact: false
   news:
     - index: 1
       title: City of Boston Kicks off free Summer Fitness Series
