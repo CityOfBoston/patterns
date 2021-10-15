@@ -4,9 +4,9 @@
 		<div class="g">
 			{{#each news as |new|}}
 			<div class="g--12 m-b300 m-t500">
-				<div class="news--card">
+				<div class="news-card">
           <div class="g">
-            <div class="g--7">
+            <div class="g--7 news-column">
               <div class="g">
                 <div class="g--4">
                   <div class="g">
@@ -33,7 +33,7 @@
                     </p>
 
                     <div class="g--12">
-                      <div class="news--card-thumb-wrapper">
+                      <div class="news-card--thumb-wrapper">
                         <img
                           src="{{new.image.url}}"
                           alt="{{new.title}}"
@@ -44,18 +44,35 @@
                   </div>
                 </div>
 
-                <div class="g--8">
-                  <div class="g--6">
-                    {{new.title}}
-                  </div>
+                <div class="g--8 news-column--left">
+                  <h3 class="title">
+                    <a href="{{new.href}}">{{new.title}}</a>
+                  </h3>
                 </div>
               </div>
             </div>
 
-            <div class="g--5">
+            <div class="g--5 news-column news-column--right">
               <div class="g">
-                <div class="g--12">
-                  {{new.description}}
+                <div class="g--12 optional-news-layout">
+                  <div class="intro-text">
+                    {{new.description}}
+                  </div>
+
+                  <div class="icon-wrapper">
+                    <div class="di">
+                      <div class="di-ic">
+                        <a
+                          href="/departments/innovation-and-technology" title="Innovation and Technology" class="di-a di-tt"
+                        >
+                          <img
+                            typeof="foaf:Image"
+                            src="/images/b-dark.svg" alt="Innovation and Technology" class="di-i"
+                          />
+                        </a>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
