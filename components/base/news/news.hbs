@@ -7,44 +7,42 @@
 				<div class="news-card">
           <div class="g">
             <div class="g--7 news-column">
-              <div class="g">
-                <div class="g--4">
-                  <div class="g">
-                    <svg
-                      class="svg-date-flag n--a-date-flag"
-                      id="Layer_1"
-                      data-name="Layer 1"
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 34.08 44.31"
-                    >
-                      <title>{{new.date}}</title>
-                      <path
-                        d="M32.26,42.16l-15.3-7-15.3,7v-40h30.6Z"
-                        fill="#ffffff"
-                        stroke="#ECECEC"
-                        stroke-miterlimit="10"
+              <div class="thumb-and-title">
+                <div class="thumb-and-flag">
+                  <svg
+                    class="svg-date-flag n--a-date-flag"
+                    id="Layer_1"
+                    data-name="Layer 1"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 34.08 44.31"
+                  >
+                    <title>{{new.date}}</title>
+                    <path
+                      d="M32.26,42.16l-15.3-7-15.3,7v-40h30.6Z"
+                      fill="#ffffff"
+                      stroke="#ECECEC"
+                      stroke-miterlimit="10"
+                    />
+                  </svg>
+
+                  <p
+                    class="svg-date-flag n--a-date-flag-text date-flag-text"
+                  >
+                    {{new.date}}
+                  </p>
+
+                  <div class="g--12">
+                    <div class="news-card--thumb-wrapper">
+                      <img
+                        src="{{new.image.url}}"
+                        alt="{{new.title}}"
+                        typeof="foaf:Image"
                       />
-                    </svg>
-
-                    <p
-                      class="svg-date-flag n--a-date-flag-text date-flag-text"
-                    >
-                      {{new.date}}
-                    </p>
-
-                    <div class="g--12">
-                      <div class="news-card--thumb-wrapper">
-                        <img
-                          src="{{new.image.url}}"
-                          alt="{{new.title}}"
-                          typeof="foaf:Image"
-                        />
-                      </div>
                     </div>
                   </div>
                 </div>
 
-                <div class="g--8 news-column--left">
+                <div class="news-column--left">
                   <h3 class="title">
                     <a href="{{new.href}}">{{new.title}}</a>
                   </h3>
@@ -52,7 +50,7 @@
               </div>
             </div>
 
-            <div class="g--5 news-column news-column--right">
+            <div class="g--5 news-column--right">
               <div class="g">
                 <div class="g--12 optional-news-layout">
                   <div class="intro-text">

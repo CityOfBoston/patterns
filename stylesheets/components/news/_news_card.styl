@@ -15,75 +15,80 @@
   background-color: $white
 
   h3.title
-    margin: 5px 0px 5px
-    color: #1871bd
-    font-family: "Lora", serif
-    font-weight: 400
+    font-size: 20px;
     font-style: italic
-    letter-spacing: .4px
+    font-family: "Lora", serif
+    color: $optimistic-blue-dark
     text-transform: none
-
-    font-size: 30px;
+    letter-spacing: .4px
+    margin: 5px 0px 5px
     line-height: 35px;
-    font-size: 1.66667rem;
-    line-height: 1.94444rem;
+    
+    a
+      display: inline-block
 
   &--thumb-wrapper
     display: flex
 
     img
-      max-width: 190px
+      min-width: 190px
   
-  .news-column, .news-column
+  .news-column
     padding-top: 0px
 
+    .thumb-and-title
+      display: flex
+      justify-content: space-between;
+
+      .thumb-and-flag
+        margin-right: 10
+
+      @media $media-small-max
+        flex-direction: column
+
+    &--left
+      border: 0
+      padding-left: 20px
+
     &--right
-      padding-left: 1.5em;
-      border-top: 0;
-      border-right: 0;
-      border-bottom: 0;
-      border-left: 1px;
-      border-style: dashed;
+      display: none
+      padding-left: 1.5em
+      // padding-right: 1.5em
+      border-top: 0
+      border-right: 0
+      border-bottom: 0
+      border-left: 1px
+      border-style: dashed
       border-color: $grey-100
+
+      @media $media-large
+        display: block
+    
+    &--left, &--right
+      padding-top: 20px
+      @media $media-small-max
+        padding: 10px 15px
 
   .optional-news-layout
     display: flex
     flex-direction: columns
 
     .icon-wrapper
-      // float: right;
-      // height: 190px;
-      // width: 56px;
-      // margin: -20px 0 0 20px;
+      display: none
+      min-width: 56px
+
+      @media $media-xlarge
+        display: block
+      
+      .di
+        margin-top: 18px
+        margin-left: 20px
+        margin-right: 20px
 
     .intro-text
       color: $body-text
-      font-size: 18px;
-      font-size: 1rem;
-      line-height: 31.2px;
-      line-height: 1.73333rem;
-
-@media (min-width: 480px) {
-  // .news-card h3.title {
-  //   font-size: 22px;
-  //   line-height: 28px;
-  //   font-size: 1.22222rem;
-  //   line-height: 1.55556rem
-  // }
-}
-
-@media (min-width: 980px) {
-  // .news-card--title {
-  //   font-size: 2rem
-  // }
-
-  // .news-card h3.title {
-  //   margin-top: 0;
-  //   margin-bottom: 0
-  // }
-    
-  .news-card .news-column--left,
-  .news-card .news-column--right {
-    padding-top: 20px
-  }
-}
+      font-size: 18px
+      font-style: normal
+      font-family: "Lora", serif
+      line-height: 31.2px
+      margin-top: 1em
