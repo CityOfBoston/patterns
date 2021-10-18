@@ -55,12 +55,13 @@
   &-t
     color: $charles-blue
     font-family: $sans
-    font-size: responsive 20px 30px
+    font-size: responsive 18px 28px
     font-range: 480px 1440px
     line-height: $line-height-150
     text-transform: uppercase
     font-weight: 700
     margin: 0
+    min-height: 145px
 
   &-d
     color: $body-text
@@ -81,6 +82,13 @@
   &-lst
     border-top: 1px dashed $grey-100
     padding: $sizing-450 $sizing-275
+
+    &-li
+      margin: 0 0 11.25px
+      margin: 0 0 .625rem
+      font-size: responsive 14px 16px
+      background-size: 10px
+      line-height: 1.4rem
 
   &--plain
     &:hover, &:focus-within
@@ -124,7 +132,6 @@
 // Handle white theme variation
 .b--w
   .gcd
-    border: 2px solid #e0e0e0
 
     &:hover, &:focus-within
       border-color: $optimistic-blue-light
