@@ -1,8 +1,8 @@
 {{#each cards as |card|}}
-  <a href="{{ card.href }}" class="lcd--sm m-t500 g--4 g--4--sl">
+  <a href="{{ card.href }}" class="lcd--sm m-t500 g--4 g--4--sl {{ card.variant }}">
     <div class="lcd--sm-c">
       {{#if variant}}
-        <div class="lcd--sm-im" id="{{card.variant}}"></div>
+        <div class="lcd--sm-im"></div>
       {{/if}}
       <div class="lcd--sm-t">{{ card.title }}</div>
     </div>

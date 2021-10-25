@@ -1,15 +1,15 @@
 {{#each cards as |card|}}
-  <a href="{{ card.href }}" class="lcd m-t500 g--4 g--4--sl">
+  <a href="{{ card.href }}" class="lcd m-t500 g--4 g--4--sl {{card.variant}}">
     <div class="lcd-c">
       {{#if variant}}
-        <div class="lcd-im" id="{{card.variant}}"></div>
+        <div class="lcd-im"></div>
       {{/if}}
       <div class="lcd-t">{{ card.title }}</div>
       {{#if card.subtitle}}
         <div class="lcd-st t--subinfo t--g300">{{ card.subtitle }}</div>
       {{/if}}
       {{#if card.content}}
-        <div class="lcd-d" id="bottom"> {{ card.content }}</div>
+        <div class="lcd-d bottom"> {{ card.content }}</div>
       {{/if}} 
     </div>
   </a>
