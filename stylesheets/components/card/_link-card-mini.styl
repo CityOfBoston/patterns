@@ -46,15 +46,9 @@
     background-size: contain
     background-repeat: no-repeat
 
-  #document
-    background-image: url(/images/global/icons/icon-document.svg)
-
-  #external
-    background-image: url(/images/global/icons/external-link.svg)
-
   &-t
     color: $optimistic-blue-dark
-    font-family: Montserrat,sans-serif;
+    font-family: Montserrat,sans-serif
     font-size: responsive 12px 15px
     font-range: 480px 1440px
     line-height: $line-height-200
@@ -82,3 +76,8 @@
   .lcd--sm-im
     background-color: $blended-optimistic-blue
     background-blend-mode: multiply
+.download .lcd--sm-im
+  background-image: url(/images/global/icons/icon-document.svg)
+
+.external .lcd--sm-im
+  background-image: url(/images/global/icons/external-link.svg)

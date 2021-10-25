@@ -43,15 +43,15 @@
     background-size: contain
     background-repeat: no-repeat
 
-  #document
+  .download
     background-image: url(/images/global/icons/icon-document.svg)
 
-  #external
+  .external
     background-image: url(/images/global/icons/external-link.svg)
 
   &-t
     color: $optimistic-blue-dark
-    font-family: Montserrat,sans-serif;
+    font-family: Montserrat,sans-serif
     font-weight: 700
     font-size: responsive 12px 15px
     font-range: 480px 1440px
@@ -64,8 +64,9 @@
     font-range: 480px 1440px
     margin-top: $sizing-200
     word-break: normal
+    color: $body-text
 
-  #bottom
+  .bottom
     position: absolute
     bottom: 0
     left: 0
@@ -137,3 +138,11 @@
   @media $media-medium
     width: 25%
     padding-right: 2rem
+
+.subheader .title 
+  font-size: 40px
+  margin: 0
+  text-transform: inherit
+  font-weight: 400
+  line-height: 2.8rem
+  letter-spacing: 0.5px

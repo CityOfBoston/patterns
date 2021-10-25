@@ -46,9 +46,9 @@
 
   &-icon
     position: absolute
-    left: 8px
+    left: 4px
     top: 10px
-
+    z-index: 2
 
   &-t
     color: $optimistic-blue-dark
@@ -65,7 +65,7 @@
     margin-top: $sizing-200
     word-break: normal
 
-  #bottom
+  .bottom
     position: absolute
     bottom: 0
     left: 0
@@ -86,6 +86,9 @@
 
       &:last-child
         margin: 0
+  .svg-date-flag
+    width: 60px
+    top: -1px
 
 // handle hover interference with focus
 .lcdl.focus-active:hover

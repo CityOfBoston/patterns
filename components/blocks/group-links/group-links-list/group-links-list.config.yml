@@ -12,7 +12,7 @@ variants:
           link: https://d8-uat.boston.gov/departments/digital-team
       cards:
         - index: 1
-          variant: document
+          variant: download
           href: https://d8-uat.boston.gov/sites/default/files/linked/file/document_files/2017/03/pdf_for_website_testing_0.pdf
           title: 'Test Link - Document'
           url: '/images/global/icons/icon-document.svg'
@@ -43,7 +43,7 @@ variants:
           href: https://d8-uat.boston.gov/sites/default/files/linked/file/document_files/2017/03/pdf_for_website_testing_0.pdf
       cards:
         - index: 1
-          variant: document
+          variant: download
           href: https://d8-uat.boston.gov/sites/default/files/linked/file/document_files/2017/03/pdf_for_website_testing_0.pdf
           title: 'Test Link - Document'
           url: '/images/global/icons/icon-document.svg'
@@ -67,7 +67,7 @@ context:
       link: https://d8-uat.boston.gov/departments/digital-team
   cards:
     - index: 1
-      variant: document
+      variant: download
       href: https://d8-uat.boston.gov/sites/default/files/linked/file/document_files/2017/03/pdf_for_website_testing_0.pdf
       title: 'Test Link - Document'
       url: '/images/global/icons/icon-document.svg'

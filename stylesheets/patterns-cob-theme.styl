@@ -638,7 +638,9 @@ h1, h2, h3, h4, h5, h6 {
         left: 300px
     }
 }
-.node-type-event .dl-d, .node-place-profile .dl-d {
+.node-type-event .dl-d, 
+.node-place-profile .dl-d,
+.node-type-public-notice .dl-d {
     padding-left: 70px    
 }
 .step-label-wrapper {
@@ -677,7 +679,7 @@ h1, h2, h3, h4, h5, h6 {
     text-align: center;
     position: relative;
     z-index: 1;
-    background-color: $white
+    background-color: $white;
 }
 .step-number {
     text-transform: uppercase;
@@ -714,6 +716,9 @@ h1, h2, h3, h4, h5, h6 {
 }
 .sb .sb-i:last-child {
     border-bottom: none    
+}
+.sb .sb-i:first-child {
+    border-bottom: 1px dashed $grey-100   
 }
 .sb-d:empty {
   background-color: tomato
@@ -958,4 +963,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 .pager {
     padding-bottom: 25px
+}
+.paragraphs-items-field-grid-of-quotes {
+    display: contents    
 }
