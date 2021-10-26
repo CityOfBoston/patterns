@@ -1,0 +1,13 @@
+title: "drupal icons"
+handle: "drupal_icons"
+status: "ready"
+context:
+  icons:
+    - file: "archive.svg"
+    - file: "delete.svg"
+    - file: "edit.svg"
+    - file: "new-draft.svg"
+    - file: "publish.svg"
+    - file: "review.svg"
+    - file: "ribbon-black.svg"
+    - file: "ribbon-grey.svg"
