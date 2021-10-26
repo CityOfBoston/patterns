@@ -6,12 +6,12 @@
           {{filename_to_string icon.file}}
         </div>
         
-        <div class="icon">
-          <img src="https://assets.boston.gov/icons/experiential_icons/{{icon.file}}" style="max-height: 200px" />
+        <div class="ex ex-i">
+          <img src="{{imgUrl "https://assets.boston.gov/icons/experiential_icons" icon.file}}" />
         </div>
 
         <div class="p-a300 t--sans">
-          <a href="https://assets.boston.gov/icons/experiential_icons/{{icon.file}}">File URL</a>
+          <a href="https://assets.boston.gov/icons/{{experiential_icons}}/{{icon.file}}">File URL</a>
         </div>
       </div>
     {{/each}}

@@ -37,7 +37,6 @@ const sortManifest = data => {
     if (a.category === b.category) return 0;
     return a.category < b.category ? -1 : 1;
   });
-  // .slice (0, 10);
 };
 
 const constructManifestYamlReadyObj = async icons => {
@@ -99,7 +98,7 @@ const manifest = async () => {
                             if (err) throw err;
                             const contents = data
                               .toString()
-                              .replace(/{{directory_name}}/gim, `${filename}`);
+                              .replace(/directory_name/gim, `${filename}`);
 
                             fs.writeFile(
                               `${filepath}/${filename}.hbs`,

@@ -98,6 +98,7 @@
     "eslint-plugin-prettier": "^2.6.0",
     "gulp-plumber": "^1.2.0",
     "gulp-util": "^3.0.8",
+    "handlebars-async": "^1.0.0",
     "http-server": "^0.12.3",
     "husky": "^0.14.3",
     "jest": "^26.2.2",
