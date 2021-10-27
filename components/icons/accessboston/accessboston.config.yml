@@ -2,6 +2,7 @@ title: "accessboston"
 handle: "accessboston"
 status: "ready"
 context:
+  defaultIcon: "https://www.boston.gov/modules/custom/bos_content/modules/node_post/default_news.svg"
   icons:
     - file: "2_tickets.svg"
     - file: "Phire.svg"

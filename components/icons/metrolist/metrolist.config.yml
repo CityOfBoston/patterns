@@ -2,6 +2,7 @@ title: "metrolist"
 handle: "metrolist"
 status: "ready"
 context:
+  defaultIcon: "https://www.boston.gov/modules/custom/bos_content/modules/node_post/default_news.svg"
   icons:
     - file: "deposit_check.png"
     - file: "deposit_check.svg"

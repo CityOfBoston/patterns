@@ -48,6 +48,8 @@ const constructManifestYamlReadyObj = async icons => {
         handle: obj.category.replace(/ /g, '_'),
         status: 'ready',
         context: {
+          defaultIcon:
+            'https://www.boston.gov/modules/custom/bos_content/modules/node_post/default_news.svg',
           icons: [],
         },
       };

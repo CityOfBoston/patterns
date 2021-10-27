@@ -2,6 +2,7 @@ title: "experiential icons"
 handle: "experiential_icons"
 status: "ready"
 context:
+  defaultIcon: "https://www.boston.gov/modules/custom/bos_content/modules/node_post/default_news.svg"
   icons:
     - file: "1095_c_form.svg"
     - file: "1095_c_form_computer.svg"

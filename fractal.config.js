@@ -73,6 +73,11 @@ const hbs = require('@frctl/handlebars')({
     imgUrl: async function(pre, post) {
       return `${pre}/${post}`;
     },
+    imgOnError: function() {
+      const url =
+        'https://www.boston.gov/modules/custom/bos_content/modules/node_post/default_news.svg';
+      return `this.onerror=null;this.src='${url}';`;
+    },
     // Stencil helps us maintain docs in the source directories for the
     // components. This helper is here so that the Fractal component "Notes" can
     // import those README files so that they appear in the Fractal UI.
