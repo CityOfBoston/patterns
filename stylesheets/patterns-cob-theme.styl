@@ -643,63 +643,6 @@ h1, h2, h3, h4, h5, h6 {
 .node-type-public-notice .dl-d {
     padding-left: 70px    
 }
-.step-label-wrapper {
-    height: 60px;
-    width: 60px;
-    padding: 10px 0;
-    border: 3px solid
-}
-@media (min-width: 980px) {
-    .step-label-wrapper {
-        float: left;
-        margin-top: 40px;
-        height: 122px;
-        width: 122px;
-        padding: 18px 0
-    }
-}
-@media (min-width: 980px) {
-    .step-content {
-        margin-left: 150px;
-        top: -122px;
-        position: relative
-    }
-}
-.step-label-wrapper {
-    text-transform: uppercase;
-    color: $body-text;
-    font-family: "Montserrat", sans-serif;
-    font-weight: inherit;
-    font-size: 14px;
-    line-height: 18px;
-    font-size: 0.77778rem;
-    line-height: 1rem;
-    border-color: $grey-100;
-    border-radius: 100%;
-    text-align: center;
-    position: relative;
-    z-index: 1;
-    background-color: $white;
-}
-.step-number {
-    text-transform: uppercase;
-    color: $freedom-red-dark;
-    font-family: "Montserrat", sans-serif;
-    font-weight: inherit;
-    font-size: 20px;
-    line-height: 18px;
-    font-size: 1.11111rem;
-    line-height: 1rem;
-    font-weight: 700
-}
-@media (min-width: 980px) {
-    .step-number {
-        font-size: 60px;
-        line-height: 58.5px;
-        font-size: 3.33333rem;
-        line-height: 3.25rem
-    }
-}
 .post-contact .department-icon.sb-ic {
     border: none;
     padding: 0;
@@ -966,4 +909,70 @@ h1, h2, h3, h4, h5, h6 {
 }
 .paragraphs-items-field-grid-of-quotes {
     display: contents    
+}
+.hero-image {
+    display: none;
+    top: 0;
+    height: 270px;
+    margin-bottom: 20px;
+    overflow: hidden;
+    margin-left: -1px;
+    margin-top: -54px;
+    z-index: 0
+}
+@media (min-width: 480px) {
+    .hero-image {
+        height: 400px
+    }
+}
+@media (min-width: 768px) {
+    .hero-image {
+        height: 460px
+    }
+}
+@media (min-width: 840px) {
+    .hero-image {
+        display: block;
+        margin-bottom: 0
+    }
+}
+.node-type-listing-page .hero-image,
+.node-type-how-to .hero-image,
+.node-type-tabbed-content .hero-image {
+    display: block
+}
+.node-type-topic-page .hero-image {
+    display: block;
+    border-bottom: 8px solid $charles-blue
+}
+@media (min-width: 980px) {
+    .node-type-topic-page .hero-image {
+        margin-bottom: -215px
+    }
+}
+.hero-image-wrapper:after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: rgba(10, 154, 255, 0.5)
+}
+.hero-image-wrapper--no-overlay:after {
+    background-color: transparent
+}
+.hero-image img {
+    max-width: none;
+    position: relative;
+    left: 50%;
+    -ms-transform: translate(-50%, 0);
+    transform: translate(-50%, 0);
+    width: auto;
+    height: auto;
+}
+@media (min-width: 2000px) {
+    .hero-image img {
+        min-width: 100%
+    }
 }
