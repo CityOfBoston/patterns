@@ -65,7 +65,18 @@ fractalConfig.web.set('server.port', process.env.PORT || 3030);
 const hbs = require('@frctl/handlebars')({
   helpers: {
     filename_to_string: function(str) {
-      return str.replace(/-/g, ' ').replace('.svg', '');
+      return str
+        .replace(/-/g, ' ')
+        .replace(/_/g, ' ')
+        .replace(/(.svg|.png)/g, '');
+    },
+    imgUrl: async function(pre, post) {
+      return `${pre}/${post}`;
+    },
+    imgOnError: function() {
+      const url =
+        'https://www.boston.gov/modules/custom/bos_content/modules/node_post/default_news.svg';
+      return `this.onerror=null;this.src='${url}';`;
     },
     // Stencil helps us maintain docs in the source directories for the
     // components. This helper is here so that the Fractal component "Notes" can
