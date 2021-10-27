@@ -199,12 +199,13 @@
   border-bottom: 1px dashed $grey-100
   padding-bottom: $sizing-300
 
-.sb-b address
-  margin: 0 
+.sb-b address, .sb-d address, .sb-b p, .sb-d p
+  margin: 0
+  letter-spacing: normal
 
 .sb-i .sb-i:last-child
   border-bottom: none
 
-.sb-b li
+.sb-b ul:not(.sb) li
   font-style: italic
   font-size: responsive $font-100 $font-200
