@@ -314,8 +314,10 @@ input.error {
 }
 html input[type="button"],
 [type="reset"],
-[type="submit"] {
-    -webkit-appearance: button
+[type="submit"],
+button {
+    -webkit-appearance: button;
+    border: 0
 }
 input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
@@ -797,13 +799,48 @@ h1, h2, h3, h4, h5, h6 {
 .drawer-trigger {
     cursor: pointer;
 }
-.drawer {
+@media (min-width: 980px) {
+    .view-filters .drawer-trigger.mobile-only,
+    .filter-wrapper .drawer-trigger.mobile-only {
+        display: none
+    }
+}
+.view-filters .drawer {
     display: none;
+    padding: 20px;
+    min-width: 100%;
+    border: 3px solid;
+    max-width: 100%;
+    z-index: 30;
+    left: 0
+    margin-top: -3px;   
+}
+.drawer.mobile-only {
+    display: none;
+    position: relative;
+    border: none;
+    overflow: visible;
+    border: 0;
+    padding: 0
+}
+.drawer {
+    display: none
 }
 @media (min-width: 840px) {
-    .drawer.mobile-only {
+    .view-filters .drawer.mobile-only,
+    .filter-wrapper .drawer.mobile-only {
         display: block
     }
+}
+@media (min-width: 980px) {
+    .view-filters .drawer.mobile-only,
+    .filter-wrapper .drawer.mobile-only {
+        display: block
+    }
+}
+.view-filters .drawer.mobile-only,
+.filter-wrapper .drawer.mobile-only {
+    background-color: transparent
 }
 .drawer-trigger {
     cursor: pointer
@@ -855,12 +892,6 @@ h1, h2, h3, h4, h5, h6 {
     -ms-transform: rotate(90deg) translateX(-70%);
     transform: rotate(90deg) translateX(-70%)
 }
-.view-filters.sidebar .drawer-trigger .drawer-trigger-chevron {
-    margin-top: 9px
-}
-.view-filters.sidebar .drawer-trigger.active .drawer-trigger-chevron {
-    margin-top: 15px
-}
 .drawer-trigger.mobile-only .drawer-trigger-chevron {
     height: 20px;
     margin-top: 0
@@ -869,6 +900,506 @@ h1, h2, h3, h4, h5, h6 {
 .filter-wrapper .drawer-trigger.mobile-only .drawer-trigger-chevron {
     background-image: url(../img/chevron.svg)
 }
+.view-filters .drawer-trigger.mobile-only,
+.filter-wrapper .drawer-trigger.mobile-only {
+    background-color: $optimistic-blue-dark;
+    background-position: right 4px top 4px
+}
+.view-filters .drawer-trigger.mobile-only,
+.filter-wrapper .drawer-trigger.mobile-only,
+.view-filters .drawer-trigger.mobile-only:visited,
+.filter-wrapper .drawer-trigger.mobile-only:visited {
+    display: inline-block;
+    line-height: inherit;
+    text-decoration: none;
+    cursor: pointer;
+    color: $white;
+    background-color: $optimistic-blue-dark;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 400;
+    letter-spacing: 1px;
+    border: 0;
+    text-transform: uppercase;
+    padding: 1.275em 1.5em;
+    font-size: 14px;
+    line-height: 18px;
+    font-size: 0.77778rem;
+    line-height: 1rem;
+    font-weight: bold;
+    margin-top: 10px
+}
+@media (min-width: 768px) {
+    .view-filters .drawer-trigger.mobile-only,
+    .filter-wrapper .drawer-trigger.mobile-only,
+    .view-filters .drawer-trigger.mobile-only:visited,
+    .filter-wrapper .drawer-trigger.mobile-only:visited {
+        margin-top: 0
+    }
+}
+.view-filters .drawer-trigger.mobile-only:hover,
+.filter-wrapper .drawer-trigger.mobile-only:hover,
+.view-filters .drawer-trigger.mobile-only:visited:hover,
+.filter-wrapper .drawer-trigger.mobile-only:visited:hover {
+    cursor: pointer
+}
+.view-filters .drawer-trigger.mobile-only:hover,
+.filter-wrapper .drawer-trigger.mobile-only:hover,
+.view-filters .drawer-trigger.mobile-only:focus,
+.filter-wrapper .drawer-trigger.mobile-only:focus,
+.view-filters .drawer-trigger.mobile-only:active,
+.filter-wrapper .drawer-trigger.mobile-only:active,
+.view-filters .drawer-trigger.mobile-only:visited:hover,
+.filter-wrapper .drawer-trigger.mobile-only:visited:hover,
+.view-filters .drawer-trigger.mobile-only:visited:focus,
+.filter-wrapper .drawer-trigger.mobile-only:visited:focus,
+.view-filters .drawer-trigger.mobile-only:visited:active,
+.filter-wrapper .drawer-trigger.mobile-only:visited:active {
+    text-decoration: none;
+    color: $white;
+    background-color: $freedom-red-dark
+}
+.view-filters [disabled].drawer-trigger.mobile-only,
+.filter-wrapper [disabled].drawer-trigger.mobile-only,
+.view-filters .drawer-trigger.mobile-only:visited[disabled],
+.filter-wrapper .drawer-trigger.mobile-only:visited[disabled] {
+    cursor: default;
+    color: $grey-300;
+    background-color: #d2d2d2
+}
+.view-filters [disabled].drawer-trigger.mobile-only:hover,
+.filter-wrapper [disabled].drawer-trigger.mobile-only:hover,
+.view-filters [disabled].drawer-trigger.mobile-only:focus,
+.filter-wrapper [disabled].drawer-trigger.mobile-only:focus,
+.view-filters [disabled].drawer-trigger.mobile-only:active,
+.filter-wrapper [disabled].drawer-trigger.mobile-only:active,
+.view-filters .drawer-trigger.mobile-only:visited[disabled]:hover,
+.filter-wrapper .drawer-trigger.mobile-only:visited[disabled]:hover,
+.view-filters .drawer-trigger.mobile-only:visited[disabled]:focus,
+.filter-wrapper .drawer-trigger.mobile-only:visited[disabled]:focus,
+.view-filters .drawer-trigger.mobile-only:visited[disabled]:active,
+.filter-wrapper .drawer-trigger.mobile-only:visited[disabled]:active {
+    color: $grey-300;
+    background-color: #d2d2d2
+}
+.view-bos-news-landing .view-filters,
+.view-places .view-filters,
+.view-program-initiatives .view-filters {
+    max-width: 66.667rem;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 10%;
+    padding-right: 10%
+}
+.view-bos-news-landing .view-filters:after,
+.view-places .view-filters:after,
+.view-program-initiatives .view-filters:after {
+    content: " ";
+    display: block;
+    clear: both
+}
+@media (min-width: 1300px) {
+    .view-bos-news-landing .view-filters,
+    .view-places .view-filters,
+    .view-program-initiatives .view-filters {
+        padding-left: 0;
+        padding-right: 0
+    }
+}
+@media (min-width: 980px) {
+    .view-filters .views-widget-filter-field_published_date_value .views-widget>div,
+    .filter-wrapper .views-widget-filter-field_published_date_value .views-widget>div {
+        width: calc(50% - (1.5em / 1.91));
+        float: left;
+        margin-left: 0;
+        margin-right: 0;
+        padding: 0;
+        margin-bottom: 1.5em
+    }
+    .view-filters .views-widget-filter-field_published_date_value .views-widget>div:nth-of-type(odd),
+    .filter-wrapper .views-widget-filter-field_published_date_value .views-widget>div:nth-of-type(odd) {
+        margin-right: 1.5em
+    }
+    .desktop-2-col:nth-of-type(even),
+    .view-filters .views-widget-filter-field_published_date_value .views-widget>div:nth-of-type(even),
+    .filter-wrapper .views-widget-filter-field_published_date_value .views-widget>div:nth-of-type(even) {
+        margin-left: 0
+    }
+}
+.paragraphs-item-3-column-w-image .view-filters a.drawer-trigger.mobile-only,
+.view-filters .paragraphs-item-3-column-w-image a.drawer-trigger.mobile-only,
+.paragraphs-item-3-column-w-image .filter-wrapper a.drawer-trigger.mobile-only,
+.filter-wrapper .paragraphs-item-3-column-w-image a.drawer-trigger.mobile-only,
+.paragraphs-item-3-column-w-image .view-filters a.drawer-trigger.mobile-only:link,
+.view-filters .paragraphs-item-3-column-w-image a.drawer-trigger.mobile-only:link,
+.paragraphs-item-3-column-w-image .filter-wrapper a.drawer-trigger.mobile-only:link,
+.filter-wrapper .paragraphs-item-3-column-w-image a.drawer-trigger.mobile-only:link,
+.paragraphs-item-3-column-w-image .view-filters a.drawer-trigger.mobile-only:visited,
+.view-filters .paragraphs-item-3-column-w-image a.drawer-trigger.mobile-only:visited,
+.paragraphs-item-3-column-w-image .filter-wrapper a.drawer-trigger.mobile-only:visited,
+.filter-wrapper .paragraphs-item-3-column-w-image a.drawer-trigger.mobile-only:visited,
+.paragraphs-item-3-column-w-image .view-filters a.drawer-trigger.mobile-only:hover,
+.view-filters .paragraphs-item-3-column-w-image a.drawer-trigger.mobile-only:hover,
+.paragraphs-item-3-column-w-image .filter-wrapper a.drawer-trigger.mobile-only:hover,
+.filter-wrapper .paragraphs-item-3-column-w-image a.drawer-trigger.mobile-only:hover,
+.paragraphs-item-3-column-w-image .view-filters a.drawer-trigger.mobile-only:active,
+.view-filters .paragraphs-item-3-column-w-image a.drawer-trigger.mobile-only:active,
+.paragraphs-item-3-column-w-image .filter-wrapper a.drawer-trigger.mobile-only:active,
+.filter-wrapper .paragraphs-item-3-column-w-image a.drawer-trigger.mobile-only:active {
+    color: $white
+}
+@media (min-width: 980px) {
+    .view-public-notice-landing .view-filters .drawer-wrapper,
+    .view-public-notice-archive .view-filters .drawer-wrapper,
+    .view-metrolist-affordable-housing-page .view-filters .drawer-wrapper {
+        width: calc(33.3% - 66px)
+    }
+}
+.view-public-notice-landing .views-exposed-topbar .view-filters .drawer.mobile-only,
+.view-public-notice-archive .views-exposed-topbar .view-filters .drawer.mobile-only,
+.view-metrolist-affordable-housing-page .views-exposed-topbar .view-filters .drawer.mobile-only {
+    padding: 0
+}
+.modal-overlay .view-bos-news-landing .feedback-container.view-filters,
+.view-bos-news-landing .modal-overlay .feedback-container.view-filters,
+.modal-overlay .view-places .feedback-container.view-filters,
+.view-places .modal-overlay .feedback-container.view-filters,
+.modal-overlay .view-program-initiatives .feedback-container.view-filters,
+.view-program-initiatives .modal-overlay .feedback-container.view-filters,
+.modal-overlay .view-bos-news-landing .view-filters,
+.view-bos-news-landing .modal-overlay .view-filters,
+.modal-overlay .view-places .view-filters,
+.view-places .modal-overlay .view-filters,
+.modal-overlay .view-program-initiatives .view-filters,
+.view-program-initiatives .modal-overlay .view-filters {
+    width: 100%;
+    min-width: 0px;
+    max-height: 100%;
+    z-index: 9;
+    margin: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    overflow: hidden;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    padding-left: 0px;
+    padding-right: 0px
+}
+@media (min-width: 980px) {
+    .modal-overlay .view-bos-news-landing .feedback-container.view-filters,
+    .view-bos-news-landing .modal-overlay .feedback-container.view-filters,
+    .modal-overlay .view-places .feedback-container.view-filters,
+    .view-places .modal-overlay .feedback-container.view-filters,
+    .modal-overlay .view-program-initiatives .feedback-container.view-filters,
+    .view-program-initiatives .modal-overlay .feedback-container.view-filters,
+    .modal-overlay .view-bos-news-landing .view-filters,
+    .view-bos-news-landing .modal-overlay .view-filters,
+    .modal-overlay .view-places .view-filters,
+    .view-places .modal-overlay .view-filters,
+    .modal-overlay .view-program-initiatives .view-filters,
+    .view-program-initiatives .modal-overlay .view-filters {
+        max-width: 66.667em;
+        min-width: 38.889em;
+        width: 90%
+    }
+}
+.modal-overlay .view-bos-news-landing .feedback-container.container-max-width.view-filters,
+.view-bos-news-landing .modal-overlay .feedback-container.container-max-width.view-filters,
+.modal-overlay .view-places .feedback-container.container-max-width.view-filters,
+.view-places .modal-overlay .feedback-container.container-max-width.view-filters,
+.modal-overlay .view-program-initiatives .feedback-container.container-max-width.view-filters,
+.view-program-initiatives .modal-overlay .feedback-container.container-max-width.view-filters,
+.modal-overlay .view-bos-news-landing .container-max-width.view-filters,
+.view-bos-news-landing .modal-overlay .container-max-width.view-filters,
+.modal-overlay .view-places .container-max-width.view-filters,
+.view-places .modal-overlay .container-max-width.view-filters,
+.modal-overlay .view-program-initiatives .container-max-width.view-filters,
+.view-program-initiatives .modal-overlay .container-max-width.view-filters {
+    max-width: 730px
+}
+.footer .view-bos-news-landing .view-filters,
+.view-bos-news-landing .footer .view-filters,
+.footer .view-bos-news-landing .view-content,
+.view-bos-news-landing .footer .view-content,
+.footer .view-places .view-filters,
+.view-places .footer .view-filters,
+.footer .view-places .view-content,
+.view-places .footer .view-content,
+.footer .view-program-initiatives .view-filters,
+.view-program-initiatives .footer .view-filters,
+.footer .view-program-initiatives .view-content,
+.view-program-initiatives .footer .view-content {
+    max-width: 100%;
+    margin-right: 0;
+    margin-left: 0
+}
+@media (min-width: 1300px) {
+    .footer .view-bos-news-landing .view-filters,
+    .view-bos-news-landing .footer .view-filters,
+    .footer .view-places .view-filters,
+    .view-places .footer .view-filters,
+    .footer .view-program-initiatives .view-filters,
+    .view-program-initiatives .footer .view-filters {
+        padding-right: 3%
+    }
+}
+.node-type-landing-page .landing-hero-content .view-bos-news-landing .view-filters,
+.view-bos-news-landing .node-type-landing-page .landing-hero-content .view-filters,
+.node-type-landing-page .landing-hero-content .view-places .view-filters,
+.view-places .node-type-landing-page .landing-hero-content .view-filters,
+.node-type-landing-page .landing-hero-content .view-program-initiatives .view-filters,
+.view-program-initiatives .node-type-landing-page .landing-hero-content .view-filters {
+    width: 100%;
+    margin-top: 100px
+}
+.paragraphs-item-news-announcements .post-featured-item-wrapper .view-filters .views-widget-filter-field_published_date_value .views-widget>div.thumb-column,
+.paragraphs-item-news-and-announcements .post-featured-item-wrapper .view-filters .views-widget-filter-field_published_date_value .views-widget>div.thumb-column,
+.view-filters .views-widget-filter-field_published_date_value .paragraphs-item-news-announcements .post-featured-item-wrapper .views-widget>div.thumb-column,
+.view-filters .views-widget-filter-field_published_date_value .paragraphs-item-news-and-announcements .post-featured-item-wrapper .views-widget>div.thumb-column,
+.paragraphs-item-news-announcements .post-featured-item-wrapper .filter-wrapper .views-widget-filter-field_published_date_value .views-widget>div.thumb-column,
+.paragraphs-item-news-and-announcements .post-featured-item-wrapper .filter-wrapper .views-widget-filter-field_published_date_value .views-widget>div.thumb-column,
+.filter-wrapper .views-widget-filter-field_published_date_value .paragraphs-item-news-announcements .post-featured-item-wrapper .views-widget>div.thumb-column,
+.filter-wrapper .views-widget-filter-field_published_date_value .paragraphs-item-news-and-announcements .post-featured-item-wrapper .views-widget>div.thumb-column,
+.paragraphs-item-upcoming-events .post-featured-item-wrapper .view-filters .views-widget-filter-field_published_date_value .views-widget>div.thumb-column,
+.paragraphs-item-events-and-notices .post-featured-item-wrapper .view-filters .views-widget-filter-field_published_date_value .views-widget>div.thumb-column,
+.view-filters .views-widget-filter-field_published_date_value .paragraphs-item-upcoming-events .post-featured-item-wrapper .views-widget>div.thumb-column,
+.view-filters .views-widget-filter-field_published_date_value .paragraphs-item-events-and-notices .post-featured-item-wrapper .views-widget>div.thumb-column,
+.paragraphs-item-upcoming-events .post-featured-item-wrapper .filter-wrapper .views-widget-filter-field_published_date_value .views-widget>div.thumb-column,
+.paragraphs-item-events-and-notices .post-featured-item-wrapper .filter-wrapper .views-widget-filter-field_published_date_value .views-widget>div.thumb-column,
+.filter-wrapper .views-widget-filter-field_published_date_value .paragraphs-item-upcoming-events .post-featured-item-wrapper .views-widget>div.thumb-column,
+.filter-wrapper .views-widget-filter-field_published_date_value .paragraphs-item-events-and-notices .post-featured-item-wrapper .views-widget>div.thumb-column {
+    margin-bottom: 0
+}
+@media (min-width: 980px) {
+    .view-filters .drawer-wrapper,
+    .filter-wrapper .drawer-wrapper {
+        width: calc(25% - 66px);
+        float: left;
+        margin-right: 20px
+    }
+}
+.view-filters .drawer-trigger,
+.filter-wrapper .drawer-trigger {
+    padding: 0 5px 0 10px;
+    margin-top: 20px
+}
+.view-filters .dr-h {
+    margin-top: 0       
+}
+@media (min-width: 980px) {
+    .view-filters .drawer-trigger:first-child,
+    .filter-wrapper .drawer-trigger:first-child {
+        margin-top: 6px
+    }
+}
+@media (min-width: 980px) {
+    .view-filters .drawer-trigger.mobile-only,
+    .filter-wrapper .drawer-trigger.mobile-only {
+        display: none
+    }
+}
+.view-filters .dr-c {
+    min-width: inherit;
+    max-width: inherit;
+    left: initial;
+}
+.view-filters label,
+.filter-wrapper label {
+    margin-top: 0
+}
+.view-filters .views-widget-filter-field_event_dates_value2 label,
+.view-filters .form-item-field-published-date-value-max label,
+.filter-wrapper .views-widget-filter-field_event_dates_value2 label,
+.filter-wrapper .form-item-field-published-date-value-max label {
+    margin-top: 20px
+}
+.view-filters .views-widget-filter-field_published_date_value .form-item,
+.view-filters .views-widget-filter-field_published_date_value .date-padding,
+.view-filters .views-widget-filter-field_published_date_value input,
+.view-filters .views-widget-filter-title .form-item,
+.view-filters .views-widget-filter-title .date-padding,
+.view-filters .views-widget-filter-title input,
+.filter-wrapper .views-widget-filter-field_published_date_value .form-item,
+.filter-wrapper .views-widget-filter-field_published_date_value .date-padding,
+.filter-wrapper .views-widget-filter-field_published_date_value input,
+.filter-wrapper .views-widget-filter-title .form-item,
+.filter-wrapper .views-widget-filter-title .date-padding,
+.filter-wrapper .views-widget-filter-title input {
+    width: 100%
+}
+@media (min-width: 980px) {
+    .view-filters .views-widget-filter-field_published_date_value label,
+    .view-filters .views-widget-filter-title label,
+    .filter-wrapper .views-widget-filter-field_published_date_value label,
+    .filter-wrapper .views-widget-filter-title label {
+        margin-top: 0px
+    }
+}
+.view-filters.sidebar {
+    margin-bottom: 75px
+}
+.view-filters.sidebar .drawer-trigger {
+    border: 3px solid $grey-000
+}
+.view-filters.sidebar .drawer-trigger .drawer-trigger-chevron {
+    margin-top: 9px
+}
+.view-filters.sidebar .drawer-trigger.active .drawer-trigger-chevron {
+    margin-top: 15px
+}
+.view-filters.sidebar .views-exposed-form .container-inline-date .form-item input,
+.view-filters.sidebar .views-exposed-form .container-inline-date .form-item select,
+.view-filters.sidebar .views-exposed-form .container-inline-date .form-item option,
+.view-filters.sidebar .views-exposed-form .container-inline-date div {
+    width: 100%
+}
+.view-filters.sidebar .drawer {
+    border-top: 0;
+    border-color: $charles-blue
+}
+.views-exposed-topbar .view-filters,
+.filter-wrapper {
+    padding-top: 20px
+}
+@media (min-width: 980px) {
+    .views-exposed-topbar .view-filters,
+    .filter-wrapper {
+        padding-top: 0
+    }
+}
+@media (min-width: 980px) {
+    .views-exposed-topbar .view-filters .drawer-trigger,
+    .filter-wrapper .drawer-trigger {
+        margin-top: 0
+    }
+}
+.views-exposed-topbar .view-filters .drawer,
+.filter-wrapper .drawer {
+    border-color: $charles-blue
+}
+@media (min-width: 980px) {
+    .views-exposed-topbar .view-filters .drawer,
+    .filter-wrapper .drawer {
+        position: absolute
+    }
+    .views-exposed-topbar .view-filters .dr-c,
+      .filter-wrapper .dr-c {
+          position: static
+      }
+    .views-exposed-topbar .view-filters .drawer.mobile-only,
+    .filter-wrapper .drawer.mobile-only {
+        padding: 20px;
+        position: relative
+    }
+}
+@media (min-width: 980px) {
+    .views-exposed-topbar .view-filters .views-exposed-widget.views-submit-button input[type="submit"],
+    .views-exposed-topbar .view-filters .views-exposed-widget.views-reset-button input[type="submit"] {
+        margin-top: 0
+    }
+}
+.view-filters .drawer-trigger,
+.filter-wrapper .drawer-trigger {
+    font-family: "Montserrat", sans-serif;
+    text-transform: uppercase;
+    line-height: 40px;
+    font-size: 12px;
+    line-height: 58.5px;
+    font-size: 0.66667rem;
+    line-height: 3.25rem
+}
+.view-filters .drawer-trigger.focus,
+.filter-wrapper .drawer-trigger.focus,
+.view-filters .drawer-trigger.active,
+.filter-wrapper .drawer-trigger.active {
+    color: $white;
+    background-color: $charles-blue;
+    border-color: $charles-blue
+}
+.view-filters .drawer-trigger.mobile-only,
+.filter-wrapper .drawer-trigger.mobile-only {
+    background-color: $optimistic-blue-dark
+}
+.view-filters .drawer,
+.filter-wrapper .drawer {
+    background-color: $white;
+    border-color: $grey-100
+}
+.view-filters .drawer-trigger {
+    background-color: $white;
+    border-color: $grey-100;
+    color: $optimistic-blue-dark
+
+    &:not(.active):hover, &:not(.active):focus{
+        background-color: $optimistic-blue-dark;
+        color: $white;
+    }
+}
+.view-filters .drawer-trigger.focus-active:hover {
+    background-color: $white;
+    border-color: $grey-100;
+    color: $optimistic-blue-dark;
+    pointer-events: none
+}
+.view-filters button.drawer-trigger{
+    width: 100%;
+    text-align: left;
+    font-weight: normal
+}
+
+.view-filters:hover {
+    color: $freedom-red-dark
+}
+.view-bos-news-landing .view-filters {
+    position: relative;
+    top: -50px;
+    background-color: $grey-000;
+    margin-top: 100px
+}
+@media (min-width: 980px) {
+    .view-public-notice-landing .b.views-exposed-topbar,
+    .view-public-notice-archive .b.views-exposed-topbar,
+    .view-metrolist-affordable-housing-page .b.views-exposed-topbar {
+        margin-top: -25px
+    }
+    .view-public-notice-landing .b-fv,
+    .view-public-notice-archive .b-fv,
+    .view-metrolist-affordable-housing-page .b-fv {
+        -ms-transform: translateY(50%);
+        transform: translateY(50%)
+    }
+}
+.view-public-notice-landing .b.views-exposed-topbar,
+.view-public-notice-archive .b.views-exposed-topbar,
+.view-metrolist-affordable-housing-page .b.views-exposed-topbar {
+    margin-top: 25px;
+    z-index: 1
+}
+.views-exposed-widget.views-submit-button input[type="submit"],
+.views-exposed-widget.views-reset-button input[type="submit"] {
+    margin-top: 20px;
+    height: 58px;
+    margin-right: 5px
+}
+.views-exposed-widget.views-reset-button {
+    padding-right: 0
+}
+.views-exposed-widget.views-reset-button input[type="submit"] {
+    width: 58px;
+    text-indent: -9999px;
+    overflow: hidden
+}
+@media (min-width: 980px) {
+    .views-exposed-topbar .view-filters .views-exposed-widget.views-submit-button input[type="submit"],
+    .views-exposed-topbar .view-filters .views-exposed-widget.views-reset-button input[type="submit"] {
+        margin-top: 0
+    }
+}
+.dr {
+    margin-bottom: 7px
+}
+
+
 .external-link a {
     background-image: url(../images/global/icons/external-link.svg);
     background-repeat: no-repeat;
