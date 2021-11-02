@@ -648,7 +648,7 @@ h1, h2, h3, h4, h5, h6 {
 .node-type-event .dl-d, 
 .node-place-profile .dl-d,
 .node-type-public-notice .dl-d {
-    padding-left: 70px    
+    padding-left: 0    
 }
 .post-contact .department-icon.sb-ic {
     border: none;
@@ -1453,7 +1453,7 @@ h1, h2, h3, h4, h5, h6 {
     margin-bottom: 20px;
     overflow: hidden;
     margin-left: -1px;
-    margin-top: -54px;
+    margin-top: 0;
     z-index: 0
 }
 @media (min-width: 480px) {
@@ -1524,9 +1524,33 @@ h1, h2, h3, h4, h5, h6 {
 .sb-b.sb-b-np {
     width: 100%    
 }
-.detail-item__label.sb-d ~ .detail-item__body.sb-d {
-    padding-left: 70px    
+.sb .dl-t {
+    width: 140px
 }
-.container .b-c {
-        
+.sb .dl-d {
+    padding-left: 0;
+    width: auto;
+    min-width: auto  
+}
+.sb-b .field-name-field-custom-hours-text {
+    padding-left: 35px    
+}
+.node-listing-page, .node-post {
+    position: relative;
+}
+
+@media (max-width: 979px) {
+    .person-profile-info-wrapper .g--4 {
+        order: 2
+    }
+    .person-profile-info-wrapper .g--8 {
+        order: 1
+    }
+    .department-info-wrapper .department-icon {
+        display: none
+    }
+}
+.iframe-component {
+    border: none;
+    width: 100%;
 }
