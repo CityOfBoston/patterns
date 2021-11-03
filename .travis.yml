@@ -22,7 +22,6 @@ before_script:
 script:
   - npm run build
   - npm run jest.ci
-  - npm run testcafe.ci
 after_script:
   - bash ./travis/percy.sh
 deploy:
