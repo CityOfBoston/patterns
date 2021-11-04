@@ -140,7 +140,6 @@ a:hover {
 }
 .button {
     font-size: 14px;
-    font-weight: 700;
     padding: 1rem
 }
 .divider,
@@ -290,6 +289,61 @@ sub {
         padding-left: 0;
         padding-right: 0
     }
+}
+.button-icon {
+    padding-right: 1.5em;
+    position: relative
+}
+.button-icon:after {
+    content: "";
+    display: inline-block;
+    width: 26px;
+    height: 26px;
+    background-image: url("../images/global/icons/document-icon.png");
+    background-position: center center;
+    background-repeat: no-repeat;
+    margin-left: 1.5em;
+    margin-bottom: -5px
+}
+button,
+input,
+optgroup,
+select,
+textarea {
+    box-sizing: border-box;
+    max-width: 100%;
+    color: inherit;
+    font: inherit;
+    margin: 0
+}
+button {
+    overflow: visible
+}
+button,
+select {
+    text-transform: none
+}
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+    border: 0;
+    padding: 0
+}
+button,
+input,
+optgroup,
+select,
+textarea {
+    box-sizing: border-box;
+    max-width: 100%;
+    color: inherit;
+    font: inherit;
+    margin: 0
+}
+input {
+    color: $charles-blue;
+    border: 3px solid;
+    padding: 5px 15px;
+    height: 65px
 }
 input::-webkit-input-placeholder {
     color: $grey-300;
@@ -648,7 +702,7 @@ h1, h2, h3, h4, h5, h6 {
 .node-type-event .dl-d, 
 .node-place-profile .dl-d,
 .node-type-public-notice .dl-d {
-    padding-left: 70px    
+    padding-left: 0    
 }
 .post-contact .department-icon.sb-ic {
     border: none;
@@ -1052,6 +1106,27 @@ h1, h2, h3, h4, h5, h6 {
 .filter-wrapper .paragraphs-item-3-column-w-image a.drawer-trigger.mobile-only:active {
     color: $white
 }
+.paragraphs-item-3-column-w-image .column-wrapper img {
+    border-radius: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+.paragraphs-item-3-column-w-image .cta-button .link-wrapper {
+    margin-bottom: 0
+}
+.paragraphs-item-3-column-w-image .cta-button a {
+    background-position-x: right;
+    color: $white;
+    display: block;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    padding-left: 0;
+    padding-right: 0;
+    background-image: none
+}
 @media (min-width: 980px) {
     .view-public-notice-landing .view-filters .drawer-wrapper,
     .view-public-notice-archive .view-filters .drawer-wrapper,
@@ -1380,6 +1455,11 @@ h1, h2, h3, h4, h5, h6 {
     margin-top: 25px;
     z-index: 1
 }
+.views-exposed-widget.views-submit-button,
+.views-exposed-widget.views-reset-button {
+    float: left;
+    padding-top: 0;
+}
 .views-exposed-widget.views-submit-button input[type="submit"],
 .views-exposed-widget.views-reset-button input[type="submit"] {
     margin-top: 20px;
@@ -1393,6 +1473,20 @@ h1, h2, h3, h4, h5, h6 {
     width: 58px;
     text-indent: -9999px;
     overflow: hidden
+}
+.views-exposed-widget.views-reset-button input[type="submit"] {
+    background-color: $charles-blue;
+    background-image: url(../images/global/icons/refresh.svg);
+    background-repeat: no-repeat;
+    background-position: center 13px;
+    background-size: 24px
+}
+.views-exposed-widget.views-reset-button input[type="submit"]:hover {
+    background-color: $freedom-red-dark
+}
+.views-exposed-widget.views-reset-button input[type="submit"]:hover,
+.views-exposed-widget.views-reset-button input[type="submit"]:focus {
+    background-color: $freedom-red-dark
 }
 @media (min-width: 980px) {
     .views-exposed-topbar .view-filters .views-exposed-widget.views-submit-button input[type="submit"],
@@ -1453,7 +1547,7 @@ h1, h2, h3, h4, h5, h6 {
     margin-bottom: 20px;
     overflow: hidden;
     margin-left: -1px;
-    margin-top: -54px;
+    margin-top: 0;
     z-index: 0
 }
 @media (min-width: 480px) {
@@ -1524,9 +1618,36 @@ h1, h2, h3, h4, h5, h6 {
 .sb-b.sb-b-np {
     width: 100%    
 }
-.detail-item__label.sb-d ~ .detail-item__body.sb-d {
-    padding-left: 70px    
+.sb .dl-t {
+    width: 140px
 }
-.container .b-c {
-        
+.sb .dl-d {
+    padding-left: 0;
+    width: auto;
+    min-width: auto  
+}
+.sb-b .field-name-field-custom-hours-text {
+    padding-left: 35px    
+}
+.sb .sb-b, .sb .sb-d {
+    width: auto    
+}
+.node-listing-page, .node-post {
+    position: relative;
+}
+
+@media (max-width: 979px) {
+    .person-profile-info-wrapper .g--4 {
+        order: 2
+    }
+    .person-profile-info-wrapper .g--8 {
+        order: 1
+    }
+    .department-info-wrapper .department-icon {
+        display: none
+    }
+}
+.iframe-component {
+    border: none;
+    width: 100%;
 }
