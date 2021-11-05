@@ -214,7 +214,41 @@ var {
 pre {
     overflow: auto
 }
-
+rticle dl,
+article menu,
+article ol,
+article ul {
+    margin: 8.97px 0px 39px;
+    margin: 0.49833rem 0rem 2.16667rem
+}
+article ol ol,
+article ol ul,
+article ul ol,
+article ul ul {
+    margin: 0
+}
+article dd {
+    margin: 0 0 0 36px
+}
+[dir="rtl"] article dd {
+    margin: 0 36px 0 0
+}
+article menu,
+article ol,
+article ul {
+    padding: 0 0 0 0;
+    list-style-position: inside
+}
+[dir="rtl"] article menu,
+[dir="rtl"] article ol,
+[dir="rtl"] article ul {
+    padding: 0 0 0 0
+}
+article ol {
+    counter-reset: section;
+    list-style-type: none;
+    color: $charles-blue
+}
 table {
     margin: 39px 0px;
     margin: 2.16667rem 0rem;
@@ -1619,23 +1653,33 @@ h1, h2, h3, h4, h5, h6 {
     width: 100%    
 }
 .sb .dl-t {
-    width: 140px
+    width: 25%;
+    margin-top: 4px
 }
 .sb .dl-d {
-    padding-left: 0;
-    width: auto;
-    min-width: auto  
+    padding-left: 35px;
+    margin-top: 4px;
+    width: 75% 
 }
 .sb-b .field-name-field-custom-hours-text {
     padding-left: 35px    
 }
-.sb .sb-b, .sb .sb-d {
-    width: auto    
+.sb-b p + ul  {
+    margin-top: 1.6667rem    
+}
+.oh-wrapper.sb-b {
+    width: 80%;
+    font-size: 16px
 }
 .node-listing-page, .node-post {
     position: relative;
 }
-
+.detail-item__body--tertiary {
+    font-style: italic;
+    font-family: Lora,serif;
+    color: #58585b;
+    text-transform: none
+}
 @media (max-width: 979px) {
     .person-profile-info-wrapper .g--4 {
         order: 2
@@ -1650,4 +1694,28 @@ h1, h2, h3, h4, h5, h6 {
 .iframe-component {
     border: none;
     width: 100%;
+}
+.supporting-lg,
+.paragraphs-item-group-of-links-grid .links-grid-left-rail .links-grid-field-subheader,
+.paragraphs-item-group-of-links-list .links-grid-left-rail .links-grid-field-subheader,
+.view-transactions-main-transactions .links-grid-left-rail .links-grid-field-subheader,
+p.big.intro-text,
+.supporting-sm,
+.paragraphs-item-feedback.component-section .poll-question,
+.node-advpoll .poll-question,
+.node-type-topic-page .topic-intro-text-content {
+    font-weight: 400;
+    font-style: italic;
+    line-height: inherit
+}
+.supporting-lg,
+.paragraphs-item-group-of-links-grid .links-grid-left-rail .links-grid-field-subheader,
+.paragraphs-item-group-of-links-list .links-grid-left-rail .links-grid-field-subheader,
+.view-transactions-main-transactions .links-grid-left-rail .links-grid-field-subheader,
+p.big.intro-text {
+    font-size: 30px;
+    line-height: 52px;
+    font-size: 1.66667rem;
+    line-height: 2.88889rem;
+    color: $charles-blue
 }
