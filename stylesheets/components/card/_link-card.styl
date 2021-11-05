@@ -83,6 +83,14 @@
 
       &:last-child
         margin: 0
+  
+  .subheader .title 
+    font-size: 40px
+    margin: 0
+    text-transform: inherit
+    font-weight: 400
+    line-height: 2.8rem
+    letter-spacing: 0.5px
 
 // handle hover interference with focus
 .lcd.focus-active:hover
@@ -112,34 +120,26 @@
 .flex-container
   display: flex
 
+  .subheader
+    padding-top: 2rem
+
+    @media $media-small-max
+      width: 100%
+
+    @media $media-small
+      width: 100%
+      padding-right: 2rem
+
+    @media $media-medium
+      width: 25%
+      padding-right: 2rem
+
   @media $media-small-max
     flex-direction: column    
 
 
 .description
   line-height: 2em
-
-.subheader
-  padding-top: 2rem
-
-  @media $media-small-max
-    width: 100%
-
-  @media $media-small
-    width: 100%
-    padding-right: 2rem
-
-  @media $media-medium
-    width: 25%
-    padding-right: 2rem
-
-.subheader .title 
-  font-size: 40px
-  margin: 0
-  text-transform: inherit
-  font-weight: 400
-  line-height: 2.8rem
-  letter-spacing: 0.5px
 
 .download .lcd-im
     background-image: url(/images/global/icons/icon-document.svg)
