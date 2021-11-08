@@ -21,7 +21,7 @@
     color: $optimistic-blue-dark
     text-transform: none
     letter-spacing: .4px
-    margin: 5px 0px 5px
+    margin: 0px
     line-height: 35px;
     
     a
@@ -48,7 +48,8 @@
 
     &--left
       border: 0
-      padding-left: 20px
+      padding-left: 2.2rem
+      padding-top: 1rem
 
     &--right
       display: none
@@ -65,23 +66,23 @@
         display: block
     
     &--left, &--right
-      padding-top: 20px
       @media $media-small-max
         padding: 10px 15px
 
   .optional-news-layout
     display: flex
     flex-direction: columns
+    padding-top: 1rem
 
     .icon-wrapper
       display: none
       min-width: 56px
+      margin-top: 0.3rem
 
       @media $media-xlarge
         display: block
       
       .di
-        margin-top: 18px
         margin-left: 20px
         margin-right: 20px
 
@@ -91,4 +92,6 @@
       font-style: normal
       font-family: "Lora", serif
       line-height: 31.2px
-      margin-top: 1em
+
+      p
+        margin: 0 0 1rem 0;
