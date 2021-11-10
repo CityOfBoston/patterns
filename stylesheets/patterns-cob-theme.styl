@@ -460,7 +460,7 @@ label {
     font-family: "Montserrat", sans-serif;
     text-transform: uppercase;
     font-weight: 400;
-    font-size: 13.5px;
+    font-size: responsive 14px 18px;
     line-height: 3.9px;
     font-size: 0.75rem;
     line-height: 0.21667rem;
@@ -889,9 +889,6 @@ h1, h2, h3, h4, h5, h6 {
 .event-details .description {
     margin-top: 40px
 }
-.drawer-trigger {
-    cursor: pointer;
-}
 @media (min-width: 980px) {
     .view-filters .drawer-trigger.mobile-only,
     .filter-wrapper .drawer-trigger.mobile-only {
@@ -908,22 +905,8 @@ h1, h2, h3, h4, h5, h6 {
     left: 0
     margin-top: -3px;   
 }
-.drawer.mobile-only {
-    display: none;
-    position: relative;
-    border: none;
-    overflow: visible;
-    border: 0;
-    padding: 0
-}
 .drawer {
     display: none
-}
-@media (min-width: 840px) {
-    .view-filters .drawer.mobile-only,
-    .filter-wrapper .drawer.mobile-only {
-        display: block
-    }
 }
 @media (min-width: 980px) {
     .view-filters .drawer.mobile-only,
@@ -935,12 +918,21 @@ h1, h2, h3, h4, h5, h6 {
 .filter-wrapper .drawer.mobile-only {
     background-color: transparent
 }
+
+.drawer {
+    display: none
+}
+@media (min-width: 840px) {
+    .drawer.mobile-only {
+        display: block
+    }
+}
 .drawer-trigger {
     cursor: pointer
 }
 .drawer-trigger-chevron {
     background: url("../images/global/icons/subnav-toggle.svg") center center no-repeat transparent;
-    height: 20px;
+    height: 14px;
     width: 20px;
     margin: 4px;
     -ms-transform: rotate(270deg);
@@ -964,7 +956,7 @@ h1, h2, h3, h4, h5, h6 {
 .filter-wrapper .drawer-trigger.active .drawer-trigger-chevron {
     -ms-transform: rotate(180deg);    
     transform: rotate(180deg);        
-    height: 20px;
+    height: 14px;
     margin-top: 20px
     background-image: url(../images/global/icons/chevron-down.svg);               
 }
@@ -972,26 +964,31 @@ h1, h2, h3, h4, h5, h6 {
 .filter-wrapper .drawer-trigger.mobile-only {
     border: 0;
     display: block;
-    padding-right: 4px
+    padding-right: 4px;
+    width: 100%
 }
 .view-filters .drawer-trigger.mobile-only .drawer-trigger-chevron,
 .filter-wrapper .drawer-trigger.mobile-only .drawer-trigger-chevron {
     -ms-transform: rotate(0deg) translateY(-50%);
-    transform: rotate(0deg) translateY(-50%)
+    transform: rotate(0deg) translateY(-50%);
+    position: relative;
+    top: 6px
 }
 .view-filters .drawer-trigger.mobile-only.active .drawer-trigger-chevron,
 .filter-wrapper .drawer-trigger.mobile-only.active .drawer-trigger-chevron {
     margin-top: 0;
     -ms-transform: rotate(90deg) translateX(-70%);
-    transform: rotate(90deg) translateX(-70%)
+    transform: rotate(90deg) translateX(-70%);
+    position: relative;
+    top: 15px
 }
 .drawer-trigger.mobile-only .drawer-trigger-chevron {
-    height: 20px;
+    height: 14px;
     margin-top: 0
 }
 .view-filters .drawer-trigger.mobile-only .drawer-trigger-chevron,
 .filter-wrapper .drawer-trigger.mobile-only .drawer-trigger-chevron {
-    background-image: url(../img/chevron.svg)
+    background-image: url(../images/global/icons/chevron.svg)
 }
 .view-filters .drawer-trigger.mobile-only,
 .filter-wrapper .drawer-trigger.mobile-only {
@@ -1074,7 +1071,6 @@ h1, h2, h3, h4, h5, h6 {
     color: $grey-300;
     background-color: #d2d2d2
 }
-.view-bos-news-landing .view-filters,
 .view-places .view-filters,
 .view-program-initiatives .view-filters {
     max-width: 66.667rem;
@@ -1715,4 +1711,32 @@ p.big.intro-text {
     font-size: 1.66667rem;
     line-height: 2.88889rem;
     color: $charles-blue
+}
+.drawer-trigger.mobile-only {
+    display: none
+}
+.drawer-trigger.mobile-only .drawer-trigger-chevron {
+    height: 14px;
+    margin-top: 0
+}
+.drawer.mobile-only {
+    display: none;
+    position: relative;
+    border: none;
+    overflow: visible;
+    border: 0;
+    padding: 0
+}
+@media (min-width: 980px) {
+    .drawer.mobile-only {
+        display: block
+    }
+}
+.red {
+    color: $freedom-red-dark;
+    line-height: 1rem
+}
+.node-place-profile {
+    position: relative;
+    z-index: 2    
 }
