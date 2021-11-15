@@ -1740,3 +1740,24 @@ p.big.intro-text {
     position: relative;
     z-index: 2    
 }
+.news-item-default-image {
+    background-color: $charles-blue;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 100%;
+    width: auto
+}
+.news-item-default-image span {
+    display: none
+}
+.news-item-news .news-item-default-image,
+.news-item-post .news-item-default-image {
+    background-image: url("../images/public/icons/news.svg")
+}
+.news-item-event .news-item-default-image {
+    background-image: url("../images/public/icons/calendar.svg")
+}
+.news-item-public_notice .news-item-default-image {
+    background-image: url("../images/public/icons/public-notice.svg")
+}
