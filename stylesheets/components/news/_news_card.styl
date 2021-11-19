@@ -21,6 +21,9 @@
     max-width: 47%
     margin-right: 1rem
 
+    .g
+      display: inline-block
+
   @media $media-medium-max
     width: 100%;
     max-width: 100%;
@@ -28,7 +31,7 @@
     height: 100%
 
     .g
-      display: block
+      display: inline-block
 
   h3.title
     font-size:  responsive 14px 18px
@@ -111,6 +114,7 @@
         display: none
     
     &--left, &--right
+      padding-top: 20px
       @media $media-small-max
         padding: 10px 15px
 
