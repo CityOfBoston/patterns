@@ -13,35 +13,73 @@
 .news-card
   position relative
   background-color: $white
+  max-height: 190px
+
+  @media $media-xlarge-max
+    max-height: 650px
+    width: 47%
+    max-width: 47%
+    margin-right: 1rem
+
+  @media $media-medium-max
+    width: 100%;
+    max-width: 100%;
+    display: inline-block
+    height: 100%
+
+    .g
+      display: block
 
   h3.title
-    font-size: 20px;
+    font-size:  responsive 14px 18px
     font-style: italic
     font-family: "Lora", serif
     color: $optimistic-blue-dark
     text-transform: none
     letter-spacing: .4px
-    margin: 5px 0px 5px
-    line-height: 35px;
+    margin: 0
+    line-height: 30px
+    font-weight: 400
+
+    @media $media-xlarge-max
+      font-size:  responsive 18px 24px 
     
     a
       display: inline-block
+      text-transform: capitalize
 
   &--thumb-wrapper
     display: flex
 
     img
       min-width: 190px
+
+      @media $media-xlarge-max
+        min-width: 100%
+        max-height: 230px
+        height: 230px
+        width: 100%
+        object-fit: cover
+        vertical-align: top
   
   .news-column
     padding-top: 0px
 
+    @media $media-xlarge-max
+      width: 100%
+      max-width: 100%
+
     .thumb-and-title
       display: flex
-      justify-content: space-between;
+      justify-content: space-between
+
+      @media $media-xlarge-max
+        width: 100%
+        max-width: 100%
+        display: block
 
       .thumb-and-flag
-        margin-right: 10
+        //margin-right: 10px
 
       @media $media-small-max
         flex-direction: column
@@ -49,11 +87,16 @@
     &--left
       border: 0
       padding-left: 20px
+      padding-bottom: 20px
+
+      @media $media-xlarge-max
+        height: 100%
+        min-height: 230px
+        padding-right: 20px
 
     &--right
-      display: none
+      display: inline-flex
       padding-left: 1.5em
-      // padding-right: 1.5em
       border-top: 0
       border-right: 0
       border-bottom: 0
@@ -63,6 +106,9 @@
 
       @media $media-large
         display: block
+      
+      @media $media-xlarge-max
+        display: none
     
     &--left, &--right
       padding-top: 20px
@@ -71,24 +117,30 @@
 
   .optional-news-layout
     display: flex
-    flex-direction: columns
+    flex-direction: row
+    margin-right: 0
 
     .icon-wrapper
-      display: none
+      display: inline-flex
       min-width: 56px
+      margin-right: 0
 
       @media $media-xlarge
         display: block
       
       .di
-        margin-top: 18px
-        margin-left: 20px
-        margin-right: 20px
+        margin: 0
+        display: inline-flex
 
     .intro-text
       color: $body-text
-      font-size: 18px
+      font-size: 16px
       font-style: normal
       font-family: "Lora", serif
-      line-height: 31.2px
-      margin-top: 1em
+      line-height: 26px
+      margin: 0 10px 0 0
+
+      p 
+        margin: 0
+.news-card.g--12:nth-child(1n)
+  margin-right: 1rem

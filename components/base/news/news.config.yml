@@ -15,3 +15,11 @@ context:
       image: 
         url: https://patterns.boston.gov/images/public/icons/news.svg 
       position: Parks and Recreation
+    - index: 2
+      title: Filers of Food Sovereignty and Community Grants announced
+      description: $2.2 million in funding has been awarded to increase community-led food access solutions, provide...
+      date: Dec 14
+      href: https://d8-uat.boston.gov/news/city-boston-kicks-free-summer-fitness-series 
+      image: 
+        url: https://patterns.boston.gov/images/public/icons/news.svg 
+      position: Digital Department
