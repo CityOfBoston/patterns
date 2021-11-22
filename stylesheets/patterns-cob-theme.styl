@@ -460,7 +460,7 @@ label {
     font-family: "Montserrat", sans-serif;
     text-transform: uppercase;
     font-weight: 400;
-    font-size: responsive 14px 18px;
+    font-size: responsive 13px 14px;
     line-height: 3.9px;
     font-size: 0.75rem;
     line-height: 0.21667rem;
@@ -1838,3 +1838,10 @@ What: Overrides to some drupal injected tags.
     }
 
 }
+@media (min-width: 768px) {
+  .news-item-listing p.title {
+    height: 172px;
+    overflow: hidden;
+  }
+}
+
