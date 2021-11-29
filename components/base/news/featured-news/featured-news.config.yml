@@ -1,0 +1,17 @@
+title: Featured News
+handle: featured_news
+status: ready
+preview: '@centered-grey'
+context:
+  header:
+    title: Featured News
+    contact: false
+  news:
+    - index: 1
+      title: Grantees of Food Sovereignty and Community Grants announced
+      description: $2.2 million in funding has been awarded to increase community-led food access solutions, provide...
+      date: Oct 14
+      href: https://d8-uat.boston.gov/news/city-boston-kicks-free-summer-fitness-series 
+      image: 
+        url: https://patterns.boston.gov/images/public/icons/news.svg 
+      position: Parks and Recreation
