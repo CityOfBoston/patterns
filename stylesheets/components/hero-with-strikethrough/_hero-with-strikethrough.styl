@@ -38,6 +38,10 @@
   padding-bottom: 4rem
   border-bottom: 8px solid black
   overflow: hidden
+  min-height: 450px
+
+  @media $media-medium-max
+    min-height: 150px
 
   &--img
     position: absolute
@@ -162,16 +166,22 @@
     
     @media $media-small-max
       width: 100%
+      left: 0
 
     @media $media-medium
       width: 740px
       border-left: 8px solid black
       border-right: 8px solid black
+      background-color: $white
 
   .topic-intro-text-content 
     position: relative
     padding: 50px 50px 0
     margin-bottom: 0
+
+    @media $media-medium-max
+      padding: 25px 50px 0
+      background-color: $white
 
   .intro-text
     margin-bottom: 25px
