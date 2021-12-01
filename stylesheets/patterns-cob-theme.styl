@@ -468,14 +468,16 @@ label {
     margin: 1.625rem 0rem 0.54167rem 0rem;
     letter-spacing: 1px
 }
-.squiggle-border-bottom {
-    background: url("../images/squiggle.svg") repeat-x center bottom transparent;
-    background-size: 383px 30px;
-    margin-bottom: 25px
-}
 .squiggle-border-top {
     background: url("../images/squiggle.svg") repeat-x center top transparent;
     background-size: 383px 30px
+}
+.squiggle-border-bottom,
+.paragraphs-item-text .entity-paragraphs-item,
+.dr-c .entity-paragraphs-item:not(:last-child) {
+    background: url("../images/squiggle.svg") repeat-x center bottom transparent;
+    background-size: 383px 30px;
+    margin-bottom: 25px
 }
 .supporting-text {
     font-weight: 400;
@@ -593,11 +595,17 @@ h6 {
     margin-bottom: 1.625rem;
     letter-spacing: 1px
 }
-h1, h2, h3, h4, h5, h6 {
+h1, h2 {
     font-family: "Montserrat", sans-serif;
     color: $charles-blue;
     text-transform: uppercase;
     font-weight: 700;
+}
+h3, h4, h5, h6 {
+    font-family: "Montserrat", sans-serif;
+    color: $charles-blue;
+    text-transform: uppercase;
+    font-weight: 400;
 }
 .field-three-col-title h5 {
     color:$white;
@@ -1636,8 +1644,8 @@ h1, h2, h3, h4, h5, h6 {
         min-width: 100%
     }
 }
-.node-topic-page .intro-content + .b-c {
-    padding-top: 0    
+.node-topic-page .intro-content + .p-b700 {
+    margin-top: -50px    
 }
 .sb-b.sb-b-np address {
     margin-top: 1.625rem;
@@ -1862,3 +1870,10 @@ What: Overrides to some drupal injected tags.
     margin: 0;
     font-size: 28px
 }
+.sb-b .button {
+    margin-bottom: 20px    
+}
+h3.t--intro {
+    text-transform: capitalize    
+}
+
