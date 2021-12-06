@@ -188,7 +188,8 @@ address {
     line-height: 1.3em;
     text-indent: 0;
     text-transform: uppercase;
-    font-family: "Montserrat", sans-serif
+    font-family: "Montserrat", sans-serif;
+    color: $charles-blue
 }
 figure {
     margin: 0px 0px 39px;
@@ -477,7 +478,16 @@ label {
 .dr-c .entity-paragraphs-item:not(:last-child) {
     background: url("../images/squiggle.svg") repeat-x center bottom transparent;
     background-size: 383px 30px;
-    margin-bottom: 25px
+    margin-bottom: 25px;
+    padding-bottom: 3rem
+}
+
+.dr .squiggle-border-bottom .supporting-text {
+    padding-bottom: 1rem    
+}
+.dr .squiggle-border-bottom {
+    background: none;
+    background-position: left top;  
 }
 .supporting-text {
     font-weight: 400;
@@ -1371,6 +1381,13 @@ h3, h4, h5, h6 {
 .view-filters.sidebar .views-exposed-form .container-inline-date div {
     width: 100%
 }
+.views-exposed-form .form-item, .views-exposed-form .form-submit {
+  margin-top: 0;
+  margin-bottom: 0
+}
+.views-exposed-form label {
+  font-weight: bold
+}
 .view-filters.sidebar .drawer {
     border-top: 0;
     border-color: $charles-blue
@@ -1881,4 +1898,7 @@ article .paragraphs-item-3-column-w-image ul li {
 }
 .program-info-wrapper {
     position: relative    
+}
+.bos-newsletter .fs-c--i .txt ~ .txt {
+  padding-right: 0
 }
