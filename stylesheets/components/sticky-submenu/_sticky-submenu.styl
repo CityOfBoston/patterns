@@ -103,15 +103,18 @@
     .ssm li:hover a:link,
     .ssm li:hover a:visited,
     .ssm li:hover a:hover,
-    .ssm li:hover a:active,
-    .ssm.ssm__left.sticky li:hover a,
-    .ssm.ssm__left.sticky li:hover a:link,
-    .ssm.ssm__left.sticky li:hover a:visited,
-    .ssm.ssm__left.sticky li:hover a:hover,
-    .ssm.ssm__left.sticky li:hover a:active 
+    .ssm li:hover a:active
       color: $freedom-red-dark
     
+    .ssm.ssm__left.sticky li:hover a,
+    .ssm.ssm__left.sticky li:hover a:link,
+    .ssm.ssm__left.sticky li:hover a:visited 
+      color: $freedom-red-light
 
+    .ssm.ssm__left.sticky li:hover a:hover,
+    .ssm.ssm__left.sticky li:hover a:active 
+      color: $freedom-red-light
+    
 .ssm li:before,
 .ssm.ssm__left.sticky li:before 
   content: none
@@ -176,8 +179,8 @@
 @media (min-width: 980px) 
   .ssm.sticky a.is-active:link,
   .ssm.sticky a.is-active:visited 
-    color: $freedom-red-dark
-    border-color: $freedom-red-dark
+    color: $freedom-red-light
+    border-color: $freedom-red-light
     
   .ssm.sticky a:link,
   .ssm.sticky a:visited 
@@ -185,7 +188,7 @@
     
   .ssm.sticky a:hover,
   .ssm.sticky a:active .ssm.sticky a:focus 
-    color: $freedom-red-dark
+    color: $freedom-red-light
     
 
 .ssm-anchor 
