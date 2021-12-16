@@ -481,9 +481,8 @@ label {
     margin-bottom: 25px;
     padding-bottom: 3rem
 }
-
 .dr .squiggle-border-bottom .supporting-text {
-    padding-bottom: 1rem    
+    padding-bottom: 3rem
 }
 .dr .squiggle-border-bottom {
     background: none;
@@ -499,6 +498,9 @@ label {
     line-height: 30px;
     font-size: 1rem;
     line-height: 1.66667rem
+}
+.supporting-text.squiggle-border-bottom {
+    padding-bottom: 2rem
 }
 @media (min-width: 980px) {
     .supporting-text {
@@ -806,7 +808,7 @@ h3, h4, h5, h6 {
 }
 .node-person-profile .person-profile-bio.squiggle-border-top {
     margin-top: 20px;
-    padding-top: 20px
+    padding-top: 40px
 }
 .node-listing-page .squiggle-border-bottom {
     background: none;
@@ -1943,6 +1945,9 @@ article .paragraphs-item-3-column-w-image ul li {
         max-width: 64.66%
     }
 }
+.breadcrumb {
+  margin-top: 3rem;
+}
 @media (max-width: 840px) {
     .paragraphs-item-text-two-column.col_one_one_third .field-name-field-left-column,
     .paragraphs-item-text-two-column.col_one_one_third .field-name-field-right-column {
@@ -1956,4 +1961,25 @@ article .paragraphs-item-3-column-w-image ul li {
         flex-basis: 100%;
         max-width: 100%
     }
+    .breadcrumb {
+        margin-top:0
+    }
 }
+@media (max-width: 979px) {
+    .node-post .g--8 {
+        order:2
+    }
+    .node-post .g--4 {
+        order:1    
+    }
+}
+.b--b a:link, .b--b .fyi-l:link {
+    color: $optimistic-blue-light
+}
+.b--b .sh-contact a, .b--b .sh-contact a:link, .b--b .sh-contact a:visited {
+    color: $freedom-red-light
+}
+.b--b .dr-ql-lwa--w:hover, .b--b a:hover {
+    color: $freedom-red-light
+}
+
