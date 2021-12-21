@@ -184,12 +184,16 @@ blockquote footer:before {
     content: "- "
 }
 address {
-    font-style: normal;
-    line-height: 1.3em;
     text-indent: 0;
     text-transform: uppercase;
     font-family: "Montserrat", sans-serif;
-    color: $charles-blue
+    color: $charles-blue;
+    margin-top: 2.16667rem;
+    margin-bottom: .475rem;
+    font-size: 0.88889rem;
+    line-height: 1.22222rem;
+    letter-spacing: 1px;
+    font-style: normal
 }
 figure {
     margin: 0px 0px 39px;
@@ -249,6 +253,23 @@ article ol {
     counter-reset: section;
     list-style-type: none;
     color: $charles-blue
+}
+article ol>li:before {
+    border: 3px solid;
+    border-radius: 100%;
+    counter-increment: section;
+    content: counters(section, ".") " ";
+    display: inline-block;
+    height: 40px;
+    line-height: 40px;
+    margin: 9.75px 0px 0px 0px;
+    margin: 0.54167rem 0rem 0rem 0rem;
+    text-align: center;
+    width: 40px;
+    font-family: "Montserrat", sans-serif;
+    text-indent: 0;
+    margin-left: -55px;
+    margin-right: 5px
 }
 table {
     margin: 39px 0px;
@@ -582,9 +603,9 @@ h4 {
     margin-top: 1.625rem;
     margin-bottom: 29.25px;
     margin-bottom: 1.625rem;
-    letter-spacing: 1px
+    letter-spacing: 1px;
 }
-h5, address {
+h5 {
     font-size: 16px;
     line-height: 22px;
     font-size: 0.88889rem;
@@ -1682,7 +1703,12 @@ h3, h4, h5, h6 {
 .sb .dl-d {
     padding-left: 35px;
     margin-top: 4px;
-    width: 75% 
+    width: 75%;
+    min-width: 120px
+}
+.dl-d.p-l000 {
+    padding-left: 0;
+    width: 100%
 }
 .sb-b p + ul  {
     margin-top: 1.6667rem    
@@ -1982,4 +2008,6 @@ article .paragraphs-item-3-column-w-image ul li {
 .b--b a:hover:not(.lwa--w, .lwa--w:link, .lwa--w:visited, .dr-ql-lwa--w, .dr-ql-lwa--w:link, .dr-ql-lwa--w:visited) {
     color: $freedom-red-light
 }
-
+.paragraphs-item-text-two-column.col_two_one_third .field-name-field-right-column address {
+    margin-top: 0;    
+}
