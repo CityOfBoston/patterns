@@ -11,6 +11,7 @@ branches:
     - production
 install:
   - npm install
+  - gem install faraday -v 1.8.0
   - gem install percy-cli
 before_script:
   - export TZ=America/New_York
