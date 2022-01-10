@@ -4,7 +4,7 @@ status: ready
 context:
   links:
     - name: Mayor Martin J Walsh
-      href: https://www.boston.gov/departments/mayors-office/martin-j-walsh
+      href: https://www.boston.gov/departments/mayors-office
     - name: Privacy Policy
       href: https://www.boston.gov/copyright/privacyandsecurity.asp
     - name: Careers

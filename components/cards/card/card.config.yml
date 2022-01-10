@@ -40,9 +40,9 @@ variants:
         - index: 1
           image:
             url: https://patterns.boston.gov/assets/images/fleet/allston2.jpg
-            title: 'Kim Janey'
+            title: 'Michelle Wu'
           href: #
-          title: 'Kim Janey'
+          title: 'Michelle Wu'
           subtitle: 'City of Boston'
           content: 'Mayor'
         - index: 2
