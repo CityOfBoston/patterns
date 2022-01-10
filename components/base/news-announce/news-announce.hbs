@@ -1,0 +1,65 @@
+<div class="b b--fw">
+	<div class="b-c">
+		{{> @section_header }}
+		<div class="g">
+			{{#each news as |new|}}
+			<div class="g--6 g--6--xxxl m-t500">
+				<a
+          href="{{new.href}}"
+          class="item-link n--a"
+          title="{{new.title}}"
+          aria-label="{{new.title}}"
+        >
+					<div class="n--a-news-item-wrapper">
+						<svg
+              class="svg-date-flag n--a-date-flag"
+              id="Layer_1"
+              data-name="Layer 1"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 34.08 44.31"
+            >
+							<title>{{new.date}}</title>
+							<path
+                d="M32.26,42.16l-15.3-7-15.3,7v-40h30.6Z"
+                fill="#ffffff"
+                stroke="#ECECEC"
+								stroke-miterlimit="10"
+              />
+						</svg>
+
+						<p
+              class="svg-date-flag n--a-date-flag-text date-flag-text"
+            >
+              {{new.date}}
+            </p>
+						
+            <div class="g">
+							<div class="g--5">
+								<div class="n--a-thumb-wrapper">
+									<img
+                    src="{{new.image.url}}"
+                    alt="{{new.title}}"
+                    typeof="foaf:Image"
+                  />
+								</div>
+							</div>
+
+							<div class="g--7">
+								<div class="n--a-text-wrapper">
+									<h3 class="n--a-title">
+                    <span class="visually-hidden">{{new.title}}</span>
+                  </h3>
+                  
+									<div class="n--a-department-title">
+                    {{new.position}}
+                  </div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</a>
+			</div>
+			{{/each}}
+		</div>
+	</div>
+</div>

@@ -1,0 +1,140 @@
+/*
+/*
+
+   RESOURCE CARD: ICON
+
+   Base:
+    cd-i
+
+   Elements:
+    t = title
+    b = body
+
+   Modifier:
+    None Yet
+
+ */
+
+.cdi
+  display: block
+  background-color: $optimistic-blue-light
+  text-decoration: none
+  font-family: $serif
+  min-height: 200px
+  height: 350px
+  border: 3px solid $grey-000
+
+  &:hover, &:focus-within
+    .cdi-d
+      color: $white
+
+    .cdi-ic
+      background-color: $white
+
+    .cdi-c
+      background-color: $optimistic-blue-light
+
+  &-ic
+    height: 50%
+    padding: $sizing-700 
+    background-position: center
+    background-size: 15rem
+    background-repeat: no-repeat
+
+  &-c
+    height: 50%
+    padding: $sizing-700
+    background-color: $grey-000
+
+  &-t
+    font-family: Montserrat,Arial,sans-serif
+    font-weight: 700
+    text-transform: uppercase
+    color: $black
+    font-size: 1rem
+    letter-spacing: 0
+
+  &-d
+    color: $body-text
+    font-size: responsive 15px 18px
+    font-range: 480px 1440px
+    line-height: $line-height-300
+    margin-top: $sizing-100
+    margin-bottom: $sizing-500
+
+    &--mt0
+      margin-top: 0
+
+    p
+      margin: 0 0 1rem
+
+      &:last-child
+        margin: 0
+
+  &--plain
+    &:hover, &:focus-within
+      background-color: $white
+      .cdi-t
+        color: $charles-blue
+      .cdi-d
+        color: $body-text
+
+    .cdi-t
+      color: $charles-blue
+
+  &--e[href*="//"]:not([href*="www.boston.gov"])
+    position: relative
+
+    &:after
+      content: ''
+      height: 40px
+      position: absolute
+      top: 0
+      right: 1rem
+      z-index: 1
+
+    &:before
+      content: ''
+      background-repeat: no-repeat
+      background-image: url(../images/global/icons/external-link-white.svg)
+      position: absolute
+      top: 0
+      right: 1rem
+      transform: translate(-8px, 11px)
+      z-index: 2
+      height: 20px
+      width: 20px
+
+// handle hover interference with focus
+.cdi.focus-active:hover
+  pointer-events: none
+  background-color: $white
+
+  .cdi-t
+    color: $optimistic-blue-dark
+
+  .cdi-d
+    color: $body-text
+
+  .cdi-ic
+    background-color: $optimistic-blue-light
+
+.b--w
+  .cdi.focus-active
+
+    &:hover
+      border-color: #e0e0e0
+
+      .cdi-c
+        border-color: #e0e0e0
+
+.cdi.focus-active:focus-within
+  pointer-events: auto
+  background-color: $optimistic-blue-light
+
+  .cdi-t, .cdi-d
+    color: $white
+
+  .cdi-ic
+    background-color: $blended-optimistic-blue
+    background-blend-mode: multiply

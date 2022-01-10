@@ -1,0 +1,21 @@
+title: Resource Card 3
+handle: resource-3
+status: ready
+preview: '@centered'
+context:
+  resource-3-cards:
+    - description: Your At-Large City Councilors
+      image: https://patterns.boston.gov/images/global/icons/experiential/podium.svg
+      intro: 'The four at-large councilors that represent the entire city:'
+      person1:
+        href: https://www.boston.gov/departments/city-council/annissa-essaibi-george
+        name: Annissa Essaibi George
+      person2: 
+        href: https://www.boston.gov/departments/city-council/michael-flaherty
+        name: Michael Flaherty
+      person3: 
+        href: https://www.boston.gov/departments/city-council/julia-mejia
+        name: Julia Mejia
+      person4: 
+        href: https://www.boston.gov/departments/city-council/michelle-wu
+        name: Michelle Wu

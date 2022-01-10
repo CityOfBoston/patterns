@@ -1,0 +1,76 @@
+title: Grid of Resource Cards
+handle: grid_resource_cards
+status: ready
+preview: '@centered'
+context:
+  header:
+    title: Grid of Resource Cards
+    contact: false
+  resource-2-cards:
+    - index: 1
+      description: Your Mayor
+      href: https://www.boston.gov
+      image: https://www.boston.gov/sites/default/files/styles/person_profile_card_173x173_/public/img/library/photos/2021/03/new-janey-headshot.jpg
+      name: Kim Janey
+      row1: Mayor
+      row2: Learn more about
+      link:
+        href: https://www.boston.gov/departments/mayors-office
+        text: Boston's Mayor
+      row2-cont: '.'
+    - index: 2
+      description: Your Neighborhood Contact
+      href: https://www.boston.gov
+      image: https://www.boston.gov/sites/default/files/styles/person_photo_profile_large_360x360_/public/img/library/photos/2021/07/John%20Romano%20North%20End%2C%20West%20End%2C%20Waterfront%201.jpg?itok=E0rvE9qq
+      name: John Romano
+      row1: 'Contact: North End, Waterfront, West End'
+      row2: Learn more about 
+      link:
+        href: https://www.boston.gov/departments/neighborhood-services
+        text: Neighborhood Services
+      row2-cont: '.'
+    - index: 3
+      description: Your City Councilor
+      href: https://www.boston.gov
+      image: https://boston.maps.arcgis.com/sharing/rest/content/items/0649c495aa6e40679679860d11692606/data
+      name: Ed Flynn
+      row1: City Councilor, District 2
+      row2: To learn more about Boston's City Council and view all members, visit the 
+      link:
+        href: https://www.boston.gov/departments/city-council#city-council-members
+        text: City Council page
+      row2-cont: '.'
+  resource-3-cards:
+    - description: Your At-Large City Councilors
+      image: https://patterns.boston.gov/images/global/icons/experiential/podium.svg
+      intro: 'The four at-large councilors that represent the entire city:'
+      person1:
+        href: https://www.boston.gov/departments/city-council/annissa-essaibi-george
+        name: Annissa Essaibi George
+      person2: 
+        href: https://www.boston.gov/departments/city-council/michael-flaherty
+        name: Michael Flaherty
+      person3: 
+        href: https://www.boston.gov/departments/city-council/julia-mejia
+        name: Julia Mejia
+      person4: 
+        href: https://www.boston.gov/departments/city-council/michelle-wu
+        name: Michelle Wu
+  resource-1-cards:
+    - index: 1
+      description: Your Polling Information
+      image: https://assets.boston.gov/icons/experiential_icons/voting_ballot.svg
+      ward: 3
+      precinct: 6
+  resource-4-cards:
+    - description: State and Federal Representatives
+      image: https://patterns.boston.gov/images/global/icons/experiential/meet-archaeologist.svg
+      text1: For more information on your State and Federal representatives, visit the 
+      link1:
+        href: https://malegislature.gov/search/findmylegislator
+        text: Find My Legislator tool
+      text2: 'on'
+      link2:
+        href: https://www.mass.gov
+        text: Mass.gov
+      text3: '.'

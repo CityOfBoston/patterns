@@ -159,7 +159,7 @@ svg:not(:root) {
     overflow: hidden
 }
 :link {
-    color: #378EA5;
+    color: $optimistic-blue-light;
     text-decoration: none
 }
 .inverted,
@@ -167,7 +167,7 @@ svg:not(:root) {
     color: #fb4d42
 }
 :visited {
-    color: #378EA5
+    color: $optimistic-blue-light
 }
 .inverted:visited {
     color: #fb4d42
@@ -178,14 +178,14 @@ a:focus {
 }
 a.inverted:hover,
 a.inverted:focus {
-    color: #378EA5
+    color: $optimistic-blue-light
 }
 a:active {
     color: #fb4d42;
     background-color: transparent
 }
 a.inverted:active {
-    color: #378EA5
+    color: $optimistic-blue-light
 }
 a:active,
 a:hover {
@@ -225,7 +225,7 @@ a:hover {
 .download-link.sub-nav-trigger,
 .view-filters .download-link.drawer-trigger.mobile-only,
 .filter-wrapper .download-link.drawer-trigger.mobile-only {
-    background-color: #378EA5;
+    background-color: $optimistic-blue-light;
     background-position: right 4px top 4px
 }
 .external-link a {
@@ -243,7 +243,7 @@ a:hover {
 .external-link.sub-nav-trigger,
 .view-filters .external-link.drawer-trigger.mobile-only,
 .filter-wrapper .external-link.drawer-trigger.mobile-only {
-    background-color: #378EA5;
+    background-color: $optimistic-blue-light;
     background-position: right 4px top 4px
 }
 .external-link--inline a {
@@ -284,7 +284,7 @@ button,
     text-decoration: none;
     cursor: pointer;
     color: #fff;
-    background-color: #378EA5;
+    background-color: $optimistic-blue-light;
     font-family: "Montserrat", sans-serif;
     font-weight: 400;
     letter-spacing: 1px;
@@ -483,7 +483,7 @@ button[disabled]:active,
 .button-inverted:hover,
 .button-inverted:focus,
 .button-inverted:active {
-    background-color: #378EA5
+    background-color: $optimistic-blue-light
 }
 .button-icon {
     padding-right: 1.5em;
@@ -622,12 +622,12 @@ input[type="radio"] {
 }
 input[type=radio]:checked+label:before {
     content: "";
-    color: #378EA5;
+    color: $optimistic-blue-light;
     background: url("../images/global/icons/radio_fill.png") no-repeat center center transparent
 }
 input[type=checkbox]:checked+label:before {
     content: "";
-    color: #378EA5;
+    color: $optimistic-blue-light;
     background: url("/images/public/icons/check.svg") no-repeat center center transparent
 }
 input[type=radio].disabled+label:before,
@@ -737,7 +737,7 @@ label {
     bottom: 0;
     top: 0;
     width: 45px;
-    background: #378EA5;
+    background: $optimistic-blue-light;
     border-left: 3px solid #091f2f;
     text-align: center
 }
@@ -757,13 +757,13 @@ label {
 .page .dropdown .carat:after {
     margin-top: -10px;
     right: -8px;
-    border-top-color: #378EA5
+    border-top-color: $optimistic-blue-light
 }
 .page .dropdown.focus .carat {
     border-top-color: #091f2f
 }
 .page .dropdown.focus .carat:after {
-    border-top-color: #378EA5
+    border-top-color: $optimistic-blue-light
 }
 .page .dropdown.open .carat {
     -ms-transform: rotate(180deg);
@@ -872,7 +872,7 @@ label {
     margin: 0rem;
     border-bottom: 3px solid #091f2f;
     padding: 5px 15px;
-    color: #378EA5;
+    color: $optimistic-blue-light;
     text-transform: uppercase;
     font-size: 14px;
     line-height: 58.5px;
@@ -891,13 +891,13 @@ label {
     display: none
 }
 .page .dropdown li.focus {
-    background: #378EA5;
+    background: $optimistic-blue-light;
     position: relative;
     z-index: 3;
     color: #fff
 }
 .page .dropdown li.active {
-    background: #378EA5;
+    background: $optimistic-blue-light;
     color: #fff
 }
 textarea {
@@ -941,7 +941,7 @@ textarea {
     margin-top: -13px;
     right: -10px;
     border: 10px solid transparent;
-    border-top: 10px solid #378EA5
+    border-top: 10px solid $optimistic-blue-light
 }
 .page .featured .dropdown.open .carat:after {
     border-top-color: #fb4d42
@@ -1006,7 +1006,7 @@ textarea {
 }
 .page .featured .dropdown.open .selected a:hover {
     color: #fff;
-    background: #378EA5
+    background: $optimistic-blue-light
 }
 .page .featured .dropdown div {
     top: 102%;
@@ -2489,7 +2489,7 @@ ol.search-results h4.title a[href$=".txt"] {
     line-height: 1.38889rem;
     font-weight: bold;
     text-transform: uppercase;
-    background-color: #378EA5
+    background-color: $optimistic-blue-light
 }
 .filter-wrapper .solr-search-sort a {
     color: #fff
@@ -2583,7 +2583,7 @@ ol.search-results h4.title a[href$=".txt"] {
 }
 .filter-wrapper .solr-search-filter button:focus {
     outline: none;
-    background-color: #378EA5
+    background-color: $optimistic-blue-light
 }
 .filter-wrapper .solr-search-filter button.drawer-trigger.active {
     background-color: #fb4d42
@@ -2651,7 +2651,7 @@ ol.search-results h4.title a[href$=".txt"] {
 }
 .department-list-link {
     text-transform: uppercase;
-    color: #378EA5;
+    color: $optimistic-blue-light;
     font-family: "Montserrat", sans-serif;
     font-weight: inherit;
     clear: both;
@@ -2830,7 +2830,7 @@ html.js [dir="rtl"] input.is-throbbing.form-autocomplete {
     white-space: pre
 }
 .autocomplete__list-item--is-selected {
-    background: #378EA5;
+    background: $optimistic-blue-light;
     color: #fff
 }
 .cs--block {
@@ -3383,7 +3383,7 @@ __summary.collapsible {
     display: block;
     background: none;
     padding: 0;
-    color: #378EA5;
+    color: $optimistic-blue-light;
     padding: 10px;
     border: 2px solid #fff;
     font-family: "Montserrat", sans-serif;
@@ -3439,7 +3439,7 @@ __summary.collapsible {
 }
 .dd__menu a {
     display: block;
-    color: #378EA5;
+    color: $optimistic-blue-light;
     padding: 10px;
     border-right: none;
     font-family: "Montserrat", sans-serif;
@@ -3716,7 +3716,7 @@ __summary.collapsible {
 .timeline-step-wrapper .view-transactions-main-transactions .step-text .link-title,
 .view-transactions-main-transactions .timeline-step-wrapper .step-title .link-title,
 .timeline-step-wrapper .view-transactions-main-transactions .step-title .link-title {
-    color: #378EA5
+    color: $optimistic-blue-light
 }
 .paragraphs-item-group-of-links-grid .link-item,
 .paragraphs-item-group-of-links-list .link-item,
@@ -3923,7 +3923,7 @@ __summary.collapsible {
 .view-transactions-main-transactions .view-transactions .view-content .field-grid-links .link-wrapper,
 .view-transactions-main-transactions .view-transactions .view-content .paragraphs-item-gol-list-links .link-wrapper,
 .view-transactions-main-transactions .view-transactions .view-content .node-transaction.view-mode-listing .link-wrapper {
-    color: #378EA5
+    color: $optimistic-blue-light
 }
 .paragraphs-item-group-of-links-grid .links-grid-field-grid-links .field-grid-links .link-icon-ribbon,
 .paragraphs-item-group-of-links-grid .links-grid-field-grid-links .paragraphs-item-gol-list-links .link-icon-ribbon,
@@ -4010,7 +4010,7 @@ __summary.collapsible {
 .view-transactions-main-transactions .view-transactions .view-content .node-transaction.view-mode-listing .list-link {
     font-style: italic;
     font-family: "Lora", serif;
-    color: #378EA5;
+    color: $optimistic-blue-light;
     font-size: 22px;
     line-height: 35px;
     font-size: 1.22222rem;
@@ -4133,7 +4133,7 @@ __summary.collapsible {
 .view-transactions-main-transactions .view-transactions .view-content .field-grid-links:hover,
 .view-transactions-main-transactions .view-transactions .view-content .paragraphs-item-gol-list-links:hover,
 .view-transactions-main-transactions .view-transactions .view-content .node-transaction.view-mode-listing:hover {
-    background-color: #378EA5
+    background-color: $optimistic-blue-light
 }
 .paragraphs-item-group-of-links-grid .links-grid-field-grid-links .field-grid-links:hover .field-name-field-short-description,
 .paragraphs-item-group-of-links-grid .links-grid-field-grid-links .paragraphs-item-gol-list-links:hover .field-name-field-short-description,
@@ -4638,7 +4638,7 @@ __summary.collapsible {
     font-size: 0.77778rem;
     line-height: 1.11111rem;
     text-transform: uppercase;
-    color: #378EA5;
+    color: $optimistic-blue-light;
     font-family: "Montserrat", sans-serif;
     font-weight: bold
 }
@@ -4667,7 +4667,7 @@ __summary.collapsible {
     font-size: 0.77778rem;
     line-height: 1.11111rem;
     text-transform: uppercase;
-    color: #378EA5;
+    color: $optimistic-blue-light;
     font-family: "Montserrat", sans-serif;
     font-weight: inherit;
     margin-bottom: 0;
@@ -4680,7 +4680,7 @@ __summary.collapsible {
 }
 .paragraphs-item-group-of-links-mini-grid .field-grid-links:hover,
 .applications-grid-of-links .field-grid-links:hover {
-    background-color: #378EA5
+    background-color: $optimistic-blue-light
 }
 .paragraphs-item-group-of-links-mini-grid .field-grid-links:hover .link-wrapper,
 .applications-grid-of-links .field-grid-links:hover .link-wrapper {
@@ -5334,7 +5334,7 @@ p.no-margin-bottom.red.big.intro-text,
     }
 }
 .status-item.linked .status-message-title {
-    color: #378EA5
+    color: $optimistic-blue-light
 }
 .status-item.linked:hover .status-message-title {
     text-decoration: underline
@@ -5403,10 +5403,10 @@ p.no-margin-bottom.red.big.intro-text,
     background-image: none
 }
 .status-item.linked:hover svg .svg-fill-hover {
-    fill: #378EA5
+    fill: $optimistic-blue-light
 }
 .status-item.linked:hover svg .svg-stroke-hover {
-    stroke: #378EA5
+    stroke: $optimistic-blue-light
 }
 .drawer {
     display: none
@@ -5493,7 +5493,7 @@ p.no-margin-bottom.red.big.intro-text,
 }
 .dr__header:hover {
     cursor: pointer;
-    background-color: #378EA5
+    background-color: $optimistic-blue-light
 }
 .dr__header:hover .st0 {
     fill: #fff
@@ -5509,7 +5509,7 @@ p.no-margin-bottom.red.big.intro-text,
     margin-left: auto
 }
 .dr__header .st0 {
-    fill: #378EA5
+    fill: $optimistic-blue-light
 }
 .dr__header--active,
 .dr__header--active:hover {
@@ -5521,7 +5521,7 @@ p.no-margin-bottom.red.big.intro-text,
 }
 .dr__header--active .dr__subtitle,
 .dr__header--active:hover .dr__subtitle {
-    color: #378EA5
+    color: $optimistic-blue-light
 }
 .dr__header--active svg,
 .dr__header--active:hover svg {
@@ -5536,7 +5536,7 @@ p.no-margin-bottom.red.big.intro-text,
     padding-right: 0.75em
 }
 .dr__title {
-    color: #378EA5;
+    color: $optimistic-blue-light;
     font-style: italic;
     line-height: 1;
     margin-bottom: 3px
@@ -5576,7 +5576,7 @@ p.no-margin-bottom.red.big.intro-text,
     position: absolute;
     top: 0;
     right: 0;
-    background-color: #378EA5;
+    background-color: $optimistic-blue-light;
     transition: background-color 0.3s ease;
     background-image: url(../img/close-modal-icon.png);
     background-position: center center;
@@ -5924,7 +5924,7 @@ body.noscroll {
     position: absolute;
     top: 0;
     right: 0;
-    background-color: #378EA5;
+    background-color: $optimistic-blue-light;
     transition: background-color 0.3s ease;
     background-image: url(../img/close-modal-icon.png);
     background-position: center center;
@@ -6429,7 +6429,7 @@ section.contact-departments,
     overflow-y: hidden
 }
 .grid-card:hover {
-    background-color: #378EA5
+    background-color: $optimistic-blue-light
 }
 .grid-card:hover * {
     color: white
@@ -6448,7 +6448,7 @@ section.contact-departments,
 }
 .grid-card__title {
     font-style: italic;
-    color: #378EA5;
+    color: $optimistic-blue-light;
     margin: 0;
     font-size: 1.2rem
 }
@@ -7285,7 +7285,7 @@ span.field-label+*>*:first-child,
     margin: 2.16667rem 0rem;
     position: relative;
     padding: 10px 10px 10px 44px;
-    border: 1px solid #378EA5
+    border: 1px solid $optimistic-blue-light
 }
 [dir="rtl"] .messages,
 [dir="rtl"] .messages--status,
@@ -7317,7 +7317,7 @@ __icon.messages--error {
 __icon.messages--status path,
 __icon.messages--warning path,
 __icon.messages--error path {
-    fill: #378EA5
+    fill: $optimistic-blue-light
 }
 .messages__list,
 __list.messages--status,
@@ -7336,7 +7336,7 @@ __item.messages--error {
 --ok-color.messages--warning,
 --ok-color.messages--error {
     background-color: #fff;
-    color: #378EA5
+    color: $optimistic-blue-light
 }
 .messages--warning-color,
 --warning-color.messages--status,
@@ -7435,7 +7435,7 @@ __help-icon.more-help-link {
 .teaser .title {
     font-family: "Montserrat", sans-serif;
     text-transform: uppercase;
-    color: #378EA5;
+    color: $optimistic-blue-light;
     line-height: 1.5rem;
     display: block
 }
@@ -7596,7 +7596,7 @@ __help-icon.more-help-link {
 .event-featured-item-wrapper .featured-item-date,
 .post-featured-item-wrapper .featured-item-date {
     width: 84px;
-    background-color: #378EA5;
+    background-color: $optimistic-blue-light;
     background-image: url("../images/global/icons/ribbon-bottom-white.svg");
     background-repeat: no-repeat;
     background-position: center bottom -1px;
@@ -7721,7 +7721,7 @@ __help-icon.more-help-link {
     z-index: 1
 }
 .post-featured-item-wrapper:hover {
-    background-color: #378EA5
+    background-color: $optimistic-blue-light
 }
 .post-featured-item-wrapper:hover .feature-header h3,
 .post-featured-item-wrapper:hover .feature-header .view-transactions-main-transactions .view-header p,
@@ -8063,6 +8063,7 @@ a.item-link {
     max-height: 100%
 }
 .news-item h3.title,
+.news-card h3.title,
 .news-item .view-transactions-main-transactions .view-header p.title,
 .view-transactions-main-transactions .view-header .news-item p.title {
     margin: 15px 30px 10px 30px;
@@ -8223,7 +8224,7 @@ a.item-link {
 .news-item-wrapper:focus,
 .post-featured-item-wrapper-wrapper:focus,
 .featured-item-details-wrapper:focus {
-    background-color: #378EA5
+    background-color: $optimistic-blue-light
 }
 .news-item h3.title,
 .news-item .view-transactions-main-transactions .view-header p.title,
@@ -8234,7 +8235,7 @@ a.item-link {
 .featured-item-details h3.title,
 .featured-item-details .view-transactions-main-transactions .view-header p.title,
 .view-transactions-main-transactions .view-header .featured-item-details p.title {
-    color: #378EA5
+    color: $optimistic-blue-light
 }
 .news-item .department-title,
 .post-featured-item-wrapper .department-title,
@@ -8323,11 +8324,11 @@ a.item-link {
 }
 .paragraphs-item-news-announcements .news-item:hover .news-item-wrapper,
 .paragraphs-item-upcoming-events .news-item:hover .news-item-wrapper {
-    background-color: #378EA5
+    background-color: $optimistic-blue-light
 }
 .paragraphs-item-news-announcements .news-item:focus .news-item-wrapper,
 .paragraphs-item-upcoming-events .news-item:focus .news-item-wrapper {
-    background-color: #378EA5
+    background-color: $optimistic-blue-light
 }
 .paragraphs-item-news-announcements .news-item:hover .news-item-wrapper h3.title,
 .paragraphs-item-news-announcements .news-item:hover .news-item-wrapper .view-transactions-main-transactions .view-header p.title,
@@ -8439,7 +8440,7 @@ a.item-link {
 .paragraphs-item-upcoming-events .post-featured-item-wrapper:hover,
 .paragraphs-item-news-announcements .post-featured-item-wrapper:focus,
 .paragraphs-item-upcoming-events .post-featured-item-wrapper:focus{
-    background-color: #378EA5;
+    background-color: $optimistic-blue-light;
     color: #fff
 }
 .paragraphs-item-news-announcements .post-featured-item-wrapper:hover h3.title,
@@ -8502,7 +8503,7 @@ a.item-link {
     background-repeat: no-repeat;
     background-size: auto;
     width: auto;
-    color: #378EA5;
+    color: $optimistic-blue-light;
     text-align: left;
     position: relative;
     top: 20px;
@@ -8935,7 +8936,7 @@ a.item-link {
 .pager-current,
 .pager-previous,
 .pager-next {
-    background-color: #378EA5;
+    background-color: $optimistic-blue-light;
     color: #fff
 }
 .pager a {
@@ -9085,7 +9086,7 @@ __bar.progress {
 __fill.progress {
     height: 1.5em;
     width: 5px;
-    background: #378EA5 url("../images/global/icons/progress-bar.gif") repeat 0 0
+    background: $optimistic-blue-light url("../images/global/icons/progress-bar.gif") repeat 0 0
 }
 .progress-bar__percentage,
 __percentage.progress {
@@ -9176,7 +9177,7 @@ __message.ajax-progress {
     color: #fff
 }
 .paragraphs-item-featured-topics a:nth-child(even) h2 {
-    color: #378EA5
+    color: $optimistic-blue-light
 }
 .paragraphs-item-featured-topics a:nth-child(2) .color-background-layer,
 .paragraphs-item-featured-topics a:nth-child(4) .color-background-layer {
@@ -9206,11 +9207,11 @@ __message.ajax-progress {
 }
 @media (min-width: 980px) {
     .paragraphs-item-featured-topics a:nth-child(5) h2 {
-        color: #378EA5
+        color: $optimistic-blue-light
     }
 }
 .paragraphs-item-featured-topics a:nth-child(5) .color-background-layer {
-    background-color: #378EA5
+    background-color: $optimistic-blue-light
 }
 @media (min-width: 980px) {
     .paragraphs-item-featured-topics a:nth-child(5) .color-background-layer {
@@ -9223,7 +9224,7 @@ __message.ajax-progress {
     }
 }
 .paragraphs-item-featured-topics a:nth-child(6) h2 {
-    color: #378EA5
+    color: $optimistic-blue-light
 }
 @media (min-width: 980px) {
     .paragraphs-item-featured-topics a:nth-child(6) h2 {
@@ -9240,7 +9241,7 @@ __message.ajax-progress {
 @media (min-width: 980px) {
     .paragraphs-item-featured-topics a:nth-child(6) .color-background-layer {
         color: #091f2f;
-        background-color: #378EA5
+        background-color: $optimistic-blue-light
     }
     .paragraphs-item-featured-topics a:nth-child(6) .badge {
         border-color: #091f2f;
@@ -9252,7 +9253,7 @@ __message.ajax-progress {
 }
 @media (min-width: 980px) {
     .paragraphs-item-featured-topics a:nth-child(7) h2 {
-        color: #378EA5
+        color: $optimistic-blue-light
     }
 }
 .paragraphs-item-featured-topics a:nth-child(7) .color-background-layer {
@@ -9269,7 +9270,7 @@ __message.ajax-progress {
     }
 }
 .paragraphs-item-featured-topics a:nth-child(1) .color-background-layer {
-    background-color: #378EA5
+    background-color: $optimistic-blue-light
 }
 @media (min-width: 980px) {
     .paragraphs-item-featured-topics a:nth-child(1) .color-background-layer {
@@ -9285,7 +9286,7 @@ __message.ajax-progress {
     }
 }
 .paragraphs-item-featured-topics a:nth-child(8) h2 {
-    color: #378EA5
+    color: $optimistic-blue-light
 }
 @media (min-width: 980px) {
     .paragraphs-item-featured-topics a:nth-child(8) h2 {
@@ -10503,7 +10504,7 @@ section.contact-departments .contact-wrapper:hover .contact-metadata,
     }
     .topic-nav.sticky a:link,
     .topic-nav.sticky a:visited {
-        color: #378EA5
+        color: $optimistic-blue-light
     }
     .topic-nav.sticky a:hover,
     .topic-nav.sticky a:active .topic-nav.sticky a:focus {
@@ -10544,7 +10545,7 @@ section.contact-departments .contact-wrapper:hover .contact-metadata,
 }
 .form__button--chevron {
     border: 3px solid black;
-    background-color: #378EA5;
+    background-color: $optimistic-blue-light;
     background-image: url("../images/global/icons/chevron.svg");
     background-repeat: no-repeat;
     background-position: center;
@@ -10931,7 +10932,7 @@ section.contact-departments .contact-wrapper:hover .contact-metadata,
 }
 .view-filters .drawer-trigger.mobile-only,
 .filter-wrapper .drawer-trigger.mobile-only {
-    background-color: #378EA5
+    background-color: $optimistic-blue-light
 }
 .view-filters .drawer-trigger.mobile-only .drawer-trigger-chevron,
 .filter-wrapper .drawer-trigger.mobile-only .drawer-trigger-chevron {
@@ -10945,7 +10946,7 @@ section.contact-departments .contact-wrapper:hover .contact-metadata,
 .view-filters .drawer-trigger {
     background-color: white;
     border-color: #e0e0e0;
-    color: #378EA5
+    color: $optimistic-blue-light
 }
 .view-filters:hover {
     color: #fb4d42
@@ -11506,7 +11507,7 @@ section.contact-departments .contact-wrapper:hover .contact-metadata,
     }
 }
 .profile2-main .profile-header-links div:hover {
-    background-color: #378EA5
+    background-color: $optimistic-blue-light
 }
 .profile2-main .profile-header-links div a,
 .profile2-main .profile-header-links div a:link,

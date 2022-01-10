@@ -1,0 +1,54 @@
+<div
+  class="hros{{#if image}}{{#if title}} hros--t{{else}} hros--b{{/if}}{{else}} hros--d{{/if}}"
+>
+  {{#if image}}
+    <img
+      srcset="
+        {{image.mobile1x}} 480w,
+        {{image.tablet1x}} 768w,
+        {{image.desktop1x}} 1024w,
+        {{image.wide1x}} 1200w,
+      "
+      sizes="(max-width: 600px) 480px, 768px, 1024px, 1200px"
+      src="{{image.mobile1x}}"
+      alt="{{title}}"
+      class="hros--img"
+    />
+  {{/if}}
+  
+  <div class="hros-c">
+    {{#if intro}}
+      <div class="hros-i{{#if home}} hros-i--l{{/if}}">
+        <span></span>{{intro}}<span></span>
+      </div>
+    {{/if}}
+    <h1
+      class="hros-t{{#if home}} hros-t--l{{/if}}"
+    >
+      {{title}}
+    </h1>
+    {{#if subheader}}
+      <div
+        class="hros-i{{#if home}} hros-i--l{{/if}}{{#if image}} hros-st--w{{/if}}"
+      >
+        {{subheader}}
+      </div>
+    {{/if}}
+  </div>
+</div>
+
+<div class="intro-content">
+  <div class="topic-intro-text-container">
+    <div class="intro-text-top">
+      <div class="topic-intro-text-content">
+        <div class="intro-text">
+          <p>{{intro-text}}</p>
+          
+          <div class="supporting-text">
+            {{supporting-text}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,24 @@
+<div class="p-a500">
+  <div class="g">
+    {{#each icons as |icon|}}
+      <div class="g--4 m-b500 br br-a150">
+        <div class="p-a300 ta--c t--upper t--cb t--sans">
+          {{filename_to_string icon.file}}
+        </div>
+        
+        <div class="ex ex-i">
+          <img
+            alt="{{filename_to_string icon.file}}"
+            title="{{filename_to_string icon.file}}"
+            src="{{imgUrl "https://assets.boston.gov/icons/metrolist" icon.file}}"
+            onerror={{imgOnError}}
+          />
+        </div>
+
+        <div class="p-a300 t--sans">
+          <a href="{{imgUrl "https://assets.boston.gov/icons/metrolist" icon.file}}">File URL</a>
+        </div>
+      </div>
+    {{/each}}
+  </div>
+</div>

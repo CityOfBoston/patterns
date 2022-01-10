@@ -1,0 +1,21 @@
+{{#each resource-4-cards as |card|}}
+<div class="section g--4 g--4--sl m-t500 left-mnl cd-r">
+  <div class="cdr-description">{{card.description}}
+  </div>
+  <div class="cd-ic bg--cb cd-r-im"><img src="{{card.image}}" style="max-height: 150px;"></div>
+  <div class="cd-c">
+    <div class="mnl-c-group">
+      <div class="cdp-st">
+        <div>{{card.text1}}
+          {{#if card.link1}}<a href="{{card.link1.href}}" target="_blank" rel="noreferrer"
+            class="mnl-link">{{card.link1.text}}</a>{{/if}}
+          {{#if card.text2}}{{card.text2}}{{/if}}
+          {{#if card.link2}}<a href="{{card.link2.href}}" target="_blank" rel="noreferrer"
+            class="mnl-link">{{card.link2.text}}</a>{{/if}}
+          {{#if card.text3}}{{card.text3}}{{/if}}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{{/each}}

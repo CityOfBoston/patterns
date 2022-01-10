@@ -1,3 +1,68 @@
 title: 'Pagination'
 handle: pagination
 status: ready
+context:
+  header:
+    title: 'Pagination'
+    contact: false
+  variations:
+    start:
+      pages:
+        - index: 1
+          url: http://search.boston.gov?q=city+clerk
+          className: pg-li-i pg-li-i--link
+        - index: 2
+          url: http://search.boston.gov?q=city+clerk
+          className: pg-li-i pg-li-i--link
+        - index: 3
+          url: http://search.boston.gov?q=city+clerk
+          className: pg-li-i pg-li-i--link
+        - index: 4
+          url: http://search.boston.gov?q=city+clerk
+          className: pg-li-i pg-li-i--link pg-li-i--a
+        - index: 5
+          url: http://search.boston.gov?q=city+clerk
+          className: pg-li-i pg-li-i--link
+        - index: 6
+          url: http://search.boston.gov?q=city+clerk
+          className: pg-li-i pg-li-i--link
+    last:
+      pages:
+        - index: 9
+          url: http://search.boston.gov?q=city+clerk
+          className: pg-li-i pg-li-i--link
+        - index: 10
+          url: http://search.boston.gov?q=city+clerk
+          className: pg-li-i pg-li-i--link pg-li-i--a
+        - index: 11
+          url: http://search.boston.gov?q=city+clerk
+          className: pg-li-i pg-li-i--link
+        - index: 12
+          url: http://search.boston.gov?q=city+clerk
+          className: pg-li-i pg-li-i--link
+        - index: 13
+          url: http://search.boston.gov?q=city+clerk
+          className: pg-li-i pg-li-i--link
+        - index: 14
+          url: http://search.boston.gov?q=city+clerk
+          className: pg-li-i pg-li-i--link
+    middle:
+      pages:
+        - index: 9
+          url: http://search.boston.gov?q=city+clerk
+          className: pg-li-i pg-li-i--link
+        - index: 10
+          url: http://search.boston.gov?q=city+clerk
+          className: pg-li-i pg-li-i--link
+        - index: 11
+          url: http://search.boston.gov?q=city+clerk
+          className: pg-li-i pg-li-i--link
+        - index: 12
+          url: http://search.boston.gov?q=city+clerk
+          className: pg-li-i pg-li-i--link pg-li-i--a
+        - index: 13
+          url: http://search.boston.gov?q=city+clerk
+          className: pg-li-i pg-li-i--link
+        - index: 14
+          url: http://search.boston.gov?q=city+clerk
+          className: pg-li-i pg-li-i--link

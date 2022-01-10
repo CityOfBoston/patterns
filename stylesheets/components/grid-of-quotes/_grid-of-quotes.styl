@@ -1,0 +1,85 @@
+/*
+
+   Grid of Quotes
+
+   Base:
+    goq
+
+   Elements:
+    c = container
+    i = icon
+    s = slash
+    t = title
+    l = link
+    d = description
+
+   Modifier:
+    None Yet
+
+ */
+
+.goq
+    background: $white
+    display: -ms-flexbox
+    display: flex
+    -ms-flex-wrap: wrap
+    flex-wrap: wrap
+    border-bottom: 8px solid #d22d23
+    padding: 30px 30px 40px 30px
+    min-height: 380px
+    width: 300px
+  
+
+    &-quote-text
+        font-family: $serif
+        font-style: italic
+        color: $black
+        margin-bottom: 30px 
+        font-size: 18px
+        line-height: 2.16667em
+    
+    &-quote-name
+        font-family: $sans
+        font-size: 14px
+        color: $black
+        font-weight: 700
+        line-height: normal
+        text-transform: uppercase
+
+    &-quote-location
+        font-family: $serif
+        font-size: 16px
+        font-style: italic
+        color: $grey-300
+        line-height: 26px
+    
+    &-quote-details
+        display: flex 
+        width: 100%
+        -ms-flex-item-align: end
+        align-self: flex-end
+        width: 100%
+        margin-top: auto
+        display: -ms-flexbox
+        display: flex
+        -ms-flex-direction: row
+        flex-direction: row
+        -ms-flex-direction: column
+        flex-direction: column
+
+    &-quote-person-details 
+        display: -ms-flexbox
+        display: flex
+        -ms-flex-pack: start
+        justify-content: flex-start
+        margin: 10px 0px 0px 15px 
+        -ms-flex-direction: column
+        flex-direction: column
+        margin: 0
+
+    &-quote-photo img
+        width: 56px
+        height: 56px
+        border-radius: 100%
+
+

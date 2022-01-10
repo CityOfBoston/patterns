@@ -11,6 +11,7 @@ branches:
     - production
 install:
   - npm install
+  - gem install faraday -v 1.8.0
   - gem install percy-cli
 before_script:
   - export TZ=America/New_York
@@ -51,11 +52,10 @@ deploy:
     secret_access_key: "$AWS_SECRET_ACCESS_KEY"
     bucket: patterns-uat.boston.gov
     acl: public_read
-    region: "$AWS_DEFAULT_REGION"
+    region: "$AWS_ALT_REGION"
     local_dir: public
     on:
       branch: "integration-branch/legacy-css"
-
 after_deploy:
   - bash ./travis/invalidate_cache.sh
 env:

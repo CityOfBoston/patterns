@@ -1,0 +1,8 @@
+title: Step Header
+handle: roundStep
+status: ready
+context:
+  header:
+    title: Top Service Requests
+    number: 1
+    content: If you plan to appeal a code violation, DO NOT pay the fine. If you do, you won't be able to appeal the ticket. We accept cash, credit cards, pinless debit cards, and checks or money orders made payable to the City of Boston. If you use a credit card or pinless debit card, there is a non-refundable service fee of 2.5% of the total payment, with a $1 minimum. This fee is paid to the card processor and not kept by the City.

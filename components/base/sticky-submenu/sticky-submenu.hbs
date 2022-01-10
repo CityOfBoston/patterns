@@ -1,0 +1,48 @@
+<div class="ssm-trigger drawer-trigger">
+  <div class="ssm-chevron">
+    <svg
+      version="1.1"
+      xmlns="http://www.w3.org/2000/svg"
+      xmlns:xlink="http://www.w3.org/1999/xlink"
+      x="0px"
+      y="0px"
+      viewBox="0 0 26 18"
+      style="enable-background:new 0 0 26 18;"
+      xml:space="preserve"
+    >
+      <title>{{drawer.toggle}}</title>
+      <path
+        class="st0 icon-stroke"
+        d="{{drawer.svg.iconstroke}}"
+      />
+    </svg>
+  </div>
+  {{drawer.name}}
+</div>
+
+<nav
+  class="ssm ssm__left {{#if stickysubmenu}}{{stickysubmenu}}{{/if}}"
+  style="display: block;"
+>
+  <a
+    id="section-nav"
+    title="Section Nav"
+    class="sr-only sr-only-focusable"
+  >
+    Section Nav
+  </a>
+
+  <ul>
+    {{#each links as |link|}}
+      <li>
+        <a
+          href="{{ link.href }}"
+          title="{{ link.name }}"
+          {{#if link.active}} class="is-active"{{/if}}
+        >
+          {{ link.name }}
+        </a>
+      </li>
+    {{/each}}
+  </ul>
+</nav>
