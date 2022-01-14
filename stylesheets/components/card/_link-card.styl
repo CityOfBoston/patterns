@@ -1,0 +1,148 @@
+/*
+
+   LINK CARD
+
+   Base:
+    lcd
+
+   Elements:
+    t = title
+    st = subtitle
+    d = detail
+    im = image
+
+ */
+
+.lcd
+  display: block
+  background-color: $white
+  text-decoration: none
+  font-family: $serif
+
+  &:hover, &:focus-within
+    background-color: $optimistic-blue-dark
+
+    .lcd-t
+    .lcd-st
+      color: $white
+
+  &-c
+    position: relative
+    padding: $sizing-600
+    min-height: 50px
+    height: 300px
+    word-break: normal
+    
+  &-im
+    position: absolute
+    width: 10%
+    right: 15px
+    top: 15px
+    padding-bottom: 15px
+    background-position: right
+    background-size: contain
+    background-repeat: no-repeat
+
+  &-t
+    color: $optimistic-blue-dark
+    font-family: Montserrat,sans-serif
+    font-weight: 700
+    font-size: responsive 12px 14px
+    font-range: 480px 1440px
+    line-height: $line-height-200
+    margin: 0
+    text-transform: uppercase
+
+  &-st
+    font-size: responsive 15px 16px
+    font-range: 480px 1440px
+    margin-top: $sizing-200
+    word-break: normal
+    color: $body-text
+
+  .bottom
+    position: absolute
+    bottom: 0
+    left: 0
+
+  &-d
+    padding: $sizing-600
+    color: $black
+    font-family: Montserrat,sans-serif
+    font-size: responsive 12px 14px
+    font-range: 480px 1440px
+    line-height: $line-height-300
+    text-transform: uppercase
+    word-break: normal
+    
+    &--mt0
+      margin-top: 0
+
+    p
+      margin: 0 0 1rem
+
+      &:last-child
+        margin: 0
+  
+  .subheader .title 
+    font-size: 40px
+    margin: 0
+    text-transform: inherit
+    font-weight: 400
+    line-height: 2.8rem
+    letter-spacing: 0.5px
+
+// handle hover interference with focus
+.lcd.focus-active:hover
+  pointer-events: none
+  background-color: $white
+
+  .lcd-t
+    color: $optimistic-blue-dark
+
+  .lcd-d
+    color: $black
+
+  .lcd-im
+    background-color: $optimistic-blue-dark
+
+.lcd.focus-active:focus-within
+  pointer-events: auto
+  background-color: $optimistic-blue-dark
+
+  .lcd-t, .lcd-d
+    color: $white
+
+  .lcd-im
+    background-color: $blended-optimistic-blue
+    background-blend-mode: multiply
+
+.flex-container
+  display: flex
+
+  .subheader
+    padding-top: 2rem
+
+    @media $media-small-max
+      width: 100%
+
+    @media $media-small
+      width: 100%
+      padding-right: 2rem
+
+    @media $media-medium
+      width: 25%
+      padding-right: 2rem
+
+  @media $media-small-max
+    flex-direction: column    
+
+
+.description
+  line-height: 2em
+
+.download .lcd-im
+    background-image: url(/images/global/icons/icon-document.svg)
+
+.external .lcd-im
+  background-image: url(/images/global/icons/external-link.svg)

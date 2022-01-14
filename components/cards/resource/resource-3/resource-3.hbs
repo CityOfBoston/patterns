@@ -1,0 +1,19 @@
+{{#each resource-3-cards as |card|}}
+<div class="section g--4 g--4--sl m-t500 left-mnl cd-r">
+  <div class="cdr-description">{{card.description}}</div>
+  <div class="cd-ic bg--cb cd-r-im"><img src="{{card.image}}" style="max-height: 150px;"></div>
+  <div class="cd-c" id="align-left">
+    <div class="mnl-c-group">
+      <div class="cdp-st">
+        <div class="councilor-at-large">
+          <div class="intro cd-intro">{{card.intro}}</div>
+          <div><a href="{{card.person1.href}}" class="mnl-link link_underline">{{card.person1.name}}</a><a
+              href="{{card.person2.href}}" class="mnl-link link_underline">{{card.person2.name}}</a><a
+              href="{{card.person3.href}}" class="mnl-link link_underline">{{card.person3.name}}</a><a
+              href="{{card.person4.href}}" class="mnl-link link_underline">{{card.person4.name}}</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{{/each}}

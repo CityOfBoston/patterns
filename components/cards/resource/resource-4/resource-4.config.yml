@@ -1,0 +1,17 @@
+title: Resource Card 4
+handle: resource-4
+status: ready
+preview: '@centered'
+context:
+  resource-4-cards:
+    - description: State and Federal Representatives
+      image: https://patterns.boston.gov/images/global/icons/experiential/meet-archaeologist.svg
+      text1: For more information on your State and Federal representatives, visit the 
+      link1:
+        href: https://malegislature.gov/search/findmylegislator
+        text: Find My Legislator tool
+      text2: 'on'
+      link2:
+        href: https://www.mass.gov
+        text: Mass.gov
+      text3: '.'

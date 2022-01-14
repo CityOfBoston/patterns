@@ -1,0 +1,11 @@
+{{#each cards as |card|}}
+  <a href="{{ card.href }}" class="cdi m-t500 g--4 g--4--sl">
+    {{#if card.icon}}
+      <div class="cdi-ic" style="background-image: url({{ card.icon.url }})"></div>
+    {{/if}}
+    <div class="cdi-c">
+      <div class="cdi-t">{{ card.title }}</div>
+      <div class="cdi-d">{{ card.content }}</div>
+    </div>
+  </a>
+{{/each}}

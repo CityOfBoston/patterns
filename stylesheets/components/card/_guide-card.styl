@@ -1,0 +1,190 @@
+/*
+
+   CARD
+
+   Base:
+    gcd
+
+   Elements:
+    t = title
+    b = body
+
+   Modifier:
+    None Yet
+
+ */
+
+.gcd
+  display: block
+  background-color: $white
+  text-decoration: none
+  min-height: 350px
+
+  @media $media-xlarge-max
+    min-height: 315px
+
+  @media $media-medium-max
+    min-height: auto
+    padding-bottom: 15px
+
+  &:hover, &:focus-within
+    background-color: $optimistic-blue-light
+
+    .gcd-t
+    .gcd-st
+    .gcd-d
+      color: $white
+
+    .gcd-ic
+      background-color: $blended-optimistic-blue
+      background-blend-mode: multiply
+
+  &-ic
+    padding-bottom: 35%
+    background-color: $optimistic-blue-light 
+    background-position: center
+    background-size: cover
+    min-height: 166px
+    border-bottom: 5px solid $charles-blue
+
+  &-c
+    padding: $sizing-275 $sizing-450
+    min-height: 190px
+
+    @media $media-xlarge-max
+      min-height: auto
+
+  &-st
+    color: $charles-blue
+    font-style: italic
+    font-size: responsive 16px 18px
+    font-range: 480px 1440px
+    line-height: $line-height-500
+    margin: 0
+
+  &-t
+    color: $charles-blue
+    font-family: $sans
+    font-size: responsive 18px 28px
+    font-range: 480px 1440px
+    line-height: $line-height-150
+    text-transform: uppercase
+    font-weight: 700
+    margin: 0
+    min-height: 145px
+
+    @media $media-xlarge-max
+      min-height: auto
+
+  &-d
+    color: $body-text
+    font-size: responsive 15px 18px
+    font-range: 480px 1440px
+    line-height: $line-height-300
+    margin-top: $sizing-300
+
+    &--mt0
+      margin-top: 0
+
+    p
+      margin: 0 0 1rem
+
+      &:last-child
+        margin: 0
+
+  &-lst
+    border-top: 1px dashed $grey-100
+    padding: $sizing-450 $sizing-275
+
+    &-li
+      margin: 0 0 11.25px
+      margin: 0 0 .625rem
+      font-size: responsive 14px 16px
+      background-size: 10px
+      line-height: 1.4rem
+
+  &--plain
+    &:hover, &:focus-within
+      background-color: $white
+      .gcd-t
+        color: $charles-blue
+      .gcd-st
+        color: inherit
+      .gcd-d
+        color: $body-text
+
+    .gcd-t
+      color: $charles-blue
+
+  &--e[href*="//"]:not([href*="www.boston.gov"])
+    position: relative
+
+    &:after
+      content: ''
+      border-right: 20px solid $charles-blue;
+      border-left: 20px solid $charles-blue;
+      border-bottom: 10px solid transparent;
+      height: 40px
+      position: absolute
+      top: 0
+      right: 1rem
+      z-index: 1
+
+    &:before
+      content: ''
+      background-repeat: no-repeat
+      background-image: url(../images/global/icons/external-link-white.svg)
+      position: absolute
+      top: 0
+      right: 1rem
+      transform: translate(-8px, 11px)
+      z-index: 2
+      height: 20px
+      width: 20px
+
+// Handle white theme variation
+.b--w
+  .gcd
+
+    &:hover, &:focus-within
+      border-color: $optimistic-blue-light
+
+      .gcd-c
+        border-color: $optimistic-blue-light
+
+    &-c
+      border-top: 2px solid #e0e0e0
+
+// handle hover interference with focus
+.gcd.focus-active:hover
+  pointer-events: none
+  background-color: $white
+
+  .gcd-t
+    color: $optimistic-blue-dark
+
+  .gcd-d
+    color: $body-text
+
+  .gcd-ic
+    background-color: $optimistic-blue-light
+
+.b--w
+  .gcd.focus-active
+
+    &:hover
+      border-color: #e0e0e0
+
+      .gcd-c
+        border-color: #e0e0e0
+
+.gcd.focus-active:focus-within
+  pointer-events: auto
+  background-color: $optimistic-blue-light
+
+  .gcd-t, .gcd-d
+    color: $white
+
+  .gcd-ic
+    background-color: $blended-optimistic-blue
+    background-blend-mode: multiply

@@ -1,0 +1,140 @@
+/*
+
+   LINK CARD LIST
+
+   Base:
+    lcdl
+
+   Elements:
+    t = title
+    st = subtitle
+    d = detail
+    im = image
+
+ */
+
+.lcdl
+  display: block
+  background-color: $white
+  text-decoration: none
+  font-family: $serif
+
+  &:hover, &:focus-within
+    background-color: $optimistic-blue-dark
+
+    .lcdl-t
+    .lcdl-st
+    .lcdl-d
+      color: $white
+
+  &-c
+    position: relative
+    padding: $sizing-600
+    min-height: 170px
+    max-height: 300px
+    word-break: normal
+    
+  &-im
+    position: absolute
+    width: 32px
+    right: 15px
+    top: -1px
+    padding-bottom: 15px
+    background-position: right
+    background-size: contain
+    background-repeat: no-repeat
+
+  &-icon
+    position: absolute
+    left: 4px
+    top: 10px
+    z-index: 2
+
+  &-t
+    color: $optimistic-blue-dark
+    font-family: Lora,serif
+    font-size: responsive 16px 25px
+    font-range: 480px 1440px
+    line-height: $sizing-700
+    font-style: italic
+    margin: 0
+
+  &-st
+    font-size: responsive 15px 18px
+    font-range: 480px 1440px
+    margin-top: $sizing-200
+    word-break: normal
+
+  .bottom
+    position: absolute
+    bottom: 0
+    left: 0
+
+  &-d
+    padding-right: $sizing-900
+    color: $body-text
+    font-size: responsive 16px 18px
+    font-range: 480px 1440px
+    line-height: $line-height-300
+    word-break: normal
+    
+    &--mt0
+      margin-top: 0
+
+    p
+      margin: 0 0 1rem
+
+      &:last-child
+        margin: 0
+  .svg-date-flag
+    width: 60px
+    top: -1px
+
+// handle hover interference with focus
+.lcdl.focus-active:hover
+  pointer-events: none
+  background-color: $white
+
+  .lcdl-t
+    color: $optimistic-blue-dark
+
+  .lcdl-d
+    color: $white
+
+  .lcdl-im
+    background-color: $optimistic-blue-dark
+
+.lcdl.focus-active:focus-within
+  pointer-events: auto
+  background-color: $optimistic-blue-dark
+
+  .lcdl-t, .lcdl-d
+    color: $white
+
+  .lcdl-im
+    background-color: $blended-optimistic-blue
+    background-blend-mode: multiply
+
+.flex-container
+  display: flex
+
+  .subheader
+    padding-top: 2rem
+
+    @media $media-small-max
+      width: 100%
+
+    @media $media-small
+      width: 100%
+      padding-right: 2rem
+
+    @media $media-medium
+      width: 25%
+      padding-right: 2rem
+
+  @media $media-small-max
+    flex-direction: column    
+
+
+.description
+  line-height: 2em

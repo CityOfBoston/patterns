@@ -1,14 +1,118 @@
 <ul class="pg">
-  <li class="pg-li">
-    <a class="pg-li-i pg-li-i--link" href="http://search.boston.gov?page=11&amp;q=city+clerk">&lt; previous</a>
+  <li class="pg-li pg-disabled pg-first">
+    <span class="pg-li-i" title="Go to first page">
+      First ›
+    </span>
   </li>
-  <li class="pg-li"><a class="pg-li-i pg-li-i--link" href="http://search.boston.gov?page=9&amp;q=city+clerk">9</a></li>
-  <li class="pg-li"><a class="pg-li-i pg-li-i--link" href="http://search.boston.gov?page=10&amp;q=city+clerk">10</a></li>
-  <li class="pg-li"><a class="pg-li-i pg-li-i--link" href="http://search.boston.gov?page=11&amp;q=city+clerk">11</a></li>
-  <li class="pg-li"><a class="pg-li-i pg-li-i--a pg-li-i--link" href="http://search.boston.gov?page=12&amp;q=city+clerk">12</a></li>
-  <li class="pg-li"><a class="pg-li-i pg-li-i--link" href="http://search.boston.gov?page=13&amp;q=city+clerk">13</a></li>
-  <li class="pg-li"><a class="pg-li-i pg-li-i--link" href="http://search.boston.gov?page=14&amp;q=city+clerk">14</a></li>
+
+  {{#each variations.start.pages as |page|}}
+    <li class="pg-li">
+      <a
+        class="{{page.className}}"
+        href="{{page.url}}&amp;page={{page.index}}"
+        title="Go to page {{page.index}}"
+      >
+        {{page.index}}
+      </a>
+    </li>
+  {{/each}}
+  
+  <li class="pg-li pg-next pg-last">
+    <a
+      class="pg-li-i pg-li-i--link"
+      href="#"
+      title="Go to next page"
+    >
+      Last »
+    </a>
+  </li>
+</ul>
+
+{{!------------------ BREAK ------------------}}
+
+<ul class="pg">
+  <li class="pg-li pg-previous pg-first">
+    <a class="pg-li-i pg-li-i--link" href="?page=11">« First</a>
+  </li>
   <li class="pg-li">
-    <a class="pg-li-i pg-li-i--link" href="http://search.boston.gov?page=13&amp;q=city+clerk">next &gt;</a>
+    <a
+      class="pg-li-i pg-li-i--link"
+      href="?page=0"
+      title="Go to previous page"
+      rel="prev"
+    >
+      <span class="visually-hidden" style="display:none;">Previous page</span>
+      <span aria-hidden="true">‹‹</span>
+    </a>
+  </li>
+
+  {{#each variations.last.pages as |page|}}
+    <li class="pg-li">
+      <a
+        class="{{page.className}}"
+        href="{{page.url}}&amp;page={{page.index}}"
+        title="Go to page {{page.index}}"
+      >
+        {{page.index}}
+      </a>
+    </li>
+  {{/each}}
+  
+  <li class="pg-li">
+    <a
+      class="pg-li-i pg-li-i--link"
+      href="?page=2"
+      title="Go to next page"
+      rel="next"
+    >
+      <span class="visually-hidden" style="display:none;">Next page</span>
+      <span aria-hidden="true">››</span>
+    </a>
+  </li>
+  <li class="pg-li pg-disabled pg-last">
+    <span class="pg-li-i" title="Go to first page">‹ Last</span>
+  </li>
+</ul>
+
+{{!------------------ BREAK ------------------}}
+
+<ul class="pg">
+  <li class="pg-li pg-previous pg-first">
+    <a class="pg-li-i pg-li-i--link" href="?page=11">« First</a>
+  </li>
+  <li class="pg-li">
+    <a class="pg-li-i pg-li-i--link" href="?page=0" title="Go to previous page" rel="prev">
+      <span class="visually-hidden" style="display:none;">Previous page</span>
+      <span aria-hidden="true">‹‹</span>
+    </a>
+  </li>
+
+  {{#each variations.middle.pages as |page|}}
+    <li class="pg-li">
+      <a
+        class="{{page.className}}"
+        href="{{page.url}}&amp;page={{page.index}}"
+        title="Go to page {{page.index}}"
+      >
+        {{page.index}}
+      </a>
+    </li>
+  {{/each}}
+
+  <li class="pg-li pg-ellipsis" role="presentation">
+    <span class="pg-li-i" title="Go to first page">…</span>
+  </li>
+  <li class="pg-li">
+    <a class="pg-li-i pg-li-i--link"
+      href="?page=2"
+      title="Go to next page"
+      rel="next"
+    >
+      <span class="visually-hidden" style="display:none;">Next page</span>
+      <span aria-hidden="true">››</span>
+    </a>
+  </li>
+  <li class="pg-li pg-next pg-last">
+    <a class="pg-li-i pg-li-i--link" href="?page=19">Last »</a>
   </li>
 </ul>

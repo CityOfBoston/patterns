@@ -1,0 +1,85 @@
+/*
+
+   LINK CARD MINI
+
+   Base:
+    lcd--sm
+
+   Elements:
+    t = title
+    im = image
+    c = content
+
+   Variants: v
+    sm = small
+
+ */
+
+.lcd--sm
+  height: 100px
+  background-color: $grey-000 
+  text-decoration: none
+  font-family: $sans
+  padding: 0 25px 25px
+  position: relative
+
+  &:hover, &:focus-within
+    background-color: $optimistic-blue-dark
+
+    .lcd--sm-t
+      color: $white
+
+  &-c
+    display: flex
+    vertical-align: middle
+    padding-right: 35px;
+    min-height: 50px;
+    height: 100px;
+    word-break: normal;
+    align-items: center;
+
+  &-im
+    position: absolute
+    width: 10%
+    right: 15px
+    padding-bottom: 18px
+    background-position: right
+    background-size: contain
+    background-repeat: no-repeat
+
+  &-t
+    color: $optimistic-blue-dark
+    font-family: Montserrat,sans-serif
+    font-size: responsive 12px 14px
+    font-range: 480px 1440px
+    line-height: $line-height-200
+    margin: 0
+    text-transform: uppercase
+    padding-right: 15px
+
+// handle hover interference with focus
+.lcd--sm.focus-active:hover
+  pointer-events: none
+  background-color: $white
+
+  .lcd--sm-t
+    color: $optimistic-blue-dark
+
+  .lcd--sm-im
+    background-color: $optimistic-blue-dark
+
+.lcd--sm.focus-active:focus-within
+  pointer-events: auto
+  background-color: $optimistic-blue-dark
+
+  .lcd--sm-t
+    color: $white
+
+  .lcd--sm-im
+    background-color: $blended-optimistic-blue
+    background-blend-mode: multiply
+.download .lcd--sm-im
+  background-image: url(/images/global/icons/icon-document.svg)
+
+.external .lcd--sm-im
+  background-image: url(/images/global/icons/external-link.svg)

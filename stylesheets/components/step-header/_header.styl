@@ -17,3 +17,80 @@
     margin-right: $sizing-200
     text-align: center
     flex-shrink: 0
+
+  &-wrapper
+    display: flex
+    width: 100%
+    flex-direction: column;
+
+    @media $media-xlarge
+      flex-direction: row
+
+  &-column
+    &-label
+      text-align: center
+      margin: auto
+      margin-top: 0.3em
+      margin-bottom: 1.5em
+      border: $border-200 solid $grey-100
+      border-radius: 50% 50%
+      
+      height: 60px
+      width: 60px
+      // padding: 10px 0
+
+      @media $media-xlarge
+        height: 6.6rem
+        width: 6.6rem
+        margin: 0.3em 2rem 0 0
+
+    &--label
+      color: #58585b
+      font-family: Montserrat,sans-serif
+      font-weight: inherit
+      font-size: 14px
+      font-size: .77778rem
+      line-height: 18px
+      line-height: 1rem
+      padding-top: 18%
+    
+    &--value
+      text-transform: uppercase
+      font-family: Montserrat,sans-serif
+      color: #d22d23
+      font-size: 1.11111rem;
+      line-height: 18px;
+      line-height: 1rem;
+      font-weight: 700;
+
+      @media $media-xlarge
+        font-weight: 700
+        font-size: 60px
+        font-size: 3.33333rem
+        line-height: 58.5px
+        line-height: 3.25rem
+
+    &-content
+      h2
+        color: $charles-blue
+        font-family: Montserrat, sans-serif
+        text-transform: uppercase
+        font-size: 2.5rem
+        font-weight: 700;
+        letter-spacing: -1px;
+        line-height: 47px
+        line-height: 2.61111rem
+        margin: 0 0 2rem
+        margin-bottom: 39px
+        margin-bottom: 2.16667rem
+        margin-top: 0
+        border-bottom: 8px solid
+        padding-bottom: .75rem
+      
+      .child-content
+        text-transform: none
+        line-height: 2.16667em;
+        font-family: Lora,serif
+        color: $body-text
+        font-size: 18px
+        font-size: 1.13rem

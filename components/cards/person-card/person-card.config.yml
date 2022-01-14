@@ -9,8 +9,8 @@ variants:
     preview: '@centered-dark'
 context:
   people:
-  - name: Mayor Martin J. Walsh
+  - name: Mayor Michelle Wu
     position: Mayor
-    image: https://www.boston.gov/sites/default/files/mayor-walsh2.jpg
+    image: https://www.boston.gov/sites/default/files/mayor-headshot-square.png
     contact: mailto:mayor@boston.gov
     url: https://www.boston.gov/mayor
