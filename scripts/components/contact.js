@@ -41,12 +41,12 @@ var BostonContact = (function () {
       form.addEventListener('submit', handleFormSubmit);
 
       // Set the hidden fields
-      setBrowser(ev.target);
-      setURL(ev.target);
-      setToAddress(ev.target);
-      setBodyMessage(ev.target);
-      setSubject(ev.target);
-      setToken(ev.target);
+      setBrowser(ev.currentTarget);
+      setURL(ev.currentTarget);
+      setToAddress(ev.currentTarget);
+      setBodyMessage(ev.currentTarget);
+      setSubject(ev.currentTarget);
+      setToken(ev.currentTarget);
     }
   }
 
