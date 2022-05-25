@@ -23,8 +23,8 @@ before_script:
 script:
   - npm run build
   - npm run jest.ci
-after_script:
-  - bash ./travis/percy.sh
+#after_script:
+#bash ./travis/percy.sh
 deploy:
   - provider: s3
     skip_cleanup: true
