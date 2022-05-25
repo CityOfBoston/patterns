@@ -12,19 +12,19 @@ branches:
 install:
   - npm install
   - gem install faraday -v 1.8.0
-  #gem install percy-cli
+  - gem install percy-cli
 before_script:
   - export TZ=America/New_York
   - export BROWSERSTACK_PROJECT_NAME=$TRAVIS_REPO_SLUG
   - export BROWSERSTACK_BUILD_ID=$TRAVIS_BUILD_NUMBER
   # Percy automatically uses branches from PRs. This is so for both develop and
   # production we don't make diffs against master, which is unused.
-  # export PERCY_TARGET_BRANCH=$TRAVIS_BRANCH
+  - export PERCY_TARGET_BRANCH=$TRAVIS_BRANCH
 script:
   - npm run build
   - npm run jest.ci
-#after_script:
-#bash ./travis/percy.sh
+after_script:
+  - bash ./travis/percy.sh
 deploy:
   - provider: s3
     skip_cleanup: true
