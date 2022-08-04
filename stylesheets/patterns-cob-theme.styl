@@ -1943,6 +1943,9 @@ What: Overrides to some drupal injected tags.
 .sb-b .button {
     margin-bottom: 20px    
 }
+.sb-b .button:last-child {
+    margin-bottom: 0;
+}
 h3.t--intro {
     text-transform: capitalize    
 }
@@ -2172,3 +2175,29 @@ ul li {
     width: 100%;
     height: 100%;    
 }
+
+/* Re-prder sidebar for Events detail page. The sidebar needs to come first on mobile devices */
+
+@media (max-width: 979px) {
+  .event-detail-page.g .g--4 {
+    order: 1;
+  }
+  .event-detail-page.g .g--8 {
+    order: 2;
+  }
+  .event-detail-page .body-sidebar-item-mobile.g--4 {
+    display: block;
+  }
+  .event-detail-page .body-sidebar-item-desktop.g--4 {
+    display: none;
+  }
+}
+@media (min-width: 980px) {
+  .event-detail-page .body-sidebar-item-mobile.g--4 {
+    display: none;
+  }
+  .event-detail-page .body-sidebar-item-desktop.g--4 {
+    display: block;
+  }
+}
+
