@@ -41,12 +41,14 @@ export class ContactForm {
 
   @State() name: string = '';
   @State() email: string = '';
+  @State() email_2: string = '';
   @State() subject: string = '';
   @State() message: string = '';
 
   @State() loading: boolean = false;
   @State() success: boolean = false;
   @State() emailErrorMessage: string | null = null;
+  @State() email2ErrorMessage: string | null = null;
   @State() errorMessage: string | null = null;
 
   componentWillLoad() {
@@ -77,12 +79,27 @@ export class ContactForm {
   handleEmailInput(ev) {
     this.email = ev.target.value;
   }
+  handleEmail2Input(ev) {
+    this.email_2 = ev.target.value;
+  }
 
   handleEmailBlur() {
     if (!EMAIL_REGEXP.test(this.email)) {
       this.emailErrorMessage = 'Please enter a valid email address';
     } else {
       this.emailErrorMessage = null;
+    }
+  }
+
+  handleEmail2Blur() {
+    if (!EMAIL_REGEXP.test(this.email_2)) {
+      this.email2ErrorMessage = 'Please enter a valid email address';
+    } else if (
+      EMAIL_REGEXP.test(this.email_2) != EMAIL_REGEXP.test(this.email)
+    ) {
+      this.email2ErrorMessage = 'Emails do not match';
+    } else {
+      this.email2ErrorMessage = null;
     }
   }
 
@@ -170,15 +187,17 @@ export class ContactForm {
     const {
       errorMessage,
       emailErrorMessage,
+      email2ErrorMessage,
       loading,
       name,
       subject,
       email,
+      email_2,
       message,
       to,
     } = this;
 
-    const missing = !(name && subject && email && message);
+    const missing = !(name && subject && email && email_2 && message);
 
     return (
       <div>
@@ -240,6 +259,31 @@ export class ContactForm {
               </div>
               <div class="txt m-b300">
                 <label
+                  htmlFor="CobContactForm-email"
+                  class="txt-l txt-l--mt000"
+                >
+                  Re-enter Email Address
+                </label>
+                <input
+                  id="CobContactForm-email_2"
+                  name="email2[from_address]"
+                  type="text"
+                  placeholder="re-enter email@address.com"
+                  class={`txt-f txt-f--sm ${
+                    email2ErrorMessage ? 'txt-f--err' : ''
+                  }`}
+                  value={email_2}
+                  onInput={ev => this.handleEmail2Input(ev)}
+                  onBlur={() => this.handleEmail2Blur()}
+                />
+                {email2ErrorMessage && (
+                  <div class="t--subinfo t--err m-t100">
+                    {email2ErrorMessage}
+                  </div>
+                )}
+              </div>
+              <div class="txt m-b300">
+                <label
                   htmlFor="CobContactForm-subject"
                   class="txt-l txt-l--mt000"
                 >
@@ -282,7 +326,14 @@ export class ContactForm {
               <button
                 type="submit"
                 class="btn btn--700"
-                disabled={!!(loading || missing || emailErrorMessage)}
+                disabled={
+                  !!(
+                    loading ||
+                    missing ||
+                    emailErrorMessage ||
+                    email2ErrorMessage
+                  )
+                }
               >
                 Send Message
               </button>
