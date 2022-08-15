@@ -104,7 +104,7 @@ var BostonContact = (function () {
       valid = false;
     }
 
-    if (email2) {
+    if (email2 == 'undefined' && element != null) {
 
       if (email2[0].value == '' || !Boston.emailRE.test(email2[0].value)) {
         Boston.invalidateField(email2[0], "Please enter a valid email address");
