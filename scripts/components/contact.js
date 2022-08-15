@@ -104,13 +104,17 @@ var BostonContact = (function () {
       valid = false;
     }
 
-    if (email2[0].value == '' || !Boston.emailRE.test(email2[0].value)) {
-      Boston.invalidateField(email2[0], "Please enter a valid email address");
-      valid = false;
-    }
-    if (email2[0].value != email[0].value) {
-      Boston.invalidateField(email2[0], "Email does not match");
-      valid = false;
+    if (email2) {
+
+      if (email2[0].value == '' || !Boston.emailRE.test(email2[0].value)) {
+        Boston.invalidateField(email2[0], "Please enter a valid email address");
+        valid = false;
+      }
+      if (email2[0].value != email[0].value) {
+        Boston.invalidateField(email2[0], "Email does not match");
+        valid = false;
+      }
+
     }
 
     if (name[0].value == '') {
