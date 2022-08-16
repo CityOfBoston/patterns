@@ -97,6 +97,7 @@ var BostonContact = (function () {
     var subject = Boston.childByEl(form, 'bos-contact-subject');
     var message = Boston.childByEl(form, 'bos-contact-message');
     var address_to = document.getElementById('contactFormToAddress');
+    var email_two = document.getElementById('contact-address-two');
     var valid = true;
 
     if (email[0].value == '' || !Boston.emailRE.test(email[0].value)) {
@@ -104,17 +105,22 @@ var BostonContact = (function () {
       valid = false;
     }
 
-    if (email2 == 'undefined' && element != null) {
+    if (email_two != 'undefined') {
+      if (email_two != null) {
 
-      if (email2[0].value == '' || !Boston.emailRE.test(email2[0].value)) {
-        Boston.invalidateField(email2[0], "Please enter a valid email address");
-        valid = false;
-      }
-      if (email2[0].value != email[0].value) {
-        Boston.invalidateField(email2[0], "Email does not match");
-        valid = false;
-      }
+        if (email2[0].value == '' || !Boston.emailRE.test(email2[0].value)) {
+          Boston.invalidateField(email2[0], "Please enter a valid email address");
+          valid = false;
+        }
 
+        else if (email2[0].value != email[0].value) {
+          Boston.invalidateField(email2[0], "Email does not match");
+          valid = false;
+        }
+
+      } 
+    }else {
+      valid = true;
     }
 
     if (name[0].value == '') {
@@ -231,8 +237,6 @@ var BostonContact = (function () {
       i--;
     }
   }
-
-  
 
   function start() {
 
