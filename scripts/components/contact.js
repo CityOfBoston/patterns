@@ -119,7 +119,7 @@ var BostonContact = (function () {
         }
 
       } 
-    }else {
+    } else {
       valid = true;
     }
 
