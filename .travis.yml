@@ -12,7 +12,7 @@ branches:
 install:
   - npm install
   - gem install faraday -v 1.8.0
-  - gem install percy-cli
+  # gem install percy-cli
 before_script:
   - export TZ=America/New_York
   - export BROWSERSTACK_PROJECT_NAME=$TRAVIS_REPO_SLUG

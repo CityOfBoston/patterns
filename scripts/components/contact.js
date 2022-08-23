@@ -92,15 +92,35 @@ var BostonContact = (function () {
 
   function validateForm(form) {
     var email = Boston.childByEl(form, 'bos-contact-email');
+    var email2 = Boston.childByEl(form, 'bos-contact-email2');
     var name = Boston.childByEl(form, 'bos-contact-name');
     var subject = Boston.childByEl(form, 'bos-contact-subject');
     var message = Boston.childByEl(form, 'bos-contact-message');
     var address_to = document.getElementById('contactFormToAddress');
+    var email_two = document.getElementById('contact-address-two');
     var valid = true;
 
     if (email[0].value == '' || !Boston.emailRE.test(email[0].value)) {
       Boston.invalidateField(email[0], "Please enter a valid email address");
       valid = false;
+    }
+
+    if (email_two != 'undefined') {
+      if (email_two != null) {
+
+        if (email2[0].value == '' || !Boston.emailRE.test(email2[0].value)) {
+          Boston.invalidateField(email2[0], "Please enter a valid email address");
+          valid = false;
+        }
+
+        else if (email2[0].value != email[0].value) {
+          Boston.invalidateField(email2[0], "Email does not match");
+          valid = false;
+        }
+
+      } 
+    } else {
+      valid = true;
     }
 
     if (name[0].value == '') {
@@ -217,8 +237,6 @@ var BostonContact = (function () {
       i--;
     }
   }
-
-  
 
   function start() {
 
