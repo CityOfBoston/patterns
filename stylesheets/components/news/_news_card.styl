@@ -22,7 +22,7 @@
     margin-right: 1rem
 
     .g
-      display: inline-block
+      display: block
 
   @media $media-medium-max
     width: 100%
@@ -31,10 +31,10 @@
     height: 100%
 
     .g
-      display: inline-block
+      display: block
 
   h3.title
-    font-size:  responsive 16px 20px
+    font-size:  responsive 16px 26px
     font-style: italic
     font-family: "Lora", serif
     color: $optimistic-blue-dark
@@ -44,13 +44,14 @@
     line-height: 30px
     font-weight: 400
     overflow: hidden
+    text-align: left
 
     @media $media-xlarge-max
       font-size:  responsive 18px 24px 
     
     a
       display: inline-block
-      text-transform: capitalize
+      text-transform: none
 
     span
       display: block
@@ -89,7 +90,7 @@
 
     .thumb-and-title
       display: flex
-      justify-content: space-between
+      justify-content: normal
 
       @media $media-xlarge-max
         width: 100%
@@ -143,7 +144,7 @@
       min-width: 56px
       margin-right: 0
 
-      @media $media-xlarge
+      @media $media-xlarge-max
         display: block
       
       .di
@@ -157,6 +158,11 @@
       font-family: "Lora", serif
       line-height: 26px
       margin: 0 10px 0 0
+      overflow: hidden
+
+      @media $media-xxlarge-max
+        max-height: 160px
+        line-height: 22px;
 
       p 
         margin: 0
