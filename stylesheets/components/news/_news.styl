@@ -16,16 +16,23 @@
     text-decoration: none
     font-family: $serif 
     height: 450px
-
-    @media $media-large
+    @media $media-medium-max
+        height: auto
+        min-height: 250px
         display: block
+    @media $media-xxxlarge
         height: 190px
+        display: block
         
     &-news-item-wrapper
         padding: 0
         position: relative
         background-color: $white
-        height: 100%
+        @media $media-xxlarge-max
+            height: auto
+            max-height: 450px
+            min-height: 400px
+            display: block
 
         &:hover, &:focus, &:focus-visible
             background-color: $optimistic-blue-dark
@@ -42,23 +49,24 @@
         background-repeat: no-repeat
         background-position: left center
         background-size: cover
+       
+
     
     &-text-wrapper
         padding: 20px 10px 20px 0
-
-        @media $media-large-max
+        @media $media-xxlarge-max
             padding: 20px
-
+        
     &-department-title
         text-transform: uppercase
         color: $body-text
         font-family: $sans
         font-size: .88889rem
         line-height: 1.08333rem
-        margin: 20px 0 40px
-
-        @media $media-large-max
-            margin: 20px 0 40px 
+        margin: 20px 0 20px
+        bottom: 0
+        position: absolute
+            
 
     &-title
         color: #1871bd
@@ -70,6 +78,11 @@
         letter-spacing: .4px
         line-height: 1.5552rem
         font-family: "Lora", serif
+        overflow: hidden
+        max-height: 90px
+        @media $media-large-max
+            overflow: visible
+            max-height: 100%
 
     &-date-flag
         left: 0
@@ -78,11 +91,23 @@
     &-date-flag-text
         left: 20px
 
+.n--a .g--5
+    @media $media-xxlarge-max
+        min-width: 100%
+        max-width: 100%
+
+.n--a .g--7
+    @media $media-xxlarge-max
+        min-width: 100%
+        max-width: 100%
+
 .n--a img
     min-width: 100%
     max-height: 100%
     width: auto
     height: auto
+    object-fit: cover
+    object-position: center
 
 // handle hover interference with focus
 .n--a.focus-active:hover,

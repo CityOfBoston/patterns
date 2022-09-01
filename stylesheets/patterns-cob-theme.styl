@@ -639,6 +639,14 @@ h3, h4, h5, h6 {
     text-transform: uppercase;
     font-weight: 600;
 }
+h5 .learn-more, .learn-more {
+  text-transform: capitalize;
+  text-align: left;
+  text-decoration: underline;
+  font: italic normal normal 18px/26px Lora;
+  letter-spacing: 0px;
+  color: #288BE4;
+}
 .field-three-col-title h5 {
     color:$white;
     font-weight: 400;
@@ -1704,7 +1712,8 @@ h3, h4, h5, h6 {
     padding-left: 35px;
     margin-top: 4px;
     width: 75%;
-    min-width: 120px
+    min-width: 120px;
+    line-height: 23px;
 }
 .dl-d.p-l000 {
     padding-left: 0;
@@ -1716,6 +1725,16 @@ h3, h4, h5, h6 {
 .oh-wrapper.sb-b {
     width: 80%;
     font-size: 16px
+}
+.event-sidebar .list-item-wrapper {
+    padding-left: 0
+}
+.event-sidebar .list-item-wrapper .dl-t {
+    width: 40%
+}
+.event-sidebar .list-item-wrapper .sb-d {
+    padding-left: 15px
+    width: 60%
 }
 .node-listing-page, .node-post {
     position: relative;
@@ -1787,7 +1806,13 @@ p.big.intro-text {
 }
 .red {
     color: $freedom-red-dark;
-    line-height: 1rem
+    line-height: 1rem;
+    font-weight: bold
+}
+.green {
+    color: #58B652;
+    line-height: 1rem;
+    font-weight: bold
 }
 .node-place-profile {
     position: relative;
@@ -1917,6 +1942,9 @@ What: Overrides to some drupal injected tags.
 }
 .sb-b .button {
     margin-bottom: 20px    
+}
+.sb-b .button:last-child {
+    margin-bottom: 0;
 }
 h3.t--intro {
     text-transform: capitalize    
@@ -2064,6 +2092,9 @@ article .paragraphs-item-3-column-w-image ul li {
     font-size: 30px;
     font-size: 1.66667rem;
 }
+.required.error.cb-f:before {
+  border-color: #d22d23;
+}
 @media (min-width: 980px) {
     .error-text h1,
     .error-text .timeline-step-wrapper .timeline-number,
@@ -2132,3 +2163,52 @@ article .paragraphs-item-3-column-w-image ul li {
 .notfound-text #block-hub-blocks-search input {
     border-bottom: none;
 }
+ul li {
+  list-style: none;
+  padding-left: 1.25em;
+  background: url("../images/global/icons/ul-bullet.svg") no-repeat left 14px transparent;
+  background-size: 10px;
+  margin: 0px 0px 29.25px 0px;
+  margin: 0rem 0rem 1.625rem 0rem
+}
+.program-logo img {
+    width: 100%;
+    height: 100%
+}
+.features-sidebar {
+    margin-bottom: 15px
+}
+.features-sidebar svg {
+    max-width: 56px;
+    max-height: 56px   
+}
+
+/* Re-order sidebar for Events detail page. The sidebar needs to come first on mobile devices */
+
+.event-detail-page .body-sidebar-item-desktop.g--4 {
+    padding-bottom: 40px;
+}
+
+@media (max-width: 979px) {
+  .event-detail-page.g .g--4 {
+    order: 1;
+  }
+  .event-detail-page.g .g--8 {
+    order: 2;
+  }
+  .event-detail-page .body-sidebar-item-mobile.g--4 {
+    display: block;
+  }
+  .event-detail-page .body-sidebar-item-desktop.g--4 {
+    display: none;
+  }
+}
+@media (min-width: 980px) {
+  .event-detail-page .body-sidebar-item-mobile.g--4 {
+    display: none;
+  }
+  .event-detail-page .body-sidebar-item-desktop.g--4 {
+    display: block;
+  }
+}
+

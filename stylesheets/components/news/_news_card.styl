@@ -51,7 +51,7 @@
     
     a
       display: inline-block
-      text-transform: capitalize
+      text-transform: none
 
     span
       display: block
@@ -144,7 +144,7 @@
       min-width: 56px
       margin-right: 0
 
-      @media $media-xlarge
+      @media $media-xlarge-max
         display: block
       
       .di
@@ -158,6 +158,11 @@
       font-family: "Lora", serif
       line-height: 26px
       margin: 0 10px 0 0
+      overflow: hidden
+
+      @media $media-xxlarge-max
+        max-height: 160px
+        line-height: 22px;
 
       p 
         margin: 0
