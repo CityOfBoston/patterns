@@ -24,7 +24,7 @@
     "testcafe.ci": "cross-env BROWSERSTACK_USE_AUTOMATE=1 TEST_SERVER_URL=http://localhost:3035/ testcafe -a 'http-server -r public -p 3035' 'browserstack:edge@18,browserstack:ie@11.0:Windows 8.1,browserstack:chrome:Windows 10,browserstack:firefox@64:Windows 10' components/**/*.testcafe.*",
     "precommit": "lint-staged",
     "prepush": "jest --clearCache && npm run test",
-    "preinstall": "npx npm-force-resolutions",
+    "preinstall": "npx force-resolutions",
     "import-icons": "node dev-scripts/icons_manifest/index.js"
   },
   "jest": {
