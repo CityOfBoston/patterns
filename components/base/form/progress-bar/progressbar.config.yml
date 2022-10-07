@@ -1,0 +1,27 @@
+title: 'Progress Bar'
+handle: progress_bar
+status: ready
+variants:
+  - name: grey
+    context:
+      max: 9
+      min: 1
+      step: 3
+  - name: charles blue
+    context:
+      max: 9
+      min: 1
+      step: 8
+      theme_dark: true
+  - name: optimistic blue
+    context:
+      max: 9
+      min: 1
+      step: 9
+      theme_dark: true
+context:
+  header:
+    title: Progress Bar
+  max: 9
+  min: 1
+  step: 0
