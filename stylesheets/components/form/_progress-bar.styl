@@ -1,0 +1,60 @@
+/*
+
+   Multi Option
+
+   This element is used when there are large lists to select from
+
+   Base:
+    mo
+
+   Modifier:
+    i = fields inline
+
+ */
+
+.prg
+  position: relative
+  width: 100%
+
+  &-prgbar progress
+    margin:1rem 0 0.25rem
+    width:100%
+    height:1rem
+    border:2px solid $charles-blue;
+    background-color:#fff
+  
+  &-prgbar progress::-webkit-progress-bar
+    background-color:#fff
+  
+  &-prgbar progress::-webkit-progress-value
+    -webkit-transition:width 0.5s
+    transition:width 0.5s
+    background-color: $optimistic-blue-light
+  
+  &-prgbar progress::-moz-progress-bar
+    background-color: $optimistic-blue-light
+  
+  &-prgbar progress::-ms-fill
+    background-color: $optimistic-blue-light
+
+  &-prgbar.charles_blue progress::-webkit-progress-value
+    background-color: $charles-blue
+  
+  &-prgbar.charles_blue progress::-moz-progress-bar
+    background-color: $charles-blue
+  
+  &-prgbar.charles_blue progress::-ms-fill
+    background-color: $charles-blue
+
+  &-prgbar.grey progress::-webkit-progress-value
+    background-color: $grey-300
+  
+  &-prgbar.grey progress::-moz-progress-bar
+    background-color: $grey-300
+  
+  &-prgbar.grey progress::-ms-fill
+    background-color: $grey-300
+  
+  &-s
+    font-style:italic
+    display: block
