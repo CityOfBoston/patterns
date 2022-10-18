@@ -25,6 +25,14 @@
     font-style: italic
     line-height: $line-height-300
 
+  &--regular
+    color: $charles-blue
+    font-family: $serif
+    font-size: responsive 16px 20px
+    font-range: 480px 1440px
+    font-style: normal
+    line-height: $line-height-300
+
   // starts smaller than --info but has responsive font sizing so it doesn't
   // end up bigger on mobile.
   &--subinfo
@@ -147,6 +155,9 @@
     &--large
       @media $media-large
         text-align: center
+
+    &--ac 
+      align-self: center
 
   &-l
   &--l
