@@ -573,7 +573,7 @@ h1 {
     }
 }
 h2 {
-    font-size: 45px;
+    font-size: responsive 24px 45px;
     line-height: 47px;
     font-size: 2.5rem;
     line-height: 2.61111rem;
@@ -584,7 +584,7 @@ h2 {
     letter-spacing: -1px
 }
 h3 {
-    font-size: 30px;
+    font-size: responsive 20px 30px;
     line-height: 47px;
     font-size: 1.66667rem;
     line-height: 2.61111rem;
@@ -595,7 +595,7 @@ h3 {
     letter-spacing: 1px;
 }
 h4 {
-    font-size: 30px;
+    font-size: responsive 18px 30px;
     line-height: 35px;
     font-size: 1.66667rem;
     line-height: 1.94444rem;
@@ -2224,18 +2224,22 @@ ul li {
 .candidate_results h4 {
     text-transform: none;
 }
-.precinct_total   {
+.precinct_total {
     text-align: left;
     font: normal normal normal 30px/30px Lora;
+    font-size: responsive 18px 30px;
     letter-spacing: 0.6px;
     color: #091F2F;
     opacity: 1;
+    padding-top: 40px;
 }
-@media (max-width: 768px) {
-   .precinct_total {
-        padding-top: 15px
+@media (max-width: 979px) {
+    .precinct_total {
+        padding-top: 0;
     }
    .precinct_reported_text {
         padding-top:40px
     }
 }
+
+
