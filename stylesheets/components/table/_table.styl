@@ -83,8 +83,6 @@
     }
   }
 }
-
-
 .vertical-responsive-table {
   width: 100%;
   border-collapse: collapse;
@@ -111,6 +109,8 @@
     text-transform: uppercase;
     opacity: 1;
     border-width: 3px;
+    border-left: 3px solid #091f2f;
+    border-top: 3px solid #091f2f;
     border-bottom: 3px solid #ffffff;
     @media (min-width: 768px) {
       display: table-cell;
@@ -146,5 +146,11 @@
         
       }
     }
+  }
+}
+.responsive-table--vertical {
+  th {
+    border-bottom: 3px solid #ffffff;
+    border-right-color: $charles-blue;
   }
 }
