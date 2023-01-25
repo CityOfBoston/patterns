@@ -40,6 +40,9 @@ var BostonContact = (function () {
       var form = document.getElementById('contactForm');
       form.addEventListener('submit', handleFormSubmit);
 
+      // clear error message on keyup of input field
+      handleInputKeyup();
+
       // Set the hidden fields
       setBrowser(ev.currentTarget);
       setURL(ev.currentTarget);
@@ -47,6 +50,18 @@ var BostonContact = (function () {
       setBodyMessage(ev.currentTarget);
       setSubject(ev.currentTarget);
       setToken(ev.currentTarget);
+    }
+  }
+
+  function handleInputKeyup(form) {
+    var inputFields = document.getElementsByClassName('txt-f');
+    for (var i = 0; i < inputFields.length; i++) {
+      inputFields[i].addEventListener("keyup", function() {
+        var errorMessage = this.nextElementSibling; 
+        if (errorMessage) {
+          errorMessage.remove("t--err");
+        }
+      });
     }
   }
 
