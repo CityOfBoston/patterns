@@ -1,0 +1,104 @@
+/*
+
+   SITE BANNER SUBMENU
+
+   Base:
+    site-banner
+
+ */
+ 
+.site-banner
+  width: 100%;
+  font-size: 13.33px
+  font-size: .83rem
+  text-align: center
+  font-family: $serif
+  margin-top: 0
+
+  .b-c.p-v200 
+    padding-top: 10px
+    padding-bottom:10px
+    text-align: center
+
+  .b-c.p-a300
+    padding-top: 16px
+    padding-bottom:16px
+
+  .dr-h
+    padding: 0
+
+  .site-banner-button 
+    text-decoration: underline
+
+    .dr-ic
+      position: relative
+      display: inline-block
+      right: 0
+
+    svg
+      width: 12px
+      transform: rotate(90deg)
+      transition: transform 250ms
+      margin-left: 10px
+      vertical-align: middle
+
+      .dr-i
+        fill: #fff
+
+  .dr-c 
+    padding: 0
+
+  .site-banner-logo
+    max-width: 150px
+    margin-right: 5px
+    vertical-align: middle
+
+  .site-banner-expansion
+    @media $media-xlarge
+      -webkit-box-orient: horizontal
+      -webkit-box-direction: normal
+      -ms-flex-direction: row
+      flex-direction: row
+
+    .site-banner-expansion-item
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-orient: horizontal;
+      -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+      flex-direction: row;
+      -webkit-box-flex: 0;
+      -ms-flex: 0 1 auto;
+      flex: 0 1 auto;
+      max-width: 500px
+      text-align: left
+
+      .site-banner-expansion-item-content 
+        padding: 20px 0
+        line-height: 1rem  
+
+        p
+          margin-top: 0 
+
+          &:first-child
+            color: $optimistic-blue-light
+            font-weight: bold
+            text-transform: uppercase
+            font-family: $sans
+            margin-bottom: 0
+
+.site-banner.dr 
+  margin-top: 0
+
+  .site-banner-expansion-item.city-hall svg
+    width: 130px
+    min-width: 20px
+    max-height: 100px
+    padding-right: 16px
+
+  .site-banner-expansion-item.lock svg#lock
+    max-width: 150px
+    min-width: 20px
+    max-height: 150px
+    width: 200px
