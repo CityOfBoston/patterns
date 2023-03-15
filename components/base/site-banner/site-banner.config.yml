@@ -2,12 +2,6 @@ title: Site Banner
 handle: site-banner
 status: ready
 variants:
-  - name: grey
-    context:
-      theme: g
-  - name: white
-    context:
-      theme: w
   - name: charles blue
     context:
       theme: b
