@@ -15,26 +15,27 @@ fallback: |-
 blocks:
   - type: section
     - fields:
-        - type: mrkdwn
-          text: |
-            Release
-            <{{payload.release.html_url}}|{{payload.release.name}}>
-        - type: mrkdwn
-          text: | 
-            Repository Tag
-            {{payload.release.tag_name}}
+      - type: mrkdwn
+        text: |
+          Release
+          <{{payload.release.html_url}}|{{payload.release.name}}>
+      - type: mrkdwn
+        text: | 
+          Repository Tag
+          {{payload.release.tag_name}}
 
+  - type: "header"
+    text: 
+      - type: "plain_text"
+        text: "Header"
+  
   - type: context
     elements:
-      - type: "header"
-	text: 
-          - type: "plain_text"
-	    text: "Header"
-          - type: image
-            image_url: {{payload.release.author.avatar_url}}
-            alt-text: "author avatar"
-          - type: mrkdwn
-            text: {{payload.release.author.name}}
+      - type: image
+        image_url: {{payload.release.author.avatar_url}}
+        alt-text: "author avatar"
+      - type: mrkdwn
+        text: {{payload.release.author.name}}
 	    
   - type: section
     - fields: 
