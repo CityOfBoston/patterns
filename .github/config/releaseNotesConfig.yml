@@ -4,11 +4,14 @@ icon_url: https://boston.gov/digitalteamicon.png
 pretext: A production deployment has been completed and release notes have been published.
 title: <{{payload.release.html_url}}|Code Release>
 title_link: {{payload.release.html_url}}
+
 text: |
   A new release has been made for {{payload.repository.name}}.
   **{{payload.repository.description}}**
+
 fallback: |-
   [GitHub] {{payload.release.name}} is released for {{repositoryName}}
+
 blocks:
   - type: section
     - fields:
@@ -17,29 +20,32 @@ blocks:
             Release
             <{{payload.release.html_url}}|{{payload.release.name}}>
         - type: mrkdwn
-          text:  | 
+          text: | 
             Repository Tag
             {{payload.release.tag_name}}
+
   - type: context
     elements:
-		  - type: "header"
-			  text": 
+      - type: "header"
+	text: 
           - type: "plain_text"
-				    text: "Header"
-      - type: image
-        image_url: {{payload.release.author.avatar_url}}
-        alt-text: "author avatar"
-      - type: mrkdwn
-        text: {{payload.release.author.name}}
-
+	    text: "Header"
+          - type: image
+            image_url: {{payload.release.author.avatar_url}}
+            alt-text: "author avatar"
+          - type: mrkdwn
+            text: {{payload.release.author.name}}
+	    
   - type: section
     - fields: 
       - type: mrkdwn
         text: "Released By\n{{payload.release.author}} {{payload.release.author.name}}"
       - type: mrkdwn
         text: "Release Time\n{{payload.release.created_at}}"
+
 footer: >-
   {{payload.enterprise.name}}, {{payload.repository.name}} <{{payload.release.html_url}}|Code Release>
+
 colors:
   success: '#5DADE2'
   failure: '#884EA0'
