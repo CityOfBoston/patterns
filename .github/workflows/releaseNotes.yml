@@ -1,7 +1,7 @@
 name: Broadcast Release Notes
 on:
   release:
-    types: [released]
+    types: [released, published]
   workflow_dispatch:
 jobs:
   release:
