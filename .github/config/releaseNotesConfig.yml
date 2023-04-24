@@ -9,8 +9,7 @@ text: |
   A new release has been made for {{payload.repository.name}}.
   **{{payload.repository.description}}**
 
-fallback: |-
-  [GitHub] {{payload.release.name}} is released for {{repositoryName}}
+fallback: [GitHub] {{payload.release.name}} is released for {{repositoryName}}
 
 blocks:
   - type: section
@@ -22,14 +21,14 @@ blocks:
 
   - type: "header"
     text: 
-      - type: "plain_text"
-        text: "Header"
+      type: "plain_text"
+      text: "Header"
   
   - type: context
     elements:
       - type: image
         image_url: "{{payload.release.author.avatar_url}}"
-        alt-text: "author avatar"
+        alt_text: "author avatar"
       - type: mrkdwn
         text: "{{payload.release.author.name}}"
   - type: section
