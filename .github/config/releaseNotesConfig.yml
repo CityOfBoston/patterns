@@ -14,15 +14,15 @@ fallback: |-
 
 blocks:
   - type: section
-    - fields:
-      - type: mrkdwn
-        text: |
-          Release
-          <{{payload.release.html_url}}|{{payload.release.name}}>
-      - type: mrkdwn
-        text: | 
-          Repository Tag
-          {{payload.release.tag_name}}
+    fields:
+    - type: mrkdwn
+      text: |
+        Release
+        <{{payload.release.html_url}}|{{payload.release.name}}>
+    - type: mrkdwn
+      text: | 
+        Repository Tag
+        {{payload.release.tag_name}}
 
   - type: "header"
     text: 
@@ -38,7 +38,7 @@ blocks:
         text: {{payload.release.author.name}}
 	    
   - type: section
-    - fields: 
+    fields: 
       - type: mrkdwn
         text: "Released By\n{{payload.release.author}} {{payload.release.author.name}}"
       - type: mrkdwn
