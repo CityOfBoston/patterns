@@ -16,13 +16,9 @@ blocks:
   - type: section
     fields:
     - type: mrkdwn
-      text: |
-        Release
-        <{{payload.release.html_url}}|{{payload.release.name}}>
+      text: "Release\n<{{payload.release.html_url}}|{{payload.release.name}}>"
     - type: mrkdwn
-      text: | 
-        Repository Tag
-        {{payload.release.tag_name}}
+      text: "Repository Tag\n{{payload.release.tag_name}}"
 
   - type: "header"
     text: 
@@ -32,11 +28,10 @@ blocks:
   - type: context
     elements:
       - type: image
-        image_url: {{payload.release.author.avatar_url}}
+        image_url: "{{payload.release.author.avatar_url}}"
         alt-text: "author avatar"
       - type: mrkdwn
-        text: {{payload.release.author.name}}
-	    
+        text: "{{payload.release.author.name}}"
   - type: section
     fields: 
       - type: mrkdwn
