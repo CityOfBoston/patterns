@@ -35,7 +35,7 @@ blocks:
   - type: section
     fields: 
       - type: mrkdwn
-        text: "Released By\n{{payload.release.author}} {{payload.release.author.name}}"
+        text: "Released By\n{{payload.release.author.name}}"
       - type: mrkdwn
         text: "Release Time\n{{payload.release.created_at}}"
 
