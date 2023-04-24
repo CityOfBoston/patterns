@@ -9,7 +9,8 @@ text: |
   A new release has been made for {{payload.repository.name}}.
   **{{payload.repository.description}}**
 
-fallback: [GitHub] {{payload.release.name}} is released for {{repositoryName}}
+fallback: |-
+  [GitHub] {{payload.release.name}} is released for {{repositoryName}}
 
 blocks:
   - type: section
