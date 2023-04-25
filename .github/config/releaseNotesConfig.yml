@@ -32,7 +32,7 @@ blocks:
         image_url: "{{payload.release.author.avatar_url}}"
         alt_text: "{{#if (payload.release.author.name)}}{{payload.release.author.name}}{{else}}{{payload.release.author.login}}{{/if}}"
       - type: mrkdwn
-        text: "<{{#if (payload.release.author.name)}}{{payload.release.author.name}}{{else}}{{payload.release.author.login}}{{/if}}|{{payload.release.author.html_url}}>"
+        text: "<{{payload.release.author.html_url}}|{{#if (payload.release.author.name)}}{{payload.release.author.name}}{{else}}{{payload.release.author.login}}{{/if}}>"
   - type: section
     fields: 
       - type: mrkdwn
