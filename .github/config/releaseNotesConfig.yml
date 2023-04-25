@@ -6,40 +6,37 @@ title: <{{payload.release.html_url}}|Code Release>
 title_link: {{payload.release.html_url}}
 
 text: |
-  A new release has been made for {{payload.repository.name}}.
+ A new release has been made for <{{payload.homepage}}|{{payload.repository.name}}>.
   _{{payload.repository.description}}_
 
 fallback: |-
   [GitHub] {{payload.release.name}} is released for {{repositoryName}}
 
 blocks:
+  - type: "divider"
   - type: "header"
     text: 
       type: "plain_text"
-      text: "Release Details"
+      text: "Release Information"
   - type: section
     fields:
     - type: mrkdwn
-      text: "Release\n<{{payload.release.html_url}}|{{payload.release.name}}>"
+      text: "Release Title\n<{{payload.release.html_url}}|{{payload.release.name}}>"
     - type: mrkdwn
       text: "Repository Tag\n{{payload.release.tag_name}}"
+    - type: mrkdwn
+      text: "Release Date\n{{truncate payload.release.created_at 10}}"      
   - type: "divider"
   - type: context
     elements:
-      - type: mrkdwn
-        text: "Released By"
       - type: image
         image_url: "{{payload.release.author.avatar_url}}"
         alt_text: "{{#if (payload.release.author.name)}}{{payload.release.author.name}}{{else}}{{payload.release.author.login}}{{/if}}"
       - type: mrkdwn
-        text: "<{{payload.release.author.html_url}}|{{#if (payload.release.author.name)}}{{payload.release.author.name}}{{else}}{{payload.release.author.login}}{{/if}}>"
-  - type: section
-    fields: 
-      - type: mrkdwn
-        text: "Release Date\n{{truncate payload.release.created_at 10}}"
+        text: "Released By <{{payload.release.author.html_url}}|{{#if (payload.release.author.name)}}{{payload.release.author.name}}{{else}}{{payload.release.author.login}}{{/if}}>"
 
 footer: >-
-  {{payload.enterprise.name}}, {{payload.repository.name}} <{{payload.release.html_url}}|Code Release>
+  {{payload.enterprise.name}}, <{{payload.homepage}}|{{payload.repository.name}}> <{{payload.release.html_url}}|code release>
 
 colors:
   success: '#5DADE2'
