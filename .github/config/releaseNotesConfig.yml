@@ -29,7 +29,7 @@ blocks:
     elements:
       - type: image
         image_url: "{{payload.release.author.avatar_url}}"
-        alt_text: "author avatar"
+        alt_text: "{{payload.release.author.name}}"
       - type: mrkdwn
         text: "{{payload.release.author.name}}"
   - type: section
