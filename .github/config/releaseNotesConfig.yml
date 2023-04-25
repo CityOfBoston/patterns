@@ -26,7 +26,6 @@ blocks:
       text: "Repository Tag\n{{payload.release.tag_name}}"
     - type: mrkdwn
       text: "Release Date\n{{truncate payload.release.created_at 10}}"      
-  - type: "divider"
   - type: context
     elements:
       - type: image
@@ -34,6 +33,7 @@ blocks:
         alt_text: "{{#if (payload.release.author.name)}}{{payload.release.author.name}}{{else}}{{payload.release.author.login}}{{/if}}"
       - type: mrkdwn
         text: "Released By <{{payload.release.author.html_url}}|{{#if (payload.release.author.name)}}{{payload.release.author.name}}{{else}}{{payload.release.author.login}}{{/if}}>"
+  - type: "divider"
 
 footer: >-
   {{payload.enterprise.name}}, <{{payload.repository.homepage}}|{{payload.repository.name}}> <{{payload.release.html_url}}|code release>
