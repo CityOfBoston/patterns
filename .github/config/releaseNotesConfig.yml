@@ -13,31 +13,30 @@ fallback: |-
   [GitHub] {{payload.release.name}} is released for {{repositoryName}}
 
 blocks:
+  - type: "header"
+    text: 
+      type: "plain_text"
+      text: "Release Details"
   - type: section
     fields:
     - type: mrkdwn
       text: "Release\n<{{payload.release.html_url}}|{{payload.release.name}}>"
     - type: mrkdwn
       text: "Repository Tag\n{{payload.release.tag_name}}"
-
-  - type: "header"
-    text: 
-      type: "plain_text"
-      text: "Header"
-  
+  - type: "divider"
   - type: context
     elements:
+      - type: mrkdwn
+        text: "Released By"
       - type: image
         image_url: "{{payload.release.author.avatar_url}}"
-        alt_text: "{{payload.release.author.name}}"
+        alt_text: "{{#if (payload.release.author.name eq "")}}{{payload.release.author.login}}{{payload.release.author.name}}{{/if}}"
       - type: mrkdwn
-        text: "{{payload.release.author.name}}"
+        text: "<{{#if (payload.release.author.name eq "")}}{{payload.release.author.login}}{{payload.release.author.name}}{{/if}}|{{payload.release.author.html_url}}>"
   - type: section
     fields: 
       - type: mrkdwn
-        text: "Released By\n{{payload.release.author.name}}"
-      - type: mrkdwn
-        text: "Release Time\n{{payload.release.created_at}}"
+        text: "Release Date\n{{truncate payload.release.created_at 10}}"
 
 footer: >-
   {{payload.enterprise.name}}, {{payload.repository.name}} <{{payload.release.html_url}}|Code Release>
