@@ -8,6 +8,7 @@ title_link: {{payload.release.html_url}}
 text: |
  A new release has been made for <{{payload.repository.homepage}}|{{payload.repository.name}}>.
   _{{payload.repository.description}}_
+  <{{payload.release.html_url}}|Click here> to see the Release Notes.
 
 fallback: |-
   [GitHub] {{payload.release.name}} is released for {{repositoryName}}
