@@ -1,0 +1,15 @@
+title: Site Banner
+handle: site-banner
+status: ready
+variants:
+  - name: charles blue
+    context:
+      theme: b
+      theme_dark: true
+  - name: optimistic blue
+    context:
+      theme: ob
+      theme_dark: true
+context:
+  header:
+    title: City of Boston Site Banner
