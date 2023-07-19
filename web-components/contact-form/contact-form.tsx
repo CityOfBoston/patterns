@@ -249,7 +249,7 @@ export class ContactForm {
                   htmlFor="CobContactForm-phone"
                   class="txt-l txt-l--mt000"
                 >
-                  Phone Number (Format: 000-000-0000)
+                  Phone Number
                 </label>
                 <input
                   id="CobContactForm-phone"
