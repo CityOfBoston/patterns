@@ -41,7 +41,6 @@ export class ContactForm {
 
   @State() name: string = '';
   @State() email: string = '';
-  @State() phone: string = '';
   @State() subject: string = '';
   @State() message: string = '';
 
@@ -85,10 +84,6 @@ export class ContactForm {
     } else {
       this.emailErrorMessage = null;
     }
-  }
-
-  handlePhoneInput(ev) {
-    this.phone = ev.target.value;
   }
 
   handleSubjectInput(ev) {
@@ -179,12 +174,11 @@ export class ContactForm {
       name,
       subject,
       email,
-      phone,
       message,
       to,
     } = this;
 
-    const missing = !(name && subject && email && phone && message);
+    const missing = !(name && subject && email && message);
 
     return (
       <div>
@@ -243,24 +237,6 @@ export class ContactForm {
                     {emailErrorMessage}
                   </div>
                 )}
-              </div>
-              <div class="txt m-b300">
-                <label
-                  htmlFor="CobContactForm-phone"
-                  class="txt-l txt-l--mt000"
-                >
-                  Phone Number
-                </label>
-                <input
-                  id="CobContactForm-phone"
-                  name="email[phone]"
-                  type="tel"
-                  placeholder="617-000-9999"
-                  pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
-                  class="txt-f txt-f--sm"
-                  value={phone}
-                  onInput={ev => this.handlePhoneInput(ev)}
-                />
               </div>
               <div class="txt m-b300">
                 <label
