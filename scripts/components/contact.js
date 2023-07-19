@@ -5,6 +5,7 @@ var BostonContact = (function () {
   var to_address;
   var o_message = false;
   var o_subject = false;
+  var o_phone = false;
 
   function initEmailLink(emailLink) {
     // Handle the onclick event
@@ -49,6 +50,7 @@ var BostonContact = (function () {
       setToAddress(ev.currentTarget);
       setBodyMessage(ev.currentTarget);
       setSubject(ev.currentTarget);
+      setPhone(ev.currentTarget);
       setToken(ev.currentTarget);
     }
   }
@@ -109,10 +111,13 @@ var BostonContact = (function () {
     var email = Boston.childByEl(form, 'bos-contact-email');
     var email2 = Boston.childByEl(form, 'bos-contact-email2');
     var name = Boston.childByEl(form, 'bos-contact-name');
+    var phone = Boston.childByEl(form, 'bos-contact-phone');
     var subject = Boston.childByEl(form, 'bos-contact-subject');
     var message = Boston.childByEl(form, 'bos-contact-message');
     var address_to = document.getElementById('contactFormToAddress');
     var email_two = document.getElementById('contact-address-two');
+    var phoneno = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
+    var phone_input = document.getElementById("contact-phone");
     var valid = true;
 
     if (email[0].value == '' || !Boston.emailRE.test(email[0].value)) {
@@ -160,6 +165,17 @@ var BostonContact = (function () {
     if (o_subject && subject[0].value !== o_subject) {
       valid = false;
     }
+    
+    if (phone[0].value !== '') {
+      if (phone_input.value.match(phoneno)) {
+        valid = true;
+      }
+      else {
+          Boston.invalidateField(phone[0], "Please enter a valid phone number");
+          valid = false;
+        
+      }
+    }  
 
     return valid;
   }
@@ -180,6 +196,14 @@ var BostonContact = (function () {
     if (o_message = extract(link.getAttribute('href'), "body")) {
       o_message = decodeURIComponent(o_message);
       messageField.value = o_message;
+    }
+  }
+
+  function setPhone(link) {
+    var phoneField = document.getElementById('contact-phone');
+    if (o_phone = extract(link.getAttribute('href'), "phone")) {
+      o_phone = decodeURIComponent(o_phone);
+      phoneField.value = o_phone;
     }
   }
 
