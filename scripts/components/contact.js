@@ -168,12 +168,8 @@ var BostonContact = (function () {
     
     if (phone[0].value !== '') {
       if (!phone_input.value.match(phoneno)) {
-        //return;
-      //}
-      //else {
           Boston.invalidateField(phone[0], "Please enter a valid phone number");
           valid = false;
-        
       }
     }  
 
