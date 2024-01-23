@@ -32,6 +32,7 @@ var BostonContact = (function () {
 
       // -> DU Jan 2024: DIG-3829
       let title;
+      document.getElementById('contactFormModal').getElementsByClassName('sh-title')[0].innerHTML = "Contact Us";
       if ((title = extract(ev.target.getAttribute('href'), "title")) && title !== '') {
         document.getElementById('contactFormModal').getElementsByClassName('sh-title')[0].innerHTML = decodeURIComponent(title);
       }
