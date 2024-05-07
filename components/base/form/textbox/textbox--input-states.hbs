@@ -1,0 +1,22 @@
+{{#each states as |textbox|}}
+  <label class="txt">
+    <span class="txt-l">
+      {{label}}
+      {{#if required}}
+        <span class="t--req">Required</span>
+      {{/if}}
+      {{#if soft-required}}
+        <span class="t--req">Required</span>
+      {{/if}}
+    </span>
+    <input
+      type="{{#if type}}{{type}}{{else}}text{{/if}}"
+      value="{{#if value}} {{value}}{{/if}}"
+      placeholder="{{placeholder}}"
+      class="txt-f{{#if error }} txt-f--err{{#if soft-required}} txt-f--sr{{/if}}{{/if}}{{#if classes}} {{classes}}{{/if}}"
+    >
+    {{#if error }}
+      <div class="t--subinfo t--err m-t100">{{ error }}</div>
+    {{/if}}
+  </label>
+{{/each}}

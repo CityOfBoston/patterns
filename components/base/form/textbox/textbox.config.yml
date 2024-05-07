@@ -26,6 +26,18 @@ context:
       id: password
       type: password
       value: "password"
+  states:
+    - label: Default
+      type: text
+    - label: Input Label
+      required: true
+    - label: Soft Require - Required/Validation on Submit
+      error: Please enter an email address
+      soft-required: true
+    - label: Error
+      placeholder: Your email address
+      value: "Not an email address string"
+      error: Please enter an email address
 variants:
   - name: Combo
     context:

@@ -30,6 +30,14 @@ var BostonContact = (function () {
         document.getElementById('contactMessage').innerHTML = ev.target.title;
       }
 
+      // -> DU Jan 2024: DIG-3829
+      let title;
+      document.getElementById('contactFormModal').getElementsByClassName('sh-title')[0].innerHTML = "Contact Us";
+      if ((title = extract(ev.target.getAttribute('href'), "title")) && title !== '') {
+        document.getElementById('contactFormModal').getElementsByClassName('sh-title')[0].innerHTML = decodeURIComponent(title);
+      }
+      // <- DU Jan 2024: DIG-3829
+
       var btn = document.getElementById("contactFormModal");
       // Setting new role attributes
       btn.setAttribute("role", "dialog");
@@ -59,7 +67,7 @@ var BostonContact = (function () {
     var inputFields = document.getElementsByClassName('txt-f');
     for (var i = 0; i < inputFields.length; i++) {
       inputFields[i].addEventListener("keyup", function() {
-        var errorMessage = this.nextElementSibling; 
+        var errorMessage = this.nextElementSibling;
         if (errorMessage) {
           errorMessage.remove("t--err");
         }
@@ -138,7 +146,7 @@ var BostonContact = (function () {
           valid = false;
         }
 
-      } 
+      }
     } else {
       valid = true;
     }
@@ -165,13 +173,13 @@ var BostonContact = (function () {
     if (o_subject && subject[0].value !== o_subject) {
       valid = false;
     }
-    
+
     if (phone[0].value !== '') {
       if (!phone_input.value.match(phoneno)) {
           Boston.invalidateField(phone[0], "Please enter a valid phone number");
           valid = false;
       }
-    }  
+    }
 
     return valid;
   }
@@ -221,7 +229,7 @@ var BostonContact = (function () {
         success: function (response) {
           if (response.status === 200) {
             var token = JSON.parse(response.response).token_session;
-            document.getElementById('contact-token').value = token;            
+            document.getElementById('contact-token').value = token;
           } else {
             console.log("token response error");
           }

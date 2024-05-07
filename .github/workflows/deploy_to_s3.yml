@@ -1,0 +1,132 @@
+# @file: deploy_to_s3.yml
+# This Action builds a deploy artifact (which in this case is a fully populated config, vendor and docroot folder for a
+# Dupal website) and copies the built folders+files to an s3 bucket.
+#
+# Attached resources:
+# - GitHub SECRETS:
+#     -> global: AWS_ACCESS_KEY -> AWS Authentication using a SERVICE ACCOUNT
+#     -> global: AWS_SECRET_ACCESS_KEY -> WeAWS Authentication using a SERVICE ACCOUNT
+#     -> global: SLACK_DOIT_WEBHOOK_URL -> Webhook URL for posting messages to slack
+#     -> local: CLOUDFRONT_DISTRIBUTION_ID -> The cloudfront distributionIDF so we can invalidate AWS cache for patterns
+# - GitHub VARIABLES:
+#     -> global: SLACK_MONITORING_CHANNEL -> Channel to post devops messages into
+#     -> local: S3_DRY_RUN -> Copies a single file into the s3 bucket DRY_RUN folder (for testing)
+#     -> local: DEPLOY_DEBUG -> Debug mode, generally prints more output for debugging
+#     -> local: RUN_PERCY -> Launch Percy tests as part of action
+#     -> local: RUN_JEST -> Launch Jest tests as part of action
+name: "Deploy Patterns to Amazon S3"
+on:
+  workflow_dispatch:
+  push:
+    branches:   # we can add branches to this list which will deploy code to Acquia GitLab as we push code to those branches.
+     - develop
+     - production
+      # - dummy
+env:
+  SLACK_WEBHOOK_URL: ${{ secrets.SLACK_DOIT_WEBHOOK_URL }}    # for slack
+  NODE_VERSION: 14
+  TZ: "America/New_York"
+
+jobs:
+  Deploy:
+    # installed software: https://github.com/actions/runner-images/blob/main/images/linux/Ubuntu2004-Readme.md
+    runs-on: ubuntu-20.04
+    defaults:
+      run:
+        shell: bash
+
+    steps:
+      # checkout the cob repository that has been pushed to.
+      - name: Set Variables
+        run: |
+          if [[ "{{ github.ref_name }}" == "develop" ]]; then
+            echo "BUCKET_NAME=patterns-stg.boston.gov" >> "${GITHUB_ENV}"
+          elif [[ "{{ github.ref_name }}" == "production" ]]; then
+            echo "BUCKET_NAME=patterns.boston.gov" >> "${GITHUB_ENV}"
+          else
+            echo "BUCKET_NAME=patterns-uat.boston.gov" >> "${GITHUB_ENV}"
+          fi
+          if [[ ${{ vars.S3_DRY_RUN }} == 1 ]];then
+            echo "S3_DEST_DIR='DRY_RUN/'" >> "${GITHUB_ENV}"
+            echo "SOURCE_DIR='public/legacy'" >> "${GITHUB_ENV}"
+          else
+            echo "S3_DEST_DIR=''" >> "${GITHUB_ENV}"
+            echo "SOURCE_DIR=public" >> "${GITHUB_ENV}"
+          fi
+
+      - name: Post to Slack
+        uses: act10ns/slack@v2.0.0
+        with:
+          status: Starting
+          channel: ${{ vars.SLACK_MONITORING_CHANNEL }}
+
+      - name: Checkout the repository
+        uses: actions/checkout@v4
+
+      - name: Downgrade node 14
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - name: Build the public folder
+        id: Build-Patterns-And-CDN-Assets
+        run: |
+          npm install
+          npm run build
+
+      - name: Printout vars
+        if: ${{ vars.DEPLOY_DEBUG == 1 }}
+        run: |
+          du ./public
+
+      - name: Run Percy Tests
+        if: ${{ vars.RUN_PERCY == 1 }}
+        run: |
+          gem install faraday -v 1.8.0
+          percy snapshot public --snapshots_regex="(components\/preview.).*\.html$" --enable_javascript --trace --widths "375,1280"
+
+      - name: Run Jest Tests
+        if: ${{ vars.RUN_JEST == 1 }}
+        run: |
+          npm run jest.ci
+
+      - name: Upload to Amazon
+        id: Deploy-To-Amazon
+        uses: jakejarvis/s3-sync-action@master
+        with:
+          args: --acl public-read --follow-symlinks # --delete
+        env:
+          AWS_S3_BUCKET: ${{ env.BUCKET_NAME }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_REGION: 'us-east-2'
+          SOURCE_DIR: ${{ env.SOURCE_DIR }}
+          DEST_DIR: ${{ env.S3_DEST_DIR }}
+
+      - name: Invalidate AWS CloudFront
+        id: Invalidate-Cache
+        uses: chetan/invalidate-cloudfront-action@v2
+        env:
+          DISTRIBUTION: ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }}
+          PATHS: "/*"
+          AWS_REGION: "us-east-1"
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          DEBUG: ${{ env.DEPLOY_DEBUG }}
+
+      - name: Post to Slack - success
+        uses: act10ns/slack@v2.0.0
+        if: ${{ success()  }}
+        with:
+          status: ${{ job.status }}
+          steps: ${{ toJson(steps) }}
+          channel: ${{ vars.SLACK_MONITORING_CHANNEL }}
+
+      - name: Post to Slack - failure
+        uses: act10ns/slack@v2.0.0
+        if: ${{ failure() }}
+        with:
+          status: ${{ job.status }}
+          steps: ${{ toJson(steps) }}
+          channel: ${{ vars.SLACK_MONITORING_CHANNEL }}

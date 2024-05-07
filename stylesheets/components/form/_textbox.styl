@@ -25,7 +25,7 @@
     margin: 0 0 $sizing-300
 
   &-f
-    field-height = "calc(%srem + %s * 2)" % ($line-height-600 $border-200)
+    field-height = "calc(%srem + %s * 1)" % ($line-height-600 $border-200)
 
     font-family: $serif
     font-size: 1rem
@@ -43,8 +43,16 @@
     padding-left: $sizing-300
     padding-right: $sizing-300
 
+    &--sr
+      border-width: $border-150
+      border-color: $error-border-color
+
+    &--focused
+      box-shadow: 0 0 0 3px $focus-indicator-color
+      border-color: $focus-indicator-color
+
     &--sm
-      field-height-sm = "calc(%srem + %s * 2)" % ($line-height-400 $border-200)
+      field-height-sm = "calc(%srem + %s * 1)" % ($line-height-400 $border-200)
 
       padding-left: $sizing-200
       padding-right: $sizing-200
@@ -66,7 +74,7 @@
     textarea&
       &.txt-f--combo
         // Need to leave space for a .sel-f--sq element, and its borders
-        width: "calc(100% - %s - %s * 2)" % ($select-arrow-box-width $border-200)
+        width: "calc(100% - %s - %s * 1)" % ($select-arrow-box-width $border-200)
 
     input[type=email]&--auto,
     input[type=tel]&--auto,
@@ -92,10 +100,13 @@
 
     &:focus
       box-shadow: 0 0 0 3px $focus-indicator-color
+      border-color: $focus-indicator-color
 
     &--combo
       border-right: 0
       float: left
+    :focus
+      outline: none;
 
   &-l
     color: $charles-blue
