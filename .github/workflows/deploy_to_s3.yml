@@ -39,9 +39,9 @@ jobs:
       # checkout the cob repository that has been pushed to.
       - name: Set Variables
         run: |
-          if [[ "{{ github.ref_name }}" == "develop" ]]; then
+          if [[ "${{ github.ref_name }}" == "develop" ]]; then
             echo "BUCKET_NAME=patterns-stg.boston.gov" >> "${GITHUB_ENV}"
-          elif [[ "{{ github.ref_name }}" == "production" ]]; then
+          elif [[ "${{ github.ref_name }}" == "production" ]]; then
             echo "BUCKET_NAME=patterns.boston.gov" >> "${GITHUB_ENV}"
           else
             echo "BUCKET_NAME=patterns-uat.boston.gov" >> "${GITHUB_ENV}"
