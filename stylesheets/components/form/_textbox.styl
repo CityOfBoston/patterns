@@ -25,7 +25,7 @@
     margin: 0 0 $sizing-300
 
   &-f
-    field-height = "calc(%srem + %s * 1)" % ($line-height-600 $border-200)
+    field-height = "calc(%srem + %s * 1)" % ($line-height-600 $border-150)
 
     font-family: $serif
     font-size: 1rem
@@ -37,7 +37,7 @@
     border: $border-200 solid $charles-blue
     border-radius: 0 // Safari/iOS rounds input field corners by default
 
-    height: field-height
+    height: 57px
     line-height: field-height
 
     padding-left: $sizing-300
@@ -52,13 +52,13 @@
       border-color: $focus-indicator-color
 
     &--sm
-      field-height-sm = "calc(%srem + %s * 1)" % ($line-height-400 $border-200)
+      field-height-sm = "calc(%srem + %s * 1)" % ($line-height-400 $border-150)
 
       padding-left: $sizing-200
       padding-right: $sizing-200
 
       height: field-height-sm
-      line-height: field-height-sm
+      line-height: 35px
 
     &::placeholder
       font-style: italic
@@ -74,7 +74,7 @@
     textarea&
       &.txt-f--combo
         // Need to leave space for a .sel-f--sq element, and its borders
-        width: "calc(100% - %s - %s * 1)" % ($select-arrow-box-width $border-200)
+        width: "calc(100% - %s - %s * 1)" % ($select-arrow-box-width $border-150)
 
     input[type=email]&--auto,
     input[type=tel]&--auto,

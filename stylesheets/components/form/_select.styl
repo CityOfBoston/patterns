@@ -78,11 +78,21 @@ $select-arrow-box-thin-width = 42px
     padding: 0 85px 0 $sizing-300
     width: 100%
     height: "calc(2 * %s + 2 * %s + %s * 1rem)" % ($sizing-300 $border-200 $line-height-300)
+    color: $charles-blue
 
     margin: 0
     box-sizing: border-box
     -moz-appearance: none
     appearance: none
+
+    option
+      color: $charles-blue
+
+    &--default
+      color: $charles-blue
+
+      option
+        color: $charles-blue
 
     // hides the arrow box on IE10
     &::-ms-expand
