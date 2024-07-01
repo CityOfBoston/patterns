@@ -11,23 +11,52 @@
     w = Tool Tip Wrapper
  */
 
-.tooltip {
-  position: absolute;
-  padding: 20px 25px;
-  color: #ffffff;
-  background: #f2709c;
-  left: 20%;
-  top: 40%;
-}
+.tt
+  position: relative
+  display: inline-block
+  margin: 0
+  padding: 0
 
-.tooltip:before {
-  content: "";
-  position: absolute;
-  border-top: 15px solid #f2709c;
-  border-left: 15px solid transparent;
-  border-right: 15px solid transparent;
-  top: 100%;
-  left: 45%;
-  margin-left: -5px;
-  margin-top: -5px;
-}
+  .icon
+    width: 10px
+    height: 10px
+    border-radius: 50%
+    font-size: 0.5rem
+    background: $optimistic-blue-dark
+
+    margin: 5px 0.5em 0 5px
+    padding: 4.7px 0 0 3.0px
+    line-height: 0px
+    color: white
+
+    &::before
+      content: '?'
+
+  .tt--info
+      text-transform: lowercase
+      padding-left: 3.8px
+      &::before { content: 'i' }
+
+  .msg
+    display: none
+    // display: block
+    position: absolute
+    font-size: 1.00rem
+    line-height: normal
+    background: $grey-000
+    z-index: 1000
+    left: 110%
+    top: -10%
+    
+    min-width: 200px
+    max-width: 300px
+
+    padding: 0.25em 0.5em
+    color: $grey-400
+    font-family: $serif
+    font-weight: 300
+    font-style: italic
+    text-transform: initial
+
+  .icon:hover .msg
+    display: block
