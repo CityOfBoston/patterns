@@ -1,0 +1,33 @@
+/*
+
+   ToolTip
+
+   Base:
+    tt
+
+   Elements:
+    c = Container
+    i = icon
+    w = Tool Tip Wrapper
+ */
+
+.tooltip {
+  position: absolute;
+  padding: 20px 25px;
+  color: #ffffff;
+  background: #f2709c;
+  left: 20%;
+  top: 40%;
+}
+
+.tooltip:before {
+  content: "";
+  position: absolute;
+  border-top: 15px solid #f2709c;
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+  top: 100%;
+  left: 45%;
+  margin-left: -5px;
+  margin-top: -5px;
+}
