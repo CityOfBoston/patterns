@@ -49,7 +49,7 @@ type MapConfig = CobMap10;
 // relative to whatever page was hosting the <cob-map> tag.
 
 const DEFAULT_BASEMAP_URL =
-  'https://awsgeo.boston.gov/arcgis/rest/services/Basemaps/BostonCityBasemap_WM/MapServer';
+  'https://testgisportal.boston.gov/arcgis/rest/services/Boston_Basemap_Cached_WM/MapServer';
 
 const DEFAULT_ICON_SRC =
   'https://patterns.boston.gov/images/global/icons/mapping/waypoint-charles-blue.svg';
