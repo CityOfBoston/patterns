@@ -3,7 +3,7 @@ handle: footer
 status: ready
 context:
   links:
-    - name: Mayor Martin J Walsh
+    - name: Mayor Michelle Wu
       href: https://www.boston.gov/departments/mayors-office
     - name: Privacy Policy
       href: https://www.boston.gov/copyright/privacyandsecurity.asp
