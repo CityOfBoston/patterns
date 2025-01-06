@@ -96,6 +96,14 @@ svg:not(:root) {
 #content a:link, .main a:link {
     text-decoration: underline
 }
+#content p a[target=_blank], .main p a[target=_blank], #content span a[target=_blank], .main span a[target=_blank] {
+    background-image: url(../images/global/icons/external-link.svg);
+    background-repeat: no-repeat;
+    background-position: calc(100% - 0px) 50%;
+    background-size: 16px;
+    padding-right: 20px;
+    display: inline-block;
+}
 .inverted,
 .inverted:link {
     color: $freedom-red-dark
@@ -106,7 +114,7 @@ svg:not(:root) {
 .inverted:visited {
     color: $freedom-red-dark
 }
-#content a:visited, .main a:visited {
+#content p a:visited, .main p a:visited {
     color: #393FAC
 }
 a:hover,
