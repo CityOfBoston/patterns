@@ -51,12 +51,14 @@
   &-t
     font-size: responsive 14px 16px
     line-height: $line-height-100
+    text-decoration: underline
 
   &-l
     background-color: rgb(255,255,255);
     display: flex
     text-align: left
     flex: 1
+    text-decoration: none
 
     @media $media-large
       display: block
@@ -97,7 +99,7 @@
   pointer-events: none
 
 .cds-l.focus-active:hover .cds-t
-  text-decoration: none
+  text-decoration: underline
 
 .cds-l.focus-active:hover .svg-fill-hover
   fill: #FB4D42
@@ -115,3 +117,6 @@
 
 .cds-l.focus-active:focus .svg-fill-hover
   fill: $optimistic-blue-light
+
+#content a.cds-l:link
+  text-decoration: none
