@@ -93,16 +93,21 @@ svg:not(:root) {
     color: $optimistic-blue-dark;
     text-decoration: none
 }
-#content a:link, .main a:link {
+.intro-text a, 
+article .body a,
+.field-three-col-description a,
+.field-type-text-long a,
+.paragraphs-item-text-one-column a,
+.lcdl-d a {
     text-decoration: underline
 }
-#content p a[target=_blank], .main p a[target=_blank], #content span a[target=_blank], .main span a[target=_blank] {
-    background-image: url(../images/global/icons/external-link.svg);
-    background-repeat: no-repeat;
-    background-position: calc(100% - 0px) 50%;
-    background-size: 16px;
-    padding-right: 20px;
-    display: inline-block;
+.intro-text a:visited, 
+article .body a:visited,
+.field-three-col-description a:visited,
+.field-type-text-long a:visited,
+.paragraphs-item-text-one-column a:visited,
+.lcdl-d a {
+    color: #393FAC
 }
 .inverted,
 .inverted:link {
@@ -113,9 +118,6 @@ svg:not(:root) {
 }
 .inverted:visited {
     color: $freedom-red-dark
-}
-#content p a:visited, .main p a:visited {
-    color: #393FAC
 }
 a:hover,
 a:focus {
@@ -136,9 +138,7 @@ a:active,
 a:hover {
     outline: 0
 }
-#content a:hover:not(div), #content a:hover:not(p) {
-    text-decoration: underline
-}
+
 @media print {
     :link,
     :visited {
