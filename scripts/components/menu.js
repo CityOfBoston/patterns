@@ -1,5 +1,6 @@
 'use strict'
-
+// This module controls the City of Boston Main RHS Menu
+// ---------------------------
 var BostonMenu = (function () {
   // Set height
   var secondaryNavs;
@@ -9,21 +10,22 @@ var BostonMenu = (function () {
   var backTriggers;
   var burger;
   var placeholder;
-  var navMainmenu;
-  var sticky;
+  // var navMainmenu;
+  // var sticky;
   var navLogo;
   var navFirstItem;
+  var siteBanner;
 
   // activate class for sticky menu
-  function mainMenuonScroll() {
-    sticky = navMainmenu.offsetTop;
-
-    if (window.pageYOffset > sticky) {
-      navMainmenu.classList.add("sticky");
-    } else {
-      navMainmenu.classList.remove("sticky");
-    }
-  }
+  // function mainMenuonScroll() {
+    // sticky = navMainmenu.offsetTop;
+    //
+    // if (window.pageYOffset > sticky) {
+    //   navMainmenu.classList.add("sticky");
+    // } else {
+    //   navMainmenu.classList.remove("sticky");
+    // }
+  // }
 
   function handleTrigger(ev, method) {
 
@@ -69,7 +71,8 @@ var BostonMenu = (function () {
 
       // Update the title
       title.innerHTML = trigger.innerHTML;
-    } else {
+    }
+    else {
       for (var i = 0; i < listItems.length; i++) {
         if (parentItem != listItems[i]) {
           listItems[i].classList.remove('nv-m-c-l-i--h');
@@ -92,13 +95,14 @@ var BostonMenu = (function () {
 
   function start() {
     burger = document.getElementById('brg-tr');
+    siteBanner = document.querySelector('.dr-h');
     navLogo = document.getElementById('logoImg');
     listItems = document.querySelectorAll('.nv-m-c-l-i');
     backTriggers = document.querySelectorAll('.nv-m-c-b');
     secondaryTriggers = document.querySelectorAll('.nolink');
     secondaryNavs = document.querySelectorAll('.nv-m-c-l-l');
     secondaryNavItems = document.querySelectorAll('.nv-m-c-a--s');
-    navMainmenu = document.getElementById("main-menu");
+    // navMainmenu = document.getElementById("main-menu");
     navFirstItem = document.querySelector('.nv-m-h-i');
 
     var title = document.getElementById('nv-m-h-t');
@@ -159,11 +163,23 @@ var BostonMenu = (function () {
       secondaryNavItems[i].classList.add('nv-m-c-a--p');
     }
 
-    if (navMainmenu) {
-      window.onscroll = function() {
-        mainMenuonScroll()
-      };
+    // Note when the site_banner is expanded.
+    if (siteBanner) {
+      siteBanner.addEventListener("click", function (element) {
+        if (document.getElementById("cob-content").classList.contains('site-banner--expanded')) {
+          document.getElementById("cob-content").classList.remove('site-banner--expanded');
+        }
+        else {
+          document.getElementById("cob-content").classList.add('site-banner--expanded');
+        }
+      });
     }
+
+    // if (navMainmenu) {
+    //   window.onscroll = function() {
+    //     mainMenuonScroll()
+    //   };
+    // }
 
   }
 
