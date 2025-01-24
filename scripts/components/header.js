@@ -1,5 +1,5 @@
 'use strict'
-// This module controls the City of Boston newsletter component
+// This module controls the City of Boston header component
 // ---------------------------
 var BostonHeader = (function () {
   var guideTitle;
@@ -78,6 +78,15 @@ var BostonHeader = (function () {
 
     if (burgerckbx) {
       burgerckbx.setAttribute("tabIndex", "0");
+      burgerckbx.addEventListener("click", function (element) {
+        if (document.getElementById("cob-content").classList.contains('brg-tr--active')) {
+          document.getElementById("cob-content").classList.remove('brg-tr--active');
+        }
+        else {
+          document.getElementById("cob-content").classList.add('brg-tr--active');
+        }
+      });
+
     }
 
     if (searchckbx) {
