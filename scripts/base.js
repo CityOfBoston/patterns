@@ -53,23 +53,23 @@ var Boston = (function () {
   function request(obj, token) {
     var request = new XMLHttpRequest();
     request.open(obj.method, obj.url, true);
-
+  
     request.onload = function() {
       if (request.status >= 200 && request.status < 400) {
-        obj.success(request);
+        if (typeof obj.success === "function") obj.success(request);
       } else {
-        obj.error(request);
+        if (typeof obj.error === "function") obj.error(request);
       }
     };
-
+  
     if (token) {
       request.setRequestHeader("Authorization", "Token " + token);
     }
-
+  
     request.onerror = function() {
-      obj.error(request);
+      if (typeof obj.error === "function") obj.error(request);
     };
-
+  
     if (obj.data) {
       request.send(obj.data);
     } else {
