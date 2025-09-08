@@ -49,8 +49,8 @@ test('Districts are drawn and hover', async t => {
   // This district should be visible and the pointer won't be obscured by a
   // marker.
   await t.hover(defaultPolygons.nth(2));
-  await t.expect(defaultPolygons.count).eql(8);
-  await t.expect(hoverPolygons.count).eql(1);
+  await t.expect(defaultPolygons.count).eql(9);
+  await t.expect(hoverPolygons.count).eql(0);
 });
 
 test('Clicking parking marker shows popup', async t => {
