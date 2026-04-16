@@ -1,0 +1,92 @@
+/*
+
+   ToolTip
+
+   Base:
+    tt
+
+   Elements:
+    c = Container
+    i = icon
+    w = Tool Tip Wrapper
+ */
+
+.tt
+  position: relative;
+  display: inline-block;
+  margin-left: 0.25em;
+  padding: 0;
+
+  .icon
+    background: $optimistic-blue-dark
+    // width: 10px
+    // height: 10px
+    // border-radius: 50%
+    // font-size: 0.5rem
+
+    // margin: 5px 0.5em 0 5px
+    // padding: 4.7px 0 0 3.0px
+    // line-height: 0px
+    // color: white
+
+    line-height: normal
+    color: white
+    font-size: 0.5rem
+    text-align: center
+    width: 10px;
+    height: 10px;
+    border-radius: 50%
+
+    &::before
+      content: '?'
+
+  .tt--info
+      text-transform: lowercase
+      &::before { content: 'i' }
+
+  .msg
+    display: none
+    position: absolute
+    line-height: normal
+    z-index: 1000
+    left: 110%
+    top: -10%
+    
+    min-width: 250px
+    max-width: 300px
+    
+    padding: 0.25em 0.5em
+    font-weight: 300
+    font-style: italic
+    font-size: 1.875em
+    text-transform: initial
+    text-align: left
+    
+    background: $grey-000
+    font-family: $serif
+    color: $grey-400
+
+  .icon:hover .msg
+    display: block
+
+
+.tt-wrapper {
+  display: block;
+  margin-bottom: 1em;
+}
+
+.tt-wrapper--label {
+  display: flex;
+  flex-start: left;
+  align-items: center;
+
+  label {
+    display: inline-block;
+    color: #091f2f;
+    font-family: "Lora", Georgia, serif;
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 1.4;
+    letter-spacing: 1px;
+  }
+}
