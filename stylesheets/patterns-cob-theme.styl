@@ -93,7 +93,7 @@ svg:not(:root) {
     color: $optimistic-blue-dark;
     text-decoration: none
 }
-.intro-text a, 
+.intro-text a,
 article .body a,
 .field-three-col-description a,
 .field-type-text-long a,
@@ -101,7 +101,7 @@ article .body a,
 .lcdl-d a {
     text-decoration: underline
 }
-.intro-text a:visited, 
+.intro-text a:visited,
 article .body a:visited,
 .field-three-col-description a:visited,
 .field-type-text-long a:visited,
@@ -511,7 +511,7 @@ label {
     margin-bottom: 0;
     padding-bottom: 0
 }
-.paragraphs-item-text .entity-paragraphs-item .supporting-lg, 
+.paragraphs-item-text .entity-paragraphs-item .supporting-lg,
 .paragraphs-item-text .entity-paragraphs-item.paragraphs-item-text-three-column,
 .paragraphs-item-text .entity-paragraphs-item.paragraphs-item-text-two-column,
 .paragraphs-item-text .entity-paragraphs-item.paragraphs-item-text-one-column,
@@ -525,7 +525,7 @@ label {
 }
 .dr .squiggle-border-bottom {
     background: none;
-    background-position: left top;  
+    background-position: left top;
 }
 .supporting-text {
     font-weight: 400;
@@ -799,10 +799,10 @@ h5 .learn-more, .learn-more {
         left: 300px
     }
 }
-.node-type-event .dl-d, 
+.node-type-event .dl-d,
 .node-place-profile .dl-d,
 .node-type-public-notice .dl-d {
-    padding-left: 0    
+    padding-left: 0
 }
 .post-contact .department-icon.sb-ic {
     border: none;
@@ -816,13 +816,13 @@ h5 .learn-more, .learn-more {
     padding-left: 0
 }
 .sb-b:last-child.sb-b:first-child {
-    padding-top: 0    
+    padding-top: 0
 }
 .sb .sb-i:last-child {
-    border-bottom: none    
+    border-bottom: none
 }
 .sb .sb-i:first-child {
-    border-bottom: 1px dashed $grey-100   
+    border-bottom: 1px dashed $grey-100
 }
 .sb-d:empty {
   background-color: tomato
@@ -969,7 +969,7 @@ h5 .learn-more, .learn-more {
     max-width: 100%;
     z-index: 30;
     left: 0
-    margin-top: -3px;   
+    margin-top: -3px;
 }
 .drawer {
     display: none
@@ -1020,11 +1020,11 @@ h5 .learn-more, .learn-more {
 }
 .view-filters .drawer-trigger.active .drawer-trigger-chevron,
 .filter-wrapper .drawer-trigger.active .drawer-trigger-chevron {
-    -ms-transform: rotate(180deg);    
-    transform: rotate(180deg);        
+    -ms-transform: rotate(180deg);
+    transform: rotate(180deg);
     height: 14px;
     margin-top: 20px
-    background-image: url(../images/global/icons/chevron-down.svg);               
+    background-image: url(../images/global/icons/chevron-down.svg);
 }
 .view-filters .drawer-trigger.mobile-only,
 .filter-wrapper .drawer-trigger.mobile-only {
@@ -1360,7 +1360,7 @@ h5 .learn-more, .learn-more {
     margin-top: 20px
 }
 .view-filters .dr-h {
-    margin-top: 0       
+    margin-top: 0
 }
 @media (min-width: 980px) {
     .view-filters .drawer-trigger:first-child,
@@ -1622,7 +1622,7 @@ h5 .learn-more, .learn-more {
     display: inline-block
 }
 .node-topic-page .ssm {
-    margin-bottom: 0    
+    margin-bottom: 0
 }
 .node-topic-page .supporting-text.intro-text {
     margin-bottom: 25px;
@@ -1641,7 +1641,7 @@ h5 .learn-more, .learn-more {
     padding-bottom: 25px
 }
 .paragraphs-items-field-grid-of-quotes {
-    display: contents    
+    display: contents
 }
 .hero-image {
     display: none;
@@ -1710,16 +1710,16 @@ h5 .learn-more, .learn-more {
     }
 }
 .node-topic-page .intro-content + .p-b700 {
-    margin-top: -50px    
+    margin-top: -50px
 }
 .sb-b.sb-b-np address {
     margin-top: 1.625rem;
     margin-bottom: 1rem;
     letter-spacing: 1px;
-    color: $charles-blue  
+    color: $charles-blue
 }
 .sb-b.sb-b-np {
-    width: 100%    
+    width: 100%
 }
 .sb .dl-t {
     width: 25%;
@@ -1737,7 +1737,7 @@ h5 .learn-more, .learn-more {
     width: 100%
 }
 .sb-b p + ul  {
-    margin-top: 1.6667rem    
+    margin-top: 1.6667rem
 }
 .oh-wrapper.sb-b {
     width: 80%;
@@ -1831,9 +1831,11 @@ p.big.intro-text {
     line-height: 1rem;
     font-weight: bold
 }
-.node-place-profile, .node-article {
+// DIG-6733 [Permit Content] Fix Header Overlap on Hero / Intro Image
+.node-place-profile, .node-article,
+.node-permit-project, .node-permit-category, .node-permit {
     position: relative;
-    z-index: 2    
+    z-index: 2;
 }
 .news-item-default-image {
     background-color: $charles-blue;
@@ -1874,10 +1876,10 @@ What: Overrides to some drupal injected tags.
 }
 .g--4.b--w .evt-c {padding-left: 0; padding-right: 0;}
 .evt-dl-i .dl-d .address, .evt-dl-i .dl-d p {margin-top: 0;}
-.display-large .g, 
-.display-large-attachment .g, 
-.display-related-large .g, 
-.display-referenced-large .g, 
+.display-large .g,
+.display-large-attachment .g,
+.display-related-large .g,
+.display-referenced-large .g,
 .events-notices-featured-item .g  {
     background-color: #ffffff
 }
@@ -1958,19 +1960,19 @@ What: Overrides to some drupal injected tags.
     font-size: 28px
 }
 .sb-b .button {
-    margin-bottom: 20px    
+    margin-bottom: 20px
 }
 .sb-b .button:last-child {
     margin-bottom: 0;
 }
 h3.t--intro {
-    text-transform: capitalize    
+    text-transform: capitalize
 }
 article .paragraphs-item-3-column-w-image ul li {
     background-image: url("../images/global/icons/ul-bullet-white.svg")
 }
 .program-info-wrapper {
-    position: relative    
+    position: relative
 }
 .bos-newsletter .fs-c--i .txt ~ .txt {
   padding-right: 0
@@ -2056,21 +2058,21 @@ article .paragraphs-item-3-column-w-image ul li {
         order:2
     }
     .node-post .g--4 {
-        order:1    
+        order:1
     }
 }
 .b--b .sh-contact a, .b--b .sh-contact a:link, .b--b .sh-contact a:visited {
     color: $freedom-red-light
 }
 .paragraphs-item-text-two-column.col_two_one_third .field-name-field-right-column address {
-    margin-top: 0;    
+    margin-top: 0;
 }
 .with-hero.node-event {
-    position: relative    
+    position: relative
 }
 .mnl button:not(ul button) {
     background-color: $optimistic-blue-dark;
-    cursor: pointer 
+    cursor: pointer
 }
 .mnl button:hover:not(ul button) {
     background-color: $freedom-red-dark
@@ -2086,7 +2088,7 @@ article .paragraphs-item-3-column-w-image ul li {
     margin-bottom: 0
 }
 .mapboxgl-ctrl-geocoder input {
-    background-size: 30px 20px  
+    background-size: 30px 20px
 }
 .err--403 {
     background-image: url("../images/global/icons/403.svg");
@@ -2202,7 +2204,7 @@ ul li {
 }
 .features-sidebar svg {
     max-width: 56px;
-    max-height: 56px   
+    max-height: 56px
 }
 
 /* Re-order sidebar for Events detail page. The sidebar needs to come first on mobile devices */
@@ -2337,5 +2339,5 @@ span.explainer-icon {
     }
 .responsive-table.table-desktop tbody tr td {
     border: 3px solid #091F2F;
-        
+
 }
