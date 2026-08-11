@@ -41,7 +41,7 @@ browsers](https://github.com/CityOfBoston/digital/wiki/Software-engineering-work
 
 Fleet has 2 types of tests:
 
-- Unit tests, using [Jest](https://facebook.github.io/jest/)
+- Unit tests, using [Jest](https://jestjs.io/)
 - Browser tests, using [TestCafe](https://testcafe.devexpress.com/)
 
 During development, you can run `npm run jest.dev` to have Jest watch files and
