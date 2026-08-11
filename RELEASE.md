@@ -13,7 +13,7 @@ Once the `master` branch is merged into the `production` branch, then:
 1. goto the [release section](https://github.com/CityOfBoston/patterns/releases) of the repository,
 2. note the last release number, 
 3. click the "Draft a New Release" button
-4. click on "Choose a Tag" and create a new tag, follow the pattern vYYYY.n where in is a number which increments (e.g. v2023.1).
+4. click on "Choose a Tag" and create a new tag, follow the pattern vYYYY.n where n is a number which increments (e.g. v2023.1).
 5. ensure the Target is the `production` branch
 6. give the release a title. This should be the same as the tag name in step 4 above.
 7. in the Description, copy and paste in the template below, then click the `Generate release notes` button to append the commits to be bottom of the textbox. Update the "Jira Tickets` section with all tickets that have been addressed in this release. Update the " Linked Drupal Release" section with the release of boston.gov linked with this release of Patterns (if this release of patterns does not require a release of boston.gov, then add the current version of boston.gov).
@@ -46,5 +46,5 @@ example: Dig-1839 - [Update residential exemption application in Assessing Onlin
 ```
 ## Project Manager: Release Jira Tickets 
 1. In Jira create a release with the following convention RepositoryName/release version (e.g. Patterns/v2023.1) 
-2. The release description should include what was updated and a link to the release notes (e.g. patterns code updates[Release Notes](https://github.com/CityOfBoston/boston.gov-d8/patterns/tag/v2023.1))
+2. The release description should include what was updated and a link to the release notes (e.g. patterns code updates[Release Notes](https://github.com/CityOfBoston/patterns/releases/tag/v2023.1))
 3. Attached release fix version to tickets before releasing the tickets. 
